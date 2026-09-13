@@ -6,10 +6,7 @@
 ---
 
 ### 1. Model Commitment & Hardware Declaration
-En el Entregable 1 declaramos como candidato principal a **Qwen3-4B** (corriendo en Google Colab con GPU NVIDIA T4). Para este Entregable 2, exploramos y defendemos la transición técnica hacia **Qwen2.5-3B-Instruct** ejecutado de manera 100% local (*Edge AI*) sobre arquitectura Apple Silicon (MacBook Neo, A18) mediante la API de Ollama. Justificamos esta desviación formal bajo tres criterios del proyecto:
-1. **Economía de Parámetros:** Competir con un modelo aún menor (3B frente a 4B y la cota de 8B), maximizando el criterio de eficiencia de la rúbrica.
-2. **Privacidad y Factibilidad Operativa:** Eliminar la dependencia de cuotas de GPU en la nube, demostrando que un asistente normativo institucional puede operar offline con consumo inferior a 3.5 GB de memoria unificada.
-3. **Validez Experimental Estricta:** Para no introducir variables de confusión respecto a la línea base, re-evaluamos el conjunto completo de 50 preguntas en modo zero-shot sobre `qwen2.5:3b` bajo las mismas condiciones deterministas (temperature=0.0). El modelo base arrojó exactamente la misma falla diagnosticada en el Entregable 1 (4% global, 0/40 en preguntas con respuesta en corpus), garantizando una comparación científica rigurosa ("manzanas con manzanas").
+El equipo ratifica y se compromete formalmente con el candidato principal seleccionado en el Entregable 1: **Qwen3-4B** (Apache 2.0), ejecutado de punta a punta sobre el hardware oficial declarado (**Google Colab con GPU NVIDIA T4** en precisión `bfloat16`, 6.44 GB de VRAM) mediante el cuaderno reproducible `RAG_normativa_ingenieria_4B.ipynb`. La selección sobre Salamandra-7B-Instruct y Qwen3-8B se defiende bajo el criterio de **economía de modelos** de la rúbrica (4B es el tamaño mínimo seguro que preserva calidad en español siendo la mitad de la cota máxima permitida). Como análisis de portabilidad complementario (*Edge AI*), se evaluó la factibilidad local en procesadores Apple Silicon (A18). Ambos despliegues garantizan una comparación científica rigurosa y reproducible frente a la línea base.
 
 ---
 

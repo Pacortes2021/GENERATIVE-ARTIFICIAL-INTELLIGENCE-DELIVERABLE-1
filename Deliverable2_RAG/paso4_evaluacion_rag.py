@@ -31,12 +31,14 @@ def buscar_mejores_parrafos(pregunta, top_k=5):
 
 def preguntar_a_ollama_rag(pregunta, contexto):
     system_prompt = (
-        "Eres un asistente experto en la normativa de pregrado de la Facultad de "
-        "Ingeniería de la Universidad de Concepción. Responde de forma breve, con el "
-        "dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8') "
-        "basándote ÚNICAMENTE en el contexto provisto. Si no tienes la información "
-        "en el contexto, di explícitamente que no está en la normativa."
-        f"\n\nContexto normativo:\n{contexto}"
+        "Eres un experto legal de la Universidad de Concepción. Tu tarea es extraer la respuesta exacta "
+        "desde el contexto provisto y reportarla siguiendo estrictamente este formato:\n\n"
+        "DATO: [La respuesta exacta a la pregunta]\n"
+        "CITA: [El número de artículo que usaste]\n\n"
+        "Regla de Oro: Si la información no está en el contexto, debes responder literalmente:\n"
+        "DATO: No está en la normativa\n"
+        "CITA: Ninguna\n\n"
+        f"Contexto normativo:\n{contexto}"
     )
     
     url = "http://localhost:11434/api/chat"

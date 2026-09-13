@@ -1,41 +1,46 @@
-# Arquitectura RAG - Proyecto GenIA (Deliverable 2)
+# Arquitectura RAG — Proyecto GenIA (Deliverable 2)
+*Ingeniería Civil Industrial — Universidad de Concepción (Primavera 2026)*  
+*Autores: Álvaro Contreras y Pablo Cortés*  
+*Repositorio: https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1*
 
-Este documento sirve como bitácora y manual técnico de la arquitectura RAG construida localmente, resolviendo los problemas del Deliverable 1.
+---
 
-## 📁 Archivos del Motor RAG
+## 📌 1. Visión General de la Solución
 
-El sistema se dividió en scripts modulares que forman una tubería de datos completa y un *Harness* de evaluación.
+El objetivo de este entregable es resolver la **Ausencia Paramétrica** identificada en el Entregable 1 (donde el modelo evaluado sin contexto obtuvo un 4.0% de exactitud y alucinó normativas en el 80% de los casos).
 
-### 0. `paso0_baseline_ollama.py` (Evaluación Desnuda)
-Evalúa las 50 preguntas del test set contra el modelo `qwen2.5:3b` puro sin contexto adicional, generando el Baseline ("Antes") para comparar.
-* **Output:** `resultados_baseline_qwen2.5.csv`
+Para erradicar la alucinación y dotar al sistema de trazabilidad jurídica estricta, se construyó una arquitectura RAG en 3 niveles:
+1. **Ingeniería de Datos y Segmentación por Artículo (*Context-Aware Chunking*)**: 198 fragmentos atómicos etiquetados con su artículo real (`[Art. X°, RI-FI]` y `[Calendario 2026, Semestre]`).
+2. **Recuperación Semántica Densa (*Dense Retrieval*)**: Codificación en GPU mediante `intfloat/multilingual-e5-small` (384 dimensiones) y cálculo determinista de similitud coseno con $k=5$ (óptimo de Pareto).
+3. **Decodificación Restringida (*Structural Forcing*)**: *System Prompt* con plantilla invariante (`DATO: ... // CITA: ...`) que elimina la divagación y garantiza abstención formal ante premisas falsas.
 
-### 1. `paso1_extractor_final.py` (Data Engineering & Context-Aware Chunking)
-Resuelve la pérdida de citas y el ruido. 
-* **Retención de Contexto:** Usa expresiones regulares para capturar el "Artículo N°" de cada párrafo y lo inyecta como prefijo en todos los chunks derivados de él. Esto garantiza que el LLM siempre pueda citar correctamente.
-* **Filtro de Calendario:** Limpia el ruido manteniendo solo filas útiles (meses y feriados).
-* **Output:** `base_conocimiento_udec.json`
+---
 
-### 2. `paso2_vectorizador.py` (Embedding)
-* Convierte texto a coordenadas espaciales con `intfloat/multilingual-e5-small`.
-* Forzamos `device="cpu"` para evitar tensores corruptos (bug MPS en Mac).
-* **Output:** `vectores_udec.npy`
+## 🚀 2. Implementación Oficial (Google Colab con GPU NVIDIA Tesla T4)
 
-### 3. `paso3_asistente_rag.py` (Modo Chat Interactivo)
-Permite hacer preguntas interactivas por consola al sistema. El modelo está configurado para abstenerse estrictamente con la frase `"No está en la normativa"`.
+El pipeline oficial de evaluación académica se encuentra implementado y versionado en el cuaderno:
+* **`rag_normativa_ingenieria_4b.ipynb`**:
+  * **Hardware Oficial**: GPU NVIDIA Tesla T4 (15.64 GB VRAM).
+  * **Modelo Generador**: `Qwen/Qwen3-4B` en precisión `bfloat16` (consumo de **8.53 GB de VRAM**).
+  * **Latencia Promedio**: ~0.5 segundos por consulta.
+  * **Rendimiento Medido**: **49 / 50 aciertos (98.0%)**, con 100% de precisión en la categoría de abstención (cero alucinaciones).
 
-### 4. `paso4_evaluacion_rag.py` (Harness Automático)
-Script crucial que itera sobre las 50 preguntas oficiales, busca el contexto, llama al LLM, y consolida todo en una planilla, generando los números del "Después".
-* **Output:** `resultados_rag_qwen2.5.csv`
+---
 
-## 🚀 Cómo Ejecutar el Sistema (Evaluación Científica 100% Offline)
+## 💻 3. Implementación Local Complementaria (*Edge AI Portability*)
 
-A diferencia del Baseline original que requería Colab, toda nuestra arquitectura corre localmente sobre Apple Silicon usando la API de Ollama, demostrando factibilidad técnica en el borde (Edge AI).
+Como estudio de portabilidad y economía computacional, el repositorio incluye scripts modulares para ejecutar el pipeline de forma 100% offline en procesadores locales (Apple Silicon) mediante Ollama:
 
-En la terminal, corre la evaluación completa:
-1. `python3 paso0_baseline_ollama.py`
-2. `python3 paso1_extractor_final.py`
-3. `python3 paso2_vectorizador.py`
-4. `python3 paso4_evaluacion_rag.py`
+1. `paso0_baseline_ollama.py`: Ejecuta la línea base Zero-Shot sin RAG sobre las 50 preguntas.
+2. `paso1_extractor_final.py`: ETL y segmentación sintáctica basada en regex con *lookahead* (`(?i)\n(?=art[íi]culo\s+\d+°?)`). Genera `base_conocimiento_udec.json`.
+3. `paso2_vectorizador.py`: Vectorización en CPU con `multilingual-e5-small` exportando `vectores_udec.npy`.
+4. `paso3_asistente_rag.py`: Modo chat interactivo por consola con forzado de plantilla.
+5. `paso4_evaluacion_rag.py`: Harness automatizado para evaluar las 50 preguntas y exportar a CSV.
 
-Las tablas `.csv` resultantes pueden ser comparadas de inmediato en Excel/Pandas para medir el delta de exactitud que aportó el sistema RAG.
+---
+
+## 📊 4. Trazabilidad de Resultados
+
+* `Deliverable2_RAG/resultados_rag_qwen3_4b.csv`: Salidas oficiales generadas por `Qwen3-4B` en GPU T4.
+* `Deliverable2_RAG/reporte_comparativo_50_preguntas.md`: Auditoría forense completa pregunta por pregunta comparando Gold, Baseline y RAG.
+* `Deliverable2_RAG/deliverable2.tex`: Documento de 1 página en formato LaTeX con diagrama vectorial TikZ listo para compilar.

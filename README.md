@@ -149,6 +149,7 @@ El sistema alcanza 41 aciertos sobre 50 preguntas. Para dar pleno cumplimiento a
 │   ├── DELIVERABLE_2_DRAFT.md                   # Borrador técnico de 1 página para LaTeX
 │   └── PR_DESCRIPTION.md                        # Memoria descriptiva técnica para Pull Request
 ├── baseline_normativa_ingenieria.ipynb           # Cuaderno original Deliverable 1 (Colab T4)
+├── RAG_normativa_ingenieria_4B.ipynb            # Cuaderno oficial Deliverable 2 RAG (Colab T4 + Qwen3-4B)
 ├── test_set_50.csv                              # Conjunto de 50 preguntas oficiales
 └── README.md                                    # Documentación integral del proyecto
 ```
@@ -157,28 +158,31 @@ El sistema alcanza 41 aciertos sobre 50 preguntas. Para dar pleno cumplimiento a
 
 ## ⚡ 7. Guía de Reproducción
 
-### 7.1 Reproducción del Entregable 1 (Baseline en Google Colab)
+### 7.1 Reproducción Oficial del Entregable 2 (RAG con Qwen3-4B en Google Colab T4)
+1. Abrir **`RAG_normativa_ingenieria_4B.ipynb`** en Google Colab con acelerador **GPU T4** (`Entorno de ejecución > Cambiar tipo de entorno > GPU T4`).
+2. Ejecutar las celdas en orden (o *"Entorno de ejecución > Ejecutar todo"*):
+   * Verifica GPU T4 y descarga las librerías.
+   * Clona la base estructurada de 198 chunks (`base_conocimiento_udec.json`).
+   * Vectoriza los pasajes en GPU mediante `multilingual-e5-small` con tensores PyTorch.
+   * Carga **`Qwen/Qwen3-4B`** en `bfloat16` (6.44 GB VRAM, hardware declarado en E1).
+   * Evalúa las 50 preguntas del `test_set_50.csv` con *Structural Forcing* (`DATO:` y `CITA:`).
+   * Genera `resultados_rag_qwen3_4b.csv` y muestra la tabla comparativa directa contra el Baseline de 4%.
+
+### 7.2 Reproducción del Entregable 1 (Línea Base Zero-Shot en Google Colab T4)
 1. Abrir `baseline_normativa_ingenieria.ipynb` en Google Colab con acelerador GPU T4.
-2. Ejecutar las celdas secuencialmente (carga `Qwen/Qwen3-4B` en bf16 y evalúa `test_set_50.csv`).
+2. Ejecutar las celdas secuencialmente (evalúa `Qwen/Qwen3-4B` sin contexto).
 3. Salida observable: `resultados_baseline.csv` (Exactitud global: 4%).
 
-### 7.2 Reproducción del Entregable 2 (Solución RAG Local en Apple Silicon / CPU)
-1. Requisitos: Python 3.9+ (`sentence-transformers`, `scikit-learn`, `requests`, `numpy`, `pdftotext` o `PyMuPDF`).
-2. Levantar el modelo localmente vía Ollama:
+### 7.3 Reproducción Alternativa Local (Edge AI en Apple Silicon / CPU)
+1. Requisitos locales: Python 3.9+ (`sentence-transformers`, `scikit-learn`, `requests`, `numpy`) y Ollama corriendo:
    ```bash
    ollama run qwen2.5:3b
    ```
-3. Ejecutar la tubería en consola:
+2. Ejecutar el pipeline local:
    ```bash
    cd Deliverable2_RAG
-
-   # 1. Extracción y segmentación por artículo
    python3 paso1_extractor_final.py
-
-   # 2. Generación de base vectorial NumPy
    python3 paso2_vectorizador.py
-
-   # 3. Evaluación RAG automatizada sobre las 50 preguntas
    python3 paso4_evaluacion_rag.py
    ```
-4. Salida observable: `resultados_rag_qwen2.5.csv` (Exactitud global estricta: 82%).
+3. Salida observable: `resultados_rag_qwen2.5.csv` (Exactitud global: 82%).

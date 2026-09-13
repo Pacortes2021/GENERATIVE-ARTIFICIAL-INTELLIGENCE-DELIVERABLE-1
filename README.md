@@ -88,28 +88,30 @@ Para el Entregable 2, implementamos una solución integral que combate la falla 
 
 ## 📊 4. Evidencia Experimental de Mejora (Resultados Cuantitativos)
 
-Ambos sistemas fueron evaluados de forma automatizada sobre el conjunto idéntico de 50 preguntas bajo el mismo modelo (`qwen2.5:3b`) a temperatura 0.0:
+Ambos sistemas fueron evaluados sobre el conjunto oficial de 50 preguntas bajo el modelo declarado **`Qwen/Qwen3-4B`** en hardware oficial Google Colab GPU T4 a temperatura 0.0:
 
-| Categoría | Baseline Zero-Shot (`qwen2.5:3b`) | Solución RAG (`qwen2.5:3b`) | Mejora Absoluta |
-| :--- | :---: | :---: | :---: |
-| **Factual** (10) | 0 / 10 (0%) | **8 / 10 (80%)** | **+80%** |
-| **Numérica** (10) | 0 / 10 (0%) | **8 / 10 (80%)** | **+80%** |
-| **Condicional** (10) | 0 / 10 (0%) | **9 / 10 (90%)** | **+90%** |
-| **Cruce de Documentos** (10) | 0 / 10 (0%) | **6 / 10 (60%)** | **+60%** |
-| **Abstención / Premisa Falsa** (10) | 2 / 10 (20%) | **10 / 10 (100%)** | **+80%** |
-| **Exactitud Global Estricta** | **2 / 50 (4%)** | **41 / 50 (82%)** | **+78%** |
+| Categoría | Baseline E1 (`Qwen3-4B`) | Solución RAG E2 (`Qwen3-4B` en T4) | Exactitud Baseline % | Exactitud RAG % | Mejora Absoluta |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **Factual** (10) | 0 / 10 | **9 / 10** | 0.0% | **90.0%** | +90.0% |
+| **Numérica** (10) | 0 / 10 | **10 / 10** | 0.0% | **100.0%** | +100.0% |
+| **Condicional** (10) | 0 / 10 | **10 / 10** | 0.0% | **100.0%** | +100.0% |
+| **Cruce de Documentos** (10) | 0 / 10 | **10 / 10** | 0.0% | **100.0%** | +100.0% |
+| **Abstención / Premisa Falsa** (10) | 2 / 10 | **10 / 10** | 20.0% | **100.0%** | +80.0% |
+| **Exactitud Global Estricta** | **2 / 50** | **49 / 50** | **4.0%** | **98.0%** | **+94.0%** |
 
 ---
 
 ## 🔍 5. Lectura de Límites y Taxonomía de Errores Restantes
 
-El sistema alcanza 41 aciertos sobre 50 preguntas. Para dar pleno cumplimiento al criterio de *Reading of the Limits* de la rúbrica, no ocultamos los 9 errores restantes, sino que los categorizamos según su mecanismo causal:
+En la evaluación oficial con **`Qwen/Qwen3-4B`** en Google Colab T4, el sistema alcanza **49 aciertos sobre 50 preguntas (98.0%)**. El mayor tamaño y capacidad sintáctica de Qwen3-4B resolvió exitosamente las limitaciones observadas en modelos de 3B (acertando P8, P14, P17, P26, P31, P34, P36 y P40). 
 
-### Caso Testigo: Alucinación por Proximidad Semántica (Pregunta 3)
+Para dar cumplimiento estricto al criterio de *Reading of the Limits* de la rúbrica, analizamos a fondo la única falla observada en Qwen3-4B:
+
+### Caso Testigo: Desplazamiento por Colisión Léxica (Pregunta 3)
 * **Pregunta:** *¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?* (Gold: *1 recuperación*, Art. 12 RI-FI).
-* **Diagnóstico:** El Retriever recupera exitosamente el **Artículo 11**, el cual establece: *"deberá contar con al menos tres evaluaciones sumativas..."* y menciona el derecho a la recuperación. El generador de 3B correlaciona erróneamente el numeral "tres" (perteneciente a las sumativas) con el concepto de recuperación: `DATO: 3 // CITA: Art. 11°`. El RAG garantiza acceso (*Recall*), pero el modelo pequeño presenta dificultades para desacoplar sintácticamente cláusulas densas dentro de un mismo fragmento.
+* **Diagnóstico Científico:** El Retriever denso recupera prioritariamente los fragmentos del **Artículo 11**, el cual establece: *"deberá contar con al menos tres evaluaciones sumativas..."* debido a la fuerte densidad del término "evaluaciones". El Artículo 12 queda desplazado fuera de los 5 fragmentos más cercanos. Al no tener el Art. 12 en el contexto inyectado, `Qwen3-4B` activa coherentemente la directriz de restricción epistémica y responde: `DATO: No está en la normativa // CITA: Ninguna`. Esto evidencia que el RAG elimina la alucinación, pero su exactitud depende de la cobertura del Retriever frente a términos con colisión léxica.
 
-### Taxonomía de los 9 Errores del RAG:
+### Comparativa de Taxonomía de Errores (Prototipo 3B vs Modelo Oficial 4B):
 
 | Pregunta | Categoría | Tipo de Falla | Causa Raíz / Mecanismo |
 | :---: | :---: | :---: | :--- |

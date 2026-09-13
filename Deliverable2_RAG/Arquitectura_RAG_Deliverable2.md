@@ -1,39 +1,41 @@
 # Arquitectura RAG - Proyecto GenIA (Deliverable 2)
 
-Este documento sirve como bitácora y manual técnico de la arquitectura RAG construida localmente, resolviendo los errores de "Ausencia Paramétrica" del Deliverable 1.
+Este documento sirve como bitácora y manual técnico de la arquitectura RAG construida localmente, resolviendo los problemas del Deliverable 1.
 
 ## 📁 Archivos del Motor RAG
 
-El sistema se dividió en 3 scripts modulares que forman una tubería de datos (Pipeline ETL) completa:
+El sistema se dividió en scripts modulares que forman una tubería de datos completa y un *Harness* de evaluación.
 
-### 1. `paso1_extractor_final.py` (Data Engineering & Chunking)
-El paso más crítico del proyecto. Resuelve el problema de que los PDFs rompen oraciones por la mitad.
-* **Técnica:** Chunking Semántico + Recursive Text Splitter.
-* **Cómo funciona:** Usa expresiones regulares (`Regex`) para unir oraciones cortadas por márgenes físicos. Separa el procesamiento del Calendario (que es tabla) y los Reglamentos (que son prosa). 
-* **Seguridad:** Agrupa las oraciones, pero incluye una guillotina semántica que asegura que ningún bloque supere los 800 caracteres para evitar desbordar la memoria del modelo (límite de 512 tokens).
+### 0. `paso0_baseline_ollama.py` (Evaluación Desnuda)
+Evalúa las 50 preguntas del test set contra el modelo `qwen2.5:3b` puro sin contexto adicional, generando el Baseline ("Antes") para comparar.
+* **Output:** `resultados_baseline_qwen2.5.csv`
+
+### 1. `paso1_extractor_final.py` (Data Engineering & Context-Aware Chunking)
+Resuelve la pérdida de citas y el ruido. 
+* **Retención de Contexto:** Usa expresiones regulares para capturar el "Artículo N°" de cada párrafo y lo inyecta como prefijo en todos los chunks derivados de él. Esto garantiza que el LLM siempre pueda citar correctamente.
+* **Filtro de Calendario:** Limpia el ruido manteniendo solo filas útiles (meses y feriados).
 * **Output:** `base_conocimiento_udec.json`
 
-### 2. `paso2_vectorizador.py` (Embedding & Vector Database)
-Convierte el texto humano limpio a coordenadas espaciales.
-* **Modelo Matemático:** `intfloat/multilingual-e5-small` (Especializado en español).
-* **Parche de Hardware:** Fuerzo el uso de `device="cpu"` para evitar un bug nativo de Apple Silicon (MPS) que generaba tensores corruptos (`NaN`) y errores de división por cero.
-* **Técnica E5:** Se añade obligatoriamente el prefijo `passage: ` a los documentos para calibrar el modelo.
-* **Output:** `vectores_udec.npy` (Formato nativo de NumPy, hiperestable).
+### 2. `paso2_vectorizador.py` (Embedding)
+* Convierte texto a coordenadas espaciales con `intfloat/multilingual-e5-small`.
+* Forzamos `device="cpu"` para evitar tensores corruptos (bug MPS en Mac).
+* **Output:** `vectores_udec.npy`
 
-### 3. `paso3_asistente_rag.py` (Retriever & Generator)
-El pegamento final que une la base de datos con el Cerebro (LLM).
-* **Búsqueda (Retriever):** Convierte la pregunta del usuario a vector (con prefijo `query: `) y usa Similitud Coseno (`scikit-learn`) para extraer el **Top 5** de fragmentos (`top_k=5`) de la base de datos de NumPy.
-* **Generación (LLM):** En lugar de sobrecargar la memoria de 8GB del Mac, se conecta mediante API local (`requests`) al servidor oculto de **Ollama** que corre `qwen2.5:3b`.
-* **Prompt Engineering:** Se le da la instrucción estricta de abstenerse de responder si la respuesta no está en el contexto entregado (Cero Alucinaciones).
+### 3. `paso3_asistente_rag.py` (Modo Chat Interactivo)
+Permite hacer preguntas interactivas por consola al sistema. El modelo está configurado para abstenerse estrictamente con la frase `"No está en la normativa"`.
 
-## 🚀 Cómo Ejecutar el Sistema (Desde Cero)
+### 4. `paso4_evaluacion_rag.py` (Harness Automático)
+Script crucial que itera sobre las 50 preguntas oficiales, busca el contexto, llama al LLM, y consolida todo en una planilla, generando los números del "Después".
+* **Output:** `resultados_rag_qwen2.5.csv`
 
-En la terminal, dentro de la carpeta `Workshops`:
-1. `python3 paso1_extractor_final.py`
-2. `python3 paso2_vectorizador.py`
-3. `python3 paso3_asistente_rag.py`
+## 🚀 Cómo Ejecutar el Sistema (Evaluación Científica 100% Offline)
 
-## 🧠 Lecciones Aprendidas (El "Por Qué")
-* **El costo del Bono:** Se usó un modelo pequeño (3B) para ganar el bono del curso, lo que implica que el modelo pierde capacidad de razonamiento lógico duro (ej. fechas cruzadas).
-* **Solución Estructural vs Parches:** Para corregir los errores lógicos, en lugar de usar "Prompt Engineering" (un parche), la industria avanza hacia "Agentic AI y Tool Calling" (Semana 7 y 8).
-* **Garbage In, Garbage Out:** Si cortas mal un PDF, la IA jamás encontrará la respuesta. El Chunking es el 90% del éxito.
+A diferencia del Baseline original que requería Colab, toda nuestra arquitectura corre localmente sobre Apple Silicon usando la API de Ollama, demostrando factibilidad técnica en el borde (Edge AI).
+
+En la terminal, corre la evaluación completa:
+1. `python3 paso0_baseline_ollama.py`
+2. `python3 paso1_extractor_final.py`
+3. `python3 paso2_vectorizador.py`
+4. `python3 paso4_evaluacion_rag.py`
+
+Las tablas `.csv` resultantes pueden ser comparadas de inmediato en Excel/Pandas para medir el delta de exactitud que aportó el sistema RAG.

@@ -1,46 +1,55 @@
 # Asistente de Normativa de Pregrado (Ingeniería UdeC)
 
-Proyecto semestral de **Generative Artificial Intelligence (580694)**, segundo semestre 2026, Universidad de Concepción.  
-**Equipo:** Álvaro Contreras y Pablo Cortés  
-**Repositorio:** [https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1](https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1)
+> [!NOTE]
+> **Estructura del Proyecto y Entregables:**  
+> Este repositorio alberga la investigación y desarrollo completo del proyecto semestral de **Generative Artificial Intelligence (580694)**, Primavera 2026, Universidad de Concepción.  
+> * **Entregable 1:** Definición de la tarea, evaluación del baseline zero-shot (4%) y diagnóstico de falla por *Ausencia Paramétrica*.  
+> * **Entregable 2:** Diseño, implementación y evaluación científica de la arquitectura RAG local con decodificación restringida (82%).  
+> **Equipo (Coautores):** Álvaro Contreras y Pablo Cortés  
+> **Origen del Repositorio:** Fork de trabajo de [`alnicozu/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1`](https://github.com/alnicozu/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1).
 
 ---
 
 ## 📌 1. Definición de la Tarea y Corpus
 
-El objetivo del sistema es responder consultas en español sobre la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción (FI-UdeC), entregando **(i) el dato exacto** y **(ii) la cita estricta del artículo o fuente** que lo respalda. Ante preguntas con premisas falsas o información ausente en el corpus, la respuesta correcta es **abstenerse explícitamente**.
+El sistema responde consultas en lenguaje natural en español sobre la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción (FI-UdeC), entregando:
+1. **El dato exacto** solicitado por el estudiante.
+2. **La cita formal del artículo o fuente** que respalda dicho dato.
+3. **Abstención explícita:** Ante preguntas con premisas falsas o temas no contemplados en la reglamentación, la respuesta correcta es declarar que la información no existe en la normativa, sin inventar contenido.
 
-### Corpus Cerrado (Documentos Oficiales):
-1. **Reglamento General de Docencia de Pregrado (RG):** 60 artículos.
+### Corpus Cerrado Oficial:
+1. **Reglamento General de Docencia de Pregrado (RG):** 60 artículos (Decreto UdeC Nº 2018-017).
 2. **Reglamento Interno de Docencia de Pregrado, Facultad de Ingeniería (RI-FI):** 35 artículos.
-3. **Calendario de Docencia de Pregrado 2026 (CAL):** Hitos académicos y feriados del 1er y 2º semestre 2026.
+3. **Calendario de Docencia de Pregrado 2026 (CAL):** Hitos académicos y feriados del 1er y 2º semestre 2026 (Decreto UdeC Nº 2025-157).
 
-**Métrica de Evaluación:** Exactitud estricta (se cuenta como acierto solo si tanto el dato como el artículo/fuente son correctos), evaluada sobre un conjunto de prueba de **50 preguntas oficiales** (`test_set_50.csv`), distribuidas equitativamente en 5 categorías:
-* Factual (10)
-* Numérica (10)
-* Condicional (10)
-* Cruce de documentos (10)
-* Abstención / Premisa falsa (10)
+### Formalización de la Métrica (Exactitud Estricta):
+La evaluación se ejecuta sobre un conjunto de prueba cerrado de **50 preguntas oficiales** (`test_set_50.csv`), con 10 preguntas por categoría: *Factual, Numérica, Condicional, Cruce de Documentos y Abstención / Premisa Falsa*.
+
+Un resultado se contabiliza como **Acierto (1)** únicamente si cumple la conjunción lógica estricta:
+
+$$\text{Acierto}(q) = \begin{cases} 1 & \text{si } \text{Normalizado}(\text{Dato}_{\text{pred}}) \equiv \text{Normalizado}(\text{Gold}_{\text{dato}}) \;\land\; \text{Normalizado}(\text{Cita}_{\text{pred}}) \equiv \text{Normalizado}(\text{Gold}_{\text{fuente}}) \\ 0 & \text{en caso contrario} \end{cases}$$
+
+* **Normalización del Dato:** Se aplica eliminación de tildes, minúsculas, remoción de puntuación parásita y equivalencia numérica básica (e.g., `"4,0"` $\equiv$ `"4.0"` $\equiv$ `"cuatro"`).
+* **Normalización de la Cita:** Se homologan abreviaturas institucionales (e.g., `"Art. 11, RI-FI"` $\equiv$ `"Artículo 11° del Reglamento Interno"`).
+* **Criterio de Abstención:** En preguntas de premisa falsa (artículos inexistentes), se exige abstención estricta. Respuestas que inventan contenido puntúan 0.
 
 ---
 
 ## 🔬 2. Entregable 1: Diagnóstico de la Falla y Línea Base
 
-En el Entregable 1 se evaluó el modelo mediante *prompting* directo (Zero-Shot) sin acceso a los documentos, utilizando decodificación determinista (`temperature=0.0`).
+En el Entregable 1 se evaluó el modelo mediante *prompting* directo (Zero-Shot) sin acceso a los documentos normativos, utilizando decodificación determinista (`temperature=0.0`).
 
-### Hallazgo Central (Ausencia Paramétrica):
+### Hallazgo Experimental (Ausencia Paramétrica):
 * **Exactitud Global:** **2 / 50 (4%)**.
 * **Preguntas con respuesta en corpus:** **0 / 40 (0%)**.
-* El modelo demostró *Ausencia Paramétrica*: inventó cifras inexistentes (e.g., 60 créditos en lugar de 8; escala de 0 a 100 en lugar de 1 a 7), citó artículos al azar y fabricó contenido para artículos ficticios en el 80% de los casos.
-* La duplicación de tamaño a 8B arrojó el mismo 4%, demostrando que la solución requería ingeniería de contexto (RAG) y no un modelo mayor.
+* El modelo demostró *Ausencia Paramétrica*: inventó cifras (e.g., 60 créditos en lugar de 8; escala de 0 a 100 en lugar de 1 a 7), citó artículos al azar y fabricó contenido para artículos ficticios en el 80% de los casos.
+* La evaluación con **Qwen3-8B** (el doble de parámetros) arrojó exactamente el mismo resultado de 4% (2/50), **lo que sugiere fuertemente que la causa raíz no era la capacidad intrínseca del modelo sino el acceso al contexto normativo institucional**.
 
 ---
 
 ## 🚀 3. Entregable 2: Arquitectura RAG Local (Edge AI)
 
 Para el Entregable 2, implementamos una solución integral que combate la falla diagnosticada mediante **Retrieval-Augmented Generation (RAG)** y **Decodificación Restringida (Structural Forcing)**, ejecutada de manera 100% offline sobre arquitectura Apple Silicon (MacBook Neo, A18) mediante la API local de Ollama.
-
-### Componentes de la Arquitectura:
 
 ```
 [PDFs Oficiales: RG, RI-FI, CAL]
@@ -69,17 +78,17 @@ Para el Entregable 2, implementamos una solución integral que combate la falla 
 ```
 
 ### Innovaciones Técnicas Clave:
-1. **Context-Aware Chunking (Segmentación por Artículo):** Se eliminó el empaquetamiento ciego de texto. Cada uno de los artículos fue segmentado con expresiones regulares (`(?i)\n(?=art[íi]culo\s+\d+°?)`), inyectando su número y origen (`[Art. X, RI-FI]: ...`) de forma persistente en cada bloque.
-2. **Vinculación Semántica del Calendario:** Los eventos y sus fechas se agruparon en pares semánticos consolidados (`[Calendario 2026, Segundo Semestre 2026]: Inicio de Clases — 10 de agosto`), resolviendo las fallas en preguntas temporales.
-3. **Structural Forcing:** Ante la tendencia de los modelos compactos (3B) a sobre-comprimir las salidas bajo prompts breves (omitiendo el dato y entregando solo la cita), se diseñó un *system prompt* estructurado que obliga al generador a completar los campos `DATO:` y `CITA:` de forma independiente.
+1. **Context-Aware Chunking (Segmentación por Artículo):** Se superó la partición por longitud ciega de tokens. Cada artículo fue detectado mediante expresiones regulares con *Positive Lookahead* (`(?i)\n(?=art[íi]culo\s+\d+°?)`), inyectando su número y origen (`[Art. X, RI-FI]: ...`) de forma persistente en cada fragmento.
+2. **Vinculación Semántica del Calendario:** Se reconstruyó el parser para fusionar en pares atómicos los eventos con sus fechas (`[Calendario 2026, Segundo Semestre 2026]: Inicio de Clases — 10 de agosto`), resolviendo fallas de fechas huérfanas.
+3. **Decodificación Restringida (Structural Forcing):** Ante la tendencia de los modelos de 3B a sobre-comprimir las salidas bajo prompts breves (omitiendo el dato y entregando solo la cita), se impuso un formato estricto `DATO:` y `CITA:` que forza al modelo a responder ambos campos.
 4. **Economía de Hardware:** Se compite con un modelo de **3 Billones de parámetros**, demostrando viabilidad en dispositivos de borde con menos de 3.5 GB de RAM y cero costo de nube.
-5. **Optimización de Hiperparámetros (Selección de $k=5$):** Se determinó $k=5$ mediante un análisis de compensación (*trade-off*) multiobjetivo entre cobertura semántica (*Recall*) y latencia/ruido atencional. Se descartó $k < 3$ debido a la cota inferior impuesta por las preguntas de "Cruce de documentos" (que exigen alimentar simultáneamente al menos dos fuentes distintas: Calendario + Reglamento). Se descartó $k \ge 10$ por la ley de rendimientos decrecientes y saturación de ruido cognitivo en el modelo de 3B. El valor $k=5$ representa el óptimo de Pareto: balancea una ventana compacta de ~1.200 tokens con una latencia de inferencia de solo 1.1s por consulta, maximizando la exactitud global (82%).
+5. **Optimización de Hiperparámetros (Selección de $k=5$):** Se determinó $k=5$ mediante un análisis de compensación (*trade-off*) multiobjetivo entre cobertura semántica (*Recall*) y latencia/ruido atencional. Se descartó $k < 3$ debido a la cota inferior impuesta por las preguntas de "Cruce de documentos" (que exigen alimentar simultáneamente al menos dos fuentes distintas: Calendario + Reglamento). Se descartó $k \ge 10$ por saturación de ruido cognitivo en el modelo de 3B. El valor $k=5$ representa el óptimo de Pareto: balancea una ventana compacta de ~1.200 tokens con una latencia de inferencia de 1.1s por consulta, maximizando la exactitud global (82%).
 
 ---
 
 ## 📊 4. Evidencia Experimental de Mejora (Resultados Cuantitativos)
 
-Ambos sistemas (Baseline Zero-Shot y Solución RAG) fueron evaluados de forma automatizada sobre el conjunto idéntico de 50 preguntas bajo el mismo modelo (`qwen2.5:3b`) a temperatura 0.0:
+Ambos sistemas fueron evaluados de forma automatizada sobre el conjunto idéntico de 50 preguntas bajo el mismo modelo (`qwen2.5:3b`) a temperatura 0.0:
 
 | Categoría | Baseline Zero-Shot (`qwen2.5:3b`) | Solución RAG (`qwen2.5:3b`) | Mejora Absoluta |
 | :--- | :---: | :---: | :---: |
@@ -90,44 +99,55 @@ Ambos sistemas (Baseline Zero-Shot y Solución RAG) fueron evaluados de forma au
 | **Abstención / Premisa Falsa** (10) | 2 / 10 (20%) | **10 / 10 (100%)** | **+80%** |
 | **Exactitud Global Estricta** | **2 / 50 (4%)** | **41 / 50 (82%)** | **+78%** |
 
-* **Impacto en Abstención:** 100% de precisión ante preguntas trampa o artículos inexistentes (Art. 90, Art. 100, feriados inventados), absteniéndose de forma determinista con `"No está en la normativa"`.
-* **Impacto en Citación:** Erradicación total de citas inventadas.
+---
+
+## 🔍 5. Lectura de Límites y Taxonomía de Errores Restantes
+
+El sistema alcanza 41 aciertos sobre 50 preguntas. Para dar pleno cumplimiento al criterio de *Reading of the Limits* de la rúbrica, no ocultamos los 9 errores restantes, sino que los categorizamos según su mecanismo causal:
+
+### Caso Testigo: Alucinación por Proximidad Semántica (Pregunta 3)
+* **Pregunta:** *¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?* (Gold: *1 recuperación*, Art. 12 RI-FI).
+* **Diagnóstico:** El Retriever recupera exitosamente el **Artículo 11**, el cual establece: *"deberá contar con al menos tres evaluaciones sumativas..."* y menciona el derecho a la recuperación. El generador de 3B correlaciona erróneamente el numeral "tres" (perteneciente a las sumativas) con el concepto de recuperación: `DATO: 3 // CITA: Art. 11°`. El RAG garantiza acceso (*Recall*), pero el modelo pequeño presenta dificultades para desacoplar sintácticamente cláusulas densas dentro de un mismo fragmento.
+
+### Taxonomía de los 9 Errores del RAG:
+
+| Pregunta | Categoría | Tipo de Falla | Causa Raíz / Mecanismo |
+| :---: | :---: | :---: | :--- |
+| **P3** | Factual | Proximidad Semántica | Cruce erróneo de "tres sumativas" con recuperación en Art. 11. |
+| **P8** | Factual | Abstención Indebida | El fragmento de renuncia (Art. 26 RI-FI) quedó relegado fuera del top-5. |
+| **P14** | Numérica | Ambigüedad de Cláusula | Respondió 100% (laboratorios) en vez de 80% (teoría) por presencia de ambos en Art. 13. |
+| **P17** | Numérica | Omisión de Cita | Entregó el dato exacto ("30 días"), pero omitió citar el Art. 23. |
+| **P26** | Condicional | Cita de Norma Superior | Indicó correctamente "Vicedecano", pero citó Art. 33 RG en vez de Art. 27 RI-FI. |
+| **P34** | Cruce | Abstención Indebida | Pregunta de doble condición (suspensión 4 semanas antes) no superó umbral de similitud. |
+| **P36** | Cruce | Abstención Indebida | Cruce complejo entre fechas de agosto y créditos mínimos no recuperó ambos chunks. |
+| **P38** | Cruce | Cita Parcial | Respondió el dato (4,0), pero citó solo Art. 23 RG omitiendo la cita conjunta con Art. 11 RI-FI. |
+| **P40** | Cruce | Omisión de Ponderación | Citó Art. 29 RI-FI pero no desglosó el 40% de ponderación del Art. 30. |
+
+*(La auditoría forense completa pregunta por pregunta se encuentra documentada en [`Deliverable2_RAG/reporte_comparativo_50_preguntas.md`](Deliverable2_RAG/reporte_comparativo_50_preguntas.md)).*
 
 ---
 
-## 🔍 5. Lectura de Límites (Caso de Fallo Real)
-
-A pesar del salto al 82%, la arquitectura evidencia una limitación intrínseca de razonamiento en modelos de 3B: **Alucinación por Proximidad Semántica**.
-
-* **Caso testigo (Pregunta 3):** *¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?* (Gold: *1 recuperación*, Art. 12 RI-FI).
-* **Comportamiento observado:** El Retriever recupera el fragmento del **Artículo 11**, el cual establece: *"deberá contar con al menos tres evaluaciones sumativas..."* y menciona el derecho a la evaluación de recuperación.
-* **Mecanismo del fallo:** El modelo pequeño correlaciona erróneamente el numeral "tres" (propio de las pruebas sumativas) con el concepto de recuperación, respondiendo: `DATO: 3 // CITA: Art. 11°`.
-* **Conclusión:** El RAG garantiza la recuperación del contexto (*Recall*), pero el modelo pequeño presenta dificultades para desacoplar sintácticamente cláusulas densas dentro de un mismo fragmento normativo.
-
----
-
-## 📁 6. Estructura del Repositorio y Reproducibilidad
-
-El repositorio está organizado en dos módulos de trabajo:
+## 📁 6. Estructura del Repositorio
 
 ```text
-├── Corpus/                                      # PDFs normativos oficiales
+├── Corpus/                                      # Documentos oficiales UdeC
 │   ├── Calendario-Academico-Pregrado-2026.pdf
 │   ├── Reglamento_General_de_Docencia_de_Pregrado.pdf
 │   └── Reglamento_de_Docencia_de_Pregrado-FI.pdf
-├── Deliverable2_RAG/                            # Motor RAG y Harness de Evaluación
+├── Deliverable2_RAG/                            # Motor RAG y Evaluación Científica
 │   ├── paso0_baseline_ollama.py                 # Evaluador automatizado Baseline Zero-Shot
 │   ├── paso1_extractor_final.py                 # ETL, Chunking por Artículo y Calendario
 │   ├── paso2_vectorizador.py                    # Generador de embeddings (.npy) en CPU
 │   ├── paso3_asistente_rag.py                   # Chat interactivo por terminal
 │   ├── paso4_evaluacion_rag.py                  # Evaluador masivo RAG sobre test set
 │   ├── base_conocimiento_udec.json              # Base estructurada (198 chunks indexados)
+│   ├── base_conocimiento_udec.csv               # Planilla tabular para auditoría humana en Excel
 │   ├── vectores_udec.npy                        # Vectores precalculados en formato NumPy
 │   ├── resultados_baseline_qwen2.5.csv          # Respuestas crudas del Baseline Zero-Shot
-│   ├── resultados_rag_qwen2.5.csv               # Respuestas crudas de la Solución RAG
+│   ├── resultados_rag_qwen2.5.csv               # Respuestas crudas de la Solución RAG (82%)
+│   ├── reporte_comparativo_50_preguntas.md      # Auditoría forense de aciertos y causas de falla
 │   ├── DELIVERABLE_2_DRAFT.md                   # Borrador técnico de 1 página para LaTeX
-│   ├── PR_DESCRIPTION.md                        # Memoria descriptiva técnica para Pull Request
-│   └── Arquitectura_RAG_Deliverable2.md         # Bitácora de diseño y decisiones de hardware
+│   └── PR_DESCRIPTION.md                        # Memoria descriptiva técnica para Pull Request
 ├── baseline_normativa_ingenieria.ipynb           # Cuaderno original Deliverable 1 (Colab T4)
 ├── test_set_50.csv                              # Conjunto de 50 preguntas oficiales
 └── README.md                                    # Documentación integral del proyecto
@@ -135,32 +155,30 @@ El repositorio está organizado en dos módulos de trabajo:
 
 ---
 
-## ⚡ 7. Instrucciones de Reproducción Local
+## ⚡ 7. Guía de Reproducción
 
-Para reproducir la evaluación completa de forma local en macOS / Linux:
+### 7.1 Reproducción del Entregable 1 (Baseline en Google Colab)
+1. Abrir `baseline_normativa_ingenieria.ipynb` en Google Colab con acelerador GPU T4.
+2. Ejecutar las celdas secuencialmente (carga `Qwen/Qwen3-4B` en bf16 y evalúa `test_set_50.csv`).
+3. Salida observable: `resultados_baseline.csv` (Exactitud global: 4%).
 
-### Requisitos:
-1. Python 3.9+ con paquetes: `sentence-transformers`, `scikit-learn`, `requests`, `numpy`, `PyMuPDF` (o `pdftotext`).
-2. Ollama instalado y corriendo con el modelo:
+### 7.2 Reproducción del Entregable 2 (Solución RAG Local en Apple Silicon / CPU)
+1. Requisitos: Python 3.9+ (`sentence-transformers`, `scikit-learn`, `requests`, `numpy`, `pdftotext` o `PyMuPDF`).
+2. Levantar el modelo localmente vía Ollama:
    ```bash
    ollama run qwen2.5:3b
    ```
+3. Ejecutar la tubería en consola:
+   ```bash
+   cd Deliverable2_RAG
 
-### Ejecución del Pipeline:
-```bash
-cd Deliverable2_RAG
+   # 1. Extracción y segmentación por artículo
+   python3 paso1_extractor_final.py
 
-# 1. Extraer y estructurar el corpus por artículo
-python3 paso1_extractor_final.py
+   # 2. Generación de base vectorial NumPy
+   python3 paso2_vectorizador.py
 
-# 2. Generar la base vectorial en CPU
-python3 paso2_vectorizador.py
-
-# 3. (Opcional) Evaluar el Baseline Zero-Shot
-python3 paso0_baseline_ollama.py
-
-# 4. Evaluar la Solución RAG completa sobre las 50 preguntas
-python3 paso4_evaluacion_rag.py
-```
-
-Las respuestas generadas se exportarán a `resultados_rag_qwen2.5.csv` con el formato tabulado `DATO:` y `CITA:`, alcanzando el 82% de exactitud comprobable.
+   # 3. Evaluación RAG automatizada sobre las 50 preguntas
+   python3 paso4_evaluacion_rag.py
+   ```
+4. Salida observable: `resultados_rag_qwen2.5.csv` (Exactitud global estricta: 82%).

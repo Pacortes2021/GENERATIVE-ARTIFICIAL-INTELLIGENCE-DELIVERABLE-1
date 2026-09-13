@@ -144,12 +144,13 @@ El sistema alcanza 41 aciertos sobre 50 preguntas. Para dar pleno cumplimiento a
 │   ├── base_conocimiento_udec.csv               # Planilla tabular para auditoría humana en Excel
 │   ├── vectores_udec.npy                        # Vectores precalculados en formato NumPy
 │   ├── resultados_baseline_qwen2.5.csv          # Respuestas crudas del Baseline Zero-Shot
-│   ├── resultados_rag_qwen2.5.csv               # Respuestas crudas de la Solución RAG (82%)
+│   ├── resultados_rag_qwen2.5.csv               # Respuestas crudas del prototipo local (Ollama)
+│   ├── resultados_rag_qwen3_4b.csv              # Respuestas oficiales de Qwen3-4B en Colab T4 (76%-96%)
 │   ├── reporte_comparativo_50_preguntas.md      # Auditoría forense de aciertos y causas de falla
 │   ├── DELIVERABLE_2_DRAFT.md                   # Borrador técnico de 1 página para LaTeX
 │   └── PR_DESCRIPTION.md                        # Memoria descriptiva técnica para Pull Request
 ├── baseline_normativa_ingenieria.ipynb           # Cuaderno original Deliverable 1 (Colab T4)
-├── RAG_normativa_ingenieria_4B.ipynb            # Cuaderno oficial Deliverable 2 RAG (Colab T4 + Qwen3-4B)
+├── rag_normativa_ingenieria_4b.ipynb             # Cuaderno oficial Deliverable 2 RAG (Colab T4 + Qwen3-4B con outputs)
 ├── test_set_50.csv                              # Conjunto de 50 preguntas oficiales
 └── README.md                                    # Documentación integral del proyecto
 ```
@@ -159,14 +160,16 @@ El sistema alcanza 41 aciertos sobre 50 preguntas. Para dar pleno cumplimiento a
 ## ⚡ 7. Guía de Reproducción
 
 ### 7.1 Reproducción Oficial del Entregable 2 (RAG con Qwen3-4B en Google Colab T4)
-1. Abrir **`RAG_normativa_ingenieria_4B.ipynb`** en Google Colab con acelerador **GPU T4** (`Entorno de ejecución > Cambiar tipo de entorno > GPU T4`).
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/rag_normativa_ingenieria_4b.ipynb)
+
+1. Abrir **`rag_normativa_ingenieria_4b.ipynb`** en Google Colab con acelerador **GPU T4** (`Entorno de ejecución > Cambiar tipo de entorno > GPU T4`).
 2. Ejecutar las celdas en orden (o *"Entorno de ejecución > Ejecutar todo"*):
-   * Verifica GPU T4 y descarga las librerías.
-   * Clona la base estructurada de 198 chunks (`base_conocimiento_udec.json`).
-   * Vectoriza los pasajes en GPU mediante `multilingual-e5-small` con tensores PyTorch.
-   * Carga **`Qwen/Qwen3-4B`** en `bfloat16` (6.44 GB VRAM, hardware declarado en E1).
-   * Evalúa las 50 preguntas del `test_set_50.csv` con *Structural Forcing* (`DATO:` y `CITA:`).
-   * Genera `resultados_rag_qwen3_4b.csv` y muestra la tabla comparativa directa contra el Baseline de 4%.
+   * Verifica GPU Tesla T4 (15.64 GB VRAM) y descarga las librerías requeridas.
+   * Clona la base estructurada de 198 fragmentos (`base_conocimiento_udec.json`).
+   * Vectoriza los pasajes en GPU mediante `multilingual-e5-small` con tensores PyTorch en `cuda:0`.
+   * Carga **`Qwen/Qwen3-4B`** en `bfloat16` (8.53 GB VRAM, modelo declarado en E1).
+   * Evalúa las 50 preguntas de `test_set_50.csv` con *Structural Forcing* (`DATO:` y `CITA:`).
+   * Genera `resultados_rag_qwen3_4b.csv` y despliega la tabla comparativa directa contra el Baseline de 4.0% (alcanzando 76.0% programático estricto y 96.0% semántico humano).
 
 ### 7.2 Reproducción del Entregable 1 (Línea Base Zero-Shot en Google Colab T4)
 1. Abrir `baseline_normativa_ingenieria.ipynb` en Google Colab con acelerador GPU T4.

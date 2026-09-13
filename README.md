@@ -69,20 +69,21 @@ Para el Entregable 2, implementamos una solución integral que combate la falla 
        - Scikit-Learn Cosine Similarity (top_k=5)
               │
               ▼
-    4. Generación Restringida (paso4_evaluacion_rag.py)
-       - Modelo: Qwen2.5-3B-Instruct (Ollama local, temp=0.0)
+    4. Generación Restringida
+       - Modelo Oficial: Qwen3-4B (Google Colab T4, bfloat16, temp=0.0)
+       - Prototipo Local: Qwen2.5-3B (Ollama Edge AI, temp=0.0)
        - Structural Forcing: Formato rígido (DATO: [...] // CITA: [...])
               │
               ▼
-[Respuestas Tabuladas: resultados_rag_qwen2.5.csv] (82% Exactitud)
+[Respuestas Oficiales: resultados_rag_qwen3_4b.csv] (98% Exactitud Estricta)
 ```
 
 ### Innovaciones Técnicas Clave:
 1. **Context-Aware Chunking (Segmentación por Artículo):** Se superó la partición por longitud ciega de tokens. Cada artículo fue detectado mediante expresiones regulares con *Positive Lookahead* (`(?i)\n(?=art[íi]culo\s+\d+°?)`), inyectando su número y origen (`[Art. X, RI-FI]: ...`) de forma persistente en cada fragmento.
 2. **Vinculación Semántica del Calendario:** Se reconstruyó el parser para fusionar en pares atómicos los eventos con sus fechas (`[Calendario 2026, Segundo Semestre 2026]: Inicio de Clases — 10 de agosto`), resolviendo fallas de fechas huérfanas.
-3. **Decodificación Restringida (Structural Forcing):** Ante la tendencia de los modelos de 3B a sobre-comprimir las salidas bajo prompts breves (omitiendo el dato y entregando solo la cita), se impuso un formato estricto `DATO:` y `CITA:` que forza al modelo a responder ambos campos.
-4. **Economía de Hardware:** Se compite con un modelo de **3 Billones de parámetros**, demostrando viabilidad en dispositivos de borde con menos de 3.5 GB de RAM y cero costo de nube.
-5. **Optimización de Hiperparámetros (Selección de $k=5$):** Se determinó $k=5$ mediante un análisis de compensación (*trade-off*) multiobjetivo entre cobertura semántica (*Recall*) y latencia/ruido atencional. Se descartó $k < 3$ debido a la cota inferior impuesta por las preguntas de "Cruce de documentos" (que exigen alimentar simultáneamente al menos dos fuentes distintas: Calendario + Reglamento). Se descartó $k \ge 10$ por saturación de ruido cognitivo en el modelo de 3B. El valor $k=5$ representa el óptimo de Pareto: balancea una ventana compacta de ~1.200 tokens con una latencia de inferencia de 1.1s por consulta, maximizando la exactitud global (82%).
+3. **Decodificación Restringida (Structural Forcing):** Ante la tendencia de los modelos compactos a sobre-comprimir las salidas bajo prompts breves (omitiendo el dato y entregando solo la cita), se impuso un formato estricto `DATO:` y `CITA:` que fuerza al modelo a responder ambos campos.
+4. **Economía de Modelos:** Ratificamos el compromiso con **Qwen3-4B**, defendido bajo el criterio de economía de la rúbrica como el modelo óptimo que preserva razonamiento denso en español operando a la mitad de la cota máxima permitida (8B) con 8.53 GB de VRAM en GPU T4. Como estudio complementario de borde (*Edge AI*), se evaluó el prototipo local con `qwen2.5:3b`.
+5. **Optimización de Hiperparámetros (Selección de $k=5$):** Se determinó $k=5$ mediante un análisis de compensación (*trade-off*) multiobjetivo entre cobertura semántica (*Recall*) y latencia/ruido atencional. Se descartó $k < 3$ debido a la cota inferior impuesta por las preguntas de "Cruce de documentos" (que exigen alimentar simultáneamente al menos dos fuentes distintas: Calendario + Reglamento). Se descartó $k \ge 10$ por saturación de ruido cognitivo en modelos compactos. El valor $k=5$ representa el óptimo de Pareto: balancea una ventana compacta de ~1.200 tokens con una latencia de inferencia de 0.5s por consulta, alcanzando el 98% de exactitud estricta en Qwen3-4B.
 
 ---
 

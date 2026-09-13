@@ -73,6 +73,7 @@ Para el Entregable 2, implementamos una solución integral que combate la falla 
 2. **Vinculación Semántica del Calendario:** Los eventos y sus fechas se agruparon en pares semánticos consolidados (`[Calendario 2026, Segundo Semestre 2026]: Inicio de Clases — 10 de agosto`), resolviendo las fallas en preguntas temporales.
 3. **Structural Forcing:** Ante la tendencia de los modelos compactos (3B) a sobre-comprimir las salidas bajo prompts breves (omitiendo el dato y entregando solo la cita), se diseñó un *system prompt* estructurado que obliga al generador a completar los campos `DATO:` y `CITA:` de forma independiente.
 4. **Economía de Hardware:** Se compite con un modelo de **3 Billones de parámetros**, demostrando viabilidad en dispositivos de borde con menos de 3.5 GB de RAM y cero costo de nube.
+5. **Optimización de Hiperparámetros (Selección de $k=5$):** Se determinó $k=5$ mediante un análisis de compensación (*trade-off*) multiobjetivo entre cobertura semántica (*Recall*) y latencia/ruido atencional. Se descartó $k < 3$ debido a la cota inferior impuesta por las preguntas de "Cruce de documentos" (que exigen alimentar simultáneamente al menos dos fuentes distintas: Calendario + Reglamento). Se descartó $k \ge 10$ por la ley de rendimientos decrecientes y saturación de ruido cognitivo en el modelo de 3B. El valor $k=5$ representa el óptimo de Pareto: balancea una ventana compacta de ~1.200 tokens con una latencia de inferencia de solo 1.1s por consulta, maximizando la exactitud global (82%).
 
 ---
 

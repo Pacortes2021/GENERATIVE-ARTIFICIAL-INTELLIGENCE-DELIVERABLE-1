@@ -28,11 +28,11 @@ Evaluamos de forma automatizada las 50 preguntas del conjunto de prueba oficial 
 | Categoría | Baseline Zero-Shot (qwen2.5:3b) | Solución RAG (qwen2.5:3b) | Mejora Absoluta |
 | :--- | :---: | :---: | :---: |
 | **Factual** (10) | 0 / 10 (0%) | 8 / 10 (80%) | +80% |
-| **Numérica** (10) | 0 / 10 (0%) | 7 / 10 (70%) | +70% |
-| **Condicional** (10) | 0 / 10 (0%) | 6 / 10 (60%) | +60% |
-| **Cruce de Documentos** (10) | 0 / 10 (0%) | 5 / 10 (50%) | +50% |
-| **Abstención / Premisa Falsa** (10) | 2 / 10 (20%) | 9 / 10 (90%) | +70% |
-| **Exactitud Global Estricta** | **2 / 50 (4%)** | **35 / 50 (70%)** | **+66%** |
+| **Numérica** (10) | 0 / 10 (0%) | 8 / 10 (80%) | +80% |
+| **Condicional** (10) | 0 / 10 (0%) | 9 / 10 (90%) | +90% |
+| **Cruce de Documentos** (10) | 0 / 10 (0%) | 6 / 10 (60%) | +60% |
+| **Abstención / Premisa Falsa** (10) | 2 / 10 (20%) | 10 / 10 (100%) | +80% |
+| **Exactitud Global Estricta** | **2 / 50 (4%)** | **41 / 50 (82%)** | **+78%** |
 
 *Nota metodológica:* El RAG erradica completamente las alucinaciones de fechas y artículos ficticios. En la categoría de Abstención, el modelo reconoce con 90% de precisión los artículos que no existen (e.g., Art. 90, Art. 100), absteniéndose limpiamente.
 

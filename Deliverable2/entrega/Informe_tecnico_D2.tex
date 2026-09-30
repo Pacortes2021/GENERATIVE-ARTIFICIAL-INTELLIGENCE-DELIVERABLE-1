@@ -1,0 +1,82 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,babel}
+\usepackage{hyperref}
+\geometry{top=1.35cm,bottom=1.35cm,left=1.55cm,right=1.55cm}
+\definecolor{azul}{HTML}{164A71}
+\definecolor{celeste}{HTML}{EAF3F8}
+\definecolor{gris}{HTML}{4A5560}
+\hypersetup{colorlinks=true,urlcolor=azul,linkcolor=azul}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.13}
+\newcommand{\seccion}[1]{\vspace{5pt}{\color{azul}\bfseries\large #1}\par\vspace{1pt}}
+
+\begin{document}
+\pagestyle{empty}
+{\color{azul}\bfseries\LARGE Asistente RAG de normativa de pregrado}\par
+{\small \textbf{Deliverable 2} \textbar{} Generative Artificial Intelligence (580694) \textbar{} Álvaro Contreras y Pablo Cortés \textbar{} 2026}\par
+\vspace{3pt}\hrule\vspace{5pt}
+
+\seccion{Tarea, modelo e intervención}
+El asistente responde preguntas sobre tres documentos de la Universidad de Concepción: Reglamento General de Docencia, Reglamento Interno de Ingeniería y Calendario 2026. Una respuesta válida debe dar el dato suficiente, citar una fuente pertinente y no añadir afirmaciones falsas. En Deliverable 1, el prompt directo sin corpus obtuvo \textbf{2/50 (4\%)}: predominaban datos inventados, negativas indebidas y citas sin respaldo.
+
+Se eligió \textbf{Qwen/Qwen3-4B}, revisión \texttt{1cfa9a720891}, entre Qwen3-4B, Salamandra-7B y Qwen3-8B: es el menor en parámetros y puede recibir el conocimiento específico mediante recuperación. En E1, Qwen3-8B también obtuvo 2/50 con prompt directo; Salamandra-7B quedó como candidato no ejecutado. La solución usa Qwen3-4B en NF4 de 4 bits, sin thinking, en una Tesla T4.
+
+\seccion{Sistema ejecutado de extremo a extremo}
+\begin{center}
+\begin{tikzpicture}[
+  >=Latex, node distance=5mm,
+  box/.style={draw=azul,rounded corners=2pt,fill=celeste,align=center,
+              font=\scriptsize,minimum height=7mm,inner sep=3pt},
+  arrow/.style={->,draw=azul,line width=.65pt}
+]
+\node[box] (q) {Pregunta};
+\node[box,right=8mm of q] (directo) {Prompt directo\\sin documentos};
+\node[box,right=6mm of directo] (modelo1) {Qwen3-4B};
+\node[box,right=6mm of modelo1] (salida1) {Baseline};
+\node[box,below=8mm of directo] (e5) {E5 multilingüe\\201 fragmentos};
+\node[box,right=6mm of e5] (norma) {Unidades completas\\y citas};
+\node[box,right=6mm of norma] (prompt) {Prompt\\estructurado};
+\node[box,right=6mm of prompt] (salida2) {Qwen3-4B\\respuesta RAG};
+\draw[arrow] (q)--(directo); \draw[arrow] (directo)--(modelo1); \draw[arrow] (modelo1)--(salida1);
+\draw[arrow] (q.south) |- (e5.west); \draw[arrow] (e5)--(norma); \draw[arrow] (norma)--(prompt); \draw[arrow] (prompt)--(salida2);
+\end{tikzpicture}
+\end{center}
+\vspace{-3pt}
+Los tres PDF se segmentaron en \textbf{197 unidades normativas completas} y \textbf{201 fragmentos de búsqueda}. E5 recupera en cada consulta; el sistema expande los hallazgos a artículos o eventos íntegros antes de pasarlos al modelo. Las respuestas de referencia no entran en la generación.
+
+\seccion{Estrategias y resultados medidos}
+Las mismas \textbf{50 preguntas conocidas} se evaluaron con la misma pauta de contenido y citas. La nueva comparación emparejó modelo, cuantización, muestreo y semilla por pregunta; cambió la intervención (evidencia y prompt). Los veredictos son una revisión asistida, registrada por respuesta.
+\begin{center}
+\small
+\begin{tabularx}{\linewidth}{@{}XrX@{}}
+\toprule
+\textbf{Condición} & \textbf{Correctas} & \textbf{Lectura} \\
+\midrule
+Baseline directo, sin documentos & 1/50 (2\%) & Corrida emparejada nueva; no sustituye el 4\% histórico. \\
+RAG simple & 39/50 (78\%) & Alternativa con instrucción breve. \\
+RAG estructurado, elegido & \textbf{40/50 (80\%)} & Dato, límites y fuente; repetido con recuperación en vivo. \\
+RAG estructurado + few-shot & 36/50 (72\%) & Ejemplos ficticios contaminaron algunas citas; se retiró. \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\vspace{-3pt}
+En la comparación emparejada, RAG acertó 39 preguntas que falló el baseline; ambos acertaron una y fallaron diez. Las 100 salidas terminaron normalmente, sin cortes detectados.
+
+\seccion{Fallo observado y límites}
+\textbf{P25:} al preguntar qué asignaturas no se pueden eliminar al modificar la inscripción, RAG respondió solo «prioridades a) y b)». Los arts. 7 y 9 de RI-FI estaban completos en el contexto, pero el modelo no explicó que son las asignaturas atrasadas y las obligatorias antes reprobadas. Es un \textbf{fallo de síntesis}, no de fragmentación ni de truncamiento. En P38, además, la recuperación no aportó el art. 2 pertinente y el modelo citó el art. 6, sobre cupos.
+
+Las 50 preguntas guiaron el desarrollo del recuperador: este resultado \textbf{no mide generalización} a preguntas nuevas. La comparación mide recuperación \emph{más} prompt estructurado, no el efecto aislado de cada componente; usa una semilla y juicio asistido auditable. El \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}{repositorio} contiene el cuaderno ejecutable, el ZIP de Colab, la pauta y cada veredicto.
+
+\end{document}

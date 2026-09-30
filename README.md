@@ -31,4 +31,4 @@ Este proyecto responde preguntas en español sobre tres documentos de docencia d
 | [Corpus](Corpus/) | Los tres PDF normativos compartidos |
 | [Archivo](Archivo/README.md) | Prototipos anteriores conservados para consulta; no son la implementación vigente |
 
-El [enunciado de Deliverable 2](Deliverable2/enunciado.pdf) también exige un PDF técnico de una página compilado desde LaTeX y un video de ejecución de hasta tres minutos. **Esos materiales no figuran todavía como entregados en este repositorio.** La demostración final deberá usar el cuaderno principal y mostrar el baseline sobre la misma entrada.
+El [enunciado de Deliverable 2](Deliverable2/enunciado.pdf) exige un PDF técnico de una página compilado desde LaTeX y un video de ejecución de hasta tres minutos. El [PDF y su fuente](Deliverable2/entrega/README.md) ya están preparados. El video debe registrar una ejecución real del cuaderno con baseline sobre la misma entrada; el guion y la comprobación de entrega están en esa carpeta. El enlace abierto al video aún está pendiente.

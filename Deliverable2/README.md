@@ -52,6 +52,7 @@ Un [piloto de una consulta nueva](resultados/piloto_consulta_882da178b0514f0d/RE
 | Sistema consultable con baseline visible | Implementado; piloto de una pregunta ejecutado en Colab con Tesla T4 |
 | Ejecución del lote emparejado de 50 preguntas en GPU Colab | Realizada; 100 respuestas verificadas |
 | Evaluación emparejada baseline/RAG | Realizada con pauta E2 y motivos por respuesta; pendiente de revisión del equipo |
-| PDF técnico de una página compilado en LaTeX y video ≤3 minutos | Pendientes |
+| PDF técnico vertical de una página compilado en LaTeX | [Preparado y verificado](entrega/README.md) |
+| Video de pantalla ≤3 minutos y enlace abierto | [Guion preparado](entrega/Guion_video_D2.md); grabación y enlace pendientes |
 
 Los [resultados completos](resultados/README.md) incluyen ZIP original, prompts, respuestas, veredictos y reportes. El código de [evaluación](evaluacion/README.md) prepara casos y calcula porcentajes a partir de decisiones trazables. Los prototipos anteriores están en [Archivo](../Archivo/README.md) y no se usan en la ejecución actual.

@@ -1,0 +1,52 @@
+{
+  "paquete_sha256": "1b4ffb196767af2db5e7a03a2e19f199de876e4d8f0019944982d4e46a464a7f",
+  "veredictos_sha256": "4117554496b81752f58e255fbbc9c4c8ed290bb6b59c6ebd5962c3cb5326dc01",
+  "referencias_version": "e2-referencias-v1",
+  "referencias_sha256": "f52c9b6b4f68a7810fc3435a01ef203e5dce1b7c86f95e64fc257c80b25e3e76",
+  "evaluador": "Asistente de IA de este chat (Codex)",
+  "modalidad": "revision_asistida_chat",
+  "global": {
+    "total": 50,
+    "correctas": 36,
+    "incorrectas": 14,
+    "pendientes": 0,
+    "exactitud_porcentaje": 72.0
+  },
+  "por_categoria": {
+    "abstencion": {
+      "total": 10,
+      "correctas": 9,
+      "incorrectas": 1,
+      "pendientes": 0,
+      "exactitud_porcentaje": 90.0
+    },
+    "condicional": {
+      "total": 10,
+      "correctas": 6,
+      "incorrectas": 4,
+      "pendientes": 0,
+      "exactitud_porcentaje": 60.0
+    },
+    "cruce": {
+      "total": 10,
+      "correctas": 7,
+      "incorrectas": 3,
+      "pendientes": 0,
+      "exactitud_porcentaje": 70.0
+    },
+    "factual": {
+      "total": 10,
+      "correctas": 8,
+      "incorrectas": 2,
+      "pendientes": 0,
+      "exactitud_porcentaje": 80.0
+    },
+    "numerica": {
+      "total": 10,
+      "correctas": 6,
+      "incorrectas": 4,
+      "pendientes": 0,
+      "exactitud_porcentaje": 60.0
+    }
+  }
+}

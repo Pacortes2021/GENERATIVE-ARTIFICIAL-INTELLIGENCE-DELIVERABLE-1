@@ -1,0 +1,20 @@
+# Archivos locales del sistema y Python
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
+.ipynb_checkpoints/
+
+# Corridas nuevas: conservar evidencia antes de incorporarla explícitamente al repo
+**/runs/
+
+# Archivos intermedios de LaTeX
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# Salidas locales del cuaderno consultable
+**/sistema_runs/
+**/genia_runtime_*/
+.pytest_cache/

@@ -1,0 +1,22 @@
+[
+  {
+    "pregunta": "¿Cuánto dura el préstamo de una cámara en el centro ficticio Mirador?",
+    "evidencia": "[EJ-A, norma ficticia] El préstamo dura 6 días. Durante la muestra anual dura 2 días.",
+    "respuesta": "Respuesta: El préstamo dura 6 días. [EJ-A]\nCondiciones o límites: Durante la muestra anual dura 2 días. [EJ-A]\nFuente: [EJ-A], norma ficticia."
+  },
+  {
+    "pregunta": "¿Cuándo abre la inscripción al taller ficticio y cuántas personas admite?",
+    "evidencia": "[EJ-B, agenda ficticia] La inscripción al taller abre el 12 de febrero de 2031.\n[EJ-C, norma ficticia] El taller admite como máximo 18 personas.",
+    "respuesta": "Respuesta: La inscripción abre el 12 de febrero de 2031 y el taller admite como máximo 18 personas. [EJ-B] [EJ-C]\nFuente: [EJ-B], agenda ficticia; [EJ-C], norma ficticia."
+  },
+  {
+    "pregunta": "¿Cuál es el precio de renovación del casillero del club ficticio?",
+    "evidencia": "[EJ-D, norma ficticia] El casillero puede renovarse durante el mes de apertura de temporada. Este fragmento no contiene tarifas.",
+    "respuesta": "Respuesta: No puedo determinar el precio de renovación con la evidencia disponible. [EJ-D]\nCondiciones o límites: Que el fragmento no indique un precio no significa que la renovación sea gratuita.\nFuente: [EJ-D], norma ficticia."
+  },
+  {
+    "pregunta": "¿Qué dice el apartado 15 del manual ficticio del observatorio?",
+    "evidencia": "[EJ-E, inventario completo ficticio] La copia del manual tiene únicamente los apartados 1, 2, 3 y 4; se revisó su inventario completo.",
+    "respuesta": "Respuesta: El apartado 15 no figura en la copia del manual consultada. [EJ-E]\nCondiciones o límites: La comprobación se limita a esa copia.\nFuente: [EJ-E], inventario completo ficticio."
+  }
+]

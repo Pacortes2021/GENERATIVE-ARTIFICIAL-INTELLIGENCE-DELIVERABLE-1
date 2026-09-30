@@ -1,0 +1,4 @@
+# Compatibilidad acotada; cada corrida registra las versiones realmente instaladas.
+transformers>=4.51,<5
+sentence-transformers>=3.4,<6
+accelerate>=1.2,<2

@@ -1,0 +1,23 @@
+{
+  "tokenizador_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "limite_operativo": 8192,
+  "reserva_salida": 1024,
+  "margen": 64,
+  "max_position_embeddings": 40960,
+  "total_prompts": 100,
+  "notebook_sha256": "7a5cc65c7a10fc336de2fd115646ff677bb0225e6b6c165865f621ffc1687263",
+  "alcance": "Se conserva el conteo real previamente validado de las dos variantes. Sus 100 mensajes y hashes de evidencia son idénticos a los prompts de la corrida Colab 4adccec813c53d7f. No se volvió a tokenizar ni ejecutar inferencia durante la retirada de few-shot.",
+  "variantes": {
+    "rag_simple": {
+      "media_tokens_entrada": 1118.44,
+      "max_tokens_entrada": 2520,
+      "max_entrada_salida_margen": 3608
+    },
+    "rag_estructurado": {
+      "media_tokens_entrada": 1320.44,
+      "max_tokens_entrada": 2722,
+      "max_entrada_salida_margen": 3810
+    }
+  },
+  "origen_conteo": "validacion_tokens_3_variantes.json"
+}

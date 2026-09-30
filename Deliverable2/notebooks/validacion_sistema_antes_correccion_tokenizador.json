@@ -1,0 +1,32 @@
+{
+  "casos_comparados": 50,
+  "diferencias_contextos": [],
+  "pregunta_nueva": "Necesito conocer el artículo 33 del RI-FI.",
+  "primer_contexto_nuevo": "RI-FI-ART-033",
+  "indice_sha256": "705507fbc71e3800426560d0d25304f9e8bc904a5906f0f9cfe97d9d057038f6",
+  "segundos": 3.67,
+  "comprobacion_recuperacion": "E5 real en CPU; índice reconstruido y las 50 consultas codificadas nuevamente. Coinciden textos, citas y selección con e5_estructurado_v2.",
+  "comprobacion_inferencia": "No se ejecutaron pesos de Qwen ni GPU Colab. Presupuesto real con su tokenizador; generación, exportación y reanudación probadas con un generador simulado.",
+  "qwen_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "total_prompts": 100,
+  "variantes": {
+    "baseline_directo": {
+      "media_tokens_entrada": 119.3,
+      "max_tokens_entrada": 139,
+      "max_entrada_salida_margen": 1227
+    },
+    "rag_estructurado": {
+      "media_tokens_entrada": 1320.44,
+      "max_tokens_entrada": 2722,
+      "max_entrada_salida_margen": 3810
+    }
+  },
+  "estructurado_identico_a_prompts_colab_anteriores": true,
+  "artefactos_sha256": {
+    "Deliverable2_Sistema_RAG_Colab.ipynb": "e19b5eafeeb6dea63b5cef78de50991e8d627e3b2ae036379f9bf1590289a48d",
+    "sistema.py": "a5439288499555227dc6e04adb772eb29eb12feb9bb02847628a16da910c7f5f",
+    "recuperador_portable.py": "a04c720b0cf25eb8010996dd28f70f8a08806b6c556e0be6bc2ea3a6fb4dd056",
+    "experimento.py": "d20ce66a54c7791a480e0d9466e1740b34a8c5198df94ec52c1d4868219e22d0"
+  },
+  "pruebas_locales_aprobadas": 24
+}

@@ -1,0 +1,29 @@
+{
+  "respuestas_esperadas": 150,
+  "respuestas_guardadas": 150,
+  "corrida_completa": true,
+  "no_es_evaluacion_semantica": true,
+  "variantes": {
+    "rag_simple": {
+      "respuestas": 50,
+      "posibles_cortes": 0,
+      "segundos_totales": 797.3,
+      "tokens_entrada_totales": 55922,
+      "tokens_salida_totales": 5439
+    },
+    "rag_estructurado": {
+      "respuestas": 50,
+      "posibles_cortes": 0,
+      "segundos_totales": 749.06,
+      "tokens_entrada_totales": 66022,
+      "tokens_salida_totales": 4739
+    },
+    "rag_estructurado_fewshot": {
+      "respuestas": 50,
+      "posibles_cortes": 0,
+      "segundos_totales": 964.57,
+      "tokens_entrada_totales": 94522,
+      "tokens_salida_totales": 5711
+    }
+  }
+}

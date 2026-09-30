@@ -1,0 +1,27 @@
+{
+  "tokenizador_revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "limite_operativo": 8192,
+  "reserva_salida": 1024,
+  "margen": 64,
+  "max_position_embeddings": 40960,
+  "total_prompts": 150,
+  "notebook_sha256": "74d3c7b523e1df18efadc10697837ccd3aee3b38737c35d75e41b03d13c53d6e",
+  "alcance": "Plantilla y conteo real comprobados; no se ejecutó inferencia de Qwen ni GPU Colab localmente.",
+  "variantes": {
+    "rag_simple": {
+      "media_tokens_entrada": 1118.44,
+      "max_tokens_entrada": 2520,
+      "max_entrada_salida_margen": 3608
+    },
+    "rag_estructurado": {
+      "media_tokens_entrada": 1320.44,
+      "max_tokens_entrada": 2722,
+      "max_entrada_salida_margen": 3810
+    },
+    "rag_estructurado_fewshot": {
+      "media_tokens_entrada": 1890.44,
+      "max_tokens_entrada": 3292,
+      "max_entrada_salida_margen": 4380
+    }
+  }
+}

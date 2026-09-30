@@ -1,0 +1,610 @@
+{
+  "version": 1,
+  "alcance": "Pauta de cobertura de fuentes para diagnóstico de recuperación, no veredictos de respuestas. No es una lista exhaustiva de fuentes alternativas válidas. No se incorpora al índice ni al prompt del generador. Revisada antes de inspeccionar los resultados de esta corrida.",
+  "referencias_sha256": "f52c9b6b4f68a7810fc3435a01ef203e5dce1b7c86f95e64fc257c80b25e3e76",
+  "corpus_sha256": "0a31ff812a1969ff81bbc895feaba490e3bd027b092e52101296e3c872719400",
+  "casos": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-011"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-011"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 3,
+      "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-012"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 4,
+      "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-023"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-029"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-010"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-016"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 8,
+      "pregunta": "¿La renuncia a la carrera es revocable?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-026"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-016"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+      "categoria": "factual",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-022"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-008"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-014"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-014"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-013"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-021"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-022"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-023"
+        ],
+        [
+          "RI-FI-ART-022"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 18,
+      "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-031"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-016"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+      "categoria": "numerica",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-026"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 21,
+      "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-017"
+        ],
+        [
+          "RI-FI-ART-018"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 22,
+      "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-019"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 23,
+      "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-020"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 24,
+      "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-014"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 25,
+      "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-009"
+        ],
+        [
+          "RI-FI-ART-007"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 26,
+      "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-027"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 27,
+      "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-025"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 28,
+      "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-029"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 29,
+      "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-026"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 30,
+      "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+      "categoria": "condicional",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-013"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 31,
+      "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-034",
+          "RG-ART-060"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente. Cualquiera de ambos artículos fundamenta la prevalencia del Reglamento General."
+    },
+    {
+      "id": 32,
+      "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "CAL-2026-S2-03"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 33,
+      "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "CAL-2026-S1-03"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 34,
+      "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RG-ART-031"
+        ],
+        [
+          "RI-FI-ART-025"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 35,
+      "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "CAL-2026-S2-02"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 36,
+      "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "CAL-2026-S2-01"
+        ],
+        [
+          "RI-FI-ART-008"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 37,
+      "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "CAL-2026-S2-04"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 38,
+      "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-002"
+        ],
+        [
+          "RG-ART-023"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente. El art. 2 fundamenta aplicación a Ingeniería; el art. 23 ya cubre escala, aprobación y requisitos. El art. 11 es corroboración adicional, no un requisito independiente."
+    },
+    {
+      "id": 39,
+      "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "CAL-2026-S2-05"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 40,
+      "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+      "categoria": "cruce",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-029"
+        ],
+        [
+          "RI-FI-ART-030"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 41,
+      "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+      "categoria": "abstencion",
+      "tipo": "ausencia_global",
+      "grupos": [],
+      "motivo": "Requiere comprobar el inventario completo del articulado o de los eventos; no se puede demostrar ausencia con top-k."
+    },
+    {
+      "id": 42,
+      "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+      "categoria": "abstencion",
+      "tipo": "ausencia_global",
+      "grupos": [],
+      "motivo": "Requiere comprobar el inventario completo del articulado o de los eventos; no se puede demostrar ausencia con top-k."
+    },
+    {
+      "id": 43,
+      "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+      "categoria": "abstencion",
+      "tipo": "ausencia_global",
+      "grupos": [],
+      "motivo": "Requiere comprobar el inventario completo del articulado o de los eventos; no se puede demostrar ausencia con top-k."
+    },
+    {
+      "id": 44,
+      "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+      "categoria": "abstencion",
+      "tipo": "ausencia_global",
+      "grupos": [],
+      "motivo": "Requiere comprobar el inventario completo del articulado o de los eventos; no se puede demostrar ausencia con top-k."
+    },
+    {
+      "id": 45,
+      "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+      "categoria": "abstencion",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-014"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 46,
+      "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+      "categoria": "abstencion",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-025"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 47,
+      "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+      "categoria": "abstencion",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-008"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 48,
+      "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+      "categoria": "abstencion",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-012"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    },
+    {
+      "id": 49,
+      "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+      "categoria": "abstencion",
+      "tipo": "ausencia_global",
+      "grupos": [],
+      "motivo": "Requiere comprobar el inventario completo del articulado o de los eventos; no se puede demostrar ausencia con top-k."
+    },
+    {
+      "id": 50,
+      "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+      "categoria": "abstencion",
+      "tipo": "evidencia_local",
+      "grupos": [
+        [
+          "RI-FI-ART-019"
+        ]
+      ],
+      "motivo": "Cada grupo es un componente de evidencia requerido por la pauta; cualquiera de sus alternativas basta para cubrir ese componente."
+    }
+  ]
+}

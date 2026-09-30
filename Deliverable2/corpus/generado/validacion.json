@@ -1,0 +1,55 @@
+{
+  "validacion_estructural": "OK",
+  "fuentes": {
+    "RI-FI": {
+      "archivo": "Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+      "sha256": "26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1"
+    },
+    "RG": {
+      "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+      "sha256": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+    },
+    "CAL": {
+      "archivo": "Calendario-Academico-Pregrado-2026.pdf",
+      "sha256": "1b411e69e4328991497cd5b9a171d043ec1cd868d2594d553a283f4dd274fa17"
+    }
+  },
+  "extractor_sha256": "30e871140319c8665db8451ee9056314ce8e81b47d2612cacc7a37cd86e044b0",
+  "versiones": {
+    "pdfplumber": "0.11.8",
+    "tokenizers": "0.22.2"
+  },
+  "embedding": {
+    "modelo": "intfloat/multilingual-e5-small",
+    "revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+    "tokenizer_sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+    "limite_modelo": 512,
+    "limite_fragmento": 480,
+    "prefijo_incluido_en_conteo": "passage: "
+  },
+  "conteos": {
+    "padres": 173,
+    "unidades": 197,
+    "fragmentos": 201,
+    "tipos": {
+      "articulo": 97,
+      "preambulo": 1,
+      "evento": 25,
+      "fila_anexo": 50
+    },
+    "lineas_pdf": 1208
+  },
+  "max_tokens_fragmento": 476,
+  "cobertura_caracteres_unidades_y_fragmentos": "100% del texto canónico extraído; no equivale a certificar toda la semántica del PDF",
+  "pendiente": [
+    "Medir recuperación de evidencia",
+    "Resolver remisiones entre artículos durante retrieval",
+    "Presupuesto de contexto con tokenizador Qwen",
+    "Evaluar respuestas del modelo"
+  ],
+  "artefactos_sha256": {
+    "corpus.json": "0a31ff812a1969ff81bbc895feaba490e3bd027b092e52101296e3c872719400",
+    "fragmentos_busqueda.json": "c125615c1c3cddb23d69c3b2b93d7a73e076c90fe861cc217b59f293aa9b14cd",
+    "trazabilidad.json": "690715b86e8746e3b28780efb07223833daaedc8c722ca68ee6eca46a1839637"
+  }
+}

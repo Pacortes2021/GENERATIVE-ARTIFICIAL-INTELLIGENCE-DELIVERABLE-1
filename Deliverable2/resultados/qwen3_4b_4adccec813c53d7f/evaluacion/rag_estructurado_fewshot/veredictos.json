@@ -1,0 +1,307 @@
+{
+  "paquete_sha256": "1b4ffb196767af2db5e7a03a2e19f199de876e4d8f0019944982d4e46a464a7f",
+  "evaluador": "Asistente de IA de este chat (Codex)",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "4b1285f861cca5d5d976d6cb540bae2ef417ad0dbee01196710bbfba9b8d014b",
+      "correcta": true,
+      "motivo": "Entrega 4,0 como nota mínima y el art. 11 de RI-FI la respalda."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "b2851740d858b15ab727c5c320b0a047ef88fe91b8cef473e627d6a447e2f7aa",
+      "correcta": false,
+      "motivo": "El mínimo de tres es correcto, pero identifica RI-FI art. 11 como norma ficticia. Copia una etiqueta de los ejemplos y falsea la naturaleza de la fuente real."
+    },
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "851249586be9ec50ba44888efafcc2e3052b3daf4b2c0902941fd7ee72905f90",
+      "correcta": true,
+      "motivo": "Responde una recuperación y cita RG art. 22. La observación sobre máximo no afirma derecho a más de una; se acepta el dato solicitado sin inferir un tope global no expresado."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "4715c2f6b7fa49a7830eb057a4caa033164c266d86d94fe7ea27cc330319dc45",
+      "correcta": true,
+      "motivo": "Identifica la escala 1–7 y un decimal, respaldados por RG art. 23."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "e247b241a7ef9f4b09072d9134ed9986e2af28e04992b610d65bae1b45e17044",
+      "correcta": false,
+      "motivo": "Añade opciones alternativas a la Memoria de Título y las atribuye a RI-FI art. 6, que trata cupos. RI-FI art. 29 fija Memoria para estas carreras; la definición general no habilita por sí sola esas alternativas en Ingeniería."
+    },
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "ac9c733877555eb9af3f108b191a544af80d240d11c422fe4bc081485838d2d5",
+      "correcta": true,
+      "motivo": "Indica anticipación mínima de una semana y cita RI-FI art. 10."
+    },
+    {
+      "caso_id": "P07",
+      "respuesta_sha256": "459047fb138557292fc0585c8cbc7b7af201ca77b8c65411306fd63f4c596d21",
+      "correcta": true,
+      "motivo": "Identifica el Comité de Docencia y Asuntos Estudiantiles; RI-FI art. 16 y RG art. 30 respaldan la respuesta."
+    },
+    {
+      "caso_id": "P08",
+      "respuesta_sha256": "1d9b3f6983bd1e02f5c123cf7ee83a6ee6d0ef95903682560044be50a0aa2502",
+      "correcta": true,
+      "motivo": "Niega revocabilidad y explica irrevocabilidad conforme a RI-FI art. 26 y RG art. 34."
+    },
+    {
+      "caso_id": "P09",
+      "respuesta_sha256": "5622cfb872744713a770f624d985cdb5fe0eff1c0b3bb93040fd4bde4e0ae48c",
+      "correcta": true,
+      "motivo": "Indica dos períodos ordinarios de diecinueve semanas y cita RG art. 16."
+    },
+    {
+      "caso_id": "P10",
+      "respuesta_sha256": "9de8b20c90359a5e790b0947cb356c4e340f531d1726c6b08098e8eb5a5eca0f",
+      "correcta": true,
+      "motivo": "Niega convalidación/revalidación para Primer Año Común conforme a RI-FI art. 22."
+    },
+    {
+      "caso_id": "P11",
+      "respuesta_sha256": "18f51174c8cf6de80695009086e286bf3c80abdc178abf6f2e942b116b1bd920",
+      "correcta": false,
+      "motivo": "Da mínimo y excepciones, pero califica RI-FI art. 8 como norma ficticia. El dato está bien y la descripción de la fuente es falsa."
+    },
+    {
+      "caso_id": "P12",
+      "respuesta_sha256": "001174f21ae54792094d380e22d800e88d592f4d4b180aaa191963bf87373432",
+      "correcta": true,
+      "motivo": "Da el umbral de menos de quince créditos al término del segundo semestre, conforme a RI-FI art. 14 a)."
+    },
+    {
+      "caso_id": "P13",
+      "respuesta_sha256": "1f0552333b4e9ae99fb17d1ccef4c67182ca59cba91a9c66fbb99f83db81ff14",
+      "correcta": false,
+      "motivo": "Da el umbral de diez créditos, pero solo cita RG art. 28, que remite al mínimo de cada carrera y no fija diez. Esa cifra requiere RI-FI art. 14 b)."
+    },
+    {
+      "caso_id": "P14",
+      "respuesta_sha256": "044a659d6bb4a695ce43bf8c51421a38aaa00c5f405927d9abb91dc92987bd8c",
+      "correcta": true,
+      "motivo": "Interpreta 80% como máximo exigible y cita RI-FI art. 13."
+    },
+    {
+      "caso_id": "P15",
+      "respuesta_sha256": "9e2c0337f822d70c10f985c592e0e46bf4652c798d47e3f1de0e02fac5a3c93e",
+      "correcta": true,
+      "motivo": "Entrega 4,5 para convalidación y cita correctamente RI-FI art. 21."
+    },
+    {
+      "caso_id": "P16",
+      "respuesta_sha256": "c5bc9a196e72993574f4dca3161ac393b33994f2b4fbffda4ba07e3e3aa0b644",
+      "correcta": false,
+      "motivo": "El plazo de cuatro semanas es correcto, pero llama norma ficticia a RI-FI art. 22."
+    },
+    {
+      "caso_id": "P17",
+      "respuesta_sha256": "cfd2b35b87e0bdfb410c7605cd9af62b30326fbe2365fa15c761dfe03f803707",
+      "correcta": true,
+      "motivo": "Responde treinta días del período para reconocimiento de contenidos; RG art. 38 y RI-FI art. 23 respaldan ese supuesto. La consulta pide días, no se exige enumerar además otro procedimiento en semanas."
+    },
+    {
+      "caso_id": "P18",
+      "respuesta_sha256": "470f856a031ca13181aa26da268e5bf802c34493367684acd6b887beb6406285",
+      "correcta": false,
+      "motivo": "Inventa una excepción por primer año que RI-FI art. 31 no contempla y además denomina ficticia a la fuente."
+    },
+    {
+      "caso_id": "P19",
+      "respuesta_sha256": "e6733a6a25c03a3db769c43e2e84284fa445bb26d5b363d72c812d9c31025e6b",
+      "correcta": true,
+      "motivo": "Indica diecinueve semanas por período ordinario y cita RG art. 16."
+    },
+    {
+      "caso_id": "P20",
+      "respuesta_sha256": "b113c05b26d5fab3c0374a0ce8450a4a26c4680594fdac100914f31a1d91c502",
+      "correcta": true,
+      "motivo": "Da tres días hábiles y cita RG art. 26. Se interpreta el comentario sobre art. 25 como ausencia allí del plazo de regularización, no como negación de todos sus otros plazos."
+    },
+    {
+      "caso_id": "P21",
+      "respuesta_sha256": "138ae086cf87291c06dd80cf7f8b836a0d04422e28905b98398986e064fc69f4",
+      "correcta": true,
+      "motivo": "Distingue los dos promedios solicitados, 4,5 y 4,2, con RI-FI arts. 17 y 18; RG art. 24 respalda la referencia complementaria a promedios cuando se cita."
+    },
+    {
+      "caso_id": "P22",
+      "respuesta_sha256": "a338b8c00d699cd7b8e9527196bf873f8c68c5ab99e182d25c6a5129fff452d1",
+      "correcta": true,
+      "motivo": "Entrega el promedio ponderado mínimo 5,0 en la carrera de origen y cita RI-FI art. 19."
+    },
+    {
+      "caso_id": "P23",
+      "respuesta_sha256": "1d3b02686c8b88f73717c8b2d954e7f345607981b8a4d72d79114319945285e3",
+      "correcta": true,
+      "motivo": "Identifica la prohibición de revalidar una asignatura cursada y reprobada, respaldada por RI-FI art. 20."
+    },
+    {
+      "caso_id": "P24",
+      "respuesta_sha256": "0d374ed2ec5ebfe4d4484890540b8a59cf3c72cbab6d869534b4efcd3685beb9",
+      "correcta": true,
+      "motivo": "Indica baja académica y conserva ambas excepciones: aprobación en PLEV o primer año; RI-FI art. 14 c) y RG art. 28 b)."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "df9e618da25a9a0adfe839941b8a156c7f998924141f2fb0c9d8ac4efdc9f431",
+      "correcta": false,
+      "motivo": "No explica cuáles son las prioridades a) y b) aunque tenía RI-FI art. 7; además presenta el art. 9 como norma ficticia."
+    },
+    {
+      "caso_id": "P26",
+      "respuesta_sha256": "4523a9f0e2e2e53ac575c239ca90694d891000349a8067c227d9f90a146f46a4",
+      "correcta": false,
+      "motivo": "Extiende a reincorporación los documentos de RG art. 35, que corresponden a suspensión/renuncia, y describe como duración de reincorporación el límite de suspensión de tres años del art. 33."
+    },
+    {
+      "caso_id": "P27",
+      "respuesta_sha256": "2df8295e9080f643a374845ea1bae909b10d8588e4fa7cb9b77554e543fdff33",
+      "correcta": true,
+      "motivo": "Enumera ambos certificados, incluida la alternativa de pago garantizado, con respaldo en RI-FI art. 25 y/o RG art. 35."
+    },
+    {
+      "caso_id": "P28",
+      "respuesta_sha256": "fcf0e82f5e005d1d0de22acb578e6a7a94d132026ad91da3fd4f24253f8d6ab1",
+      "correcta": false,
+      "motivo": "La consecuencia y excepción son correctas, pero atribuye a RG art. 29 una frase sobre fiscalización de la Facultad que figura en RG art. 42."
+    },
+    {
+      "caso_id": "P29",
+      "respuesta_sha256": "e83f84ddfa9bdd6e51e70d088eb7459aa0137db2bd8b5ee3792154f919e3cc06",
+      "correcta": true,
+      "motivo": "Explica solicitud al profesor, plazo de tres días hábiles y justificativos, con cita de RG art. 26."
+    },
+    {
+      "caso_id": "P30",
+      "respuesta_sha256": "25decc3697c8e407569eef2f599985ece03efe06de92ec90a796c3bef1f6d18a",
+      "correcta": false,
+      "motivo": "Confunde el 80% máximo exigible con un mínimo y cita RG arts. 13/20 para porcentajes que establece RI-FI art. 13."
+    },
+    {
+      "caso_id": "P31",
+      "respuesta_sha256": "d52d7e894f10cdbcc62dce992aebd47b692b8ef33cb1dccdd174de423d7b5041",
+      "correcta": true,
+      "motivo": "Identifica prevalencia del Reglamento General y cita RI-FI art. 34."
+    },
+    {
+      "caso_id": "P32",
+      "respuesta_sha256": "4289410a68115a299ef0b74af68a32bf46e41f024bf483512cf0ddad4379b152",
+      "correcta": true,
+      "motivo": "Indica 4 de septiembre para el segundo semestre de 2026 y cita CAL-2026-S2-03."
+    },
+    {
+      "caso_id": "P33",
+      "respuesta_sha256": "26d341ea14d119a8b8cb3fc57fd52abc3cdccc0a80164c07cc1559f5a6187143",
+      "correcta": true,
+      "motivo": "Indica 2 de abril para el primer semestre de 2026 y cita CAL-2026-S1-03."
+    },
+    {
+      "caso_id": "P34",
+      "respuesta_sha256": "2f83358364d8c9e32745d19cba1d79270369a6f4e25b574ad56f867116ddb368",
+      "correcta": true,
+      "motivo": "Explica derecho a solicitar suspensión y límite de cuatro semanas antes del término; RG art. 31 basta para lo preguntado aunque no se haya recuperado RI-FI art. 25."
+    },
+    {
+      "caso_id": "P35",
+      "respuesta_sha256": "9643326c3034f786c9ff6576d3f75d70298a5becf080c521d0ef2f8df99bc840",
+      "correcta": true,
+      "motivo": "Indica 10 de agosto y cita el evento de inicio del segundo semestre, CAL-2026-S2-02."
+    },
+    {
+      "caso_id": "P36",
+      "respuesta_sha256": "f14c4c584fb7a030e9a06e12d11e7742d3b0ed4203af389b28c36a37d92aed43",
+      "correcta": false,
+      "motivo": "Da fechas y ocho créditos, pero omite la excepción por falta de requisitos de RI-FI art. 8."
+    },
+    {
+      "caso_id": "P37",
+      "respuesta_sha256": "4923041e508bbadeede1ce07537b379ec2a87edec021fc603adf8133b8b2aaf8",
+      "correcta": true,
+      "motivo": "Indica 11 de diciembre para término de clases y lo atribuye al calendario 2026 del segundo semestre, inequívoco en la consulta y evidencia."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "ef3b0540c3d356e23315c3712080d4b48e21d2ba20e5a3951cf3e64e2cde40aa",
+      "correcta": false,
+      "motivo": "Cita RG art. 23 para escala y aprobación, pero no respalda la afirmación específica de aplicación a Ingeniería; falta la regla de alcance de RI-FI art. 2."
+    },
+    {
+      "caso_id": "P39",
+      "respuesta_sha256": "b76d04ae3e6c46f309f35f5b1938102bdceaa5bd4c7e306374b7e2bf5451c0ff",
+      "correcta": false,
+      "motivo": "La fecha principal es correcta, pero añade que no hay fechas de otros semestres y cita CAL-2026-S1-06, que precisamente contiene la recuperación del primero (13–24 de julio)."
+    },
+    {
+      "caso_id": "P40",
+      "respuesta_sha256": "4a02f8adfb001e5e004c1a6e6f6170d19e3b008bf903f4a95d0e17b9a0844856",
+      "correcta": true,
+      "motivo": "Identifica el Reglamento de Memoria de Título y ponderación del 40%, con RI-FI arts. 29 y 30."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "acfe0156ae2182abf629ed48730acf4868b1ec5e7719c1b7d2dc93965896f8fc",
+      "correcta": true,
+      "motivo": "Niega que el art. 90 figure en la copia, de acuerdo con el inventario completo 1–35; no inventa contenido."
+    },
+    {
+      "caso_id": "P42",
+      "respuesta_sha256": "4efda1a8ecfb18570bec537e89e43504fb301ceecb33ea36ab711b8ce9c95d55",
+      "correcta": true,
+      "motivo": "Reconoce que no hay art. 36 en la copia de RI-FI, cuyo articulado llega al 35."
+    },
+    {
+      "caso_id": "P43",
+      "respuesta_sha256": "bf064174d74e07d28762b611413a0c567f580f47a69299465b7e27fcee5bd2b8",
+      "correcta": true,
+      "motivo": "Reconoce ausencia del art. 100 en la copia de RG e inventario completo; no inventa contenido."
+    },
+    {
+      "caso_id": "P44",
+      "respuesta_sha256": "e2a4b67d11fc99ab44cea5b3f220f0738ba2e7ecb9f3cf31d869d1104e883fce",
+      "correcta": true,
+      "motivo": "Reconoce ausencia del art. 70 en la copia de RG e inventario completo; no inventa contenido."
+    },
+    {
+      "caso_id": "P45",
+      "respuesta_sha256": "27238f855ad364d7d3e1beccbf3e968e55f69b259256bc35f015165c3f36d096",
+      "correcta": true,
+      "motivo": "Indica que RI-FI art. 14 solo contiene incisos a), b) y c), sin atribuir contenido a un d)."
+    },
+    {
+      "caso_id": "P46",
+      "respuesta_sha256": "cd1fed54e0e940c8299244e73c05e694a6ab2eeadc627610a114a17e82df1b5c",
+      "correcta": true,
+      "motivo": "Indica que no hay inciso c) en RI-FI art. 25; solo aparecen los documentos de a) y b)."
+    },
+    {
+      "caso_id": "P47",
+      "respuesta_sha256": "348d658329913dcb4519af49b6ca13f4a489fcf3c0afd1ce89b68afb05fe5394",
+      "correcta": false,
+      "motivo": "Niega correctamente un máximo, pero inventa la fuente [EJ-F], que no está en los ejemplos ni en la evidencia. Una negativa correcta no justifica crear una cita."
+    },
+    {
+      "caso_id": "P48",
+      "respuesta_sha256": "e65f8966fce367943c88d7827fb7f40c69f4991c868f837d05c5b0fd79bed2dc",
+      "correcta": true,
+      "motivo": "Reconoce que RI-FI art. 12 no fija nota mínima de recuperación. Si menciona 4,0, lo distingue como aprobación final según RG art. 23, no como un umbral de recuperación."
+    },
+    {
+      "caso_id": "P49",
+      "respuesta_sha256": "f9d075f058d133c3872632bfa2a342f4932f4c9496354fe03a284ae6cb82f90d",
+      "correcta": true,
+      "motivo": "Reconoce que el 30 de septiembre no figura como feriado en el calendario completo consultado; no inventa otro feriado."
+    },
+    {
+      "caso_id": "P50",
+      "respuesta_sha256": "5dadffbb77805f9a4c2a6eae82419376a1f13cde1a4f7a94dc85ac4a99531b06",
+      "correcta": true,
+      "motivo": "No inventa un promedio para una tercera carrera y limita la respuesta a lo que establece RI-FI art. 19."
+    }
+  ]
+}

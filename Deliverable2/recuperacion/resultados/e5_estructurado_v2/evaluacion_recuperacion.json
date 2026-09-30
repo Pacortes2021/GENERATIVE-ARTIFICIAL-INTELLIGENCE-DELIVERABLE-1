@@ -1,0 +1,1267 @@
+{
+  "version": 1,
+  "alcance": "Cobertura de fuentes e inventarios; no exactitud de respuestas del modelo.",
+  "resumen": {
+    "cobertura_local_antes": 40,
+    "cobertura_local_ahora": 43,
+    "denominador_local": 45,
+    "ausencias_con_inventario": 5,
+    "denominador_ausencia": 5,
+    "mejoran": [
+      25,
+      36,
+      50
+    ],
+    "empeoran": [],
+    "faltan_fuentes": [
+      34,
+      38
+    ],
+    "promedio_caracteres": 3326,
+    "max_caracteres": 9335,
+    "unidades_omitidas_presupuesto": 0
+  },
+  "casos": [
+    {
+      "id": 1,
+      "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RG-ART-027",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030"
+      ],
+      "caracteres": 3329,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 2,
+      "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-011",
+        "RG-ART-013",
+        "RI-FI-ART-013",
+        "RG-ART-007",
+        "RI-FI-ART-010"
+      ],
+      "caracteres": 3067,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 3,
+      "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-012",
+        "RG-ART-022",
+        "RG-ART-026",
+        "RI-FI-ART-010",
+        "RG-ART-025",
+        "RG-ART-013"
+      ],
+      "caracteres": 6062,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 4,
+      "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-023",
+        "RG-ART-027",
+        "RG-ART-041",
+        "RG-ANEXO-44",
+        "RG-ANEXO-45"
+      ],
+      "caracteres": 3205,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 5,
+      "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-006",
+        "RG-ART-003-DEF-10",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030"
+      ],
+      "caracteres": 4300,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 6,
+      "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-023",
+        "RI-FI-ART-011",
+        "RG-ART-025",
+        "RI-FI-ART-010",
+        "RG-ART-013"
+      ],
+      "caracteres": 4856,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 7,
+      "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-016",
+        "RG-ART-030",
+        "RG-ART-037",
+        "RI-FI-ART-027",
+        "RI-FI-ART-028"
+      ],
+      "caracteres": 3020,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 8,
+      "pregunta": "¿La renuncia a la carrera es revocable?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-034",
+        "RI-FI-ART-026",
+        "RG-ART-044",
+        "RG-ART-032",
+        "RI-FI-ART-022",
+        "RI-FI-ART-025"
+      ],
+      "caracteres": 2540,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 9,
+      "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-016",
+        "RG-ART-050",
+        "RI-FI-ART-007",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-008"
+      ],
+      "caracteres": 2682,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 10,
+      "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-022",
+        "RG-ART-044",
+        "RG-ART-029",
+        "RG-ART-037",
+        "RG-ART-039"
+      ],
+      "caracteres": 2502,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 11,
+      "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-008",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-017",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030"
+      ],
+      "caracteres": 3134,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 12,
+      "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-031"
+      ],
+      "caracteres": 3148,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 13,
+      "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RG-ART-003-DEF-07",
+        "RG-ART-024"
+      ],
+      "caracteres": 3437,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 14,
+      "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RG-ART-026",
+        "RG-ART-023",
+        "RG-ART-049"
+      ],
+      "caracteres": 3876,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 15,
+      "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-021",
+        "RI-FI-ART-011",
+        "RG-ART-039",
+        "RI-FI-ART-024",
+        "RI-FI-ART-013"
+      ],
+      "caracteres": 2384,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 16,
+      "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-022",
+        "RG-ART-025",
+        "RI-FI-ART-015",
+        "RI-FI-ART-023",
+        "RG-ART-044",
+        "RG-ART-013",
+        "RI-FI-ART-014"
+      ],
+      "caracteres": 5251,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 17,
+      "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-038",
+        "RI-FI-ART-023",
+        "RG-ART-025",
+        "RG-ART-037",
+        "RI-FI-ART-022",
+        "RG-ART-013"
+      ],
+      "caracteres": 5561,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 2,
+      "total_grupos": 2,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 18,
+      "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-031",
+        "RG-ART-003-DEF-20",
+        "RI-FI-ART-008",
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-035"
+      ],
+      "caracteres": 2833,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 19,
+      "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-016",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-008",
+        "RG-ART-043",
+        "RG-ART-050"
+      ],
+      "caracteres": 2733,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 20,
+      "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-026",
+        "RG-ART-025",
+        "RG-ART-030",
+        "RG-ART-038",
+        "RG-ART-013"
+      ],
+      "caracteres": 6409,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 21,
+      "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-017",
+        "RI-FI-ART-018",
+        "RG-ART-024",
+        "RI-FI-ART-030",
+        "RI-FI-ART-001",
+        "RI-FI-ART-006"
+      ],
+      "caracteres": 2656,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 2,
+      "total_grupos": 2,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 22,
+      "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-019",
+        "RG-ART-028",
+        "RI-FI-ART-005",
+        "RI-FI-ART-014"
+      ],
+      "caracteres": 2864,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 23,
+      "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-020",
+        "RG-ART-037",
+        "RI-FI-ART-022",
+        "RG-ART-041",
+        "RG-ART-044"
+      ],
+      "caracteres": 2250,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 24,
+      "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-020",
+        "RG-ART-028",
+        "RG-ART-037",
+        "RI-FI-ART-014",
+        "RG-ART-044"
+      ],
+      "caracteres": 2829,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 25,
+      "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-009",
+        "RG-ART-042",
+        "RG-ART-003-DEF-09",
+        "RG-ART-003-DEF-13",
+        "RG-ART-003-DEF-10",
+        "RI-FI-ART-007",
+        "RI-FI-ART-008"
+      ],
+      "caracteres": 8753,
+      "antes_completa": false,
+      "completa": true,
+      "grupos_cubiertos": 2,
+      "total_grupos": 2,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 26,
+      "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-032",
+        "RI-FI-ART-027",
+        "RI-FI-ART-028",
+        "RI-FI-ART-014",
+        "RG-ART-035",
+        "RG-ART-033"
+      ],
+      "caracteres": 3290,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 27,
+      "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-035",
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RG-ART-033",
+        "RG-ART-032"
+      ],
+      "caracteres": 2861,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 28,
+      "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-029",
+        "RG-ART-042",
+        "RG-ART-020",
+        "RI-FI-ART-007",
+        "RG-ART-043"
+      ],
+      "caracteres": 4011,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 29,
+      "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-026",
+        "RG-ART-020",
+        "RG-ART-008",
+        "RG-ART-038",
+        "RG-ART-025",
+        "RI-FI-ART-023",
+        "RG-ART-013"
+      ],
+      "caracteres": 9335,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 30,
+      "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RG-ART-010",
+        "RG-ART-026",
+        "RG-ART-003-DEF-07"
+      ],
+      "caracteres": 6321,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 31,
+      "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-002",
+        "RG-TRANS-002",
+        "RI-FI-ART-034",
+        "RG-ART-001",
+        "RI-FI-ART-018"
+      ],
+      "caracteres": 1654,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 32,
+      "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-11"
+      ],
+      "caracteres": 722,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 33,
+      "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-04",
+        "CAL-2026-S2-01"
+      ],
+      "caracteres": 561,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 34,
+      "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ART-032",
+        "RI-FI-ART-027",
+        "RG-ART-030",
+        "RI-FI-ART-023",
+        "RG-ART-031",
+        "RG-ART-035",
+        "RI-FI-ART-031"
+      ],
+      "caracteres": 4398,
+      "antes_completa": false,
+      "completa": false,
+      "grupos_cubiertos": 1,
+      "total_grupos": 2,
+      "grupos_faltantes": [
+        [
+          "RI-FI-ART-025"
+        ]
+      ]
+    },
+    {
+      "id": 35,
+      "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-07"
+      ],
+      "caracteres": 503,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 36,
+      "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "RI-FI-ART-008",
+        "RI-FI-ART-014",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09"
+      ],
+      "caracteres": 1629,
+      "antes_completa": false,
+      "completa": true,
+      "grupos_cubiertos": 2,
+      "total_grupos": 2,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 37,
+      "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "CAL-2026-S2-04",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-07"
+      ],
+      "caracteres": 548,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 38,
+      "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RG-ANEXO-15",
+        "RG-ANEXO-18",
+        "RI-FI-ART-006",
+        "RI-FI-ART-028",
+        "RI-FI-ART-012",
+        "RG-ART-023",
+        "RG-ANEXO-08",
+        "RG-ANEXO-35"
+      ],
+      "caracteres": 3223,
+      "antes_completa": false,
+      "completa": false,
+      "grupos_cubiertos": 1,
+      "total_grupos": 2,
+      "grupos_faltantes": [
+        [
+          "RI-FI-ART-002"
+        ]
+      ]
+    },
+    {
+      "id": 39,
+      "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-09"
+      ],
+      "caracteres": 523,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 40,
+      "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-031",
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RG-ART-048"
+      ],
+      "caracteres": 2912,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 2,
+      "total_grupos": 2,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 41,
+      "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+      "tipo": "ausencia_global",
+      "unidades": [
+        "RI-FI-ART-002",
+        "RG-TRANS-002",
+        "RG-ART-049",
+        "RG-ART-001",
+        "RG-ART-038"
+      ],
+      "caracteres": 2877,
+      "antes_completa": null,
+      "completa": null,
+      "evidencia_ausencia_disponible": true,
+      "comprobaciones": [
+        {
+          "tipo": "articulo",
+          "documento": "RI-FI",
+          "ambito": "ordinario",
+          "numero_consultado": 90,
+          "existe": false,
+          "inventario_numeros": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "fuente": {
+            "archivo": "Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+            "sha256": "26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+      "tipo": "ausencia_global",
+      "unidades": [
+        "RG-TRANS-002",
+        "RG-ART-049",
+        "RI-FI-ART-002",
+        "RG-ART-001",
+        "RG-ART-011"
+      ],
+      "caracteres": 2192,
+      "antes_completa": null,
+      "completa": null,
+      "evidencia_ausencia_disponible": true,
+      "comprobaciones": [
+        {
+          "tipo": "articulo",
+          "documento": "RI-FI",
+          "ambito": "ordinario",
+          "numero_consultado": 36,
+          "existe": false,
+          "inventario_numeros": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35
+          ],
+          "fuente": {
+            "archivo": "Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+            "sha256": "26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1"
+          }
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+      "tipo": "ausencia_global",
+      "unidades": [
+        "RG-ART-001",
+        "RG-ART-011",
+        "RG-ART-004",
+        "RG-ART-049",
+        "RG-TRANS-002"
+      ],
+      "caracteres": 2398,
+      "antes_completa": null,
+      "completa": null,
+      "evidencia_ausencia_disponible": true,
+      "comprobaciones": [
+        {
+          "tipo": "articulo",
+          "documento": "RG",
+          "ambito": "ordinario",
+          "numero_consultado": 100,
+          "existe": false,
+          "inventario_numeros": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60
+          ],
+          "fuente": {
+            "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+            "sha256": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+          }
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+      "tipo": "ausencia_global",
+      "unidades": [
+        "RG-ART-004",
+        "RG-ART-001",
+        "RG-PREAMBULO",
+        "RG-ART-051",
+        "RG-ART-042"
+      ],
+      "caracteres": 3779,
+      "antes_completa": null,
+      "completa": null,
+      "evidencia_ausencia_disponible": true,
+      "comprobaciones": [
+        {
+          "tipo": "articulo",
+          "documento": "RG",
+          "ambito": "ordinario",
+          "numero_consultado": 70,
+          "existe": false,
+          "inventario_numeros": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60
+          ],
+          "fuente": {
+            "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+            "sha256": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+          }
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-014",
+        "RI-FI-ART-027",
+        "RI-FI-ART-026",
+        "RI-FI-ART-015",
+        "RI-FI-ART-013",
+        "RI-FI-ART-025"
+      ],
+      "caracteres": 2902,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 46,
+      "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RG-ART-035",
+        "RI-FI-ART-031",
+        "RI-FI-ART-026"
+      ],
+      "caracteres": 2329,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 47,
+      "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-008",
+        "RI-FI-ART-014",
+        "RI-FI-ART-015",
+        "RI-FI-ART-031",
+        "RI-FI-ART-009",
+        "RI-FI-ART-007"
+      ],
+      "caracteres": 3255,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 48,
+      "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-012",
+        "RG-ART-023",
+        "RI-FI-ART-011",
+        "RG-ART-022",
+        "RG-ART-027"
+      ],
+      "caracteres": 4609,
+      "antes_completa": true,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    },
+    {
+      "id": 49,
+      "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+      "tipo": "ausencia_global",
+      "unidades": [
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-10"
+      ],
+      "caracteres": 1680,
+      "antes_completa": null,
+      "completa": null,
+      "evidencia_ausencia_disponible": true,
+      "comprobaciones": [
+        {
+          "tipo": "feriado",
+          "anio": 2026,
+          "dia": 30,
+          "mes": "septiembre",
+          "coincidencias": [],
+          "eventos_calendario_revisados": 25,
+          "inventario_feriados": [
+            {
+              "unidad_id": "CAL-2026-S1-09",
+              "fecha": "viernes 03 de abril",
+              "pagina": 1
+            },
+            {
+              "unidad_id": "CAL-2026-S1-10",
+              "fecha": "viernes 01 de mayo",
+              "pagina": 1
+            },
+            {
+              "unidad_id": "CAL-2026-S1-11",
+              "fecha": "jueves 21 de mayo",
+              "pagina": 1
+            },
+            {
+              "unidad_id": "CAL-2026-S1-12",
+              "fecha": "lunes 29 de junio",
+              "pagina": 1
+            },
+            {
+              "unidad_id": "CAL-2026-S1-13",
+              "fecha": "jueves 16 de julio",
+              "pagina": 1
+            },
+            {
+              "unidad_id": "CAL-2026-S2-08",
+              "fecha": "jueves 20 de agosto",
+              "pagina": 2
+            },
+            {
+              "unidad_id": "CAL-2026-S2-09",
+              "fecha": "viernes 18 de septiembre",
+              "pagina": 2
+            },
+            {
+              "unidad_id": "CAL-2026-S2-10",
+              "fecha": "lunes 12 de octubre",
+              "pagina": 2
+            },
+            {
+              "unidad_id": "CAL-2026-S2-11",
+              "fecha": "martes 08 de diciembre",
+              "pagina": 2
+            }
+          ],
+          "fuente": {
+            "archivo": "Calendario-Academico-Pregrado-2026.pdf",
+            "sha256": "1b411e69e4328991497cd5b9a171d043ec1cd868d2594d553a283f4dd274fa17"
+          }
+        }
+      ]
+    },
+    {
+      "id": 50,
+      "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+      "tipo": "evidencia_local",
+      "unidades": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RI-FI-ART-013",
+        "RG-ART-028",
+        "RI-FI-ART-014",
+        "RI-FI-ART-015"
+      ],
+      "caracteres": 4093,
+      "antes_completa": false,
+      "completa": true,
+      "grupos_cubiertos": 1,
+      "total_grupos": 1,
+      "grupos_faltantes": []
+    }
+  ],
+  "procedencia_sha256": {
+    "corrida": "8b3abc626a6ef3d8e2ee1f020997c8f392fab4b9d140d90fd23d246d9886b3c4",
+    "pauta": "b6eec2d39392b2235a176358cc6a11082ece8f6d10cab91d7a68921e9ded8f35",
+    "evaluador": "2ec0aa5f213684f385822899b3a33fd05ee1b2ee11a7ed38fcc1b7e455c42a48"
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "baseline": {
+    "aciertos": 1,
+    "n": 50,
+    "exactitud_pct": 2.0,
+    "categorias": {
+      "factual": {
+        "aciertos": 0,
+        "n": 10
+      },
+      "numerica": {
+        "aciertos": 0,
+        "n": 10
+      },
+      "condicional": {
+        "aciertos": 0,
+        "n": 10
+      },
+      "cruce": {
+        "aciertos": 0,
+        "n": 10
+      },
+      "abstencion": {
+        "aciertos": 1,
+        "n": 10
+      }
+    },
+    "fallos": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49
+    ]
+  },
+  "rag": {
+    "aciertos": 44,
+    "n": 50,
+    "exactitud_pct": 88.0,
+    "categorias": {
+      "factual": {
+        "aciertos": 9,
+        "n": 10
+      },
+      "numerica": {
+        "aciertos": 10,
+        "n": 10
+      },
+      "condicional": {
+        "aciertos": 8,
+        "n": 10
+      },
+      "cruce": {
+        "aciertos": 7,
+        "n": 10
+      },
+      "abstencion": {
+        "aciertos": 10,
+        "n": 10
+      }
+    },
+    "fallos": [
+      3,
+      24,
+      25,
+      36,
+      38,
+      40
+    ]
+  },
+  "latencia_rag_seg": {
+    "media": 5.386,
+    "mediana": 4.825,
+    "min": 2.32,
+    "max": 11.4
+  },
+  "baseline_publicado_e1": {
+    "aciertos": 2,
+    "n": 50
+  },
+  "alcance": "Revisión asistida por IA de salidas históricas; validar por el equipo. No es nueva inferencia."
+}

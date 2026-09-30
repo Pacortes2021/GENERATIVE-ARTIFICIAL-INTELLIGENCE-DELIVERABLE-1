@@ -1,0 +1,37 @@
+# Cuaderno principal de Colab
+
+[Deliverable2_Sistema_RAG_Colab.ipynb](Deliverable2_Sistema_RAG_Colab.ipynb) ejecuta el sistema consultable y muestra **baseline directo y RAG estructurado sobre la misma pregunta**. Incluye el corpus procesado y el código de recuperación; descarga E5 y Qwen3-4B al iniciarse. Requiere GPU de Colab para Qwen, pero E5 e indexación funcionan en CPU.
+
+## Uso
+
+1. Sube el `.ipynb` a Colab, selecciona GPU y ejecuta las secciones 1–4 en orden. Si acabas de instalar librerías o abriste una versión anterior, reinicia la sesión y vuelve a empezar.
+2. En la sección 5 cambia `PREGUNTA = ""` por tu pregunta. La celda busca la evidencia, genera ambas respuestas y muestra los fragmentos enviados solo a RAG.
+3. Descarga el ZIP generado. Si ejecutas de nuevo exactamente la misma consulta con igual configuración, se reutilizan los checkpoints y se indica que son respuestas guardadas.
+4. Para una comparación nueva sobre las 50 preguntas conocidas, en la sección 6 cambia `EJECUTAR_LOTE_50 = False` a `True`. `IDS_LOTE = [1, 2]` sirve para un piloto; `None` ejecuta las 50. Descarga el ZIP con `baseline_directo.csv` y `rag_estructurado.csv`.
+5. Evalúa ambos CSV con la [misma pauta](../evaluacion/README.md). El cuaderno registra datos técnicos, pero no asigna corrección semántica.
+
+`USAR_DRIVE=True` guarda los checkpoints en Drive; Colab pedirá autorización. Con `False`, descarga el ZIP antes de cerrar la sesión. Las respuestas guardan texto, prompt, evidencia, tokens, tiempo, motivo de parada, configuración y hashes. El baseline recibe solo pregunta e instrucción directa; RAG recibe evidencia recuperada. La nueva comparación conserva el prompt de E1 pero utiliza los parámetros de inferencia de RAG para emparejar las condiciones. Su resultado no está medido todavía.
+
+## Si Colab se desconecta
+
+Comprueba que el título del cuaderno indique **`carga-ligera-v1`**. El archivo actual mide unos 238 KB. Reinicia la sesión y ejecuta el cuaderno recién subido: una pestaña abierta no incorpora las correcciones locales. La sección «Corpus y código incluidos» debe imprimir tres pasos y terminar con `Corpus listo: 197 unidades completas; 201 fragmentos para búsqueda; 50 preguntas.` Esa celda restaura el paquete comprimido con biblioteca estándar, sin importar los modelos.
+
+La sección siguiente anuncia por separado la importación de librerías, la carga de E5 y la construcción del índice. Si la sesión vuelve a reiniciarse, anota el último mensaje visible. El reinicio informado anteriormente no se reprodujo localmente y su causa concreta no está confirmada. La [medición local de la celda de corpus](validacion_carga_colab.json) solo describe este entorno, no la memoria de Colab.
+
+El tokenizador E5 se verifica contra el JSON exacto con el que se fragmentó el corpus. El cuaderno fija `tokenizers==0.22.2`; si detecta otra versión cargada pide reiniciar. Cualquier diferencia real se registra en `diagnostico_e5_*.json` y detiene la generación sin recortar fragmentos.
+
+## Qué está verificado
+
+La [validación del sistema](validacion_sistema.json) documenta la recuperación real con E5 en CPU: al indexar de nuevo y consultar las 50 preguntas se obtuvieron los mismos contextos guardados. Se comprobó una pregunta fuera del test y se midieron los 100 prompts de baseline/RAG con el tokenizador real de Qwen. Las pruebas locales comprueban generación simulada, reanudación y exportación. **La generación real de esta versión en GPU Colab y su evaluación están pendientes.**
+
+Para regenerar el cuaderno desde la raíz del repositorio se necesita `nbformat`:
+
+```bash
+python3 Deliverable2/notebooks/crear_sistema.py
+```
+
+[crear_sistema.py](crear_sistema.py) verifica las fuentes e incluye [sistema.py](sistema.py), [experimento.py](experimento.py) y las funciones originales del recuperador. Las preguntas incluidas contienen solo ID, texto y categoría: las respuestas de referencia y veredictos no se entregan a Qwen. La [configuración elegida](../CONFIGURACION_ELEGIDA.md) explica qué versión se usa y sus límites.
+
+## Experimentos anteriores
+
+El [cuaderno de tres variantes](Deliverable2_RAG_3_variantes_Colab.ipynb) produjo la [primera corrida evaluada](../resultados/qwen3_4b_4adccec813c53d7f/REPORTE.md). El [cuaderno de dos variantes](Deliverable2_RAG_2_variantes_Colab.ipynb) conserva simple y estructurado con evidencia previamente calculada. Estos cuadernos no ejecutan recuperación para preguntas nuevas. [Revisar_resultados_RAG.ipynb](Revisar_resultados_RAG.ipynb) inspecciona el ZIP histórico sin GPU. La [revisión del cuaderno inicial](REVISION_CUADERNO_ANTERIOR.md) documenta qué se aprovechó y qué se corrigió.

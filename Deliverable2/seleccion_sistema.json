@@ -1,0 +1,53 @@
+{
+  "version": "sistema-rag-v1",
+  "modelo": "Qwen/Qwen3-4B",
+  "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+  "variante_elegida": "rag_estructurado",
+  "prompt_estructurado_sha256": "a42da6fa9b136504139a2c70a954b1dcd127e15eb8c1fc85ed3e0f2ea5dca777",
+  "baseline_prompt_sha256": "7ac14e2485c7d6d5a74b94d2fcf36936b032fd3fe55e99e91de4d572e564274f",
+  "embedding_modelo": "intfloat/multilingual-e5-small",
+  "embedding_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+  "politica_recuperacion": {
+    "top_original": 5,
+    "top_por_subconsulta": 2,
+    "max_subconsultas": 4,
+    "max_unidades": 14,
+    "max_caracteres": 20000,
+    "saltos_remisiones": 1
+  },
+  "thinking": false,
+  "cuantizacion": "NF4 4 bits, double quant; dtype según GPU registrado por corrida",
+  "generacion": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0,
+    "repetition_penalty": 1.0,
+    "max_new_tokens": 1024
+  },
+  "semilla_base": 2026,
+  "max_context_tokens": 8192,
+  "margen_tokens": 64,
+  "seleccion_con_preguntas_de_desarrollo": true,
+  "conclusion": "Se elige el formato explícito del estructurado; 40/50 frente a 39/50 no prueba superioridad general.",
+  "evaluacion_nueva": "Pendiente de ejecutar Colab y aplicar la misma pauta de contenido y citas a los dos CSV.",
+  "alternativas_previas": {
+    "rag_simple": {
+      "correctas": 39,
+      "total": 50
+    },
+    "rag_estructurado": {
+      "correctas": 40,
+      "total": 50
+    },
+    "rag_estructurado_fewshot": {
+      "correctas": 36,
+      "total": 50,
+      "estado": "descartado por decisión del usuario; conservar experimento"
+    }
+  },
+  "baseline_e1_porcentaje_historico": 4,
+  "embedding_tokenizer_sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+  "tokenizers_version": "0.22.2"
+}

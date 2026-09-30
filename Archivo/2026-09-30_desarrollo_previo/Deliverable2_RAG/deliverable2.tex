@@ -1,0 +1,93 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish]{babel}
+\usepackage[margin=1.25cm]{geometry}
+\usepackage{lmodern,microtype,multicol,booktabs,enumitem,xcolor,tikz}
+\usepackage{hyperref}
+\usetikzlibrary{arrows.meta,positioning}
+\definecolor{ink}{HTML}{14334B}
+\definecolor{accent}{HTML}{007C83}
+\hypersetup{colorlinks=true,urlcolor=accent}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt}
+\setlength{\columnsep}{0.65cm}
+\setlist[itemize]{leftmargin=*,nosep,topsep=2pt}
+\newcommand{\blocktitle}[1]{\par\vspace{5pt}{\color{ink}\bfseries\large #1}\par\vspace{1pt}}
+\begin{document}
+{\color{accent}\small GENERATIVE ARTIFICIAL INTELLIGENCE 580694\hfill ENTREGABLE 2 | 2026}
+\par\vspace{5pt}
+{\color{ink}\fontsize{21}{24}\selectfont\bfseries Responder con evidencia}\par
+{\color{ink}\large RAG para normativa de pregrado de Ingeniería UdeC}\par
+{\small Álvaro Contreras y Pablo Cortés \hfill Qwen3-4B / Google Colab T4}
+\par\vspace{3pt}{\color{accent}\hrule height 1pt}\vspace{4pt}
+{\small\textbf{Continuidad con E1.} Misma tarea, tres PDF (RG, RI-FI y calendario 2026) y 50 preguntas propias, diez por categoría. Acierto = dato completo y fuentes requeridas correctas; ante premisas falsas, abstención sin inventar. E1 mostró fallos de contenido y citación sin acceso al corpus. RAG aporta evidencia documental al modelo.}
+
+\begin{center}
+\begin{tikzpicture}[
+  node distance=0.32cm,
+  b/.style={draw=accent!70,fill=accent!5,rounded corners=2pt,align=center,minimum height=1cm,text width=2.6cm,font=\small},
+  a/.style={-{Stealth[length=2mm]},thick,draw=accent}]
+\node[b] (pdf) {3 PDF oficiales\\198 fragmentos\textsuperscript{*}};
+\node[b,right=of pdf] (emb) {E5-small multilingüe\\384 dimensiones};
+\node[b,right=of emb] (ret) {Pregunta + coseno\\recuperación top-5};
+\node[b,right=of ret] (llm) {Contexto + Qwen3-4B\\prompt DATO / CITA};
+\node[b,right=of llm] (out) {Dato y fuentes\\o abstención};
+\draw[a] (pdf)--(emb);\draw[a] (emb)--(ret);\draw[a] (ret)--(llm);\draw[a] (llm)--(out);
+\end{tikzpicture}
+\end{center}
+\vspace{-8pt}
+\begin{multicols}{2}
+\blocktitle{1. Modelo y ejecución}
+\textbf{Modelo:} \texttt{Qwen/Qwen3-4B}, candidato de E1, 4 mil millones de parámetros, sin modo thinking y con generación greedy (\texttt{do\_sample=False}, máximo 256 tokens).
+
+Se elige frente a Salamandra-7B y Qwen3-8B por su menor tamaño entre los tres candidatos y la ejecución ya observada en T4. El 8B tampoco mejoró el 4\% global del baseline. No se afirma que 4B sea el mínimo viable: no existe un barrido controlado de tamaños con RAG.
+
+La corrida histórica registra una \textbf{Tesla T4 de 15,64 GB} y 8,53 GB asignados después de cargar el modelo y el encoder. El código usó \texttt{torch\_dtype="auto"}; la nueva versión registra dtype, dispositivos y revisiones efectivas, sin inferirlos de la memoria usada.
+
+\blocktitle{2. Intervención y alternativas}
+\textbf{Sistema medido:} fragmentos con identificación de fuente, embeddings \texttt{intfloat/multilingual-e5-small}, prefijos \texttt{passage:}/\texttt{query:}, similitud coseno y $k=5$. El contexto se entrega al mismo generador con un \textbf{prompt estructurado}; no se impone una gramática al decodificador.
+
+\textbf{Comparación evaluada:} prompting directo frente a RAG sobre las mismas 50 entradas. Los ensayos locales con Qwen2.5-3B se conservan como exploración y no se mezclan con la tabla de Qwen3-4B. No hay evidencia suficiente para atribuir una mejora aislada al formato, declarar óptimo $k=5$ o reportar Recall@5.
+
+\textsuperscript{*}\textbf{Versión corregida pendiente de medir:} se generó una segunda base de 169 fragmentos con detección consecutiva de encabezados y ventanas solapadas. Conserva la referencia al Art. 7 dentro del Art. 9. No hereda las métricas históricas.
+
+\blocktitle{3. Evidencia comparable}
+\small
+\begin{tabular}{@{}lrr@{}}
+\toprule
+\textbf{Categoría ($n=10$)} & \textbf{Baseline} & \textbf{RAG}\\
+\midrule
+Factual & 0/10 & 9/10\\
+Numérica & 0/10 & 10/10\\
+Condicional & 0/10 & 8/10\\
+Cruce & 0/10 & 7/10\\
+Abstención & 1/10 & 10/10\\
+\midrule
+\textbf{Global ($n=50$)} & \textbf{1/50 (2\%)} & \textbf{44/50 (88\%)}\\
+\bottomrule
+\end{tabular}
+\normalsize
+
+\textbf{Revisión provisional asistida por IA}, pendiente de validación del equipo, de las respuestas históricas. Exige fuentes suficientes para respaldar todos los datos pedidos; no exige referencias redundantes. Se aceptan paráfrasis y números equivalentes. Las decisiones se registran por pregunta con hash de respuesta y referencia.
+
+\textbf{Cambio declarado respecto de E1:} se publicó 2/50 (4\%). P49 niega el feriado pero inventa una fuente y un día de semana; con el mismo criterio de no inventar para ambos sistemas queda 1/50. La mejora auditada es \textbf{+86 puntos porcentuales}. El 98\% anterior aceptaba coincidencias parciales y se retira como exactitud estricta.
+
+La latencia RAG guardada promedia \textbf{5,39 s/consulta} (mediana 4,83; rango 2,32--11,40), sin carga inicial. El conjunto se usó durante desarrollo: no demuestra generalización.
+
+\blocktitle{4. Fallo real y su mecanismo}
+\textbf{P25:} ¿Qué asignaturas no puedo eliminar al modificar la inscripción? La respuesta histórica dice: \textit{``Las asignaturas correspondientes a las prioridades a) y b) del''}, y cita Art. 9 RI-FI. No identifica atrasadas ni obligatorias reprobadas.
+
+El extractor histórico corta el Art. 9 ante la referencia al \textbf{Art. 7 al inicio de una línea}; el fragmento termina exactamente en ``del''. Es una pérdida de contexto comprobable en la base. La nueva versión corrige ese corte; su efecto sobre respuestas debe medirse. P24 también omite excepciones y P36 omite los créditos mínimos: RAG no garantiza respuestas completas.
+
+\blocktitle{5. Reproducción y demostración}
+\texttt{rag\_normativa\_ingenieria\_4b.ipynb}: carga corpus y modelos, ejecuta baseline y RAG en vivo sobre una entrada escrita o sorteada, y exporta las 50 comparaciones, contextos, tiempos y metadatos. Los veredictos nuevos empiezan vacíos. El video debe mostrar ejecución y al menos un fallo explicado.
+
+{\small\textbf{Estado:} documento de trabajo. Falta validar la revisión, ejecutar la versión final en T4 y adjuntar el enlace abierto al video de máximo 3 minutos.}
+\end{multicols}
+\vfill
+{\color{accent}\hrule}\vspace{4pt}
+{\footnotesize\textbf{Código y protocolo:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}\par
+Reproducir el recuento: \texttt{python -m Deliverable2\_RAG.auditoria}. Versión local revisada; publicar junto con la evidencia final.}
+\end{document}

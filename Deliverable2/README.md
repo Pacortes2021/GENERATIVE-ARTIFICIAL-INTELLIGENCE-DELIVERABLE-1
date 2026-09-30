@@ -40,7 +40,7 @@ La [primera corrida de Colab](resultados/qwen3_4b_4adccec813c53d7f/REPORTE.md) g
 
 La diferencia de **una respuesta** entre simple y estructurado no demuestra superioridad general. Las 50 preguntas guiaron el desarrollo del recuperador. El [fallo P25](resultados/qwen3_4b_4adccec813c53d7f/DIAGNOSTICO_P25.md) muestra que el estructurado recibió completos los artículos 7 y 9 pero respondió solo «prioridades a) y b)», sin explicar cuáles eran. Se conserva también la limitación de recuperación de P38.
 
-El **4% de Deliverable 1** se conserva como resultado histórico. Esa corrida utilizó otra configuración de inferencia y su evaluación original; no debe restarse del 80% como si fuese un experimento controlado. Para satisfacer la comparación emparejada del enunciado falta ejecutar el lote del cuaderno principal y revisar baseline y RAG con la misma pauta. Ningún resultado de ese lote se afirma por adelantado.
+El **4% de Deliverable 1** se conserva como resultado histórico. Esa corrida utilizó otra configuración de inferencia y su evaluación original; no debe restarse del 80% como si fuese un experimento controlado. La [nueva comparación emparejada](resultados/qwen3_4b_f0bff499766960f7/REPORTE.md) produjo **1/50 (2%) para baseline y 40/50 (80%) para RAG** con la misma pauta E2. El 2% no reemplaza la cifra histórica. La intervención combina recuperación y cambio de prompt, y las preguntas conocidas no prueban generalización.
 
 Un [piloto de una consulta nueva](resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) ya ejecutó las dos condiciones en Colab. El baseline negó erróneamente la revalidación; RAG halló los artículos pertinentes y respondió «sí», pero omitió condiciones presentes en la evidencia. Este caso documenta el funcionamiento y un límite del generador; no es una estimación de precisión.
 
@@ -50,8 +50,8 @@ Un [piloto de una consulta nueva](resultados/piloto_consulta_882da178b0514f0d/RE
 |---|---|
 | Modelo elegido, corpus, recuperador y primera corrida RAG | Realizados y documentados |
 | Sistema consultable con baseline visible | Implementado; piloto de una pregunta ejecutado en Colab con Tesla T4 |
-| Ejecución del lote emparejado de 50 preguntas en GPU Colab | Pendiente |
-| Evaluación emparejada baseline/RAG | Pendiente de las salidas de Colab |
+| Ejecución del lote emparejado de 50 preguntas en GPU Colab | Realizada; 100 respuestas verificadas |
+| Evaluación emparejada baseline/RAG | Realizada con pauta E2 y motivos por respuesta; pendiente de revisión del equipo |
 | PDF técnico de una página compilado en LaTeX y video ≤3 minutos | Pendientes |
 
 Los [resultados completos](resultados/README.md) incluyen ZIP original, prompts, respuestas, veredictos y reportes. El código de [evaluación](evaluacion/README.md) prepara casos y calcula porcentajes a partir de decisiones trazables. Los prototipos anteriores están en [Archivo](../Archivo/README.md) y no se usan en la ejecución actual.

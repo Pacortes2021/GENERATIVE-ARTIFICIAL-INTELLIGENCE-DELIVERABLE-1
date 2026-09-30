@@ -7,3 +7,5 @@
 Porcentajes de revisión asistida en chat con la pauta de contenido y citas. Se conservan el ZIP original, los prompts, las respuestas, los veredictos y sus motivos. No hay cortes por límite de tokens. El reporte explica los errores de few-shot y los límites de comparar una sola corrida sobre preguntas usadas durante el desarrollo.
 
 El [piloto del sistema consultable](piloto_consulta_882da178b0514f0d/REPORTE.md) conserva una pregunta nueva respondida en Colab por baseline directo y RAG estructurado. Demuestra la ejecución real de ambas condiciones, pero sus dos respuestas no se incluyen en los porcentajes de la tabla ni sustituyen el lote emparejado de 50 preguntas.
+
+La [comparación emparejada de 50 preguntas](qwen3_4b_f0bff499766960f7/REPORTE.md) añadió el baseline con la misma configuración de inferencia que RAG: **1/50 (2%) frente a 40/50 (80%)** con la pauta E2. Las 50 respuestas RAG resultaron idénticas a las de la primera corrida, por lo que se conservaron sus veredictos; el reporte distingue esa reproducción del nuevo baseline y del 4% histórico de E1.

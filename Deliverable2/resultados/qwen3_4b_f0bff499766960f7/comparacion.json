@@ -1,0 +1,69 @@
+{
+  "protocolo": "rag-consultable-baseline-v1",
+  "preguntas": 50,
+  "respuestas": 100,
+  "comparacion_pareada": {
+    "ambas_correctas": 1,
+    "solo_baseline_correcto": 0,
+    "solo_rag_correcto": 39,
+    "ambas_incorrectas": 10,
+    "diferencia_puntos_porcentuales": 78.0
+  },
+  "metricas": {
+    "baseline_directo": {
+      "correctas": 1,
+      "porcentaje": 2.0,
+      "por_categoria": {
+        "abstencion": 1,
+        "condicional": 0,
+        "cruce": 0,
+        "factual": 0,
+        "numerica": 0
+      },
+      "segundos_generacion_media": 7.21,
+      "segundos_recuperacion_media": 0.0,
+      "tokens_entrada_media": 119.3,
+      "tokens_salida_media": 64.6,
+      "respuestas_cortadas": 0,
+      "respuestas_vacias": 0
+    },
+    "rag_estructurado": {
+      "correctas": 40,
+      "porcentaje": 80.0,
+      "por_categoria": {
+        "abstencion": 10,
+        "condicional": 6,
+        "cruce": 8,
+        "factual": 9,
+        "numerica": 7
+      },
+      "segundos_generacion_media": 16.13,
+      "segundos_recuperacion_media": 0.112,
+      "tokens_entrada_media": 1320.4,
+      "tokens_salida_media": 94.8,
+      "respuestas_cortadas": 0,
+      "respuestas_vacias": 0
+    }
+  },
+  "rag_repeticion_corrida_anterior": {
+    "prompts_identicos": 50,
+    "evidencias_identicas": 50,
+    "respuestas_identicas": 50,
+    "evaluacion_reutilizada_de": "../qwen3_4b_4adccec813c53d7f/evaluacion/rag_estructurado/veredictos.json"
+  },
+  "baseline_correctas": [
+    50
+  ],
+  "rag_incorrectas": [
+    1,
+    11,
+    13,
+    15,
+    24,
+    25,
+    28,
+    30,
+    36,
+    38
+  ]
+}

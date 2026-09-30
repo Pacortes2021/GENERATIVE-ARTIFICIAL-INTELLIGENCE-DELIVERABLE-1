@@ -10,7 +10,7 @@
 4. Para una comparación nueva sobre las 50 preguntas conocidas, en la sección 6 cambia `EJECUTAR_LOTE_50 = False` a `True` y deja `IDS_LOTE = None`. `IDS_LOTE = [1, 2]` serviría para un lote corto. Al terminar, vuelve a ejecutar la celda de descarga situada antes de la sección 6 para obtener el ZIP con `baseline_directo.csv` y `rag_estructurado.csv`.
 5. Evalúa ambos CSV con la [misma pauta](../evaluacion/README.md). El cuaderno registra datos técnicos, pero no asigna corrección semántica.
 
-`USAR_DRIVE=True` guarda los checkpoints en Drive; Colab pedirá autorización. Con `False`, descarga el ZIP antes de cerrar la sesión. Las respuestas guardan texto, prompt, evidencia, tokens, tiempo, motivo de parada, configuración y hashes. El baseline recibe solo pregunta e instrucción directa; RAG recibe evidencia recuperada. La nueva comparación conserva el prompt de E1 pero utiliza los parámetros de inferencia de RAG para emparejar las condiciones. Su resultado no está medido todavía.
+`USAR_DRIVE=True` guarda los checkpoints en Drive; Colab pedirá autorización. Con `False`, descarga el ZIP antes de cerrar la sesión. Las respuestas guardan texto, prompt, evidencia, tokens, tiempo, motivo de parada, configuración y hashes. El baseline recibe solo pregunta e instrucción directa; RAG recibe evidencia recuperada. La nueva comparación conserva el prompt de E1 pero utiliza los parámetros de inferencia de RAG para emparejar las condiciones. Su [resultado medido](../resultados/qwen3_4b_f0bff499766960f7/REPORTE.md) está documentado por separado del 4% histórico.
 
 ## Si Colab se desconecta
 
@@ -22,7 +22,7 @@ El tokenizador E5 se verifica contra el JSON exacto con el que se fragmentó el 
 
 ## Qué está verificado
 
-La [validación del sistema](validacion_sistema.json) documenta la recuperación real con E5 en CPU: al indexar de nuevo y consultar las 50 preguntas se obtuvieron los mismos contextos guardados. Se comprobó una pregunta fuera del test y se midieron los 100 prompts de baseline/RAG con el tokenizador real de Qwen. Las pruebas locales comprueban generación simulada, reanudación y exportación. Un [piloto real en GPU Colab](../resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) produjo una respuesta baseline y una RAG para una pregunta nueva. **El lote emparejado de 50 y su evaluación están pendientes.**
+La [validación del sistema](validacion_sistema.json) documenta la recuperación real con E5 en CPU: al indexar de nuevo y consultar las 50 preguntas se obtuvieron los mismos contextos guardados. Se comprobó una pregunta fuera del test y se midieron los 100 prompts de baseline/RAG con el tokenizador real de Qwen. Las pruebas locales comprueban generación simulada, reanudación y exportación. Un [piloto real en GPU Colab](../resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) produjo una respuesta baseline y una RAG para una pregunta nueva. El [lote emparejado de 50](../resultados/qwen3_4b_f0bff499766960f7/REPORTE.md) ya produjo 100 respuestas, verificadas y evaluadas con la pauta E2.
 
 Para regenerar el cuaderno desde la raíz del repositorio se necesita `nbformat`:
 

@@ -1,0 +1,307 @@
+{
+  "paquete_sha256": "280ce63c0a307dca126608816f52d2b8dbe9c236ce26787d6d09c79cd19a3270",
+  "evaluador": "Asistente de IA de este chat (Codex)",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "787dd88e0baeef31afe05aa4bf6943e2d0bdb5c5a07e81d2ecc5779eb7698214",
+      "correcta": false,
+      "motivo": "Da 14/20 en vez de la nota 4,0 y cita un artículo no pertinente; RI-FI art. 11."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "b2fd058f2cb3f0b5a930f2a1f562637ee8f3715f621b4864e85f705215314a34",
+      "correcta": false,
+      "motivo": "Se abstiene pese a que RI-FI art. 11 fija al menos tres evaluaciones sumativas."
+    },
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "51db81a5de79a75c7a3afb3dfad5fba592473432aa8d2758cc14909787c24583",
+      "correcta": false,
+      "motivo": "Se abstiene pese al derecho a una evaluación de recuperación de RI-FI art. 12."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "f6d487bd0f209dae572b7026c29925c169613d7a551e3ffd253eca4b1d521389",
+      "correcta": false,
+      "motivo": "Da escala 0–7 en vez de 1–7 y atribuye el dato a un artículo equivocado; RG art. 23."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "b40663d51603ab9fcbe59fad59add329e974dcaf57d6774fc561ac8440a27d76",
+      "correcta": false,
+      "motivo": "Sustituye la Memoria de Título por un supuesto TFC; RI-FI art. 29."
+    },
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "dd4dc548f91b565da1114c8c661b282aab9fa62d14808b3640256b6c3d87c26b",
+      "correcta": false,
+      "motivo": "Afirma dos semanas en vez de la anticipación mínima de una semana; RI-FI art. 10."
+    },
+    {
+      "caso_id": "P07",
+      "respuesta_sha256": "f21f21646bf7260fd553fe10329f7f81fa77621fbf91be5edea00bf4c407db2d",
+      "correcta": false,
+      "motivo": "Atribuye la primera decisión al director de carrera; corresponde al Comité de Docencia y Asuntos Estudiantiles, RI-FI art. 16."
+    },
+    {
+      "caso_id": "P08",
+      "respuesta_sha256": "e2a434d1c9cfd1ee45e06b23cd8521836837192b3e4f0be337f4c2ad45b36be0",
+      "correcta": false,
+      "motivo": "La negativa es correcta, pero la cita al art. 13 de RI-FI no respalda la irrevocabilidad; la regla está en RI-FI art. 26."
+    },
+    {
+      "caso_id": "P09",
+      "respuesta_sha256": "b364c3f534a78922e391238c008c6069f1d411b83431238fcaf0ae200e286365",
+      "correcta": false,
+      "motivo": "Acierta en dos períodos, pero los hace durar 16 semanas en vez de 19; RG art. 16."
+    },
+    {
+      "caso_id": "P10",
+      "respuesta_sha256": "a4bac9299535ba43965d117322e3f6141809143f11da125bc1b12ff0cf33b790",
+      "correcta": false,
+      "motivo": "Dice que Primer Año Común sí puede convalidar; RI-FI art. 22 lo prohíbe."
+    },
+    {
+      "caso_id": "P11",
+      "respuesta_sha256": "95690722ad654a40a5113f4bd1587dae8939bd79d765079ff4b372d582810baa",
+      "correcta": false,
+      "motivo": "Da 60 créditos en vez del mínimo general de ocho; RI-FI art. 8."
+    },
+    {
+      "caso_id": "P12",
+      "respuesta_sha256": "66831a5543b9122b840c22eddd0d81a0aa1702327378ce67948db6acf527a98e",
+      "correcta": false,
+      "motivo": "Da umbral de doce créditos en vez de menos de quince; RI-FI art. 14 a)."
+    },
+    {
+      "caso_id": "P13",
+      "respuesta_sha256": "bee0a49eb3dd936e22658e1feb1c95c7c3ed0db5b49251ae22e3454a8698dd56",
+      "correcta": false,
+      "motivo": "Se abstiene pese al umbral inferior a diez créditos semestrales desde el cuarto semestre; RI-FI art. 14 b)."
+    },
+    {
+      "caso_id": "P14",
+      "respuesta_sha256": "f0e4c5ffdc3df8bda5267e257e2ba2e841783bb998d5ee132daf1d397a4cf39d",
+      "correcta": false,
+      "motivo": "Se abstiene pese al límite de 80% para clases teóricas y prácticas; RI-FI art. 13."
+    },
+    {
+      "caso_id": "P15",
+      "respuesta_sha256": "bee0a49eb3dd936e22658e1feb1c95c7c3ed0db5b49251ae22e3454a8698dd56",
+      "correcta": false,
+      "motivo": "Se abstiene pese a la calificación mínima equivalente a 4,5; RI-FI art. 21."
+    },
+    {
+      "caso_id": "P16",
+      "respuesta_sha256": "d4b38b4bb7d3a66e724203e032fc4a0f42e20985cc7cc292543508cad6b57d61",
+      "correcta": false,
+      "motivo": "Indica seis semanas en vez de las cuatro primeras semanas de ingreso; RI-FI art. 22."
+    },
+    {
+      "caso_id": "P17",
+      "respuesta_sha256": "47d1a26057bf20488dbbe1088eb8d99e6984bb42ced4bf0b465b128645d78c59",
+      "correcta": false,
+      "motivo": "Indica quince días hábiles y art. 12; para reconocimiento de contenidos son treinta días del período, RI-FI art. 23."
+    },
+    {
+      "caso_id": "P18",
+      "respuesta_sha256": "769d04e3b8a58ef810eaaa556b37fae2bf33b4df326093c52ccb0a0b87a78969",
+      "correcta": false,
+      "motivo": "Se abstiene pese al máximo de 36 créditos adicionales; RI-FI art. 31."
+    },
+    {
+      "caso_id": "P19",
+      "respuesta_sha256": "1ae3c3f07264bc540807115d0115e9e7fe62a60c80d97df7b5d0d1299bd5f5b8",
+      "correcta": false,
+      "motivo": "Indica 18 semanas en vez de 19; RG art. 16."
+    },
+    {
+      "caso_id": "P20",
+      "respuesta_sha256": "02e160c61e4d0a39caf3a829c093f0a83230cfbb110b56087071f27242a830ae",
+      "correcta": false,
+      "motivo": "Indica quince días hábiles en vez de tres posteriores a la evaluación; RG art. 26."
+    },
+    {
+      "caso_id": "P21",
+      "respuesta_sha256": "b7ed6d2e4819598dd6be1f8149992105ad49b77d098ddc658b8b1c0a9fdb83d3",
+      "correcta": false,
+      "motivo": "Se abstiene pese a los promedios 4,5 desde otra universidad y 4,2 entre carreras de Ingeniería; RI-FI arts. 17–18."
+    },
+    {
+      "caso_id": "P22",
+      "respuesta_sha256": "fcdb09b465161197826aac68e25990b17259cc3f2e5d7675786fe0972e5ad85b",
+      "correcta": false,
+      "motivo": "Se abstiene pese al mínimo 5,0 para solicitar la carrera simultánea; RI-FI art. 19."
+    },
+    {
+      "caso_id": "P23",
+      "respuesta_sha256": "4ade2c3c06b67c4cffbec918a4b5298e3332199af70a85f22d40a54e03ec30e8",
+      "correcta": false,
+      "motivo": "Inventó una prohibición por país de procedencia; RI-FI art. 20 prohíbe revalidar una asignatura ya cursada y reprobada en el plan."
+    },
+    {
+      "caso_id": "P24",
+      "respuesta_sha256": "2fb6eb19986ab88a69aaa6916d3792968619ddd9ee5c729b9bf53a5964b2fc54",
+      "correcta": false,
+      "motivo": "Sustituye la baja académica y sus excepciones por una prohibición de repetir; RI-FI art. 14 c)."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "0d25d2a616384ce7bc85b2cd644b1c4d75f0d4b1c2420fb51b0207bddc943fc9",
+      "correcta": false,
+      "motivo": "No identifica las dos prioridades no eliminables e inventa autorización del coordinador; RI-FI arts. 7 y 9."
+    },
+    {
+      "caso_id": "P26",
+      "respuesta_sha256": "d2c32c5dde9aa57f0137740e413aac6f5bec9d3fb6f8a8ba10d27a1676a1aa89",
+      "correcta": false,
+      "motivo": "Inventa una unidad de atención y trámite de reingreso; debe solicitarse reincorporación a Vicedecanatura, RI-FI art. 27."
+    },
+    {
+      "caso_id": "P27",
+      "respuesta_sha256": "742e23fdf20c3ba9bdc532960eff5801ba35c704cc45e64cc8e4a4b8b5b47ef7",
+      "correcta": false,
+      "motivo": "Se abstiene pese a los certificados de DAFE y Bibliotecas requeridos por RI-FI art. 25."
+    },
+    {
+      "caso_id": "P28",
+      "respuesta_sha256": "601ccf418e1d6fd79584ce91a7e08e4cfc5335798c4aba23bf3b1f3ca0834b26",
+      "correcta": false,
+      "motivo": "Habla vagamente de sanciones y omite la pérdida del derecho a continuar y la excepción por asignaturas anuales; RG art. 29."
+    },
+    {
+      "caso_id": "P29",
+      "respuesta_sha256": "840b4a39745e2d27ba9dcda1a20a216dea35b1995c96b893f1b81353d61e8493",
+      "correcta": false,
+      "motivo": "Propone una extensión ante Coordinación de Carrera; la solicitud va al profesor encargado dentro de tres días hábiles, RG art. 26."
+    },
+    {
+      "caso_id": "P30",
+      "respuesta_sha256": "a2185a70cf95a1fac88780cc20c12db44fbc4da002f6c2951f1f00efd31c7439",
+      "correcta": false,
+      "motivo": "Niega un límite numérico pese a que RI-FI art. 13 permite exigir hasta 100% en laboratorios, talleres y actividades similares."
+    },
+    {
+      "caso_id": "P31",
+      "respuesta_sha256": "7250690ef721e73d64beb4e218b991eb0a99a2e9769d4b2c09f407294d42e1f9",
+      "correcta": false,
+      "motivo": "La prevalencia es correcta, pero atribuye una regla distinta al art. 10 de RI-FI; la respaldan RI-FI art. 34 y RG art. 60."
+    },
+    {
+      "caso_id": "P32",
+      "respuesta_sha256": "3d27f60ecafcdb4e0ffc0c479b870f772fd7391cc7c899107b363430f5ec96c8",
+      "correcta": false,
+      "motivo": "Da 30 de abril en vez del 4 de septiembre de 2026; Calendario 2026, segundo semestre."
+    },
+    {
+      "caso_id": "P33",
+      "respuesta_sha256": "3e89a2035027c98b402b81563b91917febc12593e85b6062fabe1b68c1d2a020",
+      "correcta": false,
+      "motivo": "Se abstiene pese al 2 de abril de 2026 indicado en el Calendario, primer semestre."
+    },
+    {
+      "caso_id": "P34",
+      "respuesta_sha256": "ef52f3ac1fea7787dffe0b6e7ae2100e6df674ba5397977d20b4fab693bbd135",
+      "correcta": false,
+      "motivo": "Atribuye al art. 12 una supuesta suspensión de dos años y omite el plazo solicitado de cuatro semanas antes del término; RG art. 31."
+    },
+    {
+      "caso_id": "P35",
+      "respuesta_sha256": "defe87a9e6c9de6f21fa6d9e84189eaec73bfd75ca42c14bc659b3e58e25ac1d",
+      "correcta": false,
+      "motivo": "Se abstiene pese al inicio de clases del 10 de agosto de 2026; Calendario, segundo semestre."
+    },
+    {
+      "caso_id": "P36",
+      "respuesta_sha256": "fc32305e8e2ac6acce01efbc149d33a06c2e398427e11aae3e3b0f38e2030fde",
+      "correcta": false,
+      "motivo": "Se abstiene pese a las fechas 3–7 de agosto y el mínimo general de ocho créditos; Calendario y RI-FI art. 8."
+    },
+    {
+      "caso_id": "P37",
+      "respuesta_sha256": "cabfc41c8b7e15547b7d5c8f676d72183ab3909c4d25fcbd641b8a173062ac18",
+      "correcta": false,
+      "motivo": "Se abstiene pese al término de clases del 11 de diciembre de 2026; Calendario, segundo semestre."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "facd3d6427018e6cf4457568a0874dba4709155ee4defef1d605ddd22b953527",
+      "correcta": false,
+      "motivo": "Niega la aplicación del RG y da nota de aprobación 3,0 en vez de 4,0; RI-FI art. 2, RG art. 23 y RI-FI art. 11."
+    },
+    {
+      "caso_id": "P39",
+      "respuesta_sha256": "3d1b44cb575dffd4f2ee9d4e3190feab78189aa3d0d16eff904a5b708e8193d5",
+      "correcta": false,
+      "motivo": "Se abstiene pese a las evaluaciones de recuperación del 14 al 23 de diciembre; Calendario, segundo semestre."
+    },
+    {
+      "caso_id": "P40",
+      "respuesta_sha256": "d3be02a06f1828320f5a3fb3229e6c7f425db19560f4e9929fec998b357e91ab",
+      "correcta": false,
+      "motivo": "Da un nombre incorrecto al reglamento y 30% en vez de 40%; RI-FI arts. 29–30."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "0e347bb8758adcd970714528a69248cf580228fd4141915f4312ef7d25224379",
+      "correcta": false,
+      "motivo": "Inventa contenido del inexistente art. 90 de RI-FI; el articulado termina en el art. 35."
+    },
+    {
+      "caso_id": "P42",
+      "respuesta_sha256": "e3e3c7e98d64e89169a57db0612ff196a6da52329fe392656c5b63211a95a73f",
+      "correcta": false,
+      "motivo": "Inventa requisitos del inexistente art. 36 de RI-FI; el articulado termina en el art. 35."
+    },
+    {
+      "caso_id": "P43",
+      "respuesta_sha256": "bff6168c82c7497544346ebcb090950100e1f9224fd34d85301575d526eab28c",
+      "correcta": false,
+      "motivo": "Inventa contenido del inexistente art. 100 del RG; sus artículos permanentes terminan en el 60."
+    },
+    {
+      "caso_id": "P44",
+      "respuesta_sha256": "7eac22be19786d20db78dae01c859d92eabf31d576894ee4d884206db91cbded",
+      "correcta": false,
+      "motivo": "Inventa contenido del inexistente art. 70 del RG; sus artículos permanentes terminan en el 60."
+    },
+    {
+      "caso_id": "P45",
+      "respuesta_sha256": "13e1aed506a81834975b18f1201aa769a73e8b84c39c8cafebae09d85eaaf5f7",
+      "correcta": false,
+      "motivo": "Inventa un inciso d) y su causal; RI-FI art. 14 solo contiene a), b) y c)."
+    },
+    {
+      "caso_id": "P46",
+      "respuesta_sha256": "cce2542729b9785371a2e9f21353334a2b89698e72f54fee0fc67c631c0c6c0c",
+      "correcta": false,
+      "motivo": "Inventa un inciso c) y su condición; RI-FI art. 25 solo enumera los certificados a) y b)."
+    },
+    {
+      "caso_id": "P47",
+      "respuesta_sha256": "15bc972f9246626a3adb427c343379eba74ff5dcc2122a8574cdb24b5e4f8dd6",
+      "correcta": false,
+      "motivo": "Inventa un máximo de 32 créditos; RI-FI art. 8 solo establece el mínimo general y excepciones."
+    },
+    {
+      "caso_id": "P48",
+      "respuesta_sha256": "14717332307aeca64acc9a332d8825771b0e97ce0d3069cdf76a3d0e91c11dd5",
+      "correcta": false,
+      "motivo": "Inventa una nota mínima 1,0 para recuperación; RI-FI art. 12 no fija ninguna."
+    },
+    {
+      "caso_id": "P49",
+      "respuesta_sha256": "a082cdd0673e1e83b51f25dc7ec60bfed0b0425a336770fd92a3fe9cb3098be2",
+      "correcta": false,
+      "motivo": "Niega la fecha del calendario, pero añade una afirmación nacional no respaldada por el corpus y cita un art. 8 ajeno; Calendario, segundo semestre."
+    },
+    {
+      "caso_id": "P50",
+      "respuesta_sha256": "bee0a49eb3dd936e22658e1feb1c95c7c3ed0db5b49251ae22e3454a8698dd56",
+      "correcta": true,
+      "motivo": "Niega de forma inequívoca que la normativa establezca un promedio para tercera carrera simultánea; RI-FI art. 19 solo regula el supuesto consultado de segunda carrera."
+    }
+  ]
+}

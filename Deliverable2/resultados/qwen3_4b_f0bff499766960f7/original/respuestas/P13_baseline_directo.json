@@ -1,0 +1,33 @@
+{
+  "pregunta_id": 13,
+  "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+  "categoria": "numerica",
+  "variante": "baseline_directo",
+  "tokens_entrada": 128,
+  "prompt_sha256": "feb96f03cb4b3877fbc8c55180f905e34e4c4735760fda690fb74c3e7c771f4d",
+  "evidencia_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+  "respuesta_modelo": "No está en la normativa.",
+  "ids_tokens_salida": [
+    2753,
+    15466,
+    662,
+    1187,
+    7465,
+    27852,
+    13,
+    151645
+  ],
+  "salida_con_tokens_especiales": "No está en la normativa.<|im_end|>",
+  "tokens_salida": 8,
+  "motivo_parada": "eos",
+  "posible_corte": false,
+  "thinking_inesperado": false,
+  "segundos": 1.2178,
+  "pico_memoria_gpu_gb": 2.5638,
+  "run_hash": "f0bff499766960f7bf41e9c8a29bcb9d74fac7d2431dc2663a5ccfe8304cc598",
+  "respuesta_sha256": "6f2b1d78f15adae131224ac119c910bd63a870dcf120ccdde2fbed8a5bccdb41",
+  "semilla": 2039,
+  "fecha_utc": "2026-09-30T21:27:20.589685+00:00",
+  "segundos_recuperacion": 0.0,
+  "segundos_consulta": 1.2178
+}

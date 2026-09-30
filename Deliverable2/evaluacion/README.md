@@ -8,7 +8,7 @@ El flujo acordado es sencillo: **pregunta + respuesta de referencia + respuesta 
 
 Los [criterios del juez](criterios.md) aceptan paráfrasis y citas alternativas válidas, y evitan exigir todos los detalles complementarios. El juez consulta el PDF si aparece una duda o fuente alternativa que no pueda comprobar con los fragmentos. La pauta nunca se entrega a Qwen como parte de su prueba: se reserva para evaluar. En RAG se usan únicamente los documentos originales.
 
-El 4% histórico permanece sin cambios. La [primera corrida RAG evaluada](../resultados/qwen3_4b_4adccec813c53d7f/REPORTE.md) contiene 150 decisiones asistidas y sus motivos. El baseline emparejado con esa solución sigue pendiente; cuando se ejecute, se aplicará esta misma pauta a baseline y RAG por separado. La [muestra didáctica anterior](calibracion.md) sigue disponible como material opcional; no es un paso obligatorio ni un resultado experimental.
+El 4% histórico permanece sin cambios. La [primera corrida RAG evaluada](../resultados/qwen3_4b_4adccec813c53d7f/REPORTE.md) contiene 150 decisiones asistidas y sus motivos. La [comparación emparejada posterior](../resultados/qwen3_4b_f0bff499766960f7/REPORTE.md) aplicó la misma pauta a 50 respuestas nuevas del baseline y conservó los veredictos de las 50 respuestas RAG que se reprodujeron exactamente. La [muestra didáctica anterior](calibracion.md) sigue disponible como material opcional; no es un paso obligatorio ni un resultado experimental.
 
 ## Preparar una corrida
 

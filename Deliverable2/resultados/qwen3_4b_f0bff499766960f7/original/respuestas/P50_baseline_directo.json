@@ -1,0 +1,33 @@
+{
+  "pregunta_id": 50,
+  "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+  "categoria": "abstencion",
+  "variante": "baseline_directo",
+  "tokens_entrada": 139,
+  "prompt_sha256": "22fe154277d23044953f2634ad219ce55cd5a9e2d6311b9b11ca70aa07834d0e",
+  "evidencia_sha256": "12ae32cb1ec02d01eda3581b127c1fee3b0dc53572ed6baf239721a03d82e126",
+  "respuesta_modelo": "No está en la normativa.",
+  "ids_tokens_salida": [
+    2753,
+    15466,
+    662,
+    1187,
+    7465,
+    27852,
+    13,
+    151645
+  ],
+  "salida_con_tokens_especiales": "No está en la normativa.<|im_end|>",
+  "tokens_salida": 8,
+  "motivo_parada": "eos",
+  "posible_corte": false,
+  "thinking_inesperado": false,
+  "segundos": 1.6593,
+  "pico_memoria_gpu_gb": 2.5657,
+  "run_hash": "f0bff499766960f7bf41e9c8a29bcb9d74fac7d2431dc2663a5ccfe8304cc598",
+  "respuesta_sha256": "6f2b1d78f15adae131224ac119c910bd63a870dcf120ccdde2fbed8a5bccdb41",
+  "semilla": 2076,
+  "fecha_utc": "2026-09-30T21:42:35.368672+00:00",
+  "segundos_recuperacion": 0.0,
+  "segundos_consulta": 1.6593
+}

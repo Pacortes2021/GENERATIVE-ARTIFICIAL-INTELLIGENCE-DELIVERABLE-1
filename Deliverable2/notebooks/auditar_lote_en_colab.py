@@ -10,15 +10,16 @@ import urllib.request
 import zipfile
 
 # Puedes definir ZIP_LOTE e ID_CASO en Colab antes de ejecutar esta celda.
-ZIP_LOTE = Path(globals().get('ZIP_LOTE',
-    '/content/drive/MyDrive/GenIA_Deliverable2/sistema_runs/comparacion_f0bff499766960f7.zip'))
+# Si no hay una copia local, se descarga la corrida previa publicada; no se genera otra.
 ID_CASO = globals().get('ID_CASO', 25)  # Cualquier número de 1 a 50.
 
+ZIP_NOMBRE = 'comparacion_f0bff499766960f7.zip'
 ZIP_SHA256 = 'e6d6628c8ae27f85f8f6bfd11f859a5d95d32731c51a88ab3e1a4e5b4c42a797'
 RUN_SHA256 = 'f0bff499766960f7bf41e9c8a29bcb9d74fac7d2431dc2663a5ccfe8304cc598'
-BASE = ('https://raw.githubusercontent.com/Pacortes2021/'
-        'GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/773a7da/'
-        'Deliverable2/resultados/qwen3_4b_f0bff499766960f7/evaluacion')
+CORRIDA_PUBLICADA = ('https://raw.githubusercontent.com/Pacortes2021/'
+                    'GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/773a7da/'
+                    'Deliverable2/resultados/qwen3_4b_f0bff499766960f7')
+BASE = CORRIDA_PUBLICADA + '/evaluacion'
 PUBLICADOS = {
     'baseline_directo': {
         'paquete.json': '4bdd4ac6739677a9c33e3017c204aecf2d587f6d580cf55b75e2d13a354a24f5',
@@ -32,6 +33,36 @@ PUBLICADOS = {
 
 def sha(data):
     return hashlib.sha256(data).hexdigest()
+
+def localizar_zip(preferido=None, output_root=None, content_root=Path('/content')):
+    content_root = Path(content_root)
+    copia_publicada = content_root / 'auditoria_publicada' / ZIP_NOMBRE
+    candidatos = [Path(preferido)] if preferido is not None else []
+    if output_root is not None:
+        candidatos.append(Path(output_root) / ZIP_NOMBRE)
+    candidatos.extend([
+        content_root / 'drive/MyDrive/GenIA_Deliverable2/sistema_runs' / ZIP_NOMBRE,
+        content_root / 'sistema_runs' / ZIP_NOMBRE,
+        content_root / ZIP_NOMBRE,
+        copia_publicada,
+    ])
+    for ruta in dict.fromkeys(candidatos):
+        if ruta.is_file():
+            assert sha(ruta.read_bytes()) == ZIP_SHA256, (
+                f'El ZIP local no coincide con el original evaluado: {ruta}. '
+                'No se reemplazó. Usa el ZIP original de la corrida f0bff499766960f7.')
+            origen = ('Copia publicada en GitHub, conservada en Colab'
+                      if ruta == copia_publicada else 'Archivo local verificado')
+            return ruta, origen
+    url = CORRIDA_PUBLICADA + '/' + ZIP_NOMBRE
+    print('El ZIP no está en las rutas locales. Descargando la copia de la corrida previa:')
+    print(url)
+    with urllib.request.urlopen(url, timeout=30) as response:
+        data = response.read()
+    assert sha(data) == ZIP_SHA256, 'La descarga no coincide con el ZIP original; no se guardó.'
+    copia_publicada.parent.mkdir(parents=True, exist_ok=True)
+    copia_publicada.write_bytes(data)
+    return copia_publicada, 'Copia de la corrida previa descargada de GitHub (commit 773a7da)'
 
 def canon(value):
     return sha(json.dumps(value, ensure_ascii=False, sort_keys=True,
@@ -48,7 +79,7 @@ def publicado(variante, nombre):
     assert sha(data) == PUBLICADOS[variante][nombre], f'Cambió el archivo publicado: {url}'
     return json.loads(data)
 
-assert ZIP_LOTE.is_file(), f'No encuentro el ZIP del lote: {ZIP_LOTE}'
+ZIP_LOTE, origen_zip = localizar_zip(globals().get('ZIP_LOTE'), globals().get('OUTPUT_ROOT'))
 zip_bytes = ZIP_LOTE.read_bytes()
 assert sha(zip_bytes) == ZIP_SHA256, ('El ZIP no coincide byte a byte con el descargado y evaluado. '
                                      'Usa el comparacion_f0bff499766960f7.zip original; no otro exportado después.')
@@ -99,6 +130,8 @@ for variant in PUBLICADOS:
     packets[variant], judgments[variant] = cases, decisions
 
 print('AUDITORÍA DEL LOTE EMPAREJADO')
+print('Origen:', origen_zip, '| Ruta:', ZIP_LOTE)
+print('Se audita la corrida previa f0bff499766960f7; esta celda no ejecuta una corrida nueva.')
 print('ZIP original:', ZIP_LOTE.name, '| SHA-256, CRC y 100 respuestas: OK')
 print('Configuración, prompts, evidencia y hashes de 100 respuestas: OK')
 print('100 juicios publicados en un commit fijo; hashes y vínculos con respuestas: OK')

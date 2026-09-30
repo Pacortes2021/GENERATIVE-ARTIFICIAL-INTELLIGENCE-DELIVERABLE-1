@@ -338,15 +338,18 @@ print('Corpus listo:', len(CORPUS['unidades']), 'unidades completas;', len(FRAGM
     md('''
     ## 7. Auditar la corrida evaluada sin volver a generar
 
-    Esta celda **no ejecuta E5 ni Qwen**. Lee de Drive el ZIP exacto de 100 respuestas de la corrida emparejada
-    ya evaluada y obtiene desde un commit fijo los paquetes y veredictos publicados. Verifica sus hashes, los
+    Esta celda **no ejecuta E5 ni Qwen**. Busca el ZIP exacto de 100 respuestas de la corrida emparejada
+    ya evaluada en `ZIP_LOTE`, `OUTPUT_ROOT`, Drive y el almacenamiento temporal de Colab. Si no está,
+    descarga la copia publicada desde un commit fijo y muestra su origen; no requiere montar Drive.
+    Obtiene también los paquetes y veredictos publicados desde ese commit. Verifica sus hashes, los
     prompts, la evidencia y la correspondencia entre cada respuesta y su juicio antes de contar 1/50 y 40/50.
     Muestra los diez fallos RAG y permite cambiar `ID_CASO` para inspeccionar cualquiera de las 50 preguntas.
     Para P25 también muestra los artículos 7 y 9 que estaban íntegros en el prompt realmente enviado.
 
     **Alcance:** los aciertos son recuentos de veredictos asistidos ya registrados, no una evaluación semántica
-    automática nueva. El evaluador y sus motivos son visibles en los archivos publicados. Si el ZIP de Drive fue
-    reexportado después, usa el ZIP original descargado para esta corrida; la celda se detiene ante un hash distinto.
+    automática nueva. El evaluador y sus motivos son visibles en los archivos publicados. Si un ZIP local fue
+    reexportado después, usa el ZIP original descargado para esta corrida; la celda se detiene ante un hash distinto
+    sin reemplazar ese archivo. La copia pública se guarda por separado en `/content/auditoria_publicada/`.
     ''')
     code(audit_cell)
     md('''

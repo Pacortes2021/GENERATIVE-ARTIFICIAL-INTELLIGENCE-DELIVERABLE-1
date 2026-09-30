@@ -10,7 +10,7 @@ El archivo principal es [Deliverable2_Sistema_RAG_Colab.ipynb](notebooks/Deliver
 
 1. Sube el cuaderno a Colab, activa GPU, reinicia la sesión si habías abierto una versión anterior y ejecuta las secciones 1–4.
 2. En la sección 5 escribe una pregunta en `PREGUNTA` y ejecuta la celda. Muestra **baseline sin documentos y RAG estructurado** sobre la misma entrada, con los fragmentos consultables.
-3. Descarga el ZIP de esa consulta. Para generar una comparación adicional sobre las 50 preguntas de E1, activa `EJECUTAR_LOTE_50 = True` en la sección 6 y descarga el ZIP del lote.
+3. Descarga el ZIP de esa consulta. Para generar una comparación adicional sobre las 50 preguntas de E1, usa `EJECUTAR_LOTE_50 = True` e `IDS_LOTE = None` en la sección 6; después vuelve a ejecutar la celda de descarga anterior para obtener el ZIP del lote.
 4. Evalúa los dos CSV nuevos con la [misma pauta de contenido y citas](evaluacion/README.md). La evaluación semántica se hace fuera del cuaderno; no se calcula a partir de palabras clave.
 
 La [guía del cuaderno](notebooks/README.md) explica la configuración, los checkpoints, la exportación y el diagnóstico de Colab. El código que genera el notebook está en [crear_sistema.py](notebooks/crear_sistema.py); las funciones de consulta e inferencia están en [sistema.py](notebooks/sistema.py).
@@ -42,13 +42,15 @@ La diferencia de **una respuesta** entre simple y estructurado no demuestra supe
 
 El **4% de Deliverable 1** se conserva como resultado histórico. Esa corrida utilizó otra configuración de inferencia y su evaluación original; no debe restarse del 80% como si fuese un experimento controlado. Para satisfacer la comparación emparejada del enunciado falta ejecutar el lote del cuaderno principal y revisar baseline y RAG con la misma pauta. Ningún resultado de ese lote se afirma por adelantado.
 
+Un [piloto de una consulta nueva](resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) ya ejecutó las dos condiciones en Colab. El baseline negó erróneamente la revalidación; RAG halló los artículos pertinentes y respondió «sí», pero omitió condiciones presentes en la evidencia. Este caso documenta el funcionamiento y un límite del generador; no es una estimación de precisión.
+
 ## Estado de la entrega
 
 | Elemento | Estado |
 |---|---|
 | Modelo elegido, corpus, recuperador y primera corrida RAG | Realizados y documentados |
-| Sistema consultable con baseline visible | Implementado; validado localmente con E5 real y generación simulada |
-| Ejecución de la nueva comparación en GPU Colab | Pendiente |
+| Sistema consultable con baseline visible | Implementado; piloto de una pregunta ejecutado en Colab con Tesla T4 |
+| Ejecución del lote emparejado de 50 preguntas en GPU Colab | Pendiente |
 | Evaluación emparejada baseline/RAG | Pendiente de las salidas de Colab |
 | PDF técnico de una página compilado en LaTeX y video ≤3 minutos | Pendientes |
 

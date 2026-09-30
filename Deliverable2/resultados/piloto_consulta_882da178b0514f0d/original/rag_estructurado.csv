@@ -1,0 +1,4 @@
+﻿pregunta_id,pregunta,categoria,variante,respuesta_modelo,tokens_entrada,tokens_salida,motivo_parada,posible_corte,thinking_inesperado,segundos,segundos_recuperacion,segundos_consulta,pico_memoria_gpu_gb,semilla,prompt_sha256,evidencia_sha256,respuesta_sha256,run_hash
+1,Puedo revalidar una asignatura ya aprobada en otra carrera de esta universidad?,nueva,rag_estructurado,"Respuesta: Sí, puede revalidar una asignatura ya aprobada en otra carrera de esta universidad.  
+Condiciones o límites: La revalidación solo es permitida para asignaturas no previamente reprobadas en el Plan de Estudio [RI-FI-ART-020].  
+Fuente: [RI-FI-ART-020], [RG-ART-037].",1004,93,eos,False,False,13.3011,0.495393,13.7965,3.0076,2027,a2ef7215528e870a1b7f3f91dee06830196acdf23626e08a0fe8649c1f59602e,ab5a4cc1f6ca345f2c3df58ffc7af4aa55f022c87bd2049bb299e63f5bd3dfb7,9cb8381233158fd58648018678d81f63354d65984156cdcd680be87bfd100198,882da178b0514f0df461f32ece22b3ac14efb69a61e8c54727ab660db9c18559

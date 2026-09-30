@@ -1,0 +1,20 @@
+{
+  "segundos_carga_e_indexacion_e5": 38.44047711500002,
+  "segundos_carga_qwen": 150.87184253300006,
+  "diagnostico_tokenizador_e5": {
+    "archivo_sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+    "archivo_sha256_esperado": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+    "clase_cargada_inicialmente": "XLMRobertaTokenizerFast",
+    "versiones": {
+      "transformers": "4.57.6",
+      "tokenizers": "0.22.2",
+      "sentence-transformers": "5.1.2"
+    },
+    "fragmentos": 201,
+    "diferencias": [],
+    "diferencias_iniciales": [],
+    "max_tokens": 476,
+    "estado": "OK",
+    "clase_utilizada": "XLMRobertaTokenizerFast"
+  }
+}

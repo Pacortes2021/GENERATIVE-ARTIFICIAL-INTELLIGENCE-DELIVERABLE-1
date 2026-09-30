@@ -19,7 +19,7 @@ Este proyecto responde preguntas en español sobre tres documentos de docencia d
 | RAG estructurado | 40/50 (80%) | Primera corrida de Colab; configuración elegida |
 | RAG estructurado con ejemplos | 36/50 (72%) | Alternativa evaluada y descartada |
 
-**Estas cifras no forman todavía una comparación emparejada entre baseline y RAG.** El cuaderno principal prepara una corrida adicional con el mismo modelo, parámetros y preguntas para ambos; su ejecución en Colab y la revisión de sus respuestas están pendientes. Las 50 preguntas se usaron durante el desarrollo de la recuperación, por lo que tampoco miden generalización a preguntas nuevas.
+**Estas cifras no forman todavía una comparación emparejada entre baseline y RAG.** El [piloto consultable](Deliverable2/resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) ejecutó ambas condiciones en Colab para una sola pregunta nueva; el lote de 50 con el mismo modelo, parámetros y preguntas para ambos, y la revisión de sus respuestas, siguen pendientes. Las 50 preguntas se usaron durante el desarrollo de la recuperación, por lo que tampoco miden generalización a preguntas nuevas.
 
 ## Organización
 

@@ -22,4 +22,4 @@ Las preguntas conocidas son de desarrollo. Para medir generalización habrá que
 
 ## Estado de validación
 
-El código y cuaderno están preparados. Se probó recuperación real E5 en CPU, equivalencia de los 50 contextos y una consulta nueva. El presupuesto se valida con el tokenizador real de Qwen. La generación, los checkpoints y la exportación se comprueban con simulación; la ejecución real de esta nueva comparación en Colab y su evaluación semántica siguen pendientes. Ver [validación](notebooks/validacion_sistema.json).
+El código y cuaderno están preparados. Se probó recuperación real E5 en CPU, equivalencia de los 50 contextos y una consulta nueva. El presupuesto se valida con el tokenizador real de Qwen. La generación, los checkpoints y la exportación se comprobaron localmente con simulación. El [piloto en Colab](resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) añade una pregunta nueva generada de verdad en ambas condiciones. La ejecución y evaluación semántica del lote emparejado de 50 siguen pendientes. Ver también la [validación local](notebooks/validacion_sistema.json).

@@ -2,7 +2,7 @@
 
 - [Informe_tecnico_D2.tex](Informe_tecnico_D2.tex): fuente LaTeX editable del documento técnico.
 - [Informe_tecnico_D2.pdf](Informe_tecnico_D2.pdf): PDF vertical A4 de una página, compilado desde esa fuente.
-- [Video_D2.mp4](Video_D2.mp4): video de **2:44**, con consulta nueva ejecutada en vivo, comparación baseline/RAG, reporte y fallo P25. Enlace público directo: [descargar o reproducir el MP4](https://raw.githubusercontent.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/main/Deliverable2/entrega/Video_D2.mp4).
-- [Guion_video_D2.md](Guion_video_D2.md): secuencia real, criterio de edición y transcripción de la narración sintética.
+- [Como_grabar_video_D2.md](Como_grabar_video_D2.md): pasos para grabar la versión definitiva directamente en la sesión original de Colab. La sección 7 muestra allí la auditoría del ZIP y los veredictos previos.
+- [Guion_video_D2.md](Guion_video_D2.md): registro del borrador anterior y su narración; no corresponde a la versión definitiva.
 
-El MP4 conserva la ejecución de Colab tal como ocurrió. Las secciones costosas de preparación y el lote de 50 preguntas se muestran con sus salidas anteriores; solo la pregunta nueva se ejecuta durante la grabación. La imagen de resultados y el diagnóstico P25 proceden de reportes públicos del repositorio.
+La grabación definitiva está pendiente. El [borrador anterior](borradores/Video_D2_borrador_voz.mp4) se conserva como antecedente, pero no se presenta como entrega. La nueva grabación debe mostrar las salidas y la auditoría dentro de Colab, sin insertar imágenes de resultados durante la edición.

@@ -36,6 +36,7 @@ def portable_source():
 
 def build():
     portable = portable_source()
+    audit_cell = (HERE / 'auditar_lote_en_colab.py').read_text(encoding='utf-8')
     (HERE / 'recuperador_portable.py').write_text(portable)
     sources = {n: (HERE / n).read_text() for n in ['experimento.py', 'recuperador_portable.py', 'sistema.py']}
     data_dir = ROOT / 'Deliverable2/corpus/generado'
@@ -65,16 +66,19 @@ def build():
     md('''
     # Deliverable 2 · Sistema RAG consultable + baseline
 
-    **Versión del cuaderno: carga-ligera-v1.**
+    **Versión del cuaderno: carga-ligera-v1 + auditoría de corrida publicada.**
 
     **Escribe una pregunta nueva y compara Qwen3-4B sin documentos con RAG estructurado.**
     El sistema crea el índice E5 desde el corpus procesado, recupera para cada consulta y genera ambas respuestas.
-    No contiene respuestas ideales, veredictos ni salidas del modelo precalculadas.
+    Las secciones de generación no reciben respuestas ideales, veredictos ni salidas precalculadas.
+    La sección 7, que se ejecuta **después** de generar, audita el ZIP guardado y los juicios publicados.
 
     1. Sube este `.ipynb` a Colab y selecciona GPU. Ejecuta las secciones 1–4 para preparar el sistema.
     2. Escribe una pregunta en la sección 5 y ejecuta su celda; puedes repetirla con otra pregunta.
     3. Descarga el ZIP de la consulta. Conserva prompts, fragmentos, respuestas y configuración.
     4. Para medir las mismas 50 preguntas de E1, activa expresamente la sección 6. Genera 100 respuestas nuevas: baseline + RAG.
+    5. Para mostrar los resultados de la corrida ya evaluada sin repetir el lote, ejecuta la sección 7. Verifica el ZIP,
+       los 100 hashes de respuesta y los veredictos publicados antes de contar aciertos.
 
     **Si vienes de una versión anterior:** reinicia la sesión de Colab y ejecuta este archivo desde el principio.
     Esta versión fija el archivo del tokenizador E5, su hash y la versión de `tokenizers`; conserva los fragmentos.
@@ -332,6 +336,20 @@ print('Corpus listo:', len(CORPUS['unidades']), 'unidades completas;', len(FRAGM
         print('Lote desactivado. Las consultas individuales no lanzan las 50 preguntas.')
     ''')
     md('''
+    ## 7. Auditar la corrida evaluada sin volver a generar
+
+    Esta celda **no ejecuta E5 ni Qwen**. Lee de Drive el ZIP exacto de 100 respuestas de la corrida emparejada
+    ya evaluada y obtiene desde un commit fijo los paquetes y veredictos publicados. Verifica sus hashes, los
+    prompts, la evidencia y la correspondencia entre cada respuesta y su juicio antes de contar 1/50 y 40/50.
+    Muestra los diez fallos RAG y permite cambiar `ID_CASO` para inspeccionar cualquiera de las 50 preguntas.
+    Para P25 también muestra los artículos 7 y 9 que estaban íntegros en el prompt realmente enviado.
+
+    **Alcance:** los aciertos son recuentos de veredictos asistidos ya registrados, no una evaluación semántica
+    automática nueva. El evaluador y sus motivos son visibles en los archivos publicados. Si el ZIP de Drive fue
+    reexportado después, usa el ZIP original descargado para esta corrida; la celda se detiene ante un hash distinto.
+    ''')
+    code(audit_cell)
+    md('''
     ## Alcance y reproducción
 
     - Sistema elegido: RAG estructurado, sin few-shot; no se entrenan pesos ni se corrigen preguntas a mano.
@@ -341,7 +359,7 @@ print('Corpus listo:', len(CORPUS['unidades']), 'unidades completas;', len(FRAGM
     - Corpus procesado: tres PDF del proyecto. Solo los fragmentos seleccionados y los inventarios pertinentes llegan a Qwen.
     - Los tiempos de consulta suman búsqueda y generación en RAG; el índice y la carga de pesos se registran aparte.
     - Reproducción en el repositorio: `python3 Deliverable2/notebooks/crear_sistema.py` genera este cuaderno.
-    - Este cuaderno requiere una nueva ejecución de Colab para obtener resultados de la comparación emparejada; no atribuye automáticamente a esta corrida el 80% anterior.
+    - La sección 7 audita una corrida emparejada ya evaluada. Ejecutar otra vez la sección 6 produce respuestas y ZIP propios, que requieren juicios nuevos antes de calcular precisión; no se hereda automáticamente el 80%.
     ''')
     nb = nbf.v4.new_notebook(cells=cells, metadata={'kernelspec': {'display_name': 'Python 3', 'language': 'python', 'name': 'python3'},
         'language_info': {'name': 'python'}, 'colab': {'name': 'Deliverable2_Sistema_RAG_Colab.ipynb'}, 'accelerator': 'GPU'})

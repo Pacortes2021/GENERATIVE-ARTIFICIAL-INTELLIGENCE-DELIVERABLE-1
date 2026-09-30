@@ -31,4 +31,4 @@ Este proyecto responde preguntas en español sobre tres documentos de docencia d
 | [Corpus](Corpus/) | Los tres PDF normativos compartidos |
 | [Archivo](Archivo/README.md) | Prototipos anteriores conservados para consulta; no son la implementación vigente |
 
-El [enunciado de Deliverable 2](Deliverable2/enunciado.pdf) exige un PDF técnico de una página compilado desde LaTeX y un video de ejecución de hasta tres minutos. El [PDF, su fuente y el video de 2:44](Deliverable2/entrega/README.md) están en la carpeta de entrega. La grabación muestra una consulta real en Colab con baseline y RAG sobre la misma entrada; el reporte y el caso P25 completan la demostración.
+El [enunciado de Deliverable 2](Deliverable2/enunciado.pdf) exige un PDF técnico de una página compilado desde LaTeX y un video de ejecución de hasta tres minutos. El [PDF y su fuente](Deliverable2/entrega/README.md) están preparados. El video definitivo está pendiente de grabación; la [guía](Deliverable2/entrega/Como_grabar_video_D2.md) permite mostrar en la sesión original de Colab la ejecución y la auditoría de resultados, sin repetir la carga del modelo ni el lote.

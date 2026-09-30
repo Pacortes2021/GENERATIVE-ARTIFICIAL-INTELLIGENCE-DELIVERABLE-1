@@ -1,6 +1,6 @@
-# Video de Deliverable 2
+# Registro del borrador anterior de video
 
-[Video_D2.mp4](Video_D2.mp4) dura **2:44**. Tiene video H.264 a 2816 × 1762 y narración sintética en español.
+[Video_D2_borrador_voz.mp4](borradores/Video_D2_borrador_voz.mp4) dura **2:44**. Tiene video H.264 a 2816 × 1762 y narración sintética en español. Se conserva como antecedente, **no como versión para entregar**. La [guía actual](Como_grabar_video_D2.md) explica cómo grabar la ejecución y la auditoría dentro del mismo Colab.
 
 ## Qué se ve realmente
 

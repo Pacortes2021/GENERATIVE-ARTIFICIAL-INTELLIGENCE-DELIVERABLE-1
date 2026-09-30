@@ -304,6 +304,38 @@ print('Corpus listo:', len(CORPUS['unidades']), 'unidades completas;', len(FRAGM
         print('Todavía no se ha creado una corrida.')
     ''')
     md('''
+    ### 5b. Volver a probar un caso conocido en el modelo (opcional)
+
+    Cambia `ID_PRUEBA = None` por el número de una pregunta, por ejemplo `25`. Se recupera de nuevo
+    su evidencia y Qwen genera ambas respuestas con la configuración actual y la semilla asociada a ese ID.
+    Cada ejecución usa una carpeta vacía: no reutiliza respuestas guardadas, aunque ya hayas probado el caso.
+    Conserva todos los intentos y su ZIP. Esta es una repetición de una pregunta conocida, no una pregunta nueva
+    ni una ampliación de los porcentajes anteriores. Si el resultado cambia, se conserva tal como salga.
+    ''')
+    code('''
+    ID_PRUEBA = None  # Escribe 25 para volver a ejecutar P25, o cualquier ID del 1 al 50.
+    if ID_PRUEBA is None:
+        print('Prueba individual desactivada. Elige ID_PRUEBA para generar dos respuestas nuevas.')
+    else:
+        from pathlib import Path
+        from tempfile import mkdtemp
+        from sistema import prepare_run, run_tasks, show_comparison, export_run
+        if type(ID_PRUEBA) is not int or not 1 <= ID_PRUEBA <= 50:
+            raise ValueError('ID_PRUEBA debe ser un entero entre 1 y 50.')
+        PRUEBA_PREGUNTA = next(q for q in QUESTIONS if q['id'] == ID_PRUEBA)
+        PRUEBA_RAIZ = Path(OUTPUT_ROOT) / 'pruebas_en_vivo'
+        PRUEBA_RAIZ.mkdir(parents=True, exist_ok=True)
+        PRUEBA_INTENTO = Path(mkdtemp(prefix=f'P{ID_PRUEBA:02}_', dir=PRUEBA_RAIZ))
+        print('Pregunta conocida:', PRUEBA_PREGUNTA['pregunta'], flush=True)
+        print('Generación nueva; semilla:', SETTINGS['semilla_base'] + ID_PRUEBA, flush=True)
+        PRUEBA_DIR, PRUEBA_CONFIG, PRUEBA_CASOS, PRUEBA_TAREAS = prepare_run(
+            [PRUEBA_PREGUNTA], retriever, tokenizer, SETTINGS, PRUEBA_INTENTO)
+        PRUEBA_RESPUESTAS = run_tasks(PRUEBA_DIR, PRUEBA_CONFIG, PRUEBA_CASOS, PRUEBA_TAREAS, generate)
+        ZIP_PRUEBA = export_run(PRUEBA_DIR, PRUEBA_CONFIG, PRUEBA_TAREAS)
+        show_comparison(PRUEBA_RESPUESTAS, PRUEBA_CASOS)
+        print('Intento conservado en:', ZIP_PRUEBA)
+    ''')
+    md('''
     ## 6. Comparación adicional sobre las 50 preguntas de E1 (opcional)
 
     Activa `EJECUTAR_LOTE_50 = True` para medir baseline y RAG bajo el mismo entorno: 100 respuestas.
@@ -343,15 +375,15 @@ print('Corpus listo:', len(CORPUS['unidades']), 'unidades completas;', len(FRAGM
     descarga la copia publicada desde un commit fijo y muestra su origen; no requiere montar Drive.
     Obtiene también los paquetes y veredictos publicados desde ese commit. Verifica sus hashes, los
     prompts, la evidencia y la correspondencia entre cada respuesta y su juicio antes de contar 1/50 y 40/50.
-    Muestra los diez fallos RAG y permite cambiar `ID_CASO` para inspeccionar cualquiera de las 50 preguntas.
-    Para P25 también muestra los artículos 7 y 9 que estaban íntegros en el prompt realmente enviado.
+    Muestra los diez fallos RAG. Por defecto `ID_CASO = None` evita seleccionar un caso histórico.
+    Puedes elegir un ID para revisar su respuesta guardada; para probarlo de nuevo en el modelo, usa la sección 5b.
 
     **Alcance:** los aciertos son recuentos de veredictos asistidos ya registrados, no una evaluación semántica
     automática nueva. El evaluador y sus motivos son visibles en los archivos publicados. Si un ZIP local fue
     reexportado después, usa el ZIP original descargado para esta corrida; la celda se detiene ante un hash distinto
     sin reemplazar ese archivo. La copia pública se guarda por separado en `/content/auditoria_publicada/`.
     ''')
-    code(audit_cell)
+    code('ID_CASO = None  # Solo recuentos; un ID selecciona explícitamente una respuesta histórica.\n' + audit_cell)
     md('''
     ## Alcance y reproducción
 

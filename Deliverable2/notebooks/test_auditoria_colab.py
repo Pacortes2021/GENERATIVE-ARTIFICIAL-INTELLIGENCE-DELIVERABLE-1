@@ -33,6 +33,16 @@ class AuditoriaColabTests(unittest.TestCase):
         self.assertEqual(sum(self.audit['marks']['rag_estructurado'].values()), 40)
         self.assertIn('Archivo local verificado', self.salida)
         self.assertIn('esta celda no ejecuta una corrida nueva', self.salida)
+        self.assertNotIn('CASO HISTÓRICO', self.salida)
+        self.assertNotIn('Referencia del evaluador:', self.salida)
+
+    def test_caso_historico_solo_si_se_solicita(self):
+        salida = io.StringIO()
+        with patch('urllib.request.urlopen', side_effect=respuesta_publicada), contextlib.redirect_stdout(salida):
+            runpy.run_path(str(HERE / 'auditar_lote_en_colab.py'),
+                          init_globals={'ZIP_LOTE': RUN / NAME, 'ID_CASO': 25})
+        self.assertIn('CASO HISTÓRICO P25 (respuesta guardada)', salida.getvalue())
+        self.assertIn('RI-FI-ART-007 — texto íntegro del prompt histórico', salida.getvalue())
 
     def test_sin_drive_descarga_copia_original_y_la_reutiliza(self):
         with tempfile.TemporaryDirectory() as folder:

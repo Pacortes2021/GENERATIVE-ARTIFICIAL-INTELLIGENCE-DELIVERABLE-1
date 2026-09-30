@@ -174,6 +174,37 @@ class SystemTests(unittest.TestCase):
         self.assertTrue(any('EJECUTAR_LOTE_50 = False' in c.source for c in self.nb.cells))
         self.assertTrue(any('PREGUNTA = ""' in c.source for c in self.nb.cells))
 
+    def test_live_known_case_generates_each_time_with_original_id_and_seed(self):
+        cell = next(c.source for c in self.nb.cells if c.cell_type == 'code' and 'ID_PRUEBA = None' in c.source)
+        source = cell.replace('ID_PRUEBA = None', 'ID_PRUEBA = 25', 1)
+        question = {k: self.previous[24][k] for k in ('id', 'pregunta', 'categoria')}
+        settings = {'max_context_tokens': 8192, 'generacion': {'max_new_tokens': 1024}, 'semilla_base': 2026}
+        calls = []
+        def generate(task, seed):
+            calls.append((task['pregunta_id'], task['variante'], seed))
+            return {'respuesta_modelo': f'Salida simulada {len(calls)}', 'tokens_salida': 2,
+                    'motivo_parada': 'eos', 'posible_corte': False, 'thinking_inesperado': False,
+                    'segundos': 0.1, 'pico_memoria_gpu_gb': 0.0}
+        retriever = self.retriever()
+        with tempfile.TemporaryDirectory() as tmp, patch('sistema.show_comparison') as display:
+            original_dir = Path(tmp) / 'lote_original'
+            namespace = {'QUESTIONS': [question], 'SETTINGS': settings, 'retriever': retriever,
+                         'tokenizer': ChatTokenizer(), 'generate': generate, 'OUTPUT_ROOT': Path(tmp),
+                         'RUN_DIR': original_dir, 'ZIP_PATH': 'zip_original'}
+            exec(source, namespace)
+            first_zip = namespace['ZIP_PRUEBA']
+            first_bytes = first_zip.read_bytes()
+            exec(source, namespace)
+            self.assertNotEqual(first_zip, namespace['ZIP_PRUEBA'])
+            self.assertEqual(first_zip.read_bytes(), first_bytes)
+            self.assertEqual(calls, [(25, 'baseline_directo', 2051), (25, 'rag_estructurado', 2051)] * 2)
+            self.assertEqual(len(retriever.encoder.calls), 3)  # Índice y dos recuperaciones nuevas.
+            self.assertEqual(display.call_count, 2)
+            self.assertEqual(namespace['PRUEBA_CONFIG']['generacion'], settings['generacion'])
+            self.assertEqual(namespace['PRUEBA_TAREAS'][1]['mensajes'], messages(self.previous[24], 'rag_estructurado'))
+            self.assertEqual(namespace['RUN_DIR'], original_dir)
+            self.assertEqual(namespace['ZIP_PATH'], 'zip_original')
+
     def test_corpus_cell_runs_in_fresh_process_without_native_ml_imports(self):
         cell=next(c for c in self.nb.cells if c.cell_type=='code' and 'BUNDLE_B64 = (' in c.source)
         with tempfile.TemporaryDirectory() as tmp:

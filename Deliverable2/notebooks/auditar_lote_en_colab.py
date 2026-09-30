@@ -11,7 +11,7 @@ import zipfile
 
 # Puedes definir ZIP_LOTE e ID_CASO en Colab antes de ejecutar esta celda.
 # Si no hay una copia local, se descarga la corrida previa publicada; no se genera otra.
-ID_CASO = globals().get('ID_CASO', 25)  # Cualquier número de 1 a 50.
+ID_CASO = globals().get('ID_CASO')  # None: solo recuentos; 1 a 50: inspección histórica opcional.
 
 ZIP_NOMBRE = 'comparacion_f0bff499766960f7.zip'
 ZIP_SHA256 = 'e6d6628c8ae27f85f8f6bfd11f859a5d95d32731c51a88ab3e1a4e5b4c42a797'
@@ -143,22 +143,20 @@ for variant, label in [('baseline_directo', 'Baseline sin documentos'),
 wrong_rag = [f'P{i:02}' for i, correct in marks['rag_estructurado'].items() if not correct]
 print('Todos los fallos RAG:', ', '.join(wrong_rag))
 
-assert 1 <= ID_CASO <= 50
-case_id = f'P{ID_CASO:02}'
-row = answers[(ID_CASO, 'rag_estructurado')]
-case = next(c for c in evidence['origen']['casos'] if c['id'] == ID_CASO)
-task = task_by_key[(ID_CASO, 'rag_estructurado')]
-print(f'\nCASO {case_id}: {row["pregunta"]}')
-print('Respuesta RAG:', row['respuesta_modelo'])
-print('Referencia del evaluador:', packets['rag_estructurado'][case_id]['respuesta_referencia'])
-print('Veredicto registrado:', judgments['rag_estructurado'][case_id]['correcta'])
-print('Motivo registrado:', judgments['rag_estructurado'][case_id]['motivo'])
-print('Parada:', row['motivo_parada'], '| posible corte:', row['posible_corte'])
-print('Unidades enviadas en el prompt:', ', '.join(c['unidad_id'] for c in case['contextos']))
-
-if ID_CASO == 25:
+if ID_CASO is not None:
+    assert type(ID_CASO) is int and 1 <= ID_CASO <= 50, 'ID_CASO debe ser None o un entero entre 1 y 50.'
+    case_id = f'P{ID_CASO:02}'
+    row = answers[(ID_CASO, 'rag_estructurado')]
+    case = next(c for c in evidence['origen']['casos'] if c['id'] == ID_CASO)
+    task = task_by_key[(ID_CASO, 'rag_estructurado')]
+    print(f'\nCASO HISTÓRICO {case_id} (respuesta guardada): {row["pregunta"]}')
+    print('Respuesta RAG:', row['respuesta_modelo'])
+    print('Referencia del evaluador:', packets['rag_estructurado'][case_id]['respuesta_referencia'])
+    print('Veredicto registrado:', judgments['rag_estructurado'][case_id]['correcta'])
+    print('Motivo registrado:', judgments['rag_estructurado'][case_id]['motivo'])
+    print('Parada:', row['motivo_parada'], '| posible corte:', row['posible_corte'])
+    print('Unidades enviadas en el prompt:', ', '.join(c['unidad_id'] for c in case['contextos']))
     prompt_usuario = task['mensajes'][-1]['content']
-    for unit_id in ('RI-FI-ART-007', 'RI-FI-ART-009'):
-        unit = next(c for c in case['contextos'] if c['unidad_id'] == unit_id)
-        assert unit['texto'] in prompt_usuario, f'{unit_id} no aparece íntegro en el prompt.'
-        print(f'\n{unit_id} — texto íntegro que recibió Qwen:\n{unit["texto"]}')
+    for unit in case['contextos']:
+        assert unit['texto'] in prompt_usuario, f'{unit["unidad_id"]} no aparece íntegro en el prompt.'
+        print(f'\n{unit["unidad_id"]} — texto íntegro del prompt histórico:\n{unit["texto"]}')

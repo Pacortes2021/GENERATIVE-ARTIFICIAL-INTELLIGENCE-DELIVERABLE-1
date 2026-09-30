@@ -4,14 +4,14 @@ La nueva versión debe ser **una grabación de tu Colab**, sin voz sintética ni
 
 ## 1. Añade la auditoría a tu sesión actual
 
-Al final del cuaderno abierto en Brave, pulsa **+ Código** y pega esta celda. Descarga código visible en el repositorio, comprueba su SHA-256 antes de ejecutarlo y luego muestra en Colab los resultados obtenidos desde el ZIP guardado en Drive.
+Al final del cuaderno abierto en Brave, pulsa **+ Código** y pega esta celda. Si ya pegaste una versión que falló con «No encuentro el ZIP», reemplázala por este bloque. Descarga una versión fija del código, comprueba su SHA-256 y muestra los resultados desde el ZIP original. No exige que Drive esté montado: si el archivo falta, descarga la copia publicada de la corrida previa e indica su origen.
 
 ```python
 import hashlib, urllib.request
 URL_AUDITORIA = ('https://raw.githubusercontent.com/Pacortes2021/'
-    'GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/main/'
+    'GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/bd257aa32209a1947439a84c34ae3f46c4916909/'
     'Deliverable2/notebooks/auditar_lote_en_colab.py')
-SHA_CODIGO = 'fc9699ab5f578cc066a5b6d8c61dc8d59ddd8fd49b19e9c2184935b615cc2cf8'
+SHA_CODIGO = '545809c49d72981ddbcccc37ea35a786497e56e4e5117547a836b6f5b3318db4'
 codigo = urllib.request.urlopen(URL_AUDITORIA, timeout=30).read()
 assert hashlib.sha256(codigo).hexdigest() == SHA_CODIGO, 'Cambió el código de auditoría.'
 print('Código de auditoría verificado:', SHA_CODIGO)
@@ -20,9 +20,9 @@ exec(compile(codigo.decode('utf-8'), URL_AUDITORIA, 'exec'))
 
 Puedes [leer el código completo de la celda](../notebooks/auditar_lote_en_colab.py) antes de ejecutarla. La [versión nueva del cuaderno](../notebooks/Deliverable2_Sistema_RAG_Colab.ipynb) ya la incluye como sección 7, pero **no cambies de cuaderno solo para grabar**: tu sesión anterior conserva Qwen en memoria.
 
-La celda abre `/content/drive/MyDrive/GenIA_Deliverable2/sistema_runs/comparacion_f0bff499766960f7.zip`. Verifica el hash del ZIP original, configuración, prompts, evidencia y 100 respuestas. Descarga del commit fijo `773a7da` los dos paquetes de evaluación y los dos archivos de veredictos, valida sus hashes y comprueba que cada juicio corresponde al texto exacto de la respuesta. Después **recuenta veredictos registrados**: baseline 1/50 y RAG 40/50. Muestra la lista completa de diez errores RAG y, por defecto, P25 con la respuesta, la referencia, el motivo y los artículos 7 y 9 completos que estaban en el prompt de Qwen.
+La celda busca `comparacion_f0bff499766960f7.zip` en `ZIP_LOTE`, en `OUTPUT_ROOT`, en la carpeta de Drive y en el almacenamiento temporal de Colab. Si no lo encuentra, descarga la copia original desde el commit fijo `773a7da` a `/content/auditoria_publicada/`. Siempre muestra el origen y la ruta, y verifica el hash del ZIP, configuración, prompts, evidencia y 100 respuestas. Descarga de ese mismo commit los dos paquetes de evaluación y los dos archivos de veredictos, valida sus hashes y comprueba que cada juicio corresponde al texto exacto de la respuesta. Después **recuenta veredictos registrados**: baseline 1/50 y RAG 40/50. Muestra la lista completa de diez errores RAG y, por defecto, P25 con la respuesta, la referencia, el motivo y los artículos 7 y 9 completos que estaban en el prompt de Qwen.
 
-Si aparece «No encuentro el ZIP», comprueba en el panel Archivos de Colab que Drive sigue montado. Si el ZIP de Drive fue reexportado y cambió su hash, sube el **ZIP original** `comparacion_f0bff499766960f7.zip` desde Descargas y, en una celda antes de la auditoría, fija `ZIP_LOTE = '/content/comparacion_f0bff499766960f7.zip'`. No alteres las respuestas ni los veredictos para que pase la comprobación.
+Si encuentra un ZIP local cuyo hash es distinto, se detiene sin reemplazarlo. En ese caso, sube el **ZIP original** `comparacion_f0bff499766960f7.zip` desde Descargas y, en una celda antes de la auditoría, fija `ZIP_LOTE = '/content/comparacion_f0bff499766960f7.zip'`. No alteres las respuestas ni los veredictos para que pase la comprobación. Cuando se usa la copia pública, se está auditando aquella corrida previa; no es una ejecución nueva ni demuestra que ese lote se haya generado en la sesión actual.
 
 La auditoría no convierte el juicio de IA en una verdad matemática: el hash prueba integridad y correspondencia, mientras que la [pauta](../evaluacion/criterios.md), las respuestas y los motivos permiten revisar la decisión semántica. Di «40/50 según la pauta y los veredictos asistidos», no «Colab comprobó por sí solo que 40 son correctas».
 
@@ -31,7 +31,7 @@ La auditoría no convierte el juicio de IA en una verdad matemática: el hash pr
 1. En Brave deja abierto solo el Colab original. Cierra descargas y avisos. Ajusta el zoom del navegador hasta que se lean las salidas; 125 % suele funcionar.
 2. Localiza las salidas ya terminadas de las secciones 2–4, la celda de la sección 5, la salida del lote de la sección 6 y la nueva celda de auditoría. No ejecutes aún una pregunta nueva.
 3. Elige tú una pregunta sobre el corpus que **no hayas probado**. Escribirla y ejecutar la sección 5 durante la grabación, sin descartar el resultado si falla, evita escoger una respuesta favorable. La consulta ilustrativa no se suma al 80 %.
-4. Ejecuta la celda de auditoría una vez antes de grabar solo si necesitas comprobar la ruta de Drive. Puedes ejecutarla otra vez en cámara: no llama al modelo ni modifica el ZIP.
+4. Ejecuta la celda de auditoría una vez antes de grabar para comprobar el acceso al ZIP y los archivos publicados. Puedes ejecutarla otra vez en cámara: no llama al modelo ni modifica las respuestas.
 
 ## 3. Graba en macOS, sin voz
 

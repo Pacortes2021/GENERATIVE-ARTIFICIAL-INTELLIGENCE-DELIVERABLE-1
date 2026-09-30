@@ -15,7 +15,7 @@
 
 ## Si Colab se desconecta
 
-Comprueba que el título del cuaderno indique **`carga-ligera-v1`**. El archivo actual mide unos 248 KB. Reinicia la sesión y ejecuta el cuaderno recién subido: una pestaña abierta no incorpora las correcciones locales. Si tu sesión anterior sigue activa, basta con añadirle la [celda autónoma de auditoría](auditar_lote_en_colab.py); no la reinicies solo para ver esa sección. La sección «Corpus y código incluidos» debe imprimir tres pasos y terminar con `Corpus listo: 197 unidades completas; 201 fragmentos para búsqueda; 50 preguntas.` Esa celda restaura el paquete comprimido con biblioteca estándar, sin importar los modelos.
+Comprueba que el título del cuaderno indique **`carga-ligera-v1`**. El archivo actual mide unos 250 KB. Reinicia la sesión y ejecuta el cuaderno recién subido: una pestaña abierta no incorpora las correcciones locales. Si tu sesión anterior sigue activa, basta con añadirle la [celda autónoma de auditoría](auditar_lote_en_colab.py); no la reinicies solo para ver esa sección. La sección «Corpus y código incluidos» debe imprimir tres pasos y terminar con `Corpus listo: 197 unidades completas; 201 fragmentos para búsqueda; 50 preguntas.` Esa celda restaura el paquete comprimido con biblioteca estándar, sin importar los modelos.
 
 La sección siguiente anuncia por separado la importación de librerías, la carga de E5 y la construcción del índice. Si la sesión vuelve a reiniciarse, anota el último mensaje visible. El reinicio informado anteriormente no se reprodujo localmente y su causa concreta no está confirmada. La [medición local de la celda de corpus](validacion_carga_colab.json) solo describe este entorno, no la memoria de Colab.
 

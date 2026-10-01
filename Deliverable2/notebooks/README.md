@@ -1,6 +1,7 @@
-# Cuaderno principal de Colab
+# Cuadernos de Colab
 
-[Deliverable2_Sistema_RAG_Colab.ipynb](Deliverable2_Sistema_RAG_Colab.ipynb) ejecuta el sistema consultable y muestra **baseline directo y RAG estructurado sobre la misma pregunta**. Incluye el corpus procesado y el código de recuperación; descarga E5 y Qwen3-4B al iniciarse. Requiere GPU de Colab para Qwen, pero E5 e indexación funcionan en CPU.
+- [Deliverable2_Sistema_RAG_Colab.ipynb](Deliverable2_Sistema_RAG_Colab.ipynb): Cuaderno principal con el sistema completo. Permite consultar preguntas individuales y contiene la opción de ejecutar el lote emparejado de 50 preguntas (`EJECUTAR_LOTE_50 = True`).
+- [Deliverable2_Demo_Video.ipynb](Deliverable2_Demo_Video.ipynb): Cuaderno ágil utilizado para la grabación del video demostrativo (≤ 3 minutos). Presenta de forma secuencial la ejecución en vivo de P25, la consulta manual interactiva y la auditoría rápida del lote sin esperas prolongadas.
 
 ## Uso
 

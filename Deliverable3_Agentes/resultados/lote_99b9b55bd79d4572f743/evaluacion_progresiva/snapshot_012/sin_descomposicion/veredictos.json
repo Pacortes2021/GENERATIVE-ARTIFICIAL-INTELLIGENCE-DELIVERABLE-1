@@ -1,0 +1,19 @@
+{
+  "paquete_sha256": "3eebd6668460fa116b05061b87a22e90d9e1edb1597010266276f0627185b107",
+  "evaluador": "Codex, revisión progresiva externa de respuestas nuevas del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "3d9695ee7e4d5d4d637f3ee45d8f60b6ced11183756d6f875720b10ea4daf64a",
+      "correcta": true,
+      "motivo": "Nota mínima 4,0 con la fuente específica RI-FI art. 11; responde exactamente lo solicitado."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "8ccf0a53f64c2066a94c316dc35be3e7768017f21e65ef7158c9921a8b0daf25",
+      "correcta": true,
+      "motivo": "Mínimo de tres evaluaciones sumativas respaldado por RI-FI art. 11, página 2. La referencia de párrafo es consistente con la unidad completa."
+    }
+  ]
+}

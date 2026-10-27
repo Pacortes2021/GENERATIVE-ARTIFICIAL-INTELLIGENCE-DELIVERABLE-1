@@ -1,0 +1,19 @@
+{
+  "paquete_sha256": "1566e71d64b17c5bf9a2381635d4904529496ce495ea1240acaafa79fa5e801e",
+  "evaluador": "Codex, revisión progresiva externa de respuestas nuevas del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "787dd88e0baeef31afe05aa4bf6943e2d0bdb5c5a07e81d2ecc5779eb7698214",
+      "correcta": false,
+      "motivo": "Inventa escala 14/20 y art. 8; RI-FI art. 11 fija nota mínima 4,0."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "b2fd058f2cb3f0b5a930f2a1f562637ee8f3715f621b4864e85f705215314a34",
+      "correcta": false,
+      "motivo": "Niega que la normativa indique un mínimo, pese a RI-FI art. 11: al menos tres evaluaciones sumativas."
+    }
+  ]
+}

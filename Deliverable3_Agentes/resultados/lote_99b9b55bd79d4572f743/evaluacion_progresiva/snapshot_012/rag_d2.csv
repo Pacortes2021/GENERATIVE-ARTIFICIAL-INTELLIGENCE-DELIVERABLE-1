@@ -1,0 +1,7 @@
+pregunta_id,pregunta,categoria,variante,respuesta_modelo,estado,ejecucion,llamadas_modelo,llamadas_nuevas_este_intento,tokens_entrada,tokens_salida,segundos_modelo_logicos,segundos_herramientas_logicos,segundos_pared_este_intento,salidas_cortadas
+1,¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?,factual,rag_d2,"Respuesta: una calificación final mínima de 4,0 calculada de acuerdo al syllabus correspondiente.  
+Condiciones o límites: la calificación final se calcula como el promedio ponderado de las calificaciones obtenidas, incluida la Evaluación de Recuperación cuando corresponda [RI-FI-ART-011].  
+Fuente: [RI-FI-ART-011].",respuesta_directa,modelo_real,1,1,1246,92,16.6334,0.08986822500014569,16.738121511000145,0
+2,¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?,factual,rag_d2,"Respuesta: tres evaluaciones sumativas.  
+Condiciones o límites: según el artículo 11° de RI-FI, cada asignatura debe contar con al menos tres evaluaciones sumativas para aprobarla.  
+Fuente: [RI-FI-ART-011].",respuesta_directa,modelo_real,1,1,1165,63,11.9313,0.09083898900007625,12.036414190999949,0

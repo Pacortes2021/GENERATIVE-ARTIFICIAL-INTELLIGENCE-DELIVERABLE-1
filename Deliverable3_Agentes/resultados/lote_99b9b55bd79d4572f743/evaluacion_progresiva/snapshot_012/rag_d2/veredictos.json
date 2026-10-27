@@ -1,0 +1,19 @@
+{
+  "paquete_sha256": "1b555520afd526c01701b4cd95659b9e1f70a0e352039f978c751ef35c3d5e5d",
+  "evaluador": "Codex, revisión progresiva externa de respuestas nuevas del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "3af8905b47a4a2fef92ef04b44a3c1c3e6153ff10c29bb8aeb6d852a9a8e6052",
+      "correcta": false,
+      "motivo": "La nota mínima 4,0 es correcta, pero atribuye a RI-FI art. 11 una regla de promedio ponderado y recuperación que ese artículo no contiene. El añadido necesita RG art. 21 y RI-FI art. 12 / RG art. 22; la cita explícita entregada no respalda esa afirmación."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "2299125b2e45492a6f50489e1a7933854e39931e199204485d20846e09be85c5",
+      "correcta": true,
+      "motivo": "Identifica tres evaluaciones sumativas como mínimo y cita RI-FI art. 11, que establece ese número para cada asignatura."
+    }
+  ]
+}

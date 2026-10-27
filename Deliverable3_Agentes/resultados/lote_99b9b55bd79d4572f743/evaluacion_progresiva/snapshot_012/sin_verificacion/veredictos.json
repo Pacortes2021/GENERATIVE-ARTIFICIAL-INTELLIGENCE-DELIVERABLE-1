@@ -1,0 +1,19 @@
+{
+  "paquete_sha256": "ece6dab0649d44767be7234df82cd47e3a19942fa5eb17591a6acb53a397de02",
+  "evaluador": "Codex, revisión progresiva externa de respuestas nuevas del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "23ebd20d6c219aa45f7bfa118fae839ab7919054d60ccf6194b77905dbfdc016",
+      "correcta": true,
+      "motivo": "Identifica correctamente 4,0 como nota mínima con RI-FI art. 11. La referencia al syllabus también consta allí."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "0ef24a7e8b603fc6c66f2f81ac04a0db4842486d75d22ed2eb029c44f1d696e5",
+      "correcta": true,
+      "motivo": "Entrega el mínimo de tres sumativas con RI-FI art. 11. Se comprobó el añadido de ausencia de número específico en RG, revisando la regulación de evaluación y el corpus RG; no se encontró contradicción."
+    }
+  ]
+}

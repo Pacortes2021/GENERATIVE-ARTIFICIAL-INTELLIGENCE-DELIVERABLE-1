@@ -1,0 +1,19 @@
+{
+  "paquete_sha256": "1d54f50c30e3790101bbc8900b90d08a1b4f73e7bad3e133a22d523c6009c7cc",
+  "evaluador": "Codex, revisión progresiva externa de respuestas nuevas del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "606010349fc8181d1f3138ffc748ee526d1d8db672cc6e70873e4cb8e15a5585",
+      "correcta": true,
+      "motivo": "Nota final mínima 4,0 calculada según syllabus, con RI-FI art. 11. No omite el dato solicitado."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "da53e51d779a26f9b59cfe82d3288ea4a13d0045f93723fc122271b872a6c4b6",
+      "correcta": true,
+      "motivo": "Indica al menos tres sumativas y cita RI-FI art. 11, página 2, que lo establece para cada asignatura."
+    }
+  ]
+}

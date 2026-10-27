@@ -1,0 +1,19 @@
+{
+  "paquete_sha256": "375d09f78ac2c615b922834b86201dc6e385bbc0ad364da6683ccfd7168c7e77",
+  "evaluador": "Codex, revisión progresiva externa de respuestas nuevas del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "23ebd20d6c219aa45f7bfa118fae839ab7919054d60ccf6194b77905dbfdc016",
+      "correcta": true,
+      "motivo": "Entrega la nota mínima solicitada, 4,0, con RI-FI art. 11 y cálculo según syllabus. No se exige repetir requisitos complementarios no preguntados."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "0ef24a7e8b603fc6c66f2f81ac04a0db4842486d75d22ed2eb029c44f1d696e5",
+      "correcta": true,
+      "motivo": "Responde al menos tres evaluaciones sumativas y cita RI-FI art. 11 de manera inequívoca. Se contrastó también el añadido sobre RG: su art. 21 regula modalidades y ponderaciones, sin fijar un número de sumativas; no contradice la respuesta."
+    }
+  ]
+}

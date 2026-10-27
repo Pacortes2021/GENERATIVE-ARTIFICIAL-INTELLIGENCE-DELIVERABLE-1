@@ -1,0 +1,45 @@
+{
+  "corrida": "6a4e8925ada1fa3d1dee9c585ce825d7f093f809a18523407376638b2f5e12b4",
+  "ejecucion": "modelo_real",
+  "metricas": {
+    "baseline_directo": {
+      "total": 4,
+      "correctas": 0,
+      "incorrectas": 4,
+      "pendientes": 0,
+      "exactitud_porcentaje": 0.0
+    },
+    "rag_d2": {
+      "total": 4,
+      "correctas": 2,
+      "incorrectas": 2,
+      "pendientes": 0,
+      "exactitud_porcentaje": 50.0
+    },
+    "agentes_completo": {
+      "total": 4,
+      "correctas": 1,
+      "incorrectas": 3,
+      "pendientes": 0,
+      "exactitud_porcentaje": 25.0
+    }
+  },
+  "completo_frente_a": {
+    "baseline_directo": {
+      "correcta_solo_completo": [
+        "P05"
+      ],
+      "correcta_solo_comparador": [],
+      "delta_puntos_porcentuales": 25.0
+    },
+    "rag_d2": {
+      "correcta_solo_completo": [],
+      "correcta_solo_comparador": [
+        "P41"
+      ],
+      "delta_puntos_porcentuales": -25.0
+    }
+  },
+  "alcance": "Conjunto de desarrollo de D1/D2; no demuestra generalización.",
+  "nota": "Juicios externos al sistema; la aceptación interna del auditor no se usa como etiqueta."
+}

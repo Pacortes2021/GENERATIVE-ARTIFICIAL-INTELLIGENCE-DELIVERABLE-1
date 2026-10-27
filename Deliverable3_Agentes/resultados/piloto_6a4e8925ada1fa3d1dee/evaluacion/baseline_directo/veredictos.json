@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "c9b4ddce5c70ffbeb61f3454a27e4948213b5521772e6d2e145e29233df3b99b",
+  "evaluador": "Codex; revisión individual de respuestas v4 y fuentes completas",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "b40663d51603ab9fcbe59fad59add329e974dcaf57d6774fc561ac8440a27d76",
+      "correcta": false,
+      "motivo": "Da Trabajo de Fin de Carrera y art. 11. El nombre específico es Memoria de Título, RI-FI art. 29."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "0d25d2a616384ce7bc85b2cd644b1c4d75f0d4b1c2420fb51b0207bddc943fc9",
+      "correcta": false,
+      "motivo": "Inventa consentimiento del coordinador para eliminar obligatorias. No identifica las dos prioridades de RI-FI arts. 9 y 7 a-b."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "facd3d6427018e6cf4457568a0874dba4709155ee4defef1d605ddd22b953527",
+      "correcta": false,
+      "motivo": "Niega aplicabilidad y fija 3,0; contradice RI-FI art. 2 y RG art. 23, que fija 4,0."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "0e347bb8758adcd970714528a69248cf580228fd4141915f4312ef7d25224379",
+      "correcta": false,
+      "motivo": "Atribuye obligaciones docentes a un artículo inexistente en RI-FI 1-35."
+    }
+  ]
+}

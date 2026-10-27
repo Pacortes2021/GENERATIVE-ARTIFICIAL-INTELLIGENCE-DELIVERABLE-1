@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "f61da2688d7d9c6403f994ef0db1e5bdcf1fc1f3b0d090587e0de12bf4ceb98c",
+  "evaluador": "Codex; revisión individual de respuestas v4 y fuentes completas",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "d0a24a0ed19fceae3ca7e5ce7180b0cd5a2e5f808d399c320346a59f1e49ef0f",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, duración y regulación, citando inequívocamente RI-FI art. 29 en prosa. RG 3.10 completo admite Memoria en habilitación profesional. No se exige formato de corchetes."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "f82f7e68617e1a2534e17d2c69c8c9b5872f62e2c1a3ac0e0c791066ca9f17f4",
+      "correcta": false,
+      "motivo": "Mejora al desarrollar atrasadas y obligatorias reprobadas, pero omite que estas últimas aún no estén aprobadas a la fecha (RI-FI art. 7 b). Haber reprobado antes no equivale a seguir sin aprobar; la condición delimita la categoría solicitada. No se penaliza por no cuantificar el mínimo de créditos no preguntado."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "2a61ef4bea406d42b7725cd186d1a1b754ed66d3b7363fea163c70e67dabf44a",
+      "correcta": false,
+      "motivo": "Da aplicabilidad y 4,0 correctos, pero RG art. 23 solo respalda escala/nota: falta respaldo específico del ámbito de Ingeniería, RI-FI art. 2. Mismo criterio de fuentes aplicado en los pilotos anteriores."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "El resultado final agota doce llamadas y se abstiene técnicamente. Los borradores intermedios no sustituyen la respuesta final; existía evidencia completa de ausencia."
+    }
+  ]
+}

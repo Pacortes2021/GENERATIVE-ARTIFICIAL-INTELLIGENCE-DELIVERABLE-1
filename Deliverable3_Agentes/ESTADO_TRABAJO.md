@@ -4,7 +4,9 @@ Actualizado el 27-10-2026, tarde de Chile. Autorización vigente: correcciones, 
 
 ## Operación en curso
 
-**Piloto v4 ejecutándose en Colab:** se observó T4 conectada, dependencias instaladas y carga de E5 iniciada. El notebook ejecuta ocho celdas: piloto 4 × 3 condiciones y exportación; lote 50 × 6 desactivado. No recargar, desconectar ni cambiar sus fuentes mientras esté activo.
+**Lote completo v4 en ejecución (50 preguntas × seis condiciones):** comenzó en la misma T4 tras conservar y evaluar el piloto v4. Se activó únicamente `EJECUTAR_LOTE = True` en la sección 6. Se observó `P01 baseline_directo: ejecutando`. Se solicitó ejecutar la sección 8 de exportación mientras el lote está activo; su salida quedó pendiente. No recargar, desconectar, volver a ejecutar todo ni cambiar fuentes/configuración.
+
+El piloto v4 `agentes_6a4e8925ada1fa3d1dee.zip` está conservado y auditado en `resultados/piloto_6a4e8925ada1fa3d1dee`, con evaluación completa: agentes 1/4, D2 2/4, baseline 0/4. Ver `CONGELACION_V4.md`: se congela el sistema para medirlo completo, incluidos los fallos residuales del modelo.
 
 Pestaña actual, versión congelada:
 https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/de2951b22214f294e9f9eb1f5b0fae9a25c622da/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb
@@ -20,15 +22,16 @@ Automatización `seguimiento-nocturno-del-piloto-d3`, nombre «Completar Deliver
 | v1 | `piloto_222681994dcd692c0600` | 0/4 | 2/4 | 0/4 |
 | v2 | `piloto_14f5ffa72e8a2734d481` | 0/4 | 2/4 | 1/4 |
 | v3 | `piloto_9b826dfab6be77ac0ce1` | 0/4 | 2/4 | 1/4 |
+| v4 | `piloto_6a4e8925ada1fa3d1dee` | 0/4 | 2/4 | 1/4 |
 
 ZIP originales intactos y extracciones byte a byte; juicios externos independientes con la pauta D2. Leer REPORTE.md de cada corrida. V3 redujo generación de agentes de 1.453,74 s a 380,05 s, sin mejorar exactitud. P05 es correcta: revisar RG 3.10 **completo**, que sí contempla Memoria; no juzgar solo el extracto incompleto del auditor. P25 omite desarrollar remisiones; P38 carece de respaldo del alcance específico; P41 termina por formato pese al inventario de ausencia. No copiar etiquetas al evaluar v4.
 
-V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de herramienta, conserva argumentos y validadores, precisa IDs de citas y refuerza los tres bloques experimentales. No contiene respuestas de referencia ni rutas por pregunta. Su calidad está pendiente.
+V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de herramienta, conserva argumentos y validadores, precisa IDs de citas y refuerza los tres bloques experimentales. No contiene respuestas de referencia ni rutas por pregunta. El piloto v4 está evaluado; la comparación completa sigue pendiente.
 
 ## Siguiente secuencia
 
-1. Recoger ZIP v4 en `/Users/pabloignaciocortesvielma/Downloads`; si sigue activo, dejarlo terminar. Auditar antes de importar a carpeta nueva; conservar intento completo, llamadas y fuentes. Evaluar cada respuesta con `evaluar.py` y pauta D2, contrastando fuentes alternativas completas.
-2. Resolver fallos operativos si quedan. No convertir cada fallo semántico en otra selección de resultados: cuando el flujo sea utilizable, congelar y ejecutar las **50 preguntas × seis condiciones** sin elegir intentos favorables. Reportar si no supera D2.
+1. Vigilar el lote completo activo y descargar snapshots desde Archivos, sin interrumpirlo. Recoger la descarga final (posiblemente `resultados_d3_todas_las_corridas.zip`, contenedor con piloto y lote separados). Auditar cada ZIP interno y conservar originales en carpetas nuevas.
+2. Mantener la versión congelada. No hacer más ajustes antes de terminar las 300 respuestas y su evaluación. Reportar si no supera D2; no reemplazar fallos por otros intentos.
 3. El programa guarda checkpoints por llamada y actualiza ZIP después de cada respuesta. Durante el lote largo descargar snapshots del ZIP desde Archivos sin interrumpir la ejecución; conservar cada descarga. El almacenamiento temporal de Colab desaparece al terminar la sesión. Drive solo si se logra autorizar de manera apropiada.
 4. Evaluar las 300 respuestas externamente y reportar aciertos, regresiones, coste, errores de formato, paradas y cada ablación. Son preguntas de desarrollo, no generalización.
 5. Cerrar informe LaTeX y recompilar `entrega/main.tex` → `main.pdf` (una página A4 vertical). El borrador ya contiene pilotos v1/v2/v3 y grafo de agentes/herramientas, decisiones, loops y stops; sigue marcado como incompleto.
@@ -42,3 +45,11 @@ V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de 
 - Para UI usar cua_repl. Si el usuario cambia de pestaña, volver a leer el estado antes de actuar. Si el Mac se bloquea, no intentar eludirlo; completar trabajo independiente y explicar el impedimento.
 - gh autentica correctamente con acceso de red. Un aviso de token inválido sin red no justifica pedir nuevas credenciales. Las mutaciones de Git/red pueden requerir la aprobación automática de la herramienta.
 - LaTeX local: `tectonic` requiere ejecución con acceso de red del entorno; el editor integrado también compila. Revisar `pdfinfo` y render PNG tras cambios.
+
+## Snapshot y operación del lote
+
+Identidad activa: `agentes_99b9b55bd79d4572f743`. Ruta Colab `/content/d3_agentes_runs/agentes_99b9b55bd79d4572f743.zip`. Primera copia descargada y auditada a las 14:48 de Chile: **12/300 respuestas**, 2 por condición. Coinciden fuentes, prompts, inferencia y límites con el piloto v4. Guardada en `resultados/lote_99b9b55bd79d4572f743/snapshots/20261027T174824Z_012de300.zip` y metadata JSON. No preparar métricas de exactitud final aún.
+
+Para próximos snapshots (aproximadamente cada 30 minutos o ante riesgo real de desconexión): en la pestaña v4, panel Archivos → seleccionar `d3_agentes_runs` → tecla Right para expandir (doble clic no abrió de forma estable) → clic derecho en `agentes_99b9b55bd79d4572f743.zip` → Descargar. Guardar el nuevo ZIP en una ruta de snapshot distinta, auditar y registrar cuántas respuestas conserva. Safari puede agregar sufijos `(1)`, `(2)`; no asumir que el nombre sin sufijo es la copia más reciente. No interrumpir la celda activa.
+
+La salida de Colab puede verse vieja en AX hasta pulsar «Enfocar la última celda ejecutada»; el botón solo muestra la celda y no la reinicia. Si el usuario cambia de pestaña, volver a leer el estado y seleccionar la pestaña v4 por su URL, no actuar sobre índices viejos. La última salida observada antes del snapshot llegó a P03.

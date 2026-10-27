@@ -1,0 +1,65 @@
+{
+  "capturada_utc": "20261027T174824Z",
+  "zip": "20261027T174824Z_012de300.zip",
+  "zip_sha256": "a5841bafcae6fbdd7e3b03721a27f33869ddf01feee22fe390bdfd0002bb4271",
+  "integridad": "audit_zip_correcta",
+  "coincide_con_version_piloto_v4": true,
+  "resumen": {
+    "esperadas": 300,
+    "completadas": 12,
+    "completa": false,
+    "ejecucion": "modelo_real",
+    "exactitud": null,
+    "nota": "La exactitud requiere evaluación externa; una aceptación interna no es un acierto.",
+    "por_variante": {
+      "baseline_directo": {
+        "n": 2,
+        "llamadas_modelo": 2,
+        "tokens_entrada": 232,
+        "tokens_salida": 106,
+        "segundos_modelo_logicos": 11.904900000000001,
+        "salidas_cortadas": 0
+      },
+      "rag_d2": {
+        "n": 2,
+        "llamadas_modelo": 2,
+        "tokens_entrada": 2411,
+        "tokens_salida": 155,
+        "segundos_modelo_logicos": 28.564700000000002,
+        "salidas_cortadas": 0
+      },
+      "agentes_completo": {
+        "n": 2,
+        "llamadas_modelo": 6,
+        "tokens_entrada": 12140,
+        "tokens_salida": 761,
+        "segundos_modelo_logicos": 138.5499,
+        "salidas_cortadas": 0
+      },
+      "sin_descomposicion": {
+        "n": 2,
+        "llamadas_modelo": 6,
+        "tokens_entrada": 11494,
+        "tokens_salida": 634,
+        "segundos_modelo_logicos": 122.6274,
+        "salidas_cortadas": 0
+      },
+      "sin_completitud": {
+        "n": 2,
+        "llamadas_modelo": 6,
+        "tokens_entrada": 11561,
+        "tokens_salida": 681,
+        "segundos_modelo_logicos": 129.01,
+        "salidas_cortadas": 0
+      },
+      "sin_verificacion": {
+        "n": 2,
+        "llamadas_modelo": 6,
+        "tokens_entrada": 11402,
+        "tokens_salida": 730,
+        "segundos_modelo_logicos": 131.82670000000002,
+        "salidas_cortadas": 0
+      }
+    }
+  }
+}

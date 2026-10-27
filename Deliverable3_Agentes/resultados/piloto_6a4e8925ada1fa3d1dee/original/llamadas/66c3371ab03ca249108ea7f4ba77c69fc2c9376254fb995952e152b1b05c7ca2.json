@@ -1,0 +1,120 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "6a4e8925ada1fa3d1dee9c585ce825d7f093f809a18523407376638b2f5e12b4",
+        "pregunta": {
+          "id": 41,
+          "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+          "categoria": "abstencion"
+        },
+        "variante": "baseline_directo"
+      },
+      "tarea": {
+        "etapa": "baseline_directo",
+        "mensajes": [
+          {
+            "role": "system",
+            "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+          },
+          {
+            "role": "user",
+            "content": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+          }
+        ],
+        "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "tokens_entrada": 123,
+        "prompt_sha256": "07a3e9f2ff95e669c751cd6eae43228cca6aa07f291548991551c85a85cea430"
+      },
+      "semilla": 2067
+    },
+    "salida": {
+      "respuesta_modelo": "El Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería establece que **el docente debe garantizar la participación activa de los estudiantes en el proceso de enseñanza-aprendizaje**, promoviendo el desarrollo de habilidades críticas, la resolución de problemas y el pensamiento científico.",
+      "ids_tokens_salida": [
+        6582,
+        140308,
+        220,
+        24,
+        15,
+        1594,
+        3184,
+        75,
+        10411,
+        4414,
+        78,
+        409,
+        21709,
+        8792,
+        409,
+        4968,
+        901,
+        2123,
+        409,
+        94468,
+        1268,
+        7431,
+        51664,
+        346,
+        1709,
+        3070,
+        301,
+        4629,
+        6817,
+        34374,
+        39092,
+        11155,
+        1187,
+        140594,
+        4105,
+        64,
+        409,
+        2478,
+        97722,
+        662,
+        655,
+        49009,
+        409,
+        66961,
+        5653,
+        26466,
+        45156,
+        9300,
+        449,
+        11058,
+        97219,
+        2706,
+        859,
+        36016,
+        655,
+        62616,
+        409,
+        94215,
+        13596,
+        1560,
+        16095,
+        15185,
+        11,
+        1187,
+        592,
+        77076,
+        409,
+        53769,
+        379,
+        655,
+        22601,
+        22820,
+        143250,
+        13,
+        151645
+      ],
+      "salida_con_tokens_especiales": "El Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería establece que **el docente debe garantizar la participación activa de los estudiantes en el proceso de enseñanza-aprendizaje**, promoviendo el desarrollo de habilidades críticas, la resolución de problemas y el pensamiento científico.<|im_end|>",
+      "tokens_salida": 75,
+      "motivo_parada": "eos",
+      "posible_corte": false,
+      "thinking_inesperado": false,
+      "segundos": 8.3174,
+      "pico_memoria_gpu_gb": 2.5629
+    }
+  },
+  "sha256": "d572d53994d9e9e1ce09163e18b7567b777bbbb5847564289ac4b143c3d7ca85"
+}

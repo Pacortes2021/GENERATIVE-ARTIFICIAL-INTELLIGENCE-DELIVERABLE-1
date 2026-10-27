@@ -1,0 +1,139 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "6a4e8925ada1fa3d1dee9c585ce825d7f093f809a18523407376638b2f5e12b4",
+      "pregunta": {
+        "id": 38,
+        "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+        "categoria": "cruce"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "La escala de notas del Reglamento General **no se aplica en Ingeniería**. La escala de notas aplicable es la escala de 1 a 7, según el **Artículo 11** del Reglamento General. La nota de aprobación es **3.0 o más**.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\nLa escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 127,
+            "prompt_sha256": "b23337568d140a4f699b4a35d38dfbda4bf6bb8368353bf626d3a7115cfd4436"
+          },
+          "semilla": 2064,
+          "salida": {
+            "respuesta_modelo": "La escala de notas del Reglamento General **no se aplica en Ingeniería**. La escala de notas aplicable es la escala de 1 a 7, según el **Artículo 11** del Reglamento General. La nota de aprobación es **3.0 o más**.",
+            "ids_tokens_salida": [
+              8747,
+              3835,
+              6053,
+              409,
+              85418,
+              1594,
+              3184,
+              75,
+              10411,
+              3251,
+              3070,
+              2152,
+              511,
+              1443,
+              15317,
+              662,
+              94468,
+              1268,
+              7431,
+              334,
+              13,
+              4929,
+              3835,
+              6053,
+              409,
+              85418,
+              29440,
+              480,
+              1531,
+              1187,
+              3835,
+              6053,
+              409,
+              220,
+              16,
+              264,
+              220,
+              22,
+              11,
+              62015,
+              655,
+              3070,
+              9286,
+              48491,
+              220,
+              16,
+              16,
+              334,
+              1594,
+              3184,
+              75,
+              10411,
+              3251,
+              13,
+              4929,
+              44038,
+              409,
+              264,
+              19899,
+              5721,
+              1531,
+              3070,
+              18,
+              13,
+              15,
+              297,
+              10918,
+              334,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "La escala de notas del Reglamento General **no se aplica en Ingeniería**. La escala de notas aplicable es la escala de 1 a 7, según el **Artículo 11** del Reglamento General. La nota de aprobación es **3.0 o más**.<|im_end|>",
+            "tokens_salida": 70,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 7.6768,
+            "pico_memoria_gpu_gb": 2.5636,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 127,
+      "tokens_salida": 70,
+      "segundos_modelo_logicos": 7.6768,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 7.684674396999981,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "6780462d716106ed3d156dda8f4cbe8fb3d22251bf3d29e492e6512961b3868c.json"
+    ]
+  },
+  "sha256": "55a2eeb1aacbcf927ec24daa7086deb59d392e470e72fa41e1f5a972884de690"
+}

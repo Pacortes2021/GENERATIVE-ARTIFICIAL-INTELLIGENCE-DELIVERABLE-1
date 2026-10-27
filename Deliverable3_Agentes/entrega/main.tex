@@ -78,10 +78,11 @@ Versión y conjunto & Baseline & RAG D2 & Agentes & Ablaciones\\
 \midrule
 Piloto v1: P05/P25/P38/P41 & 0/4 & 2/4 & 0/4 & Pendientes\\
 Piloto v2: mismos cuatro casos & 0/4 & 2/4 & 1/4 & Pendientes\\
-Versión v3 / lote 50 preguntas & Pendiente & Pendiente & Pendiente & Pendientes\\
+Piloto v3: mismos cuatro casos & 0/4 & 2/4 & 1/4 & Pendientes\\
+Versión v4 / lote 50 preguntas & Pendiente & Pendiente & Pendiente & Pendientes\\
 \bottomrule
 \end{tabular}}\par
-{\small En v2 se recuperó P05 (Memoria de Título), pero persistió la regresión P41 frente a D2: el inventario demostraba ausencia y el redactor especuló. Tres respuestas finales agotaron el límite de formato. Los agentes consumieron 24 llamadas, 10.353 tokens de salida y 1.453,74 s de generación; D2, 4 llamadas y 71,31 s. V3 aclara que las fuentes se transfieren automáticamente, reduce mensajes y mejora la reparación de JSON; su calidad aún debe medirse.}
+{\small V3 mantiene P05 correcto, pero omite desarrollar la remisión en P25 y no respalda el ámbito específico en P38. P41 termina por formato pese a tener inventario de ausencia; D2 sí responde ese caso. Los agentes usaron 15 llamadas, 1.963 tokens de salida y 380,05 s de generación, frente a 1.453,74 s en v2; D2 v3: 71,83 s. No hubo salidas cortadas. V4 normaliza solicitudes explícitas de herramienta y refuerza los bloques de prompting; todavía no tiene resultados.}
 
 \subhead{Reproducción y límites}
 {\small Los tres agentes comparten Qwen3-4B abierto, NF4 en T4, sin thinking, temperatura 0,7; E5 solo recupera. Por entrada: 12 llamadas, 6 herramientas (incluida búsqueda inicial), 3 salidas inválidas; contexto 8.192, salida 1.024 y margen 64 tokens. Baseline y D2 conservan sus prompts originales. Cada ZIP congela código, corpus, prompts, semillas, respuestas, tiempos y trazas; los juicios se vinculan por hashes. Las 50 preguntas se usaron en desarrollo: no demuestran generalización.}\par

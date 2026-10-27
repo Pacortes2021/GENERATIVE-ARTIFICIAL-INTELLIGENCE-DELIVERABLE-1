@@ -23,7 +23,7 @@ Las ablaciones miden contribuciones locales de instrucciones dentro de un sistem
 
 ## Piloto y congelación
 
-La versión v2 se ajustó con los fallos del piloto v1, que permanece intacto. Todas las condiciones de agentes parten ahora de una búsqueda D2 con el texto original, incluida dentro de las seis consultas; mantienen los mismos controles de formato, fuentes y repetición. Las ablaciones retiran únicamente el bloque de prompting indicado. No combinar resultados v1/v2 ni copiar sus veredictos. La comparación de calidad v2 requiere otra corrida y evaluación externa completa.
+Las versiones de desarrollo v1, v2 y v3 se conservan y evalúan por separado. V4 corrige el transporte explícito de solicitudes de herramienta y refuerza los bloques de prompting tras diagnosticar v3. Todas las condiciones de agentes conservan búsqueda D2 inicial dentro de las seis consultas y controles de formato, fuentes y repetición. Cada ablación retira únicamente su bloque actual. No combinar resultados de versiones ni copiar juicios; los prompts y protocolos quedan congelados en cada ZIP. V4 requiere piloto nuevo antes del lote.
 
 1. Ejecutar P05, P25, P38 y P41 en baseline/D2/completo. Verificar que realmente se generan decisiones de los tres roles, que las herramientas operan y que las salidas JSON son utilizables.
 2. Conservar todas las trazas, errores y regresiones. Ajustar durante desarrollo si hace falta; no sumar intentos selectivamente a un resultado final.

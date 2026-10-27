@@ -1,6 +1,6 @@
 # Materiales de entrega en preparación
 
-**No entregar todavía.** Faltan los resultados completos de las seis condiciones y el video real con enlace abierto. Los materiales contienen únicamente resultados verificados de los pilotos v1/v2.
+**No entregar todavía.** Faltan los resultados completos de las seis condiciones y el video real con enlace abierto. Los materiales contienen únicamente resultados verificados de los pilotos v1/v2/v3.
 
 - [Informe de desarrollo, PDF](main.pdf): una página A4 vertical, compilada desde [LaTeX](main.tex). Grafo completo, técnicas, resultados disponibles y limitaciones. Se revisó visualmente la página; sustituir la tabla provisional tras evaluar el lote.
 - [Guion cronometrado](guion_video.md): ensayo de 2:50, con 10 segundos de margen. La conclusión final está condicionada a resultados que aún no existen.

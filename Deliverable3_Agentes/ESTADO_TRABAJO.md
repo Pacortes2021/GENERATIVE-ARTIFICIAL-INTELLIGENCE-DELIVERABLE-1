@@ -1,44 +1,44 @@
-# Estado de cierre de Deliverable 3
+# Estado de trabajo de Deliverable 3
 
-Actualizado: 27 de octubre de 2026. Pablo autorizó seguimiento nocturno, descarga y análisis, correcciones, ejecución necesaria, informe LaTeX, guion de video y actualización de GitHub. La automatización de este chat se llama `Completar Deliverable 3`, ID `seguimiento-nocturno-del-piloto-d3`, y tiene frecuencia de cinco minutos. Está ACTIVA de nuevo tras la solicitud «continúa» del usuario.
+Actualizado el 27-10-2026, tarde de Chile. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
 
-## Evidencia disponible
+## Operación en curso
 
-- Código nuevo desde D1/D2 en esta carpeta; no utilizar el otro directorio `Deliverable3/` ni la rama `backup/deliverable3` como fuentes.
-- Piloto v1 intacto: `resultados/piloto_222681994dcd692c0600`, agentes 0/4 frente a D2 2/4.
-- Piloto v2 ya descargado, importado, auditado y evaluado: `resultados/piloto_14f5ffa72e8a2734d481`, agentes 1/4 frente a D2 2/4. Ver su REPORTE.md antes de volver a diagnosticar.
-- Código actual v3: 37 pruebas locales aprobadas; validación CPU final con E5 y tokenizador reales, 700 prompts. No equivale a calidad generativa.
-- Colab en Safari: https://colab.research.google.com/drive/1Y69nHfh0KW6YoIJyDuFVHvCvblxFvRTQ . v2 terminó y se descargó como `agentes_14f5ffa72e8a2734d481.zip`. Hay un conflicto de guardado remoto; no sobrescribir cambios desconocidos. Antes de cualquier operación, comprobar el estado actual.
+**Piloto v4 ejecutándose en Colab:** se observó T4 conectada, dependencias instaladas y carga de E5 iniciada. El notebook ejecuta ocho celdas: piloto 4 × 3 condiciones y exportación; lote 50 × 6 desactivado. No recargar, desconectar ni cambiar sus fuentes mientras esté activo.
 
-## Orden de trabajo pendiente
+Pestaña actual, versión congelada:
+https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/de2951b22214f294e9f9eb1f5b0fae9a25c622da/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb
 
-1. Implementado en v3 (pendiente de medir): corregir el protocolo del investigador: transfiere decisiones, no copia el corpus. Mejorar retroalimentación de propiedades extra y salidas cortadas. Reducir mensajes y extractos excesivos sin codificar respuestas del test. Diagnóstico detallado en el reporte v2.
-2. v3 está implementada, probada y el notebook regenerado. Ejecutar el piloto real en la misma T4, conservando v1/v2. No alterar checkpoints ni seleccionar solo intentos favorables.
-3. Cuando el flujo sea utilizable, congelar código/prompts/configuración y ejecutar 50 preguntas por seis condiciones. Resolver interrupciones desde checkpoints. Si la calidad es inferior a D2, reportarlo; no es lícito inventar una mejora.
-4. Evaluar externamente las 300 respuestas con la misma pauta y registrar errores, regresiones, coste, ablaciones y limitaciones de desarrollo. No confundir aceptación del auditor con acierto.
-5. Borrador compilado y revisado en `entrega/main.pdf` (A4, una página), fuente `entrega/main.tex`. Cerrar el contenido tras el lote: todos los agentes y herramientas en el grafo, aristas/decisiones/loops/stops; técnicas, ablaciones, datos, pauta, resultados y enlaces. Compilar y revisar visualmente. Autores del repositorio: Álvaro Contreras y Pablo Cortés; curso 580694.
-6. Guion de ensayo de 2:50 y mensajes reales P05/P41 preparados en `entrega/`. Falta ajustar a la versión final y grabar. Verificar por separado video efectivo y enlace abierto; un guion no satisface ese requisito.
-7. Código v3 y pilotos publicados en commit `553944b491291aa862544925361926450eea982d`. Continuar publicando cambios pertinentes en `origin` (Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1), sin incluir otros cambios previos ni secretos, y comprobar que notebook, fuentes, resultados, informe, README y enlaces coinciden con la versión evaluada.
-8. Contrastar cada requisito con el enunciado en `../Deliverables/Deliverable 3 (1).pdf` respecto de la raíz del repositorio. La entrega final no está completa todavía.
+Código v4 publicado en `de2951b22214f294e9f9eb1f5b0fae9a25c622da`, paquete 0.4.0, protocolo `d3-agentes-desde-cero-v4`. 38 pruebas aprobadas; 700 prompts medidos con E5 y tokenizador Qwen reales, máximo 3.926 tokens de entrada. No se ejecuta inferencia Qwen en el Mac.
 
-La autorización permite avanzar sin confirmaciones rutinarias. Si hay una barrera real de permisos, autenticación o disponibilidad, completar primero el trabajo independiente, documentarla y comunicar exactamente qué falta.
+Automatización `seguimiento-nocturno-del-piloto-d3`, nombre «Completar Deliverable 3»: **ACTIVA**, cada cinco minutos. Se reactivó tras «continúa» del usuario. El bloqueo de pantalla anterior está resuelto. No cambiar sus permisos ni crear un duplicado.
 
-## Operación actual
+## Corridas conservadas y evaluadas
 
-El notebook v3 se abrió desde GitHub, evitando el selector de subida de Safari que mantenía Cargar desactivado:
+| Versión | Carpeta bajo `resultados/` | Baseline | D2 | Agentes |
+|---|---|---:|---:|---:|
+| v1 | `piloto_222681994dcd692c0600` | 0/4 | 2/4 | 0/4 |
+| v2 | `piloto_14f5ffa72e8a2734d481` | 0/4 | 2/4 | 1/4 |
+| v3 | `piloto_9b826dfab6be77ac0ce1` | 0/4 | 2/4 | 1/4 |
 
-https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/553944b491291aa862544925361926450eea982d/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb
+ZIP originales intactos y extracciones byte a byte; juicios externos independientes con la pauta D2. Leer REPORTE.md de cada corrida. V3 redujo generación de agentes de 1.453,74 s a 380,05 s, sin mejorar exactitud. P05 es correcta: revisar RG 3.10 **completo**, que sí contempla Memoria; no juzgar solo el extracto incompleto del auditor. P25 omite desarrollar remisiones; P38 carece de respaldo del alcance específico; P41 termina por formato pese al inventario de ausencia. No copiar etiquetas al evaluar v4.
 
-La sesión anterior del enlace Drive estaba desconectada y su ZIP v2 ya estaba a salvo. Se finalizó únicamente esa sesión para liberar el cupo GPU y se conectó una T4 nueva. Colab mostró «Ejecutando 8 celdas» al ejecutar v3. No modificar esta versión mientras el intento esté pendiente de recoger.
+V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de herramienta, conserva argumentos y validadores, precisa IDs de citas y refuerza los tres bloques experimentales. No contiene respuestas de referencia ni rutas por pregunta. Su calidad está pendiente.
 
-**Bloqueo de interfaz (27-10, aproximadamente 02:20 Chile):** cua_repl informó «The Mac is locked and automatic unlock could not unlock it». Hace falta desbloqueo manual. No se interrumpió ni recargó la nueva corrida; no puede confirmarse su avance. A las 02:21 no existía un ZIP v3 en Descargas. Primero comprobar la nueva pestaña al recuperar acceso y conservar todos los resultados antes de cambiar código o sesión.
+## Siguiente secuencia
 
-El informe preliminar, guion, transcripciones y matriz de requisitos están en `entrega/`; no equivalen a la entrega final. La autenticación de gh funciona con acceso de red; no solicitar nuevas credenciales por el aviso de token inválido de una llamada sin red. Los resultados v1/v2 conservan espacios y terminadores originales para mantener sus hashes.
+1. Recoger ZIP v4 en `/Users/pabloignaciocortesvielma/Downloads`; si sigue activo, dejarlo terminar. Auditar antes de importar a carpeta nueva; conservar intento completo, llamadas y fuentes. Evaluar cada respuesta con `evaluar.py` y pauta D2, contrastando fuentes alternativas completas.
+2. Resolver fallos operativos si quedan. No convertir cada fallo semántico en otra selección de resultados: cuando el flujo sea utilizable, congelar y ejecutar las **50 preguntas × seis condiciones** sin elegir intentos favorables. Reportar si no supera D2.
+3. El programa guarda checkpoints por llamada y actualiza ZIP después de cada respuesta. Durante el lote largo descargar snapshots del ZIP desde Archivos sin interrumpir la ejecución; conservar cada descarga. El almacenamiento temporal de Colab desaparece al terminar la sesión. Drive solo si se logra autorizar de manera apropiada.
+4. Evaluar las 300 respuestas externamente y reportar aciertos, regresiones, coste, errores de formato, paradas y cada ablación. Son preguntas de desarrollo, no generalización.
+5. Cerrar informe LaTeX y recompilar `entrega/main.tex` → `main.pdf` (una página A4 vertical). El borrador ya contiene pilotos v1/v2/v3 y grafo de agentes/herramientas, decisiones, loops y stops; sigue marcado como incompleto.
+6. Ajustar `entrega/guion_video.md` a la versión final. Grabar un video real de pantalla ≤ 3 min con entradas, mensajes y salida; publicar/verificar enlace abierto autorizado. Guion y transcripciones no sustituyen el video. Conservar sus trazas exactas y explicar reproducción.
+7. Actualizar GitHub `origin` Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1, sin tocar `upstream`, sin force push y sin incorporar `../Deliverable3/` ajeno. La entrega sigue incompleta.
 
-La automatización se pausó conforme a la autorización de detener el seguimiento ante un bloqueo que requiera al usuario. Para reanudar: desbloquear el Mac y solicitar continuar; activar de nuevo la misma automatización, sin crear un duplicado.
+## Detalles operativos
 
-## Reanudación del 27 de octubre, tarde
-
-Mac accesible. ZIP v3 `agentes_9b826dfab6be77ac0ce1.zip` encontrado, conservado, auditado y evaluado: agentes 1/4, D2 2/4, baseline 0/4. El fallo operativo es solicitud de herramienta plana; los otros errores son remisión no desarrollada y alcance sin respaldo específico. Ver REPORTE.md de esa corrida. Colab v3 aparece desconectado por inactividad/duración; no hay corrida activa allí.
-
-V4 implementada y validada: 38 pruebas, 700 contextos reales, sin inferencia local. Nuevo notebook listo para publicar y ejecutar piloto. No alterar ZIP ni juicios previos. La automatización se reactivó conservando el mismo ID.
+- El antiguo notebook de Drive `1Y69nHfh0KW6YoIJyDuFVHvCvblxFvRTQ` tuvo conflicto de guardado. No sobrescribir su versión remota. Sus pilotos ya están conservados.
+- Abrir desde GitHub evita el selector de subida de Safari que dejaba Cargar desactivado. El aviso normal de Colab «Google no creó este notebook» corresponde al código propio publicado.
+- Para UI usar cua_repl. Si el usuario cambia de pestaña, volver a leer el estado antes de actuar. Si el Mac se bloquea, no intentar eludirlo; completar trabajo independiente y explicar el impedimento.
+- gh autentica correctamente con acceso de red. Un aviso de token inválido sin red no justifica pedir nuevas credenciales. Las mutaciones de Git/red pueden requerir la aprobación automática de la herramienta.
+- LaTeX local: `tectonic` requiere ejecución con acceso de red del entorno; el editor integrado también compila. Revisar `pdfinfo` y render PNG tras cambios.

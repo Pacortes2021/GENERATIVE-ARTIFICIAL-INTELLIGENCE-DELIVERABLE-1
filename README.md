@@ -4,6 +4,10 @@
 
 Este proyecto responde preguntas en español sobre tres documentos de docencia de pregrado de la Universidad de Concepción: el Reglamento General, el Reglamento de la Facultad de Ingeniería y el Calendario de Docencia 2026. Una respuesta debe entregar el dato y una fuente que lo respalde; ante una premisa falsa o información ausente, debe indicarlo.
 
+## Deliverable 3: desarrollo nuevo desde cero
+
+[Deliverable3_Agentes](Deliverable3_Agentes/README.md) implementa tres agentes con decisiones propias (investigador, redactor y auditor) sobre Qwen3-4B, desde cero a partir de D1/D2. Incluye [notebook autocontenido](Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb), prompts externos, trazas y seis condiciones. Los pilotos reales en T4 se conservan: agentes 0/4 en v1 y [1/4 en v2](Deliverable3_Agentes/resultados/piloto_14f5ffa72e8a2734d481/REPORTE.md), frente a D2 2/4 en ambos. **La [versión v3](Deliverable3_Agentes/CORRECCION_V3.md) incorpora correcciones de formato y está pendiente de inferencia real.** Faltan el lote completo, las ablaciones y la entrega final; el piloto es diagnóstico y la aceptación interna no cuenta como acierto.
+
 ## Deliverable 2: por dónde empezar
 
 1. Lee la [guía de Deliverable 2](Deliverable2/README.md) para conocer el sistema, los resultados y sus límites.

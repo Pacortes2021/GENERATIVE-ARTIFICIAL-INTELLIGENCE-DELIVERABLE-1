@@ -1,0 +1,45 @@
+{
+  "paquete_sha256": "82c670c226d865dee1715d10b5b5d755e0f5c0c87dc735ff133f452f3bdfb7b8",
+  "veredictos_sha256": "02387995559f6582deaec18c1c62a846ba9e047f3fc9eb9e876f9e247be853c2",
+  "referencias_version": "e2-referencias-v1",
+  "referencias_sha256": "f52c9b6b4f68a7810fc3435a01ef203e5dce1b7c86f95e64fc257c80b25e3e76",
+  "evaluador": "Codex, revisión asistida en este chat, 2026-10-27",
+  "modalidad": "revision_asistida_chat",
+  "global": {
+    "total": 4,
+    "correctas": 0,
+    "incorrectas": 4,
+    "pendientes": 0,
+    "exactitud_porcentaje": 0.0
+  },
+  "por_categoria": {
+    "abstencion": {
+      "total": 1,
+      "correctas": 0,
+      "incorrectas": 1,
+      "pendientes": 0,
+      "exactitud_porcentaje": 0.0
+    },
+    "condicional": {
+      "total": 1,
+      "correctas": 0,
+      "incorrectas": 1,
+      "pendientes": 0,
+      "exactitud_porcentaje": 0.0
+    },
+    "cruce": {
+      "total": 1,
+      "correctas": 0,
+      "incorrectas": 1,
+      "pendientes": 0,
+      "exactitud_porcentaje": 0.0
+    },
+    "factual": {
+      "total": 1,
+      "correctas": 0,
+      "incorrectas": 1,
+      "pendientes": 0,
+      "exactitud_porcentaje": 0.0
+    }
+  }
+}

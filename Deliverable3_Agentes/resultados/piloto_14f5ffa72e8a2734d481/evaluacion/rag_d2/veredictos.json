@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "9bb6360cf6ae52d471e6703060759ab95bc56cd0c481682c38ce32014fcb514c",
+  "evaluador": "Codex, revisión asistida en este chat, 2026-10-27",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "553e5a1b4dbe5c46c1c25bf159d132b7d71df21451eff78157ac34f97b207c59",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, su duración y reglamento, con respaldo pertinente en RI-FI art. 29; RG art. 3 definición 10 respalda el contexto general."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "27c32a01f9a3d4832a94d79905d868987a330b929bc46031d8b8139994bccef6",
+      "correcta": false,
+      "motivo": "Repite prioridades a y b sin explicar cuáles son. La pregunta pide identificar las asignaturas; falta desarrollar RI-FI art. 7 a-b, al que remite el art. 9."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "a22c816e54da7ddb4ba42f804fbce12be7ac1dd632d8d2b0ceb5023e15ec7fc5",
+      "correcta": false,
+      "motivo": "La nota 4,0 está respaldada por RG art. 23, pero RI-FI art. 6 trata postulación/selección, no aplicabilidad del RG. La cita no respalda una de las dos afirmaciones solicitadas."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6b0c89f2f5c2b1e38eb69a36fe6217d0ab1e8b9ea0ac788543e1ccbd7f5a3d54",
+      "correcta": true,
+      "motivo": "Niega inequívocamente la existencia del artículo 90 en el documento consultado y remite al inventario completo, sin atribuirle contenido inventado."
+    }
+  ]
+}

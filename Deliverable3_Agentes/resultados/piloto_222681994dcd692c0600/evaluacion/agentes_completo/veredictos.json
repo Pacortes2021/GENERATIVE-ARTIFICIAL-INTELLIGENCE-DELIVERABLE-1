@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "82c670c226d865dee1715d10b5b5d755e0f5c0c87dc735ff133f452f3bdfb7b8",
+  "evaluador": "Codex, revisión asistida en este chat, 2026-10-27",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "La salida final informa falta de validación y no responde Memoria de Título. RI-FI art. 29 contiene una respuesta; el rechazo interno no reemplaza la respuesta solicitada."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "La salida final no identifica asignaturas atrasadas ni obligatorias reprobadas aún no aprobadas. El investigador recibió RI-FI arts. 7 y 9, pero el flujo terminó por salidas inválidas antes de redactar."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "La salida final no resuelve aplicabilidad ni nota de aprobación. Se agota el presupuesto de llamadas; no entrega la respuesta respaldada por RI-FI art. 2 y RG art. 23."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "La salida final solo dice que no obtuvo validación y aclara que eso no demuestra ausencia. No niega inequívocamente la existencia del art. 90, pese a que el inventario completo permite hacerlo. Es una abstención por límite, no una respuesta correcta a la premisa falsa."
+    }
+  ]
+}

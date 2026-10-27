@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "cfb3a8c0eb82ddf93fade28870d575afd26e40de92c25962b2ba53246a90746d",
+  "evaluador": "Codex, revisión asistida en este chat, 2026-10-27",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "b40663d51603ab9fcbe59fad59add329e974dcaf57d6774fc561ac8440a27d76",
+      "correcta": false,
+      "motivo": "Identifica Trabajo de Fin de Carrera y atribuye la actividad al art. 11. RI-FI art. 29 establece Memoria de Título, de un semestre; la cita ofrecida no respalda lo solicitado."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "0d25d2a616384ce7bc85b2cd644b1c4d75f0d4b1c2420fb51b0207bddc943fc9",
+      "correcta": false,
+      "motivo": "Sustituye la prohibición de eliminar prioridades a) y b) por una supuesta autorización del coordinador. RI-FI arts. 9 y 7 prohíben eliminar atrasadas y obligatorias reprobadas aún no aprobadas; no respaldan esa autorización."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "facd3d6427018e6cf4457568a0874dba4709155ee4defef1d605ddd22b953527",
+      "correcta": false,
+      "motivo": "Niega la aplicación del Reglamento General en Ingeniería y fija aprobación en 3,0. RI-FI art. 2 establece la aplicación y RG art. 23/RI-FI art. 11 fijan 4,0."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "0e347bb8758adcd970714528a69248cf580228fd4141915f4312ef7d25224379",
+      "correcta": false,
+      "motivo": "Inventa contenido del art. 90. El inventario completo de la copia RI-FI contiene artículos 1 a 35; ese artículo no existe."
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "222681994dcd692c0600039964b46816d20729264642497c921cb208be51a47f",
+        "pregunta": {
+          "id": 38,
+          "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+          "categoria": "cruce"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "escala de notas del Reglamento General, aplicación en Ingeniería, nota de aprobación"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ANEXO-08",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 8 en escala de 1 a 100 equivale a 1,4 en escala de 1,0 a 7,0. Aprobación: 58 en escala de 1 a 100 equivale a 4,4 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad."
+        },
+        {
+          "id": "RG-ANEXO-18",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 18 en escala de 1 a 100 equivale a 2,0 en escala de 1,0 a 7,0. Aprobación: 68 en escala de 1 a 100 equivale a 5,0 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad."
+        },
+        {
+          "id": "RG-ANEXO-09",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 9 en escala de 1 a 100 equivale a 1,5 en escala de 1,0 a 7,0. Aprobación: 59 en escala de 1 a 100 equivale a 4,5 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad."
+        },
+        {
+          "id": "RG-ANEXO-41",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 41 en escala de 1 a 100 equivale a 3,4 en escala de 1,0 a 7,0. Aprobación: 91 en escala de 1 a 100 equivale a 6,8 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción Máxima."
+        },
+        {
+          "id": "RG-ANEXO-06",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 6 en escala de 1 a 100 equivale a 1,3 en escala de 1,0 a 7,0. Aprobación: 56 en escala de 1 a 100 equivale a 4,3 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.09307754799999657
+  },
+  "sha256": "dcbb408172f87ccb6f5830e396e8bf8ea4f02f0900c7c59a72b3a243ae157322"
+}

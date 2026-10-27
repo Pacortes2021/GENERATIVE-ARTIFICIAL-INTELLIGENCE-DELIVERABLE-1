@@ -1,0 +1,63 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "222681994dcd692c0600039964b46816d20729264642497c921cb208be51a47f",
+        "pregunta": {
+          "id": 25,
+          "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+          "categoria": "condicional"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "modificar inscripción eliminar asignaturas prohibidas"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-009",
+          "cita": "RI-FI, artículo 9, PDF p. 2",
+          "texto": "Artículo 9°. La modificación de la inscripción de asignaturas deberá hacerse en las fechas que se indiquen en el calendario anual de docencia y en ella se podrá agregar o eliminar asignaturas. No obstante, no se podrá eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°, ni contravenir el número mínimo de créditos exigidos en el Artículo 8°."
+        },
+        {
+          "id": "RG-ART-042",
+          "cita": "RG, artículo 42, PDF p. 25, 26",
+          "texto": "Artículo 42º La inscripción de asignaturas deberá realizarse en las fechas indicadas por el Calendario de Docencia de Pregrado. En el caso de los alumnos que ingresan a una carrera, la inscripción de asignaturas será parte del proceso de matrícula. El Vicedecano podrá autorizar, en casos justificados y excepcionales, modificaciones de inscripción o admitir las que estén fuera de plazo.\n\nEl alumno deberá inscribir y cursar un número de créditos igual o superior al mínimo por semestre que indique el Reglamento Interno de la Facultad a la cual está adscrito. El Vicedecano podrá autorizar una inscripción menor cuando la oferta de créditos es inferior a ese mínimo, debido a la situación curricular personal del alumno y de los prerrequisitos de su plan de estudio. En el caso que el alumno que esté terminando sus estudios, podrá inscribir sólo las asignaturas que le falte cursar. Para inscribir una asignatura, el alumno deberá cumplir con los prerrequisitos y exigencias establecidas. En caso contrario la inscripción quedará sin efecto. Las Facultades cautelarán el cumplimiento de estas normas.\n\nPara inscribir asignaturas, el alumno deberá haber respondido la Encuesta de Evaluación de la Docencia de las asignaturas cursadas en el periodo lectivo anterior.\n\nEl alumno no deberá inscribir asignaturas con actividades académicas obligatorias, que estén programadas en horarios coincidentes."
+        },
+        {
+          "id": "RG-ART-029",
+          "cita": "RG, artículo 29, PDF p. 21",
+          "texto": "Artículo 29° Los alumnos que estando habilitados para inscribir asignaturas no lo hagan dentro del periodo correspondiente perderán el derecho a continuar estudios como también la calidad de alumno de pregrado de la Universidad de Concepción, a menos que en el periodo lectivo anterior hayan inscrito una u más asignaturas anuales."
+        },
+        {
+          "id": "RG-ART-003-DEF-13",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.13. INSCRIPCIÓN DE ASIGNATURAS: La inscripción de asignaturas es el acto mediante el cual el alumno se compromete a realizar las actividades académicas correspondientes a cada asignatura inscrita, conforme a las normas establecidas, y la universidad se compromete a impartir docencia en dichas asignaturas.\n\n"
+        },
+        {
+          "id": "RG-ART-020",
+          "cita": "RG, artículo 20, PDF p. 17",
+          "texto": "Artículo 20º La Facultad a la que está adscrita la asignatura, determinará el régimen de asistencia a clases y a otras actividades que tengan un propósito formativo.\n\nEl alumno que, libremente estime dar a conocer que por razones religiosas, tiene impedimento para asistir a las actividades académicas programadas en los horarios definidos por las Facultades, deberá acreditarlo al momento de inscribir la o las asignaturas que se trate, con el objeto de que el Profesor Encargado considere esta circunstancia en la programación de tales actividades.\n\nLos alumnos que presenten algún tipo de discapacidad, debidamente acreditada, podrán solicitar un régimen especial de asistencia y facilidades para desarrollar sus actividades lectivas y rendir las evaluaciones estipuladas en el syllabus. La solicitud deberá presentarse al momento de inscribir asignaturas ante el Vicedecano de su Facultad, quien previa consulta al Programa INCLUDEC, resolverá la solicitud e informará de ello a los vicedecanos de las facultades que dictan las asignaturas."
+        },
+        {
+          "id": "RI-FI-ART-007",
+          "cita": "RI-FI, artículo 7, PDF p. 2",
+          "texto": "Artículo 7°. En cada periodo lectivo ordinario, las y los estudiantes podrán inscribir las asignaturas para las cuales cumplan requisito, en las fechas que se indiquen en el calendario anual de docencia de pregrado, con las siguientes prioridades: a) Las asignaturas atrasadas con respecto a su nivel de avance en el Plan de Estudio. b) Las asignaturas obligatorias reprobadas anteriormente y no aprobadas a la fecha. c) Las asignaturas correspondientes a su nivel de avance en el Plan de Estudio. d) Las asignaturas que desee adelantar con respecto a su nivel de avance en el plan de Estudio."
+        },
+        {
+          "id": "RI-FI-ART-008",
+          "cita": "RI-FI, artículo 8, PDF p. 2",
+          "texto": "Artículo 8°. En cada periodo lectivo ordinario las y los estudiantes deberán inscribir y cursar un número de créditos igual o superior a ocho del plan de estudio de la carrera a la que están adscritos, salvo las y los estudiantes que estén terminando sus estudios quienes inscribirán al menos las asignaturas que les falte cursar, o aquellos estudiantes que por falta de requisitos se vean impedidos de inscribir el mínimo de créditos exigidos."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.06055931900004907
+  },
+  "sha256": "0832a2a24a743658b956dcb38e49c4d945723eb9f85d9d3ecfb88fcc5e6f116e"
+}

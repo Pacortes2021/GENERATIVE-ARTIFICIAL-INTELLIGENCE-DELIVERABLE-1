@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "87596b28348a6b203f355c3825d8132eea9a929d07e7db4a83747e701f2b3126",
+  "evaluador": "Codex, revisión asistida en este chat, 2026-10-27",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "553e5a1b4dbe5c46c1c25bf159d132b7d71df21451eff78157ac34f97b207c59",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, un semestre y su reglamento específico, respaldados por RI-FI art. 29. RG art. 3 definición 10 aporta contexto compatible sobre actividades finales de titulación."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "27c32a01f9a3d4832a94d79905d868987a330b929bc46031d8b8139994bccef6",
+      "correcta": false,
+      "motivo": "Remite a prioridades a) y b) sin identificar asignaturas atrasadas y obligatorias reprobadas aún no aprobadas. Esa explicación es necesaria y está en RI-FI art. 7, disponible junto al art. 9."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "a22c816e54da7ddb4ba42f804fbce12be7ac1dd632d8d2b0ceb5023e15ec7fc5",
+      "correcta": false,
+      "motivo": "La aprobación en 4,0 está respaldada por RG art. 23, pero atribuye aplicabilidad en Ingeniería a RI-FI art. 6, que regula cupos. La fuente pertinente para aplicabilidad es RI-FI art. 2."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6b0c89f2f5c2b1e38eb69a36fe6217d0ab1e8b9ea0ac788543e1ccbd7f5a3d54",
+      "correcta": true,
+      "motivo": "Niega inequívocamente que el artículo 90 exista en la copia y fundamenta la ausencia en el inventario completo disponible, sin inventar contenido."
+    }
+  ]
+}

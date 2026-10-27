@@ -1,0 +1,13 @@
+pregunta_id,pregunta,categoria,variante,respuesta_modelo,estado,ejecucion,llamadas_modelo,llamadas_nuevas_este_intento,tokens_entrada,tokens_salida,segundos_modelo_logicos,segundos_herramientas_logicos,segundos_pared_este_intento,salidas_cortadas
+5,¿Cuál es la actividad final de titulación en las carreras de Ingeniería?,factual,rag_d2,"Respuesta: La actividad final de titulación en las carreras de Ingeniería es la Memoria de Título, de un semestre de duración, que se regirá por el Reglamento de Memoria de Título de la Facultad de Ingeniería.  
+Condiciones o límites: La Memoria de Título es la actividad final de titulación para todas las carreras, según el Artículo 29.  
+Fuente: [RI-FI-ART-029], [RG-ART-003-DEF-10].",respuesta_directa,modelo_real,1,1,1505,124,17.761,0.4455089769999745,18.228790613,0
+25,"Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",condicional,rag_d2,"Respuesta: No se podrá eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°.  
+Condiciones o límites: Las asignaturas que no se pueden eliminar son las que corresponden a las prioridades a) y b) del Artículo 7°.  
+Fuente: [RI-FI-ART-009]",respuesta_directa,modelo_real,1,1,2667,79,20.8563,0.11042333000000326,20.99256902400009,0
+38,"La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",cruce,rag_d2,"Respuesta: La escala de notas del Reglamento General se aplica en Ingeniería. La nota de aprobación es 4,0 en la escala de 1 a 7.  
+Condiciones o límites: La escala se aplica en Ingeniería según el artículo 6° de RI-FI, que menciona la Facultad de Ingeniería. La nota de aprobación se establece en el artículo 23º del RG.  
+Fuente: [RG-ART-023], [RI-FI-ART-006].",respuesta_directa,modelo_real,1,1,1481,128,19.1086,0.13503654600003756,19.26302517399995,0
+41,¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?,abstencion,rag_d2,"Respuesta: No se establece el contenido del Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería. El inventario completo del documento no incluye el artículo 90.  
+Condiciones o límites: El inventario indica que el artículo 90 no existe en el documento consultado.  
+Fuente: [INV-1]",respuesta_directa,modelo_real,1,1,1317,83,13.5835,0.09159728100007669,13.692200441000068,0

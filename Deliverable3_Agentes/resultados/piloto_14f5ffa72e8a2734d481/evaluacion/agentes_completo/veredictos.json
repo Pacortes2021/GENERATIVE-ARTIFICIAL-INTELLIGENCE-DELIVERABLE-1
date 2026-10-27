@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "e1a0fbf407ab34ada5cbf0bdafde45749e0e4c35647616f8e720c9a1bddc72e4",
+  "evaluador": "Codex, revisión asistida en este chat, 2026-10-27",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "cbed37b8218345287eeda3332a6badabb927759194b1045794fbb77cd597f0e9",
+      "correcta": true,
+      "motivo": "Responde Memoria de Título y cita inequívocamente RI-FI art. 29 aunque emplee paréntesis. El añadido general sobre opciones está respaldado por RG art. 3 definición 10 y distingue el caso específico de Ingeniería; la pregunta no exige duración."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "No identifica las asignaturas solicitadas; ofrece una abstención por límite de salidas inválidas pese a contar con RI-FI arts. 7 y 9. Los tres intentos del investigador se cortaron al copiar evidencia."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "La respuesta final no resuelve aplicabilidad ni nota mínima. Termina por salidas inválidas tras un borrador con dudas de aplicabilidad y una repetición; se requiere respaldo como RI-FI art. 2 y RG art. 23."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "La respuesta final es una abstención por límite y no niega la existencia del artículo 90. El inventario recibido permite contestar la premisa falsa; el borrador anterior además especuló sobre contenido inexistente."
+    }
+  ]
+}

@@ -1,0 +1,3560 @@
+{
+  "tipo": "recuperacion_y_tokenizacion_reales_sin_inferencia_Qwen",
+  "exactitud_d3": null,
+  "preguntas": 50,
+  "prompts_medidos": 700,
+  "max_tokens_entrada": 3523,
+  "presupuesto_total": 8192,
+  "reserva_salida": 1024,
+  "margen": 64,
+  "indice_sha256": "705507fbc71e3800426560d0d25304f9e8bc904a5906f0f9cfe97d9d057038f6",
+  "archivos_sha256": {
+    "d3_agentes/tools.py": "32af3cf152134c8e3d7949625a0ab7988274093f5bf791ea76770afe865487a1",
+    "d3_agentes/bridge.py": "0e15d6153defdb4bc77c0c2a99d32e28e34a31b5f24c97b94fd0e06c23924ca1",
+    "d3_agentes/__init__.py": "265d40df89ae7d095ac0a88bd77f72e466223ba86cd2d94d7d1d342b2fd83fbf",
+    "d3_agentes/core.py": "df0e2b097efcd501cde9489821391b2ded15b3ef41a9beabb0b7bfbf0fb4077c",
+    "d3_agentes/runtime.py": "112401003b7051b2f462f0496bfa1f6a313a7fa01c7c7a262930837fbc04ab6e",
+    "d3_agentes/experiment.py": "58cecee657330d69dfbe340223c7447ac0e79745bd27fceef0c0b4c9b03828c2",
+    "d3_agentes/common.py": "76f9cb1d436e46f095d37a70ddd9b1ab8c8da0f8e1ce5ee1f8f2f1831077bb20",
+    "prompts/auditor.txt": "2bc02d742a07cec192728d1af22ef231744f8fc5b28e8432dd6c51edef17a322",
+    "prompts/completitud.txt": "3478a7b670674bc5b507b390cb7092080e97f0287cc0f973a440ee3141978523",
+    "prompts/descomposicion.txt": "b51dba5d9069532badd3cc8e723aa854e3465885cc08e95401db1fe27f8fe4ef",
+    "prompts/redactor.txt": "a12bb4f1868940e59b84e37ca240add10e39d93d16c1e188c5768957e103266e",
+    "prompts/investigador.txt": "9e84baefc33f86109d1c1f187404ea515539b764f73a35ac10db529ccf971c93",
+    "prompts/verificacion.txt": "5d41fd33e5332afb28a1b2922a6385ca3a98135d9b913d18ea6fef3f4080b7fb",
+    "d2_runtime/experimento.py": "d20ce66a54c7791a480e0d9466e1740b34a8c5198df94ec52c1d4868219e22d0",
+    "d2_runtime/sistema.py": "be9ff8714f6580b30618ef4d45c98e744463da620e98721701dadfe9521fe130",
+    "d2_runtime/recuperador_portable.py": "a04c720b0cf25eb8010996dd28f70f8a08806b6c556e0be6bc2ea3a6fb4dd056",
+    "data/corpus.json": "0a31ff812a1969ff81bbc895feaba490e3bd027b092e52101296e3c872719400",
+    "data/fragmentos_busqueda.json": "c125615c1c3cddb23d69c3b2b93d7a73e076c90fe861cc217b59f293aa9b14cd"
+  },
+  "tokenizador_qwen_sha256": {
+    "tokenizer_config.json": "d5d09f07b48c3086c508b30d1c9114bd1189145b74e982a265350c923acd8101",
+    "config.json": "8ba006f74fecfaaeb392872a60f4a480e7ec9860153d2e1b769ec81f9a147f8a",
+    "tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4"
+  },
+  "max_por_tipo": {
+    "agentes_completo/auditor": 3448,
+    "agentes_completo/investigador": 3523,
+    "agentes_completo/redactor": 3435,
+    "baseline_directo": 139,
+    "rag_d2": 2722,
+    "sin_completitud/auditor": 3448,
+    "sin_completitud/investigador": 3523,
+    "sin_completitud/redactor": 3284,
+    "sin_descomposicion/auditor": 3448,
+    "sin_descomposicion/investigador": 3383,
+    "sin_descomposicion/redactor": 3435,
+    "sin_verificacion/auditor": 3269,
+    "sin_verificacion/investigador": 3523,
+    "sin_verificacion/redactor": 3435
+  },
+  "inventarios": {
+    "RG": 1,
+    "RI-FI": 1,
+    "CAL": 1
+  },
+  "detalle": [
+    {
+      "id": 1,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 120
+    },
+    {
+      "id": 1,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1246
+    },
+    {
+      "id": 1,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1968
+    },
+    {
+      "id": 1,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1880
+    },
+    {
+      "id": 1,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1893
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1828
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1880
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1893
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1968
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1729
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1893
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1968
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1880
+    },
+    {
+      "id": 1,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1714
+    },
+    {
+      "id": 2,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 112
+    },
+    {
+      "id": 2,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1165
+    },
+    {
+      "id": 2,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1890
+    },
+    {
+      "id": 2,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1802
+    },
+    {
+      "id": 2,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1815
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1750
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1802
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1815
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1890
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1651
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1815
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1890
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1802
+    },
+    {
+      "id": 2,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1636
+    },
+    {
+      "id": 3,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 115
+    },
+    {
+      "id": 3,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1937
+    },
+    {
+      "id": 3,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2687
+    },
+    {
+      "id": 3,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2599
+    },
+    {
+      "id": 3,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2612
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2547
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2599
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2612
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2687
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2448
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2612
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2687
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2599
+    },
+    {
+      "id": 3,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2433
+    },
+    {
+      "id": 4,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 112
+    },
+    {
+      "id": 4,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1304
+    },
+    {
+      "id": 4,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2034
+    },
+    {
+      "id": 4,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 4,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1959
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1894
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1959
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2034
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1795
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1959
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2034
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 4,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1780
+    },
+    {
+      "id": 5,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 116
+    },
+    {
+      "id": 5,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1505
+    },
+    {
+      "id": 5,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2248
+    },
+    {
+      "id": 5,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2160
+    },
+    {
+      "id": 5,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2173
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2108
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2160
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2173
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2248
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2009
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2173
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2248
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2160
+    },
+    {
+      "id": 5,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1994
+    },
+    {
+      "id": 6,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 115
+    },
+    {
+      "id": 6,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1625
+    },
+    {
+      "id": 6,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2364
+    },
+    {
+      "id": 6,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2276
+    },
+    {
+      "id": 6,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2289
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2224
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2276
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2289
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2364
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2125
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2289
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2364
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2276
+    },
+    {
+      "id": 6,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2110
+    },
+    {
+      "id": 7,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 113
+    },
+    {
+      "id": 7,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1165
+    },
+    {
+      "id": 7,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1896
+    },
+    {
+      "id": 7,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1808
+    },
+    {
+      "id": 7,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1821
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1756
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1808
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1821
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1896
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1657
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1821
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1896
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1808
+    },
+    {
+      "id": 7,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1642
+    },
+    {
+      "id": 8,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 108
+    },
+    {
+      "id": 8,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1051
+    },
+    {
+      "id": 8,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1787
+    },
+    {
+      "id": 8,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1699
+    },
+    {
+      "id": 8,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1712
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1647
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1699
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1712
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1787
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1548
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1712
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1787
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1699
+    },
+    {
+      "id": 8,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1533
+    },
+    {
+      "id": 9,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 119
+    },
+    {
+      "id": 9,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1092
+    },
+    {
+      "id": 9,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1821
+    },
+    {
+      "id": 9,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1733
+    },
+    {
+      "id": 9,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1746
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1681
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1733
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1746
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1821
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1582
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1746
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1821
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1733
+    },
+    {
+      "id": 9,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1567
+    },
+    {
+      "id": 10,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 112
+    },
+    {
+      "id": 10,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 989
+    },
+    {
+      "id": 10,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1712
+    },
+    {
+      "id": 10,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1624
+    },
+    {
+      "id": 10,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1637
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1572
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1624
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1637
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1712
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1473
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1637
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1712
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1624
+    },
+    {
+      "id": 10,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1458
+    },
+    {
+      "id": 11,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 122
+    },
+    {
+      "id": 11,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1211
+    },
+    {
+      "id": 11,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1938
+    },
+    {
+      "id": 11,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1850
+    },
+    {
+      "id": 11,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1863
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1798
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1850
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1863
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1938
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1699
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1863
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1938
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1850
+    },
+    {
+      "id": 11,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1684
+    },
+    {
+      "id": 12,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 122
+    },
+    {
+      "id": 12,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1212
+    },
+    {
+      "id": 12,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1944
+    },
+    {
+      "id": 12,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1856
+    },
+    {
+      "id": 12,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1869
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1804
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1856
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1869
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1944
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1705
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1869
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1944
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1856
+    },
+    {
+      "id": 12,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1690
+    },
+    {
+      "id": 13,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 128
+    },
+    {
+      "id": 13,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1301
+    },
+    {
+      "id": 13,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2038
+    },
+    {
+      "id": 13,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1950
+    },
+    {
+      "id": 13,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1963
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1898
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1950
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1963
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2038
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1799
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1963
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2038
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1950
+    },
+    {
+      "id": 13,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1784
+    },
+    {
+      "id": 14,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 124
+    },
+    {
+      "id": 14,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1393
+    },
+    {
+      "id": 14,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2128
+    },
+    {
+      "id": 14,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2040
+    },
+    {
+      "id": 14,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2053
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1988
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2040
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2053
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2128
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1889
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2053
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2128
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2040
+    },
+    {
+      "id": 14,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1874
+    },
+    {
+      "id": 15,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 113
+    },
+    {
+      "id": 15,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1004
+    },
+    {
+      "id": 15,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1721
+    },
+    {
+      "id": 15,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1633
+    },
+    {
+      "id": 15,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1646
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1581
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1633
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1646
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1721
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1482
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1646
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1721
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1633
+    },
+    {
+      "id": 15,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1467
+    },
+    {
+      "id": 16,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 121
+    },
+    {
+      "id": 16,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1752
+    },
+    {
+      "id": 16,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2513
+    },
+    {
+      "id": 16,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2425
+    },
+    {
+      "id": 16,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2438
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2373
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2425
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2438
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2513
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2274
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2438
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2513
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2425
+    },
+    {
+      "id": 16,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2259
+    },
+    {
+      "id": 17,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 116
+    },
+    {
+      "id": 17,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1775
+    },
+    {
+      "id": 17,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2527
+    },
+    {
+      "id": 17,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2439
+    },
+    {
+      "id": 17,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2452
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2387
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2439
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2452
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2527
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2288
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2452
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2527
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2439
+    },
+    {
+      "id": 17,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2273
+    },
+    {
+      "id": 18,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 128
+    },
+    {
+      "id": 18,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1177
+    },
+    {
+      "id": 18,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1915
+    },
+    {
+      "id": 18,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1827
+    },
+    {
+      "id": 18,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1840
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1775
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1827
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1840
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1915
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1676
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1840
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1915
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1827
+    },
+    {
+      "id": 18,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1661
+    },
+    {
+      "id": 19,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 113
+    },
+    {
+      "id": 19,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1094
+    },
+    {
+      "id": 19,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1828
+    },
+    {
+      "id": 19,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1740
+    },
+    {
+      "id": 19,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1753
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1688
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1740
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1753
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1828
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1589
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1753
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1828
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1740
+    },
+    {
+      "id": 19,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1574
+    },
+    {
+      "id": 20,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 125
+    },
+    {
+      "id": 20,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 2003
+    },
+    {
+      "id": 20,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2752
+    },
+    {
+      "id": 20,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2664
+    },
+    {
+      "id": 20,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2677
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2612
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2664
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2677
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2752
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2513
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2677
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2752
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2664
+    },
+    {
+      "id": 20,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2498
+    },
+    {
+      "id": 21,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 128
+    },
+    {
+      "id": 21,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1144
+    },
+    {
+      "id": 21,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1880
+    },
+    {
+      "id": 21,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1792
+    },
+    {
+      "id": 21,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1805
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1740
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1792
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1805
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1880
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1641
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1805
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1880
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1792
+    },
+    {
+      "id": 21,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1626
+    },
+    {
+      "id": 22,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 116
+    },
+    {
+      "id": 22,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1128
+    },
+    {
+      "id": 22,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1848
+    },
+    {
+      "id": 22,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1760
+    },
+    {
+      "id": 22,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1773
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1708
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1760
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1773
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1848
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1609
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1773
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1848
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1760
+    },
+    {
+      "id": 22,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1594
+    },
+    {
+      "id": 23,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 110
+    },
+    {
+      "id": 23,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 946
+    },
+    {
+      "id": 23,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1671
+    },
+    {
+      "id": 23,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1583
+    },
+    {
+      "id": 23,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1596
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1531
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1583
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1596
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1671
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1432
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1596
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1671
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1583
+    },
+    {
+      "id": 23,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1417
+    },
+    {
+      "id": 24,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 115
+    },
+    {
+      "id": 24,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1097
+    },
+    {
+      "id": 24,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1823
+    },
+    {
+      "id": 24,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1735
+    },
+    {
+      "id": 24,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1748
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1683
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1735
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1748
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1823
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1584
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1748
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1823
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1735
+    },
+    {
+      "id": 24,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1569
+    },
+    {
+      "id": 25,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 111
+    },
+    {
+      "id": 25,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 2667
+    },
+    {
+      "id": 25,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 3464
+    },
+    {
+      "id": 25,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 3376
+    },
+    {
+      "id": 25,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 3389
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 3324
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 3376
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 3389
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 3464
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 3225
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 3389
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 3464
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 3376
+    },
+    {
+      "id": 25,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 3210
+    },
+    {
+      "id": 26,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 111
+    },
+    {
+      "id": 26,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1250
+    },
+    {
+      "id": 26,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1989
+    },
+    {
+      "id": 26,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1901
+    },
+    {
+      "id": 26,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1914
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1849
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1901
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1914
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1989
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1750
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1914
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1989
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1901
+    },
+    {
+      "id": 26,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1735
+    },
+    {
+      "id": 27,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 111
+    },
+    {
+      "id": 27,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1116
+    },
+    {
+      "id": 27,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1842
+    },
+    {
+      "id": 27,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1754
+    },
+    {
+      "id": 27,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1767
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1702
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1754
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1767
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1842
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1603
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1767
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1842
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1754
+    },
+    {
+      "id": 27,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1588
+    },
+    {
+      "id": 28,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 116
+    },
+    {
+      "id": 28,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1376
+    },
+    {
+      "id": 28,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2107
+    },
+    {
+      "id": 28,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2019
+    },
+    {
+      "id": 28,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2032
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1967
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2019
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2032
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2107
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1868
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2032
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2107
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2019
+    },
+    {
+      "id": 28,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1853
+    },
+    {
+      "id": 29,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 116
+    },
+    {
+      "id": 29,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 2722
+    },
+    {
+      "id": 29,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 3523
+    },
+    {
+      "id": 29,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 3435
+    },
+    {
+      "id": 29,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 3448
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 3383
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 3435
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 3448
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 3523
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 3284
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 3448
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 3523
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 3435
+    },
+    {
+      "id": 29,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 3269
+    },
+    {
+      "id": 30,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 120
+    },
+    {
+      "id": 30,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1996
+    },
+    {
+      "id": 30,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2759
+    },
+    {
+      "id": 30,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2671
+    },
+    {
+      "id": 30,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2684
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2619
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2671
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2684
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2759
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2520
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2684
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2759
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2671
+    },
+    {
+      "id": 30,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2505
+    },
+    {
+      "id": 31,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 125
+    },
+    {
+      "id": 31,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 841
+    },
+    {
+      "id": 31,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1558
+    },
+    {
+      "id": 31,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1470
+    },
+    {
+      "id": 31,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1483
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1418
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1470
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1483
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1558
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1319
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1483
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1558
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1470
+    },
+    {
+      "id": 31,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1304
+    },
+    {
+      "id": 32,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 121
+    },
+    {
+      "id": 32,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 757
+    },
+    {
+      "id": 32,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1500
+    },
+    {
+      "id": 32,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1412
+    },
+    {
+      "id": 32,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1425
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1360
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1412
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1425
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1500
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1261
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1425
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1500
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1412
+    },
+    {
+      "id": 32,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1246
+    },
+    {
+      "id": 33,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 117
+    },
+    {
+      "id": 33,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 630
+    },
+    {
+      "id": 33,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1347
+    },
+    {
+      "id": 33,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1259
+    },
+    {
+      "id": 33,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1272
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1207
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1259
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1272
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1347
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1108
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1272
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1347
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1259
+    },
+    {
+      "id": 33,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1093
+    },
+    {
+      "id": 34,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 114
+    },
+    {
+      "id": 34,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1570
+    },
+    {
+      "id": 34,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2332
+    },
+    {
+      "id": 34,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2244
+    },
+    {
+      "id": 34,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2257
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2192
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2244
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2257
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2332
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2093
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2257
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2332
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2244
+    },
+    {
+      "id": 34,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2078
+    },
+    {
+      "id": 35,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 114
+    },
+    {
+      "id": 35,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 616
+    },
+    {
+      "id": 35,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1333
+    },
+    {
+      "id": 35,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1245
+    },
+    {
+      "id": 35,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1258
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1193
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1245
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1258
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1333
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1094
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1258
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1333
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1245
+    },
+    {
+      "id": 35,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1079
+    },
+    {
+      "id": 36,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 127
+    },
+    {
+      "id": 36,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 959
+    },
+    {
+      "id": 36,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1704
+    },
+    {
+      "id": 36,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1616
+    },
+    {
+      "id": 36,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1629
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1564
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1616
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1629
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1704
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1465
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1629
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1704
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1616
+    },
+    {
+      "id": 36,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1450
+    },
+    {
+      "id": 37,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 118
+    },
+    {
+      "id": 37,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 630
+    },
+    {
+      "id": 37,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1348
+    },
+    {
+      "id": 37,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1260
+    },
+    {
+      "id": 37,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1273
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1208
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1260
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1273
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1348
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1109
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1273
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1348
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1260
+    },
+    {
+      "id": 37,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1094
+    },
+    {
+      "id": 38,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 127
+    },
+    {
+      "id": 38,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1481
+    },
+    {
+      "id": 38,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2245
+    },
+    {
+      "id": 38,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2157
+    },
+    {
+      "id": 38,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2170
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2105
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2157
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2170
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2245
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2006
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2170
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2245
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2157
+    },
+    {
+      "id": 38,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1991
+    },
+    {
+      "id": 39,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 118
+    },
+    {
+      "id": 39,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 625
+    },
+    {
+      "id": 39,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1342
+    },
+    {
+      "id": 39,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1254
+    },
+    {
+      "id": 39,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1267
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1202
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1254
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1267
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1342
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1103
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1267
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1342
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1254
+    },
+    {
+      "id": 39,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1088
+    },
+    {
+      "id": 40,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 123
+    },
+    {
+      "id": 40,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1216
+    },
+    {
+      "id": 40,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 40,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1858
+    },
+    {
+      "id": 40,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1871
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1806
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1858
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1871
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1707
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1871
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1858
+    },
+    {
+      "id": 40,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1692
+    },
+    {
+      "id": 41,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 123
+    },
+    {
+      "id": 41,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1317
+    },
+    {
+      "id": 41,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2058
+    },
+    {
+      "id": 41,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1970
+    },
+    {
+      "id": 41,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1983
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1918
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1970
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1983
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2058
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1819
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1983
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2058
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1970
+    },
+    {
+      "id": 41,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1804
+    },
+    {
+      "id": 42,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 125
+    },
+    {
+      "id": 42,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1169
+    },
+    {
+      "id": 42,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1907
+    },
+    {
+      "id": 42,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1819
+    },
+    {
+      "id": 42,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1832
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1767
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1819
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1832
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1907
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1668
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1832
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1907
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1819
+    },
+    {
+      "id": 42,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1653
+    },
+    {
+      "id": 43,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 119
+    },
+    {
+      "id": 43,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1279
+    },
+    {
+      "id": 43,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2019
+    },
+    {
+      "id": 43,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1931
+    },
+    {
+      "id": 43,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1944
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1879
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1931
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1944
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2019
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1780
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1944
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2019
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1931
+    },
+    {
+      "id": 43,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1765
+    },
+    {
+      "id": 44,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 118
+    },
+    {
+      "id": 44,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1659
+    },
+    {
+      "id": 44,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2406
+    },
+    {
+      "id": 44,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2318
+    },
+    {
+      "id": 44,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2331
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2266
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2318
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2331
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2406
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2167
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2331
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2406
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2318
+    },
+    {
+      "id": 44,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2152
+    },
+    {
+      "id": 45,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 123
+    },
+    {
+      "id": 45,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1388
+    },
+    {
+      "id": 45,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2140
+    },
+    {
+      "id": 45,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2052
+    },
+    {
+      "id": 45,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2065
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2000
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2052
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2065
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2140
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1901
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2065
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2140
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2052
+    },
+    {
+      "id": 45,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1886
+    },
+    {
+      "id": 46,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 123
+    },
+    {
+      "id": 46,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1206
+    },
+    {
+      "id": 46,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 46,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1858
+    },
+    {
+      "id": 46,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1871
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1806
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1858
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1871
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1707
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1871
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 1946
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1858
+    },
+    {
+      "id": 46,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1692
+    },
+    {
+      "id": 47,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 133
+    },
+    {
+      "id": 47,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1468
+    },
+    {
+      "id": 47,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2218
+    },
+    {
+      "id": 47,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2130
+    },
+    {
+      "id": 47,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2143
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2078
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2130
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2143
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2218
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1979
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2143
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2218
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2130
+    },
+    {
+      "id": 47,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1964
+    },
+    {
+      "id": 48,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 125
+    },
+    {
+      "id": 48,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1775
+    },
+    {
+      "id": 48,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2523
+    },
+    {
+      "id": 48,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2435
+    },
+    {
+      "id": 48,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2448
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2383
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2435
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2448
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2523
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2284
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2448
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2523
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2435
+    },
+    {
+      "id": 48,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2269
+    },
+    {
+      "id": 49,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 125
+    },
+    {
+      "id": 49,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1266
+    },
+    {
+      "id": 49,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2044
+    },
+    {
+      "id": 49,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 1956
+    },
+    {
+      "id": 49,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 1969
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 1904
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 1956
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 1969
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2044
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 1805
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 1969
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2044
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 1956
+    },
+    {
+      "id": 49,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 1790
+    },
+    {
+      "id": 50,
+      "condicion_agente": "baseline_directo",
+      "tokens_entrada": 139
+    },
+    {
+      "id": 50,
+      "condicion_agente": "rag_d2",
+      "tokens_entrada": 1727
+    },
+    {
+      "id": 50,
+      "condicion_agente": "agentes_completo/investigador",
+      "tokens_entrada": 2492
+    },
+    {
+      "id": 50,
+      "condicion_agente": "agentes_completo/redactor",
+      "tokens_entrada": 2404
+    },
+    {
+      "id": 50,
+      "condicion_agente": "agentes_completo/auditor",
+      "tokens_entrada": 2417
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_descomposicion/investigador",
+      "tokens_entrada": 2352
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_descomposicion/redactor",
+      "tokens_entrada": 2404
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_descomposicion/auditor",
+      "tokens_entrada": 2417
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_completitud/investigador",
+      "tokens_entrada": 2492
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_completitud/redactor",
+      "tokens_entrada": 2253
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_completitud/auditor",
+      "tokens_entrada": 2417
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_verificacion/investigador",
+      "tokens_entrada": 2492
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_verificacion/redactor",
+      "tokens_entrada": 2404
+    },
+    {
+      "id": 50,
+      "condicion_agente": "sin_verificacion/auditor",
+      "tokens_entrada": 2238
+    }
+  ],
+  "limite": "Estos contextos no cubren todas las trayectorias posibles; cada llamada vuelve a medir su entrada."
+}

@@ -1,0 +1,4180 @@
+{
+  "contenido": {
+    "caso": {
+      "id": 38,
+      "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+      "categoria": "cruce",
+      "ranking_original": [
+        {
+          "fragmento_id": "RG-ART-023-F01",
+          "unidad_id": "RG-ART-023",
+          "similitud_coseno": 0.87469083070755
+        },
+        {
+          "fragmento_id": "RG-ANEXO-08-F01",
+          "unidad_id": "RG-ANEXO-08",
+          "similitud_coseno": 0.873809814453125
+        },
+        {
+          "fragmento_id": "RG-ANEXO-35-F01",
+          "unidad_id": "RG-ANEXO-35",
+          "similitud_coseno": 0.8728936910629272
+        },
+        {
+          "fragmento_id": "RG-ANEXO-15-F01",
+          "unidad_id": "RG-ANEXO-15",
+          "similitud_coseno": 0.8728656768798828
+        },
+        {
+          "fragmento_id": "RG-ANEXO-18-F01",
+          "unidad_id": "RG-ANEXO-18",
+          "similitud_coseno": 0.8728442192077637
+        },
+        {
+          "fragmento_id": "RG-ANEXO-06-F01",
+          "unidad_id": "RG-ANEXO-06",
+          "similitud_coseno": 0.8727049827575684
+        },
+        {
+          "fragmento_id": "RG-ANEXO-32-F01",
+          "unidad_id": "RG-ANEXO-32",
+          "similitud_coseno": 0.8725699782371521
+        },
+        {
+          "fragmento_id": "RG-ANEXO-05-F01",
+          "unidad_id": "RG-ANEXO-05",
+          "similitud_coseno": 0.8721805810928345
+        },
+        {
+          "fragmento_id": "RG-ANEXO-34-F01",
+          "unidad_id": "RG-ANEXO-34",
+          "similitud_coseno": 0.8721096515655518
+        },
+        {
+          "fragmento_id": "RG-ANEXO-41-F01",
+          "unidad_id": "RG-ANEXO-41",
+          "similitud_coseno": 0.8720843195915222
+        },
+        {
+          "fragmento_id": "RG-ANEXO-36-F01",
+          "unidad_id": "RG-ANEXO-36",
+          "similitud_coseno": 0.8718324899673462
+        },
+        {
+          "fragmento_id": "RG-ANEXO-09-F01",
+          "unidad_id": "RG-ANEXO-09",
+          "similitud_coseno": 0.8717527389526367
+        },
+        {
+          "fragmento_id": "RG-ANEXO-45-F01",
+          "unidad_id": "RG-ANEXO-45",
+          "similitud_coseno": 0.8717142343521118
+        },
+        {
+          "fragmento_id": "RG-ANEXO-22-F01",
+          "unidad_id": "RG-ANEXO-22",
+          "similitud_coseno": 0.8714927434921265
+        },
+        {
+          "fragmento_id": "RG-ANEXO-01-F01",
+          "unidad_id": "RG-ANEXO-01",
+          "similitud_coseno": 0.8714884519577026
+        },
+        {
+          "fragmento_id": "RG-ANEXO-33-F01",
+          "unidad_id": "RG-ANEXO-33",
+          "similitud_coseno": 0.8714257478713989
+        },
+        {
+          "fragmento_id": "RG-ANEXO-25-F01",
+          "unidad_id": "RG-ANEXO-25",
+          "similitud_coseno": 0.871401309967041
+        },
+        {
+          "fragmento_id": "RG-ANEXO-02-F01",
+          "unidad_id": "RG-ANEXO-02",
+          "similitud_coseno": 0.8713972568511963
+        },
+        {
+          "fragmento_id": "RG-ANEXO-04-F01",
+          "unidad_id": "RG-ANEXO-04",
+          "similitud_coseno": 0.8713234663009644
+        },
+        {
+          "fragmento_id": "RG-ANEXO-26-F01",
+          "unidad_id": "RG-ANEXO-26",
+          "similitud_coseno": 0.8712184429168701
+        },
+        {
+          "fragmento_id": "RG-ANEXO-23-F01",
+          "unidad_id": "RG-ANEXO-23",
+          "similitud_coseno": 0.8712043762207031
+        },
+        {
+          "fragmento_id": "RG-ANEXO-10-F01",
+          "unidad_id": "RG-ANEXO-10",
+          "similitud_coseno": 0.8711523413658142
+        },
+        {
+          "fragmento_id": "RG-ANEXO-03-F01",
+          "unidad_id": "RG-ANEXO-03",
+          "similitud_coseno": 0.8711329102516174
+        },
+        {
+          "fragmento_id": "RG-ANEXO-14-F01",
+          "unidad_id": "RG-ANEXO-14",
+          "similitud_coseno": 0.8710100650787354
+        },
+        {
+          "fragmento_id": "RG-ANEXO-17-F01",
+          "unidad_id": "RG-ANEXO-17",
+          "similitud_coseno": 0.8709756135940552
+        },
+        {
+          "fragmento_id": "RG-ANEXO-44-F01",
+          "unidad_id": "RG-ANEXO-44",
+          "similitud_coseno": 0.8709751963615417
+        },
+        {
+          "fragmento_id": "RG-ANEXO-42-F01",
+          "unidad_id": "RG-ANEXO-42",
+          "similitud_coseno": 0.8709614276885986
+        },
+        {
+          "fragmento_id": "RG-ANEXO-11-F01",
+          "unidad_id": "RG-ANEXO-11",
+          "similitud_coseno": 0.8708639740943909
+        },
+        {
+          "fragmento_id": "RG-ANEXO-12-F01",
+          "unidad_id": "RG-ANEXO-12",
+          "similitud_coseno": 0.8708553910255432
+        },
+        {
+          "fragmento_id": "RG-ANEXO-21-F01",
+          "unidad_id": "RG-ANEXO-21",
+          "similitud_coseno": 0.8708300590515137
+        },
+        {
+          "fragmento_id": "RG-ANEXO-16-F01",
+          "unidad_id": "RG-ANEXO-16",
+          "similitud_coseno": 0.8704837560653687
+        },
+        {
+          "fragmento_id": "RG-ANEXO-07-F01",
+          "unidad_id": "RG-ANEXO-07",
+          "similitud_coseno": 0.8704566359519958
+        },
+        {
+          "fragmento_id": "RG-ANEXO-50-F01",
+          "unidad_id": "RG-ANEXO-50",
+          "similitud_coseno": 0.8704153299331665
+        },
+        {
+          "fragmento_id": "RG-ANEXO-28-F01",
+          "unidad_id": "RG-ANEXO-28",
+          "similitud_coseno": 0.8703778982162476
+        },
+        {
+          "fragmento_id": "RG-ANEXO-13-F01",
+          "unidad_id": "RG-ANEXO-13",
+          "similitud_coseno": 0.8702653050422668
+        },
+        {
+          "fragmento_id": "RG-ANEXO-24-F01",
+          "unidad_id": "RG-ANEXO-24",
+          "similitud_coseno": 0.8699621558189392
+        },
+        {
+          "fragmento_id": "RG-ANEXO-19-F01",
+          "unidad_id": "RG-ANEXO-19",
+          "similitud_coseno": 0.8697468042373657
+        },
+        {
+          "fragmento_id": "RG-ANEXO-20-F01",
+          "unidad_id": "RG-ANEXO-20",
+          "similitud_coseno": 0.8697054386138916
+        },
+        {
+          "fragmento_id": "RG-ANEXO-27-F01",
+          "unidad_id": "RG-ANEXO-27",
+          "similitud_coseno": 0.8694751262664795
+        },
+        {
+          "fragmento_id": "RG-ANEXO-30-F01",
+          "unidad_id": "RG-ANEXO-30",
+          "similitud_coseno": 0.8693922758102417
+        },
+        {
+          "fragmento_id": "RG-ANEXO-31-F01",
+          "unidad_id": "RG-ANEXO-31",
+          "similitud_coseno": 0.8692412376403809
+        },
+        {
+          "fragmento_id": "RG-ANEXO-43-F01",
+          "unidad_id": "RG-ANEXO-43",
+          "similitud_coseno": 0.8692339658737183
+        },
+        {
+          "fragmento_id": "RG-ANEXO-48-F01",
+          "unidad_id": "RG-ANEXO-48",
+          "similitud_coseno": 0.869117259979248
+        },
+        {
+          "fragmento_id": "RG-ANEXO-38-F01",
+          "unidad_id": "RG-ANEXO-38",
+          "similitud_coseno": 0.8690946102142334
+        },
+        {
+          "fragmento_id": "RG-ANEXO-37-F01",
+          "unidad_id": "RG-ANEXO-37",
+          "similitud_coseno": 0.8687124252319336
+        },
+        {
+          "fragmento_id": "RG-ANEXO-39-F01",
+          "unidad_id": "RG-ANEXO-39",
+          "similitud_coseno": 0.8686054944992065
+        },
+        {
+          "fragmento_id": "RG-ANEXO-29-F01",
+          "unidad_id": "RG-ANEXO-29",
+          "similitud_coseno": 0.8683998584747314
+        },
+        {
+          "fragmento_id": "RG-ANEXO-47-F01",
+          "unidad_id": "RG-ANEXO-47",
+          "similitud_coseno": 0.8683314323425293
+        },
+        {
+          "fragmento_id": "RG-ANEXO-40-F01",
+          "unidad_id": "RG-ANEXO-40",
+          "similitud_coseno": 0.8682247400283813
+        },
+        {
+          "fragmento_id": "RG-ANEXO-46-F01",
+          "unidad_id": "RG-ANEXO-46",
+          "similitud_coseno": 0.8681331276893616
+        },
+        {
+          "fragmento_id": "RG-ANEXO-49-F01",
+          "unidad_id": "RG-ANEXO-49",
+          "similitud_coseno": 0.8680329918861389
+        },
+        {
+          "fragmento_id": "RG-ART-027-F01",
+          "unidad_id": "RG-ART-027",
+          "similitud_coseno": 0.8613967299461365
+        },
+        {
+          "fragmento_id": "RG-ART-021-F01",
+          "unidad_id": "RG-ART-021",
+          "similitud_coseno": 0.8587888479232788
+        },
+        {
+          "fragmento_id": "RI-FI-ART-030-F01",
+          "unidad_id": "RI-FI-ART-030",
+          "similitud_coseno": 0.8586111068725586
+        },
+        {
+          "fragmento_id": "RG-ART-022-F01",
+          "unidad_id": "RG-ART-022",
+          "similitud_coseno": 0.8529443740844727
+        },
+        {
+          "fragmento_id": "RG-ART-013-F01",
+          "unidad_id": "RG-ART-013",
+          "similitud_coseno": 0.8505549430847168
+        },
+        {
+          "fragmento_id": "RI-FI-ART-018-F01",
+          "unidad_id": "RI-FI-ART-018",
+          "similitud_coseno": 0.8485120534896851
+        },
+        {
+          "fragmento_id": "RG-ART-041-F01",
+          "unidad_id": "RG-ART-041",
+          "similitud_coseno": 0.8467142581939697
+        },
+        {
+          "fragmento_id": "RG-ART-038-F01",
+          "unidad_id": "RG-ART-038",
+          "similitud_coseno": 0.8458189368247986
+        },
+        {
+          "fragmento_id": "RG-ART-024-F01",
+          "unidad_id": "RG-ART-024",
+          "similitud_coseno": 0.8454861640930176
+        },
+        {
+          "fragmento_id": "RG-ART-026-F01",
+          "unidad_id": "RG-ART-026",
+          "similitud_coseno": 0.8446321487426758
+        },
+        {
+          "fragmento_id": "RG-ART-048-F01",
+          "unidad_id": "RG-ART-048",
+          "similitud_coseno": 0.8434427380561829
+        },
+        {
+          "fragmento_id": "RI-FI-ART-012-F01",
+          "unidad_id": "RI-FI-ART-012",
+          "similitud_coseno": 0.842281699180603
+        },
+        {
+          "fragmento_id": "RG-ART-019-F01",
+          "unidad_id": "RG-ART-019",
+          "similitud_coseno": 0.8421968221664429
+        },
+        {
+          "fragmento_id": "RG-ART-012-F01",
+          "unidad_id": "RG-ART-012",
+          "similitud_coseno": 0.8418887853622437
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-11-F01",
+          "unidad_id": "RG-ART-003-DEF-11",
+          "similitud_coseno": 0.8410403728485107
+        },
+        {
+          "fragmento_id": "RG-ART-039-F01",
+          "unidad_id": "RG-ART-039",
+          "similitud_coseno": 0.8388351202011108
+        },
+        {
+          "fragmento_id": "RI-FI-ART-010-F01",
+          "unidad_id": "RI-FI-ART-010",
+          "similitud_coseno": 0.8387799859046936
+        },
+        {
+          "fragmento_id": "RI-FI-ART-013-F01",
+          "unidad_id": "RI-FI-ART-013",
+          "similitud_coseno": 0.8385178446769714
+        },
+        {
+          "fragmento_id": "RG-PREAMBULO-F01",
+          "unidad_id": "RG-PREAMBULO",
+          "similitud_coseno": 0.8367214798927307
+        },
+        {
+          "fragmento_id": "RI-FI-ART-035-F01",
+          "unidad_id": "RI-FI-ART-035",
+          "similitud_coseno": 0.8366822600364685
+        },
+        {
+          "fragmento_id": "RG-ART-028-F01",
+          "unidad_id": "RG-ART-028",
+          "similitud_coseno": 0.8364876508712769
+        },
+        {
+          "fragmento_id": "RI-FI-ART-011-F01",
+          "unidad_id": "RI-FI-ART-011",
+          "similitud_coseno": 0.8345083594322205
+        },
+        {
+          "fragmento_id": "RI-FI-ART-024-F01",
+          "unidad_id": "RI-FI-ART-024",
+          "similitud_coseno": 0.8344454765319824
+        },
+        {
+          "fragmento_id": "RI-FI-ART-005-F01",
+          "unidad_id": "RI-FI-ART-005",
+          "similitud_coseno": 0.8338369131088257
+        },
+        {
+          "fragmento_id": "RG-ART-047-F01",
+          "unidad_id": "RG-ART-047",
+          "similitud_coseno": 0.8333052396774292
+        },
+        {
+          "fragmento_id": "RG-ART-058-F01",
+          "unidad_id": "RG-ART-058",
+          "similitud_coseno": 0.8330038785934448
+        },
+        {
+          "fragmento_id": "RG-ART-020-F01",
+          "unidad_id": "RG-ART-020",
+          "similitud_coseno": 0.8326176404953003
+        },
+        {
+          "fragmento_id": "RG-ART-050-F01",
+          "unidad_id": "RG-ART-050",
+          "similitud_coseno": 0.8325499296188354
+        },
+        {
+          "fragmento_id": "RI-FI-ART-021-F01",
+          "unidad_id": "RI-FI-ART-021",
+          "similitud_coseno": 0.8318122625350952
+        },
+        {
+          "fragmento_id": "RG-ART-025-F01",
+          "unidad_id": "RG-ART-025",
+          "similitud_coseno": 0.8316317796707153
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-05-F01",
+          "unidad_id": "RG-ART-003-DEF-05",
+          "similitud_coseno": 0.8314444422721863
+        },
+        {
+          "fragmento_id": "RI-FI-ART-017-F01",
+          "unidad_id": "RI-FI-ART-017",
+          "similitud_coseno": 0.8299260139465332
+        },
+        {
+          "fragmento_id": "RG-ART-014-F01",
+          "unidad_id": "RG-ART-014",
+          "similitud_coseno": 0.8297129273414612
+        },
+        {
+          "fragmento_id": "RI-FI-ART-029-F01",
+          "unidad_id": "RI-FI-ART-029",
+          "similitud_coseno": 0.8284252882003784
+        },
+        {
+          "fragmento_id": "RG-ART-045-F01",
+          "unidad_id": "RG-ART-045",
+          "similitud_coseno": 0.8280641436576843
+        },
+        {
+          "fragmento_id": "RG-ART-040-F01",
+          "unidad_id": "RG-ART-040",
+          "similitud_coseno": 0.8269240260124207
+        },
+        {
+          "fragmento_id": "RG-TRANS-001-F01",
+          "unidad_id": "RG-TRANS-001",
+          "similitud_coseno": 0.8262614607810974
+        },
+        {
+          "fragmento_id": "RG-ART-037-F01",
+          "unidad_id": "RG-ART-037",
+          "similitud_coseno": 0.8261781930923462
+        },
+        {
+          "fragmento_id": "RG-ART-015-F01",
+          "unidad_id": "RG-ART-015",
+          "similitud_coseno": 0.82518470287323
+        },
+        {
+          "fragmento_id": "RG-ART-007-F01",
+          "unidad_id": "RG-ART-007",
+          "similitud_coseno": 0.8246358036994934
+        },
+        {
+          "fragmento_id": "RG-ART-003-INTRO-F01",
+          "unidad_id": "RG-ART-003-INTRO",
+          "similitud_coseno": 0.8244727849960327
+        },
+        {
+          "fragmento_id": "RG-ART-010-F02",
+          "unidad_id": "RG-ART-010",
+          "similitud_coseno": 0.8244607448577881
+        },
+        {
+          "fragmento_id": "RI-FI-ART-002-F01",
+          "unidad_id": "RI-FI-ART-002",
+          "similitud_coseno": 0.8243229985237122
+        },
+        {
+          "fragmento_id": "RI-FI-ART-028-F01",
+          "unidad_id": "RI-FI-ART-028",
+          "similitud_coseno": 0.8229349851608276
+        },
+        {
+          "fragmento_id": "RG-ART-010-F01",
+          "unidad_id": "RG-ART-010",
+          "similitud_coseno": 0.8227368593215942
+        },
+        {
+          "fragmento_id": "RG-ART-042-F01",
+          "unidad_id": "RG-ART-042",
+          "similitud_coseno": 0.8224585652351379
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-09-F01",
+          "unidad_id": "RG-ART-003-DEF-09",
+          "similitud_coseno": 0.822252094745636
+        },
+        {
+          "fragmento_id": "RG-ART-054-F01",
+          "unidad_id": "RG-ART-054",
+          "similitud_coseno": 0.8216885328292847
+        },
+        {
+          "fragmento_id": "RG-ART-006-F01",
+          "unidad_id": "RG-ART-006",
+          "similitud_coseno": 0.8216128349304199
+        },
+        {
+          "fragmento_id": "RG-TRANS-002-F01",
+          "unidad_id": "RG-TRANS-002",
+          "similitud_coseno": 0.8199315071105957
+        },
+        {
+          "fragmento_id": "RG-ART-049-F01",
+          "unidad_id": "RG-ART-049",
+          "similitud_coseno": 0.8193393349647522
+        },
+        {
+          "fragmento_id": "RG-ART-055-F01",
+          "unidad_id": "RG-ART-055",
+          "similitud_coseno": 0.8192235231399536
+        },
+        {
+          "fragmento_id": "RG-ART-018-F01",
+          "unidad_id": "RG-ART-018",
+          "similitud_coseno": 0.8191227316856384
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-10-F02",
+          "unidad_id": "RG-ART-003-DEF-10",
+          "similitud_coseno": 0.8190319538116455
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-10-F01",
+          "unidad_id": "RG-ART-003-DEF-10",
+          "similitud_coseno": 0.8187073469161987
+        },
+        {
+          "fragmento_id": "RG-ART-005-F01",
+          "unidad_id": "RG-ART-005",
+          "similitud_coseno": 0.818515956401825
+        },
+        {
+          "fragmento_id": "RI-FI-ART-007-F01",
+          "unidad_id": "RI-FI-ART-007",
+          "similitud_coseno": 0.8185035586357117
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-23-F01",
+          "unidad_id": "RG-ART-003-DEF-23",
+          "similitud_coseno": 0.8183953762054443
+        },
+        {
+          "fragmento_id": "RG-ART-009-F01",
+          "unidad_id": "RG-ART-009",
+          "similitud_coseno": 0.8183150291442871
+        },
+        {
+          "fragmento_id": "RG-ART-053-F01",
+          "unidad_id": "RG-ART-053",
+          "similitud_coseno": 0.8181841373443604
+        },
+        {
+          "fragmento_id": "RG-ART-051-F01",
+          "unidad_id": "RG-ART-051",
+          "similitud_coseno": 0.8175750970840454
+        },
+        {
+          "fragmento_id": "RG-ART-017-F01",
+          "unidad_id": "RG-ART-017",
+          "similitud_coseno": 0.816754937171936
+        },
+        {
+          "fragmento_id": "RI-FI-ART-006-F01",
+          "unidad_id": "RI-FI-ART-006",
+          "similitud_coseno": 0.8165209293365479
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-22-F01",
+          "unidad_id": "RG-ART-003-DEF-22",
+          "similitud_coseno": 0.8163180351257324
+        },
+        {
+          "fragmento_id": "RI-FI-ART-019-F01",
+          "unidad_id": "RI-FI-ART-019",
+          "similitud_coseno": 0.8152914047241211
+        },
+        {
+          "fragmento_id": "RG-ART-029-F01",
+          "unidad_id": "RG-ART-029",
+          "similitud_coseno": 0.8146348595619202
+        },
+        {
+          "fragmento_id": "RG-ART-030-F01",
+          "unidad_id": "RG-ART-030",
+          "similitud_coseno": 0.8145350813865662
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-12-F01",
+          "unidad_id": "RG-ART-003-DEF-12",
+          "similitud_coseno": 0.8142491579055786
+        },
+        {
+          "fragmento_id": "RI-FI-ART-015-F01",
+          "unidad_id": "RI-FI-ART-015",
+          "similitud_coseno": 0.8139980435371399
+        },
+        {
+          "fragmento_id": "RI-FI-ART-034-F01",
+          "unidad_id": "RI-FI-ART-034",
+          "similitud_coseno": 0.8139585256576538
+        },
+        {
+          "fragmento_id": "RI-FI-ART-014-F01",
+          "unidad_id": "RI-FI-ART-014",
+          "similitud_coseno": 0.8138675093650818
+        },
+        {
+          "fragmento_id": "RG-ART-032-F01",
+          "unidad_id": "RG-ART-032",
+          "similitud_coseno": 0.813785195350647
+        },
+        {
+          "fragmento_id": "RG-ART-001-F01",
+          "unidad_id": "RG-ART-001",
+          "similitud_coseno": 0.813644289970398
+        },
+        {
+          "fragmento_id": "RI-FI-ART-032-F01",
+          "unidad_id": "RI-FI-ART-032",
+          "similitud_coseno": 0.8130338788032532
+        },
+        {
+          "fragmento_id": "RG-ART-036-F01",
+          "unidad_id": "RG-ART-036",
+          "similitud_coseno": 0.8127882480621338
+        },
+        {
+          "fragmento_id": "RI-FI-ART-004-F01",
+          "unidad_id": "RI-FI-ART-004",
+          "similitud_coseno": 0.812555193901062
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-07-F01",
+          "unidad_id": "RG-ART-003-DEF-07",
+          "similitud_coseno": 0.8114266395568848
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-13-F01",
+          "unidad_id": "RG-ART-003-DEF-13",
+          "similitud_coseno": 0.8104356527328491
+        },
+        {
+          "fragmento_id": "RG-ART-052-F01",
+          "unidad_id": "RG-ART-052",
+          "similitud_coseno": 0.8102098703384399
+        },
+        {
+          "fragmento_id": "RG-ART-060-F01",
+          "unidad_id": "RG-ART-060",
+          "similitud_coseno": 0.810106635093689
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-09-F02",
+          "unidad_id": "RG-ART-003-DEF-09",
+          "similitud_coseno": 0.8093447089195251
+        },
+        {
+          "fragmento_id": "RI-FI-ART-023-F01",
+          "unidad_id": "RI-FI-ART-023",
+          "similitud_coseno": 0.8085378408432007
+        },
+        {
+          "fragmento_id": "RG-ART-016-F01",
+          "unidad_id": "RG-ART-016",
+          "similitud_coseno": 0.8084924221038818
+        },
+        {
+          "fragmento_id": "RG-ART-043-F01",
+          "unidad_id": "RG-ART-043",
+          "similitud_coseno": 0.8084868788719177
+        },
+        {
+          "fragmento_id": "RG-ART-008-F01",
+          "unidad_id": "RG-ART-008",
+          "similitud_coseno": 0.807716965675354
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-01-F01",
+          "unidad_id": "RG-ART-003-DEF-01",
+          "similitud_coseno": 0.8064607381820679
+        },
+        {
+          "fragmento_id": "RG-ART-011-F01",
+          "unidad_id": "RG-ART-011",
+          "similitud_coseno": 0.806146502494812
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-05-F01",
+          "unidad_id": "CAL-2026-S2-05",
+          "similitud_coseno": 0.8059054613113403
+        },
+        {
+          "fragmento_id": "RI-FI-ART-009-F01",
+          "unidad_id": "RI-FI-ART-009",
+          "similitud_coseno": 0.8058063983917236
+        },
+        {
+          "fragmento_id": "RG-ART-033-F01",
+          "unidad_id": "RG-ART-033",
+          "similitud_coseno": 0.805456280708313
+        },
+        {
+          "fragmento_id": "RI-FI-ART-008-F01",
+          "unidad_id": "RI-FI-ART-008",
+          "similitud_coseno": 0.8045716881752014
+        },
+        {
+          "fragmento_id": "RI-FI-ART-020-F01",
+          "unidad_id": "RI-FI-ART-020",
+          "similitud_coseno": 0.8044040203094482
+        },
+        {
+          "fragmento_id": "RG-ART-004-F01",
+          "unidad_id": "RG-ART-004",
+          "similitud_coseno": 0.8043234348297119
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-21-F01",
+          "unidad_id": "RG-ART-003-DEF-21",
+          "similitud_coseno": 0.8035407662391663
+        },
+        {
+          "fragmento_id": "RG-ART-044-F01",
+          "unidad_id": "RG-ART-044",
+          "similitud_coseno": 0.8034756183624268
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-14-F01",
+          "unidad_id": "RG-ART-003-DEF-14",
+          "similitud_coseno": 0.8032494783401489
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-01-F01",
+          "unidad_id": "CAL-2026-S2-01",
+          "similitud_coseno": 0.8029175996780396
+        },
+        {
+          "fragmento_id": "RG-ART-059-F01",
+          "unidad_id": "RG-ART-059",
+          "similitud_coseno": 0.8028939962387085
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-06-F01",
+          "unidad_id": "CAL-2026-S1-06",
+          "similitud_coseno": 0.802284836769104
+        },
+        {
+          "fragmento_id": "RI-FI-ART-001-F01",
+          "unidad_id": "RI-FI-ART-001",
+          "similitud_coseno": 0.8019675016403198
+        },
+        {
+          "fragmento_id": "RI-FI-ART-031-F01",
+          "unidad_id": "RI-FI-ART-031",
+          "similitud_coseno": 0.8000730276107788
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-02-F01",
+          "unidad_id": "RG-ART-003-DEF-02",
+          "similitud_coseno": 0.7996001243591309
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-03-F01",
+          "unidad_id": "CAL-2026-S1-03",
+          "similitud_coseno": 0.799247145652771
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-03-F01",
+          "unidad_id": "CAL-2026-S2-03",
+          "similitud_coseno": 0.7988790273666382
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-11-F01",
+          "unidad_id": "CAL-2026-S2-11",
+          "similitud_coseno": 0.797310471534729
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-05-F01",
+          "unidad_id": "CAL-2026-S1-05",
+          "similitud_coseno": 0.7970275282859802
+        },
+        {
+          "fragmento_id": "RG-ART-031-F01",
+          "unidad_id": "RG-ART-031",
+          "similitud_coseno": 0.7966861724853516
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-18-F01",
+          "unidad_id": "RG-ART-003-DEF-18",
+          "similitud_coseno": 0.7962878942489624
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-04-F01",
+          "unidad_id": "CAL-2026-S2-04",
+          "similitud_coseno": 0.7960845232009888
+        },
+        {
+          "fragmento_id": "RG-ART-035-F01",
+          "unidad_id": "RG-ART-035",
+          "similitud_coseno": 0.7957479953765869
+        },
+        {
+          "fragmento_id": "RI-FI-ART-022-F01",
+          "unidad_id": "RI-FI-ART-022",
+          "similitud_coseno": 0.7953634858131409
+        },
+        {
+          "fragmento_id": "RG-ART-002-F01",
+          "unidad_id": "RG-ART-002",
+          "similitud_coseno": 0.7951229810714722
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-08-F01",
+          "unidad_id": "CAL-2026-S1-08",
+          "similitud_coseno": 0.7946490049362183
+        },
+        {
+          "fragmento_id": "RG-ART-008-F02",
+          "unidad_id": "RG-ART-008",
+          "similitud_coseno": 0.794455349445343
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-04-F01",
+          "unidad_id": "CAL-2026-S1-04",
+          "similitud_coseno": 0.7943472862243652
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-10-F01",
+          "unidad_id": "CAL-2026-S1-10",
+          "similitud_coseno": 0.7942793369293213
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-07-F01",
+          "unidad_id": "CAL-2026-S1-07",
+          "similitud_coseno": 0.7939854264259338
+        },
+        {
+          "fragmento_id": "RI-FI-ART-016-F01",
+          "unidad_id": "RI-FI-ART-016",
+          "similitud_coseno": 0.7939102649688721
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-09-F01",
+          "unidad_id": "CAL-2026-S2-09",
+          "similitud_coseno": 0.7939038872718811
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-11-F01",
+          "unidad_id": "CAL-2026-S1-11",
+          "similitud_coseno": 0.7938528656959534
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-07-F01",
+          "unidad_id": "CAL-2026-S2-07",
+          "similitud_coseno": 0.7934037446975708
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-13-F01",
+          "unidad_id": "CAL-2026-S1-13",
+          "similitud_coseno": 0.7933694124221802
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-03-F01",
+          "unidad_id": "RG-ART-003-DEF-03",
+          "similitud_coseno": 0.79282546043396
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-10-F01",
+          "unidad_id": "CAL-2026-S2-10",
+          "similitud_coseno": 0.7927747368812561
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-09-F01",
+          "unidad_id": "CAL-2026-S1-09",
+          "similitud_coseno": 0.792565107345581
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-12-F01",
+          "unidad_id": "CAL-2026-S1-12",
+          "similitud_coseno": 0.7924182415008545
+        },
+        {
+          "fragmento_id": "RI-FI-ART-026-F01",
+          "unidad_id": "RI-FI-ART-026",
+          "similitud_coseno": 0.7920359373092651
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-02-F01",
+          "unidad_id": "CAL-2026-S1-02",
+          "similitud_coseno": 0.7918379306793213
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-14-F01",
+          "unidad_id": "CAL-2026-S1-14",
+          "similitud_coseno": 0.7915960550308228
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-08-F01",
+          "unidad_id": "CAL-2026-S2-08",
+          "similitud_coseno": 0.7913750410079956
+        },
+        {
+          "fragmento_id": "RG-ART-056-F01",
+          "unidad_id": "RG-ART-056",
+          "similitud_coseno": 0.7912435531616211
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-24-F01",
+          "unidad_id": "RG-ART-003-DEF-24",
+          "similitud_coseno": 0.7911280989646912
+        },
+        {
+          "fragmento_id": "RG-ART-046-F01",
+          "unidad_id": "RG-ART-046",
+          "similitud_coseno": 0.7898686528205872
+        },
+        {
+          "fragmento_id": "RI-FI-ART-033-F01",
+          "unidad_id": "RI-FI-ART-033",
+          "similitud_coseno": 0.7898221611976624
+        },
+        {
+          "fragmento_id": "RG-ART-057-F01",
+          "unidad_id": "RG-ART-057",
+          "similitud_coseno": 0.7897056341171265
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-02-F01",
+          "unidad_id": "CAL-2026-S2-02",
+          "similitud_coseno": 0.7892270088195801
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-19-F01",
+          "unidad_id": "RG-ART-003-DEF-19",
+          "similitud_coseno": 0.7891416549682617
+        },
+        {
+          "fragmento_id": "RI-FI-ART-027-F01",
+          "unidad_id": "RI-FI-ART-027",
+          "similitud_coseno": 0.7879524230957031
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-15-F01",
+          "unidad_id": "RG-ART-003-DEF-15",
+          "similitud_coseno": 0.7874035835266113
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-16-F01",
+          "unidad_id": "RG-ART-003-DEF-16",
+          "similitud_coseno": 0.7871890068054199
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-06-F01",
+          "unidad_id": "RG-ART-003-DEF-06",
+          "similitud_coseno": 0.7871674299240112
+        },
+        {
+          "fragmento_id": "CAL-2026-S2-06-F01",
+          "unidad_id": "CAL-2026-S2-06",
+          "similitud_coseno": 0.7869868278503418
+        },
+        {
+          "fragmento_id": "CAL-2026-S1-01-F01",
+          "unidad_id": "CAL-2026-S1-01",
+          "similitud_coseno": 0.7867197394371033
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-04-F01",
+          "unidad_id": "RG-ART-003-DEF-04",
+          "similitud_coseno": 0.7861183881759644
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-20-F01",
+          "unidad_id": "RG-ART-003-DEF-20",
+          "similitud_coseno": 0.7845515012741089
+        },
+        {
+          "fragmento_id": "RG-ART-034-F01",
+          "unidad_id": "RG-ART-034",
+          "similitud_coseno": 0.7838847637176514
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-08-F01",
+          "unidad_id": "RG-ART-003-DEF-08",
+          "similitud_coseno": 0.7816692590713501
+        },
+        {
+          "fragmento_id": "RG-ART-003-DEF-17-F01",
+          "unidad_id": "RG-ART-003-DEF-17",
+          "similitud_coseno": 0.7784920334815979
+        },
+        {
+          "fragmento_id": "RI-FI-ART-003-F01",
+          "unidad_id": "RI-FI-ART-003",
+          "similitud_coseno": 0.775989830493927
+        },
+        {
+          "fragmento_id": "RI-FI-ART-025-F01",
+          "unidad_id": "RI-FI-ART-025",
+          "similitud_coseno": 0.7748918533325195
+        }
+      ],
+      "subconsultas": [
+        {
+          "texto": "La escala de notas del Reglamento General",
+          "ranking": [
+            {
+              "fragmento_id": "RG-ANEXO-15-F01",
+              "unidad_id": "RG-ANEXO-15",
+              "similitud_coseno": 0.8836569786071777
+            },
+            {
+              "fragmento_id": "RG-ANEXO-18-F01",
+              "unidad_id": "RG-ANEXO-18",
+              "similitud_coseno": 0.8827066421508789
+            },
+            {
+              "fragmento_id": "RG-ANEXO-45-F01",
+              "unidad_id": "RG-ANEXO-45",
+              "similitud_coseno": 0.8825356960296631
+            },
+            {
+              "fragmento_id": "RG-ANEXO-02-F01",
+              "unidad_id": "RG-ANEXO-02",
+              "similitud_coseno": 0.8818103671073914
+            },
+            {
+              "fragmento_id": "RG-ANEXO-05-F01",
+              "unidad_id": "RG-ANEXO-05",
+              "similitud_coseno": 0.8817960619926453
+            },
+            {
+              "fragmento_id": "RG-ANEXO-41-F01",
+              "unidad_id": "RG-ANEXO-41",
+              "similitud_coseno": 0.8817390203475952
+            },
+            {
+              "fragmento_id": "RG-ANEXO-08-F01",
+              "unidad_id": "RG-ANEXO-08",
+              "similitud_coseno": 0.881632924079895
+            },
+            {
+              "fragmento_id": "RG-ANEXO-32-F01",
+              "unidad_id": "RG-ANEXO-32",
+              "similitud_coseno": 0.8814904689788818
+            },
+            {
+              "fragmento_id": "RG-ANEXO-01-F01",
+              "unidad_id": "RG-ANEXO-01",
+              "similitud_coseno": 0.8814259171485901
+            },
+            {
+              "fragmento_id": "RG-ANEXO-03-F01",
+              "unidad_id": "RG-ANEXO-03",
+              "similitud_coseno": 0.8811482191085815
+            },
+            {
+              "fragmento_id": "RG-ANEXO-26-F01",
+              "unidad_id": "RG-ANEXO-26",
+              "similitud_coseno": 0.8811016082763672
+            },
+            {
+              "fragmento_id": "RG-ANEXO-34-F01",
+              "unidad_id": "RG-ANEXO-34",
+              "similitud_coseno": 0.8808971047401428
+            },
+            {
+              "fragmento_id": "RG-ANEXO-36-F01",
+              "unidad_id": "RG-ANEXO-36",
+              "similitud_coseno": 0.8808696866035461
+            },
+            {
+              "fragmento_id": "RG-ANEXO-14-F01",
+              "unidad_id": "RG-ANEXO-14",
+              "similitud_coseno": 0.8808556795120239
+            },
+            {
+              "fragmento_id": "RG-ANEXO-35-F01",
+              "unidad_id": "RG-ANEXO-35",
+              "similitud_coseno": 0.8808255791664124
+            },
+            {
+              "fragmento_id": "RG-ANEXO-42-F01",
+              "unidad_id": "RG-ANEXO-42",
+              "similitud_coseno": 0.8808065056800842
+            },
+            {
+              "fragmento_id": "RG-ANEXO-11-F01",
+              "unidad_id": "RG-ANEXO-11",
+              "similitud_coseno": 0.880566418170929
+            },
+            {
+              "fragmento_id": "RG-ANEXO-17-F01",
+              "unidad_id": "RG-ANEXO-17",
+              "similitud_coseno": 0.8804613351821899
+            },
+            {
+              "fragmento_id": "RG-ANEXO-16-F01",
+              "unidad_id": "RG-ANEXO-16",
+              "similitud_coseno": 0.8802987337112427
+            },
+            {
+              "fragmento_id": "RG-ANEXO-10-F01",
+              "unidad_id": "RG-ANEXO-10",
+              "similitud_coseno": 0.8801422119140625
+            },
+            {
+              "fragmento_id": "RG-ANEXO-23-F01",
+              "unidad_id": "RG-ANEXO-23",
+              "similitud_coseno": 0.8801170587539673
+            },
+            {
+              "fragmento_id": "RG-ANEXO-09-F01",
+              "unidad_id": "RG-ANEXO-09",
+              "similitud_coseno": 0.8800731897354126
+            },
+            {
+              "fragmento_id": "RG-ANEXO-33-F01",
+              "unidad_id": "RG-ANEXO-33",
+              "similitud_coseno": 0.8800222873687744
+            },
+            {
+              "fragmento_id": "RG-ANEXO-04-F01",
+              "unidad_id": "RG-ANEXO-04",
+              "similitud_coseno": 0.8799903392791748
+            },
+            {
+              "fragmento_id": "RG-ANEXO-28-F01",
+              "unidad_id": "RG-ANEXO-28",
+              "similitud_coseno": 0.8799648880958557
+            },
+            {
+              "fragmento_id": "RG-ANEXO-22-F01",
+              "unidad_id": "RG-ANEXO-22",
+              "similitud_coseno": 0.8798409104347229
+            },
+            {
+              "fragmento_id": "RG-ANEXO-06-F01",
+              "unidad_id": "RG-ANEXO-06",
+              "similitud_coseno": 0.8797293305397034
+            },
+            {
+              "fragmento_id": "RG-ANEXO-31-F01",
+              "unidad_id": "RG-ANEXO-31",
+              "similitud_coseno": 0.8796949982643127
+            },
+            {
+              "fragmento_id": "RG-ANEXO-12-F01",
+              "unidad_id": "RG-ANEXO-12",
+              "similitud_coseno": 0.8794704079627991
+            },
+            {
+              "fragmento_id": "RG-ANEXO-50-F01",
+              "unidad_id": "RG-ANEXO-50",
+              "similitud_coseno": 0.8793953657150269
+            },
+            {
+              "fragmento_id": "RG-ANEXO-48-F01",
+              "unidad_id": "RG-ANEXO-48",
+              "similitud_coseno": 0.8793359398841858
+            },
+            {
+              "fragmento_id": "RG-ANEXO-13-F01",
+              "unidad_id": "RG-ANEXO-13",
+              "similitud_coseno": 0.8792456388473511
+            },
+            {
+              "fragmento_id": "RG-ANEXO-44-F01",
+              "unidad_id": "RG-ANEXO-44",
+              "similitud_coseno": 0.8792116045951843
+            },
+            {
+              "fragmento_id": "RG-ANEXO-21-F01",
+              "unidad_id": "RG-ANEXO-21",
+              "similitud_coseno": 0.8791472315788269
+            },
+            {
+              "fragmento_id": "RG-ANEXO-38-F01",
+              "unidad_id": "RG-ANEXO-38",
+              "similitud_coseno": 0.8791432976722717
+            },
+            {
+              "fragmento_id": "RG-ANEXO-25-F01",
+              "unidad_id": "RG-ANEXO-25",
+              "similitud_coseno": 0.878952145576477
+            },
+            {
+              "fragmento_id": "RG-ANEXO-27-F01",
+              "unidad_id": "RG-ANEXO-27",
+              "similitud_coseno": 0.8786226511001587
+            },
+            {
+              "fragmento_id": "RG-ANEXO-37-F01",
+              "unidad_id": "RG-ANEXO-37",
+              "similitud_coseno": 0.8786028623580933
+            },
+            {
+              "fragmento_id": "RG-ANEXO-43-F01",
+              "unidad_id": "RG-ANEXO-43",
+              "similitud_coseno": 0.8785765171051025
+            },
+            {
+              "fragmento_id": "RG-ANEXO-47-F01",
+              "unidad_id": "RG-ANEXO-47",
+              "similitud_coseno": 0.878514289855957
+            },
+            {
+              "fragmento_id": "RG-ANEXO-39-F01",
+              "unidad_id": "RG-ANEXO-39",
+              "similitud_coseno": 0.8780280947685242
+            },
+            {
+              "fragmento_id": "RG-ANEXO-30-F01",
+              "unidad_id": "RG-ANEXO-30",
+              "similitud_coseno": 0.8780275583267212
+            },
+            {
+              "fragmento_id": "RG-ANEXO-19-F01",
+              "unidad_id": "RG-ANEXO-19",
+              "similitud_coseno": 0.8779008388519287
+            },
+            {
+              "fragmento_id": "RG-ANEXO-20-F01",
+              "unidad_id": "RG-ANEXO-20",
+              "similitud_coseno": 0.8771698474884033
+            },
+            {
+              "fragmento_id": "RG-ANEXO-07-F01",
+              "unidad_id": "RG-ANEXO-07",
+              "similitud_coseno": 0.8771531581878662
+            },
+            {
+              "fragmento_id": "RG-ANEXO-49-F01",
+              "unidad_id": "RG-ANEXO-49",
+              "similitud_coseno": 0.8771364092826843
+            },
+            {
+              "fragmento_id": "RG-ANEXO-40-F01",
+              "unidad_id": "RG-ANEXO-40",
+              "similitud_coseno": 0.8770027756690979
+            },
+            {
+              "fragmento_id": "RG-ANEXO-24-F01",
+              "unidad_id": "RG-ANEXO-24",
+              "similitud_coseno": 0.8770010471343994
+            },
+            {
+              "fragmento_id": "RG-ANEXO-29-F01",
+              "unidad_id": "RG-ANEXO-29",
+              "similitud_coseno": 0.8769924640655518
+            },
+            {
+              "fragmento_id": "RG-ANEXO-46-F01",
+              "unidad_id": "RG-ANEXO-46",
+              "similitud_coseno": 0.8769739270210266
+            },
+            {
+              "fragmento_id": "RG-ART-023-F01",
+              "unidad_id": "RG-ART-023",
+              "similitud_coseno": 0.875035285949707
+            },
+            {
+              "fragmento_id": "RG-ART-021-F01",
+              "unidad_id": "RG-ART-021",
+              "similitud_coseno": 0.8657236695289612
+            },
+            {
+              "fragmento_id": "RG-ART-024-F01",
+              "unidad_id": "RG-ART-024",
+              "similitud_coseno": 0.8639978766441345
+            },
+            {
+              "fragmento_id": "RG-ART-041-F01",
+              "unidad_id": "RG-ART-041",
+              "similitud_coseno": 0.8576655387878418
+            },
+            {
+              "fragmento_id": "RG-ART-027-F01",
+              "unidad_id": "RG-ART-027",
+              "similitud_coseno": 0.8562939167022705
+            },
+            {
+              "fragmento_id": "RG-ART-022-F01",
+              "unidad_id": "RG-ART-022",
+              "similitud_coseno": 0.8559412956237793
+            },
+            {
+              "fragmento_id": "RI-FI-ART-030-F01",
+              "unidad_id": "RI-FI-ART-030",
+              "similitud_coseno": 0.8556994199752808
+            },
+            {
+              "fragmento_id": "RG-ART-038-F01",
+              "unidad_id": "RG-ART-038",
+              "similitud_coseno": 0.8551025390625
+            },
+            {
+              "fragmento_id": "RG-PREAMBULO-F01",
+              "unidad_id": "RG-PREAMBULO",
+              "similitud_coseno": 0.853421151638031
+            },
+            {
+              "fragmento_id": "RG-ART-012-F01",
+              "unidad_id": "RG-ART-012",
+              "similitud_coseno": 0.8496599197387695
+            },
+            {
+              "fragmento_id": "RG-ART-048-F01",
+              "unidad_id": "RG-ART-048",
+              "similitud_coseno": 0.8491919636726379
+            },
+            {
+              "fragmento_id": "RG-ART-039-F01",
+              "unidad_id": "RG-ART-039",
+              "similitud_coseno": 0.8490655422210693
+            },
+            {
+              "fragmento_id": "RG-ART-013-F01",
+              "unidad_id": "RG-ART-013",
+              "similitud_coseno": 0.8487924933433533
+            },
+            {
+              "fragmento_id": "RG-ART-058-F01",
+              "unidad_id": "RG-ART-058",
+              "similitud_coseno": 0.8483312129974365
+            },
+            {
+              "fragmento_id": "RG-ART-026-F01",
+              "unidad_id": "RG-ART-026",
+              "similitud_coseno": 0.8472640514373779
+            },
+            {
+              "fragmento_id": "RG-ART-050-F01",
+              "unidad_id": "RG-ART-050",
+              "similitud_coseno": 0.8467952609062195
+            },
+            {
+              "fragmento_id": "RG-ART-019-F01",
+              "unidad_id": "RG-ART-019",
+              "similitud_coseno": 0.8466038703918457
+            },
+            {
+              "fragmento_id": "RI-FI-ART-012-F01",
+              "unidad_id": "RI-FI-ART-012",
+              "similitud_coseno": 0.8464666604995728
+            },
+            {
+              "fragmento_id": "RI-FI-ART-024-F01",
+              "unidad_id": "RI-FI-ART-024",
+              "similitud_coseno": 0.8434327840805054
+            },
+            {
+              "fragmento_id": "RI-FI-ART-018-F01",
+              "unidad_id": "RI-FI-ART-018",
+              "similitud_coseno": 0.8423659801483154
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-11-F01",
+              "unidad_id": "RG-ART-003-DEF-11",
+              "similitud_coseno": 0.84235680103302
+            },
+            {
+              "fragmento_id": "RG-ART-025-F01",
+              "unidad_id": "RG-ART-025",
+              "similitud_coseno": 0.8404315710067749
+            },
+            {
+              "fragmento_id": "RI-FI-ART-021-F01",
+              "unidad_id": "RI-FI-ART-021",
+              "similitud_coseno": 0.8391827940940857
+            },
+            {
+              "fragmento_id": "RG-TRANS-002-F01",
+              "unidad_id": "RG-TRANS-002",
+              "similitud_coseno": 0.8389068841934204
+            },
+            {
+              "fragmento_id": "RG-ART-020-F01",
+              "unidad_id": "RG-ART-020",
+              "similitud_coseno": 0.8385965824127197
+            },
+            {
+              "fragmento_id": "RG-ART-001-F01",
+              "unidad_id": "RG-ART-001",
+              "similitud_coseno": 0.8384026885032654
+            },
+            {
+              "fragmento_id": "RG-ART-010-F01",
+              "unidad_id": "RG-ART-010",
+              "similitud_coseno": 0.8362062573432922
+            },
+            {
+              "fragmento_id": "RG-ART-014-F01",
+              "unidad_id": "RG-ART-014",
+              "similitud_coseno": 0.8349857330322266
+            },
+            {
+              "fragmento_id": "RG-ART-028-F01",
+              "unidad_id": "RG-ART-028",
+              "similitud_coseno": 0.8348699808120728
+            },
+            {
+              "fragmento_id": "RG-ART-040-F01",
+              "unidad_id": "RG-ART-040",
+              "similitud_coseno": 0.8348439931869507
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-05-F01",
+              "unidad_id": "RG-ART-003-DEF-05",
+              "similitud_coseno": 0.834692120552063
+            },
+            {
+              "fragmento_id": "RG-ART-049-F01",
+              "unidad_id": "RG-ART-049",
+              "similitud_coseno": 0.834492027759552
+            },
+            {
+              "fragmento_id": "RG-ART-003-INTRO-F01",
+              "unidad_id": "RG-ART-003-INTRO",
+              "similitud_coseno": 0.8341856002807617
+            },
+            {
+              "fragmento_id": "RG-ART-016-F01",
+              "unidad_id": "RG-ART-016",
+              "similitud_coseno": 0.8340580463409424
+            },
+            {
+              "fragmento_id": "RG-ART-042-F01",
+              "unidad_id": "RG-ART-042",
+              "similitud_coseno": 0.8337873816490173
+            },
+            {
+              "fragmento_id": "RG-ART-006-F01",
+              "unidad_id": "RG-ART-006",
+              "similitud_coseno": 0.8337727785110474
+            },
+            {
+              "fragmento_id": "RG-TRANS-001-F01",
+              "unidad_id": "RG-TRANS-001",
+              "similitud_coseno": 0.8330087661743164
+            },
+            {
+              "fragmento_id": "RG-ART-045-F01",
+              "unidad_id": "RG-ART-045",
+              "similitud_coseno": 0.8328937888145447
+            },
+            {
+              "fragmento_id": "RI-FI-ART-013-F01",
+              "unidad_id": "RI-FI-ART-013",
+              "similitud_coseno": 0.8321136236190796
+            },
+            {
+              "fragmento_id": "RI-FI-ART-034-F01",
+              "unidad_id": "RI-FI-ART-034",
+              "similitud_coseno": 0.8320206999778748
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-23-F01",
+              "unidad_id": "RG-ART-003-DEF-23",
+              "similitud_coseno": 0.8319299221038818
+            },
+            {
+              "fragmento_id": "RG-ART-010-F02",
+              "unidad_id": "RG-ART-010",
+              "similitud_coseno": 0.8317883610725403
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-10-F01",
+              "unidad_id": "RG-ART-003-DEF-10",
+              "similitud_coseno": 0.8316721320152283
+            },
+            {
+              "fragmento_id": "RG-ART-030-F01",
+              "unidad_id": "RG-ART-030",
+              "similitud_coseno": 0.8315892815589905
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-09-F01",
+              "unidad_id": "RG-ART-003-DEF-09",
+              "similitud_coseno": 0.8310589790344238
+            },
+            {
+              "fragmento_id": "RG-ART-054-F01",
+              "unidad_id": "RG-ART-054",
+              "similitud_coseno": 0.8309342861175537
+            },
+            {
+              "fragmento_id": "RG-ART-005-F01",
+              "unidad_id": "RG-ART-005",
+              "similitud_coseno": 0.8299286961555481
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-07-F01",
+              "unidad_id": "RG-ART-003-DEF-07",
+              "similitud_coseno": 0.8296763896942139
+            },
+            {
+              "fragmento_id": "RG-ART-051-F01",
+              "unidad_id": "RG-ART-051",
+              "similitud_coseno": 0.8294882774353027
+            },
+            {
+              "fragmento_id": "RG-ART-053-F01",
+              "unidad_id": "RG-ART-053",
+              "similitud_coseno": 0.8292856812477112
+            },
+            {
+              "fragmento_id": "RI-FI-ART-010-F01",
+              "unidad_id": "RI-FI-ART-010",
+              "similitud_coseno": 0.8291658163070679
+            },
+            {
+              "fragmento_id": "RG-ART-037-F01",
+              "unidad_id": "RG-ART-037",
+              "similitud_coseno": 0.8288681507110596
+            },
+            {
+              "fragmento_id": "RI-FI-ART-007-F01",
+              "unidad_id": "RI-FI-ART-007",
+              "similitud_coseno": 0.8281746506690979
+            },
+            {
+              "fragmento_id": "RG-ART-018-F01",
+              "unidad_id": "RG-ART-018",
+              "similitud_coseno": 0.8271694779396057
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-12-F01",
+              "unidad_id": "RG-ART-003-DEF-12",
+              "similitud_coseno": 0.8271012306213379
+            },
+            {
+              "fragmento_id": "RI-FI-ART-008-F01",
+              "unidad_id": "RI-FI-ART-008",
+              "similitud_coseno": 0.826345682144165
+            },
+            {
+              "fragmento_id": "RI-FI-ART-035-F01",
+              "unidad_id": "RI-FI-ART-035",
+              "similitud_coseno": 0.8262452483177185
+            },
+            {
+              "fragmento_id": "RG-ART-047-F01",
+              "unidad_id": "RG-ART-047",
+              "similitud_coseno": 0.8259265422821045
+            },
+            {
+              "fragmento_id": "RG-ART-017-F01",
+              "unidad_id": "RG-ART-017",
+              "similitud_coseno": 0.8258535861968994
+            },
+            {
+              "fragmento_id": "RI-FI-ART-011-F01",
+              "unidad_id": "RI-FI-ART-011",
+              "similitud_coseno": 0.8257840871810913
+            },
+            {
+              "fragmento_id": "RG-ART-059-F01",
+              "unidad_id": "RG-ART-059",
+              "similitud_coseno": 0.8252869844436646
+            },
+            {
+              "fragmento_id": "RI-FI-ART-029-F01",
+              "unidad_id": "RI-FI-ART-029",
+              "similitud_coseno": 0.8251725435256958
+            },
+            {
+              "fragmento_id": "RI-FI-ART-005-F01",
+              "unidad_id": "RI-FI-ART-005",
+              "similitud_coseno": 0.8248258233070374
+            },
+            {
+              "fragmento_id": "RG-ART-060-F01",
+              "unidad_id": "RG-ART-060",
+              "similitud_coseno": 0.8247931003570557
+            },
+            {
+              "fragmento_id": "RG-ART-009-F01",
+              "unidad_id": "RG-ART-009",
+              "similitud_coseno": 0.8246691226959229
+            },
+            {
+              "fragmento_id": "RG-ART-011-F01",
+              "unidad_id": "RG-ART-011",
+              "similitud_coseno": 0.8241792321205139
+            },
+            {
+              "fragmento_id": "RG-ART-032-F01",
+              "unidad_id": "RG-ART-032",
+              "similitud_coseno": 0.8237484693527222
+            },
+            {
+              "fragmento_id": "RG-ART-015-F01",
+              "unidad_id": "RG-ART-015",
+              "similitud_coseno": 0.8230656981468201
+            },
+            {
+              "fragmento_id": "RI-FI-ART-015-F01",
+              "unidad_id": "RI-FI-ART-015",
+              "similitud_coseno": 0.8230317831039429
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-02-F01",
+              "unidad_id": "RG-ART-003-DEF-02",
+              "similitud_coseno": 0.8229067325592041
+            },
+            {
+              "fragmento_id": "RG-ART-029-F01",
+              "unidad_id": "RG-ART-029",
+              "similitud_coseno": 0.822898805141449
+            },
+            {
+              "fragmento_id": "RI-FI-ART-014-F01",
+              "unidad_id": "RI-FI-ART-014",
+              "similitud_coseno": 0.8226983547210693
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-22-F01",
+              "unidad_id": "RG-ART-003-DEF-22",
+              "similitud_coseno": 0.8224496245384216
+            },
+            {
+              "fragmento_id": "RI-FI-ART-002-F01",
+              "unidad_id": "RI-FI-ART-002",
+              "similitud_coseno": 0.8223901987075806
+            },
+            {
+              "fragmento_id": "RG-ART-007-F01",
+              "unidad_id": "RG-ART-007",
+              "similitud_coseno": 0.8222521543502808
+            },
+            {
+              "fragmento_id": "RG-ART-008-F01",
+              "unidad_id": "RG-ART-008",
+              "similitud_coseno": 0.8222367763519287
+            },
+            {
+              "fragmento_id": "RG-ART-004-F01",
+              "unidad_id": "RG-ART-004",
+              "similitud_coseno": 0.8211898803710938
+            },
+            {
+              "fragmento_id": "RG-ART-055-F01",
+              "unidad_id": "RG-ART-055",
+              "similitud_coseno": 0.8205971121788025
+            },
+            {
+              "fragmento_id": "RG-ART-036-F01",
+              "unidad_id": "RG-ART-036",
+              "similitud_coseno": 0.8204363584518433
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-09-F02",
+              "unidad_id": "RG-ART-003-DEF-09",
+              "similitud_coseno": 0.8204248547554016
+            },
+            {
+              "fragmento_id": "RI-FI-ART-023-F01",
+              "unidad_id": "RI-FI-ART-023",
+              "similitud_coseno": 0.8200178146362305
+            },
+            {
+              "fragmento_id": "RG-ART-033-F01",
+              "unidad_id": "RG-ART-033",
+              "similitud_coseno": 0.8197231292724609
+            },
+            {
+              "fragmento_id": "RI-FI-ART-017-F01",
+              "unidad_id": "RI-FI-ART-017",
+              "similitud_coseno": 0.8184753656387329
+            },
+            {
+              "fragmento_id": "RG-ART-008-F02",
+              "unidad_id": "RG-ART-008",
+              "similitud_coseno": 0.8178195953369141
+            },
+            {
+              "fragmento_id": "RI-FI-ART-032-F01",
+              "unidad_id": "RI-FI-ART-032",
+              "similitud_coseno": 0.8169353008270264
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-10-F02",
+              "unidad_id": "RG-ART-003-DEF-10",
+              "similitud_coseno": 0.81638503074646
+            },
+            {
+              "fragmento_id": "RI-FI-ART-019-F01",
+              "unidad_id": "RI-FI-ART-019",
+              "similitud_coseno": 0.8161009550094604
+            },
+            {
+              "fragmento_id": "RG-ART-031-F01",
+              "unidad_id": "RG-ART-031",
+              "similitud_coseno": 0.8156590461730957
+            },
+            {
+              "fragmento_id": "RG-ART-052-F01",
+              "unidad_id": "RG-ART-052",
+              "similitud_coseno": 0.815239667892456
+            },
+            {
+              "fragmento_id": "RI-FI-ART-009-F01",
+              "unidad_id": "RI-FI-ART-009",
+              "similitud_coseno": 0.8148133158683777
+            },
+            {
+              "fragmento_id": "RI-FI-ART-031-F01",
+              "unidad_id": "RI-FI-ART-031",
+              "similitud_coseno": 0.8146018981933594
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-01-F01",
+              "unidad_id": "RG-ART-003-DEF-01",
+              "similitud_coseno": 0.814387857913971
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-14-F01",
+              "unidad_id": "RG-ART-003-DEF-14",
+              "similitud_coseno": 0.8142765164375305
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-21-F01",
+              "unidad_id": "RG-ART-003-DEF-21",
+              "similitud_coseno": 0.8137421607971191
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-03-F01",
+              "unidad_id": "RG-ART-003-DEF-03",
+              "similitud_coseno": 0.8136378526687622
+            },
+            {
+              "fragmento_id": "RG-ART-043-F01",
+              "unidad_id": "RG-ART-043",
+              "similitud_coseno": 0.8126683235168457
+            },
+            {
+              "fragmento_id": "RI-FI-ART-028-F01",
+              "unidad_id": "RI-FI-ART-028",
+              "similitud_coseno": 0.811927318572998
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-24-F01",
+              "unidad_id": "RG-ART-003-DEF-24",
+              "similitud_coseno": 0.8119157552719116
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-18-F01",
+              "unidad_id": "RG-ART-003-DEF-18",
+              "similitud_coseno": 0.8113318681716919
+            },
+            {
+              "fragmento_id": "RI-FI-ART-004-F01",
+              "unidad_id": "RI-FI-ART-004",
+              "similitud_coseno": 0.8112755417823792
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-05-F01",
+              "unidad_id": "CAL-2026-S2-05",
+              "similitud_coseno": 0.8109678030014038
+            },
+            {
+              "fragmento_id": "RG-ART-035-F01",
+              "unidad_id": "RG-ART-035",
+              "similitud_coseno": 0.8106683492660522
+            },
+            {
+              "fragmento_id": "RI-FI-ART-026-F01",
+              "unidad_id": "RI-FI-ART-026",
+              "similitud_coseno": 0.8102895021438599
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-06-F01",
+              "unidad_id": "RG-ART-003-DEF-06",
+              "similitud_coseno": 0.8099918365478516
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-06-F01",
+              "unidad_id": "CAL-2026-S1-06",
+              "similitud_coseno": 0.8099662065505981
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-03-F01",
+              "unidad_id": "CAL-2026-S2-03",
+              "similitud_coseno": 0.8097823262214661
+            },
+            {
+              "fragmento_id": "RI-FI-ART-016-F01",
+              "unidad_id": "RI-FI-ART-016",
+              "similitud_coseno": 0.8095692992210388
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-03-F01",
+              "unidad_id": "CAL-2026-S1-03",
+              "similitud_coseno": 0.8094836473464966
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-11-F01",
+              "unidad_id": "CAL-2026-S1-11",
+              "similitud_coseno": 0.8092483878135681
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-05-F01",
+              "unidad_id": "CAL-2026-S1-05",
+              "similitud_coseno": 0.8090715408325195
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-10-F01",
+              "unidad_id": "CAL-2026-S1-10",
+              "similitud_coseno": 0.8089386224746704
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-13-F01",
+              "unidad_id": "CAL-2026-S1-13",
+              "similitud_coseno": 0.808901309967041
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-13-F01",
+              "unidad_id": "RG-ART-003-DEF-13",
+              "similitud_coseno": 0.8088633418083191
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-01-F01",
+              "unidad_id": "CAL-2026-S2-01",
+              "similitud_coseno": 0.8087358474731445
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-09-F01",
+              "unidad_id": "CAL-2026-S2-09",
+              "similitud_coseno": 0.8085677027702332
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-12-F01",
+              "unidad_id": "CAL-2026-S1-12",
+              "similitud_coseno": 0.8078424334526062
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-04-F01",
+              "unidad_id": "CAL-2026-S1-04",
+              "similitud_coseno": 0.8078319430351257
+            },
+            {
+              "fragmento_id": "RI-FI-ART-033-F01",
+              "unidad_id": "RI-FI-ART-033",
+              "similitud_coseno": 0.8076235055923462
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-11-F01",
+              "unidad_id": "CAL-2026-S2-11",
+              "similitud_coseno": 0.8072351813316345
+            },
+            {
+              "fragmento_id": "RG-ART-002-F01",
+              "unidad_id": "RG-ART-002",
+              "similitud_coseno": 0.8070192933082581
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-20-F01",
+              "unidad_id": "RG-ART-003-DEF-20",
+              "similitud_coseno": 0.8066839575767517
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-10-F01",
+              "unidad_id": "CAL-2026-S2-10",
+              "similitud_coseno": 0.8065763115882874
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-07-F01",
+              "unidad_id": "CAL-2026-S1-07",
+              "similitud_coseno": 0.8065453171730042
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-09-F01",
+              "unidad_id": "CAL-2026-S1-09",
+              "similitud_coseno": 0.8060683608055115
+            },
+            {
+              "fragmento_id": "RI-FI-ART-006-F01",
+              "unidad_id": "RI-FI-ART-006",
+              "similitud_coseno": 0.805946946144104
+            },
+            {
+              "fragmento_id": "RG-ART-044-F01",
+              "unidad_id": "RG-ART-044",
+              "similitud_coseno": 0.8059108853340149
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-04-F01",
+              "unidad_id": "CAL-2026-S2-04",
+              "similitud_coseno": 0.8046635985374451
+            },
+            {
+              "fragmento_id": "RI-FI-ART-020-F01",
+              "unidad_id": "RI-FI-ART-020",
+              "similitud_coseno": 0.8046481609344482
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-01-F01",
+              "unidad_id": "CAL-2026-S1-01",
+              "similitud_coseno": 0.8045174479484558
+            },
+            {
+              "fragmento_id": "RG-ART-056-F01",
+              "unidad_id": "RG-ART-056",
+              "similitud_coseno": 0.8043243885040283
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-15-F01",
+              "unidad_id": "RG-ART-003-DEF-15",
+              "similitud_coseno": 0.8042572736740112
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-08-F01",
+              "unidad_id": "CAL-2026-S1-08",
+              "similitud_coseno": 0.8036776781082153
+            },
+            {
+              "fragmento_id": "RG-ART-034-F01",
+              "unidad_id": "RG-ART-034",
+              "similitud_coseno": 0.8029839396476746
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-08-F01",
+              "unidad_id": "CAL-2026-S2-08",
+              "similitud_coseno": 0.8027876019477844
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-02-F01",
+              "unidad_id": "CAL-2026-S1-02",
+              "similitud_coseno": 0.8026062250137329
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-06-F01",
+              "unidad_id": "CAL-2026-S2-06",
+              "similitud_coseno": 0.8023781776428223
+            },
+            {
+              "fragmento_id": "RI-FI-ART-022-F01",
+              "unidad_id": "RI-FI-ART-022",
+              "similitud_coseno": 0.8023351430892944
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-07-F01",
+              "unidad_id": "CAL-2026-S2-07",
+              "similitud_coseno": 0.8017028570175171
+            },
+            {
+              "fragmento_id": "RI-FI-ART-001-F01",
+              "unidad_id": "RI-FI-ART-001",
+              "similitud_coseno": 0.8007985353469849
+            },
+            {
+              "fragmento_id": "RI-FI-ART-027-F01",
+              "unidad_id": "RI-FI-ART-027",
+              "similitud_coseno": 0.8007544875144958
+            },
+            {
+              "fragmento_id": "RG-ART-046-F01",
+              "unidad_id": "RG-ART-046",
+              "similitud_coseno": 0.8004866242408752
+            },
+            {
+              "fragmento_id": "RG-ART-057-F01",
+              "unidad_id": "RG-ART-057",
+              "similitud_coseno": 0.7992790341377258
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-14-F01",
+              "unidad_id": "CAL-2026-S1-14",
+              "similitud_coseno": 0.7991091012954712
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-19-F01",
+              "unidad_id": "RG-ART-003-DEF-19",
+              "similitud_coseno": 0.7975444197654724
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-02-F01",
+              "unidad_id": "CAL-2026-S2-02",
+              "similitud_coseno": 0.7972956895828247
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-04-F01",
+              "unidad_id": "RG-ART-003-DEF-04",
+              "similitud_coseno": 0.7970055341720581
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-08-F01",
+              "unidad_id": "RG-ART-003-DEF-08",
+              "similitud_coseno": 0.7953817248344421
+            },
+            {
+              "fragmento_id": "RI-FI-ART-025-F01",
+              "unidad_id": "RI-FI-ART-025",
+              "similitud_coseno": 0.7952701449394226
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-16-F01",
+              "unidad_id": "RG-ART-003-DEF-16",
+              "similitud_coseno": 0.7925551533699036
+            },
+            {
+              "fragmento_id": "RI-FI-ART-003-F01",
+              "unidad_id": "RI-FI-ART-003",
+              "similitud_coseno": 0.7923455834388733
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-17-F01",
+              "unidad_id": "RG-ART-003-DEF-17",
+              "similitud_coseno": 0.7899022102355957
+            }
+          ]
+        },
+        {
+          "texto": "se aplica en Ingeniería",
+          "ranking": [
+            {
+              "fragmento_id": "RI-FI-ART-006-F01",
+              "unidad_id": "RI-FI-ART-006",
+              "similitud_coseno": 0.8753848671913147
+            },
+            {
+              "fragmento_id": "RI-FI-ART-028-F01",
+              "unidad_id": "RI-FI-ART-028",
+              "similitud_coseno": 0.8706346750259399
+            },
+            {
+              "fragmento_id": "RI-FI-ART-018-F01",
+              "unidad_id": "RI-FI-ART-018",
+              "similitud_coseno": 0.869895339012146
+            },
+            {
+              "fragmento_id": "RI-FI-ART-005-F01",
+              "unidad_id": "RI-FI-ART-005",
+              "similitud_coseno": 0.8692851066589355
+            },
+            {
+              "fragmento_id": "RI-FI-ART-017-F01",
+              "unidad_id": "RI-FI-ART-017",
+              "similitud_coseno": 0.8676121830940247
+            },
+            {
+              "fragmento_id": "RI-FI-ART-001-F01",
+              "unidad_id": "RI-FI-ART-001",
+              "similitud_coseno": 0.8648523092269897
+            },
+            {
+              "fragmento_id": "RI-FI-ART-011-F01",
+              "unidad_id": "RI-FI-ART-011",
+              "similitud_coseno": 0.8622424602508545
+            },
+            {
+              "fragmento_id": "RI-FI-ART-035-F01",
+              "unidad_id": "RI-FI-ART-035",
+              "similitud_coseno": 0.8621846437454224
+            },
+            {
+              "fragmento_id": "RI-FI-ART-019-F01",
+              "unidad_id": "RI-FI-ART-019",
+              "similitud_coseno": 0.8596402406692505
+            },
+            {
+              "fragmento_id": "RG-TRANS-001-F01",
+              "unidad_id": "RG-TRANS-001",
+              "similitud_coseno": 0.8590943217277527
+            },
+            {
+              "fragmento_id": "RI-FI-ART-030-F01",
+              "unidad_id": "RI-FI-ART-030",
+              "similitud_coseno": 0.8570178151130676
+            },
+            {
+              "fragmento_id": "RI-FI-ART-002-F01",
+              "unidad_id": "RI-FI-ART-002",
+              "similitud_coseno": 0.8540235757827759
+            },
+            {
+              "fragmento_id": "RI-FI-ART-029-F01",
+              "unidad_id": "RI-FI-ART-029",
+              "similitud_coseno": 0.8520838022232056
+            },
+            {
+              "fragmento_id": "RI-FI-ART-004-F01",
+              "unidad_id": "RI-FI-ART-004",
+              "similitud_coseno": 0.8504716157913208
+            },
+            {
+              "fragmento_id": "RI-FI-ART-032-F01",
+              "unidad_id": "RI-FI-ART-032",
+              "similitud_coseno": 0.8472227454185486
+            },
+            {
+              "fragmento_id": "RI-FI-ART-010-F01",
+              "unidad_id": "RI-FI-ART-010",
+              "similitud_coseno": 0.8465481400489807
+            },
+            {
+              "fragmento_id": "RI-FI-ART-013-F01",
+              "unidad_id": "RI-FI-ART-013",
+              "similitud_coseno": 0.8465193510055542
+            },
+            {
+              "fragmento_id": "RI-FI-ART-020-F01",
+              "unidad_id": "RI-FI-ART-020",
+              "similitud_coseno": 0.8454406261444092
+            },
+            {
+              "fragmento_id": "RG-ART-032-F01",
+              "unidad_id": "RG-ART-032",
+              "similitud_coseno": 0.8425769805908203
+            },
+            {
+              "fragmento_id": "RI-FI-ART-024-F01",
+              "unidad_id": "RI-FI-ART-024",
+              "similitud_coseno": 0.8421697616577148
+            },
+            {
+              "fragmento_id": "RG-ART-030-F01",
+              "unidad_id": "RG-ART-030",
+              "similitud_coseno": 0.8420426845550537
+            },
+            {
+              "fragmento_id": "RG-ART-026-F01",
+              "unidad_id": "RG-ART-026",
+              "similitud_coseno": 0.8420006036758423
+            },
+            {
+              "fragmento_id": "RI-FI-ART-021-F01",
+              "unidad_id": "RI-FI-ART-021",
+              "similitud_coseno": 0.8418809175491333
+            },
+            {
+              "fragmento_id": "RG-ART-045-F01",
+              "unidad_id": "RG-ART-045",
+              "similitud_coseno": 0.8416993021965027
+            },
+            {
+              "fragmento_id": "RI-FI-ART-015-F01",
+              "unidad_id": "RI-FI-ART-015",
+              "similitud_coseno": 0.8415844440460205
+            },
+            {
+              "fragmento_id": "RG-ART-047-F01",
+              "unidad_id": "RG-ART-047",
+              "similitud_coseno": 0.8413910865783691
+            },
+            {
+              "fragmento_id": "RG-ART-055-F01",
+              "unidad_id": "RG-ART-055",
+              "similitud_coseno": 0.8412609100341797
+            },
+            {
+              "fragmento_id": "RG-ART-007-F01",
+              "unidad_id": "RG-ART-007",
+              "similitud_coseno": 0.8409311771392822
+            },
+            {
+              "fragmento_id": "RG-ART-023-F01",
+              "unidad_id": "RG-ART-023",
+              "similitud_coseno": 0.8406983613967896
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-10-F02",
+              "unidad_id": "RG-ART-003-DEF-10",
+              "similitud_coseno": 0.8403981924057007
+            },
+            {
+              "fragmento_id": "RI-FI-ART-034-F01",
+              "unidad_id": "RI-FI-ART-034",
+              "similitud_coseno": 0.8398184776306152
+            },
+            {
+              "fragmento_id": "RI-FI-ART-022-F01",
+              "unidad_id": "RI-FI-ART-022",
+              "similitud_coseno": 0.8396626114845276
+            },
+            {
+              "fragmento_id": "RI-FI-ART-003-F01",
+              "unidad_id": "RI-FI-ART-003",
+              "similitud_coseno": 0.8379207849502563
+            },
+            {
+              "fragmento_id": "RG-ART-039-F01",
+              "unidad_id": "RG-ART-039",
+              "similitud_coseno": 0.8379151821136475
+            },
+            {
+              "fragmento_id": "RG-ART-008-F01",
+              "unidad_id": "RG-ART-008",
+              "similitud_coseno": 0.8377524614334106
+            },
+            {
+              "fragmento_id": "RG-ART-021-F01",
+              "unidad_id": "RG-ART-021",
+              "similitud_coseno": 0.8376783132553101
+            },
+            {
+              "fragmento_id": "RG-ART-025-F01",
+              "unidad_id": "RG-ART-025",
+              "similitud_coseno": 0.8376632928848267
+            },
+            {
+              "fragmento_id": "RG-ART-020-F01",
+              "unidad_id": "RG-ART-020",
+              "similitud_coseno": 0.8375476598739624
+            },
+            {
+              "fragmento_id": "RG-ART-054-F01",
+              "unidad_id": "RG-ART-054",
+              "similitud_coseno": 0.8374745845794678
+            },
+            {
+              "fragmento_id": "RG-ART-049-F01",
+              "unidad_id": "RG-ART-049",
+              "similitud_coseno": 0.8374344110488892
+            },
+            {
+              "fragmento_id": "RG-ART-037-F01",
+              "unidad_id": "RG-ART-037",
+              "similitud_coseno": 0.8361274003982544
+            },
+            {
+              "fragmento_id": "RG-ART-014-F01",
+              "unidad_id": "RG-ART-014",
+              "similitud_coseno": 0.8359437584877014
+            },
+            {
+              "fragmento_id": "RG-ART-040-F01",
+              "unidad_id": "RG-ART-040",
+              "similitud_coseno": 0.8355915546417236
+            },
+            {
+              "fragmento_id": "RG-ART-027-F01",
+              "unidad_id": "RG-ART-027",
+              "similitud_coseno": 0.8355687260627747
+            },
+            {
+              "fragmento_id": "RG-PREAMBULO-F01",
+              "unidad_id": "RG-PREAMBULO",
+              "similitud_coseno": 0.8350754976272583
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-09-F01",
+              "unidad_id": "RG-ART-003-DEF-09",
+              "similitud_coseno": 0.834959864616394
+            },
+            {
+              "fragmento_id": "RG-ART-042-F01",
+              "unidad_id": "RG-ART-042",
+              "similitud_coseno": 0.8340503573417664
+            },
+            {
+              "fragmento_id": "RG-ART-059-F01",
+              "unidad_id": "RG-ART-059",
+              "similitud_coseno": 0.8338409066200256
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-23-F01",
+              "unidad_id": "RG-ART-003-DEF-23",
+              "similitud_coseno": 0.8337149620056152
+            },
+            {
+              "fragmento_id": "RG-ART-038-F01",
+              "unidad_id": "RG-ART-038",
+              "similitud_coseno": 0.8336873054504395
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-07-F01",
+              "unidad_id": "RG-ART-003-DEF-07",
+              "similitud_coseno": 0.833471417427063
+            },
+            {
+              "fragmento_id": "RG-ART-058-F01",
+              "unidad_id": "RG-ART-058",
+              "similitud_coseno": 0.8333827257156372
+            },
+            {
+              "fragmento_id": "RG-ART-018-F01",
+              "unidad_id": "RG-ART-018",
+              "similitud_coseno": 0.8327252268791199
+            },
+            {
+              "fragmento_id": "RG-ART-057-F01",
+              "unidad_id": "RG-ART-057",
+              "similitud_coseno": 0.8324209451675415
+            },
+            {
+              "fragmento_id": "RG-ART-048-F01",
+              "unidad_id": "RG-ART-048",
+              "similitud_coseno": 0.8318991661071777
+            },
+            {
+              "fragmento_id": "RG-ART-033-F01",
+              "unidad_id": "RG-ART-033",
+              "similitud_coseno": 0.8318861722946167
+            },
+            {
+              "fragmento_id": "RG-ART-041-F01",
+              "unidad_id": "RG-ART-041",
+              "similitud_coseno": 0.8318254947662354
+            },
+            {
+              "fragmento_id": "RI-FI-ART-007-F01",
+              "unidad_id": "RI-FI-ART-007",
+              "similitud_coseno": 0.8315718173980713
+            },
+            {
+              "fragmento_id": "RI-FI-ART-016-F01",
+              "unidad_id": "RI-FI-ART-016",
+              "similitud_coseno": 0.8314366340637207
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-21-F01",
+              "unidad_id": "RG-ART-003-DEF-21",
+              "similitud_coseno": 0.8313484191894531
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-17-F01",
+              "unidad_id": "RG-ART-003-DEF-17",
+              "similitud_coseno": 0.8312780857086182
+            },
+            {
+              "fragmento_id": "RG-ART-051-F01",
+              "unidad_id": "RG-ART-051",
+              "similitud_coseno": 0.8312021493911743
+            },
+            {
+              "fragmento_id": "RG-ART-029-F01",
+              "unidad_id": "RG-ART-029",
+              "similitud_coseno": 0.8310315608978271
+            },
+            {
+              "fragmento_id": "RG-ART-028-F01",
+              "unidad_id": "RG-ART-028",
+              "similitud_coseno": 0.8308922648429871
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-10-F01",
+              "unidad_id": "RG-ART-003-DEF-10",
+              "similitud_coseno": 0.8303873538970947
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-09-F02",
+              "unidad_id": "RG-ART-003-DEF-09",
+              "similitud_coseno": 0.8303248286247253
+            },
+            {
+              "fragmento_id": "RG-ART-017-F01",
+              "unidad_id": "RG-ART-017",
+              "similitud_coseno": 0.830233097076416
+            },
+            {
+              "fragmento_id": "RI-FI-ART-009-F01",
+              "unidad_id": "RI-FI-ART-009",
+              "similitud_coseno": 0.8299098014831543
+            },
+            {
+              "fragmento_id": "RI-FI-ART-008-F01",
+              "unidad_id": "RI-FI-ART-008",
+              "similitud_coseno": 0.8296055197715759
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-11-F01",
+              "unidad_id": "RG-ART-003-DEF-11",
+              "similitud_coseno": 0.8292984962463379
+            },
+            {
+              "fragmento_id": "RG-TRANS-002-F01",
+              "unidad_id": "RG-TRANS-002",
+              "similitud_coseno": 0.8292983174324036
+            },
+            {
+              "fragmento_id": "RG-ART-044-F01",
+              "unidad_id": "RG-ART-044",
+              "similitud_coseno": 0.828946590423584
+            },
+            {
+              "fragmento_id": "RG-ART-013-F01",
+              "unidad_id": "RG-ART-013",
+              "similitud_coseno": 0.8286622762680054
+            },
+            {
+              "fragmento_id": "RI-FI-ART-027-F01",
+              "unidad_id": "RI-FI-ART-027",
+              "similitud_coseno": 0.8274188041687012
+            },
+            {
+              "fragmento_id": "RG-ART-056-F01",
+              "unidad_id": "RG-ART-056",
+              "similitud_coseno": 0.8274014592170715
+            },
+            {
+              "fragmento_id": "RG-ART-010-F02",
+              "unidad_id": "RG-ART-010",
+              "similitud_coseno": 0.8273007869720459
+            },
+            {
+              "fragmento_id": "RG-ANEXO-28-F01",
+              "unidad_id": "RG-ANEXO-28",
+              "similitud_coseno": 0.827298641204834
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-03-F01",
+              "unidad_id": "RG-ART-003-DEF-03",
+              "similitud_coseno": 0.827234148979187
+            },
+            {
+              "fragmento_id": "RG-ART-052-F01",
+              "unidad_id": "RG-ART-052",
+              "similitud_coseno": 0.8269509077072144
+            },
+            {
+              "fragmento_id": "RG-ART-043-F01",
+              "unidad_id": "RG-ART-043",
+              "similitud_coseno": 0.8268626928329468
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-04-F01",
+              "unidad_id": "RG-ART-003-DEF-04",
+              "similitud_coseno": 0.8268342614173889
+            },
+            {
+              "fragmento_id": "RG-ANEXO-41-F01",
+              "unidad_id": "RG-ANEXO-41",
+              "similitud_coseno": 0.826831042766571
+            },
+            {
+              "fragmento_id": "RG-ANEXO-49-F01",
+              "unidad_id": "RG-ANEXO-49",
+              "similitud_coseno": 0.826801061630249
+            },
+            {
+              "fragmento_id": "RG-ANEXO-39-F01",
+              "unidad_id": "RG-ANEXO-39",
+              "similitud_coseno": 0.826669454574585
+            },
+            {
+              "fragmento_id": "RG-ANEXO-35-F01",
+              "unidad_id": "RG-ANEXO-35",
+              "similitud_coseno": 0.8266438841819763
+            },
+            {
+              "fragmento_id": "RI-FI-ART-023-F01",
+              "unidad_id": "RI-FI-ART-023",
+              "similitud_coseno": 0.8266036510467529
+            },
+            {
+              "fragmento_id": "RG-ART-010-F01",
+              "unidad_id": "RG-ART-010",
+              "similitud_coseno": 0.8265723586082458
+            },
+            {
+              "fragmento_id": "RG-ANEXO-29-F01",
+              "unidad_id": "RG-ANEXO-29",
+              "similitud_coseno": 0.826568603515625
+            },
+            {
+              "fragmento_id": "RG-ANEXO-43-F01",
+              "unidad_id": "RG-ANEXO-43",
+              "similitud_coseno": 0.826551616191864
+            },
+            {
+              "fragmento_id": "RG-ANEXO-36-F01",
+              "unidad_id": "RG-ANEXO-36",
+              "similitud_coseno": 0.8265195488929749
+            },
+            {
+              "fragmento_id": "RG-ANEXO-26-F01",
+              "unidad_id": "RG-ANEXO-26",
+              "similitud_coseno": 0.8264142274856567
+            },
+            {
+              "fragmento_id": "RG-ANEXO-46-F01",
+              "unidad_id": "RG-ANEXO-46",
+              "similitud_coseno": 0.8263213634490967
+            },
+            {
+              "fragmento_id": "RI-FI-ART-012-F01",
+              "unidad_id": "RI-FI-ART-012",
+              "similitud_coseno": 0.826288640499115
+            },
+            {
+              "fragmento_id": "RG-ANEXO-44-F01",
+              "unidad_id": "RG-ANEXO-44",
+              "similitud_coseno": 0.8261874318122864
+            },
+            {
+              "fragmento_id": "RG-ANEXO-37-F01",
+              "unidad_id": "RG-ANEXO-37",
+              "similitud_coseno": 0.8261532783508301
+            },
+            {
+              "fragmento_id": "RG-ART-005-F01",
+              "unidad_id": "RG-ART-005",
+              "similitud_coseno": 0.8260133862495422
+            },
+            {
+              "fragmento_id": "RG-ART-003-INTRO-F01",
+              "unidad_id": "RG-ART-003-INTRO",
+              "similitud_coseno": 0.8259745836257935
+            },
+            {
+              "fragmento_id": "RG-ANEXO-48-F01",
+              "unidad_id": "RG-ANEXO-48",
+              "similitud_coseno": 0.8259601593017578
+            },
+            {
+              "fragmento_id": "RG-ANEXO-19-F01",
+              "unidad_id": "RG-ANEXO-19",
+              "similitud_coseno": 0.825877845287323
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-22-F01",
+              "unidad_id": "RG-ART-003-DEF-22",
+              "similitud_coseno": 0.825752854347229
+            },
+            {
+              "fragmento_id": "RG-ANEXO-27-F01",
+              "unidad_id": "RG-ANEXO-27",
+              "similitud_coseno": 0.8257049322128296
+            },
+            {
+              "fragmento_id": "RG-ANEXO-33-F01",
+              "unidad_id": "RG-ANEXO-33",
+              "similitud_coseno": 0.8255243301391602
+            },
+            {
+              "fragmento_id": "RG-ART-031-F01",
+              "unidad_id": "RG-ART-031",
+              "similitud_coseno": 0.8254829049110413
+            },
+            {
+              "fragmento_id": "RG-ART-035-F01",
+              "unidad_id": "RG-ART-035",
+              "similitud_coseno": 0.8254494667053223
+            },
+            {
+              "fragmento_id": "RG-ANEXO-18-F01",
+              "unidad_id": "RG-ANEXO-18",
+              "similitud_coseno": 0.8252699375152588
+            },
+            {
+              "fragmento_id": "RG-ANEXO-30-F01",
+              "unidad_id": "RG-ANEXO-30",
+              "similitud_coseno": 0.8252679109573364
+            },
+            {
+              "fragmento_id": "RI-FI-ART-014-F01",
+              "unidad_id": "RI-FI-ART-014",
+              "similitud_coseno": 0.8252538442611694
+            },
+            {
+              "fragmento_id": "RG-ANEXO-38-F01",
+              "unidad_id": "RG-ANEXO-38",
+              "similitud_coseno": 0.825131893157959
+            },
+            {
+              "fragmento_id": "RG-ANEXO-32-F01",
+              "unidad_id": "RG-ANEXO-32",
+              "similitud_coseno": 0.825097918510437
+            },
+            {
+              "fragmento_id": "RG-ANEXO-06-F01",
+              "unidad_id": "RG-ANEXO-06",
+              "similitud_coseno": 0.8250665068626404
+            },
+            {
+              "fragmento_id": "RG-ANEXO-23-F01",
+              "unidad_id": "RG-ANEXO-23",
+              "similitud_coseno": 0.8249751329421997
+            },
+            {
+              "fragmento_id": "RG-ANEXO-09-F01",
+              "unidad_id": "RG-ANEXO-09",
+              "similitud_coseno": 0.8249592781066895
+            },
+            {
+              "fragmento_id": "RG-ART-006-F01",
+              "unidad_id": "RG-ART-006",
+              "similitud_coseno": 0.8249222636222839
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-18-F01",
+              "unidad_id": "RG-ART-003-DEF-18",
+              "similitud_coseno": 0.8244616985321045
+            },
+            {
+              "fragmento_id": "RI-FI-ART-026-F01",
+              "unidad_id": "RI-FI-ART-026",
+              "similitud_coseno": 0.8244587779045105
+            },
+            {
+              "fragmento_id": "RG-ANEXO-12-F01",
+              "unidad_id": "RG-ANEXO-12",
+              "similitud_coseno": 0.8244362473487854
+            },
+            {
+              "fragmento_id": "RG-ANEXO-11-F01",
+              "unidad_id": "RG-ANEXO-11",
+              "similitud_coseno": 0.8244068622589111
+            },
+            {
+              "fragmento_id": "RG-ANEXO-31-F01",
+              "unidad_id": "RG-ANEXO-31",
+              "similitud_coseno": 0.8243387937545776
+            },
+            {
+              "fragmento_id": "RG-ANEXO-34-F01",
+              "unidad_id": "RG-ANEXO-34",
+              "similitud_coseno": 0.8243012428283691
+            },
+            {
+              "fragmento_id": "RG-ANEXO-22-F01",
+              "unidad_id": "RG-ANEXO-22",
+              "similitud_coseno": 0.8242440223693848
+            },
+            {
+              "fragmento_id": "RG-ANEXO-17-F01",
+              "unidad_id": "RG-ANEXO-17",
+              "similitud_coseno": 0.8242422342300415
+            },
+            {
+              "fragmento_id": "RG-ART-009-F01",
+              "unidad_id": "RG-ART-009",
+              "similitud_coseno": 0.8241323828697205
+            },
+            {
+              "fragmento_id": "RG-ANEXO-13-F01",
+              "unidad_id": "RG-ANEXO-13",
+              "similitud_coseno": 0.8241233229637146
+            },
+            {
+              "fragmento_id": "RG-ANEXO-16-F01",
+              "unidad_id": "RG-ANEXO-16",
+              "similitud_coseno": 0.8240677118301392
+            },
+            {
+              "fragmento_id": "RG-ANEXO-47-F01",
+              "unidad_id": "RG-ANEXO-47",
+              "similitud_coseno": 0.8239915370941162
+            },
+            {
+              "fragmento_id": "RG-ANEXO-07-F01",
+              "unidad_id": "RG-ANEXO-07",
+              "similitud_coseno": 0.8235461711883545
+            },
+            {
+              "fragmento_id": "RG-ANEXO-24-F01",
+              "unidad_id": "RG-ANEXO-24",
+              "similitud_coseno": 0.8234398365020752
+            },
+            {
+              "fragmento_id": "RG-ART-050-F01",
+              "unidad_id": "RG-ART-050",
+              "similitud_coseno": 0.8233963251113892
+            },
+            {
+              "fragmento_id": "RG-ANEXO-21-F01",
+              "unidad_id": "RG-ANEXO-21",
+              "similitud_coseno": 0.8233190774917603
+            },
+            {
+              "fragmento_id": "RG-ANEXO-50-F01",
+              "unidad_id": "RG-ANEXO-50",
+              "similitud_coseno": 0.8232713937759399
+            },
+            {
+              "fragmento_id": "RG-ANEXO-25-F01",
+              "unidad_id": "RG-ANEXO-25",
+              "similitud_coseno": 0.8230734467506409
+            },
+            {
+              "fragmento_id": "RG-ANEXO-08-F01",
+              "unidad_id": "RG-ANEXO-08",
+              "similitud_coseno": 0.8229984045028687
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-13-F01",
+              "unidad_id": "RG-ART-003-DEF-13",
+              "similitud_coseno": 0.8229051828384399
+            },
+            {
+              "fragmento_id": "RG-ANEXO-40-F01",
+              "unidad_id": "RG-ANEXO-40",
+              "similitud_coseno": 0.8228503465652466
+            },
+            {
+              "fragmento_id": "RG-ART-002-F01",
+              "unidad_id": "RG-ART-002",
+              "similitud_coseno": 0.822715163230896
+            },
+            {
+              "fragmento_id": "RG-ANEXO-42-F01",
+              "unidad_id": "RG-ANEXO-42",
+              "similitud_coseno": 0.8225869536399841
+            },
+            {
+              "fragmento_id": "RG-ANEXO-10-F01",
+              "unidad_id": "RG-ANEXO-10",
+              "similitud_coseno": 0.8225392699241638
+            },
+            {
+              "fragmento_id": "RG-ART-015-F01",
+              "unidad_id": "RG-ART-015",
+              "similitud_coseno": 0.8224974870681763
+            },
+            {
+              "fragmento_id": "RG-ART-022-F01",
+              "unidad_id": "RG-ART-022",
+              "similitud_coseno": 0.8223888278007507
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-01-F01",
+              "unidad_id": "RG-ART-003-DEF-01",
+              "similitud_coseno": 0.8223391771316528
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-12-F01",
+              "unidad_id": "RG-ART-003-DEF-12",
+              "similitud_coseno": 0.821995735168457
+            },
+            {
+              "fragmento_id": "RG-ANEXO-45-F01",
+              "unidad_id": "RG-ANEXO-45",
+              "similitud_coseno": 0.8217746019363403
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-01-F01",
+              "unidad_id": "CAL-2026-S1-01",
+              "similitud_coseno": 0.8216890096664429
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-14-F01",
+              "unidad_id": "RG-ART-003-DEF-14",
+              "similitud_coseno": 0.8215657472610474
+            },
+            {
+              "fragmento_id": "RG-ART-011-F01",
+              "unidad_id": "RG-ART-011",
+              "similitud_coseno": 0.821562647819519
+            },
+            {
+              "fragmento_id": "RG-ART-060-F01",
+              "unidad_id": "RG-ART-060",
+              "similitud_coseno": 0.8215014934539795
+            },
+            {
+              "fragmento_id": "RI-FI-ART-025-F01",
+              "unidad_id": "RI-FI-ART-025",
+              "similitud_coseno": 0.8214074373245239
+            },
+            {
+              "fragmento_id": "RG-ANEXO-20-F01",
+              "unidad_id": "RG-ANEXO-20",
+              "similitud_coseno": 0.8213049173355103
+            },
+            {
+              "fragmento_id": "RG-ANEXO-15-F01",
+              "unidad_id": "RG-ANEXO-15",
+              "similitud_coseno": 0.8209989666938782
+            },
+            {
+              "fragmento_id": "RG-ANEXO-05-F01",
+              "unidad_id": "RG-ANEXO-05",
+              "similitud_coseno": 0.8209969997406006
+            },
+            {
+              "fragmento_id": "RG-ART-012-F01",
+              "unidad_id": "RG-ART-012",
+              "similitud_coseno": 0.820462703704834
+            },
+            {
+              "fragmento_id": "RG-ANEXO-03-F01",
+              "unidad_id": "RG-ANEXO-03",
+              "similitud_coseno": 0.8203732967376709
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-19-F01",
+              "unidad_id": "RG-ART-003-DEF-19",
+              "similitud_coseno": 0.8200981020927429
+            },
+            {
+              "fragmento_id": "RG-ANEXO-14-F01",
+              "unidad_id": "RG-ANEXO-14",
+              "similitud_coseno": 0.8200556039810181
+            },
+            {
+              "fragmento_id": "RG-ANEXO-01-F01",
+              "unidad_id": "RG-ANEXO-01",
+              "similitud_coseno": 0.8199709057807922
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-20-F01",
+              "unidad_id": "RG-ART-003-DEF-20",
+              "similitud_coseno": 0.8199441432952881
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-02-F01",
+              "unidad_id": "RG-ART-003-DEF-02",
+              "similitud_coseno": 0.8198440074920654
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-08-F01",
+              "unidad_id": "RG-ART-003-DEF-08",
+              "similitud_coseno": 0.8196933269500732
+            },
+            {
+              "fragmento_id": "RG-ART-036-F01",
+              "unidad_id": "RG-ART-036",
+              "similitud_coseno": 0.8195779919624329
+            },
+            {
+              "fragmento_id": "RG-ART-034-F01",
+              "unidad_id": "RG-ART-034",
+              "similitud_coseno": 0.8194946050643921
+            },
+            {
+              "fragmento_id": "RG-ANEXO-04-F01",
+              "unidad_id": "RG-ANEXO-04",
+              "similitud_coseno": 0.8194304704666138
+            },
+            {
+              "fragmento_id": "RG-ART-053-F01",
+              "unidad_id": "RG-ART-053",
+              "similitud_coseno": 0.8193628787994385
+            },
+            {
+              "fragmento_id": "RI-FI-ART-033-F01",
+              "unidad_id": "RI-FI-ART-033",
+              "similitud_coseno": 0.8192507028579712
+            },
+            {
+              "fragmento_id": "RI-FI-ART-031-F01",
+              "unidad_id": "RI-FI-ART-031",
+              "similitud_coseno": 0.8192034959793091
+            },
+            {
+              "fragmento_id": "RG-ANEXO-02-F01",
+              "unidad_id": "RG-ANEXO-02",
+              "similitud_coseno": 0.8185850381851196
+            },
+            {
+              "fragmento_id": "RG-ART-019-F01",
+              "unidad_id": "RG-ART-019",
+              "similitud_coseno": 0.8183284997940063
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-16-F01",
+              "unidad_id": "RG-ART-003-DEF-16",
+              "similitud_coseno": 0.8182098865509033
+            },
+            {
+              "fragmento_id": "RG-ART-016-F01",
+              "unidad_id": "RG-ART-016",
+              "similitud_coseno": 0.8168588876724243
+            },
+            {
+              "fragmento_id": "RG-ART-008-F02",
+              "unidad_id": "RG-ART-008",
+              "similitud_coseno": 0.8163360357284546
+            },
+            {
+              "fragmento_id": "RG-ART-001-F01",
+              "unidad_id": "RG-ART-001",
+              "similitud_coseno": 0.8161682486534119
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-06-F01",
+              "unidad_id": "RG-ART-003-DEF-06",
+              "similitud_coseno": 0.8152074813842773
+            },
+            {
+              "fragmento_id": "RG-ART-024-F01",
+              "unidad_id": "RG-ART-024",
+              "similitud_coseno": 0.8147174715995789
+            },
+            {
+              "fragmento_id": "RG-ART-004-F01",
+              "unidad_id": "RG-ART-004",
+              "similitud_coseno": 0.814689576625824
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-05-F01",
+              "unidad_id": "RG-ART-003-DEF-05",
+              "similitud_coseno": 0.8145372867584229
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-05-F01",
+              "unidad_id": "CAL-2026-S2-05",
+              "similitud_coseno": 0.8137836456298828
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-06-F01",
+              "unidad_id": "CAL-2026-S1-06",
+              "similitud_coseno": 0.8137096166610718
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-05-F01",
+              "unidad_id": "CAL-2026-S1-05",
+              "similitud_coseno": 0.8128383755683899
+            },
+            {
+              "fragmento_id": "RG-ART-046-F01",
+              "unidad_id": "RG-ART-046",
+              "similitud_coseno": 0.8121676445007324
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-01-F01",
+              "unidad_id": "CAL-2026-S2-01",
+              "similitud_coseno": 0.8114778995513916
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-14-F01",
+              "unidad_id": "CAL-2026-S1-14",
+              "similitud_coseno": 0.8114073872566223
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-10-F01",
+              "unidad_id": "CAL-2026-S1-10",
+              "similitud_coseno": 0.8101232051849365
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-11-F01",
+              "unidad_id": "CAL-2026-S1-11",
+              "similitud_coseno": 0.8096003532409668
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-04-F01",
+              "unidad_id": "CAL-2026-S1-04",
+              "similitud_coseno": 0.8090596795082092
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-02-F01",
+              "unidad_id": "CAL-2026-S1-02",
+              "similitud_coseno": 0.8089965581893921
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-03-F01",
+              "unidad_id": "CAL-2026-S2-03",
+              "similitud_coseno": 0.8084060549736023
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-06-F01",
+              "unidad_id": "CAL-2026-S2-06",
+              "similitud_coseno": 0.8083153963088989
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-12-F01",
+              "unidad_id": "CAL-2026-S1-12",
+              "similitud_coseno": 0.8081419467926025
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-08-F01",
+              "unidad_id": "CAL-2026-S1-08",
+              "similitud_coseno": 0.8080482482910156
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-15-F01",
+              "unidad_id": "RG-ART-003-DEF-15",
+              "similitud_coseno": 0.8077813386917114
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-04-F01",
+              "unidad_id": "CAL-2026-S2-04",
+              "similitud_coseno": 0.8076624870300293
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-13-F01",
+              "unidad_id": "CAL-2026-S1-13",
+              "similitud_coseno": 0.8074867129325867
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-09-F01",
+              "unidad_id": "CAL-2026-S1-09",
+              "similitud_coseno": 0.8073287010192871
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-09-F01",
+              "unidad_id": "CAL-2026-S2-09",
+              "similitud_coseno": 0.807268500328064
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-03-F01",
+              "unidad_id": "CAL-2026-S1-03",
+              "similitud_coseno": 0.8070241212844849
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-24-F01",
+              "unidad_id": "RG-ART-003-DEF-24",
+              "similitud_coseno": 0.8066955804824829
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-07-F01",
+              "unidad_id": "CAL-2026-S2-07",
+              "similitud_coseno": 0.8063092231750488
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-11-F01",
+              "unidad_id": "CAL-2026-S2-11",
+              "similitud_coseno": 0.8059452772140503
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-07-F01",
+              "unidad_id": "CAL-2026-S1-07",
+              "similitud_coseno": 0.805855929851532
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-08-F01",
+              "unidad_id": "CAL-2026-S2-08",
+              "similitud_coseno": 0.803301215171814
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-02-F01",
+              "unidad_id": "CAL-2026-S2-02",
+              "similitud_coseno": 0.8031083345413208
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-10-F01",
+              "unidad_id": "CAL-2026-S2-10",
+              "similitud_coseno": 0.8026654720306396
+            }
+          ]
+        },
+        {
+          "texto": "cuál es la nota de aprobación",
+          "ranking": [
+            {
+              "fragmento_id": "RI-FI-ART-012-F01",
+              "unidad_id": "RI-FI-ART-012",
+              "similitud_coseno": 0.864621639251709
+            },
+            {
+              "fragmento_id": "RG-ART-023-F01",
+              "unidad_id": "RG-ART-023",
+              "similitud_coseno": 0.8622152805328369
+            },
+            {
+              "fragmento_id": "RG-ART-027-F01",
+              "unidad_id": "RG-ART-027",
+              "similitud_coseno": 0.8578565716743469
+            },
+            {
+              "fragmento_id": "RG-ART-024-F01",
+              "unidad_id": "RG-ART-024",
+              "similitud_coseno": 0.8554256558418274
+            },
+            {
+              "fragmento_id": "RG-ART-048-F01",
+              "unidad_id": "RG-ART-048",
+              "similitud_coseno": 0.8547412157058716
+            },
+            {
+              "fragmento_id": "RG-ANEXO-32-F01",
+              "unidad_id": "RG-ANEXO-32",
+              "similitud_coseno": 0.8543457388877869
+            },
+            {
+              "fragmento_id": "RG-ANEXO-03-F01",
+              "unidad_id": "RG-ANEXO-03",
+              "similitud_coseno": 0.85371994972229
+            },
+            {
+              "fragmento_id": "RG-ANEXO-04-F01",
+              "unidad_id": "RG-ANEXO-04",
+              "similitud_coseno": 0.8535307049751282
+            },
+            {
+              "fragmento_id": "RG-ANEXO-05-F01",
+              "unidad_id": "RG-ANEXO-05",
+              "similitud_coseno": 0.8534705638885498
+            },
+            {
+              "fragmento_id": "RG-ANEXO-02-F01",
+              "unidad_id": "RG-ANEXO-02",
+              "similitud_coseno": 0.8528451919555664
+            },
+            {
+              "fragmento_id": "RG-ANEXO-23-F01",
+              "unidad_id": "RG-ANEXO-23",
+              "similitud_coseno": 0.8528411984443665
+            },
+            {
+              "fragmento_id": "RG-ART-041-F01",
+              "unidad_id": "RG-ART-041",
+              "similitud_coseno": 0.8526608943939209
+            },
+            {
+              "fragmento_id": "RG-ANEXO-33-F01",
+              "unidad_id": "RG-ANEXO-33",
+              "similitud_coseno": 0.8525707125663757
+            },
+            {
+              "fragmento_id": "RG-ANEXO-28-F01",
+              "unidad_id": "RG-ANEXO-28",
+              "similitud_coseno": 0.8524810075759888
+            },
+            {
+              "fragmento_id": "RI-FI-ART-030-F01",
+              "unidad_id": "RI-FI-ART-030",
+              "similitud_coseno": 0.8523882627487183
+            },
+            {
+              "fragmento_id": "RG-ANEXO-35-F01",
+              "unidad_id": "RG-ANEXO-35",
+              "similitud_coseno": 0.8523236513137817
+            },
+            {
+              "fragmento_id": "RG-ANEXO-34-F01",
+              "unidad_id": "RG-ANEXO-34",
+              "similitud_coseno": 0.8519913554191589
+            },
+            {
+              "fragmento_id": "RG-ANEXO-17-F01",
+              "unidad_id": "RG-ANEXO-17",
+              "similitud_coseno": 0.8519283533096313
+            },
+            {
+              "fragmento_id": "RG-ANEXO-36-F01",
+              "unidad_id": "RG-ANEXO-36",
+              "similitud_coseno": 0.851875364780426
+            },
+            {
+              "fragmento_id": "RG-ANEXO-15-F01",
+              "unidad_id": "RG-ANEXO-15",
+              "similitud_coseno": 0.8518155217170715
+            },
+            {
+              "fragmento_id": "RG-ANEXO-37-F01",
+              "unidad_id": "RG-ANEXO-37",
+              "similitud_coseno": 0.8515825271606445
+            },
+            {
+              "fragmento_id": "RG-ANEXO-01-F01",
+              "unidad_id": "RG-ANEXO-01",
+              "similitud_coseno": 0.8513614535331726
+            },
+            {
+              "fragmento_id": "RG-ANEXO-19-F01",
+              "unidad_id": "RG-ANEXO-19",
+              "similitud_coseno": 0.8512675762176514
+            },
+            {
+              "fragmento_id": "RG-ANEXO-16-F01",
+              "unidad_id": "RG-ANEXO-16",
+              "similitud_coseno": 0.8511573076248169
+            },
+            {
+              "fragmento_id": "RG-ANEXO-13-F01",
+              "unidad_id": "RG-ANEXO-13",
+              "similitud_coseno": 0.8509837985038757
+            },
+            {
+              "fragmento_id": "RG-ANEXO-07-F01",
+              "unidad_id": "RG-ANEXO-07",
+              "similitud_coseno": 0.8509649038314819
+            },
+            {
+              "fragmento_id": "RG-ANEXO-43-F01",
+              "unidad_id": "RG-ANEXO-43",
+              "similitud_coseno": 0.8509572148323059
+            },
+            {
+              "fragmento_id": "RG-ANEXO-22-F01",
+              "unidad_id": "RG-ANEXO-22",
+              "similitud_coseno": 0.8509052395820618
+            },
+            {
+              "fragmento_id": "RG-ANEXO-18-F01",
+              "unidad_id": "RG-ANEXO-18",
+              "similitud_coseno": 0.8508654832839966
+            },
+            {
+              "fragmento_id": "RG-ANEXO-39-F01",
+              "unidad_id": "RG-ANEXO-39",
+              "similitud_coseno": 0.850602924823761
+            },
+            {
+              "fragmento_id": "RG-ANEXO-27-F01",
+              "unidad_id": "RG-ANEXO-27",
+              "similitud_coseno": 0.8503465056419373
+            },
+            {
+              "fragmento_id": "RG-ANEXO-41-F01",
+              "unidad_id": "RG-ANEXO-41",
+              "similitud_coseno": 0.8503392338752747
+            },
+            {
+              "fragmento_id": "RG-ANEXO-38-F01",
+              "unidad_id": "RG-ANEXO-38",
+              "similitud_coseno": 0.8503251075744629
+            },
+            {
+              "fragmento_id": "RG-ANEXO-20-F01",
+              "unidad_id": "RG-ANEXO-20",
+              "similitud_coseno": 0.8502163887023926
+            },
+            {
+              "fragmento_id": "RG-ANEXO-06-F01",
+              "unidad_id": "RG-ANEXO-06",
+              "similitud_coseno": 0.8500375151634216
+            },
+            {
+              "fragmento_id": "RG-ANEXO-21-F01",
+              "unidad_id": "RG-ANEXO-21",
+              "similitud_coseno": 0.8500181436538696
+            },
+            {
+              "fragmento_id": "RG-ANEXO-25-F01",
+              "unidad_id": "RG-ANEXO-25",
+              "similitud_coseno": 0.8500043153762817
+            },
+            {
+              "fragmento_id": "RG-ANEXO-09-F01",
+              "unidad_id": "RG-ANEXO-09",
+              "similitud_coseno": 0.8499972820281982
+            },
+            {
+              "fragmento_id": "RG-ANEXO-24-F01",
+              "unidad_id": "RG-ANEXO-24",
+              "similitud_coseno": 0.8499956130981445
+            },
+            {
+              "fragmento_id": "RG-ANEXO-14-F01",
+              "unidad_id": "RG-ANEXO-14",
+              "similitud_coseno": 0.8499945402145386
+            },
+            {
+              "fragmento_id": "RG-ANEXO-26-F01",
+              "unidad_id": "RG-ANEXO-26",
+              "similitud_coseno": 0.8499468564987183
+            },
+            {
+              "fragmento_id": "RG-ANEXO-08-F01",
+              "unidad_id": "RG-ANEXO-08",
+              "similitud_coseno": 0.8497316837310791
+            },
+            {
+              "fragmento_id": "RG-ANEXO-46-F01",
+              "unidad_id": "RG-ANEXO-46",
+              "similitud_coseno": 0.8496090173721313
+            },
+            {
+              "fragmento_id": "RG-ANEXO-12-F01",
+              "unidad_id": "RG-ANEXO-12",
+              "similitud_coseno": 0.8495649099349976
+            },
+            {
+              "fragmento_id": "RG-ANEXO-31-F01",
+              "unidad_id": "RG-ANEXO-31",
+              "similitud_coseno": 0.8492408990859985
+            },
+            {
+              "fragmento_id": "RG-ANEXO-29-F01",
+              "unidad_id": "RG-ANEXO-29",
+              "similitud_coseno": 0.8491233587265015
+            },
+            {
+              "fragmento_id": "RG-ANEXO-44-F01",
+              "unidad_id": "RG-ANEXO-44",
+              "similitud_coseno": 0.8491015434265137
+            },
+            {
+              "fragmento_id": "RG-ANEXO-10-F01",
+              "unidad_id": "RG-ANEXO-10",
+              "similitud_coseno": 0.8490797281265259
+            },
+            {
+              "fragmento_id": "RG-ANEXO-42-F01",
+              "unidad_id": "RG-ANEXO-42",
+              "similitud_coseno": 0.848924994468689
+            },
+            {
+              "fragmento_id": "RG-ANEXO-30-F01",
+              "unidad_id": "RG-ANEXO-30",
+              "similitud_coseno": 0.8488847017288208
+            },
+            {
+              "fragmento_id": "RG-ANEXO-50-F01",
+              "unidad_id": "RG-ANEXO-50",
+              "similitud_coseno": 0.8487396240234375
+            },
+            {
+              "fragmento_id": "RG-ANEXO-11-F01",
+              "unidad_id": "RG-ANEXO-11",
+              "similitud_coseno": 0.8487117290496826
+            },
+            {
+              "fragmento_id": "RG-ART-026-F01",
+              "unidad_id": "RG-ART-026",
+              "similitud_coseno": 0.8479726910591125
+            },
+            {
+              "fragmento_id": "RG-ANEXO-49-F01",
+              "unidad_id": "RG-ANEXO-49",
+              "similitud_coseno": 0.8479722738265991
+            },
+            {
+              "fragmento_id": "RG-ANEXO-40-F01",
+              "unidad_id": "RG-ANEXO-40",
+              "similitud_coseno": 0.8477780222892761
+            },
+            {
+              "fragmento_id": "RG-ANEXO-47-F01",
+              "unidad_id": "RG-ANEXO-47",
+              "similitud_coseno": 0.8476575016975403
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-11-F01",
+              "unidad_id": "RG-ART-003-DEF-11",
+              "similitud_coseno": 0.8475521802902222
+            },
+            {
+              "fragmento_id": "RG-ANEXO-48-F01",
+              "unidad_id": "RG-ANEXO-48",
+              "similitud_coseno": 0.8471107482910156
+            },
+            {
+              "fragmento_id": "RG-ANEXO-45-F01",
+              "unidad_id": "RG-ANEXO-45",
+              "similitud_coseno": 0.8469856977462769
+            },
+            {
+              "fragmento_id": "RG-ART-021-F01",
+              "unidad_id": "RG-ART-021",
+              "similitud_coseno": 0.8465365171432495
+            },
+            {
+              "fragmento_id": "RG-ART-019-F01",
+              "unidad_id": "RG-ART-019",
+              "similitud_coseno": 0.8454017639160156
+            },
+            {
+              "fragmento_id": "RG-ART-013-F01",
+              "unidad_id": "RG-ART-013",
+              "similitud_coseno": 0.8440821170806885
+            },
+            {
+              "fragmento_id": "RI-FI-ART-024-F01",
+              "unidad_id": "RI-FI-ART-024",
+              "similitud_coseno": 0.843397855758667
+            },
+            {
+              "fragmento_id": "RI-FI-ART-013-F01",
+              "unidad_id": "RI-FI-ART-013",
+              "similitud_coseno": 0.8430971503257751
+            },
+            {
+              "fragmento_id": "RG-ART-038-F01",
+              "unidad_id": "RG-ART-038",
+              "similitud_coseno": 0.8428910970687866
+            },
+            {
+              "fragmento_id": "RG-ART-022-F01",
+              "unidad_id": "RG-ART-022",
+              "similitud_coseno": 0.8426324725151062
+            },
+            {
+              "fragmento_id": "RG-ART-039-F01",
+              "unidad_id": "RG-ART-039",
+              "similitud_coseno": 0.8409535884857178
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-22-F01",
+              "unidad_id": "RG-ART-003-DEF-22",
+              "similitud_coseno": 0.840099573135376
+            },
+            {
+              "fragmento_id": "RG-ART-012-F01",
+              "unidad_id": "RG-ART-012",
+              "similitud_coseno": 0.8393948078155518
+            },
+            {
+              "fragmento_id": "RI-FI-ART-023-F01",
+              "unidad_id": "RI-FI-ART-023",
+              "similitud_coseno": 0.8357042074203491
+            },
+            {
+              "fragmento_id": "RI-FI-ART-031-F01",
+              "unidad_id": "RI-FI-ART-031",
+              "similitud_coseno": 0.8355053663253784
+            },
+            {
+              "fragmento_id": "RG-ART-025-F01",
+              "unidad_id": "RG-ART-025",
+              "similitud_coseno": 0.834721565246582
+            },
+            {
+              "fragmento_id": "RI-FI-ART-015-F01",
+              "unidad_id": "RI-FI-ART-015",
+              "similitud_coseno": 0.8341099619865417
+            },
+            {
+              "fragmento_id": "RG-ART-047-F01",
+              "unidad_id": "RG-ART-047",
+              "similitud_coseno": 0.8335761427879333
+            },
+            {
+              "fragmento_id": "RG-ART-045-F01",
+              "unidad_id": "RG-ART-045",
+              "similitud_coseno": 0.833186686038971
+            },
+            {
+              "fragmento_id": "RI-FI-ART-005-F01",
+              "unidad_id": "RI-FI-ART-005",
+              "similitud_coseno": 0.8321691751480103
+            },
+            {
+              "fragmento_id": "RG-ART-030-F01",
+              "unidad_id": "RG-ART-030",
+              "similitud_coseno": 0.8320165276527405
+            },
+            {
+              "fragmento_id": "RI-FI-ART-021-F01",
+              "unidad_id": "RI-FI-ART-021",
+              "similitud_coseno": 0.831061601638794
+            },
+            {
+              "fragmento_id": "RG-ART-015-F01",
+              "unidad_id": "RG-ART-015",
+              "similitud_coseno": 0.8302798271179199
+            },
+            {
+              "fragmento_id": "RG-ART-032-F01",
+              "unidad_id": "RG-ART-032",
+              "similitud_coseno": 0.8295124769210815
+            },
+            {
+              "fragmento_id": "RG-ART-059-F01",
+              "unidad_id": "RG-ART-059",
+              "similitud_coseno": 0.8281241655349731
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-14-F01",
+              "unidad_id": "RG-ART-003-DEF-14",
+              "similitud_coseno": 0.8269004821777344
+            },
+            {
+              "fragmento_id": "RG-ART-020-F01",
+              "unidad_id": "RG-ART-020",
+              "similitud_coseno": 0.8264914751052856
+            },
+            {
+              "fragmento_id": "RG-ART-050-F01",
+              "unidad_id": "RG-ART-050",
+              "similitud_coseno": 0.8264376521110535
+            },
+            {
+              "fragmento_id": "RG-PREAMBULO-F01",
+              "unidad_id": "RG-PREAMBULO",
+              "similitud_coseno": 0.8263644576072693
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-05-F01",
+              "unidad_id": "CAL-2026-S2-05",
+              "similitud_coseno": 0.8263329863548279
+            },
+            {
+              "fragmento_id": "RI-FI-ART-010-F01",
+              "unidad_id": "RI-FI-ART-010",
+              "similitud_coseno": 0.8262762427330017
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-05-F01",
+              "unidad_id": "RG-ART-003-DEF-05",
+              "similitud_coseno": 0.8262277245521545
+            },
+            {
+              "fragmento_id": "RG-ART-058-F01",
+              "unidad_id": "RG-ART-058",
+              "similitud_coseno": 0.8249145150184631
+            },
+            {
+              "fragmento_id": "RI-FI-ART-014-F01",
+              "unidad_id": "RI-FI-ART-014",
+              "similitud_coseno": 0.8249016404151917
+            },
+            {
+              "fragmento_id": "RG-ART-016-F01",
+              "unidad_id": "RG-ART-016",
+              "similitud_coseno": 0.8247205018997192
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-06-F01",
+              "unidad_id": "CAL-2026-S1-06",
+              "similitud_coseno": 0.8239718675613403
+            },
+            {
+              "fragmento_id": "RG-ART-033-F01",
+              "unidad_id": "RG-ART-033",
+              "similitud_coseno": 0.8239119052886963
+            },
+            {
+              "fragmento_id": "RG-ART-036-F01",
+              "unidad_id": "RG-ART-036",
+              "similitud_coseno": 0.8235483169555664
+            },
+            {
+              "fragmento_id": "RI-FI-ART-028-F01",
+              "unidad_id": "RI-FI-ART-028",
+              "similitud_coseno": 0.8235316276550293
+            },
+            {
+              "fragmento_id": "RG-ART-035-F01",
+              "unidad_id": "RG-ART-035",
+              "similitud_coseno": 0.8229986429214478
+            },
+            {
+              "fragmento_id": "RG-ART-005-F01",
+              "unidad_id": "RG-ART-005",
+              "similitud_coseno": 0.8228603601455688
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-23-F01",
+              "unidad_id": "RG-ART-003-DEF-23",
+              "similitud_coseno": 0.8228095769882202
+            },
+            {
+              "fragmento_id": "RG-ART-051-F01",
+              "unidad_id": "RG-ART-051",
+              "similitud_coseno": 0.8222267627716064
+            },
+            {
+              "fragmento_id": "RI-FI-ART-011-F01",
+              "unidad_id": "RI-FI-ART-011",
+              "similitud_coseno": 0.82200688123703
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-21-F01",
+              "unidad_id": "RG-ART-003-DEF-21",
+              "similitud_coseno": 0.8219374418258667
+            },
+            {
+              "fragmento_id": "RI-FI-ART-016-F01",
+              "unidad_id": "RI-FI-ART-016",
+              "similitud_coseno": 0.8217366933822632
+            },
+            {
+              "fragmento_id": "RI-FI-ART-026-F01",
+              "unidad_id": "RI-FI-ART-026",
+              "similitud_coseno": 0.8213426470756531
+            },
+            {
+              "fragmento_id": "RG-ART-009-F01",
+              "unidad_id": "RG-ART-009",
+              "similitud_coseno": 0.821280837059021
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-10-F01",
+              "unidad_id": "RG-ART-003-DEF-10",
+              "similitud_coseno": 0.8211832642555237
+            },
+            {
+              "fragmento_id": "RG-ART-029-F01",
+              "unidad_id": "RG-ART-029",
+              "similitud_coseno": 0.8209382891654968
+            },
+            {
+              "fragmento_id": "RG-ART-042-F01",
+              "unidad_id": "RG-ART-042",
+              "similitud_coseno": 0.8206206560134888
+            },
+            {
+              "fragmento_id": "RI-FI-ART-007-F01",
+              "unidad_id": "RI-FI-ART-007",
+              "similitud_coseno": 0.8197491765022278
+            },
+            {
+              "fragmento_id": "RI-FI-ART-027-F01",
+              "unidad_id": "RI-FI-ART-027",
+              "similitud_coseno": 0.8197269439697266
+            },
+            {
+              "fragmento_id": "RG-ART-010-F01",
+              "unidad_id": "RG-ART-010",
+              "similitud_coseno": 0.8196167349815369
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-16-F01",
+              "unidad_id": "RG-ART-003-DEF-16",
+              "similitud_coseno": 0.8196113109588623
+            },
+            {
+              "fragmento_id": "RG-ART-014-F01",
+              "unidad_id": "RG-ART-014",
+              "similitud_coseno": 0.819428563117981
+            },
+            {
+              "fragmento_id": "RG-ART-049-F01",
+              "unidad_id": "RG-ART-049",
+              "similitud_coseno": 0.8194172382354736
+            },
+            {
+              "fragmento_id": "RG-ART-028-F01",
+              "unidad_id": "RG-ART-028",
+              "similitud_coseno": 0.8193451166152954
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-09-F01",
+              "unidad_id": "RG-ART-003-DEF-09",
+              "similitud_coseno": 0.8189874291419983
+            },
+            {
+              "fragmento_id": "RG-ART-054-F01",
+              "unidad_id": "RG-ART-054",
+              "similitud_coseno": 0.8185925483703613
+            },
+            {
+              "fragmento_id": "RI-FI-ART-035-F01",
+              "unidad_id": "RI-FI-ART-035",
+              "similitud_coseno": 0.8182880282402039
+            },
+            {
+              "fragmento_id": "RG-ART-040-F01",
+              "unidad_id": "RG-ART-040",
+              "similitud_coseno": 0.8181325197219849
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-14-F01",
+              "unidad_id": "CAL-2026-S1-14",
+              "similitud_coseno": 0.8177832365036011
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-01-F01",
+              "unidad_id": "CAL-2026-S2-01",
+              "similitud_coseno": 0.8169047832489014
+            },
+            {
+              "fragmento_id": "RG-ART-010-F02",
+              "unidad_id": "RG-ART-010",
+              "similitud_coseno": 0.8168653249740601
+            },
+            {
+              "fragmento_id": "RI-FI-ART-032-F01",
+              "unidad_id": "RI-FI-ART-032",
+              "similitud_coseno": 0.8163136839866638
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-08-F01",
+              "unidad_id": "CAL-2026-S1-08",
+              "similitud_coseno": 0.8160082697868347
+            },
+            {
+              "fragmento_id": "RI-FI-ART-004-F01",
+              "unidad_id": "RI-FI-ART-004",
+              "similitud_coseno": 0.8159754276275635
+            },
+            {
+              "fragmento_id": "RG-ART-037-F01",
+              "unidad_id": "RG-ART-037",
+              "similitud_coseno": 0.8158256411552429
+            },
+            {
+              "fragmento_id": "RI-FI-ART-034-F01",
+              "unidad_id": "RI-FI-ART-034",
+              "similitud_coseno": 0.8157790899276733
+            },
+            {
+              "fragmento_id": "RG-ART-007-F01",
+              "unidad_id": "RG-ART-007",
+              "similitud_coseno": 0.8155986070632935
+            },
+            {
+              "fragmento_id": "RG-ART-055-F01",
+              "unidad_id": "RG-ART-055",
+              "similitud_coseno": 0.8154237270355225
+            },
+            {
+              "fragmento_id": "RI-FI-ART-033-F01",
+              "unidad_id": "RI-FI-ART-033",
+              "similitud_coseno": 0.8151141405105591
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-18-F01",
+              "unidad_id": "RG-ART-003-DEF-18",
+              "similitud_coseno": 0.8150161504745483
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-07-F01",
+              "unidad_id": "CAL-2026-S2-07",
+              "similitud_coseno": 0.8146235346794128
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-01-F01",
+              "unidad_id": "RG-ART-003-DEF-01",
+              "similitud_coseno": 0.814441442489624
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-13-F01",
+              "unidad_id": "RG-ART-003-DEF-13",
+              "similitud_coseno": 0.8140591382980347
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-11-F01",
+              "unidad_id": "CAL-2026-S1-11",
+              "similitud_coseno": 0.8140515685081482
+            },
+            {
+              "fragmento_id": "RG-ART-001-F01",
+              "unidad_id": "RG-ART-001",
+              "similitud_coseno": 0.8139826059341431
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-13-F01",
+              "unidad_id": "CAL-2026-S1-13",
+              "similitud_coseno": 0.8139797449111938
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-03-F01",
+              "unidad_id": "CAL-2026-S1-03",
+              "similitud_coseno": 0.8139415979385376
+            },
+            {
+              "fragmento_id": "RI-FI-ART-020-F01",
+              "unidad_id": "RI-FI-ART-020",
+              "similitud_coseno": 0.81363445520401
+            },
+            {
+              "fragmento_id": "RI-FI-ART-025-F01",
+              "unidad_id": "RI-FI-ART-025",
+              "similitud_coseno": 0.8136144280433655
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-07-F01",
+              "unidad_id": "CAL-2026-S1-07",
+              "similitud_coseno": 0.8131647109985352
+            },
+            {
+              "fragmento_id": "RI-FI-ART-029-F01",
+              "unidad_id": "RI-FI-ART-029",
+              "similitud_coseno": 0.8131580352783203
+            },
+            {
+              "fragmento_id": "RI-FI-ART-018-F01",
+              "unidad_id": "RI-FI-ART-018",
+              "similitud_coseno": 0.8131003379821777
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-11-F01",
+              "unidad_id": "CAL-2026-S2-11",
+              "similitud_coseno": 0.8128639459609985
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-03-F01",
+              "unidad_id": "CAL-2026-S2-03",
+              "similitud_coseno": 0.812455415725708
+            },
+            {
+              "fragmento_id": "RG-ART-034-F01",
+              "unidad_id": "RG-ART-034",
+              "similitud_coseno": 0.8122520446777344
+            },
+            {
+              "fragmento_id": "RG-ART-018-F01",
+              "unidad_id": "RG-ART-018",
+              "similitud_coseno": 0.81205153465271
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-10-F01",
+              "unidad_id": "CAL-2026-S1-10",
+              "similitud_coseno": 0.8118704557418823
+            },
+            {
+              "fragmento_id": "RG-ART-031-F01",
+              "unidad_id": "RG-ART-031",
+              "similitud_coseno": 0.8117865324020386
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-09-F01",
+              "unidad_id": "CAL-2026-S1-09",
+              "similitud_coseno": 0.8115788698196411
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-24-F01",
+              "unidad_id": "RG-ART-003-DEF-24",
+              "similitud_coseno": 0.8114855885505676
+            },
+            {
+              "fragmento_id": "RI-FI-ART-022-F01",
+              "unidad_id": "RI-FI-ART-022",
+              "similitud_coseno": 0.8110957145690918
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-12-F01",
+              "unidad_id": "CAL-2026-S1-12",
+              "similitud_coseno": 0.8110814094543457
+            },
+            {
+              "fragmento_id": "RG-TRANS-002-F01",
+              "unidad_id": "RG-TRANS-002",
+              "similitud_coseno": 0.8109798431396484
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-19-F01",
+              "unidad_id": "RG-ART-003-DEF-19",
+              "similitud_coseno": 0.810757577419281
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-09-F01",
+              "unidad_id": "CAL-2026-S2-09",
+              "similitud_coseno": 0.8107423782348633
+            },
+            {
+              "fragmento_id": "RG-ART-006-F01",
+              "unidad_id": "RG-ART-006",
+              "similitud_coseno": 0.8107305765151978
+            },
+            {
+              "fragmento_id": "RI-FI-ART-017-F01",
+              "unidad_id": "RI-FI-ART-017",
+              "similitud_coseno": 0.8105908036231995
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-10-F02",
+              "unidad_id": "RG-ART-003-DEF-10",
+              "similitud_coseno": 0.8105713129043579
+            },
+            {
+              "fragmento_id": "RI-FI-ART-006-F01",
+              "unidad_id": "RI-FI-ART-006",
+              "similitud_coseno": 0.810004711151123
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-05-F01",
+              "unidad_id": "CAL-2026-S1-05",
+              "similitud_coseno": 0.8099437952041626
+            },
+            {
+              "fragmento_id": "RG-ART-053-F01",
+              "unidad_id": "RG-ART-053",
+              "similitud_coseno": 0.8099050521850586
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-06-F01",
+              "unidad_id": "CAL-2026-S2-06",
+              "similitud_coseno": 0.8098025321960449
+            },
+            {
+              "fragmento_id": "RI-FI-ART-009-F01",
+              "unidad_id": "RI-FI-ART-009",
+              "similitud_coseno": 0.8098011016845703
+            },
+            {
+              "fragmento_id": "RI-FI-ART-008-F01",
+              "unidad_id": "RI-FI-ART-008",
+              "similitud_coseno": 0.8097820281982422
+            },
+            {
+              "fragmento_id": "RG-ART-046-F01",
+              "unidad_id": "RG-ART-046",
+              "similitud_coseno": 0.8095307946205139
+            },
+            {
+              "fragmento_id": "RG-ART-011-F01",
+              "unidad_id": "RG-ART-011",
+              "similitud_coseno": 0.809169590473175
+            },
+            {
+              "fragmento_id": "RG-ART-057-F01",
+              "unidad_id": "RG-ART-057",
+              "similitud_coseno": 0.8090833425521851
+            },
+            {
+              "fragmento_id": "RG-ART-003-INTRO-F01",
+              "unidad_id": "RG-ART-003-INTRO",
+              "similitud_coseno": 0.8089947700500488
+            },
+            {
+              "fragmento_id": "RG-ART-008-F01",
+              "unidad_id": "RG-ART-008",
+              "similitud_coseno": 0.8089872598648071
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-04-F01",
+              "unidad_id": "CAL-2026-S2-04",
+              "similitud_coseno": 0.8085922002792358
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-04-F01",
+              "unidad_id": "CAL-2026-S1-04",
+              "similitud_coseno": 0.8084807991981506
+            },
+            {
+              "fragmento_id": "RI-FI-ART-002-F01",
+              "unidad_id": "RI-FI-ART-002",
+              "similitud_coseno": 0.8080205321311951
+            },
+            {
+              "fragmento_id": "RG-TRANS-001-F01",
+              "unidad_id": "RG-TRANS-001",
+              "similitud_coseno": 0.8078752756118774
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-10-F01",
+              "unidad_id": "CAL-2026-S2-10",
+              "similitud_coseno": 0.8077870607376099
+            },
+            {
+              "fragmento_id": "RG-ART-056-F01",
+              "unidad_id": "RG-ART-056",
+              "similitud_coseno": 0.8074225187301636
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-08-F01",
+              "unidad_id": "CAL-2026-S2-08",
+              "similitud_coseno": 0.8073968887329102
+            },
+            {
+              "fragmento_id": "RG-ART-043-F01",
+              "unidad_id": "RG-ART-043",
+              "similitud_coseno": 0.8073800802230835
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-02-F01",
+              "unidad_id": "CAL-2026-S1-02",
+              "similitud_coseno": 0.8073163628578186
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-06-F01",
+              "unidad_id": "RG-ART-003-DEF-06",
+              "similitud_coseno": 0.8063066005706787
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-09-F02",
+              "unidad_id": "RG-ART-003-DEF-09",
+              "similitud_coseno": 0.8060289621353149
+            },
+            {
+              "fragmento_id": "CAL-2026-S1-01-F01",
+              "unidad_id": "CAL-2026-S1-01",
+              "similitud_coseno": 0.8059941530227661
+            },
+            {
+              "fragmento_id": "RG-ART-017-F01",
+              "unidad_id": "RG-ART-017",
+              "similitud_coseno": 0.8059622049331665
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-07-F01",
+              "unidad_id": "RG-ART-003-DEF-07",
+              "similitud_coseno": 0.8058118224143982
+            },
+            {
+              "fragmento_id": "RI-FI-ART-001-F01",
+              "unidad_id": "RI-FI-ART-001",
+              "similitud_coseno": 0.8056527972221375
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-17-F01",
+              "unidad_id": "RG-ART-003-DEF-17",
+              "similitud_coseno": 0.8047336339950562
+            },
+            {
+              "fragmento_id": "RI-FI-ART-019-F01",
+              "unidad_id": "RI-FI-ART-019",
+              "similitud_coseno": 0.804613471031189
+            },
+            {
+              "fragmento_id": "RG-ART-060-F01",
+              "unidad_id": "RG-ART-060",
+              "similitud_coseno": 0.8035462498664856
+            },
+            {
+              "fragmento_id": "RG-ART-052-F01",
+              "unidad_id": "RG-ART-052",
+              "similitud_coseno": 0.8029707670211792
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-02-F01",
+              "unidad_id": "RG-ART-003-DEF-02",
+              "similitud_coseno": 0.802599310874939
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-12-F01",
+              "unidad_id": "RG-ART-003-DEF-12",
+              "similitud_coseno": 0.8022933006286621
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-08-F01",
+              "unidad_id": "RG-ART-003-DEF-08",
+              "similitud_coseno": 0.8010153770446777
+            },
+            {
+              "fragmento_id": "CAL-2026-S2-02-F01",
+              "unidad_id": "CAL-2026-S2-02",
+              "similitud_coseno": 0.7995891571044922
+            },
+            {
+              "fragmento_id": "RG-ART-044-F01",
+              "unidad_id": "RG-ART-044",
+              "similitud_coseno": 0.7994421720504761
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-20-F01",
+              "unidad_id": "RG-ART-003-DEF-20",
+              "similitud_coseno": 0.7991371154785156
+            },
+            {
+              "fragmento_id": "RG-ART-002-F01",
+              "unidad_id": "RG-ART-002",
+              "similitud_coseno": 0.799010157585144
+            },
+            {
+              "fragmento_id": "RI-FI-ART-003-F01",
+              "unidad_id": "RI-FI-ART-003",
+              "similitud_coseno": 0.7980704307556152
+            },
+            {
+              "fragmento_id": "RG-ART-004-F01",
+              "unidad_id": "RG-ART-004",
+              "similitud_coseno": 0.7967934608459473
+            },
+            {
+              "fragmento_id": "RG-ART-008-F02",
+              "unidad_id": "RG-ART-008",
+              "similitud_coseno": 0.7964372634887695
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-15-F01",
+              "unidad_id": "RG-ART-003-DEF-15",
+              "similitud_coseno": 0.795347273349762
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-03-F01",
+              "unidad_id": "RG-ART-003-DEF-03",
+              "similitud_coseno": 0.7927142381668091
+            },
+            {
+              "fragmento_id": "RG-ART-003-DEF-04-F01",
+              "unidad_id": "RG-ART-003-DEF-04",
+              "similitud_coseno": 0.7910556793212891
+            }
+          ]
+        }
+      ],
+      "contextos": [
+        {
+          "unidad_id": "RG-ANEXO-15",
+          "motivo": "subconsulta_1",
+          "parent_id": "RG-ANEXO-15",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 15 en escala de 1 a 100 equivale a 1,8 en escala de 1,0 a 7,0. Aprobación: 65 en escala de 1 a 100 equivale a 4,8 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad.",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+          "sha256_pdf": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+        },
+        {
+          "unidad_id": "RG-ANEXO-18",
+          "motivo": "subconsulta_1",
+          "parent_id": "RG-ANEXO-18",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 18 en escala de 1 a 100 equivale a 2,0 en escala de 1,0 a 7,0. Aprobación: 68 en escala de 1 a 100 equivale a 5,0 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad.",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+          "sha256_pdf": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+        },
+        {
+          "unidad_id": "RI-FI-ART-006",
+          "motivo": "subconsulta_2",
+          "parent_id": "RI-FI-ART-006",
+          "texto": "Artículo 6°. El proceso de postulación y selección se realizará al final del año académico respectivo. La Facultad de Ingeniería establecerá en cada oportunidad, la distribución porcentual de cupos por carrera, para estudiantes del Ingreso Común que puede aceptar en el segundo año, en las carreras de Ingeniería Civil que contemplen esta modalidad de ingreso.",
+          "cita": "RI-FI, artículo 6, PDF p. 1",
+          "archivo": "Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "sha256_pdf": "26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1"
+        },
+        {
+          "unidad_id": "RI-FI-ART-028",
+          "motivo": "subconsulta_2",
+          "parent_id": "RI-FI-ART-028",
+          "texto": "Artículo 28°. La y el estudiante que se reincorpora y que al momento de suspender los estudios haya cumplido los requisitos para la obtención de la Licenciatura en Ciencias de la Ingeniería, ésta le será reconocida. Las asignaturas cursadas con posterioridad a la Licenciatura le serán reconocidas de acuerdo a su equivalencia con las del Plan de Estudio vigente al momento de la reincorporación.",
+          "cita": "RI-FI, artículo 28, PDF p. 5",
+          "archivo": "Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "sha256_pdf": "26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1"
+        },
+        {
+          "unidad_id": "RI-FI-ART-012",
+          "motivo": "subconsulta_3",
+          "parent_id": "RI-FI-ART-012",
+          "texto": "Artículo 12°. En cada asignatura, las y los estudiantes tendrán derecho a una evaluación de recuperación para modificar la nota final. En la primera semana de clases el/la Profesor/a Encargado/a entregará por escrito, los requisitos, actividades a desarrollar e instrumentos de evaluación que se usarán en el curso, y su correspondiente ponderación, incluyendo la evaluación de recuperación.",
+          "cita": "RI-FI, artículo 12, PDF p. 2",
+          "archivo": "Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "sha256_pdf": "26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1"
+        },
+        {
+          "unidad_id": "RG-ART-023",
+          "motivo": "subconsulta_3",
+          "parent_id": "RG-ART-023",
+          "texto": "Artículo 23º La Nota Final deberá ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.\n\nEn esta escala, las centésimas inferiores al dígito 5 no afectarán a la décima. Las centésimas iguales o superiores al dígito 5 se aproximarán a la décima superior.\n\nLos alumnos que obtengan Nota Final igual o superior a 4,0 (cuatro coma cero) en la escala de 1 a 7 aprobarán la asignatura. Cuando el alumno no cumpla alguno de los requisitos establecidos en el programa de la asignatura, será calificado con el concepto NCR (no cumple requisito).\n\nReprobarán la asignatura, quienes obtengan Nota Final inferior a 4,0 y también los que no cumplan requisitos (NCR).\n\nEl alumno que para rendir un instrumento de evaluación obtenga o facilite información en forma ilícita o por medios no autorizados por el profesor, podrá ser calificado con la nota mínima. Si dicha acción involucra gran parte de un instrumento desarrollado fuera del aula y que es requisito en la asignatura, tales como proyectos, trabajos grupales u otros, el alumno podrá ser calificado con NCR.",
+          "cita": "RG, artículo 23, PDF p. 18",
+          "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+          "sha256_pdf": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+        },
+        {
+          "unidad_id": "RG-ANEXO-08",
+          "motivo": "consulta_original",
+          "parent_id": "RG-ANEXO-08",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 8 en escala de 1 a 100 equivale a 1,4 en escala de 1,0 a 7,0. Aprobación: 58 en escala de 1 a 100 equivale a 4,4 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad.",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+          "sha256_pdf": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+        },
+        {
+          "unidad_id": "RG-ANEXO-35",
+          "motivo": "consulta_original",
+          "parent_id": "RG-ANEXO-35",
+          "texto": "Anexo: equivalencia de escalas de notas. Reprobación: 35 en escala de 1 a 100 equivale a 3,1 en escala de 1,0 a 7,0. Aprobación: 85 en escala de 1 a 100 equivale a 6,4 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción.",
+          "cita": "RG, anexo de equivalencia de notas, PDF p. 33",
+          "archivo": "Reglamento_General_de_Docencia_de_Pregrado.pdf",
+          "sha256_pdf": "d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de"
+        }
+      ],
+      "comprobaciones_estructurales": [],
+      "contextos_inventario": [],
+      "candidatos": [
+        {
+          "unidad_id": "RG-ANEXO-15",
+          "motivo": "subconsulta_1"
+        },
+        {
+          "unidad_id": "RG-ANEXO-18",
+          "motivo": "subconsulta_1"
+        },
+        {
+          "unidad_id": "RI-FI-ART-006",
+          "motivo": "subconsulta_2"
+        },
+        {
+          "unidad_id": "RI-FI-ART-028",
+          "motivo": "subconsulta_2"
+        },
+        {
+          "unidad_id": "RI-FI-ART-012",
+          "motivo": "subconsulta_3"
+        },
+        {
+          "unidad_id": "RG-ART-023",
+          "motivo": "subconsulta_3"
+        },
+        {
+          "unidad_id": "RG-ART-023",
+          "motivo": "consulta_original"
+        },
+        {
+          "unidad_id": "RG-ANEXO-08",
+          "motivo": "consulta_original"
+        },
+        {
+          "unidad_id": "RG-ANEXO-35",
+          "motivo": "consulta_original"
+        },
+        {
+          "unidad_id": "RG-ANEXO-15",
+          "motivo": "consulta_original"
+        },
+        {
+          "unidad_id": "RG-ANEXO-18",
+          "motivo": "consulta_original"
+        }
+      ],
+      "omitidos_por_presupuesto": [],
+      "caracteres_contexto": 3223
+    },
+    "segundos": 0.16074427500007005,
+    "pregunta": {
+      "id": 38,
+      "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+      "categoria": "cruce"
+    },
+    "corrida": "222681994dcd692c0600039964b46816d20729264642497c921cb208be51a47f"
+  },
+  "sha256": "41ca84af7da159a9c5f10e00bedf11e893b23e4d5d8cf590bc07b2f09a5846f1"
+}

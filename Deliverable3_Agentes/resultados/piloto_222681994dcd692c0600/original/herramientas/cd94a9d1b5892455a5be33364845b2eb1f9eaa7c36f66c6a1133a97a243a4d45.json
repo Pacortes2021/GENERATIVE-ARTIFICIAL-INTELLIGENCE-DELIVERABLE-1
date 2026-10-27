@@ -1,0 +1,33 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "222681994dcd692c0600039964b46816d20729264642497c921cb208be51a47f",
+        "pregunta": {
+          "id": 41,
+          "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+          "categoria": "abstencion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "inventario",
+        "argumentos": {
+          "documento": "RI-FI"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "INV-RI-FI",
+          "cita": "Inventario completo: Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "texto": "{\"alcance\":\"copia del corpus, no normativa externa\",\"documento\":\"RI-FI\",\"entradas\":[{\"ambito\":\"ordinario\",\"articulo\":1,\"id\":\"RI-FI-ART-001\",\"paginas\":[1]},{\"ambito\":\"ordinario\",\"articulo\":2,\"id\":\"RI-FI-ART-002\",\"paginas\":[1]},{\"ambito\":\"ordinario\",\"articulo\":3,\"id\":\"RI-FI-ART-003\",\"paginas\":[1]},{\"ambito\":\"ordinario\",\"articulo\":4,\"id\":\"RI-FI-ART-004\",\"paginas\":[1]},{\"ambito\":\"ordinario\",\"articulo\":5,\"id\":\"RI-FI-ART-005\",\"paginas\":[1]},{\"ambito\":\"ordinario\",\"articulo\":6,\"id\":\"RI-FI-ART-006\",\"paginas\":[1]},{\"ambito\":\"ordinario\",\"articulo\":7,\"id\":\"RI-FI-ART-007\",\"paginas\":[2]},{\"ambito\":\"ordinario\",\"articulo\":8,\"id\":\"RI-FI-ART-008\",\"paginas\":[2]},{\"ambito\":\"ordinario\",\"articulo\":9,\"id\":\"RI-FI-ART-009\",\"paginas\":[2]},{\"ambito\":\"ordinario\",\"articulo\":10,\"id\":\"RI-FI-ART-010\",\"paginas\":[2]},{\"ambito\":\"ordinario\",\"articulo\":11,\"id\":\"RI-FI-ART-011\",\"paginas\":[2]},{\"ambito\":\"ordinario\",\"articulo\":12,\"id\":\"RI-FI-ART-012\",\"paginas\":[2]},{\"ambito\":\"ordinario\",\"articulo\":13,\"id\":\"RI-FI-ART-013\",\"paginas\":[2,3]},{\"ambito\":\"ordinario\",\"articulo\":14,\"id\":\"RI-FI-ART-014\",\"paginas\":[3]},{\"ambito\":\"ordinario\",\"articulo\":15,\"id\":\"RI-FI-ART-015\",\"paginas\":[3]},{\"ambito\":\"ordinario\",\"articulo\":16,\"id\":\"RI-FI-ART-016\",\"paginas\":[3]},{\"ambito\":\"ordinario\",\"articulo\":17,\"id\":\"RI-FI-ART-017\",\"paginas\":[3]},{\"ambito\":\"ordinario\",\"articulo\":18,\"id\":\"RI-FI-ART-018\",\"paginas\":[3]},{\"ambito\":\"ordinario\",\"articulo\":19,\"id\":\"RI-FI-ART-019\",\"paginas\":[3]},{\"ambito\":\"ordinario\",\"articulo\":20,\"id\":\"RI-FI-ART-020\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":21,\"id\":\"RI-FI-ART-021\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":22,\"id\":\"RI-FI-ART-022\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":23,\"id\":\"RI-FI-ART-023\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":24,\"id\":\"RI-FI-ART-024\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":25,\"id\":\"RI-FI-ART-025\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":26,\"id\":\"RI-FI-ART-026\",\"paginas\":[4]},{\"ambito\":\"ordinario\",\"articulo\":27,\"id\":\"RI-FI-ART-027\",\"paginas\":[5]},{\"ambito\":\"ordinario\",\"articulo\":28,\"id\":\"RI-FI-ART-028\",\"paginas\":[5]},{\"ambito\":\"ordinario\",\"articulo\":29,\"id\":\"RI-FI-ART-029\",\"paginas\":[5]},{\"ambito\":\"ordinario\",\"articulo\":30,\"id\":\"RI-FI-ART-030\",\"paginas\":[5]},{\"ambito\":\"ordinario\",\"articulo\":31,\"id\":\"RI-FI-ART-031\",\"paginas\":[5]},{\"ambito\":\"ordinario\",\"articulo\":32,\"id\":\"RI-FI-ART-032\",\"paginas\":[5]},{\"ambito\":\"ordinario\",\"articulo\":33,\"id\":\"RI-FI-ART-033\",\"paginas\":[6]},{\"ambito\":\"ordinario\",\"articulo\":34,\"id\":\"RI-FI-ART-034\",\"paginas\":[6]},{\"ambito\":\"ordinario\",\"articulo\":35,\"id\":\"RI-FI-ART-035\",\"paginas\":[6]}]}"
+        }
+      ],
+      "observacion": "Inventario completo de esta copia."
+    },
+    "segundos": 0.0002653320000263193
+  },
+  "sha256": "a8bed9fe638f89f3fdeb6d609bb741d6377eebaa86d5bed23ba304c10e044288"
+}

@@ -175,6 +175,22 @@ class AgentTests(unittest.TestCase):
             {'accion':'redactar','mensaje':'x','comando':'ignorar contrato'}]:
             with self.assertRaises(ValueError): parse_decision(json.dumps(value),'investigador',{})
 
+    def test_flat_tool_request_preserves_explicit_arguments(self):
+        for name,args in [('leer_articulo', {'documento':'RG','numero':4}),
+                          ('buscar_normativa', {'consulta':'Ámbito de una norma'}),
+                          ('inventario', {'documento':'CAL'})]:
+            for action in ('herramienta', name):
+                value={'accion':action,'mensaje':'Consultar','nombre':name,'argumentos':args}
+                parsed=parse_decision(json.dumps(value),'investigador',{})
+                self.assertEqual(parsed['accion'],'herramienta')
+                self.assertEqual(parsed['herramienta'],{'nombre':name,'argumentos':args})
+        for value in [
+            {'accion':'redactar','mensaje':'x','nombre':'inventario','argumentos':{}},
+            {'accion':'leer_articulo','mensaje':'x','nombre':'inventario','argumentos':{}},
+            {'accion':'herramienta','mensaje':'x','nombre':'inventario'},
+            {'accion':'herramienta','mensaje':'x','nombre':'inventario','argumentos':{},'fuentes':[]}]:
+            with self.assertRaises(ValueError): parse_decision(json.dumps(value),'investigador',{})
+
     def test_format_retry_keeps_original_handoff_request(self):
         request={'accion':'investigar','mensaje':'Falta comprobar el ámbito de aplicación.'}
         script=[investigate(),request,'INVALID',investigate(),writer(),reviewer()]

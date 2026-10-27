@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "0c714451081fad93ef4fe270ab2ce0bb88f622a12283488e1c4be45615641bca",
+  "evaluador": "Codex, revisión de respuestas y corpus completo; sin reutilizar veredictos históricos",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "b40663d51603ab9fcbe59fad59add329e974dcaf57d6774fc561ac8440a27d76",
+      "correcta": false,
+      "motivo": "Identifica Trabajo de Fin de Carrera y art. 11; la actividad específica es Memoria de Título, RI-FI art. 29."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "0d25d2a616384ce7bc85b2cd644b1c4d75f0d4b1c2420fb51b0207bddc943fc9",
+      "correcta": false,
+      "motivo": "Sustituye las prohibiciones por una autorización del coordinador no respaldada. Debe identificar atrasadas y obligatorias reprobadas no aprobadas, RI-FI arts. 9 y 7 a-b."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "facd3d6427018e6cf4457568a0874dba4709155ee4defef1d605ddd22b953527",
+      "correcta": false,
+      "motivo": "Niega aplicabilidad y da aprobación 3,0. RI-FI art. 2 establece aplicabilidad y RG art. 23 fija 4,0."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "0e347bb8758adcd970714528a69248cf580228fd4141915f4312ef7d25224379",
+      "correcta": false,
+      "motivo": "Inventa contenido de un artículo 90 ausente del RI-FI: articulado ordinario 1-35."
+    }
+  ]
+}

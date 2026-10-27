@@ -1,3 +1,7 @@
+# Validación actual v4
+
+38 pruebas locales aprobadas. Contextos reales: 700 prompts, máximo de entrada 3.926 tokens, total con salida y margen 5.014 < 8.192. Ver `validacion/cpu_v4/`. No se midió aún calidad generativa v4. El piloto v3 real se conserva y evalúa en `resultados/piloto_9b826dfab6be77ac0ce1/`.
+
 # Validación de la implementación nueva
 
 Actualizado el 27 de octubre de 2026. Se distingue la validación del código de la calidad del modelo. Todo corresponde a `Deliverable3_Agentes/`, desarrollado desde cero a partir de D1/D2.

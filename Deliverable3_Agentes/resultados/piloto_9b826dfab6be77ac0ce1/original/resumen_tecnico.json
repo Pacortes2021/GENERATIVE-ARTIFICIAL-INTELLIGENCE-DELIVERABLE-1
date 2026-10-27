@@ -1,0 +1,34 @@
+{
+  "esperadas": 12,
+  "completadas": 12,
+  "completa": true,
+  "ejecucion": "modelo_real",
+  "exactitud": null,
+  "nota": "La exactitud requiere evaluación externa; una aceptación interna no es un acierto.",
+  "por_variante": {
+    "baseline_directo": {
+      "n": 4,
+      "llamadas_modelo": 4,
+      "tokens_entrada": 477,
+      "tokens_salida": 327,
+      "segundos_modelo_logicos": 35.9978,
+      "salidas_cortadas": 0
+    },
+    "rag_d2": {
+      "n": 4,
+      "llamadas_modelo": 4,
+      "tokens_entrada": 6970,
+      "tokens_salida": 414,
+      "segundos_modelo_logicos": 71.8312,
+      "salidas_cortadas": 0
+    },
+    "agentes_completo": {
+      "n": 4,
+      "llamadas_modelo": 15,
+      "tokens_entrada": 37501,
+      "tokens_salida": 1963,
+      "segundos_modelo_logicos": 380.0518,
+      "salidas_cortadas": 0
+    }
+  }
+}

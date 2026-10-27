@@ -2,19 +2,19 @@
 
 Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por decisión del equipo. No importa código, prompts, notebooks, pruebas ni resultados de los prototipos previos de D3. La carpeta de trabajo es **`Deliverable3_Agentes/`**.
 
-**Estado (27 de octubre):** pilotos reales v1 y v2 conservados y evaluados. El [piloto v2](resultados/piloto_14f5ffa72e8a2734d481/REPORTE.md) obtuvo agentes 1/4, D2 2/4 y baseline 0/4. **La [versión v3](CORRECCION_V3.md) corrige la copia excesiva de fuentes y mejora los mensajes de error; pasó 37 pruebas locales y está pendiente de evaluación en T4.** Las 50 preguntas, ablaciones, PDF final y video siguen pendientes. Estos cuatro casos son diagnóstico, no generalización. El 80 % histórico corresponde exclusivamente a D2.
+**Estado (27 de octubre):** tres pilotos reales conservados y evaluados. El [piloto v3](resultados/piloto_9b826dfab6be77ac0ce1/REPORTE.md) obtuvo agentes 1/4, D2 2/4 y baseline 0/4; redujo el tiempo de agentes a 380 s, sin mejorar exactitud. La [versión v4](CORRECCION_V4.md) corrige una variante de formato de herramienta y refuerza las técnicas. Pasó 38 pruebas y validación de contexto; falta medirla en T4. Las 50 preguntas, ablaciones y video real siguen pendientes. Estos casos son diagnóstico, no generalización.
 
-El [estado de trabajo](ESTADO_TRABAJO.md) registra tareas y autorización de cierre. Hay un [borrador PDF de una página, guion y mensajes reales](entrega/README.md), todavía pendientes de resultados completos y video. El piloto v3 se inició en una T4; el bloqueo del Mac impidió verificar su avance posterior.
+El [estado de trabajo](ESTADO_TRABAJO.md) registra pendientes. Hay un [borrador PDF, guion y mensajes reales](entrega/README.md); todavía no constituyen la entrega final.
 
 ## Empezar en Colab
 
-1. Abre la [versión v3 congelada en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/553944b491291aa862544925361926450eea982d/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb) o sube [Deliverable3_Agentes_Colab.ipynb](Deliverable3_Agentes_Colab.ipynb) y selecciona GPU. El cuaderno incluye código, prompts externos restaurables, corpus y preguntas; no requiere acceso a los prototipos ni clonar el repositorio.
+1. Abre el [notebook actual en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb) o sube [Deliverable3_Agentes_Colab.ipynb](Deliverable3_Agentes_Colab.ipynb) y selecciona GPU. El cuaderno incluye código, prompts externos restaurables, corpus y preguntas; no requiere acceso a los prototipos ni clonar el repositorio.
 2. Ejecuta las secciones 1–3. Instala las dependencias fijadas de D2, carga E5 en CPU y una instancia Qwen3-4B en GPU. Los tres agentes comparten esa instancia y los parámetros de generación.
 3. «Ejecutar todo» corre el piloto de la sección 5 por defecto: cuatro preguntas en baseline/D2/agentes, doce respuestas finales. La consulta de la sección 4 es opcional. Se muestran salidas JSON, decisiones, mensajes y observaciones de herramientas, además de la respuesta final.
 4. La sección 8 crea el ZIP y solicita su descarga; muestra también la ruta para descargarlo desde el panel Archivos si el navegador no lo hace automáticamente. Encuentra corridas parciales aunque `RUN_DIR` no exista; si hay varias, conserva todas dentro de un ZIP contenedor. Para una sesión larga activa Drive antes de cargar el sistema; el almacenamiento temporal de Colab no persiste al cerrar la sesión.
 5. Tras revisar el piloto, congela esta versión y activa el lote de 50 preguntas con seis condiciones. Una repetición idéntica reutiliza checkpoints con aviso; para generar de nuevo cambia la etiqueta o la semilla y conserva todas las ejecuciones.
 
-**Para usar v3 después del piloto anterior, vuelve a subir el notebook actualizado y reinicia la sesión de Colab.** Mantén T4 y ejecuta todas las celdas; el piloto lleva la etiqueta `piloto-v3`. El lote completo continúa desactivado.
+**Para usar v4 después del piloto anterior, vuelve a subir el notebook actualizado y reinicia la sesión de Colab.** Mantén T4 y ejecuta todas las celdas; el piloto lleva la etiqueta `piloto-v4`. El lote completo continúa desactivado.
 
 El notebook incluye preparación, consulta, inspección y exportación, sin respuestas precargadas. La construcción no incorpora respuestas de referencia ni los veredictos de D2.
 
@@ -89,8 +89,8 @@ Desde la raíz, con Python 3.10+ y GPU CUDA para inferencia:
 
 ```bash
 python3 -m pip install -r Deliverable3_Agentes/requirements.txt
-python3 Deliverable3_Agentes/ejecutar.py --ids 5 25 38 41 --variantes baseline_directo rag_d2 agentes_completo --etiqueta piloto-v3
-python3 Deliverable3_Agentes/ejecutar.py --todas --etiqueta lote-v3 --silencioso
+python3 Deliverable3_Agentes/ejecutar.py --ids 5 25 38 41 --variantes baseline_directo rag_d2 agentes_completo --etiqueta piloto-v4
+python3 Deliverable3_Agentes/ejecutar.py --todas --etiqueta lote-v4 --silencioso
 ```
 
 Construcción y pruebas sin GPU (requieren `numpy` y `nbformat`; no descargan modelos):

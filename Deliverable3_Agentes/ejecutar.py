@@ -13,7 +13,7 @@ def main():
     select.add_argument('--todas', action='store_true')
     parser.add_argument('--variantes', nargs='+', choices=VARIANTS, default=list(VARIANTS))
     parser.add_argument('--salida', type=Path, default=Path(__file__).parent / 'runs')
-    parser.add_argument('--etiqueta', default='desarrollo-v3')
+    parser.add_argument('--etiqueta', default='desarrollo-v4')
     parser.add_argument('--silencioso', action='store_true')
     args = parser.parse_args()
     if args.pregunta is not None and not args.pregunta.strip():

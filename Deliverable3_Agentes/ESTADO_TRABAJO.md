@@ -1,6 +1,6 @@
 # Estado de cierre de Deliverable 3
 
-Actualizado: 27 de octubre de 2026. Pablo autorizó seguimiento nocturno, descarga y análisis, correcciones, ejecución necesaria, informe LaTeX, guion de video y actualización de GitHub. La automatización de este chat se llama `Completar Deliverable 3`, ID `seguimiento-nocturno-del-piloto-d3`, y tiene frecuencia de cinco minutos. Está PAUSADA por bloqueo de pantalla; no se detuvo la ejecución de Colab.
+Actualizado: 27 de octubre de 2026. Pablo autorizó seguimiento nocturno, descarga y análisis, correcciones, ejecución necesaria, informe LaTeX, guion de video y actualización de GitHub. La automatización de este chat se llama `Completar Deliverable 3`, ID `seguimiento-nocturno-del-piloto-d3`, y tiene frecuencia de cinco minutos. Está ACTIVA de nuevo tras la solicitud «continúa» del usuario.
 
 ## Evidencia disponible
 
@@ -36,3 +36,9 @@ La sesión anterior del enlace Drive estaba desconectada y su ZIP v2 ya estaba a
 El informe preliminar, guion, transcripciones y matriz de requisitos están en `entrega/`; no equivalen a la entrega final. La autenticación de gh funciona con acceso de red; no solicitar nuevas credenciales por el aviso de token inválido de una llamada sin red. Los resultados v1/v2 conservan espacios y terminadores originales para mantener sus hashes.
 
 La automatización se pausó conforme a la autorización de detener el seguimiento ante un bloqueo que requiera al usuario. Para reanudar: desbloquear el Mac y solicitar continuar; activar de nuevo la misma automatización, sin crear un duplicado.
+
+## Reanudación del 27 de octubre, tarde
+
+Mac accesible. ZIP v3 `agentes_9b826dfab6be77ac0ce1.zip` encontrado, conservado, auditado y evaluado: agentes 1/4, D2 2/4, baseline 0/4. El fallo operativo es solicitud de herramienta plana; los otros errores son remisión no desarrollada y alcance sin respaldo específico. Ver REPORTE.md de esa corrida. Colab v3 aparece desconectado por inactividad/duración; no hay corrida activa allí.
+
+V4 implementada y validada: 38 pruebas, 700 contextos reales, sin inferencia local. Nuevo notebook listo para publicar y ejecutar piloto. No alterar ZIP ni juicios previos. La automatización se reactivó conservando el mismo ID.

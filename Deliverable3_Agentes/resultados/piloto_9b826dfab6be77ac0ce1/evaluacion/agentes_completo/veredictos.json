@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "cffdfeefc8dd5ea9e4d04fe8db30acec85f3c886e60bd5075193cc39ae92144e",
+  "evaluador": "Codex, revisión de respuestas y corpus completo; sin reutilizar veredictos históricos",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "205c9fd90a77bc9f014d624d7cc9296972b5e6fa5604cbdf7a0a31971a40320a",
+      "correcta": true,
+      "motivo": "Responde Memoria de Título con RI-FI art. 29. Se comprobó RG art. 3.10 completo: contempla Memoria entre actividades de habilitación profesional; la paráfrasis adicional tiene respaldo aunque el extracto elegido por el auditor era incompleto."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "88b07a9533ac8e4fc5921b9f3a7689f52760fde36ab0b86dfab5f9bdc6ce3ef7",
+      "correcta": false,
+      "motivo": "No desarrolla las prioridades a) y b) en atrasadas y obligatorias reprobadas no aprobadas. El mínimo de créditos añadido no sustituye el contenido solicitado; RI-FI arts. 9 y 7."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "3f04e3c31d96f90b5a61cd884521f87683a10aa358f9e747715fa67a4f1cc6b2",
+      "correcta": false,
+      "motivo": "Entrega aplicabilidad y 4,0 correctos, pero solo cita RG art. 23: respalda escala y nota, sin documentar la remisión específica de Ingeniería al RG. Falta respaldo de alcance pertinente, disponible en RI-FI art. 2; no se exige copiar las tres citas de la pauta."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Termina por límite de salidas inválidas y no responde la premisa falsa, aunque el inventario disponible demuestra ausencia del artículo. La abstención técnica no es una negativa normativa."
+    }
+  ]
+}

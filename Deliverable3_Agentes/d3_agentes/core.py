@@ -37,6 +37,14 @@ def parse_decision(raw, role, evidence):
         raise ValueError('Devuelve un objeto JSON con accion y mensaje.')
     # Dos formas explícitas del mismo contrato de transporte. Nunca inferir argumentos.
     action = value.get('accion')
+    # El modelo puede emitir la misma solicitud explícita sin el contenedor.
+    # Solo normalizamos esta forma exacta: no completamos ni inferimos argumentos.
+    if (role == 'investigador' and set(value) == {'accion', 'mensaje', 'nombre', 'argumentos'}
+            and value.get('nombre') in ('buscar_normativa', 'leer_articulo', 'inventario')
+            and action in ('herramienta', value['nombre'])):
+        value = {'accion': 'herramienta', 'mensaje': value['mensaje'],
+                 'herramienta': {'nombre': value['nombre'], 'argumentos': value['argumentos']}}
+        action = value['accion']
     if role == 'investigador' and isinstance(action, str) and action in (
             'buscar_normativa', 'leer_articulo', 'inventario'):
         request = value.get('herramienta')

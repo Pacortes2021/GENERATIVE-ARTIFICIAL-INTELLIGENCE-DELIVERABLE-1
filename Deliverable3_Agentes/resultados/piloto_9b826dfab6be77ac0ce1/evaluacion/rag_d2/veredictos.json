@@ -1,0 +1,31 @@
+{
+  "paquete_sha256": "4737dd76d6b85da9fa56abdcd2b7f34eee10658e6ae9f4fe3d0d9e572d629e59",
+  "evaluador": "Codex, revisión de respuestas y corpus completo; sin reutilizar veredictos históricos",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "553e5a1b4dbe5c46c1c25bf159d132b7d71df21451eff78157ac34f97b207c59",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título y duración de un semestre con RI-FI art. 29. La referencia adicional RG 3.10 contempla Memoria dentro de actividades de habilitación profesional."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "27c32a01f9a3d4832a94d79905d868987a330b929bc46031d8b8139994bccef6",
+      "correcta": false,
+      "motivo": "Repite prioridades a) y b) sin explicar qué asignaturas son. RI-FI arts. 9 y 7 exigen identificar atrasadas y obligatorias reprobadas no aprobadas."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "a22c816e54da7ddb4ba42f804fbce12be7ac1dd632d8d2b0ceb5023e15ec7fc5",
+      "correcta": false,
+      "motivo": "La nota 4,0 es correcta con RG art. 23, pero atribuye aplicabilidad a RI-FI art. 6, sobre cupos de ingreso común. El respaldo pertinente de aplicabilidad es RI-FI art. 2."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6b0c89f2f5c2b1e38eb69a36fe6217d0ab1e8b9ea0ac788543e1ccbd7f5a3d54",
+      "correcta": true,
+      "motivo": "Niega inequívocamente la existencia del art. 90 con inventario completo, sin inventar contenido. La pauta acepta esa negativa."
+    }
+  ]
+}

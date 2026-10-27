@@ -102,7 +102,7 @@ def prepare(questions, retriever, settings, output, variants, limits, tag, promp
         raise ValueError('Presupuesto de salida y backend distintos.')
     if settings.get('ejecucion') not in ('modelo_real', 'simulacion_pruebas'):
         raise ValueError('Identifica explícitamente si la ejecución usa modelo real o simulación.')
-    config = {'protocolo': 'd3-agentes-desde-cero-v3', 'preguntas': questions,
+    config = {'protocolo': 'd3-agentes-desde-cero-v4', 'preguntas': questions,
               'variantes': list(variants), 'inferencia': settings, 'limites': asdict(limits),
               'etiqueta': tag, 'archivos_sha256': source_identity(), 'prompts_sha256': prompts.identity(),
               'corpus_sha256': digest(retriever.corpus), 'fragmentos_sha256': digest(retriever.fragments),
@@ -135,7 +135,7 @@ def prepare(questions, retriever, settings, output, variants, limits, tag, promp
 
 
 def run(questions, retriever, tokenizer, generate, settings, output,
-        variants=VARIANTS, limits=None, tag='desarrollo-v3', verbose=True):
+        variants=VARIANTS, limits=None, tag='desarrollo-v4', verbose=True):
     limits, prompts = limits or Limits(), PromptBook()
     folder, config = prepare(questions, retriever, settings, output, variants, limits, tag, prompts)
     experiment, d2 = d2_modules()

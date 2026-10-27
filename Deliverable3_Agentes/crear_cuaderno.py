@@ -46,12 +46,12 @@ def build(destination=None):
         cells.append({'cell_type': 'code', 'metadata': {'cellView': 'form'} if hidden else {},
                       'source': source, 'execution_count': None, 'outputs': []})
     md('''
-    # Deliverable 3 · Tres agentes sobre normativa UdeC · v3
+    # Deliverable 3 · Tres agentes sobre normativa UdeC · v4
 
     Implementación nueva: investigador, redactor y auditor, todos con Qwen3-4B.
     No utiliza los prototipos previos de D3. Integra el corpus, recuperador y controles de D2.
 
-    **Piloto v3 pendiente de evaluación en T4.** La versión anterior obtuvo 1/4 con agentes y 2/4 con D2
+    **Piloto v4 pendiente de evaluación en T4.** La versión anterior obtuvo 1/4 con agentes y 2/4 con D2
     en los cuatro casos de diagnóstico. Este cuaderno incorpora las correcciones; la corrida anterior se conserva en el repositorio.
     La aceptación del auditor no es una calificación. Reinicia la sesión si usaste el cuaderno anterior.
     Este cuaderno genera respuestas reales: requiere GPU CUDA, descarga modelos públicos y conserva trazas.
@@ -131,7 +131,7 @@ print('Código y prompts restaurados en', WORKDIR)
     ''')
     code('''
     PREGUNTA = ''
-    ETIQUETA = 'consulta-v3'
+    ETIQUETA = 'consulta-v4'
     if PREGUNTA.strip():
         RUN_DIR = None  # Evita conservar la ruta de otra corrida si esta ejecución se interrumpe.
         RUN_DIR = execute(ENV, [{'id':1, 'pregunta':PREGUNTA, 'categoria':'nueva'}], OUTPUT,
@@ -140,10 +140,10 @@ print('Código y prompts restaurados en', WORKDIR)
         print('Consulta individual omitida. La sección 5 ejecutará el piloto por defecto.')
     ''')
     md('''
-    ## 5. Piloto v3 de cuatro casos conocidos
+    ## 5. Piloto v4 de cuatro casos conocidos
 
-    **Versión corregida tras dos pilotos.** Reinicia la sesión de Colab antes de cargarla.
-    Se aclaró que las fuentes se transfieren automáticamente, se acotaron los mensajes y se mejoró la reparación de formato.
+    **Versión corregida tras tres pilotos.** Reinicia la sesión de Colab antes de cargarla.
+    Se acepta una forma equivalente de solicitud explícita de herramienta y se reforzaron los bloques de remisiones, alcance y verificación. Se mantienen argumentos, controles y presupuestos.
     Su calidad todavía debe verificarse con esta nueva ejecución en T4.
 
     P05: caso correcto en D2; P25: omisión; P38: recuperación/cita; P41: premisa falsa.
@@ -157,7 +157,7 @@ print('Código y prompts restaurados en', WORKDIR)
     if EJECUTAR_PILOTO:
         RUN_DIR = None
         RUN_DIR = execute(ENV, [q for q in ENV['questions'] if q['id'] in [5,25,38,41]], OUTPUT,
-                          variants=VARIANTS[:3], tag='piloto-v3', verbose=True)
+                          variants=VARIANTS[:3], tag='piloto-v4', verbose=True)
         print('Piloto terminado. ZIP guardado:', RUN_DIR.with_suffix('.zip'))
         print('Continúa hasta la sección 8 para descargarlo.')
     else:
@@ -177,7 +177,7 @@ print('Código y prompts restaurados en', WORKDIR)
     if EJECUTAR_LOTE:
         RUN_DIR = None
         RUN_DIR = execute(ENV, ENV['questions'], OUTPUT, variants=VARIANTS,
-                          tag='lote-v3', verbose=False)
+                          tag='lote-v4', verbose=False)
     else:
         print('Lote desactivado; no se han generado resultados de ablaciones.')
     ''')

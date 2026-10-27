@@ -6,6 +6,8 @@ Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por deci
 
 El [estado de trabajo](ESTADO_TRABAJO.md) registra pendientes. Hay un [borrador PDF, guion y mensajes reales](entrega/README.md); todavía no constituyen la entrega final.
 
+Para continuar con otro modelo de IA, leer la [guía de continuidad](CONTINUAR_CON_IA.md) y el [enunciado oficial](enunciado.pdf). El último respaldo auditado publicado contiene 35/300 respuestas; el progreso posterior de Colab requiere nuevas descargas.
+
 ## Empezar en Colab
 
 1. Abre el [notebook actual en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb) o sube [Deliverable3_Agentes_Colab.ipynb](Deliverable3_Agentes_Colab.ipynb) y selecciona GPU. El cuaderno incluye código, prompts externos restaurables, corpus y preguntas; no requiere acceso a los prototipos ni clonar el repositorio.
@@ -14,7 +16,7 @@ El [estado de trabajo](ESTADO_TRABAJO.md) registra pendientes. Hay un [borrador 
 4. La sección 8 crea el ZIP y solicita su descarga; muestra también la ruta para descargarlo desde el panel Archivos si el navegador no lo hace automáticamente. Encuentra corridas parciales aunque `RUN_DIR` no exista; si hay varias, conserva todas dentro de un ZIP contenedor. Para una sesión larga activa Drive antes de cargar el sistema; el almacenamiento temporal de Colab no persiste al cerrar la sesión.
 5. Tras revisar el piloto, congela esta versión y activa el lote de 50 preguntas con seis condiciones. Una repetición idéntica reutiliza checkpoints con aviso; para generar de nuevo cambia la etiqueta o la semilla y conserva todas las ejecuciones.
 
-**Para usar v4 después del piloto anterior, vuelve a subir el notebook actualizado y reinicia la sesión de Colab.** Mantén T4 y ejecuta todas las celdas; el piloto lleva la etiqueta `piloto-v4`. El lote completo continúa desactivado.
+**Las instrucciones anteriores son para una sesión nueva. Si retomas el trabajo del equipo, lee primero el estado actual: hay un lote v4 activo que no debe reiniciarse.** El notebook publicado deja el lote desactivado por defecto; en la sesión activa se habilitó únicamente la sección 6. El piloto lleva la etiqueta `piloto-v4`.
 
 El notebook incluye preparación, consulta, inspección y exportación, sin respuestas precargadas. La construcción no incorpora respuestas de referencia ni los veredictos de D2.
 

@@ -6,6 +6,8 @@ Este proyecto responde preguntas en español sobre tres documentos de docencia d
 
 ## Deliverable 3: desarrollo nuevo desde cero
 
+Para retomar con otro modelo o colaborador, empezar por la [guía de continuidad de D3](Deliverable3_Agentes/CONTINUAR_CON_IA.md) y el [estado de trabajo](Deliverable3_Agentes/ESTADO_TRABAJO.md).
+
 [Deliverable3_Agentes](Deliverable3_Agentes/README.md) implementa tres agentes con decisiones propias (investigador, redactor y auditor) sobre Qwen3-4B, desde cero a partir de D1/D2. Incluye [notebook autocontenido](Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb), prompts externos, trazas y seis condiciones. Los pilotos reales en T4 se conservan: agentes 0/4 en v1 y [1/4 en v2](Deliverable3_Agentes/resultados/piloto_14f5ffa72e8a2734d481/REPORTE.md), frente a D2 2/4 en ambos. El [piloto v3](Deliverable3_Agentes/resultados/piloto_9b826dfab6be77ac0ce1/REPORTE.md) también obtuvo 1/4 con agentes, con menor coste. El [piloto v4](Deliverable3_Agentes/resultados/piloto_6a4e8925ada1fa3d1dee/REPORTE.md) mantiene 1/4 estricto. **V4 está congelada y se está ejecutando la comparación completa de 50 preguntas × seis condiciones.** Faltan el lote completo, las ablaciones y la entrega final; el piloto es diagnóstico y la aceptación interna no cuenta como acierto.
 
 ## Deliverable 2: por dónde empezar

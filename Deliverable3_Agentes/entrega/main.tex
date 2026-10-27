@@ -1,0 +1,90 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noquoting]{babel}
+\usepackage[margin=12mm]{geometry}
+\usepackage{lmodern,microtype,booktabs,array,xcolor,tikz,hyperref}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\hypersetup{colorlinks=true,urlcolor=blue!55!black}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+\definecolor{navy}{HTML}{16354A}
+\definecolor{teal}{HTML}{087E8B}
+\definecolor{pale}{HTML}{EAF3F6}
+\newcommand{\subhead}[1]{\vspace{3pt}{\color{navy}\bfseries #1}\par}
+\begin{document}
+{\LARGE\bfseries\color{navy} Tres agentes para normativa UdeC}\par
+{\small Álvaro Contreras y Pablo Cortés \hfill Generative Artificial Intelligence (580694)}\par
+{\footnotesize Deliverable 3 \hfill 27 de octubre de 2026}
+\par\hrule\vspace{4pt}
+{\color{red!65!black}\small\bfseries BORRADOR DE DESARROLLO: faltan el lote final, las ablaciones y el enlace de video.}
+
+\subhead{Continuidad, tarea y criterio}
+{\small Preguntas en español sobre RG, RI-FI y calendario académico 2026: mismo corpus de D2 (197 unidades; 201 fragmentos) y mismas 50 preguntas de desarrollo. Se busca resolver omisiones, remisiones incompletas y citas que no respaldan la respuesta. Una salida correcta entrega lo solicitado, con respaldo pertinente y sin añadidos falsos; rechaza premisas falsas cuando corresponde. La evaluación externa usa la pauta D2; aceptar internamente no equivale a acertar.}
+
+\subhead{Arquitectura: decisiones observables, no una secuencia fija}
+\begin{center}
+\begin{tikzpicture}[>=Stealth,font=\scriptsize,
+agent/.style={draw=navy,fill=pale,rounded corners=2pt,minimum height=8mm,minimum width=20mm,align=center},
+tool/.style={draw=teal,fill=teal!5,minimum height=7mm,minimum width=28mm,align=center},
+endnode/.style={draw=gray,rounded corners,align=center,minimum height=7mm},
+lab/.style={fill=white,inner sep=1pt,font=\tiny,align=center}]
+\node[endnode] (q) at (0,0) {Pregunta};
+\node[agent] (i) at (3.4,0) {Investigador};
+\node[agent] (r) at (7.2,0) {Redactor};
+\node[agent] (a) at (11,0) {Auditor};
+\node[endnode] (f) at (14.2,0) {Respuesta};
+\node[tool] (b) at (0.6,-2.4) {buscar\_normativa\\E5 y recuperador D2};
+\node[tool] (l) at (3.7,-2.4) {leer\_articulo\\unidades completas};
+\node[tool] (n) at (6.8,-2.4) {inventario\\estructura de la copia};
+\node[endnode] (x) at (11.5,-2.4) {Fin sin validar\\límite de llamadas / formato / contexto};
+\draw[->] (q) -- node[lab,left]{búsqueda inicial} (b);
+\draw[<->] (i.south west) -- node[lab,above,sloped]{consulta / fuentes} (b.north east);
+\draw[<->] (i.south) -- node[lab,right,pos=0.78]{número /\\texto} (l.north);
+\draw[<->] (i.south east) -- node[lab,above,sloped]{documento /\\inventario} (n.north west);
+\draw[->] (i) -- node[lab,above]{redactar:\\fuentes y aviso} (r);
+\draw[->] (r) -- node[lab,above]{auditar:\\borrador y citas} (a);
+\draw[->] (a) -- node[lab,above]{aceptar:\\respuesta} (f);
+\draw[->] (r.north) to[out=145,in=35] node[lab,above]{investigar: carencia / control de citas o repetición} (i.north);
+\draw[->] (a.north) to[out=145,in=35] node[lab,above]{corregir: objeción} (r.north);
+\draw[->] (a.north east) -- ++(0,1.5) -| node[lab,pos=0.3,above]{investigar: respaldo pendiente / dos correcciones sin evidencia nueva} (i.north west);
+\draw[->,dashed] (i.south) -- ++(0,-3.15) -| node[lab,pos=0.6,below]{límite alcanzado} (x.south);
+\draw[->,dashed] (r.south) -- ++(0,-2.95) -| (x.south);
+\draw[->,dashed] (a.south) -- (x.north);
+\end{tikzpicture}
+\end{center}
+\vspace{-4pt}
+{\footnotesize Las flechas dobles intercambian solicitudes y fuentes. Cada llamada recibe pregunta, evidencia, observaciones, borrador, mensaje y presupuesto; devuelve una decisión JSON validada. El investigador elige herramientas o entrega; el redactor redacta o pide datos; el auditor acepta, corrige o investiga. El controlador registra además transferencias por cita desconocida o repetición, e invalida borradores obsoletos.}
+
+\subhead{Técnicas y ablaciones}
+{\small
+\begin{tabular}{@{}p{29mm}p{67mm}p{69mm}@{}}
+\toprule
+Agente & Técnica y fallo que aborda & Ablación de un bloque externo\\
+\midrule
+Investigador & Descomposición explícita: cobertura de partes y remisiones & \texttt{sin\_descomposicion}\\
+Redactor & Lista de completitud: omisiones y condiciones & \texttt{sin\_completitud}\\
+Auditor & Verificación por afirmación: citas y añadidos & \texttt{sin\_verificacion}\\
+\bottomrule
+\end{tabular}}\par
+{\footnotesize Se retira solo el bloque de prompting indicado; se mantienen roles, herramientas, protocolo y límites. Son contribuciones incrementales: D2 ya contiene expansión de remisiones y el auditor genérico permanece.}
+
+\subhead{Resultados disponibles: pilotos diagnósticos, no experimento final}
+{\small
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+Versión y conjunto & Baseline & RAG D2 & Agentes & Ablaciones\\
+\midrule
+Piloto v1: P05/P25/P38/P41 & 0/4 & 2/4 & 0/4 & Pendientes\\
+Piloto v2: mismos cuatro casos & 0/4 & 2/4 & 1/4 & Pendientes\\
+Versión v3 / lote 50 preguntas & Pendiente & Pendiente & Pendiente & Pendientes\\
+\bottomrule
+\end{tabular}}\par
+{\small En v2 se recuperó P05 (Memoria de Título), pero persistió la regresión P41 frente a D2: el inventario demostraba ausencia y el redactor especuló. Tres respuestas finales agotaron el límite de formato. Los agentes consumieron 24 llamadas, 10.353 tokens de salida y 1.453,74 s de generación; D2, 4 llamadas y 71,31 s. V3 aclara que las fuentes se transfieren automáticamente, reduce mensajes y mejora la reparación de JSON; su calidad aún debe medirse.}
+
+\subhead{Reproducción y límites}
+{\small Los tres agentes comparten Qwen3-4B abierto, NF4 en T4, sin thinking, temperatura 0,7; E5 solo recupera. Por entrada: 12 llamadas, 6 herramientas (incluida búsqueda inicial), 3 salidas inválidas; contexto 8.192, salida 1.024 y margen 64 tokens. Baseline y D2 conservan sus prompts originales. Cada ZIP congela código, corpus, prompts, semillas, respuestas, tiempos y trazas; los juicios se vinculan por hashes. Las 50 preguntas se usaron en desarrollo: no demuestran generalización.}\par
+{\footnotesize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/main/Deliverable3_Agentes}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}\\
+\textbf{Video abierto:} pendiente de grabación y publicación. \textbf{Entrega final:} sustituir esta tabla por las seis condiciones evaluadas y verificar el enlace.}
+\end{document}

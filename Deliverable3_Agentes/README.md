@@ -1,5 +1,8 @@
 # Deliverable 3 · Sistema nuevo de tres agentes
 
+**Estado vigente, 28-10, ~04:00 Chile:** lote real reanudado en T4 desde 35/300, sin piloto. Se verificó `P06 sin_completitud: ejecutando`. Consultar el estado de trabajo antes de actuar; las notas de interrupción de abajo son históricas.
+
+
 **Actualización 28 de octubre:** la última descarga es un piloto de 12 respuestas. El lote completo no está activo en la sesión visible; se conservan 35/300 respuestas auditadas. Véase [estado actual](ESTADO_TRABAJO.md).
 
 

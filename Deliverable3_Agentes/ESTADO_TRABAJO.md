@@ -4,6 +4,15 @@ Actualizado el 28-10-2026, tras auditar la última descarga. Autorización vigen
 
 ## Operación en curso
 
+
+**LOTE REAL REANUDADO el 28-10-2026 aproximadamente a las 04:00 Chile (07:00 UTC).** Esta es la observación vigente; el diagnóstico de interrupción más abajo es histórico. Se ejecutaron únicamente preparación, restauración de fuentes y carga de Qwen en T4, sin piloto. La sección 6/celda 12 fue reemplazada por la celda de `operacion/reanudar_lote_v4_colab.py`: descarga el snapshot publicado de 35/300 por URL de commit y SHA-256, audita, exige configuración idéntica y restaura resultados/checkpoints. La primera comprobación encontró una diferencia de serialización JSON de la configuración; se corrigió la comparación a contenido sellado equivalente, sin cambiar el sistema experimental ni sus parámetros.
+
+Se verificó visualmente «LOTE REAL: 50 preguntas x 6 condiciones», las 35 respuestas conservadas y **`P06 sin_completitud: ejecutando`**. Misma corrida `agentes_99b9b55bd79d4572f743`, mismo código, prompts, corpus, índice, inferencia y límites. No interrumpir, recargar ni pulsar Ejecutar todo. El programa exporta el ZIP tras cada respuesta y la celda solicita descarga al finalizar o ante excepción. Sigue en almacenamiento temporal `/content/d3_agentes_runs`; Drive no está montado. La copia `agentes_99b9b55bd79d4572f743-3.zip` descargada al comienzo todavía conserva 35/300 (se exporta al completar cada respuesta); no representa nuevas respuestas completas.
+
+La automatización se encontró PAUSADA y se reactivó mediante herramienta tras la orden «corramos el código real». Ahora está ACTIVA cada cinco minutos. Próximo paso: vigilar esta ejecución, descargar y auditar el ZIP cuando avance, conservando originales y sin reinferir resultados previos. La salida AX se trunca a 500 caracteres; para ver la última línea, hacer clic en el encabezado de la sección 7 y mirar screenshot: desplaza al final de la salida de la sección 6 sin ejecutarla.
+
+### Diagnóstico anterior a la reanudación
+
 **El lote ya no está activo en la sesión visible. Último respaldo verificable: 35/300.** El 28 de octubre se auditó `agentes_6a4e8925ada1fa3d1dee-2.zip`, descargado el día 27 a las 19:24 Chile: es otra ejecución del piloto, 12/12 (P05/P25/P38/P41 × tres condiciones), no el lote 50×6. Conservado aparte en `resultados/piloto_6a4e8925ada1fa3d1dee_repeticion_20261027T2210/`. Sus 12 respuestas finales coinciden textualmente con las del piloto previo, pero las trazas y tiempos son nuevos. No sobrescribir ni sumar intentos.
 
 La interfaz actual muestra `EJECUTAR_LOTE = False` y «Lote desactivado; no se han generado resultados de ablaciones». Estaba desconectada; se pulsó Reconectar para buscar archivos. El entorno conectado muestra únicamente `sample_data`, sin `d3_agentes_runs`: no se encontró allí el lote anterior. No se ejecutaron nuevas inferencias en esta revisión. La fecha y causa exactas de la pérdida/interrupción no están demostradas. El lote anterior sí existió y su snapshot de 35 respuestas está auditado y publicado.
@@ -34,7 +43,7 @@ V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de 
 
 ## Siguiente secuencia
 
-1. Recuperar el lote desde el respaldo de 35/300 según la operación actual descrita arriba. No asumir una corrida activa por las observaciones históricas de abajo. Auditar cada ZIP y conservar originales en carpetas nuevas.
+1. Vigilar el lote reanudado descrito arriba. Descargar snapshots del ZIP actualizado, auditar y preservar los 35 resultados previos byte a byte. No repetir preparación ni inferencia mientras esté activo.
 2. Mantener la versión congelada. No hacer más ajustes antes de terminar las 300 respuestas y su evaluación. Reportar si no supera D2; no reemplazar fallos por otros intentos.
 3. El programa guarda checkpoints por llamada y actualiza ZIP después de cada respuesta. Durante el lote largo descargar snapshots del ZIP desde Archivos sin interrumpir la ejecución; conservar cada descarga. El almacenamiento temporal de Colab desaparece al terminar la sesión. Drive solo si se logra autorizar de manera apropiada.
 4. Evaluar las 300 respuestas externamente y reportar aciertos, regresiones, coste, errores de formato, paradas y cada ablación. Son preguntas de desarrollo, no generalización.

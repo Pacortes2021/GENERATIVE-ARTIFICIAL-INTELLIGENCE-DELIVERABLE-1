@@ -1,5 +1,8 @@
 # Continuar el trabajo con otro modelo de IA
 
+**Estado vigente, 28-10, ~04:00 Chile:** lote real reanudado en T4 desde 35/300, sin piloto. Se verificó `P06 sin_completitud: ejecutando`. Consultar el estado de trabajo antes de actuar; las notas de interrupción de abajo son históricas.
+
+
 **Actualización 28-10:** no hay lote activo en la sesión revisada. Último respaldo: 35/300. La descarga posterior contiene solo el piloto. Leer el estado actualizado antes de continuar.
 
 

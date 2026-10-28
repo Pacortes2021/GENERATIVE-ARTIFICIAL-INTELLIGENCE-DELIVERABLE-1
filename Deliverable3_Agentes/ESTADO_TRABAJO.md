@@ -11,6 +11,8 @@ Se verificó visualmente «LOTE REAL: 50 preguntas x 6 condiciones», las 35 res
 
 La automatización se encontró PAUSADA y se reactivó mediante herramienta tras la orden «corramos el código real». Ahora está ACTIVA cada cinco minutos. Próximo paso: vigilar esta ejecución, descargar y auditar el ZIP cuando avance, conservando originales y sin reinferir resultados previos. La salida AX se trunca a 500 caracteres; para ver la última línea, hacer clic en el encabezado de la sección 7 y mirar screenshot: desplaza al final de la salida de la sección 6 sin ejecutarla.
 
+Última copia auditada tras reanudar: **39/300**, `resultados/lote_99b9b55bd79d4572f743/snapshots/20261028T071051Z_039de300.zip`. Captura UTC 20261028T071051Z; misma configuración completa y las 35 respuestas previas intactas byte a byte. Se observó P07 sin_descomposicion ejecutando; sin fallo técnico visible.
+
 ### Diagnóstico anterior a la reanudación
 
 **El lote ya no está activo en la sesión visible. Último respaldo verificable: 35/300.** El 28 de octubre se auditó `agentes_6a4e8925ada1fa3d1dee-2.zip`, descargado el día 27 a las 19:24 Chile: es otra ejecución del piloto, 12/12 (P05/P25/P38/P41 × tres condiciones), no el lote 50×6. Conservado aparte en `resultados/piloto_6a4e8925ada1fa3d1dee_repeticion_20261027T2210/`. Sus 12 respuestas finales coinciden textualmente con las del piloto previo, pero las trazas y tiempos son nuevos. No sobrescribir ni sumar intentos.
@@ -70,3 +72,5 @@ La salida de Colab puede verse vieja en AX hasta pulsar «Enfocar la última cel
 Evaluación progresiva independiente iniciada con el snapshot de 12 respuestas: `resultados/lote_99b9b55bd79d4572f743/evaluacion_progresiva/snapshot_012/` contiene P01 y P02 revisadas en las seis condiciones, con paquetes y veredictos validados por el evaluador D2. No se calcularon métricas finales. Al integrar en las 300 respuestas, comprobar correspondencia exacta de hashes de respuesta, pregunta, corpus, pauta y referencias; no tomar etiquetas de pilotos o D1/D2. Ver el README de evaluación progresiva. Esto permite avanzar sin modificar ni interrumpir la corrida activa.
 
 Nueva copia auditada 20261027T182649Z: **35/300 respuestas**, archivo `resultados/lote_99b9b55bd79d4572f743/snapshots/20261027T182649Z_035de300.zip`. La ejecución sigue activa en P06; inferencia y fuentes coinciden con v4 congelada. El ritmo observado a los 50 minutos proyectaba unas 7–8 horas totales, estimación no garantizada. Evaluar progresivamente las respuestas nuevas sin duplicar P01/P02 ya juzgadas.
+
+Evaluación progresiva ampliada: `evaluacion_progresiva/snapshot_039_p03_p05/` añade 18 juicios validados de P03–P05 en seis condiciones. Con P01/P02, hay 30 respuestas de este lote revisadas externamente; no son métricas finales. Fuentes adicionales completas y hashes de procedencia conservados.

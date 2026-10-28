@@ -1,0 +1,25 @@
+{
+  "paquete_sha256": "9ad530d326cd580581bd772679a09cd3a07fe7fe6ae9a7d61c9ab98f9491ccd6",
+  "evaluador": "Codex, revisión progresiva externa de P03–P05 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "51db81a5de79a75c7a3afb3dfad5fba592473432aa8d2758cc14909787c24583",
+      "correcta": false,
+      "motivo": "Niega que la cantidad esté especificada; RI-FI art. 12 reconoce una evaluación de recuperación por asignatura."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "f6d487bd0f209dae572b7026c29925c169613d7a551e3ffd253eca4b1d521389",
+      "correcta": false,
+      "motivo": "Indica escala 0 a 7 y artículo 8; RG art. 23 establece 1 a 7, hasta un decimal."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "b40663d51603ab9fcbe59fad59add329e974dcaf57d6774fc561ac8440a27d76",
+      "correcta": false,
+      "motivo": "Identifica Trabajo de Fin de Carrera y cita art. 11; RI-FI art. 29 denomina la actividad Memoria de Título, mientras el art. 11 trata evaluaciones y aprobación."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "paquete_sha256": "909c50820b2551e876d4dfe6954476c4756e56db926e2421a7b3c237553b5c16",
+  "evaluador": "Codex, revisión progresiva externa de P03–P05 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Se abstiene pese a existir el derecho a una evaluación de recuperación por asignatura en RI-FI art. 12. El agotamiento del presupuesto es un fallo de respuesta, no ausencia normativa."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "9c72f035e43a78f4a72b9d895f22beb355bdc087b8c9ae7b1fccb9c662702abc",
+      "correcta": true,
+      "motivo": "Entrega la escala 1 a 7 y hasta un decimal con RG art. 23. El mínimo 4,0 añadido también figura allí; no es necesario reproducir todos los requisitos de aprobación para responder la escala."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "b0b5575fda39bacac886fd9833cac4cfd30f956bae9778181c6ea8ea78922de4",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, un semestre y reglamento aplicable con cita explícita RI-FI art. 29."
+    }
+  ]
+}

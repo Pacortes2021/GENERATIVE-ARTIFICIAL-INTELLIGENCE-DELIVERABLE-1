@@ -1,0 +1,25 @@
+{
+  "paquete_sha256": "867866d30d9522cb191f4b4be44477e21ceef8ff3eb8e9e9d8f1f8d238c7373f",
+  "evaluador": "Codex, revisión progresiva externa de P03–P05 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "03f3efd516c6be385dfc4c13dca84e6ea46e5d6ad83d6a155b334426bfebc8e3",
+      "correcta": true,
+      "motivo": "Responde una evaluación por asignatura y cita RI-FI art. 12 y RG art. 22. Ambos respaldan ese derecho. El añadido sobre ausencia de máximo expreso no afirma un derecho a varias recuperaciones; se acepta el número solicitado sin convertir el derecho garantizado en un límite absoluto no formulado por las fuentes."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "d8e98fa37ca5012be496104ff376347a73f48df77930956c169d4c81c26cc785",
+      "correcta": true,
+      "motivo": "Entrega 1 a 7, hasta un decimal, con RG art. 23; la regla añadida sobre centésimas inferiores a 5 también coincide con ese artículo."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "553e5a1b4dbe5c46c1c25bf159d132b7d71df21451eff78157ac34f97b207c59",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, un semestre y su reglamento, con RI-FI art. 29 inequívoco. Se revisó RG art. 3.10 completo: sí permite Memoria entre las actividades de habilitación profesional o trabajo de fin de carrera; el complemento está respaldado."
+    }
+  ]
+}

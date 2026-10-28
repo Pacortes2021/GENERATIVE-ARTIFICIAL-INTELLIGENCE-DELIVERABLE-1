@@ -1,0 +1,66 @@
+{
+  "capturada_utc": "20261028T071051Z",
+  "zip": "20261028T071051Z_039de300.zip",
+  "zip_sha256": "a9a3b86a82bf2ef1a530ad630ea6c5d8366a3c70d1a19ad6f30bf37d56a4d10d",
+  "integridad": "audit_zip_correcta",
+  "resumen": {
+    "esperadas": 300,
+    "completadas": 39,
+    "completa": false,
+    "ejecucion": "modelo_real",
+    "exactitud": null,
+    "nota": "La exactitud requiere evaluación externa; una aceptación interna no es un acierto.",
+    "por_variante": {
+      "baseline_directo": {
+        "n": 7,
+        "llamadas_modelo": 7,
+        "tokens_entrada": 803,
+        "tokens_salida": 378,
+        "segundos_modelo_logicos": 41.993300000000005,
+        "salidas_cortadas": 0
+      },
+      "rag_d2": {
+        "n": 7,
+        "llamadas_modelo": 7,
+        "tokens_entrada": 9947,
+        "tokens_salida": 635,
+        "segundos_modelo_logicos": 112.4732,
+        "salidas_cortadas": 0
+      },
+      "agentes_completo": {
+        "n": 7,
+        "llamadas_modelo": 33,
+        "tokens_entrada": 78816,
+        "tokens_salida": 5188,
+        "segundos_modelo_logicos": 965.3308000000001,
+        "salidas_cortadas": 0
+      },
+      "sin_descomposicion": {
+        "n": 6,
+        "llamadas_modelo": 29,
+        "tokens_entrada": 70440,
+        "tokens_salida": 4722,
+        "segundos_modelo_logicos": 890.3375,
+        "salidas_cortadas": 0
+      },
+      "sin_completitud": {
+        "n": 6,
+        "llamadas_modelo": 33,
+        "tokens_entrada": 80844,
+        "tokens_salida": 4303,
+        "segundos_modelo_logicos": 872.7336,
+        "salidas_cortadas": 0
+      },
+      "sin_verificacion": {
+        "n": 6,
+        "llamadas_modelo": 20,
+        "tokens_entrada": 44228,
+        "tokens_salida": 3185,
+        "segundos_modelo_logicos": 560.1832,
+        "salidas_cortadas": 0
+      }
+    }
+  },
+  "nota": "Primera copia con respuestas nuevas tras reanudar desde 35; mismo lote, sin repetir piloto.",
+  "respuestas_previas_intactas": 35
+}

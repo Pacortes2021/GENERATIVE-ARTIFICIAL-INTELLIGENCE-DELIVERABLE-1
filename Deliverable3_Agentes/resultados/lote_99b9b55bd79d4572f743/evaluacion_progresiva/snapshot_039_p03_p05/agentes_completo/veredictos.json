@@ -1,0 +1,25 @@
+{
+  "paquete_sha256": "928eb01387068321ecd4e4f895df4e20304aef4bd60c2672ab88fa16069f2e5e",
+  "evaluador": "Codex, revisión progresiva externa de P03–P05 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Se abstiene pese a existir el derecho a una evaluación de recuperación por asignatura en RI-FI art. 12. El agotamiento del presupuesto es un fallo de respuesta, no ausencia normativa."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "908ea5c8462b96ea9870ce9dd57dc3d39c3950aa573d27c4eb32619ec6fe20ea",
+      "correcta": false,
+      "motivo": "Aunque entrega correctamente 1 a 7 y un decimal con RG art. 23, atribuye al RG art. 27 la invariancia por carreras y semestres. Se revisó completo el art. 27: regula actas, registro y modificación de notas, sin respaldar ese añadido."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "d0a24a0ed19fceae3ca7e5ce7180b0cd5a2e5f808d399c320346a59f1e49ef0f",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, un semestre y su reglamento, con RI-FI art. 29 inequívoco. Se revisó RG art. 3.10 completo: sí permite Memoria entre las actividades de habilitación profesional o trabajo de fin de carrera; el complemento está respaldado."
+    }
+  ]
+}

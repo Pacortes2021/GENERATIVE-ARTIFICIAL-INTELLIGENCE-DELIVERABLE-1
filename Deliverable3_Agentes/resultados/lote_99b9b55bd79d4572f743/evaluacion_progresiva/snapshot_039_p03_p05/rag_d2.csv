@@ -1,0 +1,10 @@
+pregunta_id,pregunta,categoria,variante,respuesta_modelo,estado,ejecucion,llamadas_modelo,llamadas_nuevas_este_intento,tokens_entrada,tokens_salida,segundos_modelo_logicos,segundos_herramientas_logicos,segundos_pared_este_intento,salidas_cortadas
+3,¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?,factual,rag_d2,"Respuesta: El estudiante tiene derecho a una evaluación de recuperación por asignatura.  
+Condiciones o límites: El derecho se menciona en el artículo 12 y 22, pero no se especifica un número máximo.  
+Fuente: [RI-FI-ART-012], [RG-ART-022]",respuesta_directa,modelo_real,1,1,1937,77,17.5497,0.08850197999981901,17.65712154499988,0
+4,¿En qué escala se expresa la nota final de una asignatura?,factual,rag_d2,"Respuesta: en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.  
+Condiciones o límites: la escala se aplica para la Nota Final, y las centésimas inferiores al dígito 5 no afectan a la décima.  
+Fuente: [RG-ART-023].",respuesta_directa,modelo_real,1,1,1304,79,14.1129,0.07628398699989702,14.204332858999805,0
+5,¿Cuál es la actividad final de titulación en las carreras de Ingeniería?,factual,rag_d2,"Respuesta: La actividad final de titulación en las carreras de Ingeniería es la Memoria de Título, de un semestre de duración, que se regirá por el Reglamento de Memoria de Título de la Facultad de Ingeniería.  
+Condiciones o límites: La Memoria de Título es la actividad final de titulación para todas las carreras, según el Artículo 29.  
+Fuente: [RI-FI-ART-029], [RG-ART-003-DEF-10].",respuesta_directa,modelo_real,1,1,1505,124,19.8282,0.08036859899993942,19.92417340899965,0

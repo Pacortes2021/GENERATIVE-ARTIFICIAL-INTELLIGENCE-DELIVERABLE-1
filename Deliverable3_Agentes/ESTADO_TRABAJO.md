@@ -4,14 +4,15 @@ Actualizado el 28-10-2026, tras auditar la última descarga. Autorización vigen
 
 ## Operación en curso
 
+**28-10-2026, nueva decisión del usuario: ejecutar diez bloques de 30 respuestas.** Son cinco preguntas × seis condiciones por bloque, manteniendo el total de 50×6=300. No son diez experimentos distintos: se conserva la identidad `agentes_99b9b55bd79d4572f743` y el sistema v4 congelado.
 
-**LOTE REAL REANUDADO el 28-10-2026 aproximadamente a las 04:00 Chile (07:00 UTC).** Esta es la observación vigente; el diagnóstico de interrupción más abajo es histórico. Se ejecutaron únicamente preparación, restauración de fuentes y carga de Qwen en T4, sin piloto. La sección 6/celda 12 fue reemplazada por la celda de `operacion/reanudar_lote_v4_colab.py`: descarga el snapshot publicado de 35/300 por URL de commit y SHA-256, audita, exige configuración idéntica y restaura resultados/checkpoints. La primera comprobación encontró una diferencia de serialización JSON de la configuración; se corrigió la comparación a contenido sellado equivalente, sin cambiar el sistema experimental ni sus parámetros.
+El usuario informó otra cancelación. Se revisaron Descargas y las sesiones activas de Colab: la sesión visible únicamente contenía `.config` y `sample_data`; no apareció otra sesión recuperable. Último respaldo real auditado: **39/300**, `resultados/lote_99b9b55bd79d4572f743/snapshots/20261028T071051Z_039de300.zip`. No hay evidencia disponible de respuestas posteriores. Primer bloque completo; segundo con 9/30 respuestas, faltan 21 hasta 60/300.
 
-Se verificó visualmente «LOTE REAL: 50 preguntas x 6 condiciones», las 35 respuestas conservadas y **`P06 sin_completitud: ejecutando`**. Misma corrida `agentes_99b9b55bd79d4572f743`, mismo código, prompts, corpus, índice, inferencia y límites. No interrumpir, recargar ni pulsar Ejecutar todo. El programa exporta el ZIP tras cada respuesta y la celda solicita descarga al finalizar o ante excepción. Sigue en almacenamiento temporal `/content/d3_agentes_runs`; Drive no está montado. La copia `agentes_99b9b55bd79d4572f743-3.zip` descargada al comienzo todavía conserva 35/300 (se exporta al completar cada respuesta); no representa nuevas respuestas completas.
+Se preparó `operacion/reanudar_lote_v4_colab.py` para restaurar las 39 respuestas y ejecutar únicamente hasta el siguiente múltiplo de 30. La capa operativa detiene después de exportar una respuesta completa; no modifica código experimental, prompts, semillas, configuración ni orden de variantes. Solicita una descarga inmutable cada seis respuestas nuevas y al cerrar el bloque. Cuatro pruebas de orquestación verificadas; no son inferencia real.
 
-La automatización se encontró PAUSADA y se reactivó mediante herramienta tras la orden «corramos el código real». Ahora está ACTIVA cada cinco minutos. Próximo paso: vigilar esta ejecución, descargar y auditar el ZIP cuando avance, conservando originales y sin reinferir resultados previos. La salida AX se trunca a 500 caracteres; para ver la última línea, hacer clic en el encabezado de la sección 7 y mirar screenshot: desplaza al final de la salida de la sección 6 sin ejecutarla.
+**Preparación en curso:** se ejecutaron solo dependencias, fuentes y carga Qwen/E5 en la pestaña congelada de Safari. Aún debe verificarse la ejecución del bloque 2. No ejecutar piloto ni lote continuo. Al completar cada bloque: recoger ZIP, auditar integridad/configuración/respuestas previas, publicar respaldo y actualizar el estado; después ejecutar el siguiente bloque con el mismo modelo cargado. Si se pierde la sesión, actualizar URL/hash/cantidad del respaldo a la copia más reciente antes de restaurar.
 
-Última copia auditada tras reanudar: **39/300**, `resultados/lote_99b9b55bd79d4572f743/snapshots/20261028T071051Z_039de300.zip`. Captura UTC 20261028T071051Z; misma configuración completa y las 35 respuestas previas intactas byte a byte. Se observó P07 sin_descomposicion ejecutando; sin fallo técnico visible.
+Nuevo cuaderno reproducible: `Deliverable3_Agentes_Bloques_Colab.ipynb`, generado por `operacion/crear_cuaderno_bloques.py`; conserva byte a byte el payload de fuentes del cuaderno v4. Usar el nuevo cuaderno solo en una sesión nueva; la pestaña existente recibirá la misma celda de operación sin recargarla.
 
 ### Diagnóstico anterior a la reanudación
 
@@ -45,7 +46,7 @@ V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de 
 
 ## Siguiente secuencia
 
-1. Vigilar el lote reanudado descrito arriba. Descargar snapshots del ZIP actualizado, auditar y preservar los 35 resultados previos byte a byte. No repetir preparación ni inferencia mientras esté activo.
+1. Ejecutar y recoger un bloque de 30 respuestas por vez como se indica arriba. Auditar y preservar las 39 respuestas previas byte a byte. No repetir preparación ni inferencia mientras esté activo.
 2. Mantener la versión congelada. No hacer más ajustes antes de terminar las 300 respuestas y su evaluación. Reportar si no supera D2; no reemplazar fallos por otros intentos.
 3. El programa guarda checkpoints por llamada y actualiza ZIP después de cada respuesta. Durante el lote largo descargar snapshots del ZIP desde Archivos sin interrumpir la ejecución; conservar cada descarga. El almacenamiento temporal de Colab desaparece al terminar la sesión. Drive solo si se logra autorizar de manera apropiada.
 4. Evaluar las 300 respuestas externamente y reportar aciertos, regresiones, coste, errores de formato, paradas y cada ablación. Son preguntas de desarrollo, no generalización.

@@ -1,10 +1,8 @@
 # Deliverable 3 · Sistema nuevo de tres agentes
 
-**Estado vigente, 28-10, ~04:00 Chile:** lote real reanudado en T4 desde 35/300, sin piloto. Se verificó `P06 sin_completitud: ejecutando`. Consultar el estado de trabajo antes de actuar; las notas de interrupción de abajo son históricas.
+**Estado vigente, 28-10:** 39/300 respuestas reales respaldadas y auditadas. Tras otra interrupción, el usuario decidió continuar en **diez bloques de 30 respuestas**, cinco preguntas × seis condiciones por bloque. El primero está completo; el segundo necesita 21 respuestas. Consultar [estado de trabajo](ESTADO_TRABAJO.md) antes de operar.
 
-
-**Actualización 28 de octubre:** la última descarga es un piloto de 12 respuestas. El lote completo no está activo en la sesión visible; se conservan 35/300 respuestas auditadas. Véase [estado actual](ESTADO_TRABAJO.md).
-
+Para continuar el lote real, usar el [cuaderno por bloques](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable3_Agentes/Deliverable3_Agentes_Bloques_Colab.ipynb). En sesión nueva: preparación y carga una vez; luego ejecutar solo la última celda para cada bloque. Descargar, auditar y conservar cada ZIP antes del siguiente. El respaldo fijado en el cuaderno contiene 39 respuestas; actualizar su URL/hash/cantidad si se recupera una sesión desde un respaldo posterior.
 
 Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por decisión del equipo. No importa código, prompts, notebooks, pruebas ni resultados de los prototipos previos de D3. La carpeta de trabajo es **`Deliverable3_Agentes/`**.
 
@@ -12,9 +10,9 @@ Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por deci
 
 El [estado de trabajo](ESTADO_TRABAJO.md) registra pendientes. Hay un [borrador PDF, guion y mensajes reales](entrega/README.md); todavía no constituyen la entrega final.
 
-Para continuar con otro modelo de IA, leer la [guía de continuidad](CONTINUAR_CON_IA.md) y el [enunciado oficial](enunciado.pdf). El último respaldo auditado publicado contiene 35/300 respuestas; el progreso posterior de Colab requiere nuevas descargas.
+Para continuar con otro modelo de IA, leer la [guía de continuidad](CONTINUAR_CON_IA.md) y el [enunciado oficial](enunciado.pdf). El último respaldo auditado publicado contiene 39/300 respuestas; el progreso posterior de Colab requiere nuevas descargas.
 
-## Empezar en Colab
+## Cuaderno histórico de pilotos (no usar para continuar el lote real)
 
 1. Abre el [notebook actual en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb) o sube [Deliverable3_Agentes_Colab.ipynb](Deliverable3_Agentes_Colab.ipynb) y selecciona GPU. El cuaderno incluye código, prompts externos restaurables, corpus y preguntas; no requiere acceso a los prototipos ni clonar el repositorio.
 2. Ejecuta las secciones 1–3. Instala las dependencias fijadas de D2, carga E5 en CPU y una instancia Qwen3-4B en GPU. Los tres agentes comparten esa instancia y los parámetros de generación.
@@ -22,7 +20,7 @@ Para continuar con otro modelo de IA, leer la [guía de continuidad](CONTINUAR_C
 4. La sección 8 crea el ZIP y solicita su descarga; muestra también la ruta para descargarlo desde el panel Archivos si el navegador no lo hace automáticamente. Encuentra corridas parciales aunque `RUN_DIR` no exista; si hay varias, conserva todas dentro de un ZIP contenedor. Para una sesión larga activa Drive antes de cargar el sistema; el almacenamiento temporal de Colab no persiste al cerrar la sesión.
 5. Tras revisar el piloto, congela esta versión y activa el lote de 50 preguntas con seis condiciones. Una repetición idéntica reutiliza checkpoints con aviso; para generar de nuevo cambia la etiqueta o la semilla y conserva todas las ejecuciones.
 
-**Las instrucciones anteriores son para una sesión nueva. Si retomas el trabajo del equipo, lee primero el estado actual: hay un lote v4 activo que no debe reiniciarse.** El notebook publicado deja el lote desactivado por defecto; en la sesión activa se habilitó únicamente la sección 6. El piloto lleva la etiqueta `piloto-v4`.
+**Para continuar el lote real, usar el cuaderno por bloques enlazado arriba y leer el estado vigente. No ejecutar el piloto otra vez.**
 
 El notebook incluye preparación, consulta, inspección y exportación, sin respuestas precargadas. La construcción no incorpora respuestas de referencia ni los veredictos de D2.
 

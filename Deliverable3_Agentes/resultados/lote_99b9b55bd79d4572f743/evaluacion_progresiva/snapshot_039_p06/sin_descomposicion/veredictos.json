@@ -1,0 +1,13 @@
+{
+  "paquete_sha256": "cda01c40d4144a265c82b13804c0bb3ed29baabd6346282848194784c6e06f32",
+  "evaluador": "Codex, revisión progresiva externa de P06 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica pese a que RI-FI art. 10 establece anticipación no inferior a una semana; no entrega el dato solicitado."
+    }
+  ]
+}

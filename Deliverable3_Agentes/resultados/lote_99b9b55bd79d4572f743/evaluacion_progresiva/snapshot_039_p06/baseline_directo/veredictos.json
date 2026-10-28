@@ -1,0 +1,13 @@
+{
+  "paquete_sha256": "86dcfc81c300d8163ace161aa486252305812490d6801cf8964a7b81cd795dfd",
+  "evaluador": "Codex, revisión progresiva externa de P06 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "dd4dc548f91b565da1114c8c661b282aab9fa62d14808b3640256b6c3d87c26b",
+      "correcta": false,
+      "motivo": "Indica dos semanas y art. 11, contradiciendo el mínimo de una semana establecido en RI-FI art. 10."
+    }
+  ]
+}

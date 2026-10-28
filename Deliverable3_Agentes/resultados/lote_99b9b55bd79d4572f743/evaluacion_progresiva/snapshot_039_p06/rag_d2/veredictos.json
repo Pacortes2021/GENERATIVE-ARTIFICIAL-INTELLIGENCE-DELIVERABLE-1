@@ -1,0 +1,13 @@
+{
+  "paquete_sha256": "c10cf3e8d5d473691aa829dbbeaee8c81eb049b196cde618ae8b810b90e47406",
+  "evaluador": "Codex, revisión progresiva externa de P06 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "60ab9e4811a2bd41f66df3eb7e8a5b5df03e3c15fd1d93e32a3f88ec00329452",
+      "correcta": true,
+      "motivo": "Responde anticipación mínima de una semana, con cita correcta RI-FI art. 10. El detalle del syllabus no es necesario para responder el mínimo solicitado."
+    }
+  ]
+}

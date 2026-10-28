@@ -1,0 +1,13 @@
+{
+  "paquete_sha256": "0cb36fa8cc2432922ea51304da123197e29eef7df27353b0b3182c63d6983023",
+  "evaluador": "Codex, revisión progresiva externa de P06 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "a7d239a76d402eb3c98361475bd0fccf3c1e8a5e488610070a1488111d66bd94",
+      "correcta": true,
+      "motivo": "Responde no inferior a una semana con RI-FI art. 10. Se revisó RG art. 25 completo: efectivamente regula comunicar calificaciones en hasta diez días hábiles, no el aviso previo de evaluaciones, distinción que la respuesta hace correctamente."
+    }
+  ]
+}

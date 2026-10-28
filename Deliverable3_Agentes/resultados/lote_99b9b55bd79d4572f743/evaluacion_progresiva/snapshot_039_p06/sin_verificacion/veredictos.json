@@ -1,0 +1,13 @@
+{
+  "paquete_sha256": "391c602a73669045e425b7b82ac152ece0d1a93abf44985a0c90a7d3c923b4ad",
+  "evaluador": "Codex, revisión progresiva externa de P06 del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "9e576e9b446d980451ec8b8fd1d8d4c9a0993df41f4619084fde3cb0445f1515",
+      "correcta": false,
+      "motivo": "Da una semana con RI-FI art. 10, pero concluye que ambas fuentes confirman esa anticipación. RG art. 25 trata calificaciones, pautas y revisión posteriores, no aviso previo; la atribución final confunde plazos distintos y carece de respaldo."
+    }
+  ]
+}

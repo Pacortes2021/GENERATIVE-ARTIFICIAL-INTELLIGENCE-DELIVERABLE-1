@@ -1,0 +1,4 @@
+pregunta_id,pregunta,categoria,variante,respuesta_modelo,estado,ejecucion,llamadas_modelo,llamadas_nuevas_este_intento,tokens_entrada,tokens_salida,segundos_modelo_logicos,segundos_herramientas_logicos,segundos_pared_este_intento,salidas_cortadas
+6,¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?,factual,rag_d2,"Respuesta: La evaluación debe ser comunicada a los estudiantes con una anticipación mínima de una semana.  
+Condiciones o límites: El artículo 10° establece que las evaluaciones deben ser programadas y comunicadas a los estudiantes en un plazo no inferior a una semana de su realización.  
+Fuente: [RI-FI-ART-010]",respuesta_directa,modelo_real,1,1,1625,83,16.258,0.07317156900035116,16.347720137000124,0

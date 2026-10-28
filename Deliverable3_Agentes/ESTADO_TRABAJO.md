@@ -74,3 +74,5 @@ Evaluación progresiva independiente iniciada con el snapshot de 12 respuestas: 
 Nueva copia auditada 20261027T182649Z: **35/300 respuestas**, archivo `resultados/lote_99b9b55bd79d4572f743/snapshots/20261027T182649Z_035de300.zip`. La ejecución sigue activa en P06; inferencia y fuentes coinciden con v4 congelada. El ritmo observado a los 50 minutos proyectaba unas 7–8 horas totales, estimación no garantizada. Evaluar progresivamente las respuestas nuevas sin duplicar P01/P02 ya juzgadas.
 
 Evaluación progresiva ampliada: `evaluacion_progresiva/snapshot_039_p03_p05/` añade 18 juicios validados de P03–P05 en seis condiciones. Con P01/P02, hay 30 respuestas de este lote revisadas externamente; no son métricas finales. Fuentes adicionales completas y hashes de procedencia conservados.
+
+P06 revisada en las seis condiciones y guardada en `evaluacion_progresiva/snapshot_039_p06/`: **36 respuestas revisadas externamente** (P01–P06), sin métricas finales. El lote seguía ejecutándose en la revisión de este turno. Próximo bloque de evaluación: P07 en adelante a partir de nuevos snapshots.

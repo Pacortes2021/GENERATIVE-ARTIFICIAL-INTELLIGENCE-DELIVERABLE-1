@@ -1,6 +1,6 @@
 # Deliverable 3 · Sistema nuevo de tres agentes
 
-**Estado vigente, 28-10:** 39/300 respuestas reales respaldadas y auditadas. Tras otra interrupción, el usuario decidió continuar en **diez bloques de 30 respuestas**, cinco preguntas × seis condiciones por bloque. El primero está completo; el segundo necesita 21 respuestas. Consultar [estado de trabajo](ESTADO_TRABAJO.md) antes de operar.
+**Estado vigente, 28-10:** 39/300 respuestas reales respaldadas y auditadas. Tras otra interrupción, el usuario decidió continuar en **diez bloques de 30 respuestas**, cinco preguntas × seis condiciones por bloque. El primero está completo; el segundo está ejecutándose desde 39 hasta 60 respuestas (21 pendientes), verificado a las 10:18 Chile. Consultar [estado de trabajo](ESTADO_TRABAJO.md) antes de operar.
 
 Para continuar el lote real, usar el [cuaderno por bloques](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable3_Agentes/Deliverable3_Agentes_Bloques_Colab.ipynb). En sesión nueva: preparación y carga una vez; luego ejecutar solo la última celda para cada bloque. Descargar, auditar y conservar cada ZIP antes del siguiente. El respaldo fijado en el cuaderno contiene 39 respuestas; actualizar su URL/hash/cantidad si se recupera una sesión desde un respaldo posterior.
 

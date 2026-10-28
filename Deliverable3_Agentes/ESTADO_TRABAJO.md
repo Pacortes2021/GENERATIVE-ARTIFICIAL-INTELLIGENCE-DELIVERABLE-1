@@ -1,10 +1,14 @@
 # Estado de trabajo de Deliverable 3
 
-Actualizado el 27-10-2026, tarde de Chile. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
+Actualizado el 28-10-2026, tras auditar la última descarga. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
 
 ## Operación en curso
 
-**Lote completo v4 en ejecución (50 preguntas × seis condiciones):** comenzó en la misma T4 tras conservar y evaluar el piloto v4. Se activó únicamente `EJECUTAR_LOTE = True` en la sección 6. Se observó `P01 baseline_directo: ejecutando`. Se solicitó ejecutar la sección 8 de exportación mientras el lote está activo; su salida quedó pendiente. No recargar, desconectar, volver a ejecutar todo ni cambiar fuentes/configuración.
+**El lote ya no está activo en la sesión visible. Último respaldo verificable: 35/300.** El 28 de octubre se auditó `agentes_6a4e8925ada1fa3d1dee-2.zip`, descargado el día 27 a las 19:24 Chile: es otra ejecución del piloto, 12/12 (P05/P25/P38/P41 × tres condiciones), no el lote 50×6. Conservado aparte en `resultados/piloto_6a4e8925ada1fa3d1dee_repeticion_20261027T2210/`. Sus 12 respuestas finales coinciden textualmente con las del piloto previo, pero las trazas y tiempos son nuevos. No sobrescribir ni sumar intentos.
+
+La interfaz actual muestra `EJECUTAR_LOTE = False` y «Lote desactivado; no se han generado resultados de ablaciones». Estaba desconectada; se pulsó Reconectar para buscar archivos. El entorno conectado muestra únicamente `sample_data`, sin `d3_agentes_runs`: no se encontró allí el lote anterior. No se ejecutaron nuevas inferencias en esta revisión. La fecha y causa exactas de la pérdida/interrupción no están demostradas. El lote anterior sí existió y su snapshot de 35 respuestas está auditado y publicado.
+
+**Próximo paso:** restaurar el snapshot de 35/300 en una T4 y verificar configuración/fuentes/checkpoints idénticos antes de reanudar el lote, sin repetir el piloto. Preparar respaldo persistente para no depender solo del almacenamiento temporal. No usar «Ejecutar todo» con los valores por defecto, pues solo ejecuta el piloto. No se contrató otra GPU; el usuario no ha aprobado ningún gasto.
 
 El piloto v4 `agentes_6a4e8925ada1fa3d1dee.zip` está conservado y auditado en `resultados/piloto_6a4e8925ada1fa3d1dee`, con evaluación completa: agentes 1/4, D2 2/4, baseline 0/4. Ver `CONGELACION_V4.md`: se congela el sistema para medirlo completo, incluidos los fallos residuales del modelo.
 
@@ -30,7 +34,7 @@ V4 acepta exclusivamente una forma plana equivalente de solicitud explícita de 
 
 ## Siguiente secuencia
 
-1. Vigilar el lote completo activo y descargar snapshots desde Archivos, sin interrumpirlo. Recoger la descarga final (posiblemente `resultados_d3_todas_las_corridas.zip`, contenedor con piloto y lote separados). Auditar cada ZIP interno y conservar originales en carpetas nuevas.
+1. Recuperar el lote desde el respaldo de 35/300 según la operación actual descrita arriba. No asumir una corrida activa por las observaciones históricas de abajo. Auditar cada ZIP y conservar originales en carpetas nuevas.
 2. Mantener la versión congelada. No hacer más ajustes antes de terminar las 300 respuestas y su evaluación. Reportar si no supera D2; no reemplazar fallos por otros intentos.
 3. El programa guarda checkpoints por llamada y actualiza ZIP después de cada respuesta. Durante el lote largo descargar snapshots del ZIP desde Archivos sin interrumpir la ejecución; conservar cada descarga. El almacenamiento temporal de Colab desaparece al terminar la sesión. Drive solo si se logra autorizar de manera apropiada.
 4. Evaluar las 300 respuestas externamente y reportar aciertos, regresiones, coste, errores de formato, paradas y cada ablación. Son preguntas de desarrollo, no generalización.

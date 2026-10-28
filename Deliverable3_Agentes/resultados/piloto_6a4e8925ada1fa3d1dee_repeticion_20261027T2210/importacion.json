@@ -1,0 +1,41 @@
+{
+  "fecha_revision_utc": "2026-10-28T05:44:40.220600+00:00",
+  "archivo_descargado": "agentes_6a4e8925ada1fa3d1dee-2.zip",
+  "zip_sha256": "2e5ef9caca40de0c0b7a9fd462271359df5e6cdab6cfdf5c680d15f7a778db2e",
+  "integridad": "audit_zip_correcta",
+  "resumen": {
+    "esperadas": 12,
+    "completadas": 12,
+    "completa": true,
+    "ejecucion": "modelo_real",
+    "exactitud": null,
+    "nota": "La exactitud requiere evaluación externa; una aceptación interna no es un acierto.",
+    "por_variante": {
+      "baseline_directo": {
+        "n": 4,
+        "llamadas_modelo": 4,
+        "tokens_entrada": 477,
+        "tokens_salida": 327,
+        "segundos_modelo_logicos": 39.214,
+        "salidas_cortadas": 0
+      },
+      "rag_d2": {
+        "n": 4,
+        "llamadas_modelo": 4,
+        "tokens_entrada": 6970,
+        "tokens_salida": 414,
+        "segundos_modelo_logicos": 76.7926,
+        "salidas_cortadas": 0
+      },
+      "agentes_completo": {
+        "n": 4,
+        "llamadas_modelo": 21,
+        "tokens_entrada": 60965,
+        "tokens_salida": 3228,
+        "segundos_modelo_logicos": 719.1278,
+        "salidas_cortadas": 0
+      }
+    }
+  },
+  "nota": "Repetición del piloto, no lote 50x6. Configuración equivalente y las 12 respuestas finales textualmente iguales al primer piloto v4; tiempos, llamadas y archivos de intento distintos. Se conserva como intento independiente, sin sumar resultados ni copiar veredictos."
+}

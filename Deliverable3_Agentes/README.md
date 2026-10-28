@@ -1,8 +1,11 @@
 # Deliverable 3 · Sistema nuevo de tres agentes
 
+**Actualización 28 de octubre:** la última descarga es un piloto de 12 respuestas. El lote completo no está activo en la sesión visible; se conservan 35/300 respuestas auditadas. Véase [estado actual](ESTADO_TRABAJO.md).
+
+
 Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por decisión del equipo. No importa código, prompts, notebooks, pruebas ni resultados de los prototipos previos de D3. La carpeta de trabajo es **`Deliverable3_Agentes/`**.
 
-**Estado (27 de octubre):** cuatro pilotos reales conservados y evaluados. El [piloto v4](resultados/piloto_6a4e8925ada1fa3d1dee/REPORTE.md) obtuvo agentes 1/4, D2 2/4 y baseline 0/4 con la pauta estricta. Se congeló v4 y **está en ejecución el lote de 50 preguntas × seis condiciones**, sin seleccionar resultados favorables. Véase [congelación y reproducción](CONGELACION_V4.md). Faltan completar y evaluar las 300 respuestas, cerrar el PDF y grabar/publicar el video real. Los pilotos son diagnóstico, no generalización.
+**Estado (27 de octubre):** cuatro pilotos reales conservados y evaluados. El [piloto v4](resultados/piloto_6a4e8925ada1fa3d1dee/REPORTE.md) obtuvo agentes 1/4, D2 2/4 y baseline 0/4 con la pauta estricta. Se congeló v4 y **se inició el lote de 50 preguntas × seis condiciones, actualmente pendiente de recuperación**, sin seleccionar resultados favorables. Véase [congelación y reproducción](CONGELACION_V4.md). Faltan completar y evaluar las 300 respuestas, cerrar el PDF y grabar/publicar el video real. Los pilotos son diagnóstico, no generalización.
 
 El [estado de trabajo](ESTADO_TRABAJO.md) registra pendientes. Hay un [borrador PDF, guion y mensajes reales](entrega/README.md); todavía no constituyen la entrega final.
 

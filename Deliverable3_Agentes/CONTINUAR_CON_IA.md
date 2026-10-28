@@ -1,5 +1,8 @@
 # Continuar el trabajo con otro modelo de IA
 
+**Actualización 28-10:** no hay lote activo en la sesión revisada. Último respaldo: 35/300. La descarga posterior contiene solo el piloto. Leer el estado actualizado antes de continuar.
+
+
 Este documento permite retomar el proyecto sin el historial del chat. Leer primero [ESTADO_TRABAJO.md](ESTADO_TRABAJO.md), que registra la última observación disponible; no confundir esa observación con el estado en vivo de Colab.
 
 ## Contexto y archivos de entrada

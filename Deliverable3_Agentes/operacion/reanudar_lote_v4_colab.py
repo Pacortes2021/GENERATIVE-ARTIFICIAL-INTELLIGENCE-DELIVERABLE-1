@@ -4,16 +4,16 @@ import hashlib, json, zipfile, urllib.request
 from d3_agentes.experiment import audit_zip, prepare, export
 from d3_agentes.common import Limits, PromptBook, sealed_load, VARIANTS
 
-SNAPSHOT_URL = 'https://raw.githubusercontent.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/22963a0f4e364e1fbc807883091fe6aebc7d38ca/Deliverable3_Agentes/resultados/lote_99b9b55bd79d4572f743/snapshots/20261028T071051Z_039de300.zip'
-SNAPSHOT_SHA256 = 'a9a3b86a82bf2ef1a530ad630ea6c5d8366a3c70d1a19ad6f30bf37d56a4d10d'
+SNAPSHOT_URL = 'https://raw.githubusercontent.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/1f3f66a/Deliverable3_Agentes/resultados/lote_99b9b55bd79d4572f743/snapshots/20261029T040805589463Z_060de300.zip'
+SNAPSHOT_SHA256 = '1b955f91fa88f950c5c00e4aea06c7b33897e5727da2670a035a526cfafb9bf7'
 
 def restaurar_respaldo(ENV, OUTPUT):
-    backup = Path('/content/respaldo_original_039de300.zip')
+    backup = Path('/content/respaldo_original_060de300.zip')
     if not backup.exists():
         urllib.request.urlretrieve(SNAPSHOT_URL, backup)
     assert hashlib.sha256(backup.read_bytes()).hexdigest() == SNAPSHOT_SHA256, 'Respaldo distinto.'
     summary = audit_zip(backup)
-    assert summary['completadas'] == 39 and summary['esperadas'] == 300
+    assert summary['completadas'] == 60 and summary['esperadas'] == 300
     with zipfile.ZipFile(backup) as archive:
         config = json.loads(archive.read('configuracion.json'))['contenido']
         assert config['inferencia'] == ENV['settings'], 'Entorno distinto: revisar versiones antes de reanudar.'

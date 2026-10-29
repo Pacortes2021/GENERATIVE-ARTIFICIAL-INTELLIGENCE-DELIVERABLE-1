@@ -1,6 +1,14 @@
 # Estado de trabajo de Deliverable 3
 
-Actualizado el 28-10-2026, tras auditar la última descarga. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
+Actualizado el 29-10-2026, madrugada de Chile. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
+
+## Bloque 2 completado y auditado: 29-10 (madrugada de Chile)
+
+El Bloque 2 se ejecutó en GPU T4 de Colab y finalizó exitosamente a las 00:59 hrs (27 minutos y 35 segundos de inferencia neta). Completó las 21 respuestas pendientes de P07 a P10 en las seis condiciones, alcanzando **60/300 respuestas** con 0 salidas cortadas.
+Las cuatro descargas inmutables intermedias (respaldos en 45, 51, 57 y 60 respuestas) llegaron intactas a Descargas.
+El snapshot final `agentes_99b9b55bd79d4572f743_respaldo_060de300.zip` (SHA-256 `1b955f91fa88f950c5c00e4aea06c7b33897e5727da2670a035a526cfafb9bf7`) fue auditado contra el respaldo previo de 39 respuestas mediante `operacion/importar_snapshot_lote.py`, verificando 39 respuestas previas idénticas byte a byte y configuración sellada intacta. Quedó preservado en `resultados/lote_99b9b55bd79d4572f743/snapshots/20261029T040805589463Z_060de300.zip` y publicado en GitHub.
+
+Próximo paso: Ejecutar Bloque 3 (objetivo 90/300, preguntas P11 a P15 en las seis condiciones) restaurando desde el nuevo ancla de 60 respuestas.
 
 ## Autorización vigente del 29-10
 

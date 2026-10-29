@@ -2,6 +2,10 @@
 
 Actualizado el 28-10-2026, tras auditar la última descarga. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
 
+## Autorización vigente del 29-10
+
+El usuario respondió «haz lo que sea mejor» a la pregunta explícita de conexión de Drive y acceso/modificación de archivos. Se eligió Drive para persistencia: autorización concedida para conectar este notebook y guardar `GenIA_D3_Agentes/runs`. No volver a pedir el mismo permiso. El primer intento de montaje terminó en `ValueError: mount failed` mientras esperaba la respuesta. Se reejecutó la celda 6 y se aceptó Conectar con Google Drive. Se completaron los pasos Continuar de dos ventanas OAuth de Google Drive for desktop para la cuenta ya seleccionada. Tras cerrarse las ventanas, la herramienta de Safari devolvió repetidamente `noWindowsAvailable` y `timeoutReached`, incluso después de restablecer cua_repl. El inventario confirma Safari abierto, pero todavía no se pudo leer la salida del montaje/modelo. Se pidió al usuario dejar visible la pestaña de Colab; NO pedir de nuevo autorización de Drive. Aún no declarar Drive montado ni inferencia iniciada hasta verificarlo en pantalla. No cerrar/reiniciar Safari ni recargar Colab para intentar resolver el control.
+
 ## Última comprobación: 28-10 por la noche (Chile)
 
 El usuario confirmó continuar hasta 300. La sesión de la mañana ya no estaba accesible: Colab mostró «No hay sesiones activas», y Descargas sigue sin ZIP posterior a 39/300. No afirmar que sigue corriendo el bloque de las 10:18. Se reactivó el seguimiento, encontrado nuevamente PAUSED.
@@ -9,7 +13,7 @@ El usuario confirmó continuar hasta 300. La sesión de la mañana ya no estaba 
 Se abrió en Safari el cuaderno por bloques publicado:
 https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/4f744885179b764c93dacec9cbf3dc8cb17f857d/Deliverable3_Agentes/Deliverable3_Agentes_Bloques_Colab.ipynb
 
-Dependencias y fuentes restauradas. La celda 6 se preparó para montar Drive y guardar en `MyDrive/GenIA_D3_Agentes/runs`; Google muestra el diálogo de permiso para acceder/modificar archivos de Drive. **Autorización solicitada al usuario mediante pregunta asíncrona; todavía no concedida. No aceptar ese acceso por cuenta propia.** El modelo y el bloque no han arrancado en esta nueva sesión porque el montaje está esperando el diálogo. Las observaciones anteriores de ejecución son históricas.
+Dependencias y fuentes restauradas. La celda 6 se preparó para montar Drive y guardar en `MyDrive/GenIA_D3_Agentes/runs`; Google muestra el diálogo de permiso para acceder/modificar archivos de Drive. **Nota histórica: en este punto todavía se esperaba autorización; fue concedida el 29-10 como se indica arriba.** El modelo y el bloque no han arrancado en esta nueva sesión porque el montaje está esperando el diálogo. Las observaciones anteriores de ejecución son históricas.
 
 `operacion/importar_snapshot_lote.py` permite auditar y preservar cada nuevo ZIP sin sobrescribir, verificando configuración congelada y respuestas previas byte a byte. Validado con el avance real 35→39 y el rechazo del retroceso.
 

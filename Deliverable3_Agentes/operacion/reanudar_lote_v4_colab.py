@@ -96,7 +96,18 @@ def ejecutar_bloque(ENV, OUTPUT, RUN_DIR, descargar, tamaño=30):
     return RUN_DIR
 
 
+CONTINUAR_HASTA_FINAL = True  # True: ejecuta automáticamente todos los bloques hasta 300; False: solo un bloque de 30
+
+
 if __name__ == '__main__':
     from google.colab import files
     RUN_DIR = restaurar_respaldo(ENV, OUTPUT)
-    RUN_DIR = ejecutar_bloque(ENV, OUTPUT, RUN_DIR, files.download)
+    if globals().get('CONTINUAR_HASTA_FINAL', False):
+        while True:
+            RUN_DIR = ejecutar_bloque(ENV, OUTPUT, RUN_DIR, files.download)
+            progress = audit_zip(RUN_DIR.with_suffix('.zip'))
+            if progress['completadas'] >= 300:
+                print('¡ÉXITO TOTAL! 300/300 respuestas generadas y respaldadas.', flush=True)
+                break
+    else:
+        RUN_DIR = ejecutar_bloque(ENV, OUTPUT, RUN_DIR, files.download)

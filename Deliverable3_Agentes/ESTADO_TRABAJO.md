@@ -2,7 +2,18 @@
 
 Actualizado el 28-10-2026, tras auditar la última descarga. Autorización vigente: correcciones, inferencia real en Colab T4, descarga y evaluación de todos los intentos, informe LaTeX, guion/video y actualización de GitHub. No usar el prototipo `../Deliverable3/` ni `backup/deliverable3` como implementación. No enviar mensajes a terceros.
 
-## Operación en curso
+## Última comprobación: 28-10 por la noche (Chile)
+
+El usuario confirmó continuar hasta 300. La sesión de la mañana ya no estaba accesible: Colab mostró «No hay sesiones activas», y Descargas sigue sin ZIP posterior a 39/300. No afirmar que sigue corriendo el bloque de las 10:18. Se reactivó el seguimiento, encontrado nuevamente PAUSED.
+
+Se abrió en Safari el cuaderno por bloques publicado:
+https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/4f744885179b764c93dacec9cbf3dc8cb17f857d/Deliverable3_Agentes/Deliverable3_Agentes_Bloques_Colab.ipynb
+
+Dependencias y fuentes restauradas. La celda 6 se preparó para montar Drive y guardar en `MyDrive/GenIA_D3_Agentes/runs`; Google muestra el diálogo de permiso para acceder/modificar archivos de Drive. **Autorización solicitada al usuario mediante pregunta asíncrona; todavía no concedida. No aceptar ese acceso por cuenta propia.** El modelo y el bloque no han arrancado en esta nueva sesión porque el montaje está esperando el diálogo. Las observaciones anteriores de ejecución son históricas.
+
+`operacion/importar_snapshot_lote.py` permite auditar y preservar cada nuevo ZIP sin sobrescribir, verificando configuración congelada y respuestas previas byte a byte. Validado con el avance real 35→39 y el rechazo del retroceso.
+
+## Plan por bloques y ejecución anterior
 
 **28-10-2026, nueva decisión del usuario: ejecutar diez bloques de 30 respuestas.** Son cinco preguntas × seis condiciones por bloque, manteniendo el total de 50×6=300. No son diez experimentos distintos: se conserva la identidad `agentes_99b9b55bd79d4572f743` y el sistema v4 congelado.
 

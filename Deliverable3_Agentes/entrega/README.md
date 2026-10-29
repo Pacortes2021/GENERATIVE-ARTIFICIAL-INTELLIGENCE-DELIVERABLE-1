@@ -4,7 +4,8 @@
 
 - [Informe de desarrollo, PDF](main.pdf): una página A4 vertical, compilada desde [LaTeX](main.tex). Grafo completo, técnicas, resultados disponibles y limitaciones. Se revisó visualmente la página; sustituir la tabla provisional tras evaluar el lote.
 - [Guion cronometrado](guion_video.md): ensayo de 2:50, con 10 segundos de margen. La conclusión final está condicionada a resultados que aún no existen.
-- [Mensajes reales v2](mensajes_reales_v2.md): transcripciones de P05 y P41, con enlaces a los JSON originales y sus hashes. Incluyen el acierto y la regresión, así como errores de formato y paradas.
+- [Mensajes reales v4](mensajes_reales_v4.md): material vigente para la demostración, con P05 aceptada sin devolución y P41 terminada por límite de llamadas. Eventos literales y hashes del piloto de la versión congelada.
+- [Mensajes históricos v2](mensajes_reales_v2.md): transcripciones de P05 y P41, con enlaces a los JSON originales y sus hashes. Incluyen el acierto y la regresión, así como errores de formato y paradas.
 - [Matriz de requisitos](REQUISITOS.md): comprobación contra el enunciado oficial.
 
 ## Compilar y verificar

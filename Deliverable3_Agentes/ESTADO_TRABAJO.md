@@ -13,6 +13,8 @@ Dependencias y fuentes restauradas. La celda 6 se preparó para montar Drive y g
 
 `operacion/importar_snapshot_lote.py` permite auditar y preservar cada nuevo ZIP sin sobrescribir, verificando configuración congelada y respuestas previas byte a byte. Validado con el avance real 35→39 y el rechazo del retroceso.
 
+Trabajo independiente del 29-10: `entrega/mensajes_reales_v4.md` conserva 14 eventos exactos de P05 y P41 del piloto congelado, con hashes y enlaces. `guion_video.md` ya narra v4: P05 sin loop y P41 con lectura/inventario y parada a 12 llamadas; elimina la narración antigua de v2. Sigue siendo ensayo pendiente del lote completo y de video real. El diálogo de Drive continúa sin autorización; no se ha aceptado ni iniciado inferencia en la nueva sesión.
+
 ## Plan por bloques y ejecución anterior
 
 **28-10-2026, nueva decisión del usuario: ejecutar diez bloques de 30 respuestas.** Son cinco preguntas × seis condiciones por bloque, manteniendo el total de 50×6=300. No son diez experimentos distintos: se conserva la identidad `agentes_99b9b55bd79d4572f743` y el sistema v4 congelado.

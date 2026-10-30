@@ -102,7 +102,17 @@ print('Fuentes restauradas en:', WORKDIR.name)
     import torch
     from d3_agentes.runtime import load
 
-    OUTPUT = Path('/content/d3_dificiles_runs')
+    USAR_DRIVE = False
+    if USAR_DRIVE:
+        try:
+            from google.colab import drive
+            drive.mount('/content/drive')
+            OUTPUT = Path('/content/drive/MyDrive/GenIA_D3_Agentes/runs_dificiles')
+        except Exception:
+            OUTPUT = Path('/content/d3_dificiles_runs')
+    else:
+        OUTPUT = Path('/content/d3_dificiles_runs')
+
     OUTPUT.mkdir(parents=True, exist_ok=True)
     ENV = load(OUTPUT)
     print('Runtime listo. Preguntas difíciles cargadas:', len(ENV['questions']))

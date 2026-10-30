@@ -1,0 +1,135 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 28,
+        "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+        "categoria": "condicional"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "Si estando habilitado no inscribo asignaturas en el período, se considera que no se ha cumplido con el obligado registro académico, lo cual puede generar sanciones según el Reglamento de Estudio de la Facultad de Ingeniería, Art. 15.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\nSi estando habilitado no inscribo asignaturas en el período, ¿qué pasa?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 116,
+            "prompt_sha256": "a55b1fc732d9d52593121482b5fce2ba1af9f3899c06efcdcd5674136ffc8d43"
+          },
+          "semilla": 2054,
+          "salida": {
+            "respuesta_modelo": "Si estando habilitado no inscribo asignaturas en el período, se considera que no se ha cumplido con el obligado registro académico, lo cual puede generar sanciones según el Reglamento de Estudio de la Facultad de Ingeniería, Art. 15.",
+            "ids_tokens_salida": [
+              21999,
+              1788,
+              4883,
+              6055,
+              3664,
+              2123,
+              902,
+              1640,
+              740,
+              749,
+              60079,
+              86529,
+              662,
+              655,
+              86624,
+              11,
+              511,
+              2908,
+              64,
+              1709,
+              902,
+              511,
+              6386,
+              73355,
+              5249,
+              390,
+              655,
+              12331,
+              2123,
+              36785,
+              10406,
+              16647,
+              3955,
+              11,
+              775,
+              27090,
+              20673,
+              94979,
+              274,
+              1129,
+              11431,
+              62015,
+              655,
+              3184,
+              75,
+              10411,
+              409,
+              9403,
+              3230,
+              409,
+              1187,
+              16945,
+              494,
+              329,
+              409,
+              94468,
+              1268,
+              7431,
+              11,
+              5166,
+              13,
+              220,
+              16,
+              20,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "Si estando habilitado no inscribo asignaturas en el período, se considera que no se ha cumplido con el obligado registro académico, lo cual puede generar sanciones según el Reglamento de Estudio de la Facultad de Ingeniería, Art. 15.<|im_end|>",
+            "tokens_salida": 66,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 6.689,
+            "pico_memoria_gpu_gb": 2.561,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 116,
+      "tokens_salida": 66,
+      "segundos_modelo_logicos": 6.689,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 6.695133912999154,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "ad27c919b579db133f3c0d90984d95c29735261997a958bd4aafceba4e02771b.json"
+    ]
+  },
+  "sha256": "bf5e2e7e30b3c75675beff29734e9d10d28ab8e9ca854264498561d5c8dfa4ed"
+}

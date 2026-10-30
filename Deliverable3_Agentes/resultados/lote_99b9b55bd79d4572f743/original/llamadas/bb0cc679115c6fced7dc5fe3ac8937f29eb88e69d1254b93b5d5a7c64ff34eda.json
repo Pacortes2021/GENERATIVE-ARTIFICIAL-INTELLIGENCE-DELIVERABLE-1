@@ -1,0 +1,61 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 47,
+          "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+          "categoria": "abstencion"
+        },
+        "variante": "baseline_directo"
+      },
+      "tarea": {
+        "etapa": "baseline_directo",
+        "mensajes": [
+          {
+            "role": "system",
+            "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+          },
+          {
+            "role": "user",
+            "content": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?"
+          }
+        ],
+        "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\nAdemás del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "tokens_entrada": 133,
+        "prompt_sha256": "1f441e753b298b4988f508fc7f38141809482a5db6798ec19dd2b673966b674e"
+      },
+      "semilla": 2073
+    },
+    "salida": {
+      "respuesta_modelo": "Art. 8 del RI-FI: 32 créditos.",
+      "ids_tokens_salida": [
+        9286,
+        13,
+        220,
+        23,
+        1594,
+        47497,
+        7276,
+        40,
+        25,
+        220,
+        18,
+        17,
+        67192,
+        25593,
+        13,
+        151645
+      ],
+      "salida_con_tokens_especiales": "Art. 8 del RI-FI: 32 créditos.<|im_end|>",
+      "tokens_salida": 16,
+      "motivo_parada": "eos",
+      "posible_corte": false,
+      "thinking_inesperado": false,
+      "segundos": 2.1699,
+      "pico_memoria_gpu_gb": 2.5647
+    }
+  },
+  "sha256": "3c96a87fcadb6f426bbdc0951bedd3b584e73e015961113911f977aa8dd2a22f"
+}

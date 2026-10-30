@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 27,
+          "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+          "categoria": "condicional"
+        },
+        "variante": "sin_descomposicion"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Qué documentos requiere la solicitud de suspensión de estudios?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-035",
+          "cita": "RG, artículo 35, PDF p. 23",
+          "texto": "Artículo 35° Los alumnos que soliciten suspender estudios o que renuncien a una carrera, deberán cumplir los requisitos que establezca la Facultad para estos efectos y adjuntar a su presentación los siguientes documentos:\n\na) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y\n\nb) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico."
+        },
+        {
+          "id": "RI-FI-ART-025",
+          "cita": "RI-FI, artículo 25, PDF p. 4",
+          "texto": "Artículo 25°. La y el estudiante podrá solicitar a la Vicedecanatura suspender estudios dentro de los plazos establecidos en el calendario anual de docencia de pregrado de la Universidad de Concepción. La solicitud deberá ir acompañada de los siguientes documentos:\n\na) Certificado de la División de Asistencia Financiera al Estudiante (DAFE) en que conste que el alumno no tiene deudas con la Universidad de Concepción por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado. b) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico."
+        },
+        {
+          "id": "RI-FI-ART-027",
+          "cita": "RI-FI, artículo 27, PDF p. 5",
+          "texto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+        },
+        {
+          "id": "RG-ART-033",
+          "cita": "RG, artículo 33, PDF p. 22, 23",
+          "texto": "Artículo 33º Un alumno con suspensión de estudios, para continuarlos, deberá solicitar su reincorporación al Vicedecano. Si la suspensión de estudios se fundó en razones de salud, el alumno deberá acompañar los antecedentes oficiales tales como el informe de la Dirección de Servicios Estudiantiles, o la Unidad que corresponda en Chillán y Los Ángeles, u otros fidedignos, que demuestren que han cesado los impedimentos que justificaron la suspensión, y en este caso la decisión corresponderá al Decano de la Facultad.\n\nEl Vicedecano comunicará la decisión que se adopte, al alumno, al Jefe de Carrera respectivo y lo registrará en el Sistema de Administración Curricular. En todo caso la suspensión de estudios podrá extenderse por un período máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\n\nLos alumnos que solicitan su reincorporación deberán adscribirse al Plan de Estudio que se esté impartiendo a la fecha de su reincorporación excepto el caso de los alumnos en intercambio quienes se mantendrán en el mismo plan de estudio."
+        },
+        {
+          "id": "RG-ART-032",
+          "cita": "RG, artículo 32, PDF p. 22",
+          "texto": "Artículo 32° Si un alumno presenta salud o condición física incompatible con la Carrera, se le suspenderá el derecho a continuar estudios. La decisión en esta materia, previo informe de la Dirección de Servicios Estudiantiles o la Unidad que corresponda en Chillán y Los Ángeles, corresponderá al Decano en resolución fundada, que deberá informar al Vicerrector y a UDARAE para su registro en SAC."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.0671082099997875
+  },
+  "sha256": "9cdb4ae38195d258c9003c6163cbb2130ee013846517cac0d279badca01812c2"
+}

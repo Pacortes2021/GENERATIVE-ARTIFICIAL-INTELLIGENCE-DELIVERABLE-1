@@ -1,0 +1,96 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 49,
+          "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+          "categoria": "abstencion"
+        },
+        "variante": "baseline_directo"
+      },
+      "tarea": {
+        "etapa": "baseline_directo",
+        "mensajes": [
+          {
+            "role": "system",
+            "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+          },
+          {
+            "role": "user",
+            "content": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?"
+          }
+        ],
+        "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\nSegún el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "tokens_entrada": 125,
+        "prompt_sha256": "5d98fbfd2aa7ed4c8604d76916925dc0ae3ab8edfc70a9a51c2853313736fa22"
+      },
+      "semilla": 2075
+    },
+    "salida": {
+      "respuesta_modelo": "El 30 de septiembre de 2026 no cae en un feriado nacional según el calendario de docencia 2026. Este día no es un feriado nacional en Chile. Art. 8.",
+      "ids_tokens_salida": [
+        6582,
+        220,
+        18,
+        15,
+        409,
+        34329,
+        53471,
+        409,
+        220,
+        17,
+        15,
+        17,
+        21,
+        902,
+        2162,
+        68,
+        662,
+        650,
+        18227,
+        96709,
+        57967,
+        62015,
+        655,
+        49970,
+        3290,
+        409,
+        4629,
+        8792,
+        220,
+        17,
+        15,
+        17,
+        21,
+        13,
+        38676,
+        34863,
+        902,
+        1531,
+        650,
+        18227,
+        96709,
+        57967,
+        662,
+        33000,
+        13,
+        5166,
+        13,
+        220,
+        23,
+        13,
+        151645
+      ],
+      "salida_con_tokens_especiales": "El 30 de septiembre de 2026 no cae en un feriado nacional según el calendario de docencia 2026. Este día no es un feriado nacional en Chile. Art. 8.<|im_end|>",
+      "tokens_salida": 51,
+      "motivo_parada": "eos",
+      "posible_corte": false,
+      "thinking_inesperado": false,
+      "segundos": 5.3698,
+      "pico_memoria_gpu_gb": 2.5633
+    }
+  },
+  "sha256": "9b906d0924f2d0b50dfd725d098aba59d68a154c34b813271a3c3ea16ab95df5"
+}

@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 10,
+          "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+          "categoria": "factual"
+        },
+        "variante": "sin_verificacion"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-022",
+          "cita": "RI-FI, artículo 22, PDF p. 4",
+          "texto": "Artículo 22°. La y el estudiante podrá solicitar la convalidación, revalidación y reconocimiento de asignaturas cursadas en otras carreras por única vez durante las cuatro primeras semanas de ingreso a la nueva carrera, excepto los estudiantes de Primer Año Común quienes no podrán revalidar ni convalidar asignaturas."
+        },
+        {
+          "id": "RG-ART-044",
+          "cita": "RG, artículo 44, PDF p. 26",
+          "texto": "Artículo 44° El alumno que decida reingresar a una misma carrera, deberá hacerlo a Primer Año de ésta, como alumno nuevo, sujeto a los requisitos y exigencias vigentes en dicha carrera al momento de su reingreso y no tendrá derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas.\n\nSi el alumno que reingresa a la misma carrera no incurrió en pérdida de carrera, podrá solicitar, dentro de los treinta primeros días del primer semestre de permanencia en la carrera, mantener su situación académica anterior."
+        },
+        {
+          "id": "RG-ART-029",
+          "cita": "RG, artículo 29, PDF p. 21",
+          "texto": "Artículo 29° Los alumnos que estando habilitados para inscribir asignaturas no lo hagan dentro del periodo correspondiente perderán el derecho a continuar estudios como también la calidad de alumno de pregrado de la Universidad de Concepción, a menos que en el periodo lectivo anterior hayan inscrito una u más asignaturas anuales."
+        },
+        {
+          "id": "RG-ART-037",
+          "cita": "RG, artículo 37, PDF p. 24",
+          "texto": "Artículo 37° Los alumnos regulares podrán solicitar la revalidación de una misma asignatura ya aprobada en otro plan de estudio de otra carrera de esta universidad.\n\nLos alumnos regulares podrán solicitar la convalidación de una asignatura de su plan de estudio por otra ya aprobada en ésta o en otra institución de educación superior. Esta solicitud deberá ir acompañada de un certificado completo de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas, salvo que se trate de asignaturas aprobadas en esta universidad.\n\nEl Vicedecano, previo informe del Departamento a cargo de la asignatura, resolverá dentro de un plazo de quince días e informará de lo resuelto tanto al alumno como a la Facultad a la que éste pertenece."
+        },
+        {
+          "id": "RG-ART-039",
+          "cita": "RG, artículo 39, PDF p. 24",
+          "texto": "Artículo 39º El alumno en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la universidad, tendrá el derecho a validar tales asignaturas. Para que una asignatura le sea validada, deberá presentar al Vicedecano de su Facultad el programa de la asignatura y calificación obtenida debidamente certificadas. La nota de una asignatura validada deberá ser incorporada al SAC en la Escala Oficial de la Universidad de Concepción y la asignatura será reconocida como carga académica en el semestre en la cual fue cursada."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.07018034300017462
+  },
+  "sha256": "5132ed119073c7f8e230def5b4773e1571b2c57d8f02d3b0dc193120608e3f56"
+}

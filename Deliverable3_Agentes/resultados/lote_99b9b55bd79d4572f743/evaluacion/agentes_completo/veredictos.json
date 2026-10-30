@@ -1,0 +1,307 @@
+{
+  "paquete_sha256": "b4e649d1341cc499ccd9e4793d466be5d732864ce603be79dbca694c21e86fe6",
+  "evaluador": "Codex / Antigravity; revisión asistida del lote v4",
+  "modalidad": "revision_asistida_chat",
+  "evaluaciones": [
+    {
+      "caso_id": "P01",
+      "respuesta_sha256": "23ebd20d6c219aa45f7bfa118fae839ab7919054d60ccf6194b77905dbfdc016",
+      "correcta": true,
+      "motivo": "Entrega la nota mínima solicitada, 4,0, con RI-FI art. 11 y explica su relación con el syllabus."
+    },
+    {
+      "caso_id": "P02",
+      "respuesta_sha256": "0ef24a7e8b603fc6c66f2f81ac04a0db4842486d75d22ed2eb029c44f1d696e5",
+      "correcta": true,
+      "motivo": "Responde al menos tres evaluaciones sumativas y cita RI-FI art. 11."
+    },
+    {
+      "caso_id": "P03",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Se abstiene pese a existir el derecho a una evaluación de recuperación en RI-FI art. 12."
+    },
+    {
+      "caso_id": "P04",
+      "respuesta_sha256": "908ea5c8462b96ea9870ce9dd57dc3d39c3950aa573d27c4eb32619ec6fe20ea",
+      "correcta": false,
+      "motivo": "Aunque entrega correctamente 1 a 7 y un decimal con RG art. 23, atribuye erróneamente el dato a RG art. 27."
+    },
+    {
+      "caso_id": "P05",
+      "respuesta_sha256": "d0a24a0ed19fceae3ca7e5ce7180b0cd5a2e5f808d399c320346a59f1e49ef0f",
+      "correcta": true,
+      "motivo": "Identifica Memoria de Título, un semestre y su reglamento, con RI-FI art. 29."
+    },
+    {
+      "caso_id": "P06",
+      "respuesta_sha256": "a7d239a76d402eb3c98361475bd0fccf3c1e8a5e488610070a1488111d66bd94",
+      "correcta": true,
+      "motivo": "Responde no inferior a una semana con RI-FI art. 10 y distingue la comunicación de notas de RG art. 25."
+    },
+    {
+      "caso_id": "P07",
+      "respuesta_sha256": "3d24fbad1bf8d7913863973656335a16525806f6c422ebb12c7933ed3779aa72",
+      "correcta": true,
+      "motivo": "Responde que resuelve en primera instancia el Comité de Docencia y Asuntos Estudiantiles con RI-FI art. 16 y RG art. 30."
+    },
+    {
+      "caso_id": "P08",
+      "respuesta_sha256": "cf6e7d661ded78b2678a17cfd261eaf920ef22b2c044c0a3ffb88f6b8dba79f4",
+      "correcta": true,
+      "motivo": "Responde que la renuncia es irrevocable e impide reincorporarse, con RG art. 34 y RI-FI art. 26."
+    },
+    {
+      "caso_id": "P09",
+      "respuesta_sha256": "e468b39ba5d27d056e35128b70e769ee28e53b3c1bc45d3db45c6a260373f52e",
+      "correcta": true,
+      "motivo": "Indica dos períodos lectivos ordinarios de diecinueve semanas cada uno, según RG art. 16."
+    },
+    {
+      "caso_id": "P10",
+      "respuesta_sha256": "090844a79ba97b601258bfc000a0d9a619c92d69062e92e505791922969cce4d",
+      "correcta": true,
+      "motivo": "Responde negativamente que Primer Año Común no puede convalidar ni revalidar, según RI-FI art. 22."
+    },
+    {
+      "caso_id": "P11",
+      "respuesta_sha256": "7032c72e90662405922f48c6d36cd4382fc2ed5298877fae408064fca2732ad5",
+      "correcta": true,
+      "motivo": "Identifica el mínimo general de 8 créditos por período ordinario con respaldo en RI-FI art. 8."
+    },
+    {
+      "caso_id": "P12",
+      "respuesta_sha256": "7553bc8b80adc0599ff71d6d60b4b2ce33832b068a570ae1210267bf7dc317c7",
+      "correcta": true,
+      "motivo": "Identifica que se incurre en baja académica al aprobar menos de 15 créditos al segundo semestre, según RI-FI art. 14 a)."
+    },
+    {
+      "caso_id": "P13",
+      "respuesta_sha256": "97f6bad0e25032f0e64f9f135090bbef613db242d29c7065be661e99ef83a9f2",
+      "correcta": true,
+      "motivo": "Indica correctamente que un promedio de créditos aprobados inferior a diez créditos semestrales desde el 4º semestre causa baja académica, según RI-FI art. 14 b)."
+    },
+    {
+      "caso_id": "P14",
+      "respuesta_sha256": "dd192a3b6b3684168b0fc2dcb02e9f5b8e4d8d91296ae6887693cb3154a2da9d",
+      "correcta": true,
+      "motivo": "Indica el límite de asistencia de hasta 80% en clases teóricas/prácticas y hasta 100% en laboratorios según RI-FI art. 13."
+    },
+    {
+      "caso_id": "P15",
+      "respuesta_sha256": "8f3f7a1186c9aa144db6045565183568052cd7ea9613631969983453ac044661",
+      "correcta": true,
+      "motivo": "Indica la calificación mínima de 4,5 en la escala de 1 a 7 para convalidar una asignatura, según RI-FI art. 21."
+    },
+    {
+      "caso_id": "P16",
+      "respuesta_sha256": "a5ffd1c21ff4118a0b053f2a573f9f0496e43320f3fa4d2771b8e6f84075842b",
+      "correcta": true,
+      "motivo": "Establece el plazo de las cuatro primeras semanas de ingreso a la nueva carrera para solicitar convalidación, según RI-FI art. 22."
+    },
+    {
+      "caso_id": "P17",
+      "respuesta_sha256": "3e7bc5dd7abd6afecfedde6fe541a6a0ee02126dd52e50da7ef3ef8803ccaadf",
+      "correcta": true,
+      "motivo": "Establece el plazo de dentro de los primeros 30 días para solicitar reconocimiento de contenidos, según RI-FI art. 23."
+    },
+    {
+      "caso_id": "P18",
+      "respuesta_sha256": "d2e5cdbbb9abeccb7a353841bd206cb9ae566226adb9db53b5e112fab1d3b07e",
+      "correcta": true,
+      "motivo": "Establece el máximo de 36 créditos en asignaturas adicionales fijadas por el Comité, según RI-FI art. 31."
+    },
+    {
+      "caso_id": "P19",
+      "respuesta_sha256": "317dd7dd3e499be87983ba98b25e92cc4821a652fdc5c721c8059da77bc8f9be",
+      "correcta": true,
+      "motivo": "Indica que cada período lectivo ordinario dura 19 semanas, según RG art. 16."
+    },
+    {
+      "caso_id": "P20",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado; no entrega el plazo de 3 días hábiles de RG art. 26."
+    },
+    {
+      "caso_id": "P21",
+      "respuesta_sha256": "7800b0718b1600068e816f15f0cc69b698d98564ef207d782a68c2f3db6aec89",
+      "correcta": true,
+      "motivo": "Entrega 4,5 para ingreso desde otra universidad (RI-FI art. 17) y 4,2 para cambio interno (RI-FI art. 18)."
+    },
+    {
+      "caso_id": "P22",
+      "respuesta_sha256": "261f6f188ff4acfbd347d26e575dd5219b5d0b26bfea0f4e2e1caa8abcd411fb",
+      "correcta": true,
+      "motivo": "Indica promedio mínimo de 5,0 para cursar una segunda carrera simultánea, según RI-FI art. 19."
+    },
+    {
+      "caso_id": "P23",
+      "respuesta_sha256": "830b2285a9297514e7edc87e3adfe06f7644ffdb73d88ed7196be6f2b3df1771",
+      "correcta": true,
+      "motivo": "Indica que no se puede revalidar una asignatura previamente cursada y reprobada, según RI-FI art. 20."
+    },
+    {
+      "caso_id": "P24",
+      "respuesta_sha256": "3b401628c814182ee4ed6f555149500af0b94d8bc74d643baf26880cfb9f24c9",
+      "correcta": true,
+      "motivo": "Indica baja académica por segunda reprobación obligatoria y reconoce las excepciones de PLEV y primer año, según RI-FI art. 14 c)."
+    },
+    {
+      "caso_id": "P25",
+      "respuesta_sha256": "f82f7e68617e1a2534e17d2c69c8c9b5872f62e2c1a3ac0e0c791066ca9f17f4",
+      "correcta": true,
+      "motivo": "Identifica que no se pueden eliminar asignaturas atrasadas ni reprobadas obligatorias (prioridades a y b), según RI-FI arts. 7 y 9."
+    },
+    {
+      "caso_id": "P26",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado; no entrega el trámite de solicitud de reincorporación de RI-FI art. 27."
+    },
+    {
+      "caso_id": "P27",
+      "respuesta_sha256": "e9a939f5972bc3c63c7fb53b1c2dbc7d65bb64ac349ac5e0aa0934b527365084",
+      "correcta": true,
+      "motivo": "Identifica los certificados exigidos de DAFE y Dirección de Bibliotecas según RI-FI art. 25 y RG art. 35."
+    },
+    {
+      "caso_id": "P28",
+      "respuesta_sha256": "b90801f3de7c3f285fb14171fa1e9c847aae613a0b5ef63ce69ff7ed5210480b",
+      "correcta": true,
+      "motivo": "Identifica que la falta de inscripción acarrea baja académica y pérdida de calidad de alumno regular, según RG art. 29."
+    },
+    {
+      "caso_id": "P29",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado; no entrega el plazo de regularización en 3 días hábiles de RG art. 26."
+    },
+    {
+      "caso_id": "P30",
+      "respuesta_sha256": "e6fbc8a32807969d370e4007b999705d9ea086f80ec4a629393a6ca52b58d2a2",
+      "correcta": true,
+      "motivo": "Identifica que en laboratorios, talleres y salidas a terreno la exigencia de asistencia puede llegar al 100%, según RI-FI art. 13."
+    },
+    {
+      "caso_id": "P31",
+      "respuesta_sha256": "abefa1284e331b9a58371fbb43bd325a9e969b42fdee18d883f8562879d9aa8f",
+      "correcta": true,
+      "motivo": "Identifica la prevalencia del Reglamento General de Docencia sobre el Reglamento Interno, según RI-FI art. 34."
+    },
+    {
+      "caso_id": "P32",
+      "respuesta_sha256": "1e24b679f0e85e424d4ffa4e6d974aa5969d51a975ada1214ff2bc69da92643a",
+      "correcta": true,
+      "motivo": "Indica el 4 de septiembre de 2026 para modificación de asignaturas del segundo semestre, según CAL 2026."
+    },
+    {
+      "caso_id": "P33",
+      "respuesta_sha256": "0ed4fc1fb55aa75542c04395d6bd6c931f3d893881afee42857eec1d46c3792e",
+      "correcta": true,
+      "motivo": "Indica el 2 de abril de 2026 para modificación de asignaturas del primer semestre, según CAL 2026."
+    },
+    {
+      "caso_id": "P34",
+      "respuesta_sha256": "daf3c841d8eaf7892a72ccc08eb7d72a69d01fe9b16cf2ea40923958a273a6f8",
+      "correcta": true,
+      "motivo": "Indica el derecho a suspender estudios hasta cuatro semanas antes del término del período, según RG art. 31."
+    },
+    {
+      "caso_id": "P35",
+      "respuesta_sha256": "c2f6afe86e1bccb4f03643b6885a16f0218cfa8ec6c57428e4c8ee4fece8458d",
+      "correcta": true,
+      "motivo": "Indica el 10 de agosto de 2026 para inicio de clases del segundo semestre, según CAL 2026."
+    },
+    {
+      "caso_id": "P36",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado; no entrega las fechas ni el mínimo de créditos solicitados."
+    },
+    {
+      "caso_id": "P37",
+      "respuesta_sha256": "ed9d6e3f29b07a2a0974ed7d472ec2ae90d32c5d0d4ac6791796be979ca29fb7",
+      "correcta": true,
+      "motivo": "Indica el 11 de diciembre de 2026 para término de clases del segundo semestre, según CAL 2026."
+    },
+    {
+      "caso_id": "P38",
+      "respuesta_sha256": "2a61ef4bea406d42b7725cd186d1a1b754ed66d3b7363fea163c70e67dabf44a",
+      "correcta": true,
+      "motivo": "Confirma la aplicación de la escala oficial 1 a 7 y la nota mínima de aprobación 4,0, según RG art. 23."
+    },
+    {
+      "caso_id": "P39",
+      "respuesta_sha256": "324d667a46c3e5097f95951127f0cdbad6654c0a3e7cbaee7b81872ca7e035e2",
+      "correcta": true,
+      "motivo": "Indica el período de evaluaciones de recuperación del 14 al 23 de diciembre de 2026, según CAL 2026."
+    },
+    {
+      "caso_id": "P40",
+      "respuesta_sha256": "acd4bf9666e10db1bea781924c762839a401f6a4a9d4aa9f6456d2a7ae86cf88",
+      "correcta": true,
+      "motivo": "Identifica el Reglamento de Memoria de Título (RI-FI art. 29) y la ponderación del 40% (RI-FI art. 30)."
+    },
+    {
+      "caso_id": "P41",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre artículo inexistente en el corpus (RI-FI art. 90)."
+    },
+    {
+      "caso_id": "P42",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre artículo inexistente en el corpus (RI-FI art. 36)."
+    },
+    {
+      "caso_id": "P43",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre artículo inexistente en el corpus (RG art. 100)."
+    },
+    {
+      "caso_id": "P44",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre artículo inexistente en el corpus (RG art. 70)."
+    },
+    {
+      "caso_id": "P45",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre inciso inexistente en el corpus (RI-FI art. 14 d)."
+    },
+    {
+      "caso_id": "P46",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre inciso inexistente en el corpus (RI-FI art. 25 c)."
+    },
+    {
+      "caso_id": "P47",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta con premisa falsa sobre tope máximo en RI-FI art. 8."
+    },
+    {
+      "caso_id": "P48",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta con premisa falsa sobre nota mínima en RI-FI art. 12."
+    },
+    {
+      "caso_id": "P49",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta sobre feriado inexistente el 30 de septiembre en CAL 2026."
+    },
+    {
+      "caso_id": "P50",
+      "respuesta_sha256": "6d0670567aa13bd23d8f9da6e08f810d2772b9c2cb9830c9cd16c46284cf7339",
+      "correcta": false,
+      "motivo": "Abstención técnica por presupuesto agotado ante pregunta con premisa falsa sobre tercera carrera en RI-FI art. 19."
+    }
+  ]
+}

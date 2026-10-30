@@ -1,0 +1,102 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 3,
+          "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+          "categoria": "factual"
+        },
+        "variante": "baseline_directo"
+      },
+      "tarea": {
+        "etapa": "baseline_directo",
+        "mensajes": [
+          {
+            "role": "system",
+            "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+          },
+          {
+            "role": "user",
+            "content": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?"
+          }
+        ],
+        "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "tokens_entrada": 115,
+        "prompt_sha256": "a636d63d6eb4a3a9614525fda8ebe18013faadcc96a494edfb7884628a1fb8bd"
+      },
+      "semilla": 2029
+    },
+    "salida": {
+      "respuesta_modelo": "La cantidad de evaluaciones de recuperación que tiene derecho el estudiante por asignatura no está especificada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Por lo tanto, no está en la normativa.",
+      "ids_tokens_salida": [
+        8747,
+        37276,
+        409,
+        19326,
+        12430,
+        409,
+        51521,
+        5721,
+        1709,
+        23332,
+        75689,
+        655,
+        1788,
+        49663,
+        4154,
+        60079,
+        24296,
+        902,
+        15466,
+        68594,
+        2584,
+        662,
+        1187,
+        7465,
+        27852,
+        409,
+        855,
+        901,
+        2123,
+        409,
+        1187,
+        16945,
+        494,
+        329,
+        409,
+        94468,
+        1268,
+        7431,
+        409,
+        1187,
+        66513,
+        409,
+        78618,
+        43328,
+        13,
+        19801,
+        775,
+        32086,
+        11,
+        902,
+        15466,
+        662,
+        1187,
+        7465,
+        27852,
+        13,
+        151645
+      ],
+      "salida_con_tokens_especiales": "La cantidad de evaluaciones de recuperación que tiene derecho el estudiante por asignatura no está especificada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Por lo tanto, no está en la normativa.<|im_end|>",
+      "tokens_salida": 57,
+      "motivo_parada": "eos",
+      "posible_corte": false,
+      "thinking_inesperado": false,
+      "segundos": 6.3566,
+      "pico_memoria_gpu_gb": 2.5609
+    }
+  },
+  "sha256": "5b8d02ab1420c007a8984c2ee35e1ff8cf884ccf8fcf6df318a9a1b1f05b9ed6"
+}

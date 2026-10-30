@@ -1,0 +1,347 @@
+{
+  "contenido": {
+    "protocolo": "d3-agentes-desde-cero-v4",
+    "preguntas": [
+      {
+        "id": 1,
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+        "categoria": "factual"
+      },
+      {
+        "id": 2,
+        "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+        "categoria": "factual"
+      },
+      {
+        "id": 3,
+        "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+        "categoria": "factual"
+      },
+      {
+        "id": 4,
+        "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+        "categoria": "factual"
+      },
+      {
+        "id": 5,
+        "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+        "categoria": "factual"
+      },
+      {
+        "id": 6,
+        "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+        "categoria": "factual"
+      },
+      {
+        "id": 7,
+        "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+        "categoria": "factual"
+      },
+      {
+        "id": 8,
+        "pregunta": "¿La renuncia a la carrera es revocable?",
+        "categoria": "factual"
+      },
+      {
+        "id": 9,
+        "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+        "categoria": "factual"
+      },
+      {
+        "id": 10,
+        "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+        "categoria": "factual"
+      },
+      {
+        "id": 11,
+        "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 12,
+        "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 13,
+        "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 14,
+        "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 15,
+        "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 16,
+        "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 17,
+        "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 18,
+        "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 19,
+        "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 20,
+        "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+        "categoria": "numerica"
+      },
+      {
+        "id": 21,
+        "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 22,
+        "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 23,
+        "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 24,
+        "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 25,
+        "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 26,
+        "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 27,
+        "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 28,
+        "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 29,
+        "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 30,
+        "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+        "categoria": "condicional"
+      },
+      {
+        "id": 31,
+        "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 32,
+        "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 33,
+        "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 34,
+        "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 35,
+        "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 36,
+        "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 37,
+        "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 38,
+        "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 39,
+        "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 40,
+        "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+        "categoria": "cruce"
+      },
+      {
+        "id": 41,
+        "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 42,
+        "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 43,
+        "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 44,
+        "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 45,
+        "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 46,
+        "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 47,
+        "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 48,
+        "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 49,
+        "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+        "categoria": "abstencion"
+      },
+      {
+        "id": 50,
+        "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+        "categoria": "abstencion"
+      }
+    ],
+    "variantes": [
+      "baseline_directo",
+      "rag_d2",
+      "agentes_completo",
+      "sin_descomposicion",
+      "sin_completitud",
+      "sin_verificacion"
+    ],
+    "inferencia": {
+      "modelo": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "embedding_modelo": "intfloat/multilingual-e5-small",
+      "embedding_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "embedding_tokenizer_sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+      "generacion": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "min_p": 0.0,
+        "repetition_penalty": 1.0,
+        "max_new_tokens": 1024
+      },
+      "semilla_base": 2026,
+      "max_context_tokens": 8192,
+      "ejecucion": "modelo_real",
+      "thinking": false,
+      "cuantizacion": {
+        "bits": 4,
+        "tipo": "nf4",
+        "double_quant": true,
+        "compute_dtype": "torch.bfloat16"
+      },
+      "gpu": "Tesla T4",
+      "cuda": "13.0",
+      "python": "3.13.16",
+      "versiones": {
+        "transformers": "4.57.6",
+        "accelerate": "1.11.0",
+        "bitsandbytes": "0.48.1",
+        "sentence-transformers": "5.1.2",
+        "tokenizers": "0.22.2",
+        "torch": "2.11.0+cu130",
+        "numpy": "2.1.3"
+      }
+    },
+    "limites": {
+      "model_calls": 12,
+      "tool_calls": 6,
+      "invalid_outputs": 3,
+      "context_tokens": 8192,
+      "output_tokens": 1024,
+      "token_margin": 64,
+      "evidence_units": 28,
+      "evidence_characters": 30000
+    },
+    "etiqueta": "lote-v4",
+    "archivos_sha256": {
+      "d3_agentes/runtime.py": "112401003b7051b2f462f0496bfa1f6a313a7fa01c7c7a262930837fbc04ab6e",
+      "d3_agentes/common.py": "76f9cb1d436e46f095d37a70ddd9b1ab8c8da0f8e1ce5ee1f8f2f1831077bb20",
+      "d3_agentes/tools.py": "f075926974535b9b03aa8eaf431b0a803af13d81444b08f136818643a09ddab0",
+      "d3_agentes/downloads.py": "9345bffa531e1fb55dcd6d572f8afbc9c324972e29c88103aa297486042924cc",
+      "d3_agentes/experiment.py": "d3c6b4b1ed314258e175df95193411782ad63ff39d077fb5b5e723a65c4cc8c8",
+      "d3_agentes/__init__.py": "ee0695533a98ad593db63822f7d3775fe565e1c4a5575f78de54034987d44d9d",
+      "d3_agentes/core.py": "3c52ef07de3c7675168f035144ce5c5fe54d7861bf786b14a8ad527da76dcf44",
+      "d3_agentes/bridge.py": "0e15d6153defdb4bc77c0c2a99d32e28e34a31b5f24c97b94fd0e06c23924ca1",
+      "prompts/verificacion.txt": "4aedfc2bae8ae6a485dacd0f606ff8b8334668fc5915b420481953559a41c1b7",
+      "prompts/redactor.txt": "25df34e7d299ddaa25db0f2877dba7965b5129b48ca64e6d92cf7dddb546ef33",
+      "prompts/descomposicion.txt": "cf09766bec652248002dfa204b2cf8fff4df6330f22f01c838b1e1c2d4de50f8",
+      "prompts/completitud.txt": "72918aa2f8a5bfb7981073823e44145c2574691812672487df6664b540e9c538",
+      "prompts/auditor.txt": "69aa2186f17c3a4b86799f4435060ef86865e8be00a37e49f4249bc1df7be9b2",
+      "prompts/investigador.txt": "0bcc8694aa10ecdcfa5c17438071a7390cd77a2a355141191e13b5704ee1c9ea",
+      "d2_runtime/experimento.py": "d20ce66a54c7791a480e0d9466e1740b34a8c5198df94ec52c1d4868219e22d0",
+      "d2_runtime/sistema.py": "be9ff8714f6580b30618ef4d45c98e744463da620e98721701dadfe9521fe130",
+      "d2_runtime/recuperador_portable.py": "a04c720b0cf25eb8010996dd28f70f8a08806b6c556e0be6bc2ea3a6fb4dd056",
+      "data/corpus.json": "0a31ff812a1969ff81bbc895feaba490e3bd027b092e52101296e3c872719400",
+      "data/fragmentos_busqueda.json": "c125615c1c3cddb23d69c3b2b93d7a73e076c90fe861cc217b59f293aa9b14cd"
+    },
+    "prompts_sha256": {
+      "auditor.txt": "69aa2186f17c3a4b86799f4435060ef86865e8be00a37e49f4249bc1df7be9b2",
+      "completitud.txt": "72918aa2f8a5bfb7981073823e44145c2574691812672487df6664b540e9c538",
+      "descomposicion.txt": "cf09766bec652248002dfa204b2cf8fff4df6330f22f01c838b1e1c2d4de50f8",
+      "investigador.txt": "0bcc8694aa10ecdcfa5c17438071a7390cd77a2a355141191e13b5704ee1c9ea",
+      "redactor.txt": "25df34e7d299ddaa25db0f2877dba7965b5129b48ca64e6d92cf7dddb546ef33",
+      "verificacion.txt": "4aedfc2bae8ae6a485dacd0f606ff8b8334668fc5915b420481953559a41c1b7"
+    },
+    "corpus_sha256": "88f22df88bb5478ea005488741d68584a4af9152f6b1ea044558d392cde044ed",
+    "fragmentos_sha256": "755e2dfbe35498b0cee8b1308ce53d7ad32323e2c8657fabb193dc2731a439c7",
+    "indice_sha256": "9f3cfc0a28cad6635c6105186c3c551a9d234613999c6f7165b186b2d3ae4e08"
+  },
+  "sha256": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812"
+}

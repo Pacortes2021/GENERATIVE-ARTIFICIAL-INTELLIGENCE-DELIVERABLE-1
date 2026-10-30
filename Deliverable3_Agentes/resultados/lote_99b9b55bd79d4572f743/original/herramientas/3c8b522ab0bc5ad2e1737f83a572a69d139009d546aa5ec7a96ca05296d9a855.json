@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 15,
+          "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+          "categoria": "numerica"
+        },
+        "variante": "sin_completitud"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Qué calificación mínima se exige para convalidar una asignatura?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-021",
+          "cita": "RI-FI, artículo 21, PDF p. 4",
+          "texto": "Artículo 21°. La y el estudiante de especialidad podrá solicitar la convalidación de una asignatura de su Plan de Estudio por otra(s) aprobada(s), con calificación(es) mínima(s) equivalente(s) a 4,5 en la escala de notas 1 a 7, en esta u otra Institución de Educación Superior. La solicitud deberá ir acompañada de un certificado de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas. No se podrá convalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio."
+        },
+        {
+          "id": "RI-FI-ART-011",
+          "cita": "RI-FI, artículo 11, PDF p. 2",
+          "texto": "Artículo 11°. Cada asignatura impartida por la Facultad de Ingeniería deberá contar con al menos tres evaluaciones sumativas, y para aprobarla deberá cumplirse los requisitos establecidos para ella y obtener una calificación final mínima de 4,0 calculada de acuerdo al syllabus correspondiente."
+        },
+        {
+          "id": "RG-ART-039",
+          "cita": "RG, artículo 39, PDF p. 24",
+          "texto": "Artículo 39º El alumno en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la universidad, tendrá el derecho a validar tales asignaturas. Para que una asignatura le sea validada, deberá presentar al Vicedecano de su Facultad el programa de la asignatura y calificación obtenida debidamente certificadas. La nota de una asignatura validada deberá ser incorporada al SAC en la Escala Oficial de la Universidad de Concepción y la asignatura será reconocida como carga académica en el semestre en la cual fue cursada."
+        },
+        {
+          "id": "RI-FI-ART-024",
+          "cita": "RI-FI, artículo 24, PDF p. 4",
+          "texto": "Artículo 24°. La y el estudiante en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la Universidad de Concepción tendrá el derecho a validar tales asignaturas. Para que una asignatura le sea validada, deberá presentar al Vicedecano el programa de la asignatura y calificación obtenida debidamente certificadas. La nota de una asignatura validada deberá ser incorporada al Sistema de Administración Curricular (SAC) en la Escala Oficial de la Universidad de Concepción y la asignatura será reconocida como carga académica en el semestre en la cual fue cursada."
+        },
+        {
+          "id": "RI-FI-ART-013",
+          "cita": "RI-FI, artículo 13, PDF p. 2, 3",
+          "texto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá ser superior a un 80% de las clases teóricas y prácticas, y que podrá llegar a un 100% en las actividades tales como seminarios, laboratorios, talleres, salidas a terreno u otras de naturaleza similar a las mencionadas."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.06249024700014161
+  },
+  "sha256": "63dd5fc50b7d051997e457f39e74792458ea53d4ca744eb66a8982cfdf54eb56"
+}

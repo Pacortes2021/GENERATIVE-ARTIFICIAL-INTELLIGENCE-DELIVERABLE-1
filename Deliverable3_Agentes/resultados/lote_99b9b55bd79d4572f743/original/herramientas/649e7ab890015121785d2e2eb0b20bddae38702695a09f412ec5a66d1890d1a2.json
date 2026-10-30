@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 39,
+          "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+          "categoria": "cruce"
+        },
+        "variante": "sin_completitud"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "CAL-2026-S2-05",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Evaluaciones de Recuperación: 14 – 23 de diciembre."
+        },
+        {
+          "id": "CAL-2026-S1-06",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Evaluaciones de Recuperación: 13 - 24 de julio."
+        },
+        {
+          "id": "CAL-2026-S2-07",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. No se realizarán evaluaciones: 21 y 22 de septiembre."
+        },
+        {
+          "id": "CAL-2026-S2-04",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Término de Clases: 11 de diciembre."
+        },
+        {
+          "id": "CAL-2026-S2-09",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: viernes 18 de septiembre."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.06584540400035621
+  },
+  "sha256": "7a6c58a0c443709cbf9123ad0f4db33f0cf655b215b86e19794d2efdf8b15b9a"
+}

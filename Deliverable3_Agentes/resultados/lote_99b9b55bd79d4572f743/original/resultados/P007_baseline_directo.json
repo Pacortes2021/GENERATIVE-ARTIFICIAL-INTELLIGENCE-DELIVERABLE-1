@@ -1,0 +1,93 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 7,
+        "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+        "categoria": "factual"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "Art. 8. El director de carrera resuelve en primera instancia una solicitud de continuación de estudios.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Quién resuelve en primera instancia una solicitud de continuación de estudios?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 113,
+            "prompt_sha256": "8a6a312286677842a27cef65a42fc6a923bdd568a21952d404c5cf1a8acf634e"
+          },
+          "semilla": 2033,
+          "salida": {
+            "respuesta_modelo": "Art. 8. El director de carrera resuelve en primera instancia una solicitud de continuación de estudios.",
+            "ids_tokens_salida": [
+              9286,
+              13,
+              220,
+              23,
+              13,
+              3984,
+              7538,
+              409,
+              89876,
+              592,
+              46856,
+              662,
+              43669,
+              97979,
+              5093,
+              95857,
+              409,
+              16122,
+              5721,
+              409,
+              57463,
+              3530,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "Art. 8. El director de carrera resuelve en primera instancia una solicitud de continuación de estudios.<|im_end|>",
+            "tokens_salida": 24,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 2.724,
+            "pico_memoria_gpu_gb": 2.5604,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 113,
+      "tokens_salida": 24,
+      "segundos_modelo_logicos": 2.724,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 2.7297953969998616,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "c5a5541905867c17dcecfbbe82ae2fbb2adaaa34161bbe8c1fa8701f125b19ad.json"
+    ]
+  },
+  "sha256": "ea351b49b380672cab41ed341adc0e80f3d07c753a91fbdf2da2ee9c10cc2d2d"
+}

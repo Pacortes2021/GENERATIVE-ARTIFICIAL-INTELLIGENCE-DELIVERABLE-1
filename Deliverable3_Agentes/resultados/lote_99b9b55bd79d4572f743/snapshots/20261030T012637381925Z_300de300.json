@@ -1,0 +1,69 @@
+{
+  "capturada_utc": "20261030T012637381925Z",
+  "zip": "20261030T012637381925Z_300de300.zip",
+  "zip_sha256": "9756a348858cf1a8cdbbec8e509e013307a348f7f47714e6e647e50c1bc8d411",
+  "integridad": "audit_zip_correcta",
+  "resumen": {
+    "esperadas": 300,
+    "completadas": 300,
+    "completa": true,
+    "ejecucion": "modelo_real",
+    "exactitud": null,
+    "nota": "La exactitud requiere evaluación externa; una aceptación interna no es un acierto.",
+    "por_variante": {
+      "baseline_directo": {
+        "n": 50,
+        "llamadas_modelo": 50,
+        "tokens_entrada": 5965,
+        "tokens_salida": 3232,
+        "segundos_modelo_logicos": 335.9436,
+        "salidas_cortadas": 0
+      },
+      "rag_d2": {
+        "n": 50,
+        "llamadas_modelo": 50,
+        "tokens_entrada": 66022,
+        "tokens_salida": 4739,
+        "segundos_modelo_logicos": 750.2383,
+        "salidas_cortadas": 0
+      },
+      "agentes_completo": {
+        "n": 50,
+        "llamadas_modelo": 256,
+        "tokens_entrada": 600456,
+        "tokens_salida": 44351,
+        "segundos_modelo_logicos": 7602.9846,
+        "salidas_cortadas": 0
+      },
+      "sin_descomposicion": {
+        "n": 50,
+        "llamadas_modelo": 271,
+        "tokens_entrada": 629918,
+        "tokens_salida": 46642,
+        "segundos_modelo_logicos": 8065.2173,
+        "salidas_cortadas": 0
+      },
+      "sin_completitud": {
+        "n": 50,
+        "llamadas_modelo": 258,
+        "tokens_entrada": 585544,
+        "tokens_salida": 40822,
+        "segundos_modelo_logicos": 7094.1756000000005,
+        "salidas_cortadas": 0
+      },
+      "sin_verificacion": {
+        "n": 50,
+        "llamadas_modelo": 243,
+        "tokens_entrada": 525772,
+        "tokens_salida": 43356,
+        "segundos_modelo_logicos": 6951.1912,
+        "salidas_cortadas": 0
+      }
+    }
+  },
+  "respuestas_previas_intactas": 60,
+  "respaldo_previo": "20261029T040805589463Z_060de300.zip",
+  "respaldo_previo_sha256": "1b955f91fa88f950c5c00e4aea06c7b33897e5727da2670a035a526cfafb9bf7",
+  "origen_descarga": "agentes_99b9b55bd79d4572f743_respaldo_300de300.zip",
+  "nota": "Mismo lote y configuración; copia original intacta. Exactitud pendiente de evaluación externa."
+}

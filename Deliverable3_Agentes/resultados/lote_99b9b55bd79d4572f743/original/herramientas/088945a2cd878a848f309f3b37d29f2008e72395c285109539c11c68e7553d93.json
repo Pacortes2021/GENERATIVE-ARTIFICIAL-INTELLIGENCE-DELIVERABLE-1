@@ -1,0 +1,63 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 47,
+          "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+          "categoria": "abstencion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-008",
+          "cita": "RI-FI, artículo 8, PDF p. 2",
+          "texto": "Artículo 8°. En cada periodo lectivo ordinario las y los estudiantes deberán inscribir y cursar un número de créditos igual o superior a ocho del plan de estudio de la carrera a la que están adscritos, salvo las y los estudiantes que estén terminando sus estudios quienes inscribirán al menos las asignaturas que les falte cursar, o aquellos estudiantes que por falta de requisitos se vean impedidos de inscribir el mínimo de créditos exigidos."
+        },
+        {
+          "id": "RI-FI-ART-014",
+          "cita": "RI-FI, artículo 14, PDF p. 3",
+          "texto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las siguientes situaciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera. b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera. c) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera."
+        },
+        {
+          "id": "RI-FI-ART-015",
+          "cita": "RI-FI, artículo 15, PDF p. 3",
+          "texto": "Artículo 15°. La y el estudiante que, como consecuencia de revalidaciones, convalidaciones o reconocimiento, ingrese directamente a un nivel superior al primer año de la carrera, quedará sometido a la exigencia de aprobar el número de créditos correspondientes al respectivo nivel que ingresa, para los efectos de aplicar el artículo 14° inciso b). Para estos efectos no se contabilizarán los créditos revalidados, convalidados o reconocidos."
+        },
+        {
+          "id": "RI-FI-ART-031",
+          "cita": "RI-FI, artículo 31, PDF p. 5",
+          "texto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la Memoria de Título, deberán cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles."
+        },
+        {
+          "id": "RI-FI-ART-009",
+          "cita": "RI-FI, artículo 9, PDF p. 2",
+          "texto": "Artículo 9°. La modificación de la inscripción de asignaturas deberá hacerse en las fechas que se indiquen en el calendario anual de docencia y en ella se podrá agregar o eliminar asignaturas. No obstante, no se podrá eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°, ni contravenir el número mínimo de créditos exigidos en el Artículo 8°."
+        },
+        {
+          "id": "RI-FI-ART-007",
+          "cita": "RI-FI, artículo 7, PDF p. 2",
+          "texto": "Artículo 7°. En cada periodo lectivo ordinario, las y los estudiantes podrán inscribir las asignaturas para las cuales cumplan requisito, en las fechas que se indiquen en el calendario anual de docencia de pregrado, con las siguientes prioridades: a) Las asignaturas atrasadas con respecto a su nivel de avance en el Plan de Estudio. b) Las asignaturas obligatorias reprobadas anteriormente y no aprobadas a la fecha. c) Las asignaturas correspondientes a su nivel de avance en el Plan de Estudio. d) Las asignaturas que desee adelantar con respecto a su nivel de avance en el plan de Estudio."
+        },
+        {
+          "id": "INV-c73d3cc9d909a021",
+          "cita": "Inventario de Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "texto": "{\"ambito\": \"ordinario\", \"documento\": \"RI-FI\", \"existe\": true, \"fuente\": {\"archivo\": \"Reglamento_de_Docencia_de_Pregrado-FI.pdf\", \"sha256\": \"26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1\"}, \"inventario_numeros\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], \"numero_consultado\": 8, \"tipo\": \"articulo\"}"
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.12826923999818973
+  },
+  "sha256": "3a44c0c1bb1eabeeeab2c8bf64b3fb5cf6b01607e032183d0b4fa1314ba09247"
+}

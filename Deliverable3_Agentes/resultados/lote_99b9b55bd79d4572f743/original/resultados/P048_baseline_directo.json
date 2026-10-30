@@ -1,0 +1,111 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 48,
+        "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+        "categoria": "abstencion"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "Art. 12 del RI-FI: La nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación es **1,0**.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 125,
+            "prompt_sha256": "5211795695b0d9f0efe4088b57f6804567a559b07b325937b368f8a8c9f4dcb2"
+          },
+          "semilla": 2074,
+          "salida": {
+            "respuesta_modelo": "Art. 12 del RI-FI: La nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación es **1,0**.",
+            "ids_tokens_salida": [
+              9286,
+              13,
+              220,
+              16,
+              17,
+              1594,
+              47497,
+              7276,
+              40,
+              25,
+              4929,
+              44038,
+              70224,
+              7523,
+              1709,
+              282,
+              28130,
+              655,
+              140308,
+              220,
+              16,
+              17,
+              1594,
+              47497,
+              7276,
+              40,
+              3348,
+              1187,
+              75098,
+              5721,
+              409,
+              4067,
+              3466,
+              5721,
+              1531,
+              3070,
+              16,
+              11,
+              15,
+              334,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "Art. 12 del RI-FI: La nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación es **1,0**.<|im_end|>",
+            "tokens_salida": 42,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 4.4889,
+            "pico_memoria_gpu_gb": 2.5633,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 125,
+      "tokens_salida": 42,
+      "segundos_modelo_logicos": 4.4889,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 4.49531905099866,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "a82f2b45698ffec5b05ce066bb0f8f79f1a9c7aff1fa23e5c3e2fb96055c0a4a.json"
+    ]
+  },
+  "sha256": "06f86da86928266afd2aaefd1e4f7225344569c76385deae93cc14c3da3d8b1f"
+}

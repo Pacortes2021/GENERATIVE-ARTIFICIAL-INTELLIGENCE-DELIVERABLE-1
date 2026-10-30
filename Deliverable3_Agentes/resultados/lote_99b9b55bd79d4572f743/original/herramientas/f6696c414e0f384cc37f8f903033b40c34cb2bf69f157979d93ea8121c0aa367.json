@@ -1,0 +1,58 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 50,
+          "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+          "categoria": "abstencion"
+        },
+        "variante": "sin_completitud"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Promedio exigido para una tercera carrera simultánea en el artículo 19 del RI-FI"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-019",
+          "cita": "RI-FI, artículo 19, PDF p. 3",
+          "texto": "Artículo 19°. La y el estudiante que esté cursando una carrera de pregrado en la Universidad de Concepción, podrá solicitar cursar simultáneamente una carrera de la Facultad de Ingeniería, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado de la Universidad de Concepción, haya obtenido un promedio ponderado mínimo de calificaciones de 5,0 en la escala de 1 a 7, en su carrera de origen."
+        },
+        {
+          "id": "RI-FI-ART-034",
+          "cita": "RI-FI, artículo 34, PDF p. 6",
+          "texto": "Artículo 34°. Ante la situación de que disposiciones del presente reglamento no se concilien con aquellas contenidas en el Reglamento General de Docencia de Pregrado y en las Normas de Ingreso a las Carreras de Pregrado que imparte la Universidad de Concepción, prevalecerán siempre estas últimas, respecto de las primeras."
+        },
+        {
+          "id": "RI-FI-ART-018",
+          "cita": "RI-FI, artículo 18, PDF p. 3",
+          "texto": "Artículo 18°. La y el estudiante que haya cursado estudios en una carrera de la Facultad de Ingeniería podrá solicitar cambio a otra carrera de la misma Facultad, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado, haya obtenido un promedio ponderado mínimo de calificaciones de 4,2 en la escala de 1 a 7, en su carrera de origen."
+        },
+        {
+          "id": "RI-FI-ART-005",
+          "cita": "RI-FI, artículo 5, PDF p. 1",
+          "texto": "Artículo 5°. Las y los estudiantes del Ingreso Común postularán a las carreras ofrecidas por la Facultad de Ingeniería al término de su segundo semestre de permanencia. La selección se realizará, en primer lugar, de acuerdo al número de créditos aprobados; a igual número de créditos aprobados, de acuerdo al promedio curricular de notas de las asignaturas ponderadas por sus créditos del Plan Común de Primer Año expresado con dos decimales (incluye asignaturas aprobadas y reprobadas). La selección considerará el orden de sus preferencias en las carreras de Ingeniería Civil según oferta de la Facultad de Ingeniería y a los cupos disponibles por carrera. Para el proceso de postulación sólo se considerarán las asignaturas obligatorias de Primer Año."
+        },
+        {
+          "id": "RI-FI-ART-003",
+          "cita": "RI-FI, artículo 3, PDF p. 1",
+          "texto": "Artículo 3°. Las y los estudiantes ingresarán al Primer Año bajo una modalidad mixta, que contempla un Ingreso Directo a una carrera de acuerdo a los cupos definidos para cada una de ellas, y a un Ingreso Común sin especialidad."
+        },
+        {
+          "id": "INV-55057f850fcd484a",
+          "cita": "Inventario de Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "texto": "{\"ambito\": \"ordinario\", \"documento\": \"RI-FI\", \"existe\": true, \"fuente\": {\"archivo\": \"Reglamento_de_Docencia_de_Pregrado-FI.pdf\", \"sha256\": \"26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1\"}, \"inventario_numeros\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], \"numero_consultado\": 19, \"tipo\": \"articulo\"}"
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.07725897499767598
+  },
+  "sha256": "fa23fdd9a6e1773d15f0c0bba842e83bc6823a1e85a7cc6f6a3717debef3bdb9"
+}

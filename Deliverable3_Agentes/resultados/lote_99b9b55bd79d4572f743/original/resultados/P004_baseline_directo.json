@@ -1,0 +1,123 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 4,
+        "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+        "categoria": "factual"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "La nota final de una asignatura se expresa en una escala de 0 a 7, según el **Art. 8** de la Normativa de Pregrado de la Facultad de Ingeniería de la Universidad de Concepción.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "¿En qué escala se expresa la nota final de una asignatura?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿En qué escala se expresa la nota final de una asignatura?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 112,
+            "prompt_sha256": "146a7a4cce1a853eda32f03ab1ea9be42500de32bf2179bbf3383e2623e3825f"
+          },
+          "semilla": 2030,
+          "salida": {
+            "respuesta_modelo": "La nota final de una asignatura se expresa en una escala de 0 a 7, según el **Art. 8** de la Normativa de Pregrado de la Facultad de Ingeniería de la Universidad de Concepción.",
+            "ids_tokens_salida": [
+              8747,
+              44038,
+              1590,
+              409,
+              5093,
+              60079,
+              24296,
+              511,
+              1343,
+              14315,
+              662,
+              5093,
+              3835,
+              6053,
+              409,
+              220,
+              15,
+              264,
+              220,
+              22,
+              11,
+              62015,
+              655,
+              3070,
+              9286,
+              13,
+              220,
+              23,
+              334,
+              409,
+              1187,
+              20317,
+              27852,
+              409,
+              4968,
+              901,
+              2123,
+              409,
+              1187,
+              16945,
+              494,
+              329,
+              409,
+              94468,
+              1268,
+              7431,
+              409,
+              1187,
+              66513,
+              409,
+              78618,
+              43328,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "La nota final de una asignatura se expresa en una escala de 0 a 7, según el **Art. 8** de la Normativa de Pregrado de la Facultad de Ingeniería de la Universidad de Concepción.<|im_end|>",
+            "tokens_salida": 54,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 5.9534,
+            "pico_memoria_gpu_gb": 2.5602,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 112,
+      "tokens_salida": 54,
+      "segundos_modelo_logicos": 5.9534,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 5.959259145000033,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "ba9744cafc00763a77edb472c1fe3e757f02ff71f991e5e20e34ebd5fb5a1d15.json"
+    ]
+  },
+  "sha256": "e2091d577c86b2b8f1e41f16933a7c041e59ce025b3e2ab6415ae052f0fa19a1"
+}

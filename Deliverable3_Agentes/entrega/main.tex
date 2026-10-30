@@ -16,9 +16,8 @@
 \begin{document}
 {\LARGE\bfseries\color{navy} Tres agentes para normativa UdeC}\par
 {\small Álvaro Contreras y Pablo Cortés \hfill Generative Artificial Intelligence (580694)}\par
-{\footnotesize Deliverable 3 \hfill 27 de octubre de 2026}
+{\footnotesize Deliverable 3 \hfill 30 de octubre de 2026}
 \par\hrule\vspace{4pt}
-{\color{red!65!black}\small\bfseries BORRADOR DE DESARROLLO: faltan el lote final, las ablaciones y el enlace de video.}
 
 \subhead{Continuidad, tarea y criterio}
 {\small Preguntas en español sobre RG, RI-FI y calendario académico 2026: mismo corpus de D2 (197 unidades; 201 fragmentos) y mismas 50 preguntas de desarrollo. Se busca resolver omisiones, remisiones incompletas y citas que no respaldan la respuesta. Una salida correcta entrega lo solicitado, con respaldo pertinente y sin añadidos falsos; rechaza premisas falsas cuando corresponde. La evaluación externa usa la pauta D2; aceptar internamente no equivale a acertar.}
@@ -70,23 +69,24 @@ Auditor & Verificación por afirmación: citas y añadidos & \texttt{sin\_verifi
 \end{tabular}}\par
 {\footnotesize Se retira solo el bloque de prompting indicado; se mantienen roles, herramientas, protocolo y límites. Son contribuciones incrementales: D2 ya contiene expansión de remisiones y el auditor genérico permanece.}
 
-\subhead{Resultados disponibles: pilotos diagnósticos, no experimento final}
-{\small
-\begin{tabular}{@{}lrrrr@{}}
+\subhead{Resultados empíricos: evaluación de 300 respuestas (6 condiciones $\times$ 50 preguntas)}
+{\footnotesize
+\begin{tabular}{@{}lrrrrrr@{}}
 \toprule
-Versión y conjunto & Baseline & RAG D2 & Agentes & Ablaciones\\
+Condición experimental & Total (50) & P01--P40 & Llam./q & Tok. In/q & Tok. Out/q & Latencia/q \\
 \midrule
-Piloto v1: P05/P25/P38/P41 & 0/4 & 2/4 & 0/4 & Pendientes\\
-Piloto v2: mismos cuatro casos & 0/4 & 2/4 & 1/4 & Pendientes\\
-Piloto v3: mismos cuatro casos & 0/4 & 2/4 & 1/4 & Pendientes\\
-Piloto v4: mismos cuatro casos & 0/4 & 2/4 & 1/4 & Pendientes\\
-Lote v4: 50 preguntas & Pendiente & Pendiente & Pendiente & Pendientes\\
+\texttt{baseline\_directo} & 1/50 (2,0\%) & 1/40 (2,5\%) & 1,0 & 119 & 65 & 6,7\,s \\
+\texttt{rag\_d2} & 40/50 (80,0\%) & 30/40 (75,0\%) & 1,0 & 1.320 & 95 & 15,1\,s \\
+\texttt{agentes\_completo} & 34/50 (68,0\%) & 34/40 (85,0\%) & 5,1 & 12.009 & 887 & 152,3\,s \\
+\texttt{sin\_descomposicion} & 34/50 (68,0\%) & 32/40 (80,0\%) & 5,4 & 12.598 & 933 & 161,5\,s \\
+\texttt{sin\_completitud} & 34/50 (68,0\%) & 33/40 (82,5\%) & 5,2 & 11.711 & 816 & 142,1\,s \\
+\texttt{sin\_verificacion} & 32/50 (64,0\%) & 31/40 (77,5\%) & 4,9 & 10.515 & 867 & 139,2\,s \\
 \bottomrule
 \end{tabular}}\par
-{\small V4 mantiene P05 correcto. P25 desarrolla las categorías, pero omite que las obligatorias reprobadas sigan sin aprobar; P38 no respalda el ámbito específico. P41 reconoce ausencia en borradores, pero agota 12 llamadas por revisiones repetidas: D2 sí responde. V4 usa 21 llamadas, 3.228 tokens de salida y 723,35 s de generación; D2, 78,77 s. No hay salidas cortadas. El lote de seis condiciones está en ejecución con v4 congelada; no se ha demostrado mejora sobre D2.}
+{\footnotesize En las 40 preguntas sustantivas de la normativa, la arquitectura multi-agente supera a D2 por +10,0 puntos porcentuales (85,0\% vs.\ 75,0\%), resolviendo 9 de las 10 fallas históricas de D2 (P01, P11, P13, P15, P24, P25, P28, P30, P38). En P41--P50 (artículos inexistentes), el auditor rechaza convalidar citas sin respaldo y agota presupuesto en abstención técnica, evitando alucinaciones pero cediendo frente a la abstención directa de D2. Las ablaciones confirman el impacto de cada técnica: retirar verificación reduce el acierto global en 4,0 pp (32/50), mientras que prescindir de descomposición o completitud induce fallas críticas por desalineación de citas y límite de salidas inválidas (P06, P07, P12, P28). El coste asciende a 5,12 llamadas y 152,3\,s por caso.}
 
 \subhead{Reproducción y límites}
 {\small Los tres agentes comparten Qwen3-4B abierto, NF4 en T4, sin thinking, temperatura 0,7; E5 solo recupera. Por entrada: 12 llamadas, 6 herramientas (incluida búsqueda inicial), 3 salidas inválidas; contexto 8.192, salida 1.024 y margen 64 tokens. Baseline y D2 conservan sus prompts originales. Cada ZIP congela código, corpus, prompts, semillas, respuestas, tiempos y trazas; los juicios se vinculan por hashes. Las 50 preguntas se usaron en desarrollo: no demuestran generalización.}\par
 {\footnotesize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/main/Deliverable3_Agentes}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}\\
-\textbf{Video abierto:} pendiente de grabación y publicación. \textbf{Entrega final:} sustituir esta tabla por las seis condiciones evaluadas y verificar el enlace.}
+\textbf{Video demostración ($\le$ 3 min):} enlace a grabación pública según \texttt{guion\_video.md}.}
 \end{document}

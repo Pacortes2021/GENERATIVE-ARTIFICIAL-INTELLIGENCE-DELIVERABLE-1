@@ -1,0 +1,115 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 45,
+          "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+          "categoria": "abstencion"
+        },
+        "variante": "baseline_directo"
+      },
+      "tarea": {
+        "etapa": "baseline_directo",
+        "mensajes": [
+          {
+            "role": "system",
+            "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+          },
+          {
+            "role": "user",
+            "content": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?"
+          }
+        ],
+        "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+        "tokens_entrada": 123,
+        "prompt_sha256": "bae7bbe4e1a30a256bac94aa6e06f8d6d0acdfde01c6629bce67058d5cbbfd3b"
+      },
+      "semilla": 2071
+    },
+    "salida": {
+      "respuesta_modelo": "El inciso d) del Artículo 14 del RI-FI establece que una de las causales de baja académica es **la no asistencia a las clases por más de 15 días consecutivos o 30 días en total en el semestre**. Art. 14, inciso d).",
+      "ids_tokens_salida": [
+        6582,
+        3625,
+        15420,
+        294,
+        8,
+        1594,
+        140308,
+        220,
+        16,
+        19,
+        1594,
+        47497,
+        7276,
+        40,
+        51664,
+        346,
+        1709,
+        5093,
+        409,
+        5141,
+        24524,
+        3831,
+        409,
+        87648,
+        10406,
+        16647,
+        3001,
+        1531,
+        3070,
+        4260,
+        902,
+        438,
+        88200,
+        264,
+        5141,
+        95573,
+        4154,
+        10918,
+        409,
+        220,
+        16,
+        20,
+        45080,
+        19908,
+        332,
+        24224,
+        297,
+        220,
+        18,
+        15,
+        45080,
+        662,
+        2790,
+        662,
+        655,
+        5234,
+        72775,
+        334,
+        13,
+        5166,
+        13,
+        220,
+        16,
+        19,
+        11,
+        3625,
+        15420,
+        294,
+        568,
+        151645
+      ],
+      "salida_con_tokens_especiales": "El inciso d) del Artículo 14 del RI-FI establece que una de las causales de baja académica es **la no asistencia a las clases por más de 15 días consecutivos o 30 días en total en el semestre**. Art. 14, inciso d).<|im_end|>",
+      "tokens_salida": 70,
+      "motivo_parada": "eos",
+      "posible_corte": false,
+      "thinking_inesperado": false,
+      "segundos": 7.2575,
+      "pico_memoria_gpu_gb": 2.5629
+    }
+  },
+  "sha256": "32f41feb13eda0dc508e420c390600447c14e09abb7b0c6c71d56a471a3473ce"
+}

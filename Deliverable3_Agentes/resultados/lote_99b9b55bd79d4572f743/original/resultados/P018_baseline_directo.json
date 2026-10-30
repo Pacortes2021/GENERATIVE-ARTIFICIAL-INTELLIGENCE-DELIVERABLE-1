@@ -1,0 +1,139 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 18,
+        "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+        "categoria": "numerica"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "La pregunta no está contemplada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. No existe un artículo que establezca el número de créditos adicionales que debe cursar un estudiante que suspendió más de 3 años y solo faltaba la Memoria.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\nSi suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 128,
+            "prompt_sha256": "033f08dda99d53819d3612d8f0e081b6c0925b7db994ad923969752805f00692"
+          },
+          "semilla": 2044,
+          "salida": {
+            "respuesta_modelo": "La pregunta no está contemplada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. No existe un artículo que establezca el número de créditos adicionales que debe cursar un estudiante que suspendió más de 3 años y solo faltaba la Memoria.",
+            "ids_tokens_salida": [
+              8747,
+              79340,
+              902,
+              15466,
+              38371,
+              2584,
+              662,
+              1187,
+              7465,
+              27852,
+              409,
+              855,
+              901,
+              2123,
+              409,
+              1187,
+              16945,
+              494,
+              329,
+              409,
+              94468,
+              1268,
+              7431,
+              409,
+              1187,
+              66513,
+              409,
+              78618,
+              43328,
+              13,
+              2308,
+              28153,
+              650,
+              79589,
+              1709,
+              51664,
+              89,
+              924,
+              655,
+              30211,
+              409,
+              67192,
+              25593,
+              80367,
+              3831,
+              1709,
+              34374,
+              23143,
+              277,
+              650,
+              1788,
+              49663,
+              1709,
+              26247,
+              34894,
+              10918,
+              409,
+              220,
+              18,
+              26748,
+              379,
+              13529,
+              282,
+              3145,
+              12004,
+              1187,
+              13550,
+              10782,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "La pregunta no está contemplada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. No existe un artículo que establezca el número de créditos adicionales que debe cursar un estudiante que suspendió más de 3 años y solo faltaba la Memoria.<|im_end|>",
+            "tokens_salida": 70,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 7.3064,
+            "pico_memoria_gpu_gb": 2.5638,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 128,
+      "tokens_salida": 70,
+      "segundos_modelo_logicos": 7.3064,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 7.31237600500026,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "7c465fd5e50cfb6c191414d1f9799ccd18963e79ce7cca1bd9e5d00fd278bc99.json"
+    ]
+  },
+  "sha256": "843047fe0c81cca249a1ad8475b564fb40064fb13ff0b10d308a55484477d2ca"
+}

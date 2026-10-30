@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 40,
+          "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+          "categoria": "cruce"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-029",
+          "cita": "RI-FI, artículo 29, PDF p. 5",
+          "texto": "Artículo 29°. La actividad final de titulación para todas las carreras será una asignatura denominada Memoria de Título, de un semestre de duración, la que se regirá por el Reglamento de Memoria de Título de la Facultad de Ingeniería."
+        },
+        {
+          "id": "RI-FI-ART-031",
+          "cita": "RI-FI, artículo 31, PDF p. 5",
+          "texto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la Memoria de Título, deberán cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles."
+        },
+        {
+          "id": "RI-FI-ART-030",
+          "cita": "RI-FI, artículo 30, PDF p. 5",
+          "texto": "Artículo 30°. La nota de graduación correspondiente al Grado de Licenciado en Ciencias de la Ingeniería se obtendrá como el promedio ponderado por los créditos de las asignaturas aprobadas del respectivo Plan de Estudio de la Licenciatura.\n\nLa nota de titulación correspondiente al Título Profesional de las carreras de Ingeniería Civil se obtendrá ponderando en un 60% el promedio ponderado de las asignaturas del Plan de Estudio sin considerar la Memoria de Título, y en un 40% la nota de la Memoria de Título."
+        },
+        {
+          "id": "RG-ART-024",
+          "cita": "RG, artículo 24, PDF p. 18, 19",
+          "texto": "Artículo 24° El registro académico del alumno deberá proporcionar, a lo menos, los siguientes dos tipos de promedios de notas: a) Promedio Ponderado (“Prom. Pond.”): Corresponde al promedio de las notas finales iguales o superiores a 4,0, ponderadas por el correspondiente número de créditos.\n\nb) Promedio Curricular (“Prom. Curr.”): Corresponde al promedio de las todas notas finales, ponderadas por el correspondiente número de créditos.\n\nPara efectos del cálculo de los promedios señalados, el concepto NCR (no cumple requisitos) equivaldrá a la nota final 1,0; y no se considerarán los conceptos APR (aprobado) y REP (reprobado)."
+        },
+        {
+          "id": "RG-ART-048",
+          "cita": "RG, artículo 48, PDF p. 28",
+          "texto": "Artículo 48° El Diploma de Grado Académico que otorgue la Universidad de Concepción, indicará la Nota obtenida por el egresado. Cuando se trate del Diploma de Título Profesional indicará los conceptos de “Aprobado por Unanimidad”, “Aprobado con Distinción” o “Aprobado con Distinción Máxima”, según el caso y conforme a la pauta siguiente:\n\nConcepto Calificación/Nota Aprobado por Unanimidad 4,0 - 4,9 Aprobado con Distinción 5,0 - 5,6 Aprobado con Distinción Máxima 5,7 - 7,0\n\nEsta última disposición será aplicable también a los Diplomas de Grado Académico de Licenciado en carreras terminales, esto es, carreras en las que la Universidad de Concepción no otorga un título profesional.\n\nLas Facultades deberán indicar en cada expediente en que se solicite el otorgamiento de un Título Profesional o un Grado Académico la nota correspondiente y, además, en el caso del Título Profesional o de un Grado Académico de Licenciado en carreras terminales, el concepto a expresarse en el Diploma que se otorgue, conforme a la escala precedente.\n\nLa Nota de graduación o titulación se obtendrá en la forma que lo establezca el Reglamento Interno de Docencia de Pregrado de la Facultad respectiva."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.11189810699943337
+  },
+  "sha256": "2020986cddc374754b53b90bb4746d2a34cb1b07ca782f1da1285da012c25da5"
+}

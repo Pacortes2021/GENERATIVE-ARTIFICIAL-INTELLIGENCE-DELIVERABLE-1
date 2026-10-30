@@ -1,0 +1,68 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 49,
+          "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+          "categoria": "abstencion"
+        },
+        "variante": "sin_completitud"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "CAL-2026-S2-04",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Término de Clases: 11 de diciembre."
+        },
+        {
+          "id": "CAL-2026-S2-07",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. No se realizarán evaluaciones: 21 y 22 de septiembre."
+        },
+        {
+          "id": "CAL-2026-S2-09",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: viernes 18 de septiembre."
+        },
+        {
+          "id": "CAL-2026-S1-12",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: lunes 29 de junio."
+        },
+        {
+          "id": "CAL-2026-S1-13",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 16 de julio."
+        },
+        {
+          "id": "CAL-2026-S1-11",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 21 de mayo."
+        },
+        {
+          "id": "CAL-2026-S1-10",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: viernes 01 de mayo."
+        },
+        {
+          "id": "INV-1f504e73c5fb24eb",
+          "cita": "Inventario de Calendario-Academico-Pregrado-2026.pdf",
+          "texto": "{\"anio\": 2026, \"coincidencias\": [], \"dia\": 30, \"eventos_calendario_revisados\": 25, \"fuente\": {\"archivo\": \"Calendario-Academico-Pregrado-2026.pdf\", \"sha256\": \"1b411e69e4328991497cd5b9a171d043ec1cd868d2594d553a283f4dd274fa17\"}, \"inventario_feriados\": [{\"fecha\": \"viernes 03 de abril\", \"pagina\": 1, \"unidad_id\": \"CAL-2026-S1-09\"}, {\"fecha\": \"viernes 01 de mayo\", \"pagina\": 1, \"unidad_id\": \"CAL-2026-S1-10\"}, {\"fecha\": \"jueves 21 de mayo\", \"pagina\": 1, \"unidad_id\": \"CAL-2026-S1-11\"}, {\"fecha\": \"lunes 29 de junio\", \"pagina\": 1, \"unidad_id\": \"CAL-2026-S1-12\"}, {\"fecha\": \"jueves 16 de julio\", \"pagina\": 1, \"unidad_id\": \"CAL-2026-S1-13\"}, {\"fecha\": \"jueves 20 de agosto\", \"pagina\": 2, \"unidad_id\": \"CAL-2026-S2-08\"}, {\"fecha\": \"viernes 18 de septiembre\", \"pagina\": 2, \"unidad_id\": \"CAL-2026-S2-09\"}, {\"fecha\": \"lunes 12 de octubre\", \"pagina\": 2, \"unidad_id\": \"CAL-2026-S2-10\"}, {\"fecha\": \"martes 08 de diciembre\", \"pagina\": 2, \"unidad_id\": \"CAL-2026-S2-11\"}], \"mes\": \"septiembre\", \"tipo\": \"feriado\"}"
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.11069610299819033
+  },
+  "sha256": "e675aecd855f330dbce57721e7c113ebf94c44b08fc94a5a6c2f5086e4fea1db"
+}

@@ -1,0 +1,124 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 2,
+        "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+        "categoria": "factual"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "La cantidad mínima de evaluaciones sumativas que debe tener una asignatura no está especificada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Por lo tanto, no está en la normativa.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 112,
+            "prompt_sha256": "b53c7aab0fb396e79c4eb593e79c88fb231a3d2616701a2b1684d62477743fef"
+          },
+          "semilla": 2028,
+          "salida": {
+            "respuesta_modelo": "La cantidad mínima de evaluaciones sumativas que debe tener una asignatura no está especificada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Por lo tanto, no está en la normativa.",
+            "ids_tokens_salida": [
+              8747,
+              37276,
+              70224,
+              7523,
+              409,
+              19326,
+              12430,
+              2629,
+              51541,
+              1709,
+              34374,
+              33430,
+              5093,
+              60079,
+              24296,
+              902,
+              15466,
+              68594,
+              2584,
+              662,
+              1187,
+              7465,
+              27852,
+              409,
+              855,
+              901,
+              2123,
+              409,
+              1187,
+              16945,
+              494,
+              329,
+              409,
+              94468,
+              1268,
+              7431,
+              409,
+              1187,
+              66513,
+              409,
+              78618,
+              43328,
+              13,
+              19801,
+              775,
+              32086,
+              11,
+              902,
+              15466,
+              662,
+              1187,
+              7465,
+              27852,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "La cantidad mínima de evaluaciones sumativas que debe tener una asignatura no está especificada en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Por lo tanto, no está en la normativa.<|im_end|>",
+            "tokens_salida": 55,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 6.1074,
+            "pico_memoria_gpu_gb": 2.5602,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 112,
+      "tokens_salida": 55,
+      "segundos_modelo_logicos": 6.1074,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 6.113115080999705,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "c3f8db24d825425a9357856625fb9f02de7448e69e9004604efe6d1336d8e371.json"
+    ]
+  },
+  "sha256": "0b61fc0c809a73af39ca2f2871d94cd314f9a31472609cf3ffd97df42d7763f9"
+}

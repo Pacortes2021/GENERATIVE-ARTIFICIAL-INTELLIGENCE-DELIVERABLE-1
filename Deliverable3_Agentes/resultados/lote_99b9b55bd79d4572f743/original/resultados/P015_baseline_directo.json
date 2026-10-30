@@ -1,0 +1,77 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 15,
+        "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+        "categoria": "numerica"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "No está en la normativa.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "¿Qué calificación mínima se exige para convalidar una asignatura?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Qué calificación mínima se exige para convalidar una asignatura?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 113,
+            "prompt_sha256": "6f3b7a4830bbef599c0495e3a64385db4e49f2bb7b144e16f31ec5fc0ffd42b8"
+          },
+          "semilla": 2041,
+          "salida": {
+            "respuesta_modelo": "No está en la normativa.",
+            "ids_tokens_salida": [
+              2753,
+              15466,
+              662,
+              1187,
+              7465,
+              27852,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "No está en la normativa.<|im_end|>",
+            "tokens_salida": 8,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 1.1724,
+            "pico_memoria_gpu_gb": 2.5604,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 113,
+      "tokens_salida": 8,
+      "segundos_modelo_logicos": 1.1724,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 1.1780831370001579,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "b4dc13cc09e02bca3af0cf8f239dfbbc31ed6137aac66139ab0be9896478c527.json"
+    ]
+  },
+  "sha256": "58f5410645b122dd077b87a2eebae793ad2736a5be0ddcc2feaf849bea2e517f"
+}

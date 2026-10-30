@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 50,
+          "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+          "categoria": "abstencion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Promedio requerido para una tercera carrera simultánea según el RI-FI"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-011",
+          "cita": "RI-FI, artículo 11, PDF p. 2",
+          "texto": "Artículo 11°. Cada asignatura impartida por la Facultad de Ingeniería deberá contar con al menos tres evaluaciones sumativas, y para aprobarla deberá cumplirse los requisitos establecidos para ella y obtener una calificación final mínima de 4,0 calculada de acuerdo al syllabus correspondiente."
+        },
+        {
+          "id": "RI-FI-ART-005",
+          "cita": "RI-FI, artículo 5, PDF p. 1",
+          "texto": "Artículo 5°. Las y los estudiantes del Ingreso Común postularán a las carreras ofrecidas por la Facultad de Ingeniería al término de su segundo semestre de permanencia. La selección se realizará, en primer lugar, de acuerdo al número de créditos aprobados; a igual número de créditos aprobados, de acuerdo al promedio curricular de notas de las asignaturas ponderadas por sus créditos del Plan Común de Primer Año expresado con dos decimales (incluye asignaturas aprobadas y reprobadas). La selección considerará el orden de sus preferencias en las carreras de Ingeniería Civil según oferta de la Facultad de Ingeniería y a los cupos disponibles por carrera. Para el proceso de postulación sólo se considerarán las asignaturas obligatorias de Primer Año."
+        },
+        {
+          "id": "RI-FI-ART-019",
+          "cita": "RI-FI, artículo 19, PDF p. 3",
+          "texto": "Artículo 19°. La y el estudiante que esté cursando una carrera de pregrado en la Universidad de Concepción, podrá solicitar cursar simultáneamente una carrera de la Facultad de Ingeniería, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado de la Universidad de Concepción, haya obtenido un promedio ponderado mínimo de calificaciones de 5,0 en la escala de 1 a 7, en su carrera de origen."
+        },
+        {
+          "id": "RI-FI-ART-003",
+          "cita": "RI-FI, artículo 3, PDF p. 1",
+          "texto": "Artículo 3°. Las y los estudiantes ingresarán al Primer Año bajo una modalidad mixta, que contempla un Ingreso Directo a una carrera de acuerdo a los cupos definidos para cada una de ellas, y a un Ingreso Común sin especialidad."
+        },
+        {
+          "id": "RI-FI-ART-018",
+          "cita": "RI-FI, artículo 18, PDF p. 3",
+          "texto": "Artículo 18°. La y el estudiante que haya cursado estudios en una carrera de la Facultad de Ingeniería podrá solicitar cambio a otra carrera de la misma Facultad, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado, haya obtenido un promedio ponderado mínimo de calificaciones de 4,2 en la escala de 1 a 7, en su carrera de origen."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.07201586199880694
+  },
+  "sha256": "de7f03346afcbc3d9a29e9d7cb71cf1a785c22e4d918fd86bd7c318000d50f78"
+}

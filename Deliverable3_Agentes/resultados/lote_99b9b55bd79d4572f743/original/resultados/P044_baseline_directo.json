@@ -1,0 +1,144 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 44,
+        "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+        "categoria": "abstencion"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "El Artículo 70 del Reglamento General de Docencia de Pregrado señala que **el docente está obligado a cumplir con las funciones académicas, administrativas y de investigación que le asigne el Consejo Universitario**, y debe participar en las actividades de enseñanza, investigación y extensión universitaria.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\n¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 118,
+            "prompt_sha256": "44c4a1d1bdb008231923be6a7be2122f2501ecab47d11a3d69176f5c1e47f05d"
+          },
+          "semilla": 2070,
+          "salida": {
+            "respuesta_modelo": "El Artículo 70 del Reglamento General de Docencia de Pregrado señala que **el docente está obligado a cumplir con las funciones académicas, administrativas y de investigación que le asigne el Consejo Universitario**, y debe participar en las actividades de enseñanza, investigación y extensión universitaria.",
+            "ids_tokens_salida": [
+              6582,
+              140308,
+              220,
+              22,
+              15,
+              1594,
+              3184,
+              75,
+              10411,
+              3251,
+              409,
+              21709,
+              8792,
+              409,
+              4968,
+              901,
+              2123,
+              54230,
+              6053,
+              1709,
+              3070,
+              301,
+              4629,
+              6817,
+              15466,
+              12331,
+              2123,
+              264,
+              73355,
+              404,
+              390,
+              5141,
+              83412,
+              10406,
+              16647,
+              15185,
+              11,
+              11150,
+              51541,
+              379,
+              409,
+              97524,
+              1709,
+              512,
+              438,
+              18857,
+              655,
+              66466,
+              7305,
+              15545,
+              275,
+              3290,
+              97219,
+              379,
+              34374,
+              5182,
+              277,
+              662,
+              5141,
+              72979,
+              409,
+              66961,
+              5653,
+              26466,
+              11,
+              97524,
+              379,
+              1303,
+              724,
+              3655,
+              10919,
+              275,
+              10432,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "El Artículo 70 del Reglamento General de Docencia de Pregrado señala que **el docente está obligado a cumplir con las funciones académicas, administrativas y de investigación que le asigne el Consejo Universitario**, y debe participar en las actividades de enseñanza, investigación y extensión universitaria.<|im_end|>",
+            "tokens_salida": 75,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 7.555,
+            "pico_memoria_gpu_gb": 2.5621,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 118,
+      "tokens_salida": 75,
+      "segundos_modelo_logicos": 7.555,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 7.561831702001655,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "070abeb3d86fc69ef39c08bf6570a5cae0f626cae186f081f6eb193b9708e801.json"
+    ]
+  },
+  "sha256": "bdd820cecaa252ef2d318b4204b5a85b9eb467d388d74024f0cc42585eb90a05"
+}

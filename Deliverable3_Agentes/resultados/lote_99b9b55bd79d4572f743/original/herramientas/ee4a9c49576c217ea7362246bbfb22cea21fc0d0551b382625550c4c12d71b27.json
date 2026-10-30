@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 7,
+          "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+          "categoria": "factual"
+        },
+        "variante": "sin_verificacion"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-016",
+          "cita": "RI-FI, artículo 16, PDF p. 3",
+          "texto": "Artículo 16°. Las y los estudiantes podrán solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles, el que resolverá en primera instancia. La Vicedecanatura podrá resolver en segunda instancia y la Decanatura en última instancia dentro de la Facultad."
+        },
+        {
+          "id": "RG-ART-030",
+          "cita": "RG, artículo 30, PDF p. 21",
+          "texto": "Artículo 30º Los alumnos en situación de Baja por no Inscripción podrán solicitar, en un plazo máximo de un año, la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo, el que previo estudio de los antecedentes, resolverá dicha solicitud. Se podrá recurrir al Vicedecano, dentro del quinto día hábil de notificada la resolución.\n\nSolamente en tres oportunidades, los alumnos en situación de Baja Académica podrán solicitar, en un plazo máximo de un año, la continuación de estudios ante las siguientes instancias:\n\nLa primera solicitud ante el Comité de Docencia y Asuntos Estudiantiles respectivo, quien resolverá en un plazo no superior a 10 días. De lo resuelto por el Comité de Docencia y Asuntos Estudiantiles, se podrá recurrir al Vicedecano, dentro del quinto día hábil de notificada la resolución. De esta resolución podrá apelarse ante el Decano de la Facultad.\n\nLa segunda solicitud ante el Vicedecano quien resolverá en un plazo no superior a 10 días hábiles. De lo resuelto por el Vicedecano, se podrá recurrir al Decano, dentro del quinto día hábil de notificada la resolución.\n\nLa tercera solicitud ante el Decano quien resolverá en un plazo no superior a 10 días hábiles.\n\nEn forma excepcional y por única vez, dentro del quinto día hábil, de lo resuelto por el Decano se podrá recurrir fundadamente al Vicerrector de la Universidad, quién podrá aprobar por gracia, la solicitud de continuación de estudios."
+        },
+        {
+          "id": "RG-ART-037",
+          "cita": "RG, artículo 37, PDF p. 24",
+          "texto": "Artículo 37° Los alumnos regulares podrán solicitar la revalidación de una misma asignatura ya aprobada en otro plan de estudio de otra carrera de esta universidad.\n\nLos alumnos regulares podrán solicitar la convalidación de una asignatura de su plan de estudio por otra ya aprobada en ésta o en otra institución de educación superior. Esta solicitud deberá ir acompañada de un certificado completo de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas, salvo que se trate de asignaturas aprobadas en esta universidad.\n\nEl Vicedecano, previo informe del Departamento a cargo de la asignatura, resolverá dentro de un plazo de quince días e informará de lo resuelto tanto al alumno como a la Facultad a la que éste pertenece."
+        },
+        {
+          "id": "RI-FI-ART-027",
+          "cita": "RI-FI, artículo 27, PDF p. 5",
+          "texto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+        },
+        {
+          "id": "RI-FI-ART-028",
+          "cita": "RI-FI, artículo 28, PDF p. 5",
+          "texto": "Artículo 28°. La y el estudiante que se reincorpora y que al momento de suspender los estudios haya cumplido los requisitos para la obtención de la Licenciatura en Ciencias de la Ingeniería, ésta le será reconocida. Las asignaturas cursadas con posterioridad a la Licenciatura le serán reconocidas de acuerdo a su equivalencia con las del Plan de Estudio vigente al momento de la reincorporación."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.06955199699996228
+  },
+  "sha256": "3aa0dbb2cd5de2109e095f59338e708c3194e3055768f4070bec9bac5dffdc54"
+}

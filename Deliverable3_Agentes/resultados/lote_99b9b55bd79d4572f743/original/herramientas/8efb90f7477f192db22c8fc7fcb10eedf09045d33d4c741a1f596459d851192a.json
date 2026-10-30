@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 33,
+          "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+          "categoria": "cruce"
+        },
+        "variante": "sin_descomposicion"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "CAL-2026-S1-03",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Modificación de asignaturas – fecha límite: 02 de abril."
+        },
+        {
+          "id": "CAL-2026-S2-03",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Modificación de asignaturas – fecha límite: 04 de septiembre."
+        },
+        {
+          "id": "CAL-2026-S1-05",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas anuales: 24 de julio."
+        },
+        {
+          "id": "CAL-2026-S1-04",
+          "cita": "CAL, calendario 2026, semestre 1, PDF p. 1",
+          "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas semestrales: 10 de julio."
+        },
+        {
+          "id": "CAL-2026-S2-01",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inscripción de Asignaturas: 03 – 07 de agosto."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.06842365600095945
+  },
+  "sha256": "381613ea37ea47dc1664b3692fe61adad11d24424ab15441cc08d485794886b1"
+}

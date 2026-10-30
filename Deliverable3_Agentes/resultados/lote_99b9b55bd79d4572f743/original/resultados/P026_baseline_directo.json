@@ -1,0 +1,152 @@
+{
+  "contenido": {
+    "identidad": {
+      "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+      "pregunta": {
+        "id": 26,
+        "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+        "categoria": "condicional"
+      },
+      "variante": "baseline_directo"
+    },
+    "resultado": {
+      "respuesta_modelo": "Si suspendiste tus estudios, debes presentarte a la **Unidad de Atención a Estudiantes en Situación de Suspensión (UAES)** para realizar el trámite de **reingreso a estudios**. Este trámite está regulado en el **Art. 15** de la **Reglamentación de Estudios de Pregrado**.",
+      "estado": "respuesta_directa",
+      "evidencia": null,
+      "traza": [
+        {
+          "tipo": "modelo",
+          "agente": "baseline_directo",
+          "tarea": {
+            "etapa": "baseline_directo",
+            "mensajes": [
+              {
+                "role": "system",
+                "content": "Eres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa."
+              },
+              {
+                "role": "user",
+                "content": "Si suspendí mis estudios, ¿qué debo hacer para volver?"
+              }
+            ],
+            "prompt": "<|im_start|>system\nEres un asistente experto en la normativa de pregrado de la Facultad de Ingeniería de la Universidad de Concepción. Responde de forma breve, con el dato exacto y citando el artículo correspondiente (por ejemplo: 'Art. 8'). Si no tienes la información, di explícitamente que no está en la normativa.<|im_end|>\n<|im_start|>user\nSi suspendí mis estudios, ¿qué debo hacer para volver?<|im_end|>\n<|im_start|>assistant\n<think>\n\n</think>\n\n",
+            "tokens_entrada": 111,
+            "prompt_sha256": "8cc2ee45c4fd052f6680065c9e42e7e89591bf57054bd010ed21bb173e4e9b63"
+          },
+          "semilla": 2052,
+          "salida": {
+            "respuesta_modelo": "Si suspendiste tus estudios, debes presentarte a la **Unidad de Atención a Estudiantes en Situación de Suspensión (UAES)** para realizar el trámite de **reingreso a estudios**. Este trámite está regulado en el **Art. 15** de la **Reglamentación de Estudios de Pregrado**.",
+            "ids_tokens_salida": [
+              21999,
+              26247,
+              16776,
+              40684,
+              57463,
+              3530,
+              11,
+              4222,
+              288,
+              3042,
+              19840,
+              264,
+              1187,
+              3070,
+              1806,
+              5845,
+              409,
+              2411,
+              43631,
+              264,
+              9403,
+              68754,
+              662,
+              28408,
+              84,
+              5721,
+              409,
+              52206,
+              724,
+              3655,
+              320,
+              17782,
+              1570,
+              32295,
+              3348,
+              41558,
+              655,
+              489,
+              35234,
+              632,
+              409,
+              3070,
+              265,
+              287,
+              49764,
+              264,
+              57463,
+              3530,
+              334,
+              13,
+              38676,
+              489,
+              35234,
+              632,
+              15466,
+              14089,
+              2123,
+              662,
+              655,
+              3070,
+              9286,
+              13,
+              220,
+              16,
+              20,
+              334,
+              409,
+              1187,
+              3070,
+              3477,
+              75,
+              2838,
+              5721,
+              409,
+              9403,
+              88785,
+              409,
+              4968,
+              901,
+              2123,
+              334,
+              13,
+              151645
+            ],
+            "salida_con_tokens_especiales": "Si suspendiste tus estudios, debes presentarte a la **Unidad de Atención a Estudiantes en Situación de Suspensión (UAES)** para realizar el trámite de **reingreso a estudios**. Este trámite está regulado en el **Art. 15** de la **Reglamentación de Estudios de Pregrado**.<|im_end|>",
+            "tokens_salida": 83,
+            "motivo_parada": "eos",
+            "posible_corte": false,
+            "thinking_inesperado": false,
+            "segundos": 8.4403,
+            "pico_memoria_gpu_gb": 2.56,
+            "checkpoint_reutilizado": false
+          }
+        }
+      ]
+    },
+    "uso": {
+      "llamadas_modelo": 1,
+      "llamadas_nuevas_este_intento": 1,
+      "tokens_entrada": 111,
+      "tokens_salida": 83,
+      "segundos_modelo_logicos": 8.4403,
+      "segundos_herramientas_logicos": 0.0,
+      "segundos_pared_este_intento": 8.44690274200002,
+      "salidas_cortadas": 0
+    },
+    "ejecucion": "modelo_real",
+    "checkpoints": [
+      "d5924ba5f5f1dc1c10730de46e4222323c391fd3a630e9f6f1deebe7fecc90db.json"
+    ]
+  },
+  "sha256": "d9f1cfb95ba2c5eb19ffdbfbac1c8cb95384b697e0581454fa85cceb43d6167b"
+}

@@ -1,0 +1,63 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "99b9b55bd79d4572f7432c0e28d0e10e9442be388f5455b8731df5670d54f812",
+        "pregunta": {
+          "id": 34,
+          "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+          "categoria": "cruce"
+        },
+        "variante": "sin_verificacion"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-032",
+          "cita": "RG, artículo 32, PDF p. 22",
+          "texto": "Artículo 32° Si un alumno presenta salud o condición física incompatible con la Carrera, se le suspenderá el derecho a continuar estudios. La decisión en esta materia, previo informe de la Dirección de Servicios Estudiantiles o la Unidad que corresponda en Chillán y Los Ángeles, corresponderá al Decano en resolución fundada, que deberá informar al Vicerrector y a UDARAE para su registro en SAC."
+        },
+        {
+          "id": "RI-FI-ART-027",
+          "cita": "RI-FI, artículo 27, PDF p. 5",
+          "texto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+        },
+        {
+          "id": "RG-ART-030",
+          "cita": "RG, artículo 30, PDF p. 21",
+          "texto": "Artículo 30º Los alumnos en situación de Baja por no Inscripción podrán solicitar, en un plazo máximo de un año, la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo, el que previo estudio de los antecedentes, resolverá dicha solicitud. Se podrá recurrir al Vicedecano, dentro del quinto día hábil de notificada la resolución.\n\nSolamente en tres oportunidades, los alumnos en situación de Baja Académica podrán solicitar, en un plazo máximo de un año, la continuación de estudios ante las siguientes instancias:\n\nLa primera solicitud ante el Comité de Docencia y Asuntos Estudiantiles respectivo, quien resolverá en un plazo no superior a 10 días. De lo resuelto por el Comité de Docencia y Asuntos Estudiantiles, se podrá recurrir al Vicedecano, dentro del quinto día hábil de notificada la resolución. De esta resolución podrá apelarse ante el Decano de la Facultad.\n\nLa segunda solicitud ante el Vicedecano quien resolverá en un plazo no superior a 10 días hábiles. De lo resuelto por el Vicedecano, se podrá recurrir al Decano, dentro del quinto día hábil de notificada la resolución.\n\nLa tercera solicitud ante el Decano quien resolverá en un plazo no superior a 10 días hábiles.\n\nEn forma excepcional y por única vez, dentro del quinto día hábil, de lo resuelto por el Decano se podrá recurrir fundadamente al Vicerrector de la Universidad, quién podrá aprobar por gracia, la solicitud de continuación de estudios."
+        },
+        {
+          "id": "RI-FI-ART-023",
+          "cita": "RI-FI, artículo 23, PDF p. 4",
+          "texto": "Artículo 23°. La y el estudiante podrá solicitar a la Vicedecanatura, dentro de los primeros treinta días del período lectivo respectivo, el reconocimiento de contenidos compatibles con los resultados de aprendizaje de la asignatura, acompañando los antecedentes que ameriten lo solicitado. La Vicedecanatura, previo informe del respectivo Departamento, podrá autorizar al alumno a ser evaluado por parte de una Comisión designada por el Departamento, la que a través de un examen exhaustivo calificará el reconocimiento solicitado."
+        },
+        {
+          "id": "RG-ART-031",
+          "cita": "RG, artículo 31, PDF p. 22",
+          "texto": "Artículo 31º Los alumnos de pregrado podrán solicitar, al Vicedecano, suspender estudios hasta cuatro semanas antes del término del periodo lectivo respectivo.\n\nLa suspensión de estudios deja sin efecto la inscripción de asignaturas e interrumpe la calidad de alumno de pregrado de la Universidad de Concepción.\n\nLa solicitud y los antecedentes oficiales que justifiquen la suspensión de estudios, tales como, informe de la Dirección de Servicios Estudiantiles u otros fidedignos, deberán ser presentados al Vicedecano respectivo, que resolverá dicha solicitud antes de que finalice el periodo lectivo correspondiente. De lo resuelto por el Vicedecano podrá dentro de cinco días apelarse al Decano, siendo su decisión definitiva. El Vicedecano informará lo resuelto al Jefe de Carrera respectivo, al alumno y lo registrará en el Sistema de Administración Curricular.\n\nLa suspensión de estudios no libera al alumno de las obligaciones que pudiere tener pendientes con la universidad."
+        },
+        {
+          "id": "RG-ART-035",
+          "cita": "RG, artículo 35, PDF p. 23",
+          "texto": "Artículo 35° Los alumnos que soliciten suspender estudios o que renuncien a una carrera, deberán cumplir los requisitos que establezca la Facultad para estos efectos y adjuntar a su presentación los siguientes documentos:\n\na) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y\n\nb) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico."
+        },
+        {
+          "id": "RI-FI-ART-031",
+          "cita": "RI-FI, artículo 31, PDF p. 5",
+          "texto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la Memoria de Título, deberán cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.08427566300088074
+  },
+  "sha256": "aac18e44e3eb2f30fb4ddaac9a8b7b90216cc4fb905703c3c97ba6b33774fe52"
+}

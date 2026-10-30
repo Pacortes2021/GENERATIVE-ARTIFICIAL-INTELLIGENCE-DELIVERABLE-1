@@ -1,0 +1,127 @@
+[
+ {
+  "id": 101,
+  "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+  "categoria": "multi_salto"
+ },
+ {
+  "id": 102,
+  "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+  "categoria": "multi_salto"
+ },
+ {
+  "id": 103,
+  "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+  "categoria": "multi_salto"
+ },
+ {
+  "id": 104,
+  "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+  "categoria": "multi_salto"
+ },
+ {
+  "id": 105,
+  "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+  "categoria": "calculo"
+ },
+ {
+  "id": 106,
+  "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+  "categoria": "calculo"
+ },
+ {
+  "id": 107,
+  "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+  "categoria": "calculo"
+ },
+ {
+  "id": 108,
+  "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+  "categoria": "calculo"
+ },
+ {
+  "id": 109,
+  "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+  "categoria": "colision_lexica"
+ },
+ {
+  "id": 110,
+  "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+  "categoria": "colision_lexica"
+ },
+ {
+  "id": 111,
+  "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+  "categoria": "colision_lexica"
+ },
+ {
+  "id": 112,
+  "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+  "categoria": "colision_lexica"
+ },
+ {
+  "id": 113,
+  "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+  "categoria": "negacion_excepcion"
+ },
+ {
+  "id": 114,
+  "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+  "categoria": "negacion_excepcion"
+ },
+ {
+  "id": 115,
+  "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+  "categoria": "negacion_excepcion"
+ },
+ {
+  "id": 116,
+  "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+  "categoria": "sintesis"
+ },
+ {
+  "id": 117,
+  "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+  "categoria": "sintesis"
+ },
+ {
+  "id": 118,
+  "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+  "categoria": "sintesis"
+ },
+ {
+  "id": 119,
+  "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+  "categoria": "sintesis"
+ },
+ {
+  "id": 120,
+  "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+  "categoria": "premisa_falsa"
+ },
+ {
+  "id": 121,
+  "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+  "categoria": "premisa_falsa"
+ },
+ {
+  "id": 122,
+  "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+  "categoria": "premisa_falsa"
+ },
+ {
+  "id": 123,
+  "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+  "categoria": "premisa_falsa"
+ },
+ {
+  "id": 124,
+  "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+  "categoria": "colision_lexica"
+ },
+ {
+  "id": 125,
+  "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+  "categoria": "sintesis"
+ }
+]

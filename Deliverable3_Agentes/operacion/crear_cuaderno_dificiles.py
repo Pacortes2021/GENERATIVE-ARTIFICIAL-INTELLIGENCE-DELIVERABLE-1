@@ -100,17 +100,11 @@ print('Fuentes restauradas en:', WORKDIR.name)
     import sys
     from pathlib import Path
     import torch
-    from d3_agentes.runtime import load_runtime
-    
-    device = 'cuda' if torch.cuda.is_available() else 'cpu'
-    print('Dispositivo de cómputo:', device)
-    if device != 'cuda':
-        print('AVISO: Se requiere acelerador GPU (T4) para ejecutar la inferencia de 25 preguntas.')
-    
-    WORKDIR = next(Path.cwd().glob('d3_dificiles_runtime_*'))
-    ENV = load_runtime(WORKDIR, device=device)
+    from d3_agentes.runtime import load
+
     OUTPUT = Path('/content/d3_dificiles_runs')
     OUTPUT.mkdir(parents=True, exist_ok=True)
+    ENV = load(OUTPUT)
     print('Runtime listo. Preguntas difíciles cargadas:', len(ENV['questions']))
     ''', 'dificiles-runtime-code')
     

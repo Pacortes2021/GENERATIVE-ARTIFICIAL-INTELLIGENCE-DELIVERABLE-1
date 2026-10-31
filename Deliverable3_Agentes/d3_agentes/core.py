@@ -69,6 +69,8 @@ def parse_decision(raw, role, evidence):
                 raise ValueError('Clave JSON repetida.')
             result[key] = value
         return result
+    # Sanitizar comillas internas en extractos de inventarios como `"extracto": "existe": false`
+    raw = re.sub(r'("extracto"\s*:\s*)"([^"]*)"\s*:\s*(false|true|null|\d+)', r'\1"\"\2\": \3"', raw)
     # No se extraen subcadenas ni se ejecuta salida del modelo.
     value = json.loads(raw, object_pairs_hook=unique,
                        parse_constant=lambda _: (_ for _ in ()).throw(ValueError('Constante JSON inválida.')))

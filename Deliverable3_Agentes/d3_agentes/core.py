@@ -237,6 +237,21 @@ class AgentSystem:
                 else:
                     return finish('aceptada', draft)
             else:
+                if role == 'auditor' and draft:
+                    patrones_ausencia = (
+                        'no establece', 'no especifica', 'no fija', 'no contempla',
+                        'no menciona', 'no incluye', 'no contiene', 'no existe',
+                        'no figura', 'ausente', 'no se encuentra', 'no se señala'
+                    )
+                    draft_lower = draft.lower()
+                    notice_lower = notice.lower()
+                    missing = cited_ids(draft) - evidence.keys()
+                    if (not missing and
+                            any(p in draft_lower for p in patrones_ausencia) and
+                            any(p in notice_lower for p in patrones_ausencia) and
+                            'sí existe' not in notice_lower and 'sí se encuentra' not in notice_lower):
+                        emit('consenso_semantico', detalle='Auditor y Redactor coinciden en la ausencia de la condición o norma.')
+                        return finish('aceptada', draft)
                 target = 'redactor' if action == 'corregir' else 'investigador'
                 if action == 'corregir':
                     repairs += 1

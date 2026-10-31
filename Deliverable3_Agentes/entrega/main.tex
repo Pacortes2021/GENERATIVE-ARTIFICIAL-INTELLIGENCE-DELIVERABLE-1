@@ -30,7 +30,7 @@
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.6pt}
+\setlength{\parskip}{1.3pt}
 \setlength{\columnsep}{0.55cm}
 
 % Configuración de listas compactas para 2 columnas
@@ -155,41 +155,41 @@ Cada técnica ataca una falla diagnosticada en E1/E2 mediante bloques modulares 
 \end{itemize}
 
 \seccion{4. Resultados empíricos y análisis comparativo}
-Se evaluaron en GPU T4 las 6 condiciones experimentales sobre los dos bancos bajo la pauta de E2 (450 inferencias en total):
+Se evaluaron en GPU T4 las seis configuraciones sobre ambos conjuntos de prueba bajo la pauta estricta de E2 (450 inferencias en total):
 \begin{center}
 \vspace{-2pt}
 {\fontsize{6.2}{7.6}\selectfont
-\begin{tabular}{@{}l@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
+\begin{tabular}{@{}l@{\hspace{7pt}}c@{\hspace{7pt}}c@{\hspace{7pt}}c@{}}
 \toprule
-\textbf{Configuración} & \textbf{Base (50)} & \textbf{Sust. (40)} & \textbf{Difícil (25)} & \textbf{Llam.} \\
+\textbf{Configuración} & \textbf{Base (50)} & \textbf{Difícil (25)} & \textbf{Llam./q} \\
 \midrule
-Directo (E1)             & 1/50 \ (2\%)   & 1/40 \ (3\%)   & 0/25 \ (0\%)   & 1{,}0 \\
-RAG Monolítico (E2)      & 40/50 (80\%)  & 30/40 (75\%)  & 16/25 (64\%)  & 1{,}0 \\
+Directo (E1)             & 1/50 \ (2\%)   & 0/25 \ (0\%)   & 1{,}0 \\
+RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \midrule
-\textbf{Multi-Agente (E3)}& \textbf{34/50 (68\%)} & \textbf{34/40 (85\%)} & \textbf{11/25 (44\%)} & \textbf{5{,}1} \\
-\quad -- sin descomp.    & 34/50 (68\%)  & 32/40 (80\%)  & 14/25 (56\%)  & 5{,}4 \\
-\quad -- sin complet.    & 34/50 (68\%)  & 33/40 (83\%)  & 12/25 (48\%)  & 5{,}2 \\
-\quad -- sin verific.    & 32/50 (64\%)  & 31/40 (78\%)  & 14/25 (56\%)  & 4{,}9 \\
+\textbf{Multi-Agente (E3)}& \textbf{34/50 (68\%)} & \textbf{11/25 (44\%)} & \textbf{5{,}1} \\
+\quad -- sin descomp.    & 34/50 (68\%)  & 14/25 (56\%)  & 5{,}4 \\
+\quad -- sin complet.    & 34/50 (68\%)  & 12/25 (48\%)  & 5{,}2 \\
+\quad -- sin verific.    & 32/50 (64\%)  & 14/25 (56\%)  & 4{,}9 \\
 \bottomrule
 \end{tabular}
 }
 \par\vspace{1.5pt}
 {\fontsize{5.2}{6.2}\selectfont\color{gris}
-\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: conjunto D1/D2 (50). \textit{Sust.}: preguntas P01--P40 con respaldo normativo expreso. \textit{Difícil}: conjunto H01--H25. \textit{Llam.}: promedio de llamadas al modelo por consulta.}
+\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: conjunto oficial D1/D2 (50 consultas). \textit{Difícil}: conjunto de casos límite H01--H25 (25 consultas). \textit{Llam./q}: promedio de llamadas al modelo por consulta.}
 \vspace{-2pt}
 \end{center}
 
-\textbf{Victorias cualitativas y hallazgos sustantivos:}
+\textbf{Desempeño sustantivo y comportamiento ante premisas falsas:}
 \begin{enumerate}
-  \item \textbf{Especialización sustantiva:} En el subconjunto normativo (P01--P40), los agentes superan a RAG D2 por \textbf{+10,0\,pp (85\% vs 75\%)}, resolviendo 9 de las 10 fallas históricas de D2 (omisiones P11, P15, P24, P25, P36 y colisiones P01, P28, P30, P38).
-  \item \textbf{Razonamiento multi-regla complejo:} En el banco difícil, los agentes resuelven taxativamente casos de alta jerarquía normativa: \textbf{H18} (tope de 36 créditos para memoristas suspendidos > 3 años, Art.~31 RI-FI) y \textbf{H25} (criterio jerárquico de prelación en Plan Común: créditos aprobados, promedio curricular con dos decimales y cupos, Art.~5 RI-FI); además de computar con exactitud algebraica las notas de titulación 60/40 en \textbf{H05 y H08} (Art.~30 RI-FI), donde RAG D2 fracasó por carecer de cálculo aritmético.
+  \item \textbf{Compensación en el banco base:} En las 40 preguntas sobre normativa vigente (P01--P40), los agentes superan a RAG D2: 34/40 (85\%) vs 30/40 (75\%), resolviendo omisiones reglamentarias (P11, P15, P24, P25, P36) y colisiones (P01, P28, P30, P38). En cambio, en las 10 consultas con premisas falsas o artículos inventados (P41--P50), los agentes fallan todas (0/10 vs 10/10 en D2), situando el total en 34/50 (68\%). Este contraste evidencia un sesgo de búsqueda activa: ante la ausencia de respaldo, el bucle deliberativo fuerza asociaciones para responder en vez de aplicar una abstención temprana como el filtro estático de D2.
+  \item \textbf{Resolución de casos límite (banco difícil):} El sistema resuelve consultas complejas con reglas articuladas donde D2 falló: en \textbf{H18} (Art.~31 RI-FI) identifica la suspensión > 3 años en memoristas con tope de 36 créditos; en \textbf{H25} (Art.~5 RI-FI) articula la prelación en Plan Común (créditos, promedio a dos decimales y cupos); y en \textbf{H05 y H08} (Art.~30 RI-FI) efectúa el cómputo algebraico exacto de titulación (60\% asignaturas y 40\% memoria), que D2 no logró estructurar.
 \end{enumerate}
 
-\seccion{5. Diagnóstico de fallos, sobre-cautela y coste}
+\seccion{5. Diagnóstico de fallos, verificación y coste}
 \begin{itemize}
-  \item \textbf{Sobre-cautela del Auditor:} En el set difícil, \texttt{agentes\_\allowbreak completo} logró un \textbf{78,6\% de acierto al emitir respuesta} (11 de 14). Sin embargo, en 11 preguntas el Auditor rechazó borradores por mínimas discrepancias léxicas en los extractos hasta agotar presupuesto (6 por \texttt{limite\_\allowbreak salidas\_\allowbreak invalidas} y 5 por \texttt{limite\_\allowbreak llamadas}), forzando abstenciones técnicas penalizadas con 0.
-  \item \textbf{Efecto liberador de las ablaciones:} Al retirar verificación (\texttt{sin\_\allowbreak verificacion}), se evitó el rechazo léxico hiper-estricto, permitiendo emitir respuestas correctas en casos conflictivos (H10, H12, H22) y elevando los aciertos a 14/25 (56\%). De modo análogo, \texttt{sin\_\allowbreak descomposicion} ahorró presupuesto de llamadas, resolviendo consultas extensas como H25 (14/25, 56\%).
-  \item \textbf{Coste computacional:} Los agentes demandan 5,1 llamadas y $\sim$152\,s por pregunta frente a 1 llamada y 15\,s de RAG D2.
+  \item \textbf{Rigidez léxica del Auditor:} En el set difícil, el sistema logró un \textbf{78,6\% de acierto al emitir respuesta} (11 de 14). En las 11 restantes, el Auditor rechazó borradores por discrepancias léxicas menores; las limitaciones del modelo 4B para reproducir citas literales exactas agotaron el presupuesto (6 por \texttt{limite\_\allowbreak salidas\_\allowbreak invalidas} y 5 por \texttt{limite\_\allowbreak llamadas}), forzando abstenciones técnicas (puntaje 0).
+  \item \textbf{Impacto de las ablaciones:} Retirar la verificación (\texttt{sin\_\allowbreak verificacion}) evitó bloqueos léxicos, emitiendo respuestas válidas en casos conflictivos (H10, H12, H22) y subiendo a 14/25 (56\%). De igual forma, omitir la descomposición (\texttt{sin\_\allowbreak descomposicion}) ahorró llamadas en consultas extensas como H25 (14/25, 56\%).
+  \item \textbf{Compensación de coste computacional:} La deliberación multi-agente demanda 5,1 llamadas y $\sim$152\,s por consulta frente a 1 llamada y 15\,s de RAG D2, lo que define el compromiso entre exhaustividad de análisis y latencia operativa.
 \end{itemize}
 
 \seccion{6. Reproducibilidad y repositorio}

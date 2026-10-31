@@ -40,13 +40,13 @@ Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2):
 | **`sin_completitud`** | 34 / 50 (68,0%) | 33 / 40 (82,5%) | 12 / 25 (48,0%) | 5,2 llam. | 142,1 s |
 | **`sin_verificacion`** | 32 / 50 (64,0%) | 31 / 40 (77,5%) | 14 / 25 (56,0%) | 4,9 llam. | 139,2 s |
 
-### Hallazgos Clave y Victorias Cualitativas:
-1. **Superación a RAG D2 en normativa sustantiva (+10,0 pp)**: En las 40 preguntas sustantivas (P01–P40), los agentes alcanzan **85,0% vs. 75,0%**, resolviendo 9 de las 10 fallas históricas de D2 (omisiones en P11, P15, P24, P25, P36 y colisiones léxicas en P01, P28, P30, P38).
-2. **Razonamiento Multi-Regla Complejo en Preguntas de Estrés**:
-   - **H18 (P118) — Suspensión > 3 años en memoristas (RI-FI Art. 31)**: Los agentes y ablaciones **acertaron taxativamente (1/1)** identificando la excepción del tope de 36 créditos en asignaturas fijadas por el Comité.
-   - **H25 (P125) — Criterios de prelación en Plan Común (RI-FI Art. 5)**: El sistema identificó y estructuró la jerarquía completa (1° créditos aprobados $\rightarrow$ 2° promedio curricular ponderado con dos decimales de asignaturas obligatorias $\rightarrow$ 3° cupos y preferencias).
-   - **H05 y H08 — Razonamiento Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2) por ausencia de cálculo; los agentes **acertaron ambos (2/2)** con desglose algebraico exacto ($0{,}6 \times \text{plan} + 0{,}4 \times \text{memoria}$).
-3. **Diagnóstico del Trade-off de Verificación**: Cuando `agentes_completo` emite una respuesta, su exactitud es del **78,6% (11 de 14)**. Sin embargo, su auditor estricto provocó 11 abstenciones técnicas (`limite_salidas_invalidas` y `limite_llamadas`) ante ligeras variaciones léxicas en los extractos. Al retirar la verificación (`sin_verificacion`), el sistema aumentó la emisión y alcanzó **14/25 aciertos (56,0%)**.
+### Hallazgos Clave y Desempeño Comparativo:
+1. **Compensación en el Banco Base (Normativa Vigente vs. Premisas Falsas)**: En las 40 preguntas sobre normativa vigente (P01–P40), los agentes superan a RAG D2 por **+10,0 pp (85,0% vs. 75,0%)**, resolviendo 9 de las 10 fallas históricas de D2 (omisiones en P11, P15, P24, P25, P36 y colisiones léxicas en P01, P28, P30, P38). En cambio, en las 10 preguntas con premisas falsas o artículos inexistentes (P41–P50), los agentes fallan en todas (0/10 vs. 10/10 en D2) debido al sesgo exploratorio del bucle deliberativo que intenta responder forzando asociaciones en vez de aplicar una abstención temprana como el filtro estático de D2, situando el total del banco base en 34/50 (68,0%).
+2. **Resolución de Casos Límite en el Conjunto Difícil**:
+   - **H18 (P118) — Suspensión > 3 años en memoristas (RI-FI Art. 31)**: Identifica con precisión la excepción del tope de 36 créditos en asignaturas fijadas por el Comité (1/1).
+   - **H25 (P125) — Criterios de prelación en Plan Común (RI-FI Art. 5)**: Articula la prelación jerárquica completa (1° créditos aprobados $\rightarrow$ 2° promedio curricular ponderado con dos decimales $\rightarrow$ 3° cupos y preferencias).
+   - **H05 y H08 — Cómputo Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2) por ausencia de cálculo; los agentes **acertaron ambos (2/2)** con desglose algebraico exacto ($0{,}6 \times \text{plan} + 0{,}4 \times \text{memoria}$).
+3. **Diagnóstico del Trade-off de Verificación**: Cuando `agentes_completo` emite una respuesta definitiva, su exactitud es del **78,6% (11 de 14)**. Sin embargo, en 11 consultas la rigidez léxica del Auditor frente a las limitaciones de paráfrasis del modelo 4B provocó ciclos de objeción que agotaron el presupuesto operativo (6 por `limite_salidas_invalidas` y 5 por `limite_llamadas`), forzando abstenciones técnicas con puntaje 0. Al retirar la verificación estricta (`sin_verificacion`), el sistema aumentó la emisión y alcanzó **14/25 aciertos (56,0%)**, al igual que `sin_descomposicion` (14/25, 56%).
 
 Para más detalles, consultar el [Reporte Final del Conjunto Difícil de 25](Deliverable3_Agentes/conjunto_dificil_25/resultados/reporte_final_dificiles_25.md).
 

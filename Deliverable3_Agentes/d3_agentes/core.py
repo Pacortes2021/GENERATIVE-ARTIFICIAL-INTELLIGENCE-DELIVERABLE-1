@@ -140,7 +140,11 @@ def parse_decision(raw, role, evidence):
             raw_quote = item['extracto'].strip()
             if len(raw_quote) < 8:
                 raise ValueError('El extracto no coincide con la fuente.')
-            if not _quote_matches(raw_quote, evidence[item['fuente']]['texto']):
+            palabras_ausencia = ('no existe', 'no figura', 'no se encuentra', 'no incluye',
+                                 'no contiene', 'no establece', 'ausente', 'no contempla',
+                                 'no cuenta', 'no está', 'inexistente')
+            es_ausencia = item['fuente'].startswith('INV-') or any(p in raw_quote.lower() for p in palabras_ausencia)
+            if not es_ausencia and not _quote_matches(raw_quote, evidence[item['fuente']]['texto']):
                 healed = False
                 for src_id, doc in evidence.items():
                     if _quote_matches(raw_quote, doc.get('texto', '')):

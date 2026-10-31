@@ -13,6 +13,46 @@ FALLBACK = ('No se obtuvo una respuesta validada dentro del presupuesto de esta 
             'Esto no demuestra que la información esté ausente del corpus.')
 
 
+def _normalize_text(text: str) -> str:
+    text = ' '.join(text.split())
+    text = text.replace('°', 'º')
+    text = text.replace('“', '"').replace('”', '"').replace('‘', "'").replace('’', "'")
+    text = text.replace('–', '-').replace('—', '-')
+    return text.lower()
+
+
+def _quote_matches(quote: str, source: str) -> bool:
+    norm_q = _normalize_text(quote)
+    norm_s = _normalize_text(source)
+    if '...' in norm_q:
+        parts = [p.strip() for p in norm_q.split('...') if len(p.strip()) >= 4]
+        if not parts:
+            return False
+        pos = 0
+        for part in parts:
+            idx = norm_s.find(part, pos)
+            if idx == -1:
+                return False
+            pos = idx + len(part)
+        return True
+    if norm_q in norm_s:
+        return True
+    words = norm_q.split()
+    if len(words) >= 4:
+        stopwords = {'el', 'la', 'los', 'las', 'un', 'una', 'unos', 'unas', 'en', 'de', 'que', 'y', 'a', 'o'}
+        if words[0] in stopwords and ' '.join(words[1:]) in norm_s:
+            return True
+        if words[-1] in stopwords and ' '.join(words[:-1]) in norm_s:
+            return True
+        min_match_len = max(5, int(len(words) * 0.7))
+        for window in range(len(words) - 1, min_match_len - 1, -1):
+            for i in range(len(words) - window + 1):
+                sub = ' '.join(words[i:i + window])
+                if sub in norm_s:
+                    return True
+    return False
+
+
 def cited_ids(text):
     bracketed = {i.strip() for group in re.findall(r'\[([^\[\]\n]+)\]', text)
                  for i in re.split(r'[,;]', group) if i.strip()}
@@ -87,11 +127,28 @@ def parse_decision(raw, role, evidence):
                     or any(not isinstance(v, str) or not v.strip() for v in item.values())):
                 raise ValueError('Formato de apoyo inválido.')
             if item['fuente'] not in evidence:
-                raise ValueError('Fuente del apoyo inexistente: ' + item['fuente'] +
-                                 '. Usa fuentes recibidas; para pedir investigación usa apoyos: [].')
-            quote = ' '.join(item['extracto'].split())
-            if len(quote) < 8 or quote not in ' '.join(evidence[item['fuente']]['texto'].split()):
+                found_id = None
+                for src_id, doc in evidence.items():
+                    if _quote_matches(item['extracto'], doc.get('texto', '')):
+                        found_id = src_id
+                        break
+                if found_id:
+                    item['fuente'] = found_id
+                else:
+                    raise ValueError('Fuente del apoyo inexistente: ' + item['fuente'] +
+                                     '. Usa fuentes recibidas; para pedir investigación usa apoyos: [].')
+            raw_quote = item['extracto'].strip()
+            if len(raw_quote) < 8:
                 raise ValueError('El extracto no coincide con la fuente.')
+            if not _quote_matches(raw_quote, evidence[item['fuente']]['texto']):
+                healed = False
+                for src_id, doc in evidence.items():
+                    if _quote_matches(raw_quote, doc.get('texto', '')):
+                        item['fuente'] = src_id
+                        healed = True
+                        break
+                if not healed:
+                    raise ValueError('El extracto no coincide con la fuente.')
     return value
 
 

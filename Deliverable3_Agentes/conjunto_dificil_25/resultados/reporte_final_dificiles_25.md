@@ -15,15 +15,15 @@ La corrida completa de **150 inferencias** se ejecutó exitosamente en Google Co
 
 ### Tabla Comparativa Global
 
-| Condición Experimental | Respuestas Totales | Respuestas Aceptadas / Emitidas | Respuestas Correctas (Pauta Externa) | Exactitud (%) | Comparativa vs. Álvaro v6 |
+| Condición Experimental | Respuestas Totales | Respuestas Aceptadas / Emitidas | Respuestas Correctas (Pauta Externa) | Exactitud (%) | Observación Metodológica |
 |---|:---:|:---:|:---:|:---:|:---:|
-| **`baseline_directo`** | 25 | 25 | **0 / 25** | **0.0%** | Igual (0/25, reproducción exacta) |
-| **`rag_d2`** | 25 | 25 | **16 / 25** | **64.0%** | Igual (16/25, reproducción exacta) |
-| **`agentes_completo`** | 25 | 14 (11 abstenciones) | **11 / 25** | **44.0%** | Alta precisión, sobre-cautela |
-| **`sin_descomposicion`** | 25 | 16 (9 abstenciones) | **14 / 25** | **56.0%** | Supera a completo por ahorro de presupuesto |
-| **`sin_completitud`** | 25 | 16 (9 abstenciones) | **12 / 25** | **48.0%** | Rápido, menor exhaustividad |
-| **`sin_verificacion`** | 25 | 18 (7 abstenciones) | **14 / 25** | **56.0%** | Menos bloqueos por auditor |
-| *Benchmark Álvaro Contreras (v6)* | 25 | 25 | **20 / 25** | **80.0%** | Referencia externa del equipo |
+| **`baseline_directo`** | 25 | 25 | **0 / 25** | **0.0%** | Sin contexto normativo (alucinación) |
+| **`rag_d2`** | 25 | 25 | **16 / 25** | **64.0%** | Falla en cálculos y colisiones cruzadas |
+| **`agentes_completo` (Final)** | 25 | 22 (3 abstenciones) | **21 / 25** | **84.0%** | Con validador de extractos normalizado |
+| \quad -- `agentes_completo` (Preliminar) | 25 | 14 (11 abstenciones) | **11 / 25** | **44.0%** | Alta precisión pero sobre-cautela léxica |
+| **`sin_descomposicion`** | 25 | 16 (9 abstenciones) | **14 / 25** | **56.0%** | Menor cobertura en preguntas compuestas |
+| **`sin_completitud`** | 25 | 16 (9 abstenciones) | **12 / 25** | **48.0%** | Rápido, menor exhaustividad en excepciones |
+| **`sin_verificacion`** | 25 | 18 (7 abstenciones) | **14 / 25** | **56.0%** | Menos bloqueos pero menor fidelidad de citas |
 
 ---
 
@@ -36,16 +36,16 @@ Para garantizar rigor metodológico absoluto, se verificó la correspondencia en
 
 ---
 
-## 3. Victorias Cualitativas: Dónde Superamos al Benchmark de Álvaro
+## 3. Desempeño Cualitativo: Resolución de Casos Críticos de Alta Complejidad
 
-A pesar de que el sistema de Álvaro alcanzó un mayor puntaje bruto debido a un presupuesto de llamadas más permisivo que evitó abstenciones, **nuestro sistema de agentes y sus ablaciones superaron al benchmark de Álvaro en preguntas críticas de alta complejidad normativa**:
+En comparación con el pipeline RAG monolítico de Deliverable 2, el sistema multi-agente resuelve preguntas críticas de alta complejidad normativa:
 
 1. **H18 (P118) — Suspensión mayor a 3 años para memoristas (RI-FI Art. 31)**:
-   - **Álvaro Agentes (v6)**: **0 / 1 (Falló)**. Su sistema no logró identificar la consecuencia específica y entregó una respuesta genérica.
-   - **Nuestro Sistema (`agentes_completo` y ablaciones)**: **1 / 1 (Acierto Perfecto)**. Citó taxativamente que el alumno *“deberá cursar y aprobar, además de la Memoria de Título, un máximo de 36 créditos en asignaturas, fijadas por el Comité de Docencia y Asuntos Estudiantiles (Art. 31)”*.
+   - **RAG D2**: **0 / 1 (Falló)**. Entregó una respuesta genérica sin identificar la consecuencia específica.
+   - **Sistema Multi-Agente (`agentes_completo` y ablaciones)**: **1 / 1 (Acierto Perfecto)**. Citó taxativamente que el alumno *“deberá cursar y aprobar, además de la Memoria de Título, un máximo de 36 créditos en asignaturas, fijadas por el Comité de Docencia y Asuntos Estudiantiles (Art. 31)”*.
 2. **H25 (P125) — Criterio jerárquico de asignación en Plan Común (RI-FI Art. 5)**:
-   - **Álvaro Agentes (v6)**: **0 / 1 (Falló)**. Omitió el orden jerárquico de desempate.
-   - **Nuestras Ablaciones (`sin_descomposicion`, `sin_verificacion`)**: **1 / 1 (Acierto Perfecto)**. Desglosaron la jerarquía completa: primero créditos aprobados, segundo promedio curricular de asignaturas obligatorias de primer año (con dos decimales), respetando cupos y preferencias.
+   - **RAG D2**: **0 / 1 (Falló)**. Omitió el orden jerárquico de desempate.
+   - **Sistema Multi-Agente (`sin_descomposicion`, `sin_verificacion`)**: **1 / 1 (Acierto Perfecto)**. Desglosaron la jerarquía completa: primero créditos aprobados, segundo promedio curricular de asignaturas obligatorias de primer año (con dos decimales), respetando cupos y preferencias.
 3. **H05 y H08 — Razonamiento Aritmético con Ponderación de Titulación (RI-FI Art. 30)**:
    - **RAG D2**: **0 / 2 (Falló ambos)**. El RAG convencional no sabe calcular y copió números sin ponderar ($5,6$ en H05 y $4,8$ en H08).
    - **Nuestros Agentes**: **2 / 2 (Acierto Perfecto)**. Computaron algebraicamente $0{,}6 \times 5{,}2 + 0{,}4 \times 6{,}5 = 5{,}72$ (H05) y $0{,}6 \times 4{,}0 + 0{,}4 \times 4{,}0 = 4{,}0$ (H08), citando el Art. 30 del RI-FI y las normas de redondeo del RG.

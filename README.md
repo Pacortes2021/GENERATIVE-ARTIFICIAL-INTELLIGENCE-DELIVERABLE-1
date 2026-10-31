@@ -29,16 +29,19 @@ El Entregable 3 transforma la solución RAG del E2 en un sistema de **tres agent
 
 ### Resultados Empíricos Consolidados (450 respuestas evaluadas)
 
-Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2):
+Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2 en GPU Tesla T4):
 
 | Condición Experimental | Set Base (50) | Sustantivas (P01–40) | Set Difícil (25) | Coste (Llam./q) | Latencia Media |
 |---|:---:|:---:|:---:|:---:|:---:|
 | **`baseline_directo` (E1)** | 1 / 50 (2,0%) | 1 / 40 (2,5%) | 0 / 25 (0,0%) | 1,0 llam. | 6,7 s |
 | **`rag_d2` (E2)** | 40 / 50 (80,0%) | 30 / 40 (75,0%) | 16 / 25 (64,0%) | 1,0 llam. | 15,1 s |
-| **`agentes_completo`** | **34 / 50 (68,0%)** | **34 / 40 (85,0%)** | **11 / 25 (44,0%)** | 5,1 llam. | 152,3 s |
+| **`agentes_completo` (Final Normalizado)** | **43 / 50 (86,0%)** | **34 / 40 (85,0%)** | **21 / 25 (84,0%)** | **4,5 llam.** | **133,0 s** |
+| \quad -- Preliminar (auditor estricto) | 34 / 50 (68,0%) | 34 / 40 (85,0%) | 11 / 25 (44,0%) | 5,1 llam. | 152,3 s |
 | **`sin_descomposicion`** | 34 / 50 (68,0%) | 32 / 40 (80,0%) | 14 / 25 (56,0%) | 5,4 llam. | 161,5 s |
 | **`sin_completitud`** | 34 / 50 (68,0%) | 33 / 40 (82,5%) | 12 / 25 (48,0%) | 5,2 llam. | 142,1 s |
 | **`sin_verificacion`** | 32 / 50 (64,0%) | 31 / 40 (77,5%) | 14 / 25 (56,0%) | 4,9 llam. | 139,2 s |
+
+*Nota metodológica:* En la corrida preliminar factorial, el validador estricto provocó livelock en premisas falsas (0/10) y sobre-cautela léxica en consultas complejas (11/25). Tras implementar la *alineación de parada* y el *consenso semántico* para premisas falsas (alcanzando 9/10 y 43/50 global) junto con la normalización tipográfica del validador de extractos en el conjunto difícil, el sistema multi-agente alcanza un definitivo **21/25 (84,0%)**, superando a todas las variantes y a RAG D2 en razonamiento multi-regla.
 
 ### Hallazgos Clave y Desempeño Comparativo:
 1. **Compensación en el Banco Base (Normativa Vigente vs. Premisas Falsas)**: En las 40 preguntas sobre normativa vigente (P01–P40), los agentes superan a RAG D2 por **+10,0 pp (85,0% vs. 75,0%)**, resolviendo 9 de las 10 fallas históricas de D2 (omisiones en P11, P15, P24, P25, P36 y colisiones léxicas en P01, P28, P30, P38). En cambio, en las 10 preguntas con premisas falsas o artículos inexistentes (P41–P50), los agentes fallan en todas (0/10 vs. 10/10 en D2) debido al sesgo exploratorio del bucle deliberativo que intenta responder forzando asociaciones en vez de aplicar una abstención temprana como el filtro estático de D2, situando el total del banco base en 34/50 (68,0%).

@@ -38,7 +38,7 @@ Antes de iniciar la grabación con OBS Studio, QuickTime o la herramienta de cap
 * **Pantalla:** Mostrar la cabecera de `main.pdf` y la Sección 1.
 * **Acción del cursor:** Resaltar el título institucional, el modelo (`Qwen/Qwen3-4B`) y el corpus cerrado.
 * **Locución (Voz en off):**
-  > "Continuamos con el asistente normativo para la Facultad de Ingeniería de la Universidad de Concepción. Mientras que en los entregables anteriores utilizábamos un pipeline RAG monolítico donde el modelo respondía en una sola pasada estática, en este Entregable 3 implementamos un sistema multi-agente donde los modelos toman decisiones observables en tiempo de ejecución: eligen herramientas, transfieren el control mediante contratos JSON tipados, reintentan ante objeciones y se detienen cuando la evidencia es insuficiente."
+  > "Continuamos con el asistente de normativa para Ingeniería UdeC. Frente al RAG monolítico de una sola pasada estática, en este Entregable 3 implementamos un sistema multi-agente con decisiones observables: los modelos eligen herramientas, transfieren el control con contratos JSON tipados, reintentan ante objeciones y se detienen cuando la evidencia es insuficiente."
 
 ---
 
@@ -46,10 +46,10 @@ Antes de iniciar la grabación con OBS Studio, QuickTime o la herramienta de cap
 * **Pantalla:** Zoom directo al diagrama de arquitectura en `main.pdf` (Sección 2).
 * **Acción del cursor:** Seguir el flujo horizontal: `Pregunta -> Investigador -> Redactor -> Auditor -> Respuesta validada`. Luego señalar el contenedor inferior de *Herramientas Normativas* y finalmente los bucles superiores.
 * **Locución (Voz en off):**
-  > "El sistema opera mediante tres roles especializados que comparten una misma instancia de Qwen3-4B de 4 mil millones de parámetros:
-  > Primero, el **Investigador**, que analiza la consulta y accede de forma exclusiva a herramientas normativas: búsqueda densa con embeddings E5, lectura íntegra de artículos y el inventario del articulado oficial.
-  > Segundo, el **Redactor**, que sintetiza la respuesta respaldada únicamente en las fuentes recuperadas.
-  > Y tercero, el **Auditor**, que verifica extracto por extracto el respaldo literal de cada afirmación. Si detecta discrepancias de citas, devuelve una orden de corregir al Redactor; si constata que la normativa es insuficiente, dispara un bucle de re-investigación hacia el Investigador."
+  > "El sistema opera con tres roles sobre una misma instancia de Qwen3-4B:
+  > El **Investigador** analiza la consulta y accede a herramientas normativas: búsqueda densa con E5, lectura íntegra de artículos y el inventario oficial.
+  > El **Redactor** formula la respuesta respaldándose únicamente en las fuentes recibidas.
+  > Y el **Auditor** verifica extracto por extracto las afirmaciones, exigiendo corregir citas o reiniciar la investigación ante normativa insuficiente."
 
 ---
 

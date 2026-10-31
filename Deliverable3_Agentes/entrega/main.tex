@@ -129,10 +129,10 @@
 \draw[arr] (r) -- node[lab, above]{\texttt{auditar}\\borrador} (a);
 \draw[arr] (a) -- node[lab, above]{\texttt{aprobar}\\conforme} (f);
 
-% 5. Invocación de herramientas (exclusiva del Investigador, con amplio despeje vertical)
-\draw[darr] (i.south -| b) -- node[lab, left=1.5pt, pos=0.48]{consultas} (b.north);
+% 5. Invocación de herramientas (exclusiva del Investigador, conectadas a su base)
+\draw[darr] ($(i.south)-(0.85,0)$) -- node[lab, left=1.5pt, pos=0.48]{consultas} (b.north);
 \draw[darr] (i.south) -- node[lab, right=1.5pt, pos=0.48]{artículos} (l.north);
-\draw[darr] (i.south -| n) -- node[lab, right=1.5pt, pos=0.48]{catálogo} (n.north);
+\draw[darr] ($(i.south)+(0.85,0)$) -- node[lab, right=1.5pt, pos=0.48]{catálogo} (n.north);
 
 % 6. Bucles de refinamiento superiores perfectamente jerarquizados
 % Arco 1: Redactor -> Investigador (falta evidencia)
@@ -142,11 +142,11 @@
 \draw[arr, acento] ($(a.north west)+(0.3,0)$) to[out=130, in=50] node[labLoop, above=1pt]{\texttt{corregir}: objeción de cita} ($(r.north east)+(-0.3,0)$);
 
 % Arco 3: Gran bucle de re-investigación Auditor -> Investigador pasando limpiamente por arriba
-\draw[arr, azul, line width=0.75pt] ($(a.north)+(0.3,0)$) to[out=110, in=0] ($(r.north)+(0, 1.15)$) node[labLoopBig, above=1.5pt]{\texttt{re-investigar}: laguna de evidencia / $\ge$2 correcciones} to[out=180, in=70] ($(i.north)+(-0.3,0)$);
+\draw[arr, azul, line width=0.75pt] ($(a.north)+(0.3,0)$) to[out=110, in=0] ($(r.north)+(0, 1.15)$) node[labLoopBig, above=1.5pt]{\texttt{re-investigar}: normativa insuficiente (buscar más artículos)} to[out=180, in=70] ($(i.north)+(-0.3,0)$);
 
 % 7. Salidas de excepción / parada por límites
 \draw[barr] (r.south) to[out=-35, in=145] node[lab, above=1pt, pos=0.55, sloped]{límite llamadas} (x.north west);
-\draw[barr] (a.south) -- node[lab, right=2pt, pos=0.5]{$\ge$2 objeciones\\o salidas inv.} (x.north);
+\draw[barr] (a.south) -- node[lab, right=2pt, pos=0.5]{límite de revisiones\\o formato inválido} (x.north);
 
 \end{tikzpicture}
 \end{center}

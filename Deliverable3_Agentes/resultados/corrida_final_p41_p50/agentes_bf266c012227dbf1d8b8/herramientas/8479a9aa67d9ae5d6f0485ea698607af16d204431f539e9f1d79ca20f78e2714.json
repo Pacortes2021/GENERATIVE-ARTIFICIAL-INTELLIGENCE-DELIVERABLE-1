@@ -1,0 +1,58 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "bf266c012227dbf1d8b8cd0e54beef045112a3e3b5589836adcb1d0e6465e37f",
+        "pregunta": {
+          "id": 43,
+          "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+          "categoria": "abstencion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-001",
+          "cita": "RG, artículo 1, PDF p. 2",
+          "texto": "Artículo 1° El presente reglamento establece las normas generales que regirán la docencia de pregrado impartida por la Universidad de Concepción, debiendo existir en cada Facultad un Reglamento Interno de Docencia de Pregrado."
+        },
+        {
+          "id": "RG-ART-011",
+          "cita": "RG, artículo 11, PDF p. 14",
+          "texto": "Artículo 11° En cada carrera que se dicte en un campus habrá un Comité de Docencia y Asuntos Estudiantiles que cumplirá con las funciones que el Reglamento Interno de Docencia de Pregrado de la Facultad o el Consejo de Carrera le asigne.\n\nEstará integrado al menos por el respectivo Jefe de Carrera que lo preside, por dos docentes elegidos por el Consejo de Carrera de entre sus integrantes y por uno de los representantes estudiantiles del Consejo de Carrera con derecho a voz y voto."
+        },
+        {
+          "id": "RG-ART-004",
+          "cita": "RG, artículo 4, PDF p. 10",
+          "texto": "Artículo 4º La docencia de pregrado se organizará en carreras. Toda carrera depende de una Facultad. No obstante, en el caso de disciplinas que no queden comprendidas dentro del ámbito de algunas Facultades existentes, el Consejo Académico podrá hacerlas depender temporalmente de otra unidad académica.\n\nEn cada Facultad el Decano será el responsable máximo de la docencia de pregrado. No obstante, el Vicedecano asumirá la administración general de los estudios de pregrado y será responsable del cumplimiento de los plazos establecidos para las actividades docentes."
+        },
+        {
+          "id": "RG-ART-049",
+          "cita": "RG, artículo 49, PDF p. 28",
+          "texto": "Artículo 49º Los alumnos egresados tendrán un plazo máximo de seis semestres para cumplir con las actividades finales de graduación o titulación.\n\nEl Reglamento Interno de Docencia de Pregrado de las Facultades deberá indicar las exigencias que se deben cumplir para obtener el Título Profesional o el Grado Académico cuando se encuentre vencido dicho plazo."
+        },
+        {
+          "id": "RG-TRANS-002",
+          "cita": "RG, artículo 2 transitorio, PDF p. 32",
+          "texto": "Artículo 2º. Las Facultades en lo correspondiente, deberán adecuar sus Reglamentos Internos de Docencia de Pregrado a lo dispuesto en este reglamento, dentro de un plazo no superior a noventa días hábiles contados de la vigencia del presente texto."
+        },
+        {
+          "id": "INV-d6440377b3bcc23e",
+          "cita": "Inventario de Reglamento_General_de_Docencia_de_Pregrado.pdf",
+          "texto": "{\"ambito\": \"ordinario\", \"documento\": \"RG\", \"existe\": false, \"fuente\": {\"archivo\": \"Reglamento_General_de_Docencia_de_Pregrado.pdf\", \"sha256\": \"d846b795573e6d5037b9d64c7d5c3489d18c8dc5021c38b486f78c03b17779de\"}, \"inventario_numeros\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60], \"numero_consultado\": 100, \"tipo\": \"articulo\"}"
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.035621588999674714
+  },
+  "sha256": "fdd8332915a675edbef67965b911ebc674dcdafc0ecb092c55c94ad4f6994e17"
+}

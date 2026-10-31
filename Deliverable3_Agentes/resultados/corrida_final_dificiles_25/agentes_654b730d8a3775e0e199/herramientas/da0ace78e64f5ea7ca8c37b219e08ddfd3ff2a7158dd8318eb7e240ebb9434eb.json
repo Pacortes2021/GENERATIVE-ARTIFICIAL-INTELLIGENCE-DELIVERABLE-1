@@ -1,0 +1,58 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 116,
+          "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+          "categoria": "sintesis"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno."
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-014",
+          "cita": "RI-FI, artículo 14, PDF p. 3",
+          "texto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las siguientes situaciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera. b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera. c) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera."
+        },
+        {
+          "id": "RG-ART-051",
+          "cita": "RG, artículo 51, PDF p. 29",
+          "texto": "Artículo 51° Se perderá también la condición de alumno de pregrado por resolución adoptada, como consecuencia de la aplicación del Reglamento “Normas de Conducta de los Estudiantes”."
+        },
+        {
+          "id": "RI-FI-ART-035",
+          "cita": "RI-FI, artículo 35, PDF p. 6",
+          "texto": "Artículo 35°. Las situaciones no previstas en el presente reglamento serán resueltas por el Decano de la Facultad de Ingeniería, en el ámbito de su competencia."
+        },
+        {
+          "id": "RG-TRANS-001",
+          "cita": "RG, artículo 1 transitorio, PDF p. 32",
+          "texto": "Artículo 1º. Las situaciones que se encontraren pendientes al momento de entrar en vigencia el presente reglamento se resolverán aplicando las normas vigentes al momento de su formulación u ocurrencia; sin perjuicio de ser resueltas sobre la base del presente reglamento, cuando su aplicación mejore la condición del alumno."
+        },
+        {
+          "id": "RI-FI-ART-028",
+          "cita": "RI-FI, artículo 28, PDF p. 5",
+          "texto": "Artículo 28°. La y el estudiante que se reincorpora y que al momento de suspender los estudios haya cumplido los requisitos para la obtención de la Licenciatura en Ciencias de la Ingeniería, ésta le será reconocida. Las asignaturas cursadas con posterioridad a la Licenciatura le serán reconocidas de acuerdo a su equivalencia con las del Plan de Estudio vigente al momento de la reincorporación."
+        },
+        {
+          "id": "INV-a665796e2df8f03c",
+          "cita": "Inventario de Reglamento_de_Docencia_de_Pregrado-FI.pdf",
+          "texto": "{\"ambito\": \"ordinario\", \"documento\": \"RI-FI\", \"existe\": true, \"fuente\": {\"archivo\": \"Reglamento_de_Docencia_de_Pregrado-FI.pdf\", \"sha256\": \"26840963fcad74c65d8b6837f516a48642a7f3f6a2406df43a7c9d458ca4e2f1\"}, \"inventario_numeros\": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35], \"numero_consultado\": 14, \"tipo\": \"articulo\"}"
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.09540963000017655
+  },
+  "sha256": "994861c7034681bdb897b55ed8a583fb02622b20d52caaf662df270dc47e6d23"
+}

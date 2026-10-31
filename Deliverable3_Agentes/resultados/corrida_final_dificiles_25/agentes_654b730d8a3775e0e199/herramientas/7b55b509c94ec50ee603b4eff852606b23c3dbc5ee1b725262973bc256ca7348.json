@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 115,
+          "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+          "categoria": "negacion_excepcion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-037",
+          "cita": "RG, artículo 37, PDF p. 24",
+          "texto": "Artículo 37° Los alumnos regulares podrán solicitar la revalidación de una misma asignatura ya aprobada en otro plan de estudio de otra carrera de esta universidad.\n\nLos alumnos regulares podrán solicitar la convalidación de una asignatura de su plan de estudio por otra ya aprobada en ésta o en otra institución de educación superior. Esta solicitud deberá ir acompañada de un certificado completo de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas, salvo que se trate de asignaturas aprobadas en esta universidad.\n\nEl Vicedecano, previo informe del Departamento a cargo de la asignatura, resolverá dentro de un plazo de quince días e informará de lo resuelto tanto al alumno como a la Facultad a la que éste pertenece."
+        },
+        {
+          "id": "RI-FI-ART-021",
+          "cita": "RI-FI, artículo 21, PDF p. 4",
+          "texto": "Artículo 21°. La y el estudiante de especialidad podrá solicitar la convalidación de una asignatura de su Plan de Estudio por otra(s) aprobada(s), con calificación(es) mínima(s) equivalente(s) a 4,5 en la escala de notas 1 a 7, en esta u otra Institución de Educación Superior. La solicitud deberá ir acompañada de un certificado de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas. No se podrá convalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio."
+        },
+        {
+          "id": "RI-FI-ART-020",
+          "cita": "RI-FI, artículo 20, PDF p. 4",
+          "texto": "Artículo 20°. La y el estudiante de especialidad podrá solicitar la revalidación de una misma asignatura (igual código) ya aprobada en otra carrera de esta Universidad. No se podrá revalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio."
+        },
+        {
+          "id": "RI-FI-ART-022",
+          "cita": "RI-FI, artículo 22, PDF p. 4",
+          "texto": "Artículo 22°. La y el estudiante podrá solicitar la convalidación, revalidación y reconocimiento de asignaturas cursadas en otras carreras por única vez durante las cuatro primeras semanas de ingreso a la nueva carrera, excepto los estudiantes de Primer Año Común quienes no podrán revalidar ni convalidar asignaturas."
+        },
+        {
+          "id": "RI-FI-ART-024",
+          "cita": "RI-FI, artículo 24, PDF p. 4",
+          "texto": "Artículo 24°. La y el estudiante en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la Universidad de Concepción tendrá el derecho a validar tales asignaturas. Para que una asignatura le sea validada, deberá presentar al Vicedecano el programa de la asignatura y calificación obtenida debidamente certificadas. La nota de una asignatura validada deberá ser incorporada al Sistema de Administración Curricular (SAC) en la Escala Oficial de la Universidad de Concepción y la asignatura será reconocida como carga académica en el semestre en la cual fue cursada."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.07596353200005979
+  },
+  "sha256": "c3d28362d5324ad2995f2b6e67370c113483feb63e361d2757af9434da985485"
+}

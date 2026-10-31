@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 123,
+          "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+          "categoria": "premisa_falsa"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "CAL-2026-S2-01",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inscripción de Asignaturas: 03 – 07 de agosto."
+        },
+        {
+          "id": "CAL-2026-S2-02",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inicio de Clases: 10 de agosto."
+        },
+        {
+          "id": "CAL-2026-S2-03",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Modificación de asignaturas – fecha límite: 04 de septiembre."
+        },
+        {
+          "id": "CAL-2026-S2-08",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: jueves 20 de agosto."
+        },
+        {
+          "id": "CAL-2026-S2-04",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Término de Clases: 11 de diciembre."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.08288839999931952
+  },
+  "sha256": "85a0f3f72be2a902227ed631277cca8edf69e87b06a1b4060ee53c9af0c5c261"
+}

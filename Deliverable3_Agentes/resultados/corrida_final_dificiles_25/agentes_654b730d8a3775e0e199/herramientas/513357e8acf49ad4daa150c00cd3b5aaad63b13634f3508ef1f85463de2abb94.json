@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 118,
+          "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+          "categoria": "sintesis"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-003-DEF-19",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.19. ALUMNO CON SUSPENSIÓN DE ESTUDIOS: Alumno de pregrado que perteneciendo a una carrera no inscribe asignaturas o suspende estudios. En estos casos pierde transitoriamente la condición de alumno regular de la Universidad de Concepción.\n\n"
+        },
+        {
+          "id": "RG-ART-003-DEF-20",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.20. ALUMNO SANCIONADO CON SUSPENSIÓN DE ESTUDIOS: Alumno de pregrado que perteneciendo a una carrera pierde transitoriamente, por sanción disciplinaria, la calidad de alumno regular de la Universidad de Concepción.\n\n"
+        },
+        {
+          "id": "RI-FI-ART-031",
+          "cita": "RI-FI, artículo 31, PDF p. 5",
+          "texto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la Memoria de Título, deberán cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles."
+        },
+        {
+          "id": "RG-ART-035",
+          "cita": "RG, artículo 35, PDF p. 23",
+          "texto": "Artículo 35° Los alumnos que soliciten suspender estudios o que renuncien a una carrera, deberán cumplir los requisitos que establezca la Facultad para estos efectos y adjuntar a su presentación los siguientes documentos:\n\na) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y\n\nb) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico."
+        },
+        {
+          "id": "RG-ART-033",
+          "cita": "RG, artículo 33, PDF p. 22, 23",
+          "texto": "Artículo 33º Un alumno con suspensión de estudios, para continuarlos, deberá solicitar su reincorporación al Vicedecano. Si la suspensión de estudios se fundó en razones de salud, el alumno deberá acompañar los antecedentes oficiales tales como el informe de la Dirección de Servicios Estudiantiles, o la Unidad que corresponda en Chillán y Los Ángeles, u otros fidedignos, que demuestren que han cesado los impedimentos que justificaron la suspensión, y en este caso la decisión corresponderá al Decano de la Facultad.\n\nEl Vicedecano comunicará la decisión que se adopte, al alumno, al Jefe de Carrera respectivo y lo registrará en el Sistema de Administración Curricular. En todo caso la suspensión de estudios podrá extenderse por un período máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\n\nLos alumnos que solicitan su reincorporación deberán adscribirse al Plan de Estudio que se esté impartiendo a la fecha de su reincorporación excepto el caso de los alumnos en intercambio quienes se mantendrán en el mismo plan de estudio."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.14701804800006357
+  },
+  "sha256": "ec6fe7c5e06e7eb07ad705c67f64a874b596dab7cbdc410be58774c445ebdbe4"
+}

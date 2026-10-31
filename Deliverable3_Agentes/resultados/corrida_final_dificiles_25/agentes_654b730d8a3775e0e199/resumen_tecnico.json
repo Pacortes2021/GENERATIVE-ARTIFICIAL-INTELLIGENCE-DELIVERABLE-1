@@ -1,0 +1,18 @@
+{
+  "esperadas": 25,
+  "completadas": 25,
+  "completa": true,
+  "ejecucion": "modelo_real",
+  "exactitud": null,
+  "nota": "La exactitud requiere evaluación externa; una aceptación interna no es un acierto.",
+  "por_variante": {
+    "agentes_completo": {
+      "n": 25,
+      "llamadas_modelo": 112,
+      "tokens_entrada": 259308,
+      "tokens_salida": 19875,
+      "segundos_modelo_logicos": 3324.0397,
+      "salidas_cortadas": 0
+    }
+  }
+}

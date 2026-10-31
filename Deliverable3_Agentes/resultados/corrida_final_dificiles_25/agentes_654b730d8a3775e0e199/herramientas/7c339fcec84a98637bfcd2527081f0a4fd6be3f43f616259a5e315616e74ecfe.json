@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 104,
+          "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+          "categoria": "multi_salto"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Reglamento que define las consecuencias si el plazo de titulación vence"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-TRANS-001",
+          "cita": "RG, artículo 1 transitorio, PDF p. 32",
+          "texto": "Artículo 1º. Las situaciones que se encontraren pendientes al momento de entrar en vigencia el presente reglamento se resolverán aplicando las normas vigentes al momento de su formulación u ocurrencia; sin perjuicio de ser resueltas sobre la base del presente reglamento, cuando su aplicación mejore la condición del alumno."
+        },
+        {
+          "id": "RG-ART-049",
+          "cita": "RG, artículo 49, PDF p. 28",
+          "texto": "Artículo 49º Los alumnos egresados tendrán un plazo máximo de seis semestres para cumplir con las actividades finales de graduación o titulación.\n\nEl Reglamento Interno de Docencia de Pregrado de las Facultades deberá indicar las exigencias que se deben cumplir para obtener el Título Profesional o el Grado Académico cuando se encuentre vencido dicho plazo."
+        },
+        {
+          "id": "RG-ART-051",
+          "cita": "RG, artículo 51, PDF p. 29",
+          "texto": "Artículo 51° Se perderá también la condición de alumno de pregrado por resolución adoptada, como consecuencia de la aplicación del Reglamento “Normas de Conducta de los Estudiantes”."
+        },
+        {
+          "id": "RG-ART-033",
+          "cita": "RG, artículo 33, PDF p. 22, 23",
+          "texto": "Artículo 33º Un alumno con suspensión de estudios, para continuarlos, deberá solicitar su reincorporación al Vicedecano. Si la suspensión de estudios se fundó en razones de salud, el alumno deberá acompañar los antecedentes oficiales tales como el informe de la Dirección de Servicios Estudiantiles, o la Unidad que corresponda en Chillán y Los Ángeles, u otros fidedignos, que demuestren que han cesado los impedimentos que justificaron la suspensión, y en este caso la decisión corresponderá al Decano de la Facultad.\n\nEl Vicedecano comunicará la decisión que se adopte, al alumno, al Jefe de Carrera respectivo y lo registrará en el Sistema de Administración Curricular. En todo caso la suspensión de estudios podrá extenderse por un período máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\n\nLos alumnos que solicitan su reincorporación deberán adscribirse al Plan de Estudio que se esté impartiendo a la fecha de su reincorporación excepto el caso de los alumnos en intercambio quienes se mantendrán en el mismo plan de estudio."
+        },
+        {
+          "id": "RG-ART-026",
+          "cita": "RG, artículo 26, PDF p. 20",
+          "texto": "Artículo 26º Cuando un alumno no se presente a una evaluación, o no cumpla actividades obligatorias en la fecha indicada por razones justificadas, podrá, solicitar al profesor encargado de la asignatura regularizar su situación en un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación, para lo cual deberá presentar los documentos que justifiquen su inasistencia. De lo resuelto por el Profesor Encargado, el alumno podrá apelar al Vicedecano de la Facultad que dicta la asignatura.\n\nEl alumno que no se presente dentro del plazo señalado en el párrafo precedente, será calificado con la nota mínima o con el concepto NCR, según corresponda.\n\nLa regularización mencionada podrá consistir en una evaluación oral, escrita o de la modalidad que disponga el profesor sobre los mismos contenidos y que se aplicará de inmediato una vez superada la causal de inasistencia. Podrá también consistir en una evaluación distinta a la evaluación de recuperación y aplicarse en otro período."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.07138304799991602
+  },
+  "sha256": "d363e993fa209c993f1f57740df9d8bf7aeb2384583085849acfd99a0d85ba55"
+}

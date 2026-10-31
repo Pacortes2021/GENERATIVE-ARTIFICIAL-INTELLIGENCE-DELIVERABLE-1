@@ -1,0 +1,34 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "bf266c012227dbf1d8b8cd0e54beef045112a3e3b5589836adcb1d0e6465e37f",
+        "pregunta": {
+          "id": 50,
+          "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+          "categoria": "abstencion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "leer_articulo",
+        "argumentos": {
+          "documento": "RI-FI",
+          "numero": 19
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-019",
+          "cita": "RI-FI, artículo 19, PDF p. 3",
+          "texto": "Artículo 19°. La y el estudiante que esté cursando una carrera de pregrado en la Universidad de Concepción, podrá solicitar cursar simultáneamente una carrera de la Facultad de Ingeniería, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado de la Universidad de Concepción, haya obtenido un promedio ponderado mínimo de calificaciones de 5,0 en la escala de 1 a 7, en su carrera de origen."
+        }
+      ],
+      "observacion": "Artículo completo: se incluyen todas sus unidades."
+    },
+    "segundos": 5.827799986946047e-05
+  },
+  "sha256": "18b031c8ad60e77db255983275ed1609450a42f6d5261e476520d2cd7ec7b165"
+}

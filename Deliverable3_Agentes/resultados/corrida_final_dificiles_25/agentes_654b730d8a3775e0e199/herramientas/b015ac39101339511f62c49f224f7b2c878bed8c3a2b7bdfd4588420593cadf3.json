@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 103,
+          "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+          "categoria": "multi_salto"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Fecha de inicio de clases del segundo semestre en el calendario 2026"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "CAL-2026-S2-04",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Término de Clases: 11 de diciembre."
+        },
+        {
+          "id": "CAL-2026-S2-02",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inicio de Clases: 10 de agosto."
+        },
+        {
+          "id": "CAL-2026-S2-09",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: viernes 18 de septiembre."
+        },
+        {
+          "id": "CAL-2026-S2-11",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: martes 08 de diciembre."
+        },
+        {
+          "id": "CAL-2026-S2-10",
+          "cita": "CAL, calendario 2026, semestre 2, PDF p. 2",
+          "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: lunes 12 de octubre."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.07119994699996823
+  },
+  "sha256": "1862474d64f0f351a9db34fbea8d0c33909ee8318eb6dab6882f1d1ded7c7dd0"
+}

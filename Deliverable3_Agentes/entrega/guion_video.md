@@ -80,12 +80,12 @@ Antes de iniciar la grabación con OBS Studio, QuickTime o la herramienta de cap
 
 ### Bloque 5: Resultados Empíricos (450 corridas), Ablaciones y Cierre (2:15 – 2:50)
 * **Pantalla:** Volver a `main.pdf` en la Sección 4 (Tabla 1) y luego mostrar brevemente el repositorio en GitHub.
-* **Acción del cursor:** Resaltar la fila de *Multi-Agente (E3)* (43/50 o 86% y 11/25), las ablaciones (*sin descomp.* y *sin verific.* con 14/25) y los enlaces del encabezado.
+* **Acción del cursor:** Resaltar la fila de *Multi-Agente (E3)* (43/50 o 86% en base y 21/25 u 84% en difícil), las comparaciones con RAG D2 y los enlaces del encabezado.
 * **Locución (Voz en off):**
-  > "Evaluamos 450 inferencias en GPU cubriendo seis configuraciones experimentales.
-  > Con el desbloqueo deliberativo, nuestro sistema multi-agente alcanza un 86% de exactitud en el banco base con 43 de 50 aciertos, superando el 80% del RAG monolítico de D2. En preguntas sobre normativa vigente alcanza un 85%, resolviendo problemas complejos de cálculo ponderado de notas y prelación de asignaturas.
-  > El estudio de ablación demostró que al retirar la verificación léxica estricta, el acierto en casos difíciles sube de 44% a 56%, evidenciando que una auditoría excesivamente rígida sobre un modelo 4B puede provocar abstenciones indebidas.
-  > Todo el código, prompts externos versionados y los 25 snapshots inmutables se encuentran disponibles en nuestro repositorio de GitHub."
+  > "Evaluamos las inferencias en GPU cubriendo las configuraciones experimentales en ambos conjuntos de datos.
+  > En el banco base, nuestro sistema multi-agente alcanza un 86% de exactitud con 43 de 50 aciertos, superando el 80% del RAG monolítico de D2, y alcanzando un 90% en la detección rigurosa de premisas falsas.
+  > En el conjunto de 25 consultas difíciles de estrés normativo, con la normalización de extractos del validador alcanzamos un 84% con 21 de 25 respuestas aprobadas, resolviendo problemas de cálculo ponderado de notas, suspensión y causales de baja donde D2 fallaba.
+  > Todo el código, prompts externos versionados y los respaldos auditables se encuentran disponibles en nuestro repositorio de GitHub."
 
 ---
 

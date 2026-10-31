@@ -1,0 +1,217 @@
+{
+  "contenido": {
+    "protocolo": "d3-agentes-desde-cero-v4",
+    "preguntas": [
+      {
+        "id": 101,
+        "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+        "categoria": "multi_salto"
+      },
+      {
+        "id": 102,
+        "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+        "categoria": "multi_salto"
+      },
+      {
+        "id": 103,
+        "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+        "categoria": "multi_salto"
+      },
+      {
+        "id": 104,
+        "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+        "categoria": "multi_salto"
+      },
+      {
+        "id": 105,
+        "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+        "categoria": "calculo"
+      },
+      {
+        "id": 106,
+        "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "categoria": "calculo"
+      },
+      {
+        "id": 107,
+        "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "categoria": "calculo"
+      },
+      {
+        "id": 108,
+        "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+        "categoria": "calculo"
+      },
+      {
+        "id": 109,
+        "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+        "categoria": "colision_lexica"
+      },
+      {
+        "id": 110,
+        "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+        "categoria": "colision_lexica"
+      },
+      {
+        "id": 111,
+        "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+        "categoria": "colision_lexica"
+      },
+      {
+        "id": 112,
+        "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+        "categoria": "colision_lexica"
+      },
+      {
+        "id": 113,
+        "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+        "categoria": "negacion_excepcion"
+      },
+      {
+        "id": 114,
+        "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+        "categoria": "negacion_excepcion"
+      },
+      {
+        "id": 115,
+        "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+        "categoria": "negacion_excepcion"
+      },
+      {
+        "id": 116,
+        "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+        "categoria": "sintesis"
+      },
+      {
+        "id": 117,
+        "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+        "categoria": "sintesis"
+      },
+      {
+        "id": 118,
+        "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+        "categoria": "sintesis"
+      },
+      {
+        "id": 119,
+        "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+        "categoria": "sintesis"
+      },
+      {
+        "id": 120,
+        "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+        "categoria": "premisa_falsa"
+      },
+      {
+        "id": 121,
+        "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+        "categoria": "premisa_falsa"
+      },
+      {
+        "id": 122,
+        "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+        "categoria": "premisa_falsa"
+      },
+      {
+        "id": 123,
+        "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+        "categoria": "premisa_falsa"
+      },
+      {
+        "id": 124,
+        "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+        "categoria": "colision_lexica"
+      },
+      {
+        "id": 125,
+        "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+        "categoria": "sintesis"
+      }
+    ],
+    "variantes": [
+      "agentes_completo"
+    ],
+    "inferencia": {
+      "modelo": "Qwen/Qwen3-4B",
+      "revision": "1cfa9a7208912126459214e8b04321603b3df60c",
+      "embedding_modelo": "intfloat/multilingual-e5-small",
+      "embedding_revision": "614241f622f53c4eeff9890bdc4f31cfecc418b3",
+      "embedding_tokenizer_sha256": "0b44a9d7b51c3c62626640cda0e2c2f70fdacdc25bbbd68038369d14ebdf4c39",
+      "generacion": {
+        "do_sample": true,
+        "temperature": 0.7,
+        "top_p": 0.8,
+        "top_k": 20,
+        "min_p": 0.0,
+        "repetition_penalty": 1.0,
+        "max_new_tokens": 1024
+      },
+      "semilla_base": 2026,
+      "max_context_tokens": 8192,
+      "ejecucion": "modelo_real",
+      "thinking": false,
+      "cuantizacion": {
+        "bits": 4,
+        "tipo": "nf4",
+        "double_quant": true,
+        "compute_dtype": "torch.bfloat16"
+      },
+      "gpu": "Tesla T4",
+      "cuda": "13.0",
+      "python": "3.13.16",
+      "versiones": {
+        "transformers": "4.57.6",
+        "accelerate": "1.11.0",
+        "bitsandbytes": "0.48.1",
+        "sentence-transformers": "5.1.2",
+        "tokenizers": "0.22.2",
+        "torch": "2.11.0+cu130",
+        "numpy": "2.1.3"
+      }
+    },
+    "limites": {
+      "model_calls": 12,
+      "tool_calls": 6,
+      "invalid_outputs": 3,
+      "context_tokens": 8192,
+      "output_tokens": 1024,
+      "token_margin": 64,
+      "evidence_units": 28,
+      "evidence_characters": 30000
+    },
+    "etiqueta": "eval_dificiles_gpu",
+    "archivos_sha256": {
+      "d3_agentes/downloads.py": "9345bffa531e1fb55dcd6d572f8afbc9c324972e29c88103aa297486042924cc",
+      "d3_agentes/experiment.py": "d3c6b4b1ed314258e175df95193411782ad63ff39d077fb5b5e723a65c4cc8c8",
+      "d3_agentes/runtime.py": "112401003b7051b2f462f0496bfa1f6a313a7fa01c7c7a262930837fbc04ab6e",
+      "d3_agentes/tools.py": "f075926974535b9b03aa8eaf431b0a803af13d81444b08f136818643a09ddab0",
+      "d3_agentes/common.py": "76f9cb1d436e46f095d37a70ddd9b1ab8c8da0f8e1ce5ee1f8f2f1831077bb20",
+      "d3_agentes/__init__.py": "ee0695533a98ad593db63822f7d3775fe565e1c4a5575f78de54034987d44d9d",
+      "d3_agentes/core.py": "98d335c11552512b03dac92eb0d4c0b280719fca5cc82f75fe1f3cd0f3370018",
+      "d3_agentes/bridge.py": "0e15d6153defdb4bc77c0c2a99d32e28e34a31b5f24c97b94fd0e06c23924ca1",
+      "prompts/investigador.txt": "0bcc8694aa10ecdcfa5c17438071a7390cd77a2a355141191e13b5704ee1c9ea",
+      "prompts/verificacion.txt": "8aa50bb8a3fbe4949331186e65ae4a09711be095a04af3830035cec74b1a1587",
+      "prompts/completitud.txt": "72918aa2f8a5bfb7981073823e44145c2574691812672487df6664b540e9c538",
+      "prompts/descomposicion.txt": "cf09766bec652248002dfa204b2cf8fff4df6330f22f01c838b1e1c2d4de50f8",
+      "prompts/auditor.txt": "b71aed834269f72d691c13b81b375bf1c64b0356749547f491daf6efb81058db",
+      "prompts/redactor.txt": "25df34e7d299ddaa25db0f2877dba7965b5129b48ca64e6d92cf7dddb546ef33",
+      "d2_runtime/experimento.py": "d20ce66a54c7791a480e0d9466e1740b34a8c5198df94ec52c1d4868219e22d0",
+      "d2_runtime/sistema.py": "be9ff8714f6580b30618ef4d45c98e744463da620e98721701dadfe9521fe130",
+      "d2_runtime/recuperador_portable.py": "a04c720b0cf25eb8010996dd28f70f8a08806b6c556e0be6bc2ea3a6fb4dd056",
+      "data/corpus.json": "0a31ff812a1969ff81bbc895feaba490e3bd027b092e52101296e3c872719400",
+      "data/fragmentos_busqueda.json": "c125615c1c3cddb23d69c3b2b93d7a73e076c90fe861cc217b59f293aa9b14cd"
+    },
+    "prompts_sha256": {
+      "auditor.txt": "b71aed834269f72d691c13b81b375bf1c64b0356749547f491daf6efb81058db",
+      "completitud.txt": "72918aa2f8a5bfb7981073823e44145c2574691812672487df6664b540e9c538",
+      "descomposicion.txt": "cf09766bec652248002dfa204b2cf8fff4df6330f22f01c838b1e1c2d4de50f8",
+      "investigador.txt": "0bcc8694aa10ecdcfa5c17438071a7390cd77a2a355141191e13b5704ee1c9ea",
+      "redactor.txt": "25df34e7d299ddaa25db0f2877dba7965b5129b48ca64e6d92cf7dddb546ef33",
+      "verificacion.txt": "8aa50bb8a3fbe4949331186e65ae4a09711be095a04af3830035cec74b1a1587"
+    },
+    "corpus_sha256": "88f22df88bb5478ea005488741d68584a4af9152f6b1ea044558d392cde044ed",
+    "fragmentos_sha256": "755e2dfbe35498b0cee8b1308ce53d7ad32323e2c8657fabb193dc2731a439c7",
+    "indice_sha256": "9f3cfc0a28cad6635c6105186c3c551a9d234613999c6f7165b186b2d3ae4e08"
+  },
+  "sha256": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1"
+}

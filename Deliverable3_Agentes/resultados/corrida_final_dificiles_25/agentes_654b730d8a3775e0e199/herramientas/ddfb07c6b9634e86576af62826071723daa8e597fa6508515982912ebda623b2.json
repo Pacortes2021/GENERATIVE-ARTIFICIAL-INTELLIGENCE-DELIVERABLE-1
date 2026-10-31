@@ -1,0 +1,63 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 110,
+          "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+          "categoria": "colision_lexica"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-PREAMBULO",
+          "cita": "RG, preámbulo, PDF p. 2",
+          "texto": "Lo acordado por el Consejo Académico en sesión de 18 de enero de 2018 en orden a aprobar la modificación orgánica del Reglamento General de Docencia de Pregrado aprobado por Decreto U. de C. Nº 2015-133 de 28 de diciembre de 2015, que se reemplaza por un nuevo texto y lo dispuesto en el Decreto U. de C. Nº 2014-057 de 8 de abril de 2014 y en los Estatutos de la Corporación.\n\nApruébase a contar de esta fecha la modificación orgánica al Reglamento General de Docencia de Pregrado, que se reemplaza por el siguiente texto, y que comenzará a regir a contar del año académico 2018.\n\nEn el texto de este reglamento se ha procurado el uso de un lenguaje que no discrimine ni marque diferencias de género; pero con el fin de evitar la sobrecarga gráfica, se ha optado por nominar a hombres y mujeres bajo la terminología genérica masculina.\n\nTÍTULO PRELIMINAR DISPOSICIONES GENERALES. DEFINICIONES"
+        },
+        {
+          "id": "RG-ART-001",
+          "cita": "RG, artículo 1, PDF p. 2",
+          "texto": "Artículo 1° El presente reglamento establece las normas generales que regirán la docencia de pregrado impartida por la Universidad de Concepción, debiendo existir en cada Facultad un Reglamento Interno de Docencia de Pregrado."
+        },
+        {
+          "id": "RG-ART-031",
+          "cita": "RG, artículo 31, PDF p. 22",
+          "texto": "Artículo 31º Los alumnos de pregrado podrán solicitar, al Vicedecano, suspender estudios hasta cuatro semanas antes del término del periodo lectivo respectivo.\n\nLa suspensión de estudios deja sin efecto la inscripción de asignaturas e interrumpe la calidad de alumno de pregrado de la Universidad de Concepción.\n\nLa solicitud y los antecedentes oficiales que justifiquen la suspensión de estudios, tales como, informe de la Dirección de Servicios Estudiantiles u otros fidedignos, deberán ser presentados al Vicedecano respectivo, que resolverá dicha solicitud antes de que finalice el periodo lectivo correspondiente. De lo resuelto por el Vicedecano podrá dentro de cinco días apelarse al Decano, siendo su decisión definitiva. El Vicedecano informará lo resuelto al Jefe de Carrera respectivo, al alumno y lo registrará en el Sistema de Administración Curricular.\n\nLa suspensión de estudios no libera al alumno de las obligaciones que pudiere tener pendientes con la universidad."
+        },
+        {
+          "id": "RI-FI-ART-027",
+          "cita": "RI-FI, artículo 27, PDF p. 5",
+          "texto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+        },
+        {
+          "id": "RG-ART-033",
+          "cita": "RG, artículo 33, PDF p. 22, 23",
+          "texto": "Artículo 33º Un alumno con suspensión de estudios, para continuarlos, deberá solicitar su reincorporación al Vicedecano. Si la suspensión de estudios se fundó en razones de salud, el alumno deberá acompañar los antecedentes oficiales tales como el informe de la Dirección de Servicios Estudiantiles, o la Unidad que corresponda en Chillán y Los Ángeles, u otros fidedignos, que demuestren que han cesado los impedimentos que justificaron la suspensión, y en este caso la decisión corresponderá al Decano de la Facultad.\n\nEl Vicedecano comunicará la decisión que se adopte, al alumno, al Jefe de Carrera respectivo y lo registrará en el Sistema de Administración Curricular. En todo caso la suspensión de estudios podrá extenderse por un período máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\n\nLos alumnos que solicitan su reincorporación deberán adscribirse al Plan de Estudio que se esté impartiendo a la fecha de su reincorporación excepto el caso de los alumnos en intercambio quienes se mantendrán en el mismo plan de estudio."
+        },
+        {
+          "id": "RG-ART-029",
+          "cita": "RG, artículo 29, PDF p. 21",
+          "texto": "Artículo 29° Los alumnos que estando habilitados para inscribir asignaturas no lo hagan dentro del periodo correspondiente perderán el derecho a continuar estudios como también la calidad de alumno de pregrado de la Universidad de Concepción, a menos que en el periodo lectivo anterior hayan inscrito una u más asignaturas anuales."
+        },
+        {
+          "id": "RG-ART-032",
+          "cita": "RG, artículo 32, PDF p. 22",
+          "texto": "Artículo 32° Si un alumno presenta salud o condición física incompatible con la Carrera, se le suspenderá el derecho a continuar estudios. La decisión en esta materia, previo informe de la Dirección de Servicios Estudiantiles o la Unidad que corresponda en Chillán y Los Ángeles, corresponderá al Decano en resolución fundada, que deberá informar al Vicerrector y a UDARAE para su registro en SAC."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.13350142399985998
+  },
+  "sha256": "a9555f3f051077bfb7d439818bee73316ef8e94cf948aa257f026021ee3169ad"
+}

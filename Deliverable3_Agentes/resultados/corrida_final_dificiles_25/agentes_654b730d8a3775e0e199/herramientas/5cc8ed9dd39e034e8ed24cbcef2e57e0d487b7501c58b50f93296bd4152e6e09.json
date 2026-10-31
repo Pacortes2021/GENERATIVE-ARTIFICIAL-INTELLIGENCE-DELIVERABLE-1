@@ -1,0 +1,58 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 114,
+          "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+          "categoria": "negacion_excepcion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-020",
+          "cita": "RI-FI, artículo 20, PDF p. 4",
+          "texto": "Artículo 20°. La y el estudiante de especialidad podrá solicitar la revalidación de una misma asignatura (igual código) ya aprobada en otra carrera de esta Universidad. No se podrá revalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio."
+        },
+        {
+          "id": "RG-ART-037",
+          "cita": "RG, artículo 37, PDF p. 24",
+          "texto": "Artículo 37° Los alumnos regulares podrán solicitar la revalidación de una misma asignatura ya aprobada en otro plan de estudio de otra carrera de esta universidad.\n\nLos alumnos regulares podrán solicitar la convalidación de una asignatura de su plan de estudio por otra ya aprobada en ésta o en otra institución de educación superior. Esta solicitud deberá ir acompañada de un certificado completo de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas, salvo que se trate de asignaturas aprobadas en esta universidad.\n\nEl Vicedecano, previo informe del Departamento a cargo de la asignatura, resolverá dentro de un plazo de quince días e informará de lo resuelto tanto al alumno como a la Facultad a la que éste pertenece."
+        },
+        {
+          "id": "RI-FI-ART-014",
+          "cita": "RI-FI, artículo 14, PDF p. 3",
+          "texto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las siguientes situaciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera. b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera. c) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera."
+        },
+        {
+          "id": "RG-ART-051",
+          "cita": "RG, artículo 51, PDF p. 29",
+          "texto": "Artículo 51° Se perderá también la condición de alumno de pregrado por resolución adoptada, como consecuencia de la aplicación del Reglamento “Normas de Conducta de los Estudiantes”."
+        },
+        {
+          "id": "RG-ART-028",
+          "cita": "RG, artículo 28, PDF p. 20, 21",
+          "texto": "Artículo 28° Los alumnos perderán el derecho a continuar estudios y la calidad de alumno de pregrado en las siguientes situaciones académicas: a) Haber aprobado menos créditos que el promedio mínimo exigido por la carrera. El promedio de créditos del alumno se calculará dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\n\nb) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de alumnos que se encuentran en el primer año de permanencia en la carrera"
+        },
+        {
+          "id": "RG-ART-030",
+          "cita": "RG, artículo 30, PDF p. 21",
+          "texto": "Artículo 30º Los alumnos en situación de Baja por no Inscripción podrán solicitar, en un plazo máximo de un año, la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo, el que previo estudio de los antecedentes, resolverá dicha solicitud. Se podrá recurrir al Vicedecano, dentro del quinto día hábil de notificada la resolución.\n\nSolamente en tres oportunidades, los alumnos en situación de Baja Académica podrán solicitar, en un plazo máximo de un año, la continuación de estudios ante las siguientes instancias:\n\nLa primera solicitud ante el Comité de Docencia y Asuntos Estudiantiles respectivo, quien resolverá en un plazo no superior a 10 días. De lo resuelto por el Comité de Docencia y Asuntos Estudiantiles, se podrá recurrir al Vicedecano, dentro del quinto día hábil de notificada la resolución. De esta resolución podrá apelarse ante el Decano de la Facultad.\n\nLa segunda solicitud ante el Vicedecano quien resolverá en un plazo no superior a 10 días hábiles. De lo resuelto por el Vicedecano, se podrá recurrir al Decano, dentro del quinto día hábil de notificada la resolución.\n\nLa tercera solicitud ante el Decano quien resolverá en un plazo no superior a 10 días hábiles.\n\nEn forma excepcional y por única vez, dentro del quinto día hábil, de lo resuelto por el Decano se podrá recurrir fundadamente al Vicerrector de la Universidad, quién podrá aprobar por gracia, la solicitud de continuación de estudios."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.15941387400016538
+  },
+  "sha256": "dbca73abfc054eeed2d42be32c730b5f187ca76cd31d367fa55e816e5e800148"
+}

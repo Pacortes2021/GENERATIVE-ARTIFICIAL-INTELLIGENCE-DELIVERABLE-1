@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 102,
+          "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+          "categoria": "multi_salto"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-018",
+          "cita": "RI-FI, artículo 18, PDF p. 3",
+          "texto": "Artículo 18°. La y el estudiante que haya cursado estudios en una carrera de la Facultad de Ingeniería podrá solicitar cambio a otra carrera de la misma Facultad, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado, haya obtenido un promedio ponderado mínimo de calificaciones de 4,2 en la escala de 1 a 7, en su carrera de origen."
+        },
+        {
+          "id": "RI-FI-ART-019",
+          "cita": "RI-FI, artículo 19, PDF p. 3",
+          "texto": "Artículo 19°. La y el estudiante que esté cursando una carrera de pregrado en la Universidad de Concepción, podrá solicitar cursar simultáneamente una carrera de la Facultad de Ingeniería, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado de la Universidad de Concepción, haya obtenido un promedio ponderado mínimo de calificaciones de 5,0 en la escala de 1 a 7, en su carrera de origen."
+        },
+        {
+          "id": "RI-FI-ART-017",
+          "cita": "RI-FI, artículo 17, PDF p. 3",
+          "texto": "Artículo 17°. La y el estudiante que haya cursado estudios en carreras de otras Facultades de la Universidad de Concepción o en otra Universidad chilena, podrá solicitar ingresar a la Facultad de Ingeniería, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado y en las Normas de Ingreso a las Carreras de Pregrado de la Universidad de Concepción, haya obtenido un promedio ponderado mínimo de calificaciones, equivalente a 4,5 en la escala de 1 a 7, en la carrera de origen."
+        },
+        {
+          "id": "RI-FI-ART-005",
+          "cita": "RI-FI, artículo 5, PDF p. 1",
+          "texto": "Artículo 5°. Las y los estudiantes del Ingreso Común postularán a las carreras ofrecidas por la Facultad de Ingeniería al término de su segundo semestre de permanencia. La selección se realizará, en primer lugar, de acuerdo al número de créditos aprobados; a igual número de créditos aprobados, de acuerdo al promedio curricular de notas de las asignaturas ponderadas por sus créditos del Plan Común de Primer Año expresado con dos decimales (incluye asignaturas aprobadas y reprobadas). La selección considerará el orden de sus preferencias en las carreras de Ingeniería Civil según oferta de la Facultad de Ingeniería y a los cupos disponibles por carrera. Para el proceso de postulación sólo se considerarán las asignaturas obligatorias de Primer Año."
+        },
+        {
+          "id": "RG-ART-054",
+          "cita": "RG, artículo 54, PDF p. 30",
+          "texto": "Artículo 54° Los alumnos de la Universidad de Concepción, cualquiera sea carrera que cursen, podrán solicitar su cambio a otra carrera, siempre que cumplan con los siguientes requisitos:\n\na) Ser alumno regular y conservar el derecho a continuar estudios en la carrera de origen.\n\nb) Haber obtenido en sus estudios, a lo menos, el promedio mínimo de calificaciones que se señale en el Reglamento Interno de Docencia de Pregrado de la Facultad a la cual postula.\n\nCuando se trate de cambios entre carreras de una misma Facultad, el Reglamento Interno de Docencia de Pregrado de ésta, podrá establecer promedios o puntajes diferentes, respecto de los requisitos señalados en la letra b).\n\nAnualmente, las Facultades establecerán los cupos disponibles para los cambios de carrera, debiendo ofrecer al menos uno para cada carrera en el primer semestre.\n\nLas solicitudes, acompañadas de la documentación exigida deberán ser presentadas, dentro del periodo establecido por la Dirección de Docencia, en UDARAE la que recepcionará solamente aquellas solicitudes que cumplan con todos los requisitos.\n\nLa resolución de las solicitudes corresponderá a una Comisión integrada por el Director de Docencia, el Decano de la Facultad, el Jefe de Carrera y deberá ser sancionada por el Rector de la Universidad de Concepción y registrada en el SAC por la Unidad de Admisión y Registro Académico Estudiantil."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.08576289899997391
+  },
+  "sha256": "8f4bcf30ac96974a49ba7d5eef52a8f8de43b0779d600a4d464552b55afb6cd0"
+}

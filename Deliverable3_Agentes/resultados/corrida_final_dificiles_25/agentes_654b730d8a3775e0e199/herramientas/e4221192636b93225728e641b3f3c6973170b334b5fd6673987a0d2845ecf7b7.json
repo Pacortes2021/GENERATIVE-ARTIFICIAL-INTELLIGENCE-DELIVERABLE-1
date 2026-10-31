@@ -1,0 +1,58 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 113,
+          "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+          "categoria": "negacion_excepcion"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RI-FI-ART-022",
+          "cita": "RI-FI, artículo 22, PDF p. 4",
+          "texto": "Artículo 22°. La y el estudiante podrá solicitar la convalidación, revalidación y reconocimiento de asignaturas cursadas en otras carreras por única vez durante las cuatro primeras semanas de ingreso a la nueva carrera, excepto los estudiantes de Primer Año Común quienes no podrán revalidar ni convalidar asignaturas."
+        },
+        {
+          "id": "RG-ART-044",
+          "cita": "RG, artículo 44, PDF p. 26",
+          "texto": "Artículo 44° El alumno que decida reingresar a una misma carrera, deberá hacerlo a Primer Año de ésta, como alumno nuevo, sujeto a los requisitos y exigencias vigentes en dicha carrera al momento de su reingreso y no tendrá derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas.\n\nSi el alumno que reingresa a la misma carrera no incurrió en pérdida de carrera, podrá solicitar, dentro de los treinta primeros días del primer semestre de permanencia en la carrera, mantener su situación académica anterior."
+        },
+        {
+          "id": "RG-ART-037",
+          "cita": "RG, artículo 37, PDF p. 24",
+          "texto": "Artículo 37° Los alumnos regulares podrán solicitar la revalidación de una misma asignatura ya aprobada en otro plan de estudio de otra carrera de esta universidad.\n\nLos alumnos regulares podrán solicitar la convalidación de una asignatura de su plan de estudio por otra ya aprobada en ésta o en otra institución de educación superior. Esta solicitud deberá ir acompañada de un certificado completo de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas, salvo que se trate de asignaturas aprobadas en esta universidad.\n\nEl Vicedecano, previo informe del Departamento a cargo de la asignatura, resolverá dentro de un plazo de quince días e informará de lo resuelto tanto al alumno como a la Facultad a la que éste pertenece."
+        },
+        {
+          "id": "RI-FI-ART-020",
+          "cita": "RI-FI, artículo 20, PDF p. 4",
+          "texto": "Artículo 20°. La y el estudiante de especialidad podrá solicitar la revalidación de una misma asignatura (igual código) ya aprobada en otra carrera de esta Universidad. No se podrá revalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio."
+        },
+        {
+          "id": "RI-FI-ART-015",
+          "cita": "RI-FI, artículo 15, PDF p. 3",
+          "texto": "Artículo 15°. La y el estudiante que, como consecuencia de revalidaciones, convalidaciones o reconocimiento, ingrese directamente a un nivel superior al primer año de la carrera, quedará sometido a la exigencia de aprobar el número de créditos correspondientes al respectivo nivel que ingresa, para los efectos de aplicar el artículo 14° inciso b). Para estos efectos no se contabilizarán los créditos revalidados, convalidados o reconocidos."
+        },
+        {
+          "id": "RI-FI-ART-014",
+          "cita": "RI-FI, artículo 14, PDF p. 3",
+          "texto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las siguientes situaciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera. b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera. c) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.09095360099991012
+  },
+  "sha256": "e3894d685057fa318ef751c0aaf8a1583b6990de7fe3adde902a586493df0b8f"
+}

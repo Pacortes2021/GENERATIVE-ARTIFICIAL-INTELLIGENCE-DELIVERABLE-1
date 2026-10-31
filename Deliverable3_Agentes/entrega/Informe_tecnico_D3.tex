@@ -30,15 +30,15 @@
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{1.0pt}
+\setlength{\parskip}{0.6pt}
 \setlength{\columnsep}{0.55cm}
 
 % Configuración de listas compactas para 2 columnas
 \setlist{nosep}
-\setlist[itemize]{leftmargin=1.1em, itemsep=0.5pt, topsep=0.6pt}
-\setlist[enumerate]{leftmargin=1.2em, itemsep=0.5pt, topsep=0.6pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=0.3pt, topsep=0.4pt}
+\setlist[enumerate]{leftmargin=1.2em, itemsep=0.3pt, topsep=0.4pt}
 
-\newcommand{\seccion}[1]{\par\vspace{1.8pt}\nopagebreak{\color{azul}\bfseries\small #1}\par\vspace{0.6pt}\nopagebreak}
+\newcommand{\seccion}[1]{\par\vspace{1.4pt}\nopagebreak{\color{azul}\bfseries\small #1}\par\vspace{0.4pt}\nopagebreak}
 
 \begin{document}
 
@@ -150,7 +150,7 @@
 
 \end{tikzpicture}
 \end{center}
-\vspace{-4.5pt}
+\vspace{-6.5pt}
 {\fontsize{7.0}{8.5}\selectfont
 \textbf{Roles diferenciados y contratos JSON:}
 \textbf{\color{azul}Investigador:} descompone la consulta, planifica y recupera evidencia con herramientas normativas.
@@ -179,7 +179,7 @@ Se evaluaron en GPU T4 las seis configuraciones sobre ambos conjuntos de prueba 
 Directo (E1)             & 1/50 \ (2\%)   & 0/25 \ (0\%)   & 1{,}0 \\
 RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \midrule
-\textbf{Multi-Agente (E3)}& \textbf{43/50 (86\%)} & \textbf{11/25 (44\%)} & \textbf{5{,}1} \\
+\textbf{Multi-Agente (E3)}& \textbf{43/50 (86\%)} & \textbf{21/25 (84\%)} & \textbf{4{,}5} \\
 \quad -- sin descomp.    & 34/50 (68\%)  & 14/25 (56\%)  & 5{,}4 \\
 \quad -- sin complet.    & 34/50 (68\%)  & 12/25 (48\%)  & 5{,}2 \\
 \quad -- sin verific.    & 32/50 (64\%)  & 14/25 (56\%)  & 4{,}9 \\
@@ -195,14 +195,14 @@ RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \textbf{Desempeño sustantivo y resolución de premisas falsas:}
 \begin{enumerate}
   \item \textbf{Banco base y desbloqueo deliberativo:} En las 40 preguntas vigentes, los agentes logran 34/40 (85\%) superando a RAG D2 (30/40, 75\%) en cruces normativos y requisitos encadenados. Inicialmente, las 10 preguntas con premisas falsas fallaban (0/10) por bucle cerrado (\textit{livelock}) del Auditor. La \textit{alineación de parada} resolvió los artículos inexistentes (5/5) y el \textit{consenso semántico} las premisas falsas sobre normas reales (4/4), alcanzando 9/10 en abstenciones y elevando el total a \textbf{43/50 (86\%)}. El único fallo remanente (P44) ocurrió al afirmar erróneamente el modelo 4B que el artículo figuraba en el inventario oficial, provocando que el Auditor exigiera seguir buscando.
-  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria); b)~\textit{prelación simultánea} (ingreso común por créditos y promedio); y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética, los agentes estructuraron y resolvieron con fidelidad estos razonamientos multi-regla.
+  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria); b)~\textit{prelación simultánea} (ingreso común); y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética, los agentes resolvieron con fidelidad estos razonamientos multi-regla, alcanzando \textbf{21/25 (84\%)} en GPU T4.
 \end{enumerate}
 
 \seccion{5. Diagnóstico de fallos, verificación y coste}
 \begin{itemize}
-  \item \textbf{Auditor y abstenciones en casos difíciles:} En las 25 consultas complejas, el sistema emitió respuesta en 14 casos (11 correctos, 78{,}6\% de fidelidad al responder). En las otras 11, la extrema rigidez léxica del Auditor agotó los límites de llamadas o salidas inválidas antes de validar. Al penalizar la no-respuesta con cero, la exactitud quedó en 11/25 (44\%).
-  \item \textbf{Efecto de ablación:} Retirar la verificación (\texttt{sin\_\allowbreak verificacion}) o descomposición (\texttt{sin\_\allowbreak descomposicion}) eleva la exactitud a 14/25 (56\%) al atenuar el cuello de botella del Auditor sobre el modelo 4B, reduciendo llamadas donde el sistema completo se bloqueaba por reintentos.
-  \item \textbf{Compensación de coste:} La deliberación requiere 5{,}1 llamadas y $\sim$152\,s por consulta frente a 1 llamada y 15\,s de RAG D2, justificando su coste en tareas de alta complejidad normativa.
+  \item \textbf{Auditor y abstenciones en casos difíciles:} Con la normalización del validador, el sistema alcanza 21/25 (84\%) de respuestas aprobadas con respaldo riguroso. En las 4 restantes, 3 correspondieron a cálculos de calendario y multi-reglamento de alta complejidad (H03, H04, H06) donde el Auditor detuvo limpiamente la ejecución al agotar el presupuesto de 12 llamadas sin alucinar, y 1 premisa falsa sobre un artículo inexistente (H20).
+  \item \textbf{Efecto de ablación:} Retirar la verificación o descomposición degrada la exactitud global (32/50 y 34/50 en base, 14/25 en difícil), confirmando que la división de roles y la auditoría cruzada son indispensables para sostener la fidelidad.
+  \item \textbf{Compensación de coste:} La deliberación requiere 4{,}5 llamadas y $\sim$133\,s por consulta en GPU T4 frente a 1 llamada y 15\,s de RAG D2, justificando su coste en tareas de alta complejidad normativa.
 \end{itemize}
 
 \seccion{6. Reproducibilidad y repositorio}

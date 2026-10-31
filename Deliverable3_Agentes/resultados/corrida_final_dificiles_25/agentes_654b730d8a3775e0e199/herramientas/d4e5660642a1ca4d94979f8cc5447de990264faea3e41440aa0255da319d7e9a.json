@@ -1,0 +1,63 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 104,
+          "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+          "categoria": "multi_salto"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-003-DEF-22",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.22. ALUMNO EGRESADO: Alumno de pregrado que haya aprobado todas las actividades académicas del plan de estudios y sólo le falte cumplir con las actividades finales de graduación o titulación.\n\n"
+        },
+        {
+          "id": "RG-ART-003-DEF-20",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.20. ALUMNO SANCIONADO CON SUSPENSIÓN DE ESTUDIOS: Alumno de pregrado que perteneciendo a una carrera pierde transitoriamente, por sanción disciplinaria, la calidad de alumno regular de la Universidad de Concepción.\n\n"
+        },
+        {
+          "id": "RG-TRANS-002",
+          "cita": "RG, artículo 2 transitorio, PDF p. 32",
+          "texto": "Artículo 2º. Las Facultades en lo correspondiente, deberán adecuar sus Reglamentos Internos de Docencia de Pregrado a lo dispuesto en este reglamento, dentro de un plazo no superior a noventa días hábiles contados de la vigencia del presente texto."
+        },
+        {
+          "id": "RG-TRANS-001",
+          "cita": "RG, artículo 1 transitorio, PDF p. 32",
+          "texto": "Artículo 1º. Las situaciones que se encontraren pendientes al momento de entrar en vigencia el presente reglamento se resolverán aplicando las normas vigentes al momento de su formulación u ocurrencia; sin perjuicio de ser resueltas sobre la base del presente reglamento, cuando su aplicación mejore la condición del alumno."
+        },
+        {
+          "id": "RG-ART-049",
+          "cita": "RG, artículo 49, PDF p. 28",
+          "texto": "Artículo 49º Los alumnos egresados tendrán un plazo máximo de seis semestres para cumplir con las actividades finales de graduación o titulación.\n\nEl Reglamento Interno de Docencia de Pregrado de las Facultades deberá indicar las exigencias que se deben cumplir para obtener el Título Profesional o el Grado Académico cuando se encuentre vencido dicho plazo."
+        },
+        {
+          "id": "RG-ART-028",
+          "cita": "RG, artículo 28, PDF p. 20, 21",
+          "texto": "Artículo 28° Los alumnos perderán el derecho a continuar estudios y la calidad de alumno de pregrado en las siguientes situaciones académicas: a) Haber aprobado menos créditos que el promedio mínimo exigido por la carrera. El promedio de créditos del alumno se calculará dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\n\nb) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de alumnos que se encuentran en el primer año de permanencia en la carrera"
+        },
+        {
+          "id": "RG-ART-003-DEF-23",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.23. ALUMNO REGULAR EN PROCESO DE TITULACIÓN O GRADUACIÓN: Alumno egresado que se encuentren realizando las actividades finales de graduación o titulación correspondientes a su plan de estudio.\n\n"
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.198761081000157
+  },
+  "sha256": "08019f88df1b020e3d2c13ad7d0d9fe220bdd1b315f11dd1ee550066fa13fc1a"
+}

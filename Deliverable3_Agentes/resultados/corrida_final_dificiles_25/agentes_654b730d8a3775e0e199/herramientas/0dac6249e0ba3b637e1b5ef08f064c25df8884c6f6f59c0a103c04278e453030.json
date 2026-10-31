@@ -1,0 +1,53 @@
+{
+  "contenido": {
+    "identidad": {
+      "contexto": {
+        "corrida": "654b730d8a3775e0e199a62b644da82337812d3e43d3e03d78dd664e1f29e5d1",
+        "pregunta": {
+          "id": 111,
+          "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+          "categoria": "colision_lexica"
+        },
+        "variante": "agentes_completo"
+      },
+      "solicitud": {
+        "nombre": "buscar_normativa",
+        "argumentos": {
+          "consulta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?"
+        }
+      }
+    },
+    "resultado": {
+      "fuentes": [
+        {
+          "id": "RG-ART-024",
+          "cita": "RG, artículo 24, PDF p. 18, 19",
+          "texto": "Artículo 24° El registro académico del alumno deberá proporcionar, a lo menos, los siguientes dos tipos de promedios de notas: a) Promedio Ponderado (“Prom. Pond.”): Corresponde al promedio de las notas finales iguales o superiores a 4,0, ponderadas por el correspondiente número de créditos.\n\nb) Promedio Curricular (“Prom. Curr.”): Corresponde al promedio de las todas notas finales, ponderadas por el correspondiente número de créditos.\n\nPara efectos del cálculo de los promedios señalados, el concepto NCR (no cumple requisitos) equivaldrá a la nota final 1,0; y no se considerarán los conceptos APR (aprobado) y REP (reprobado)."
+        },
+        {
+          "id": "RG-ART-021",
+          "cita": "RG, artículo 21, PDF p. 17",
+          "texto": "Artículo 21º En el proceso de enseñanza - aprendizaje se podrán emplear para la evaluación diversas modalidades, instrumentos de evaluación y escalas de medición del rendimiento cuantitativo o cualitativo, de acuerdo con las particularidades del quehacer disciplinario. En todo caso, ellos deberán ceñirse al Reglamento Interno de Docencia de Pregrado de la Facultad que dicta la asignatura.\n\nComo indicador cuantitativo del aprendizaje alcanzado por el alumno en la asignatura respectiva, se utilizará el Promedio Ponderado de las distintas evaluaciones, el que se obtendrá de las calificaciones obtenidas de las formas de evaluación que se establezcan en el programa de la asignatura y se denominará Nota Final.\n\nEn el caso de asignaturas con evaluación cualitativa, se utilizarán los conceptos Aprobado o Reprobado, los que se consignarán en el Acta de Notas como APR o REP, respectivamente."
+        },
+        {
+          "id": "RG-PREAMBULO",
+          "cita": "RG, preámbulo, PDF p. 2",
+          "texto": "Lo acordado por el Consejo Académico en sesión de 18 de enero de 2018 en orden a aprobar la modificación orgánica del Reglamento General de Docencia de Pregrado aprobado por Decreto U. de C. Nº 2015-133 de 28 de diciembre de 2015, que se reemplaza por un nuevo texto y lo dispuesto en el Decreto U. de C. Nº 2014-057 de 8 de abril de 2014 y en los Estatutos de la Corporación.\n\nApruébase a contar de esta fecha la modificación orgánica al Reglamento General de Docencia de Pregrado, que se reemplaza por el siguiente texto, y que comenzará a regir a contar del año académico 2018.\n\nEn el texto de este reglamento se ha procurado el uso de un lenguaje que no discrimine ni marque diferencias de género; pero con el fin de evitar la sobrecarga gráfica, se ha optado por nominar a hombres y mujeres bajo la terminología genérica masculina.\n\nTÍTULO PRELIMINAR DISPOSICIONES GENERALES. DEFINICIONES"
+        },
+        {
+          "id": "RG-ART-003-DEF-12",
+          "cita": "RG, artículo 3, PDF p. 3, 4, 5, 6, 7, 8, 9",
+          "texto": "3.12. PROGRAMA DE FORMACIÓN COMPLEMENTARIA: Plan de formación académica, dirigido a alumnos de distintas carreras que hayan aprobado los dos primeros años, cuya finalidad es que el alumno adquiera competencias en un ámbito distinto de aquellas propias de la carrera que cursa. Estos programas deberán tener una carga académica no inferior a 24 créditos transferibles y en sus planes de formación se podrán incluir asignaturas contempladas en planes de estudio de otras carreras y la docencia que en ellos se realice se regirá por las normas establecidas en este reglamento.\n\nLos programas de formación complementaria tienen asociado un Plan de Formación Académica en el que se explicitan las actividades académicas a realizar para conseguir los objetivos propuestos en el programa. Estos planes de formación deberán contener:\n\n1. Nombre del programa.\n\n2. Unidad académica responsable y unidades académicas participantes.\n\n3. Certificación que otorga.\n\n4. Descripción general que incluye los propósitos y su justificación.\n\n5. Perfil de egreso con sus competencias.\n\n6. Requisitos de admisión.\n\n7. Ordenamiento de las actividades curriculares y distribución de los créditos.\n\n8. Programas de las actividades curriculares.\n\n9. Requisitos de finalización del programa, para acceder a la certificación respectiva.\n\n"
+        },
+        {
+          "id": "RG-ART-020",
+          "cita": "RG, artículo 20, PDF p. 17",
+          "texto": "Artículo 20º La Facultad a la que está adscrita la asignatura, determinará el régimen de asistencia a clases y a otras actividades que tengan un propósito formativo.\n\nEl alumno que, libremente estime dar a conocer que por razones religiosas, tiene impedimento para asistir a las actividades académicas programadas en los horarios definidos por las Facultades, deberá acreditarlo al momento de inscribir la o las asignaturas que se trate, con el objeto de que el Profesor Encargado considere esta circunstancia en la programación de tales actividades.\n\nLos alumnos que presenten algún tipo de discapacidad, debidamente acreditada, podrán solicitar un régimen especial de asistencia y facilidades para desarrollar sus actividades lectivas y rendir las evaluaciones estipuladas en el syllabus. La solicitud deberá presentarse al momento de inscribir asignaturas ante el Vicedecano de su Facultad, quien previa consulta al Programa INCLUDEC, resolverá la solicitud e informará de ello a los vicedecanos de las facultades que dictan las asignaturas."
+        }
+      ],
+      "observacion": "Resultados de D2; una búsqueda parcial no prueba ausencia."
+    },
+    "segundos": 0.08445130299969605
+  },
+  "sha256": "cb260c4c88498d177e70623123e69c55b5326b21d68c292ec202fe6cf0bcb0a8"
+}

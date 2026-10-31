@@ -18,3 +18,16 @@ __pycache__/
 **/sistema_runs/
 **/genia_runtime_*/
 .pytest_cache/
+
+# Descompresión local de trazas pesadas (preservadas en ZIP)
+**/corrida_completa/fuentes/
+**/corrida_completa/herramientas/
+**/corrida_completa/intentos/
+**/corrida_completa/llamadas/
+**/corrida_completa/prompts/
+**/corrida_completa/recuperacion_d2/
+**/corrida_completa/resultados/
+
+# Prototipo histórico preservado en rama backup/deliverable3
+Deliverable3/
+

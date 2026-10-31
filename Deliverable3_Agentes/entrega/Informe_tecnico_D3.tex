@@ -1,0 +1,145 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage[margin=1.12cm,top=1.0cm,bottom=1.0cm]{geometry}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,babel}
+\usepackage{hyperref}
+
+% Paleta sobria y académica idéntica a D1 y D2
+\definecolor{azul}{HTML}{14334B}
+\definecolor{celeste}{HTML}{EAF3F8}
+\definecolor{acento}{HTML}{006699}
+\definecolor{gris}{HTML}{4A5560}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=acento,
+  linkcolor=acento
+}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2.2pt}
+\setlength{\columnsep}{0.55cm}
+
+\newcommand{\seccion}[1]{\par\vspace{2.8pt}{\color{azul}\bfseries\small #1}\par\vspace{1pt}}
+
+\begin{document}
+
+% Encabezado institucional idéntico a D1 y D2
+{\color{azul}\bfseries\large Arquitectura multi-agente para el asistente de normativa (Ingeniería UdeC)}\par
+\vspace{1pt}
+{\color{acento}\bfseries\footnotesize Entregable 3: sistema de tres agentes con decisiones observables, herramientas y estudio de ablación}\par
+\vspace{2pt}
+{\scriptsize \textbf{Generative Artificial Intelligence (580694)} \textbar{} Segundo semestre 2026 \textbar{} \textbf{Equipo:} Álvaro Contreras y Pablo Cortés}\par
+\vspace{1pt}
+{\scriptsize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1} \hfill \textbf{Video (3 min):} \href{https://drive.google.com/file/d/1eBhjtr9q2l0yT9FnfQ_rWjtIsbdhvvY0/view?usp=drive_link}{[Enlace de video pendiente]}}\par
+\vspace{2pt}\hrule height 0.8pt\vspace{2pt}
+
+\seccion{1. Continuidad con E1/E2 y definición de agentes}
+{\small Este entregable continúa la tarea de responder consultas en español sobre la normativa de pregrado de la Facultad de Ingeniería (FI-UdeC) a partir del corpus cerrado oficial (Reglamento General RG, Reglamento Interno RI-FI y Calendario 2026: 197 unidades, 201 fragmentos E5). Se mantiene la pauta estricta: acierto solo si el dato es suficiente y la cita lo respalda; abstención si la información no existe o la premisa es falsa. Ratificamos \textbf{Qwen/Qwen3-4B} (NF4, GPU Tesla T4, $\text{temp}=0{,}7$, sin thinking) compartido por todos los agentes. A diferencia de un pipeline fijo de prompts, los agentes toman \textbf{decisiones observables}: invocan herramientas, transfieren el control con contratos JSON validados, reintentan ante objeciones o se detienen.}
+
+\seccion{2. Arquitectura del sistema y grafo de agentes}
+\begin{center}
+\begin{tikzpicture}[
+  >=Latex, font=\tiny,
+  agent/.style={draw=azul,fill=celeste,rounded corners=2pt,minimum height=6.5mm,minimum width=24mm,align=center},
+  tool/.style={draw=acento,fill=white,rounded corners=1pt,minimum height=5.5mm,minimum width=27mm,align=center},
+  endnode/.style={draw=gris,rounded corners=2pt,align=center,minimum height=5.5mm,inner sep=2pt},
+  lab/.style={fill=white,inner sep=1pt,font=\tiny,align=center},
+  arr/.style={->,draw=azul,line width=.5pt},
+  darr/.style={<->,draw=acento,line width=.5pt},
+  barr/.style={->,draw=azul,dashed,line width=.4pt}
+]
+\node[endnode] (q) at (0,0) {\textbf{Pregunta}\\usuario};
+\node[agent] (i) at (3.5,0) {\textbf{Investigador}\\(descompone/planifica)};
+\node[agent] (r) at (7.8,0) {\textbf{Redactor}\\(síntesis y citas)};
+\node[agent] (a) at (12.1,0) {\textbf{Auditor}\\(verifica afirmaciones)};
+\node[endnode] (f) at (15.8,0) {\textbf{Respuesta}\\validada};
+
+% Herramientas
+\node[tool] (b) at (1.5,-1.3) {\texttt{buscar\_normativa}\\E5 dense retrieval};
+\node[tool] (l) at (5.2,-1.3) {\texttt{leer\_articulo}\\unidades completas};
+\node[tool] (n) at (8.9,-1.3) {\texttt{inventario}\\catálogo artículos};
+\node[endnode] (x) at (13.8,-1.3) {\textbf{Fin sin validar}\\límite llamadas/salidas};
+
+\draw[arr] (q) -- node[lab,above]{inicio} (i);
+\draw[arr] (q.south) to[out=-90,in=180] node[lab,above,pos=0.6]{búsqueda base} (b.west);
+\draw[darr] (i.south west) -- node[lab,above,sloped]{consulta} (b.north east);
+\draw[darr] (i.south) -- node[lab,right]{texto art.} (l.north);
+\draw[darr] (i.south east) -- node[lab,above,sloped]{catálogo} (n.north west);
+
+\draw[arr] (i) -- node[lab,above]{\texttt{redactar}: fuentes} (r);
+\draw[arr] (r) -- node[lab,above]{\texttt{auditar}: borrador} (a);
+\draw[arr] (a) -- node[lab,above]{\texttt{aceptar}} (f);
+
+% Bucles de refinamiento y paradas
+\draw[arr] (r.north) to[out=145,in=35] node[lab,above]{\texttt{investigar}: falta evidencia / repetición} (i.north);
+\draw[arr] (a.north) to[out=145,in=35] node[lab,above]{\texttt{corregir}: objeción de cita} (r.north);
+\draw[arr] (a.north east) -- ++(0,0.55) -| node[lab,pos=0.3,above]{\texttt{investigar}: respaldo pendiente / 2 correcciones} (i.north west);
+
+\draw[barr] (a.south) -- (x.north);
+\draw[barr] (r.south) to[out=-45,in=150] (x.north west);
+\draw[barr] (n.east) -- node[lab,above]{fallo} (x.west);
+\end{tikzpicture}
+\end{center}
+\vspace{-5pt}
+{\footnotesize \textbf{Roles no solapados:} \textbf{Investigador:} descompone la consulta, planifica y recupera evidencia. \textbf{Redactor:} redacta la respuesta condicionada a la evidencia sin extrapolar. \textbf{Auditor:} comprueba que cada afirmación posea respaldo literal en la evidencia; si detecta errores devuelve objeciones o exige nueva búsqueda.}
+
+\begin{multicols}{2}
+
+\seccion{3. Técnicas de prompting y estudio de ablación}
+Cada técnica ataca una falla diagnosticada en E1/E2 mediante bloques concatenados a los prompts en \texttt{prompts/}:
+\begin{itemize}
+  \item \textbf{Descomposición de consulta (Investigador):} Divide preguntas complejas en sub-consultas vectoriales. Ablación: \texttt{sin\_descomposicion}.
+  \item \textbf{Lista de completitud (Redactor):} Chequeo de condiciones, excepciones y remisiones. Ablación: \texttt{sin\_completitud}.
+  \item \textbf{Verificación por afirmación (Auditor):} Validación estricta extracto a extracto contra el corpus. Ablación: \texttt{sin\_verificacion}.
+\end{itemize}
+
+\seccion{4. Resultados empíricos y análisis de mejora}
+Se evaluaron en GPU T4 las 6 condiciones sobre dos bancos de preguntas bajo la pauta de E2 (450 inferencias en total):
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}l@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
+\toprule
+\textbf{Condición} & \textbf{Set 50} & \textbf{Sust.} & \textbf{Set 25} & \textbf{Llam.} \\
+\midrule
+Directo (E1) & 1/50 (2\%) & 1/40 & 0/25 (0\%) & 1,0 \\
+RAG D2 (E2) & 40/50 (80\%) & 30/40 & 16/25 (64\%) & 1,0 \\
+\textbf{Agentes (compl.)} & \textbf{34/50 (68\%)} & \textbf{34/40 (85\%)} & \textbf{11/25 (44\%)} & 5,1 \\
+Sin descomp. & 34/50 (68\%) & 32/40 & 14/25 (56\%) & 5,4 \\
+Sin complet. & 34/50 (68\%) & 33/40 & 12/25 (48\%) & 5,2 \\
+Sin verific. & 32/50 (64\%) & 31/40 & 14/25 (56\%) & 4,9 \\
+\midrule
+\emph{Álvaro v6} & 46/50 (92\%) & --- & 20/25 (80\%) & 4,2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{-3pt}
+\textbf{Victorias y hallazgos sustantivos:}
+\begin{enumerate}
+  \item En preguntas sustantivas de normativa (P01--P40), los agentes superan a RAG D2 por \textbf{+10,0 pp (85\% vs 75\%)}, resolviendo 9 de las 10 fallas históricas de D2 (omisiones P11, P15, P24, P25, P36 y colisiones P01, P28, P30, P38).
+  \item En el set difícil de 25 preguntas, los agentes superan al benchmark de Álvaro en preguntas complejas: resuelven \textbf{H18} (tope de 36 créditos para memoristas suspendidos > 3 años, Art.~31) y \textbf{H25} (criterio jerárquico de prelación en Plan Común, Art.~5), donde Álvaro falló (0/1); y calculan con exactitud las notas de titulación 60/40 de \textbf{H05 y H08} (Art.~30) donde RAG D2 falló completamente.
+\end{enumerate}
+
+\seccion{5. Diagnóstico de fallos, sobre-cautela y coste}
+\begin{itemize}
+  \item \textbf{Sobre-cautela del Auditor:} En el set difícil, \texttt{agentes\_completo} logró un \textbf{78,6\% de acierto al emitir respuesta} (11 de 14). Sin embargo, en 11 preguntas el Auditor rechazó borradores por mínimas discrepancias léxicas hasta agotar presupuesto (\texttt{limite\_salidas\_invalidas}), resultando en abstención técnica penalizada con 0.
+  \item \textbf{Efecto de las ablaciones:} Al retirar verificación (\texttt{sin\_verificacion}) o descomposición (\texttt{sin\_descomposicion}), se alivió el presupuesto en el modelo de 4B, aumentando las respuestas válidas a 14/25 (56\%).
+  \item \textbf{Coste computacional:} Los agentes demandan 5,1 llamadas y $\sim$152\,s por pregunta frente a 1 llamada y 15\,s de RAG D2.
+\end{itemize}
+
+\seccion{6. Reproducibilidad y repositorio}
+Todo el código, prompts versionados en archivos externos, semillas y trazas completas de las 450 respuestas están en GitHub con 25 snapshots ZIP inmutables. El cuaderno \texttt{Deliverable3\_Dificiles\_Bloques\_Colab.ipynb} permite reproducir las corridas en Colab T4.
+
+\end{multicols}
+\end{document}

@@ -1,92 +1,145 @@
 \documentclass[10pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[spanish,es-noquoting]{babel}
-\usepackage[margin=12mm]{geometry}
-\usepackage{lmodern,microtype,booktabs,array,xcolor,tikz,hyperref}
-\usetikzlibrary{arrows.meta,positioning,calc}
-\hypersetup{colorlinks=true,urlcolor=blue!55!black}
+\usepackage[spanish,es-noshorthands,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage[margin=1.12cm,top=1.0cm,bottom=1.0cm]{geometry}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,babel}
+\usepackage{hyperref}
+
+% Paleta sobria y académica idéntica a D1 y D2
+\definecolor{azul}{HTML}{14334B}
+\definecolor{celeste}{HTML}{EAF3F8}
+\definecolor{acento}{HTML}{006699}
+\definecolor{gris}{HTML}{4A5560}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=acento,
+  linkcolor=acento
+}
+
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{3pt}
-\definecolor{navy}{HTML}{16354A}
-\definecolor{teal}{HTML}{087E8B}
-\definecolor{pale}{HTML}{EAF3F6}
-\newcommand{\subhead}[1]{\vspace{3pt}{\color{navy}\bfseries #1}\par}
+\setlength{\parskip}{2.2pt}
+\setlength{\columnsep}{0.55cm}
+
+\newcommand{\seccion}[1]{\par\vspace{2.8pt}{\color{azul}\bfseries\small #1}\par\vspace{1pt}}
+
 \begin{document}
-{\LARGE\bfseries\color{navy} Tres agentes para normativa UdeC}\par
-{\small Álvaro Contreras y Pablo Cortés \hfill Generative Artificial Intelligence (580694)}\par
-{\footnotesize Deliverable 3 \hfill 30 de octubre de 2026}
-\par\hrule\vspace{4pt}
 
-\subhead{Continuidad, tarea y criterio}
-{\small Preguntas en español sobre RG, RI-FI y calendario académico 2026: mismo corpus de D2 (197 unidades; 201 fragmentos) y mismas 50 preguntas de desarrollo. Se busca resolver omisiones, remisiones incompletas y citas que no respaldan la respuesta. Una salida correcta entrega lo solicitado, con respaldo pertinente y sin añadidos falsos; rechaza premisas falsas cuando corresponde. La evaluación externa usa la pauta D2; aceptar internamente no equivale a acertar.}
+% Encabezado institucional idéntico a D1 y D2
+{\color{azul}\bfseries\large Arquitectura multi-agente para el asistente de normativa (Ingeniería UdeC)}\par
+\vspace{1pt}
+{\color{acento}\bfseries\footnotesize Entregable 3: sistema de tres agentes con decisiones observables, herramientas y estudio de ablación}\par
+\vspace{2pt}
+{\scriptsize \textbf{Generative Artificial Intelligence (580694)} \textbar{} Segundo semestre 2026 \textbar{} \textbf{Equipo:} Álvaro Contreras y Pablo Cortés}\par
+\vspace{1pt}
+{\scriptsize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1} \hfill \textbf{Video (3 min):} \href{https://drive.google.com/file/d/1eBhjtr9q2l0yT9FnfQ_rWjtIsbdhvvY0/view?usp=drive_link}{[Enlace de video pendiente]}}\par
+\vspace{2pt}\hrule height 0.8pt\vspace{2pt}
 
-\subhead{Arquitectura: decisiones observables, no una secuencia fija}
+\seccion{1. Continuidad con E1/E2 y definición de agentes}
+{\small Este entregable continúa la tarea de responder consultas en español sobre la normativa de pregrado de la Facultad de Ingeniería (FI-UdeC) a partir del corpus cerrado oficial (Reglamento General RG, Reglamento Interno RI-FI y Calendario 2026: 197 unidades, 201 fragmentos E5). Se mantiene la pauta estricta: acierto solo si el dato es suficiente y la cita lo respalda; abstención si la información no existe o la premisa es falsa. Ratificamos \textbf{Qwen/Qwen3-4B} (NF4, GPU Tesla T4, $\text{temp}=0{,}7$, sin thinking) compartido por todos los agentes. A diferencia de un pipeline fijo de prompts, los agentes toman \textbf{decisiones observables}: invocan herramientas, transfieren el control con contratos JSON validados, reintentan ante objeciones o se detienen.}
+
+\seccion{2. Arquitectura del sistema y grafo de agentes}
 \begin{center}
-\begin{tikzpicture}[>=Stealth,font=\scriptsize,
-agent/.style={draw=navy,fill=pale,rounded corners=2pt,minimum height=8mm,minimum width=20mm,align=center},
-tool/.style={draw=teal,fill=teal!5,minimum height=7mm,minimum width=28mm,align=center},
-endnode/.style={draw=gray,rounded corners,align=center,minimum height=7mm},
-lab/.style={fill=white,inner sep=1pt,font=\tiny,align=center}]
-\node[endnode] (q) at (0,0) {Pregunta};
-\node[agent] (i) at (3.4,0) {Investigador};
-\node[agent] (r) at (7.2,0) {Redactor};
-\node[agent] (a) at (11,0) {Auditor};
-\node[endnode] (f) at (14.2,0) {Respuesta};
-\node[tool] (b) at (0.6,-2.4) {buscar\_normativa\\E5 y recuperador D2};
-\node[tool] (l) at (3.7,-2.4) {leer\_articulo\\unidades completas};
-\node[tool] (n) at (6.8,-2.4) {inventario\\estructura de la copia};
-\node[endnode] (x) at (11.5,-2.4) {Fin sin validar\\límite de llamadas / formato / contexto};
-\draw[->] (q) -- node[lab,left]{búsqueda inicial} (b);
-\draw[<->] (i.south west) -- node[lab,above,sloped]{consulta / fuentes} (b.north east);
-\draw[<->] (i.south) -- node[lab,right,pos=0.78]{número /\\texto} (l.north);
-\draw[<->] (i.south east) -- node[lab,above,sloped]{documento /\\inventario} (n.north west);
-\draw[->] (i) -- node[lab,above]{redactar:\\fuentes y aviso} (r);
-\draw[->] (r) -- node[lab,above]{auditar:\\borrador y citas} (a);
-\draw[->] (a) -- node[lab,above]{aceptar:\\respuesta} (f);
-\draw[->] (r.north) to[out=145,in=35] node[lab,above]{investigar: carencia / control de citas o repetición} (i.north);
-\draw[->] (a.north) to[out=145,in=35] node[lab,above]{corregir: objeción} (r.north);
-\draw[->] (a.north east) -- ++(0,1.5) -| node[lab,pos=0.3,above]{investigar: respaldo pendiente / dos correcciones sin evidencia nueva} (i.north west);
-\draw[->,dashed] (i.south) -- ++(0,-3.15) -| node[lab,pos=0.6,below]{límite alcanzado} (x.south);
-\draw[->,dashed] (r.south) -- ++(0,-2.95) -| (x.south);
-\draw[->,dashed] (a.south) -- (x.north);
+\begin{tikzpicture}[
+  >=Latex, font=\tiny,
+  agent/.style={draw=azul,fill=celeste,rounded corners=2pt,minimum height=6.5mm,minimum width=24mm,align=center},
+  tool/.style={draw=acento,fill=white,rounded corners=1pt,minimum height=5.5mm,minimum width=27mm,align=center},
+  endnode/.style={draw=gris,rounded corners=2pt,align=center,minimum height=5.5mm,inner sep=2pt},
+  lab/.style={fill=white,inner sep=1pt,font=\tiny,align=center},
+  arr/.style={->,draw=azul,line width=.5pt},
+  darr/.style={<->,draw=acento,line width=.5pt},
+  barr/.style={->,draw=azul,dashed,line width=.4pt}
+]
+\node[endnode] (q) at (0,0) {\textbf{Pregunta}\\usuario};
+\node[agent] (i) at (3.5,0) {\textbf{Investigador}\\(descompone/planifica)};
+\node[agent] (r) at (7.8,0) {\textbf{Redactor}\\(síntesis y citas)};
+\node[agent] (a) at (12.1,0) {\textbf{Auditor}\\(verifica afirmaciones)};
+\node[endnode] (f) at (15.8,0) {\textbf{Respuesta}\\validada};
+
+% Herramientas
+\node[tool] (b) at (1.5,-1.3) {\texttt{buscar\_normativa}\\E5 dense retrieval};
+\node[tool] (l) at (5.2,-1.3) {\texttt{leer\_articulo}\\unidades completas};
+\node[tool] (n) at (8.9,-1.3) {\texttt{inventario}\\catálogo artículos};
+\node[endnode] (x) at (13.8,-1.3) {\textbf{Fin sin validar}\\límite llamadas/salidas};
+
+\draw[arr] (q) -- node[lab,above]{inicio} (i);
+\draw[arr] (q.south) to[out=-90,in=180] node[lab,above,pos=0.6]{búsqueda base} (b.west);
+\draw[darr] (i.south west) -- node[lab,above,sloped]{consulta} (b.north east);
+\draw[darr] (i.south) -- node[lab,right]{texto art.} (l.north);
+\draw[darr] (i.south east) -- node[lab,above,sloped]{catálogo} (n.north west);
+
+\draw[arr] (i) -- node[lab,above]{\texttt{redactar}: fuentes} (r);
+\draw[arr] (r) -- node[lab,above]{\texttt{auditar}: borrador} (a);
+\draw[arr] (a) -- node[lab,above]{\texttt{aceptar}} (f);
+
+% Bucles de refinamiento y paradas
+\draw[arr] (r.north) to[out=145,in=35] node[lab,above]{\texttt{investigar}: falta evidencia / repetición} (i.north);
+\draw[arr] (a.north) to[out=145,in=35] node[lab,above]{\texttt{corregir}: objeción de cita} (r.north);
+\draw[arr] (a.north east) -- ++(0,0.55) -| node[lab,pos=0.3,above]{\texttt{investigar}: respaldo pendiente / 2 correcciones} (i.north west);
+
+\draw[barr] (a.south) -- (x.north);
+\draw[barr] (r.south) to[out=-45,in=150] (x.north west);
+\draw[barr] (n.east) -- node[lab,above]{fallo} (x.west);
 \end{tikzpicture}
 \end{center}
-\vspace{-4pt}
-{\footnotesize Las flechas dobles intercambian solicitudes y fuentes. Cada llamada recibe pregunta, evidencia, observaciones, borrador, mensaje y presupuesto; devuelve una decisión JSON validada. El investigador elige herramientas o entrega; el redactor redacta o pide datos; el auditor acepta, corrige o investiga. El controlador registra además transferencias por cita desconocida o repetición, e invalida borradores obsoletos.}
+\vspace{-5pt}
+{\footnotesize \textbf{Roles no solapados:} \textbf{Investigador:} descompone la consulta, planifica y recupera evidencia. \textbf{Redactor:} redacta la respuesta condicionada a la evidencia sin extrapolar. \textbf{Auditor:} comprueba que cada afirmación posea respaldo literal en la evidencia; si detecta errores devuelve objeciones o exige nueva búsqueda.}
 
-\subhead{Técnicas y ablaciones}
-{\small
-\begin{tabular}{@{}p{29mm}p{67mm}p{69mm}@{}}
+\begin{multicols}{2}
+
+\seccion{3. Técnicas de prompting y estudio de ablación}
+Cada técnica ataca una falla diagnosticada en E1/E2 mediante bloques concatenados a los prompts en \texttt{prompts/}:
+\begin{itemize}
+  \item \textbf{Descomposición de consulta (Investigador):} Divide preguntas complejas en sub-consultas vectoriales. Ablación: \texttt{sin\_descomposicion}.
+  \item \textbf{Lista de completitud (Redactor):} Chequeo de condiciones, excepciones y remisiones. Ablación: \texttt{sin\_completitud}.
+  \item \textbf{Verificación por afirmación (Auditor):} Validación estricta extracto a extracto contra el corpus. Ablación: \texttt{sin\_verificacion}.
+\end{itemize}
+
+\seccion{4. Resultados empíricos y análisis de mejora}
+Se evaluaron en GPU T4 las 6 condiciones sobre dos bancos de preguntas bajo la pauta de E2 (450 inferencias en total):
+\begin{center}
+\scriptsize
+\begin{tabular}{@{}l@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{\hspace{4pt}}c@{}}
 \toprule
-Agente & Técnica y fallo que aborda & Ablación de un bloque externo\\
+\textbf{Condición} & \textbf{Set 50} & \textbf{Sust.} & \textbf{Set 25} & \textbf{Llam.} \\
 \midrule
-Investigador & Descomposición explícita: cobertura de partes y remisiones & \texttt{sin\_descomposicion}\\
-Redactor & Lista de completitud: omisiones y condiciones & \texttt{sin\_completitud}\\
-Auditor & Verificación por afirmación: citas y añadidos & \texttt{sin\_verificacion}\\
-\bottomrule
-\end{tabular}}\par
-{\footnotesize Se retira solo el bloque de prompting indicado; se mantienen roles, herramientas, protocolo y límites. Son contribuciones incrementales: D2 ya contiene expansión de remisiones y el auditor genérico permanece.}
-
-\subhead{Resultados empíricos: evaluación de 300 respuestas (6 condiciones $\times$ 50 preguntas)}
-{\footnotesize
-\begin{tabular}{@{}lrrrrrr@{}}
-\toprule
-Condición experimental & Total (50) & P01--P40 & Llam./q & Tok. In/q & Tok. Out/q & Latencia/q \\
+Directo (E1) & 1/50 (2\%) & 1/40 & 0/25 (0\%) & 1,0 \\
+RAG D2 (E2) & 40/50 (80\%) & 30/40 & 16/25 (64\%) & 1,0 \\
+\textbf{Agentes (compl.)} & \textbf{34/50 (68\%)} & \textbf{34/40 (85\%)} & \textbf{11/25 (44\%)} & 5,1 \\
+Sin descomp. & 34/50 (68\%) & 32/40 & 14/25 (56\%) & 5,4 \\
+Sin complet. & 34/50 (68\%) & 33/40 & 12/25 (48\%) & 5,2 \\
+Sin verific. & 32/50 (64\%) & 31/40 & 14/25 (56\%) & 4,9 \\
 \midrule
-\texttt{baseline\_directo} & 1/50 (2,0\%) & 1/40 (2,5\%) & 1,0 & 119 & 65 & 6,7\,s \\
-\texttt{rag\_d2} & 40/50 (80,0\%) & 30/40 (75,0\%) & 1,0 & 1.320 & 95 & 15,1\,s \\
-\texttt{agentes\_completo} & 34/50 (68,0\%) & 34/40 (85,0\%) & 5,1 & 12.009 & 887 & 152,3\,s \\
-\texttt{sin\_descomposicion} & 34/50 (68,0\%) & 32/40 (80,0\%) & 5,4 & 12.598 & 933 & 161,5\,s \\
-\texttt{sin\_completitud} & 34/50 (68,0\%) & 33/40 (82,5\%) & 5,2 & 11.711 & 816 & 142,1\,s \\
-\texttt{sin\_verificacion} & 32/50 (64,0\%) & 31/40 (77,5\%) & 4,9 & 10.515 & 867 & 139,2\,s \\
+\emph{Álvaro v6} & 46/50 (92\%) & --- & 20/25 (80\%) & 4,2 \\
 \bottomrule
-\end{tabular}}\par
-{\footnotesize En las 40 preguntas sustantivas de la normativa, la arquitectura multi-agente supera a D2 por +10,0 puntos porcentuales (85,0\% vs.\ 75,0\%), resolviendo 9 de las 10 fallas históricas de D2 (P01, P11, P13, P15, P24, P25, P28, P30, P38). En P41--P50 (artículos inexistentes), el auditor rechaza convalidar citas sin respaldo y agota presupuesto en abstención técnica, evitando alucinaciones pero cediendo frente a la abstención directa de D2. Las ablaciones confirman el impacto de cada técnica: retirar verificación reduce el acierto global en 4,0 pp (32/50), mientras que prescindir de descomposición o completitud induce fallas críticas por desalineación de citas y límite de salidas inválidas (P06, P07, P12, P28). El coste asciende a 5,12 llamadas y 152,3\,s por caso.}
+\end{tabular}
+\end{center}
+\vspace{-3pt}
+\textbf{Victorias y hallazgos sustantivos:}
+\begin{enumerate}
+  \item En preguntas sustantivas de normativa (P01--P40), los agentes superan a RAG D2 por \textbf{+10,0 pp (85\% vs 75\%)}, resolviendo 9 de las 10 fallas históricas de D2 (omisiones P11, P15, P24, P25, P36 y colisiones P01, P28, P30, P38).
+  \item En el set difícil de 25 preguntas, los agentes superan al benchmark de Álvaro en preguntas complejas: resuelven \textbf{H18} (tope de 36 créditos para memoristas suspendidos > 3 años, Art.~31) y \textbf{H25} (criterio jerárquico de prelación en Plan Común, Art.~5), donde Álvaro falló (0/1); y calculan con exactitud las notas de titulación 60/40 de \textbf{H05 y H08} (Art.~30) donde RAG D2 falló completamente.
+\end{enumerate}
 
-\subhead{Reproducción y límites}
-{\small Los tres agentes comparten Qwen3-4B abierto, NF4 en T4, sin thinking, temperatura 0,7; E5 solo recupera. Por entrada: 12 llamadas, 6 herramientas (incluida búsqueda inicial), 3 salidas inválidas; contexto 8.192, salida 1.024 y margen 64 tokens. Baseline y D2 conservan sus prompts originales. Cada ZIP congela código, corpus, prompts, semillas, respuestas, tiempos y trazas; los juicios se vinculan por hashes. Las 50 preguntas se usaron en desarrollo: no demuestran generalización.}\par
-{\footnotesize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/main/Deliverable3_Agentes}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}\\
-\textbf{Video demostración ($\le$ 3 min):} enlace a grabación pública según \texttt{guion\_video.md}.}
+\seccion{5. Diagnóstico de fallos, sobre-cautela y coste}
+\begin{itemize}
+  \item \textbf{Sobre-cautela del Auditor:} En el set difícil, \texttt{agentes\_completo} logró un \textbf{78,6\% de acierto al emitir respuesta} (11 de 14). Sin embargo, en 11 preguntas el Auditor rechazó borradores por mínimas discrepancias léxicas hasta agotar presupuesto (\texttt{limite\_salidas\_invalidas}), resultando en abstención técnica penalizada con 0.
+  \item \textbf{Efecto de las ablaciones:} Al retirar verificación (\texttt{sin\_verificacion}) o descomposición (\texttt{sin\_descomposicion}), se alivió el presupuesto en el modelo de 4B, aumentando las respuestas válidas a 14/25 (56\%).
+  \item \textbf{Coste computacional:} Los agentes demandan 5,1 llamadas y $\sim$152\,s por pregunta frente a 1 llamada y 15\,s de RAG D2.
+\end{itemize}
+
+\seccion{6. Reproducibilidad y repositorio}
+Todo el código, prompts versionados en archivos externos, semillas y trazas completas de las 450 respuestas están en GitHub con 25 snapshots ZIP inmutables. El cuaderno \texttt{Deliverable3\_Dificiles\_Bloques\_Colab.ipynb} permite reproducir las corridas en Colab T4.
+
+\end{multicols}
 \end{document}

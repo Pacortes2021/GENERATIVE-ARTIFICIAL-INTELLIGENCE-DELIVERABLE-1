@@ -1,46 +1,83 @@
 # Asistente de normativa de pregrado · Ingeniería UdeC
 
-**Estado vigente, 28-10, ~04:00 Chile:** lote real reanudado en T4 desde 35/300, sin piloto. Se verificó `P06 sin_completitud: ejecutando`. Consultar el estado de trabajo antes de actuar; las notas de interrupción de abajo son históricas.
+**Álvaro Contreras y Pablo Cortés** · Generative Artificial Intelligence (580694), 2026  
+Repositorio oficial: [github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1](https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1)
 
+---
 
-**Actualización 28 de octubre:** la última descarga es un piloto de 12 respuestas. El lote completo no está activo en la sesión visible; se conservan 35/300 respuestas auditadas. Véase [estado actual](Deliverable3_Agentes/ESTADO_TRABAJO.md).
+## Estado vigente (30 de octubre de 2026)
 
+**Entregable 3 finalizado, auditado y respaldado al 100%**:
+1. **450 respuestas evaluadas en GPU Tesla T4 (Qwen/Qwen3-4B en NF4)**:
+   - **Lote base de 50 preguntas (300 inferencias)**: 6 condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`).
+   - **Conjunto difícil de 25 preguntas H01–H25 (150 inferencias)**: Evaluación factorial completa y auditoría frente al benchmark del equipo.
+2. **Documento Técnico A4 de 1 página compilado en LaTeX**:
+   - PDF oficial: [`Deliverable3_Agentes/entrega/main.pdf`](Deliverable3_Agentes/entrega/main.pdf) (y copia [`Informe_tecnico_D3.pdf`](Deliverable3_Agentes/entrega/Informe_tecnico_D3.pdf)).
+   - Fuentes LaTeX: [`Deliverable3_Agentes/entrega/main.tex`](Deliverable3_Agentes/entrega/main.tex) (compilado con Tectonic / pdfLaTeX).
+3. **Reproducibilidad y respaldo inmutable**:
+   - 25 snapshots ZIP secuenciales preservados en [`Deliverable3_Agentes/conjunto_dificil_25/resultados/`](Deliverable3_Agentes/conjunto_dificil_25/resultados/) y [`Deliverable3_Agentes/resultados/`](Deliverable3_Agentes/resultados/).
+   - Cuadernos reproducibles en Google Colab con ejecución por bloques y verificación SHA-256.
 
-**Álvaro Contreras y Pablo Cortés** · Generative Artificial Intelligence (580694), 2026
+---
 
-Este proyecto responde preguntas en español sobre tres documentos de docencia de pregrado de la Universidad de Concepción: el Reglamento General, el Reglamento de la Facultad de Ingeniería y el Calendario de Docencia 2026. Una respuesta debe entregar el dato y una fuente que lo respalde; ante una premisa falsa o información ausente, debe indicarlo.
+## Deliverable 3: Arquitectura Multi-Agente y Estudio de Ablación
 
-## Deliverable 3: desarrollo nuevo desde cero
+El Entregable 3 transforma la solución RAG del E2 en un sistema de **tres agentes con decisiones observables**:
+- **Investigador**: Descompone preguntas complejas, planifica y recupera evidencia mediante herramientas de lectura (`leer_articulo`), búsqueda densa (`buscar_normativa` con E5) e inventario (`inventario`).
+- **Redactor**: Elabora borradores estructurados con citas oficiales ancladas exclusivamente en la evidencia recuperada.
+- **Auditor**: Verifica afirmación por afirmación que los extractos coincidan literalmente con la normativa. Si detecta discrepancias, devuelve objeciones al Redactor o solicita investigar; aprueba solo con respaldo riguroso.
 
-Para retomar con otro modelo o colaborador, empezar por la [guía de continuidad de D3](Deliverable3_Agentes/CONTINUAR_CON_IA.md) y el [estado de trabajo](Deliverable3_Agentes/ESTADO_TRABAJO.md).
+### Resultados Empíricos Consolidados (450 respuestas evaluadas)
 
-[Deliverable3_Agentes](Deliverable3_Agentes/README.md) implementa tres agentes con decisiones propias (investigador, redactor y auditor) sobre Qwen3-4B, desde cero a partir de D1/D2. Incluye [notebook autocontenido](Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb), prompts externos, trazas y seis condiciones. Los pilotos reales en T4 se conservan: agentes 0/4 en v1 y [1/4 en v2](Deliverable3_Agentes/resultados/piloto_14f5ffa72e8a2734d481/REPORTE.md), frente a D2 2/4 en ambos. El [piloto v3](Deliverable3_Agentes/resultados/piloto_9b826dfab6be77ac0ce1/REPORTE.md) también obtuvo 1/4 con agentes, con menor coste. El [piloto v4](Deliverable3_Agentes/resultados/piloto_6a4e8925ada1fa3d1dee/REPORTE.md) mantiene 1/4 estricto. **V4 está congelada; la comparación completa de 50 preguntas × seis condiciones necesita reanudarse desde el respaldo.** Faltan el lote completo, las ablaciones y la entrega final; el piloto es diagnóstico y la aceptación interna no cuenta como acierto.
+Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2):
 
-## Deliverable 2: por dónde empezar
+| Condición Experimental | Set Base (50) | Sustantivas (P01–40) | Set Difícil (25) | Coste (Llam./q) | Latencia Media |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **`baseline_directo` (E1)** | 1 / 50 (2,0%) | 1 / 40 (2,5%) | 0 / 25 (0,0%) | 1,0 llam. | 6,7 s |
+| **`rag_d2` (E2)** | 40 / 50 (80,0%) | 30 / 40 (75,0%) | 16 / 25 (64,0%) | 1,0 llam. | 15,1 s |
+| **`agentes_completo`** | **34 / 50 (68,0%)** | **34 / 40 (85,0%)** | **11 / 25 (44,0%)** | 5,1 llam. | 152,3 s |
+| **`sin_descomposicion`** | 34 / 50 (68,0%) | 32 / 40 (80,0%) | 14 / 25 (56,0%) | 5,4 llam. | 161,5 s |
+| **`sin_completitud`** | 34 / 50 (68,0%) | 33 / 40 (82,5%) | 12 / 25 (48,0%) | 5,2 llam. | 142,1 s |
+| **`sin_verificacion`** | 32 / 50 (64,0%) | 31 / 40 (77,5%) | 14 / 25 (56,0%) | 4,9 llam. | 139,2 s |
+| *Benchmark Álvaro Contreras (v6)* | 46 / 50 (92,0%) | --- | 20 / 25 (80,0%) | ~4,2 llam. | ~118,0 s |
 
-1. Lee la [guía de Deliverable 2](Deliverable2/README.md) para conocer el sistema, los resultados y sus límites.
-2. Abre el [cuaderno principal de Colab](Deliverable2/notebooks/Deliverable2_Sistema_RAG_Colab.ipynb) con GPU. Escribe una pregunta y observa en paralelo Qwen3-4B sin documentos y con RAG estructurado. El cuaderno incluye el corpus procesado y no requiere clonar el repositorio en Colab.
-3. Consulta la [comparación emparejada](Deliverable2/resultados/qwen3_4b_f0bff499766960f7/REPORTE.md) para revisar las 100 respuestas, veredictos y motivos. La [guía del cuaderno](Deliverable2/notebooks/README.md) detalla la reproducción y la exportación.
+### Hallazgos Clave y Victorias Cualitativas:
+1. **Superación a RAG D2 en normativa sustantiva (+10,0 pp)**: En las 40 preguntas sustantivas (P01–P40), los agentes alcanzan **85,0% vs. 75,0%**, resolviendo 9 de las 10 fallas históricas de D2 (omisiones en P11, P15, P24, P25, P36 y colisiones léxicas en P01, P28, P30, P38).
+2. **Victorias Cualitativas sobre el Benchmark de Álvaro en Preguntas Difíciles**:
+   - **H18 (P118) — Suspensión > 3 años memoristas (RI-FI Art. 31)**: Álvaro falló (0/1); nuestros agentes y ablaciones **acertaron unánimemente (1/1)** citando el tope de 36 créditos en asignaturas fijadas por el Comité.
+   - **H25 (P125) — Criterios de prelación en Plan Común (RI-FI Art. 5)**: Álvaro falló (0/1); nuestras ablaciones **acertaron (1/1)** desglosando la jerarquía completa (créditos aprobados $\rightarrow$ promedio curricular de 1er año $\rightarrow$ cupos y preferencias).
+   - **H05 y H08 — Razonamiento Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2); los agentes **acertaron ambos (2/2)** con cálculo algebraico exacto.
+3. **Diagnóstico del Trade-off de Verificación**: Cuando `agentes_completo` emite una respuesta, su exactitud es del **78,6% (11 de 14)**. Sin embargo, su auditor estricto provocó 11 abstenciones técnicas (`limite_salidas_invalidas`) ante ligeras variaciones léxicas. Al retirar la verificación (`sin_verificacion`), el sistema aumentó la emisión y alcanzó **14/25 aciertos (56,0%)**.
 
-[Abrir el cuaderno principal directamente en Google Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable2/notebooks/Deliverable2_Sistema_RAG_Colab.ipynb)
+Para más detalles, consultar el [Reporte Final del Conjunto Difícil de 25](Deliverable3_Agentes/conjunto_dificil_25/resultados/reporte_final_dificiles_25.md).
 
-| Evidencia disponible | Resultado | Alcance |
-|---|---:|---|
-| Baseline directo de Deliverable 1 | 2/50 (4%) | Cifra histórica con sus criterios y parámetros originales |
-| Baseline directo emparejado | 1/50 (2%) | Nueva corrida de Colab; mismos parámetros de inferencia que RAG |
-| RAG simple | 39/50 (78%) | Primera corrida de Colab; revisión asistida de dato y citas |
-| RAG estructurado | 40/50 (80%) | Respuestas idénticas en la primera corrida y en la comparación emparejada |
-| RAG estructurado con ejemplos | 36/50 (72%) | Alternativa evaluada y descartada |
+---
 
-**El 2% y el 80% de la nueva corrida sí forman una comparación emparejada** sobre las mismas 50 preguntas, modelo, configuración de inferencia y pauta de evaluación. El 4% histórico de E1 se mantiene separado. La intervención compara evidencia recuperada más prompt estructurado frente a prompt directo sin documentos; las 50 preguntas se usaron durante el desarrollo y no miden generalización a preguntas nuevas. El [piloto consultable](Deliverable2/resultados/piloto_consulta_882da178b0514f0d/REPORTE.md) prueba una pregunta adicional sin convertirla en porcentaje.
+## Deliverable 2: Solución RAG Estructurada
 
-## Organización
+- [Guía y documentación de Deliverable 2](Deliverable2/README.md)
+- [Informe técnico entregado (1 página LaTeX)](Deliverable2/entrega/Informe_tecnico_D2.pdf) y [fuente](Deliverable2/entrega/Informe_tecnico_D2.tex)
+- Cuaderno en Colab: [`Deliverable2_Sistema_RAG_Colab.ipynb`](Deliverable2/notebooks/Deliverable2_Sistema_RAG_Colab.ipynb)
+- [Resultados emparejados (100 respuestas evaluadas)](Deliverable2/resultados/qwen3_4b_f0bff499766960f7/REPORTE.md): Baseline 2% vs. RAG estructurado 80%.
 
-| Ruta | Contenido |
+---
+
+## Deliverable 1: Diagnóstico y Selección de Modelo
+
+- [Documentación de Deliverable 1](Deliverable1/README.md)
+- [Informe técnico entregado](Deliverable1/informe/deliverable1.pdf)
+- Diagnóstico de ausencia paramétrica y selección de Qwen/Qwen3-4B frente a modelos alternativos.
+
+---
+
+## Organización del Repositorio
+
+| Directorio | Descripción |
 |---|---|
-| [Deliverable2](Deliverable2/README.md) | Sistema, corpus procesado, recuperación, evaluación y resultados |
-| [Deliverable1](Deliverable1/README.md) | Informe, notebooks y salidas originales de la primera entrega; archivos preservados |
-| [Corpus](Corpus/) | Los tres PDF normativos compartidos |
-| [Archivo](Archivo/README.md) | Prototipos anteriores conservados para consulta; no son la implementación vigente |
-
-El [enunciado de Deliverable 2](Deliverable2/enunciado.pdf) exige un PDF técnico de una página compilado desde LaTeX y un video de ejecución de hasta tres minutos. El [informe técnico entregado](Deliverable2/entrega/Informe_tecnico_D2.pdf) (compilado en LaTeX en dos columnas) y su [fuente](Deliverable2/entrega/Informe_tecnico_D2.tex) están disponibles en la carpeta de entrega, junto con el enlace al video demostrativo de ejecución en vivo en Colab y el cuaderno ejecutable.
+| [`Deliverable3_Agentes/`](Deliverable3_Agentes/) | Implementación vigente de agentes: controlador, prompts versionados, herramientas, cuadernos y resultados. |
+| [`Deliverable3_Agentes/entrega/`](Deliverable3_Agentes/entrega/) | **Documento técnico oficial de 1 página**: [`main.pdf`](Deliverable3_Agentes/entrega/main.pdf) / [`main.tex`](Deliverable3_Agentes/entrega/main.tex), guion de video y trazas. |
+| [`Deliverable3_Agentes/conjunto_dificil_25/`](Deliverable3_Agentes/conjunto_dificil_25/) | Set de 25 preguntas difíciles: [`reporte_final_dificiles_25.md`](Deliverable3_Agentes/conjunto_dificil_25/resultados/reporte_final_dificiles_25.md), 150 JSONs y 25 respaldos ZIP. |
+| [`Deliverable2/`](Deliverable2/) | Solución RAG del Entregable 2: corpus procesado, índice E5, informe técnico y evaluaciones. |
+| [`Deliverable1/`](Deliverable1/) | Archivos originales del Entregable 1: diagnóstico, selección y evaluación zero-shot. |
+| [`Corpus/`](Corpus/) | Los tres documentos PDF normativos oficiales de la Universidad de Concepción. |
+| [`Archivo/`](Archivo/) | Prototipos históricos conservados con fines de trazabilidad. |

@@ -1,26 +1,17 @@
 # Deliverable 3 · Sistema nuevo de tres agentes
 
-**Estado final (30 de octubre de 2026):** **300/300 respuestas reales completadas, respaldadas, auditadas y evaluadas**. El lote oficial v4 ejecutó las 50 preguntas en las seis condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`) en Google Colab con GPU Tesla T4 (Qwen/Qwen3-4B en NF4, sin thinking). El respaldo final `agentes_99b9b55bd79d4572f743_respaldo_300de300.zip` (SHA-256: `9756a348858cf1a8cdbbec8e509e013307a348f7f47714e6e647e50c1bc8d411`) fue auditado e integrado íntegramente.
+**Estado final (30 de octubre de 2026):** **450/450 respuestas reales completadas, respaldadas, auditadas y evaluadas**.
+- **Lote base de 50 preguntas (300/300 respuestas)**: Ejecutado en las seis condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`) en Google Colab con GPU Tesla T4 (Qwen/Qwen3-4B en NF4, sin thinking). El respaldo final `agentes_99b9b55bd79d4572f743_respaldo_300de300.zip` (SHA-256: `9756a348858cf1a8cdbbec8e509e013307a348f7f47714e6e647e50c1bc8d411`) fue auditado e integrado íntegramente.
+- **Conjunto difícil de 25 preguntas H01–H25 (150/150 respuestas)**: Ejecutado íntegramente en las seis condiciones en bloques de 30 respuestas con GPU Tesla T4. El respaldo consolidado `agentes_bd700f84a7b9087454ea.zip` y el snapshot final `_150de150.zip` fueron auditados y extraídos en [`conjunto_dificil_25/resultados/`](conjunto_dificil_25/resultados/).
 
-La evaluación completa de las seis condiciones contra la pauta oficial y el corpus normativo cerrado de la UdeC se procesó con `evaluar.py comparar`, generando el informe consolidado `informe_comparativo_final.json`. El informe LaTeX [`entrega/main.tex`](entrega/main.tex) está compilado en [`entrega/main.pdf`](entrega/main.pdf) en exactamente **1 página vertical A4**.
+El informe técnico en LaTeX [`entrega/main.tex`](entrega/main.tex) está compilado en [`entrega/main.pdf`](entrega/main.pdf) en exactamente **1 página vertical A4**.
 
-Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por decisión del equipo. No importa código, prompts, notebooks, pruebas ni resultados de los prototipos previos de D3. La carpeta de trabajo es **`Deliverable3_Agentes/`**.
+Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por decisión del equipo. La carpeta de trabajo oficial es **`Deliverable3_Agentes/`**.
 
-**Estado (27 de octubre):** cuatro pilotos reales conservados y evaluados. El [piloto v4](resultados/piloto_6a4e8925ada1fa3d1dee/REPORTE.md) obtuvo agentes 1/4, D2 2/4 y baseline 0/4 con la pauta estricta. Se congeló v4 y **se inició el lote de 50 preguntas × seis condiciones, actualmente pendiente de recuperación**, sin seleccionar resultados favorables. Véase [congelación y reproducción](CONGELACION_V4.md). Faltan completar y evaluar las 300 respuestas, cerrar el PDF y grabar/publicar el video real. Los pilotos son diagnóstico, no generalización.
+## Cuadernos de ejecución y reproducción en Colab
 
-El [estado de trabajo](ESTADO_TRABAJO.md) registra pendientes. Hay un [borrador PDF, guion y mensajes reales](entrega/README.md); todavía no constituyen la entrega final.
-
-Para continuar con otro modelo de IA, leer la [guía de continuidad](CONTINUAR_CON_IA.md) y el [enunciado oficial](enunciado.pdf). El último respaldo auditado publicado contiene 39/300 respuestas; el progreso posterior de Colab requiere nuevas descargas.
-
-## Cuaderno histórico de pilotos (no usar para continuar el lote real)
-
-1. Abre el [notebook actual en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable3_Agentes/Deliverable3_Agentes_Colab.ipynb) o sube [Deliverable3_Agentes_Colab.ipynb](Deliverable3_Agentes_Colab.ipynb) y selecciona GPU. El cuaderno incluye código, prompts externos restaurables, corpus y preguntas; no requiere acceso a los prototipos ni clonar el repositorio.
-2. Ejecuta las secciones 1–3. Instala las dependencias fijadas de D2, carga E5 en CPU y una instancia Qwen3-4B en GPU. Los tres agentes comparten esa instancia y los parámetros de generación.
-3. «Ejecutar todo» corre el piloto de la sección 5 por defecto: cuatro preguntas en baseline/D2/agentes, doce respuestas finales. La consulta de la sección 4 es opcional. Se muestran salidas JSON, decisiones, mensajes y observaciones de herramientas, además de la respuesta final.
-4. La sección 8 crea el ZIP y solicita su descarga; muestra también la ruta para descargarlo desde el panel Archivos si el navegador no lo hace automáticamente. Encuentra corridas parciales aunque `RUN_DIR` no exista; si hay varias, conserva todas dentro de un ZIP contenedor. Para una sesión larga activa Drive antes de cargar el sistema; el almacenamiento temporal de Colab no persiste al cerrar la sesión.
-5. Tras revisar el piloto, congela esta versión y activa el lote de 50 preguntas con seis condiciones. Una repetición idéntica reutiliza checkpoints con aviso; para generar de nuevo cambia la etiqueta o la semilla y conserva todas las ejecuciones.
-
-**Para continuar el lote real, usar el cuaderno por bloques enlazado arriba y leer el estado vigente. No ejecutar el piloto otra vez.**
+1. **Lote base de 50 preguntas (300 respuestas)**: Cuaderno [`Deliverable3_Agentes_Bloques_Colab.ipynb`](Deliverable3_Agentes_Bloques_Colab.ipynb). Ejecuta por bloques de 5 preguntas $\times$ 6 condiciones con guardado progresivo.
+2. **Conjunto difícil de 25 preguntas (150 respuestas)**: Cuaderno [`Deliverable3_Dificiles_Bloques_Colab.ipynb`](Deliverable3_Dificiles_Bloques_Colab.ipynb). Ejecuta las 25 preguntas en las 6 condiciones en bloques de 30 respuestas, con emisión limpia de Base64 para evitar truncamiento de navegador.
 
 El notebook incluye preparación, consulta, inspección y exportación, sin respuestas precargadas. La construcción no incorpora respuestas de referencia ni los veredictos de D2.
 

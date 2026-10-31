@@ -116,25 +116,10 @@ def build_cuaderno_p41_p50():
     code('''
     # 5. Ejecución experimental de las 10 preguntas con la Opción 1 (Ajuste sutil del Auditor)
     from pathlib import Path
-    import re
     from d3_agentes.experiment import prepare, execute, export
     from d3_agentes.common import Limits, PromptBook
 
-    # Modificar el prompt del auditor para Opción 1
-    auditor_path = Path("workspace_p41_p50/prompts/auditor.txt")
-    auditor_txt = auditor_path.read_text(encoding="utf-8")
-    reemplazo = (
-        "aceptar: el borrador responde correctamente con respaldo disponible, o constata "
-        "válidamente que el artículo, norma o condición no existe o no aplica según el inventario "
-        "o la evidencia consultada. Si el borrador ya declara la ausencia con respaldo, "
-        "debes elegir aceptar y no pedir corregir."
-    )
-    auditor_modificado = re.sub(r"aceptar:\s*el borrador responde correctamente con respaldo disponible\.",
-                                reemplazo, auditor_txt)
-    auditor_path.write_text(auditor_modificado, encoding="utf-8")
-    print("Prompt de Auditor ajustado según Opción 1.")
-
-    # Ejecutar las 10 preguntas
+    print("Ejecutando las 10 preguntas de premisas falsas con el Auditor actualizado (Opción 1)...")
     RUN_DIR, _ = prepare(ENV['questions'], ENV['retriever'], ENV['settings'],
                          Path("corrida_opcion1"), ['agentes_completo'], Limits(), 'p41-p50-opcion1', PromptBook("workspace_p41_p50/prompts"))
 
@@ -152,6 +137,7 @@ def build_cuaderno_p41_p50():
     notebook = {
         'cells': cells,
         'metadata': {
+            'accelerator': 'GPU',
             'colab': {'name': 'Deliverable3_Test_P41_P50_Colab.ipynb', 'provenance': []},
             'kernelspec': {'display_name': 'Python 3', 'name': 'python3'},
             'language_info': {'name': 'python'}

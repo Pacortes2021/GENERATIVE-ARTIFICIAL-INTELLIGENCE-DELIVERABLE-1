@@ -6,7 +6,7 @@
 
 1. **Lote base de 50 preguntas (300/300 respuestas)**: Ejecutado íntegramente en las 6 condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`) en Google Colab T4. Respaldo final: `agentes_99b9b55bd79d4572f743_respaldo_300de300.zip` (SHA-256: `9756a348858cf1a8cdbbec8e509e013307a348f7f47714e6e647e50c1bc8d411`).
 2. **Conjunto difícil de 25 preguntas H01–H25 (150/150 respuestas)**: Completado en 5 bloques secuenciales en Colab T4. Respaldo consolidado: `agentes_bd700f84a7b9087454ea.zip` y 25 snapshots ZIP inmutables.
-3. **Auditoría y Reporte Comparativo**: Informe exhaustivo publicado en `conjunto_dificil_25/resultados/reporte_final_dificiles_25.md`. Confirmadas victorias clave sobre el benchmark de Álvaro en H18 (Art. 31, suspensión > 3 años memoristas) y H25 (Art. 5, orden de prelación en Plan Común), y exactitud matemática en H05 y H08.
+3. **Auditoría y Reporte Comparativo**: Informe exhaustivo publicado en `conjunto_dificil_25/resultados/reporte_final_dificiles_25.md`. Confirmadas victorias clave en razonamiento multi-regla complejo en H18 (Art. 31, suspensión > 3 años memoristas) y H25 (Art. 5, orden de prelación en Plan Común), y exactitud matemática en H05 y H08.
 4. **Documento Técnico de 1 Página A4 en LaTeX**: Compilado exitosamente en `entrega/main.pdf` (y copia `entrega/Informe_tecnico_D3.pdf`). Sigue exactamente la estructura, paleta de colores y formato de dos columnas de los entregables anteriores D1 y D2, cumpliendo la restricción estricta de 1 página vertical.
 5. **Video Demostrativo**: Queda pendiente para grabación y publicación en una próxima tarea, según indicación del usuario.
 

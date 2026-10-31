@@ -10,7 +10,7 @@ Repositorio oficial: [github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE
 **Entregable 3 finalizado, auditado y respaldado al 100%**:
 1. **450 respuestas evaluadas en GPU Tesla T4 (Qwen/Qwen3-4B en NF4)**:
    - **Lote base de 50 preguntas (300 inferencias)**: 6 condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`).
-   - **Conjunto difícil de 25 preguntas H01–H25 (150 inferencias)**: Evaluación factorial completa y auditoría frente al benchmark del equipo.
+   - **Conjunto difícil de 25 preguntas H01–H25 (150 inferencias)**: Evaluación factorial completa y auditoría de casos complejos de borde.
 2. **Documento Técnico A4 de 1 página compilado en LaTeX**:
    - PDF oficial: [`Deliverable3_Agentes/entrega/main.pdf`](Deliverable3_Agentes/entrega/main.pdf) (y copia [`Informe_tecnico_D3.pdf`](Deliverable3_Agentes/entrega/Informe_tecnico_D3.pdf)).
    - Fuentes LaTeX: [`Deliverable3_Agentes/entrega/main.tex`](Deliverable3_Agentes/entrega/main.tex) (compilado con Tectonic / pdfLaTeX).
@@ -39,15 +39,14 @@ Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2):
 | **`sin_descomposicion`** | 34 / 50 (68,0%) | 32 / 40 (80,0%) | 14 / 25 (56,0%) | 5,4 llam. | 161,5 s |
 | **`sin_completitud`** | 34 / 50 (68,0%) | 33 / 40 (82,5%) | 12 / 25 (48,0%) | 5,2 llam. | 142,1 s |
 | **`sin_verificacion`** | 32 / 50 (64,0%) | 31 / 40 (77,5%) | 14 / 25 (56,0%) | 4,9 llam. | 139,2 s |
-| *Benchmark Álvaro Contreras (v6)* | 46 / 50 (92,0%) | --- | 20 / 25 (80,0%) | ~4,2 llam. | ~118,0 s |
 
 ### Hallazgos Clave y Victorias Cualitativas:
 1. **Superación a RAG D2 en normativa sustantiva (+10,0 pp)**: En las 40 preguntas sustantivas (P01–P40), los agentes alcanzan **85,0% vs. 75,0%**, resolviendo 9 de las 10 fallas históricas de D2 (omisiones en P11, P15, P24, P25, P36 y colisiones léxicas en P01, P28, P30, P38).
-2. **Victorias Cualitativas sobre el Benchmark de Álvaro en Preguntas Difíciles**:
-   - **H18 (P118) — Suspensión > 3 años memoristas (RI-FI Art. 31)**: Álvaro falló (0/1); nuestros agentes y ablaciones **acertaron unánimemente (1/1)** citando el tope de 36 créditos en asignaturas fijadas por el Comité.
-   - **H25 (P125) — Criterios de prelación en Plan Común (RI-FI Art. 5)**: Álvaro falló (0/1); nuestras ablaciones **acertaron (1/1)** desglosando la jerarquía completa (créditos aprobados $\rightarrow$ promedio curricular de 1er año $\rightarrow$ cupos y preferencias).
-   - **H05 y H08 — Razonamiento Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2); los agentes **acertaron ambos (2/2)** con cálculo algebraico exacto.
-3. **Diagnóstico del Trade-off de Verificación**: Cuando `agentes_completo` emite una respuesta, su exactitud es del **78,6% (11 de 14)**. Sin embargo, su auditor estricto provocó 11 abstenciones técnicas (`limite_salidas_invalidas`) ante ligeras variaciones léxicas. Al retirar la verificación (`sin_verificacion`), el sistema aumentó la emisión y alcanzó **14/25 aciertos (56,0%)**.
+2. **Razonamiento Multi-Regla Complejo en Preguntas de Estrés**:
+   - **H18 (P118) — Suspensión > 3 años en memoristas (RI-FI Art. 31)**: Los agentes y ablaciones **acertaron taxativamente (1/1)** identificando la excepción del tope de 36 créditos en asignaturas fijadas por el Comité.
+   - **H25 (P125) — Criterios de prelación en Plan Común (RI-FI Art. 5)**: El sistema identificó y estructuró la jerarquía completa (1° créditos aprobados $\rightarrow$ 2° promedio curricular ponderado con dos decimales de asignaturas obligatorias $\rightarrow$ 3° cupos y preferencias).
+   - **H05 y H08 — Razonamiento Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2) por ausencia de cálculo; los agentes **acertaron ambos (2/2)** con desglose algebraico exacto ($0{,}6 \times \text{plan} + 0{,}4 \times \text{memoria}$).
+3. **Diagnóstico del Trade-off de Verificación**: Cuando `agentes_completo` emite una respuesta, su exactitud es del **78,6% (11 de 14)**. Sin embargo, su auditor estricto provocó 11 abstenciones técnicas (`limite_salidas_invalidas` y `limite_llamadas`) ante ligeras variaciones léxicas en los extractos. Al retirar la verificación (`sin_verificacion`), el sistema aumentó la emisión y alcanzó **14/25 aciertos (56,0%)**.
 
 Para más detalles, consultar el [Reporte Final del Conjunto Difícil de 25](Deliverable3_Agentes/conjunto_dificil_25/resultados/reporte_final_dificiles_25.md).
 

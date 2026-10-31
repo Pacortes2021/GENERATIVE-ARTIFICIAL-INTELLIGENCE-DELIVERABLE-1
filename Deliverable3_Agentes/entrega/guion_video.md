@@ -1,98 +1,90 @@
-# Guion de Demostración y Video Técnico (Máximo 3 Minutos)
+# Guion de Demostración Oficial en Google Colab (≤ 3 Minutos)
 
 **Entregable:** Deliverable 3 — Arquitectura multi-agente con decisiones observables, herramientas normativas y estudio de ablación.  
+**Cuaderno de soporte:** `Deliverable3_Agentes/Deliverable3_Demo_Video.ipynb` (Google Colab en modo oscuro).  
 **Equipo:** Álvaro Contreras y Pablo Cortés | Generative Artificial Intelligence (580694) — Facultad de Ingeniería, Universidad de Concepción.  
-**Duración objetivo:** 2 minutos y 50 segundos (170 segundos), dejando 10 segundos de holgura bajo el límite estricto de 180 segundos.
+**Extensión total de locución:** **335 palabras** (dentro del rango estricto de 330 a 340 palabras).  
+**Duración objetivo:** **2 minutos y 50 segundos** (170 segundos), dejando 10 segundos de holgura bajo el límite reglamentario de 180 segundos.  
+**Ritmo de locución:** Pausado, seguro y natural (~118 a 122 palabras por minuto).
 
 ---
 
-## 1. Ficha Técnica y Preparación de Pantalla
+## 1. Preparación de Pantalla en Google Colab
 
-Antes de iniciar la grabación con OBS Studio, QuickTime o la herramienta de captura de pantalla:
-1. **Configuración de pantalla:** Resolución 1080p (1920×1080), escala de fuentes legible (125% o zoom en navegador/VS Code).
-2. **Pestañas y ventanas preparadas en orden de aparición:**
-   - **Ventana 1:** `Deliverable3_Agentes/entrega/main.pdf` abierto en visor de PDF con zoom al encabezado y al diagrama TikZ.
-   - **Ventana 2:** VS Code con `d3_agentes/core.py` y la carpeta `prompts/` abierta en el explorador.
-   - **Ventana 3:** Traza real de ejecución exitosa (`P005_agentes_completo.json`) abierta en formato JSON legible.
-   - **Ventana 4:** Traza real de diagnóstico de fallo (`P041_agentes_completo.json`) para ilustrar el comportamiento en premisas falsas.
-   - **Ventana 5:** Tabla 1 del informe PDF y repositorio GitHub abierto en el navegador.
-3. **Consistencia técnica:** Recordar que la inferencia no se simula en vivo durante la locución para no perder tiempo de video; se exhiben **trazas reales completas conservadas en el repositorio** (`modelo_real`, Qwen3-4B, GPU T4).
+Antes de iniciar la grabación con OBS Studio o QuickTime Player (`Cmd + Shift + 5`):
+1. **Configuración de pantalla:** Resolución 1080p (1920×1080), escala de fuentes en navegador al 110% o 120% para legibilidad óptima de código y tablas.
+2. **Tema de Colab:** Modo oscuro activado (Herramientas → Configuración → Tema del sitio → Dark).
+3. **Cuaderno abierto:** [`Deliverable3_Demo_Video.ipynb`](../Deliverable3_Demo_Video.ipynb) con las salidas de las celdas ya ejecutadas previamente para una navegación fluida sin tiempos muertos de cómputo.
 
 ---
 
-## 2. Minutaje y Estructura Segundo a Segundo
+## 2. Minutaje y Estructura por Secciones
 
 ```
-[0:00 - 0:25] | Bloque 1: Motivación, Corpus y Salto Conceptual a Multi-Agente
-[0:25 - 0:55] | Bloque 2: Arquitectura del Sistema, Grafo TikZ y Contratos JSON
-[0:55 - 1:40] | Bloque 3: Demostración de Traza Real Observable (Caso Exitoso)
-[1:40 - 2:15] | Bloque 4: Transparencia Empírica y Diagnóstico de Fallos (Premisas Falsas)
-[2:15 - 2:50] | Bloque 5: Resultados Empíricos (450 corridas), Ablaciones y Repositorio
+[0:00 - 0:30] | Bloque 1: Introducción, Autores y Corpus Normativo (Secciones 1 y 2)
+[0:30 - 1:00] | Bloque 2: Arquitectura del Sistema, Grafo y Herramientas (Sección 3)
+[1:00 - 1:45] | Bloque 3: Demostración en Vivo: Caso de Titulación P105 (Sección 4)
+[1:45 - 2:20] | Bloque 4: Diagnóstico Técnico: Premisas Falsas y Mitigación (Sección 5)
+[2:20 - 2:50] | Bloque 5: Auditoría Reproducible y Resultados Finales (Secciones 6 y 7)
 ```
 
 ---
 
 ## 3. Guion de Locución y Acciones en Pantalla
 
-### Bloque 1: Motivación, Corpus y Salto a Multi-Agente (0:00 – 0:25)
-* **Pantalla:** Mostrar la cabecera de `main.pdf` y la Sección 1.
-* **Acción del cursor:** Resaltar el título institucional, el modelo (`Qwen/Qwen3-4B`) y el corpus cerrado.
+### Bloque 1: Introducción y Fundamentos (0:00 – 0:30) | 63 palabras
+* **Sección en Colab:** Encabezado y Sección 1 («Preparación del Entorno y Verificación Criptográfica»).
+* **Acción en pantalla:** El cursor señala el título institucional y los nombres de los autores (Álvaro Contreras y Pablo Cortés). Luego baja suavemente por la celda de configuración mostrando el modelo `Qwen3-4B` en GPU Tesla T4 (cuantizado en 4-bit NF4) y el corpus cerrado de 197 unidades normativas.
 * **Locución (Voz en off):**
-  > "Continuamos con el asistente de normativa para Ingeniería UdeC. Frente al RAG monolítico de una sola pasada estática, en este Entregable 3 implementamos un sistema multi-agente con decisiones observables: los modelos eligen herramientas, transfieren el control con contratos JSON tipados, reintentan ante objeciones y se detienen cuando la evidencia es insuficiente."
+> *"Hola. Junto a Álvaro Contreras y Pablo Cortés, presentamos el sistema multiagente para normativas de la Facultad de Ingeniería de la Universidad de Concepción. En el entregable dos usamos un RAG simple de una sola pasada. Para este trabajo implementamos agentes deliberativos con el modelo Qwen3-4B cuantizado en NF4 sobre una GPU Tesla T4, operando sobre un corpus de 197 unidades normativas estructuradas."*
 
 ---
 
-### Bloque 2: Arquitectura del Sistema, Grafo TikZ y Herramientas (0:25 – 0:55)
-* **Pantalla:** Zoom directo al diagrama de arquitectura en `main.pdf` (Sección 2).
-* **Acción del cursor:** Seguir el flujo horizontal: `Pregunta -> Investigador -> Redactor -> Auditor -> Respuesta validada`. Luego señalar el contenedor inferior de *Herramientas Normativas* y finalmente los bucles superiores.
+### Bloque 2: Arquitectura del Sistema y Herramientas (0:30 – 1:00) | 60 palabras
+* **Sección en Colab:** Sección 2 («Grafo de Agentes y Herramientas Normativas»).
+* **Acción en pantalla:** Mostrar el diagrama de arquitectura insertado en el cuaderno. El cursor sigue el flujo: `Investigador -> Redactor -> Auditor`, señalando las 3 herramientas normativas (`buscar_normativa`, `leer_articulo`, `inventario`) y los bucles superiores de corrección y parada.
 * **Locución (Voz en off):**
-  > "El sistema opera con tres roles sobre una misma instancia de Qwen3-4B:
-  > El **Investigador** analiza la consulta y accede a herramientas normativas: búsqueda densa con E5, lectura íntegra de artículos y el inventario oficial.
-  > El **Redactor** formula la respuesta respaldándose únicamente en las fuentes recibidas.
-  > Y el **Auditor** verifica extracto por extracto las afirmaciones, exigiendo corregir citas o reiniciar la investigación ante normativa insuficiente."
+> *"En la arquitectura dividimos el trabajo en tres agentes que intercambian contratos JSON. El Investigador busca mediante embeddings E5, lee artículos íntegros e inspecciona inventarios reglamentarios. El Redactor sintetiza la evidencia citando fuentes oficiales. Finalmente, el Auditor verifica el respaldo normativo y los cálculos numéricos; si detecta inconsistencias o alucinaciones, rechaza la respuesta y abre un bucle de corrección supervisado."*
 
 ---
 
-### Bloque 3: Demostración de Traza Real Observable (0:55 – 1:40)
-* **Pantalla:** Cambiar a VS Code. Mostrar el archivo de traza real `P005_agentes_completo.json` (consulta sobre titulación en Ingeniería).
-* **Acción del cursor:** Desplazarse por los eventos clave de la traza:
-  1. Solicitud y respuesta de la herramienta `leer_articulo` (Art. 29 RI-FI).
-  2. JSON de transferencia del Investigador hacia el Redactor con `accion: "redactar"`.
-  3. Borrador JSON del Redactor con citas explícitas `[RI-FI-ART-029]`.
-  4. Evaluación del Auditor con `accion: "aceptar"` y lista de `apoyos` con extractos literales.
+### Bloque 3: Demostración en Vivo: Caso de Titulación P105 (1:00 – 1:45) | 77 palabras
+* **Sección en Colab:** Sección 3 («Demostración en Vivo: Consulta Compleja de Cálculo (Caso H05 / P105)»).
+* **Acción en pantalla:** Se pulsa *Run* o se enfoca la celda del caso P105 (alumno con promedio 5,2 y memoria 6,5). Se despliega el flujo interactivo de logs: la llamada del Investigador recuperando el Artículo 30 del RI-FI, el mensaje JSON intermedio del Redactor aplicando la fórmula $(5{,}2 \times 0{,}6) + (6{,}5 \times 0{,}4) = 5{,}72 \rightarrow 5{,}7$, y la tarjeta de aprobación sin reparos del Auditor.
 * **Locución (Voz en off):**
-  > "Veamos una traza real ejecutada en GPU Tesla T4. Ante la consulta sobre la actividad final de titulación, observamos cómo el Investigador recupera el Artículo 29 del Reglamento Interno y transfiere el control con un contrato JSON limpio.
-  > El Redactor formula la respuesta identificando la Memoria de Título con su cita oficial.
-  > A continuación, el Auditor audita el borrador, valida que el extracto literal respalda exactamente la condición de titulación y emite la acción 'aceptar'.
-  > Todo el proceso es determinista, reproducible y auditable mediante hashes SHA-256 en cada llamada."
+> *"Ejecutamos en vivo la consulta de titulación P105: un estudiante con promedio 5,2 en asignaturas y nota 6,5 en su memoria. En los registros observamos el flujo de mensajes intermedios en JSON. El Investigador recupera el artículo 30. Con esa evidencia, el Redactor aplica la ponderación reglamentaria de sesenta por ciento de asignaturas y cuarenta por ciento de memoria, calculando 5,72, que redondea formalmente a 5,7. El Auditor valida el cálculo aritmético y emite la aprobación final."*
 
 ---
 
-### Bloque 4: Transparencia Empírica, Diagnóstico y Resolución (1:40 – 2:15)
-* **Pantalla:** Cambiar a `P041_agentes_completo.json` o al código de `d3_agentes/core.py` (función de consenso semántico).
-* **Acción del cursor:** Resaltar la detección del livelock inicial y el mecanismo de consenso semántico en el orquestador.
+### Bloque 4: Diagnóstico Técnico: Premisas Falsas y Mitigación (1:45 – 2:20) | 69 palabras
+* **Sección en Colab:** Sección 4 («Diagnóstico Transparente y Resolución de Premisas Falsas»).
+* **Acción en pantalla:** Mostrar la caja de la consulta P41, donde el agente ejecuta la herramienta de inventario (`INV-`) y refuta la premisa con evidencia de ausencia. Luego se enfoca el caso P44, explicando visualmente el bloqueo de reintentos (*livelock*) cuando el modelo base 4B insistía en alucinar la norma, y cómo el orquestador resolvió 9 de las 10 consultas mediante consenso semántico.
 * **Locución (Voz en off):**
-  > "Un principio central de nuestro trabajo es la transparencia experimental. En las preguntas con premisas falsas diagnosticamos inicialmente una limitación clave:
-  > Mientras que RAG D2 abortaba pasivamente, el bucle deliberativo indujo un sesgo de búsqueda activa. Como vemos en la traza de la pregunta 41, el Redactor constataba la ausencia del artículo mediante el inventario, pero el Auditor caía en livelock pidiendo corregir.
-  > Para resolverlo sin sobreajuste, incorporamos alineación de parada en ausencias en el prompt del Auditor y consenso semántico en el orquestador. Esta mejora desbloqueó de inmediato 9 de las 10 consultas falsas, alcanzando un 90% de acierto en abstenciones."
+> *"En la evaluación de premisas falsas analizamos el comportamiento ante consultas engañosas. En la pregunta P41, el sistema demuestra formalmente la inexistencia de la norma mediante la herramienta de inventario. En cambio, en P44 el modelo 4B cayó en livelock al alucinar presencia del artículo inexistente. Para resolver esta compensación de diseño, incorporamos consenso semántico en el orquestador, logrando resolver exitosamente nueve de las diez consultas con premisas falsas."*
 
 ---
 
-### Bloque 5: Resultados Empíricos (450 corridas), Ablaciones y Cierre (2:15 – 2:50)
-* **Pantalla:** Volver a `main.pdf` en la Sección 4 (Tabla 1) y luego mostrar brevemente el repositorio en GitHub.
-* **Acción del cursor:** Resaltar la fila de *Multi-Agente (E3)* (43/50 o 86% en base y 21/25 u 84% en difícil), las comparaciones con RAG D2 y los enlaces del encabezado.
+### Bloque 5: Auditoría Reproducible y Resultados Finales (2:20 – 2:50) | 66 palabras
+* **Sección en Colab:** Sección 5 («Auditoría Criptográfica Global y Tabla 1 de Resultados»).
+* **Acción en pantalla:** Se ejecuta o visualiza la celda de verificación de integridad mostrando los hashes SHA-256 coincidentes para los archivos de prompts. Se enfoca la **Tabla 1** con el **86%** en el conjunto Base (50 consultas), **84%** en el conjunto Difícil (25 consultas), la tasa de **4,5 llamadas** por consulta y el estudio comparativo de ablaciones.
 * **Locución (Voz en off):**
-  > "Evaluamos las inferencias en GPU cubriendo las configuraciones experimentales en ambos conjuntos de datos.
-  > En el banco base, nuestro sistema multi-agente alcanza un 86% de exactitud con 43 de 50 aciertos, superando el 80% del RAG monolítico de D2, y alcanzando un 90% en la detección rigurosa de premisas falsas.
-  > En el conjunto de 25 consultas difíciles de estrés normativo, con la normalización de extractos del validador alcanzamos un 84% con 21 de 25 respuestas aprobadas, resolviendo problemas de cálculo ponderado de notas, suspensión y causales de baja donde D2 fallaba.
-  > Todo el código, prompts externos versionados y los respaldos auditables se encuentran disponibles en nuestro repositorio de GitHub."
+> *"Para asegurar reproducibilidad, verificamos los hashes SHA-256 inmutables de los prompts externos. La tabla final registra un desempeño de ochenta y seis por ciento en el conjunto Base de cincuenta preguntas y ochenta y cuatro por ciento en las veinticinco Difíciles, con cuatro coma cinco llamadas promedio a herramientas. El análisis de ablaciones confirma el impacto decisivo del bucle de auditoría en la precisión del sistema."*
 
 ---
 
-## 4. Checklist de Grabación y Verificación
+## 4. Resumen de Métricas de Calibración
 
-- [ ] Duración total del audio: entre 2:40 y 2:50 minutos.
-- [ ] No se usan muletillas ni términos artificiales ("victorias cualitativas", etc.).
-- [ ] La pantalla muestra texto grande, nítido y legible.
-- [ ] Se muestran tanto un caso exitoso con contratos JSON como el diagnóstico real del fallo en premisas falsas.
-- [ ] Se menciona claramente el repositorio GitHub oficial y el estudio de ablación de 450 corridas.
+| Bloque | Sección en Colab | Tiempo | Palabras | WPM |
+| :--- | :--- | :---: | :---: | :---: |
+| **B1: Introducción y Setup** | Sec. 1 (Entorno y Corpus) | 0:00 – 0:30 (30 s) | **63** | 126 |
+| **B2: Arquitectura y Grafo** | Sec. 2 (Agentes y Herramientas) | 0:30 – 1:00 (30 s) | **60** | 120 |
+| **B3: Caso en Vivo (Titulación)** | Sec. 3 (Ejecución P105 / H05) | 1:00 – 1:45 (45 s) | **77** | 103 |
+| **B4: Premisas Falsas** | Sec. 4 (Casos P41, P44 y Consenso) | 1:45 – 2:20 (35 s) | **69** | 118 |
+| **B5: Auditoría y Cierre** | Sec. 5 (Hashes y Tabla 1) | 2:20 – 2:50 (30 s) | **66** | 132 |
+| **TOTAL** | **Cuaderno completo** | **2:50 min** | **335** | **118** |
+
+### Checklist de Cumplimiento
+- [x] **0% Clichés de IA:** Eliminadas palabras como "monolítico", "paradigmático", "sinérgico", "holístico", "crucial", "vital", "salto cualitativo", "victorias cualitativas".
+- [x] **Tono Humano de Ingeniería:** Redacción fluida, técnica, rigurosa y directa de un estudiante de la UdeC.
+- [x] **Sincronización Total con Colab:** El guion sigue exactamente el scroll y las celdas de `Deliverable3_Demo_Video.ipynb`.
+- [x] **Duración Segura:** 335 palabras habladas a ritmo relajado equivalen a 2:45 – 2:50 min, con 10 s de margen bajo el límite de 3 min.

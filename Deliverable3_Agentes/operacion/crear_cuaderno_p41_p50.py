@@ -116,15 +116,12 @@ def build_cuaderno_p41_p50():
     code('''
     # 5. Ejecución experimental de las 10 preguntas con la Opción 1 (Ajuste sutil del Auditor)
     from pathlib import Path
-    from d3_agentes.experiment import prepare, execute, export
-    from d3_agentes.common import Limits, PromptBook
+    from d3_agentes.runtime import execute
+    from d3_agentes.experiment import export
 
     print("Ejecutando las 10 preguntas de premisas falsas con el Auditor actualizado (Opción 1)...")
-    RUN_DIR, _ = prepare(ENV['questions'], ENV['retriever'], ENV['settings'],
-                         Path("corrida_opcion1"), ['agentes_completo'], Limits(), 'p41-p50-opcion1', PromptBook("workspace_p41_p50/prompts"))
-
-    execute(ENV, ENV['questions'], Path("corrida_opcion1"), variants=['agentes_completo'], tag='p41-p50-opcion1', verbose=True)
-    zip_path = export(RUN_DIR)
+    RUN_DIR = execute(ENV, ENV['questions'], Path("corrida_opcion1"), variants=['agentes_completo'], tag='p41-p50-opcion1', verbose=True)
+    zip_path = RUN_DIR.with_suffix('.zip')
     print("Corrida completada y exportada a:", zip_path)
     ''', 'run-opcion1')
 

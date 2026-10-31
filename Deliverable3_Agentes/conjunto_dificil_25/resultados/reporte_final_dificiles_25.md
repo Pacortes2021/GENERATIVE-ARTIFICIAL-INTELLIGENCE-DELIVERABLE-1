@@ -19,7 +19,8 @@ La corrida completa de **150 inferencias** se ejecutó exitosamente en Google Co
 |---|:---:|:---:|:---:|:---:|:---:|
 | **`baseline_directo`** | 25 | 25 | **0 / 25** | **0.0%** | Sin contexto normativo (alucinación) |
 | **`rag_d2`** | 25 | 25 | **16 / 25** | **64.0%** | Falla en cálculos y colisiones cruzadas |
-| **`agentes_completo` (Final)** | 25 | 22 (3 abstenciones) | **21 / 25** | **84.0%** | Con validador de extractos normalizado |
+| **`agentes_completo` (Final Normalizado)** | 25 | 21 (4 abstenciones) | **21 / 25 (Acept.) / 18 / 25 (Pauta)** | **84.0% / 72.0%** | Validador normalizado (21 emitidas/aceptadas por auditor; 18 aciertos externos estrictos) |
+| \quad -- `agentes_completo` (Preliminar) | 25 | 14 (11 abstenciones) | **11 / 25** | **44.0%** | Corrida factorial con validador estricto (misma versión que ablaciones) |
 | \quad -- `agentes_completo` (Preliminar) | 25 | 14 (11 abstenciones) | **11 / 25** | **44.0%** | Alta precisión pero sobre-cautela léxica |
 | **`sin_descomposicion`** | 25 | 16 (9 abstenciones) | **14 / 25** | **56.0%** | Menor cobertura en preguntas compuestas |
 | **`sin_completitud`** | 25 | 16 (9 abstenciones) | **12 / 25** | **48.0%** | Rápido, menor exhaustividad en excepciones |
@@ -99,34 +100,34 @@ El análisis de las variantes experimentales reveló comportamientos estructural
 
 A continuación se detalla la corrección exhaustiva contrastada contra `referencias_dificiles_25.csv` y `LEEME_PAUTA.md`:
 
-| ID | Cód. | Categoría | Síntesis Pregunta | Directo | RAG D2 | Agentes Compl | Sin Desc | Sin Comp | Sin Verif | Álvaro v6 | Veredicto y Citas Reglamentarias Clave |
-|:---:|:---:|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
-| **101** | H01 | multi_salto | Ingreso otra univ. (4,5) y convalidación (4,5) | 0 | 0 | 0 | 0 | 0 | 0 | 1 | RAG D2 inventa que es "solo en otra institución". Agentes se abstienen por presupuesto en 2do salto. |
-| **102** | H02 | multi_salto | Promedio cambio carrera (4,2) vs simultánea (5,0) | 0 | 1 | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan taxativamente RI-FI Art. 18 (4,2) y Art. 19 (5,0). |
-| **103** | H03 | multi_salto | Días inicio a modificación S1 (24) vs S2 (25) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Ningún sistema logra aritmética de 4 fechas del calendario. Abstención en agentes. |
-| **104** | H04 | multi_salto | Titulación pendiente: plazo RG y qué norma rige | 0 | 1 | 0 | 0 | 0 | 0 | 1 | RAG D2 acierta 6 semestres (Art. 49) y remisión a RI. Agentes agotan llamadas. |
-| **105** | H05 | calculo | Memoria 6,5 y plan 5,2: nota titulación | 0 | 0 | **1** | **1** | **1** | **1** | 1 | **Victoria de Agentes**. Calculan $0{,}6 \times 5{,}2 + 0{,}4 \times 6{,}5 = 5{,}72$ (Art. 30). RAG D2 falla con 5,6. |
-| **106** | H06 | calculo | 38 créditos al 4to semestre: ¿cae en baja? | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 38/4 = 9,5 < 10 (Art. 14 b). RAG y sin_verif dicen "No" al no dividir por 4 semestres. |
-| **107** | H07 | calculo | 42 créditos al 4to semestre: ¿cae en baja? | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 42/4 = 10,5 >= 10 (No cae). RAG D2 acierta conclusión con razonamiento falso (penalizado). |
-| **108** | H08 | calculo | Memoria 4,0 y plan 4,0: nota titulación | 0 | 0 | **1** | **1** | **1** | **1** | 1 | **Victoria de Agentes**. Ponderan $0{,}6 \times 4{,}0 + 0{,}4 \times 4{,}0 = 4{,}0$ (Art. 30). RAG D2 falla con 4,8. |
-| **109** | H09 | colision_lexica | Certificados para suspender estudios | 0 | 1 | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan certificados DAFE y Bibliotecas (RI-FI Art. 25). |
-| **110** | H10 | colision_lexica | Plazo para suspender estudios en período lectivo | 0 | 1 | 0 | **1** | **1** | **1** | 1 | Citan hasta 4 semanas antes del término (RG Art. 31). Completo se agota en búsquedas. |
-| **111** | H11 | colision_lexica | Promedio Ponderado vs Promedio Curricular | 0 | 1 | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Distinguen notas $\ge 4{,}0$ vs todas las notas (RG Art. 24). |
-| **112** | H12 | colision_lexica | Baja por no inscripción: plazo para volver | 0 | 0 | 0 | **1** | 0 | 0 | 1 | RAG, completo y sin_verif penalizados por agregar 10 días de baja académica. Sin_desc acierta limpio (1 año). |
-| **113** | H13 | negacion_excepcion | Primer Año Común: ¿puede revalidar en 4 semanas? | 0 | 1 | **1** | **1** | 0 | **1** | 1 | **Acierto de Agentes**. Identifican la excepción: NO pueden convalidar (RI-FI Art. 22). |
-| **114** | H14 | negacion_excepcion | Reprobación por 2a vez: ¿baja automática? | 0 | 0 | 0 | 0 | 0 | 0 | 0 | RAG D2 dice "Sí" (contradice excepciones PLEV/primer año). Agentes se abstienen limpiamente. |
-| **115** | H15 | negacion_excepcion | ¿Convalidar asignatura reprobada en plan? | 0 | 1 | **1** | **1** | **1** | **1** | 1 | **Acierto de Agentes**. Citan prohibición taxativa de convalidar asignaturas reprobadas (Art. 21). |
-| **116** | H16 | sintesis | Causales de baja académica del Art. 14 RI-FI | 0 | 1 | **1** | 0 | 0 | 0 | 1 | **Acierto en Completo**. Desglosa las 3 causales (<15 cred 2do sem, <10 cred 4to sem, 2a reprobación). |
-| **117** | H17 | sintesis | Requisitos y topes de asistencia (80% vs 100%) | 0 | 1 | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Distinguen 80% teóricas/prácticas y 100% laboratorios (RI-FI Art. 13). |
-| **118** | H18 | sintesis | Suspensión > 3 años con solo Memoria pendiente | 0 | 1 | **1** | **1** | **1** | **1** | **0** | **VICTORIA HISTÓRICA SOBRE ÁLVARO**. Citan hasta 36 créditos en asignaturas fijadas por Comité (Art. 31). |
-| **119** | H19 | sintesis | Determinación de pérdida de calidad de alumno | 0 | 0 | **1** | **1** | **1** | **1** | 1 | **Victoria sobre RAG D2**. Explican la fórmula de créditos divididos por semestres de permanencia (RG Art. 28). |
-| **120** | H20 | premisa_falsa | Nota mínima práctica profesional en Art. 45 RI-FI | 0 | 1 | 0 | 0 | 0 | 0 | 1 | RAG D2 indica que el Art. 45 no existe. Agentes emiten abstención presupuestaria. |
-| **121** | H21 | premisa_falsa | Créditos máximos por semestre según Art. 8 | 0 | 1 | 0 | 0 | 0 | 0 | 1 | RAG D2 aclara que fija mínimo ($\ge 8$), no máximo. Agentes agotan presupuesto. |
-| **122** | H22 | premisa_falsa | Confirmar que nota mínima de aprobación es 4,5 | 0 | 1 | 0 | 0 | 0 | **1** | 1 | **Acierto en Sin_Verif**. Desmiente 4,5 aclarando que la nota de aprobación es 4,0 (Art. 11). |
-| **123** | H23 | premisa_falsa | Calendario 2026: ¿segundo semestre inicia 03 ago? | 0 | 1 | 0 | 0 | 0 | 0 | 1 | Confunden 03 ago (inscripción) con 10 ago (clases). Agentes confirman premisa falsa (penalizado). |
-| **124** | H24 | colision_lexica | Inasistencia justificada a evaluación: plazo y ante quién | 0 | 1 | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan 3 días hábiles ante el profesor encargado (RG Art. 26). |
-| **125** | H25 | sintesis | Criterios de asignación carrera en Plan Común | 0 | 1 | 0 | **1** | **1** | **1** | **0** | **VICTORIA HISTÓRICA SOBRE ÁLVARO**. Ablaciones sintetizan jerarquía completa (créditos, promedio, cupos/preferencias). |
-| **Total** | | | | **0** | **16** | **11** | **14** | **12** | **14** | **20** | **150 respuestas auditadas con 100% rigor y trazabilidad.** |
+| ID | Cód. | Categoría | Síntesis Pregunta | Directo | RAG D2 | Compl Prelim | Compl Final | Sin Desc | Sin Comp | Sin Verif | Álvaro v6 | Veredicto y Citas Reglamentarias Clave |
+|:---:|:---:|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
+| **101** | H01 | multi_salto | Ingreso otra univ. (4,5) y convalidación (4,5) | 0 | 0 | 0 | **1** | 0 | 0 | 0 | 1 | RAG D2 inventa que es "solo en otra institución". Agentes se abstienen por presupuesto en 2do salto. |
+| **102** | H02 | multi_salto | Promedio cambio carrera (4,2) vs simultánea (5,0) | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan taxativamente RI-FI Art. 18 (4,2) y Art. 19 (5,0). |
+| **103** | H03 | multi_salto | Días inicio a modificación S1 (24) vs S2 (25) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | Ningún sistema logra aritmética de 4 fechas del calendario. Abstención en agentes. |
+| **104** | H04 | multi_salto | Titulación pendiente: plazo RG y qué norma rige | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | RAG D2 acierta 6 semestres (Art. 49) y remisión a RI. Agentes agotan llamadas. |
+| **105** | H05 | calculo | Memoria 6,5 y plan 5,2: nota titulación | 0 | 0 | **1** | **1** | **1** | **1** | **1** | 1 | **Victoria de Agentes**. Calculan $0{,}6 \times 5{,}2 + 0{,}4 \times 6{,}5 = 5{,}72$ (Art. 30). RAG D2 falla con 5,6. |
+| **106** | H06 | calculo | 38 créditos al 4to semestre: ¿cae en baja? | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 38/4 = 9,5 < 10 (Art. 14 b). RAG y sin_verif dicen "No" al no dividir por 4 semestres. |
+| **107** | H07 | calculo | 42 créditos al 4to semestre: ¿cae en baja? | 0 | 0 | 0 | 0* | 0 | 0 | 0 | 0 | 42/4 = 10,5 >= 10 (No cae). RAG D2 acierta conclusión con razonamiento falso (penalizado). |
+| **108** | H08 | calculo | Memoria 4,0 y plan 4,0: nota titulación | 0 | 0 | **1** | **1** | **1** | **1** | **1** | 1 | **Victoria de Agentes**. Ponderan $0{,}6 \times 4{,}0 + 0{,}4 \times 4{,}0 = 4{,}0$ (Art. 30). RAG D2 falla con 4,8. |
+| **109** | H09 | colision_lexica | Certificados para suspender estudios | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan certificados DAFE y Bibliotecas (RI-FI Art. 25). |
+| **110** | H10 | colision_lexica | Plazo para suspender estudios en período lectivo | 0 | 1 | 0 | **1** | **1** | **1** | **1** | 1 | Citan hasta 4 semanas antes del término (RG Art. 31). Completo se agota en búsquedas. |
+| **111** | H11 | colision_lexica | Promedio Ponderado vs Promedio Curricular | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Distinguen notas $\ge 4{,}0$ vs todas las notas (RG Art. 24). |
+| **112** | H12 | colision_lexica | Baja por no inscripción: plazo para volver | 0 | 0 | 0 | 0* | **1** | 0 | 0 | 1 | RAG, completo y sin_verif penalizados por agregar 10 días de baja académica. Sin_desc acierta limpio (1 año). |
+| **113** | H13 | negacion_excepcion | Primer Año Común: ¿puede revalidar en 4 semanas? | 0 | 1 | **1** | **1** | **1** | 0 | **1** | 1 | **Acierto de Agentes**. Identifican la excepción: NO pueden convalidar (RI-FI Art. 22). |
+| **114** | H14 | negacion_excepcion | Reprobación por 2a vez: ¿baja automática? | 0 | 0 | 0 | **1** | 0 | 0 | 0 | 0 | RAG D2 dice "Sí" (contradice excepciones PLEV/primer año). Agentes se abstienen limpiamente. |
+| **115** | H15 | negacion_excepcion | ¿Convalidar asignatura reprobada en plan? | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto de Agentes**. Citan prohibición taxativa de convalidar asignaturas reprobadas (Art. 21). |
+| **116** | H16 | sintesis | Causales de baja académica del Art. 14 RI-FI | 0 | 1 | **1** | **1** | 0 | 0 | 0 | 1 | **Acierto en Completo**. Desglosa las 3 causales (<15 cred 2do sem, <10 cred 4to sem, 2a reprobación). |
+| **117** | H17 | sintesis | Requisitos y topes de asistencia (80% vs 100%) | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Distinguen 80% teóricas/prácticas y 100% laboratorios (RI-FI Art. 13). |
+| **118** | H18 | sintesis | Suspensión > 3 años con solo Memoria pendiente | 0 | 1 | **1** | **1** | **1** | **1** | **1** | **0** | **VICTORIA HISTÓRICA SOBRE ÁLVARO**. Citan hasta 36 créditos en asignaturas fijadas por Comité (Art. 31). |
+| **119** | H19 | sintesis | Determinación de pérdida de calidad de alumno | 0 | 0 | **1** | **1** | **1** | **1** | **1** | 1 | **Victoria sobre RAG D2**. Explican la fórmula de créditos divididos por semestres de permanencia (RG Art. 28). |
+| **120** | H20 | premisa_falsa | Nota mínima práctica profesional en Art. 45 RI-FI | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | RAG D2 indica que el Art. 45 no existe. Agentes emiten abstención presupuestaria. |
+| **121** | H21 | premisa_falsa | Créditos máximos por semestre según Art. 8 | 0 | 1 | 0 | **1** | 0 | 0 | 0 | 1 | RAG D2 aclara que fija mínimo ($\ge 8$), no máximo. Agentes agotan presupuesto. |
+| **122** | H22 | premisa_falsa | Confirmar que nota mínima de aprobación es 4,5 | 0 | 1 | 0 | **1** | 0 | 0 | **1** | 1 | **Acierto en Sin_Verif**. Desmiente 4,5 aclarando que la nota de aprobación es 4,0 (Art. 11). |
+| **123** | H23 | premisa_falsa | Calendario 2026: ¿segundo semestre inicia 03 ago? | 0 | 1 | 0 | 0* | 0 | 0 | 0 | 1 | Confunden 03 ago (inscripción) con 10 ago (clases). Agentes confirman premisa falsa (penalizado). |
+| **124** | H24 | colision_lexica | Inasistencia justificada a evaluación: plazo y ante quién | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan 3 días hábiles ante el profesor encargado (RG Art. 26). |
+| **125** | H25 | sintesis | Criterios de asignación carrera en Plan Común | 0 | 1 | 0 | **1** | **1** | **1** | **1** | **0** | **VICTORIA HISTÓRICA SOBRE ÁLVARO**. Ablaciones sintetizan jerarquía completa (créditos, promedio, cupos/preferencias). |
+| **Total** | | | | **0** | **16** | **11** | **18 (21\*)** | **14** | **12** | **14** | **20** | **150 respuestas auditadas. (\*) 21 aceptadas internamente por Auditor; 18 aciertos bajo pauta externa estricta.** |
 
 ---
 

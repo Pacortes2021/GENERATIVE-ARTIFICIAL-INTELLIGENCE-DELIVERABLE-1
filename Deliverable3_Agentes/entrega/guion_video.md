@@ -68,23 +68,23 @@ Antes de iniciar la grabación con OBS Studio, QuickTime o la herramienta de cap
 
 ---
 
-### Bloque 4: Transparencia Empírica y Diagnóstico de Fallos (1:40 – 2:15)
-* **Pantalla:** Cambiar a `P041_agentes_completo.json` o al diagrama TikZ en la flecha de parada *Abstención técnica* (`límite de revisiones o formato inválido`).
-* **Acción del cursor:** Resaltar el evento de ciclo interrumpido y la respuesta terminal segura por límite de llamadas.
+### Bloque 4: Transparencia Empírica, Diagnóstico y Resolución (1:40 – 2:15)
+* **Pantalla:** Cambiar a `P041_agentes_completo.json` o al código de `d3_agentes/core.py` (función de consenso semántico).
+* **Acción del cursor:** Resaltar la detección del livelock inicial y el mecanismo de consenso semántico en el orquestador.
 * **Locución (Voz en off):**
-  > "Un principio central de nuestro trabajo es la transparencia experimental. En las 10 preguntas con premisas falsas —como consultar por artículos inexistentes— diagnosticamos una limitación clave de los agentes deliberativos frente al RAG estático:
-  > Mientras que RAG D2 abortaba pasivamente, el bucle deliberativo de los agentes indujo un sesgo de búsqueda activa. Como vemos en la traza de la pregunta 41, el Redactor redactó correctamente que el artículo no existía citando el inventario, pero el Auditor pequeño interpretó la ausencia como una carencia y solicitó reiteradamente corregir. El orquestador interrumpió el ciclo seguro al agotar límites, devolviendo una abstención técnica justificada."
+  > "Un principio central de nuestro trabajo es la transparencia experimental. En las preguntas con premisas falsas diagnosticamos inicialmente una limitación clave:
+  > Mientras que RAG D2 abortaba pasivamente, el bucle deliberativo indujo un sesgo de búsqueda activa. Como vemos en la traza de la pregunta 41, el Redactor constataba la ausencia del artículo mediante el inventario, pero el Auditor caía en livelock pidiendo corregir.
+  > Para resolverlo sin sobreajuste, incorporamos alineación de parada en ausencias en el prompt del Auditor y consenso semántico en el orquestador. Esta mejora desbloqueó de inmediato 9 de las 10 consultas falsas, alcanzando un 90% de acierto en abstenciones."
 
 ---
 
 ### Bloque 5: Resultados Empíricos (450 corridas), Ablaciones y Cierre (2:15 – 2:50)
 * **Pantalla:** Volver a `main.pdf` en la Sección 4 (Tabla 1) y luego mostrar brevemente el repositorio en GitHub.
-* **Acción del cursor:** Resaltar la fila de *Multi-Agente (E3)* (34/50 y 11/25), las ablaciones (*sin descomp.* y *sin verific.* con 14/25) y los enlaces del encabezado.
+* **Acción del cursor:** Resaltar la fila de *Multi-Agente (E3)* (43/50 o 86% y 11/25), las ablaciones (*sin descomp.* y *sin verific.* con 14/25) y los enlaces del encabezado.
 * **Locución (Voz en off):**
   > "Evaluamos 450 inferencias en GPU cubriendo seis configuraciones experimentales.
-  > En preguntas sobre normativa vigente, los agentes superaron a RAG D2 con un 85% frente a 75%, resolviendo problemas complejos de cálculo ponderado de notas y prelación de asignaturas.
-  > El estudio de ablación demostró que al retirar la verificación léxica estricta, el acierto en casos difíciles sube de 44% a 56%, evidenciando que una auditoría demasiado rígida sobre un modelo 4B puede provocar abstenciones indebidas.
-  > Esta deliberación demanda 5,1 llamadas por consulta frente a 1 llamada de RAG, marcando el compromiso entre rigor analítico y latencia.
+  > Con el desbloqueo deliberativo, nuestro sistema multi-agente alcanza un 86% de exactitud en el banco base con 43 de 50 aciertos, superando el 80% del RAG monolítico de D2. En preguntas sobre normativa vigente alcanza un 85%, resolviendo problemas complejos de cálculo ponderado de notas y prelación de asignaturas.
+  > El estudio de ablación demostró que al retirar la verificación léxica estricta, el acierto en casos difíciles sube de 44% a 56%, evidenciando que una auditoría excesivamente rígida sobre un modelo 4B puede provocar abstenciones indebidas.
   > Todo el código, prompts externos versionados y los 25 snapshots inmutables se encuentran disponibles en nuestro repositorio de GitHub."
 
 ---

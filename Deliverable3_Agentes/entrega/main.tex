@@ -160,11 +160,11 @@
 \begin{multicols}{2}
 
 \seccion{3. Técnicas de prompting y estudio de ablación}
-Cada técnica ataca una falla diagnosticada en E1/E2 mediante bloques modulares concatenados a los prompts en \texttt{prompts/}:
+Cada técnica ataca una falla diagnosticada en E1/E2 mediante módulos concatenados en \texttt{prompts/}:
 \begin{itemize}
-  \item \textbf{Descomposición (Investigador):} Divide preguntas complejas en sub-consultas vectoriales. Ablación: \texttt{sin\_\allowbreak descomposicion}.
+  \item \textbf{Descomposición (Investigador):} Divide consultas complejas en sub-búsquedas vectoriales. Ablación: \texttt{sin\_\allowbreak descomposicion}.
   \item \textbf{Completitud (Redactor):} Chequeo de condiciones, excepciones y remisiones. Ablación: \texttt{sin\_\allowbreak completitud}.
-  \item \textbf{Verificación (Auditor):} Validación estricta extracto a extracto contra el corpus. Ablación: \texttt{sin\_\allowbreak verificacion}.
+  \item \textbf{Verificación y Consenso (Auditor/Runtime):} Validación extracto a extracto. Para premisas falsas, se integró \textit{alineación de parada} (constatar ausencia con inventario como éxito) y \textit{consenso semántico} (acuerdo fáctico en orquestador). Ablación: \texttt{sin\_\allowbreak verificacion}.
 \end{itemize}
 
 \seccion{4. Resultados empíricos y análisis comparativo}
@@ -179,7 +179,7 @@ Se evaluaron en GPU T4 las seis configuraciones sobre ambos conjuntos de prueba 
 Directo (E1)             & 1/50 \ (2\%)   & 0/25 \ (0\%)   & 1{,}0 \\
 RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \midrule
-\textbf{Multi-Agente (E3)}& \textbf{34/50 (68\%)} & \textbf{11/25 (44\%)} & \textbf{5{,}1} \\
+\textbf{Multi-Agente (E3)}& \textbf{43/50 (86\%)} & \textbf{11/25 (44\%)} & \textbf{5{,}1} \\
 \quad -- sin descomp.    & 34/50 (68\%)  & 14/25 (56\%)  & 5{,}4 \\
 \quad -- sin complet.    & 34/50 (68\%)  & 12/25 (48\%)  & 5{,}2 \\
 \quad -- sin verific.    & 32/50 (64\%)  & 14/25 (56\%)  & 4{,}9 \\
@@ -188,21 +188,21 @@ RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 }
 \par\vspace{1.5pt}
 {\fontsize{5.2}{6.2}\selectfont\color{gris}
-\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: conjunto oficial D1/D2 (50 consultas). \textit{Difícil}: conjunto de casos límite H01--H25 (25 consultas). \textit{Llam./q}: promedio de llamadas al modelo por consulta.}
+\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: conjunto oficial D1/D2 (50 consultas, optimizado con consenso en premisas falsas). \textit{Difícil}: casos límite H01--H25 (25 consultas). \textit{Llam./q}: promedio de llamadas por consulta.}
 \vspace{-2pt}
 \end{center}
 
-\textbf{Desempeño sustantivo y comportamiento ante premisas falsas:}
+\textbf{Desempeño sustantivo y resolución de premisas falsas:}
 \begin{enumerate}
-  \item \textbf{Compensación en el banco base:} En las 40 preguntas sobre normativa vigente, los agentes superan a RAG D2 con 34/40 (85\%) frente a 30/40 (75\%), resolviendo requisitos encadenados, excepciones a la eliminación de ramos y cruces reglamentarios. En cambio, en las 10 preguntas con premisas falsas o artículos inexistentes, fallan todas (0/10 vs 10/10 en D2), dejando el total en 34/50 (68\%). El bucle deliberativo induce un sesgo de búsqueda activa: ante la falta de respaldo, intenta forzar correlaciones en vez de abortar como el filtro estático de D2.
-  \item \textbf{Casos límite (banco difícil):} Se diseñó un conjunto de estrés de 25 consultas complejas para evaluar capacidades ausentes en RAG D2: a)~\textit{cálculo numérico}, como la ponderación de titulación (60\% asignaturas y 40\% memoria); b)~\textit{prelación simultánea}, como el ingreso común por créditos, promedio a dos decimales y cupos; y c)~\textit{excepciones con plazos}, como la suspensión > 3 años para memoristas. Mientras D2 omitió condiciones o falló en la aritmética, los agentes estructuraron y resolvieron con exactitud estos razonamientos multi-regla.
+  \item \textbf{Banco base y desbloqueo deliberativo:} En las 40 preguntas sobre normativa vigente, los agentes logran 34/40 (85\%) superando a RAG D2 (30/40, 75\%) en cruces reglamentarios y requisitos encadenados. Inicialmente, las 10 preguntas con premisas falsas fallaban (0/10) por bucle cerrado (\textit{livelock}) del Auditor. La \textit{alineación de parada} resolvió los artículos inexistentes (5/5) y el \textit{consenso semántico} desbloqueó premisas falsas sobre normas reales (4/4), alcanzando 9/10 en abstenciones y elevando el total a \textbf{43/50 (86\%)}. El único fallo remanente (P44) fue una contradicción léxica del modelo 4B al interpretar el booleano del inventario.
+  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria); b)~\textit{prelación simultánea} (ingreso común por créditos y promedio); y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética, los agentes estructuraron y resolvieron con fidelidad estos razonamientos multi-regla.
 \end{enumerate}
 
 \seccion{5. Diagnóstico de fallos, verificación y coste}
 \begin{itemize}
-  \item \textbf{Auditor y abstenciones técnicas:} De las 25 preguntas difíciles, el sistema emitió respuesta solo en 14 casos (11 correctos, 78{,}6\% de fidelidad al responder). En las otras 11, el Auditor rechazó reiteradamente borradores por mínimas discrepancias léxicas hasta agotar límites (6 por salidas inválidas y 5 por llamadas). Al calificarse la no-respuesta con cero, la exactitud final quedó en 11/25 (44\%).
-  \item \textbf{Efecto al retirar técnicas (ablación):} Al desactivar la verificación (\texttt{sin\_\allowbreak verificacion}) o la descomposición (\texttt{sin\_\allowbreak descomposicion}), la exactitud sube a 14/25 (56\%). Retirar dichos módulos alivia la rigidez léxica del Auditor y reduce llamadas sobre el modelo 4B, permitiendo responder con éxito donde el sistema completo se bloqueaba por exceso de reintentos.
-  \item \textbf{Compensación de coste computacional:} La deliberación demanda 5{,}1 llamadas y $\sim$152\,s por consulta frente a 1 llamada y 15\,s de RAG D2, marcando el compromiso entre profundidad analítica y latencia.
+  \item \textbf{Auditor y abstenciones en casos difíciles:} En las 25 consultas complejas, el sistema emitió respuesta en 14 casos (11 correctos, 78{,}6\% de fidelidad al responder). En las otras 11, la extrema rigidez léxica del Auditor agotó los límites de llamadas o salidas inválidas antes de validar. Al penalizar la no-respuesta con cero, la exactitud quedó en 11/25 (44\%).
+  \item \textbf{Efecto de ablación:} Retirar la verificación (\texttt{sin\_\allowbreak verificacion}) o descomposición (\texttt{sin\_\allowbreak descomposicion}) eleva la exactitud a 14/25 (56\%) al atenuar el cuello de botella del Auditor sobre el modelo 4B, reduciendo llamadas donde el sistema completo se bloqueaba por reintentos.
+  \item \textbf{Compensación de coste:} La deliberación requiere 5{,}1 llamadas y $\sim$152\,s por consulta frente a 1 llamada y 15\,s de RAG D2, justificando su coste en tareas de alta complejidad normativa.
 \end{itemize}
 
 \seccion{6. Reproducibilidad y repositorio}

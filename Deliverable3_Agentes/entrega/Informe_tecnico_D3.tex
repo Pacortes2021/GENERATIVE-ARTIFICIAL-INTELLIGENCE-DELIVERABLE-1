@@ -6,7 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{microtype}
-\usepackage[margin=1.12cm,top=0.82cm,bottom=0.82cm]{geometry}
+\usepackage[margin=0.95cm,top=0.48cm,bottom=0.48cm]{geometry}
 \usepackage{multicol}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -30,27 +30,27 @@
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.6pt}
-\setlength{\columnsep}{0.55cm}
+\setlength{\parskip}{0.1pt}
+\setlength{\columnsep}{0.50cm}
 
 % Configuración de listas compactas para 2 columnas
 \setlist{nosep}
-\setlist[itemize]{leftmargin=1.1em, itemsep=0.3pt, topsep=0.4pt}
-\setlist[enumerate]{leftmargin=1.2em, itemsep=0.3pt, topsep=0.4pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=0.2pt, topsep=0.3pt}
+\setlist[enumerate]{leftmargin=1.2em, itemsep=0.2pt, topsep=0.3pt}
 
-\newcommand{\seccion}[1]{\par\vspace{1.4pt}\nopagebreak{\color{azul}\bfseries\small #1}\par\vspace{0.4pt}\nopagebreak}
+\newcommand{\seccion}[1]{\par\vspace{1.2pt}\nopagebreak{\color{azul}\bfseries\small #1}\par\vspace{0.3pt}\nopagebreak}
 
 \begin{document}
 
 % Encabezado institucional compacto y jerarquizado
 {\color{azul}\bfseries\large Arquitectura multi-agente para el asistente de normativa (Ingeniería UdeC)}\par
-\vspace{1pt}
+\vspace{0.8pt}
 {\color{acento}\bfseries\footnotesize Entregable 3: sistema de tres agentes con decisiones observables, herramientas y estudio de ablación}\par
-\vspace{1.5pt}
+\vspace{1.2pt}
 {\scriptsize \textbf{Generative Artificial Intelligence (580694)} \textbar{} Segundo semestre 2026 \textbar{} \textbf{Equipo:} Álvaro Contreras y Pablo Cortés}\par
-\vspace{1pt}
+\vspace{0.8pt}
 {\scriptsize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1} \hfill \textbf{Video (3 min):} \href{https://drive.google.com/file/d/1eBhjtr9q2l0yT9FnfQ_rWjtIsbdhvvY0/view?usp=drive_link}{[Enlace de video]}}\par
-\vspace{2pt}\hrule height 0.75pt\vspace{2pt}
+\vspace{1.5pt}\hrule height 0.6pt\vspace{1.5pt}
 
 \seccion{1. Continuidad con E1/E2 y definición de agentes}
 {\small Este entregable continúa la tarea de responder consultas en español sobre la normativa de pregrado de la Facultad de Ingeniería (FI-UdeC) a partir del corpus cerrado oficial (Reglamento General RG, Reglamento Interno RI-FI y Calendario 2026: 197 unidades, 201 fragmentos E5). Se mantiene la pauta estricta: acierto solo si el dato es suficiente y la cita lo respalda; abstención si la información no existe o la premisa es falsa. Ratificamos \textbf{Qwen/Qwen3-4B} (NF4, GPU Tesla T4, $\text{temp}=0{,}7$, sin thinking) compartido por todos los agentes. A diferencia de un pipeline fijo de prompts, los agentes toman \textbf{decisiones observables}: invocan herramientas, transfieren el control con contratos JSON validados, reintentan ante objeciones o se detienen.}
@@ -188,21 +188,21 @@ RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 }
 \par\vspace{1.5pt}
 {\fontsize{5.2}{6.2}\selectfont\color{gris}
-\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: conjunto oficial D1/D2 (50 consultas, optimizado con consenso en premisas falsas). \textit{Difícil}: casos límite H01--H25 (25 consultas). \textit{Llam./q}: promedio de llamadas por consulta.}
+\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: 50 consultas oficiales D1/D2 (40 vigentes donde la base obtiene 34/40 y 10 premisas falsas donde el consenso añade 9 aciertos; las variantes de ablación del lote inicial no incluyen este ajuste). \textit{Difícil}: casos límite H01--H25 (25 consultas). \textit{Llam./q}: promedio de inferencias de modelo por consulta.}
 \vspace{-2pt}
 \end{center}
 
 \textbf{Desempeño sustantivo y resolución de premisas falsas:}
 \begin{enumerate}
-  \item \textbf{Banco base y desbloqueo deliberativo:} En las 40 preguntas vigentes, los agentes logran 34/40 (85\%) superando a RAG D2 (30/40, 75\%) en cruces normativos y requisitos encadenados. Inicialmente, las 10 preguntas con premisas falsas fallaban (0/10) por bucle cerrado (\textit{livelock}) del Auditor. La \textit{alineación de parada} resolvió los artículos inexistentes (5/5) y el \textit{consenso semántico} las premisas falsas sobre normas reales (4/4), alcanzando 9/10 en abstenciones y elevando el total a \textbf{43/50 (86\%)}. El único fallo remanente (P44) ocurrió al afirmar erróneamente el modelo 4B que el artículo figuraba en el inventario oficial, provocando que el Auditor exigiera seguir buscando.
-  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria); b)~\textit{prelación simultánea} (ingreso común); y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética, los agentes resolvieron con fidelidad estos razonamientos multi-regla, alcanzando \textbf{21/25 (84\%)} en GPU T4.
+  \item \textbf{Banco base y ajuste de premisas falsas:} En las 40 preguntas vigentes, los agentes logran 34/40 (85\%) superando a RAG D2 (30/40, 75\%) en cruces normativos y requisitos encadenados. Inicialmente, las 10 preguntas con premisas falsas fallaban (0/10) por bucle cerrado (\textit{livelock}) del Auditor ante hechos negativos. La \textit{alineación de parada} resolvió los artículos inexistentes y el \textit{consenso semántico} las premisas falsas sobre normas reales, alcanzando 9/10 en abstenciones y elevando el total a \textbf{43/50 (86\%)}. Este ajuste se diseñó observando las trazas de error de estas mismas preguntas. El único fallo remanente (P44) ocurrió al alucinar el modelo 4B que el artículo figuraba en el inventario.
+  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria, RI-FI Art.~30); b)~\textit{prelación simultánea}; y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética, los agentes resolvieron estos razonamientos multi-regla, alcanzando \textbf{21/25 (84\%)} en GPU T4.
 \end{enumerate}
 
 \seccion{5. Diagnóstico de fallos, verificación y coste}
 \begin{itemize}
   \item \textbf{Auditor y abstenciones en casos difíciles:} Con la normalización del validador, el sistema alcanza 21/25 (84\%) de respuestas aprobadas con respaldo riguroso. En las 4 restantes, 3 correspondieron a cálculos de calendario y multi-reglamento de alta complejidad (H03, H04, H06) donde el Auditor detuvo limpiamente la ejecución al agotar el presupuesto de 12 llamadas sin alucinar, y 1 premisa falsa sobre un artículo inexistente (H20).
-  \item \textbf{Efecto de ablación:} Retirar la verificación o descomposición degrada la exactitud global (32/50 y 34/50 en base, 14/25 en difícil), confirmando que la división de roles y la auditoría cruzada son indispensables para sostener la fidelidad.
-  \item \textbf{Compensación de coste:} La deliberación requiere 4{,}5 llamadas y $\sim$133\,s por consulta en GPU T4 frente a 1 llamada y 15\,s de RAG D2, justificando su coste en tareas de alta complejidad normativa.
+  \item \textbf{Interpretación de ablaciones:} En las 40 consultas vigentes del banco base, el sistema completo y las variantes sin descomposición y sin completitud obtienen 34/40 (85\%), mientras que sin verificación se obtienen 32/40 (80\%). La brecha en el total de 50 preguntas proviene de las 9 premisas falsas resueltas tras incorporar consenso en el orquestador. En el conjunto difícil, retirar completitud o descomposición reduce el acierto a 12/25 y 14/25, lo que sugiere que la verificación estructurada contribuye a mitigar alucinaciones en razonamientos multi-regla.
+  \item \textbf{Compensación de coste:} La deliberación requiere 4{,}5 llamadas de modelo y $\sim$133\,s por consulta en GPU T4 frente a 1 llamada y 15\,s de RAG D2, un coste justificable únicamente ante consultas de alta complejidad normativa.
 \end{itemize}
 
 \seccion{6. Reproducibilidad y repositorio}

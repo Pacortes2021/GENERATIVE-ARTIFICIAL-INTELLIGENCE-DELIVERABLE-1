@@ -57,12 +57,13 @@ RI-FI art. 1–35, RG art. 1–60, CAL 25 entradas; 201 fragmentos de búsqueda,
 
 Mismo criterio de corrección para todas las filas (pauta y precedentes del E2), sobre el set congelado
 de 50 y el set difícil de 25 (`test_set_dificil_25.csv`, respuesta al comentario del profesor).
-Corrección hecha con Claude (uso de IA permitido en el curso), con motivo por fila y verificada contra
-el texto del corpus.
+Corrección propuesta con apoyo de Claude (uso de IA permitido en el curso), con motivo por fila, verificada
+contra el texto del corpus y revisada por el equipo.
 
 Decodificación idéntica al E2 y a la recomendación de Qwen para el modo sin razonamiento:
 temperatura 0,7, top-p 0,8, top-k 20, min-p 0, semilla base 2026. En el E3 la semilla se fija por
-llamada (derivada del prompt), de modo que la corrida es reproducible.
+llamada (derivada del prompt): la misma entrada en el mismo entorno produce la misma salida. Como no se
+fijaron todas las versiones de las bibliotecas, otra sesión de Colab puede dar respuestas distintas.
 
 ## 6. Mapa a la rúbrica del D3
 
@@ -78,12 +79,12 @@ llamada (derivada del prompt), de modo que la corrida es reproducible.
 
 | Pieza | Estado |
 |-------|--------|
-| Orquestador v6 + 4 herramientas | Hecho; lógica probada con simulador determinista (`agentes/demo_mock.py`, 23 comprobaciones) |
+| Orquestador v6 + 4 herramientas | Hecho; lógica probada con simulador determinista (`agentes/demo_mock.py`, 29 comprobaciones) |
 | Prompts v6 | Hecho (historial en `prompts/CHANGELOG.md` y `prompts/historial/`) |
 | Set difícil (25) | Hecho; fuentes verificadas contra el corpus |
 | Corridas reales con Qwen3-4B | v4, v5 y v6 (75 preguntas cada una) + RAG del E2 sobre el set difícil |
 | Ablaciones | Las cuatro técnicas, una a la vez, sobre las 75 preguntas (§15); "sin Verificador" desde las trazas de la v6 |
-| Documento LaTeX de una página y video | Pendiente |
+| Documento LaTeX de una página y video | Hecho: `documento/main.pdf`; el video está enlazado en el informe y en el README |
 
 ---
 
@@ -154,12 +155,14 @@ debe leerse como evidencia de que los mecanismos funcionan, no como estimación 
 La v5 no mejora en total, pero separa efectos: los cambios de **código** de recuperación funcionan (recupera 4, 6, 7,
 38, justo las predichas), mientras que los cambios de **prompt** del Redactor (incluir condiciones) y del Verificador
 (más permisivo) introducen reglas mal aplicadas y rompen las premisas falsas (47–50). Detalle en
-`resultados/v5/observaciones_corrida_v5.md`.
+`resultados_v5/observaciones_corrida_v5.md`.
 
 ## 13. Variante v6 (2026-10-27) — versión final
 
 Código v5 (búsqueda base, bloqueo de repeticiones y de números copiados, tope de 6 artículos) + prompt del
 Recuperador v5 + prompts del Redactor y del Verificador **restaurados tal como se usaron en la corrida v4**.
+Por eso, en v6 el Redactor recibe el motivo del Verificador pero no su borrador anterior (el cambio de v5 de la tabla de
+§11 no quedó en la versión final).
 
 | | E2 (RAG) | v4 | v5 | **v6** |
 |---|---|---|---|---|
@@ -167,8 +170,8 @@ Recuperador v5 + prompts del Redactor y del Verificador **restaurados tal como s
 | Difícil (25) | 16 (64 %) | 17 (68 %) | 16 (64 %) | **20 (80 %)** |
 
 Frente al E2, pregunta a pregunta: en el congelado 7 mejoran y 1 empeora; en el difícil 6 mejoran y 2 empeoran.
-Las versiones se ajustaron mirando estas 75 preguntas, por lo que la cifra no estima la generalización. Detalle en
-`resultados/v6/observaciones_corrida_v6.md`.
+Las versiones se ajustaron mirando estas 75 preguntas, por lo que la cifra no estima la generalización. Detalle por
+pregunta en `resultados_v6/correccion_D3_v6.xlsx`.
 
 ## 14. Ablación y tabla de resultados (2026-10-29)
 
@@ -182,31 +185,34 @@ Las versiones se ajustaron mirando estas 75 preguntas, por lo que la cifra no es
 | v6 sin Verificador (ablación desde trazas) | 44 (88 %) | 19 (76 %) |
 
 Las filas del E2 en el set difícil se obtuvieron el 2026-10-29 corriendo el **mismo cuaderno del E2 sin cambios**
-(sección 7 agregada: `d2_dificil/D2_RAG_sobre_25_dificiles_Colab.ipynb`) sobre las 25 preguntas nuevas.
+(sección 7 agregada: `../D2_sobre_25_dificiles/D2_RAG_sobre_25_dificiles_Colab.ipynb`) sobre las 25 preguntas nuevas.
 
 Lectura: sin recuperación el modelo inventa en todas las preguntas difíciles (0/25), incluida la confirmación de la
 premisa falsa del 4,5. El RAG del E2 llega a 64 %. Los agentes v6 llegan a 80 %: ganan sobre todo en cálculos con
 datos de la pregunta (H05, H06, H08), en la trampa de las dos bajas (H12) y en una síntesis (H19); pierden H18 y H25.
 La recuperación con la pregunta original y el bloqueo de repeticiones y copias aportan la mayor parte de la mejora; el
-Verificador aporta +3 netos con ~32 % más llamadas al modelo. Todas las correcciones: pauta y precedentes del E2.
+Verificador aporta +3 netos con ~48 % más llamadas al modelo (711 frente a 481 del primer borrador). Todas las correcciones: pauta y precedentes del E2.
 
 ## 15. Ablaciones completas (2026-10-30)
 
 Se quita **una** técnica a la vez (`Orquestador(..., ablacion=...)`); todo lo demás igual a la v6 (mismos prompts,
 semillas por llamada, decodificación y entradas). Las corridas `sin_fewshot`, `sin_react` y `sin_cot` se hicieron con
 Qwen3-4B en Colab (T4) sobre las 75 preguntas; `sin_verificador` sale del primer borrador guardado en las trazas de la v6
-(mismo prompt y misma semilla). Corrección con el mismo criterio; casos límite marcados REVISAR en cada xlsx
-(`resultados_ablaciones/`).
+(mismo prompt y misma semilla). Corrección con el mismo criterio (`resultados_ablaciones/`); las marcas REVISAR de
+cada xlsx son históricas: el equipo revisó esos casos.
 
-| Configuración | Congelado (50) | Difícil (25) | Llamadas/pregunta | Seg/pregunta (cong. / dif.) |
+| Configuración | Congelado (50) | Difícil (25) | Llamadas al modelo/pregunta (75) | Seg/pregunta (cong. / dif.) |
 |---|---|---|---|---|
 | Prompting directo | 1 (2 %) | 0 (0 %) | 1 | — |
 | RAG E2 | 40 (80 %) | 16 (64 %) | 1 | — |
-| **Agentes v6 (completo)** | **46 (92 %)** | **20 (80 %)** | 10,6 | ~110 |
-| sin few-shot (Enrutador) | 44 (88 %) | 19 (76 %) | 11,2 / 12,7 | 99 / 145 |
-| sin ReAct (Recuperador) | 45 (90 %) | 18 (72 %) | 4,9 / 5,2 | 69 / 99 |
-| sin CoT (Redactor) | 46 (92 %) | 19 (76 %) | 9,0 / 10,0 | 51 / 64 |
-| sin Verificador | 44 (88 %) | 19 (76 %) | — | — |
+| **Agentes v6 (completo)** | **46 (92 %)** | **20 (80 %)** | 9,48 | ~110 |
+| sin few-shot (Enrutador) | 44 (88 %) | 19 (76 %) | 10,68 | 99 / 145 |
+| sin ReAct (Recuperador) | 45 (90 %) | 18 (72 %) | 3,85 | 69 / 99 |
+| sin CoT (Redactor) | 46 (92 %) | 19 (76 %) | 8,27 | 51 / 64 |
+| sin Verificador | 44 (88 %) | 19 (76 %) | 6,41 | — |
+
+Las llamadas excluyen los pasos automáticos que no invocan al modelo (búsqueda base y comprobación decidida por el
+Enrutador); es el mismo conteo del informe. El detalle está en `../AUDITORIA.md`.
 
 Lectura honesta: el completo es el mejor o empata en ambos sets, pero ninguna ablación baja más de 2 preguntas en un
 set; con n = 25/50 eso no es estadísticamente significativo. Las técnicas son en parte redundantes (el Verificador

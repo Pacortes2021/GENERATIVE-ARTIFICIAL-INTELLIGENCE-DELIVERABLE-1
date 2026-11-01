@@ -1,4 +1,11 @@
-# Materiales Oficiales de Entrega — Deliverable 3
+# Materiales de la exploración alternativa — Deliverable 3 (no entregados)
+
+> [!NOTE]
+> Este informe y estos materiales corresponden a la exploración de tres agentes y **no fueron entregados**.
+> El informe y el video oficiales del Deliverable 3 están en [`../../Deliverable 3/`](../../Deliverable%203/README.md).
+> Esta exploración no tiene video propio: el enlace de video que aparece en su PDF lleva al video del Deliverable 3
+> entregado, que muestra el sistema de cuatro agentes. Sus cifras (por ejemplo 43/50 y 18/25) son de esta exploración
+> y no se comparan con las del sistema entregado.
 
 **Generative Artificial Intelligence (580694) · Semestre Primavera 2026**  
 **Equipo:** Álvaro Contreras y Pablo Cortés  
@@ -8,7 +15,7 @@
 
 ## 1. Documento Técnico Oficial (1 página A4 en LaTeX)
 
-- **PDF compilado:** [`main.pdf`](main.pdf) (y copia oficial [`Informe_tecnico_D3.pdf`](Informe_tecnico_D3.pdf)).
+- **PDF compilado:** [`main.pdf`](main.pdf) (y copia [`Informe_tecnico_D3.pdf`](Informe_tecnico_D3.pdf)).
   - Verificado: exactamente **1 página A4 vertical**, sin desbordes.
 - **Fuente LaTeX:** [`main.tex`](main.tex) (y copia [`Informe_tecnico_D3.tex`](Informe_tecnico_D3.tex)).
 - **Contenido:** Grafo de agentes con contratos JSON y herramientas normativas, técnicas de prompting, tabla de ablación controlada vs. sistema final, análisis cualitativo y compensación de costes en GPU Tesla T4.
@@ -31,16 +38,16 @@ El video muestra la ejecución real del sistema multi-agente en Google Colab sob
 4. **Tabla de resultados consolidados:** Resumen comparativo en vivo.
 
 - **Duración del video:** 2 minutos y 50 segundos (dentro del límite estricto de 3 minutos).
-- **Archivos locales de video:**
-  - Con locución/audio guía: [`video_demostracion_colab_con_audio_guia.mp4`](video_demostracion_colab_con_audio_guia.mp4) (27 MB).
-  - Pista muda (para locución directa): [`video_demostracion_colab_mudo.mp4`](video_demostracion_colab_mudo.mp4) (25 MB).
-- **Enlace de acceso abierto:** [Google Drive — Video Demostrativo Entregable 3](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing) (y en el encabezado de [`main.pdf`](main.pdf)).
+- **Archivos locales de video:** `video_demostracion_colab_con_audio_guia.mp4` (27 MB) y `video_demostracion_colab_mudo.mp4`
+  (25 MB) se generaron localmente y no se subieron al repositorio.
+- **Enlace de acceso abierto:** esta exploración no publicó video propio; el enlace del encabezado de [`main.pdf`](main.pdf)
+  lleva al video del Deliverable 3 entregado (sistema de cuatro agentes).
 
 ---
 
 ## 3. Cuaderno de Demostración y Reproducibilidad
 
-- **Cuaderno del video:** [`Deliverable3_Demo_Video.ipynb`](../Deliverable3_Demo_Video.ipynb).
+- **Cuaderno del video:** `Deliverable3_Demo_Video.ipynb` (se excluyó del repositorio; no está disponible aquí).
   - Ejecutable en Google Colab con GPU Tesla T4 (NF4, sin thinking).
   - Muestra paso a paso la verificación de hashes SHA-256 de los prompts externos, la inicialización del modelo, la ejecución en vivo de los casos y el renderizado visual de trazas.
 

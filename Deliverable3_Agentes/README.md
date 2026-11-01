@@ -1,12 +1,18 @@
-# Deliverable 3 · Sistema nuevo de tres agentes
+# Exploración alternativa · sistema de tres agentes (no entregado)
+
+> [!NOTE]
+> Esta carpeta conserva una exploración paralela del Deliverable 3. **No es la versión entregada.**
+> La entrega oficial (cuatro agentes, informe y video) está en [`../Deliverable 3/`](../Deliverable%203/README.md).
+> Los documentos de esta carpeta describen el estado de esta exploración y se conservan como registro; solo se agregaron
+> notas para aclarar que no corresponden a la entrega.
 
 **Estado final (30 de octubre de 2026):** **450/450 respuestas reales completadas, respaldadas, auditadas y evaluadas**.
 - **Lote base de 50 preguntas (300/300 respuestas)**: Ejecutado en las seis condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`) en Google Colab con GPU Tesla T4 (Qwen/Qwen3-4B en NF4, sin thinking). El respaldo final `agentes_99b9b55bd79d4572f743_respaldo_300de300.zip` (SHA-256: `9756a348858cf1a8cdbbec8e509e013307a348f7f47714e6e647e50c1bc8d411`) fue auditado e integrado íntegramente.
 - **Conjunto difícil de 25 preguntas H01–H25 (150/150 respuestas)**: Ejecutado íntegramente en las seis condiciones en bloques de 30 respuestas con GPU Tesla T4. El respaldo consolidado `agentes_bd700f84a7b9087454ea.zip` y el snapshot final `_150de150.zip` fueron auditados y extraídos en [`conjunto_dificil_25/resultados/`](conjunto_dificil_25/resultados/).
 
-El informe técnico en LaTeX [`entrega/main.tex`](entrega/main.tex) está compilado en [`entrega/main.pdf`](entrega/main.pdf) en exactamente **1 página vertical A4**.
+El informe de esta exploración, en LaTeX [`entrega/main.tex`](entrega/main.tex), está compilado en [`entrega/main.pdf`](entrega/main.pdf) (1 página vertical A4); no fue el informe entregado.
 
-Implementación desde cero a partir de D1, D2 y la pauta oficial de D3, por decisión del equipo. La carpeta de trabajo oficial es **`Deliverable3_Agentes/`**.
+Implementación desde cero a partir de D1, D2 y la pauta oficial de D3. Fue la carpeta de trabajo de esta exploración; la entrega del Deliverable 3 está en [`../Deliverable 3/`](../Deliverable%203/README.md).
 
 ## Cuadernos de ejecución y reproducción en Colab
 

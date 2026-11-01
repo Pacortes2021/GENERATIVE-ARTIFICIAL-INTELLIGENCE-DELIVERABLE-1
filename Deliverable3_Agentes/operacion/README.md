@@ -1,6 +1,6 @@
 # Lote v4 en diez bloques recuperables
 
-El experimento conserva 50 preguntas × seis condiciones = 300 respuestas. Cada bloque termina en el próximo múltiplo de 30 respuestas (cinco preguntas completas). Consultar siempre `../ESTADO_TRABAJO.md` para saber qué sesión y respaldo están vigentes.
+El experimento conserva 50 preguntas × seis condiciones = 300 respuestas. Cada bloque termina en el próximo múltiplo de 30 respuestas (cinco preguntas completas).
 
 ## Ejecutar
 

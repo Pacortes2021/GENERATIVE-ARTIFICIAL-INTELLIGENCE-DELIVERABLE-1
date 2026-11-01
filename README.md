@@ -8,9 +8,10 @@ Repositorio oficial: [github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE
 ## Estado vigente (30 de octubre de 2026)
 
 **Entregable 3 finalizado, auditado y respaldado al 100%**:
-1. **450 respuestas evaluadas en GPU Tesla T4 (Qwen/Qwen3-4B en NF4)**:
+1. **450 respuestas en el diseño factorial controlado de GPU (más corridas de validación focalizada)**:
    - **Lote base de 50 preguntas (300 inferencias)**: 6 condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`).
-   - **Conjunto difícil de 25 preguntas H01–H25 (150 inferencias)**: Evaluación factorial completa y auditoría de casos complejos de borde.
+   - **Conjunto difícil de 25 preguntas H01–H25 (150 inferencias)**: Evaluación factorial completa de las 6 condiciones bajo la misma versión inicial del controlador.
+   - **Corridas adicionales de validación**: Ajustes focalizados de consenso semántico (premisas falsas P41–P50) y normalización tipográfica de extractos (H01–H25).
 2. **Documento Técnico A4 de 1 página compilado en LaTeX**:
    - PDF oficial: [`Deliverable3_Agentes/entrega/main.pdf`](Deliverable3_Agentes/entrega/main.pdf) (y copia [`Informe_tecnico_D3.pdf`](Deliverable3_Agentes/entrega/Informe_tecnico_D3.pdf)).
    - Fuentes LaTeX: [`Deliverable3_Agentes/entrega/main.tex`](Deliverable3_Agentes/entrega/main.tex) (compilado con Tectonic / pdfLaTeX).
@@ -46,9 +47,9 @@ Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2 en G
 ### Hallazgos Clave y Desempeño Comparativo:
 1. **Evolución en el Banco Base (Normativa Vigente y Resolución de Premisas Falsas)**: En las 40 preguntas sobre normativa vigente (P01–P40), los agentes superan a RAG D2 por **+10,0 pp (85,0% vs. 75,0%)**, resolviendo 9 de las 10 fallas históricas de D2 (omisiones en P11, P15, P24, P25, P36 y colisiones léxicas en P01, P28, P30, P38). En la corrida preliminar factorial, las 10 preguntas con premisas falsas o artículos inexistentes (P41–P50) fallaban (0/10) debido al bloqueo de reintentos (*livelock*) del Auditor ante hechos negativos, situando el total preliminar en 34/50 (68,0%). Tras implementar la *alineación de parada* (inventario de artículos) y el *consenso semántico* en el orquestador, se resolvieron 9 de las 10 consultas engañosas, elevando el desempeño del sistema completo a **43/50 (86,0%)**.
 2. **Resolución de Casos Límite en el Conjunto Difícil**:
-   - **H18 (P118) — Suspensión > 3 años en memoristas (RI-FI Art. 31)**: Identifica con precisión la excepción del tope de 36 créditos en asignaturas fijadas por el Comité (1/1).
-   - **H25 (P125) — Criterios de prelación en Plan Común (RI-FI Art. 5)**: Articula la prelación jerárquica completa (1° créditos aprobados $\rightarrow$ 2° promedio curricular ponderado con dos decimales $\rightarrow$ 3° cupos y preferencias).
-   - **H05 y H08 — Cómputo Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2) por ausencia de cálculo; los agentes **acertaron ambos (2/2)** con desglose algebraico exacto ($0{,}6 \times \text{plan} + 0{,}4 \times \text{memoria}$).
+   - **H05 y H08 — Cómputo Aritmético de Titulación 60/40 (RI-FI Art. 30)**: RAG D2 falló ambos (0/2) por ausencia de cálculo algebraico ($5,6$ y $4,8$); los agentes **acertaron ambos (2/2)** con cómputo exacto ($5{,}72$ y $4{,}0$).
+   - **H01, H14 y H19 — Integración Normativa y Excepciones**: Los agentes resolvieron las 3 consultas (3/3) recuperando la normativa completa frente a fallas de RAG D2 (0/3), que omitió excepciones en H14 y el criterio de pérdida de calidad en H19.
+   - **H18 y H25 — Síntesis Normativa y Prelación**: Tanto RAG D2 como los agentes articularon los 36 créditos en H18 y la jerarquía de prelación en H25 (1/1 en ambos), superando al prototipo previo de Álvaro v6 (0/2).
 3. **Diagnóstico del Trade-off de Verificación y Distinción Interno vs. Externo**: En la evaluación factorial inicial de las 25 difíciles, cuando `agentes_completo` emitía una respuesta definitiva, su exactitud era del **78,6% (11 de 14)**. Sin embargo, en 11 consultas la rigidez léxica del Auditor provocó ciclos de objeción que agotaron el presupuesto operativo (6 por `limite_salidas_invalidas` y 5 por `limite_llamadas`), forzando abstenciones técnicas y situando el resultado preliminar en **11/25 (44,0%)**. Al retirar la verificación estricta (`sin_verificacion`), el sistema aumentó la emisión y alcanzó **14/25 aciertos (56,0%)**, al igual que `sin_descomposicion` (14/25, 56%). Posteriormente, con la normalización del validador de extractos en la corrida final ajustada, el Auditor aceptó internamente **21/25 respuestas (84,0%)** con 4 abstenciones técnicas presupuestarias. Al contrastar con la pauta externa estricta, se consolidan **18/25 aciertos (72,0%)**, evidenciando que la deliberación multi-agente supera a RAG D2 (64,0%) reduciendo alucinaciones complejas pero requiriendo supervisión en la inferencia de plazos cruzados.
 
 Para más detalles, consultar el [Reporte Final del Conjunto Difícil de 25](Deliverable3_Agentes/conjunto_dificil_25/resultados/reporte_final_dificiles_25.md).

@@ -38,17 +38,16 @@ Para garantizar rigor metodológico absoluto, se verificó la correspondencia en
 
 ## 3. Desempeño Cualitativo: Resolución de Casos Críticos de Alta Complejidad
 
-En comparación con el pipeline RAG monolítico de Deliverable 2, el sistema multi-agente resuelve preguntas críticas de alta complejidad normativa:
+En el conjunto difícil de 25 preguntas, el análisis cualitativo revela capacidades diferenciadas clave entre arquitecturas:
 
-1. **H18 (P118) — Suspensión mayor a 3 años para memoristas (RI-FI Art. 31)**:
-   - **RAG D2**: **0 / 1 (Falló)**. Entregó una respuesta genérica sin identificar la consecuencia específica.
-   - **Sistema Multi-Agente (`agentes_completo` y ablaciones)**: **1 / 1 (Acierto Perfecto)**. Citó taxativamente que el alumno *“deberá cursar y aprobar, además de la Memoria de Título, un máximo de 36 créditos en asignaturas, fijadas por el Comité de Docencia y Asuntos Estudiantiles (Art. 31)”*.
-2. **H25 (P125) — Criterio jerárquico de asignación en Plan Común (RI-FI Art. 5)**:
-   - **RAG D2**: **0 / 1 (Falló)**. Omitió el orden jerárquico de desempate.
-   - **Sistema Multi-Agente (`sin_descomposicion`, `sin_verificacion`)**: **1 / 1 (Acierto Perfecto)**. Desglosaron la jerarquía completa: primero créditos aprobados, segundo promedio curricular de asignaturas obligatorias de primer año (con dos decimales), respetando cupos y preferencias.
-3. **H05 y H08 — Razonamiento Aritmético con Ponderación de Titulación (RI-FI Art. 30)**:
-   - **RAG D2**: **0 / 2 (Falló ambos)**. El RAG convencional no sabe calcular y copió números sin ponderar ($5,6$ en H05 y $4,8$ en H08).
-   - **Nuestros Agentes**: **2 / 2 (Acierto Perfecto)**. Computaron algebraicamente $0{,}6 \times 5{,}2 + 0{,}4 \times 6{,}5 = 5{,}72$ (H05) y $0{,}6 \times 4{,}0 + 0{,}4 \times 4{,}0 = 4{,}0$ (H08), citando el Art. 30 del RI-FI y las normas de redondeo del RG.
+1. **H05 y H08 — Razonamiento Aritmético con Ponderación de Titulación (RI-FI Art. 30)**:
+   - **RAG D2**: **0 / 2 (Falló ambos)**. El RAG convencional no ejecuta cálculos algebraicos y copió cifras sin ponderar ($5,6$ en H05 y $4,8$ en H08).
+   - **Sistema Multi-Agente (`agentes_completo` y ablaciones)**: **2 / 2 (Acierto)**. Computaron con precisión algebraica $0{,}6 \times 5{,}2 + 0{,}4 \times 6{,}5 = 5{,}72$ (H05) y $0{,}6 \times 4{,}0 + 0{,}4 \times 4{,}0 = 4{,}0$ (H08), citando el Art. 30 del RI-FI y las normas de redondeo del RG.
+2. **H01, H14 y H19 — Integración de Excepciones y Criterio de Pérdida de Calidad**:
+   - **RAG D2**: **0 / 3 (Falló)**. En H01 inventó que la convalidación era "solo en otra institución", en H14 afirmó que la baja por segunda reprobación era "automática" omitiendo las excepciones de PLEV/primer año, y en H19 entregó solo la fórmula sin enunciar el criterio reglamentario de pérdida de calidad.
+   - **Sistema Multi-Agente (Final Normalizado)**: **3 / 3 (Acierto)**. Articuló las condiciones normativas completas con sus artículos de respaldo correspondientes.
+3. **H18 y H25 — Casos Complejos de Síntesis Normativa y Prelación**:
+   - Tanto **RAG D2** como el **Sistema Multi-Agente** (**1 / 1 en ambos**) recuperaron y articularon con éxito los 36 créditos en asignaturas para memoristas con suspensión > 3 años (RI-FI Art. 31) y los criterios de asignación jerárquica en Plan Común (RI-FI Art. 5: créditos, promedio curricular y cupos), superando a arquitecturas multi-agente previas como el prototipo de Álvaro v6 (**0 / 2**).
 
 ---
 
@@ -118,14 +117,14 @@ A continuación se detalla la corrección exhaustiva contrastada contra `referen
 | **115** | H15 | negacion_excepcion | ¿Convalidar asignatura reprobada en plan? | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto de Agentes**. Citan prohibición taxativa de convalidar asignaturas reprobadas (Art. 21). |
 | **116** | H16 | sintesis | Causales de baja académica del Art. 14 RI-FI | 0 | 1 | 0 | **1** | 0 | 0 | 0 | 1 | **Acierto en Completo Final**. Desglosa las 3 causales (<15 cred 2do sem, <10 cred 4to sem, 2a reprobación). En preliminar se penalizó por omitir el detalle de las excepciones. |
 | **117** | H17 | sintesis | Requisitos y topes de asistencia (80% vs 100%) | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Distinguen 80% teóricas/prácticas y 100% laboratorios (RI-FI Art. 13). |
-| **118** | H18 | sintesis | Suspensión > 3 años con solo Memoria pendiente | 0 | 1 | **1** | **1** | **1** | **1** | **1** | **0** | **VICTORIA HISTÓRICA SOBRE ÁLVARO**. Citan hasta 36 créditos en asignaturas fijadas por Comité (Art. 31). |
+| **118** | H18 | sintesis | Suspensión > 3 años con solo Memoria pendiente | 0 | 1 | **1** | **1** | **1** | **1** | **1** | **0** | **Acierto compartido con RAG D2 y victoria sobre Álvaro v6**. Citan hasta 36 créditos en asignaturas fijadas por Comité (Art. 31). |
 | **119** | H19 | sintesis | Determinación de pérdida de calidad de alumno | 0 | 0 | **1** | **1** | **1** | **1** | **1** | 1 | **Victoria sobre RAG D2**. Explican la fórmula de créditos divididos por semestres de permanencia (RG Art. 28). |
 | **120** | H20 | premisa_falsa | Nota mínima práctica profesional en Art. 45 RI-FI | 0 | 1 | 0 | 0 | 0 | 0 | 0 | 1 | RAG D2 indica que el Art. 45 no existe. Agentes emiten abstención presupuestaria. |
 | **121** | H21 | premisa_falsa | Créditos máximos por semestre según Art. 8 | 0 | 1 | 0 | **1** | 0 | 0 | 0 | 1 | RAG D2 aclara que fija mínimo ($\ge 8$), no máximo. En preliminar agotó presupuesto; en la final ajustada acierta al desmentir la premisa y citar que el Art. 8 establece carga mínima de 8 créditos. |
 | **122** | H22 | premisa_falsa | Confirmar que nota mínima de aprobación es 4,5 | 0 | 1 | 0 | **1** | 0 | 0 | **1** | 1 | **Acierto en Sin_Verif**. Desmiente 4,5 aclarando que la nota de aprobación es 4,0 (Art. 11). |
 | **123** | H23 | premisa_falsa | Calendario 2026: ¿segundo semestre inicia 03 ago? | 0 | 1 | 0 | 0* | 0 | 0 | 0 | 1 | Confunden 03 ago (inscripción) con 10 ago (clases). Agentes confirman premisa falsa (penalizado). |
 | **124** | H24 | colision_lexica | Inasistencia justificada a evaluación: plazo y ante quién | 0 | 1 | **1** | **1** | **1** | **1** | **1** | 1 | **Acierto unánime**. Citan 3 días hábiles ante el profesor encargado (RG Art. 26). |
-| **125** | H25 | sintesis | Criterios de asignación carrera en Plan Común | 0 | 1 | 0 | **1** | **1** | **1** | **1** | **0** | **VICTORIA SOBRE RAG D2 Y PAUTA INICIAL**. Mientras RAG D2 falló y la preliminar se abstuvo por presupuesto, tanto las ablaciones como la versión final de agentes sintetizan la jerarquía completa de prelación (RI-FI Art. 5: 1° créditos, 2° promedio con 2 decimales, 3° cupos/preferencias). |
+| **125** | H25 | sintesis | Criterios de asignación carrera en Plan Común | 0 | 1 | 0 | **1** | **1** | **1** | **1** | **0** | **Acierto compartido con RAG D2 y victoria sobre Álvaro v6**. Mientras la preliminar se abstuvo por presupuesto, tanto las ablaciones como la versión final de agentes y RAG D2 articulan la jerarquía de prelación (RI-FI Art. 5: créditos, promedio, cupos/preferencias). |
 | **Total** | | | | **0** | **16** | **11** | **18 (21\*)** | **14** | **12** | **14** | **20** | **150 respuestas auditadas. (\*) 21 aceptadas internamente por Auditor; 18 aciertos bajo pauta externa estricta.** |
 
 ---

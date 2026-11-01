@@ -42,4 +42,6 @@ Se documentan sin modificar la lógica, porque cambiarla generaría otra versió
 8. Los 44/50 y 19/25 de sin Verificador proceden de evaluar el primer borrador de v6; no son una corrida GPU independiente.
 9. Las revisiones exactas originales de pesos/dependencias no están completamente conservadas. Registrar el entorno nuevo no reconstruye el histórico.
 
+10. Los registros históricos son resumidos: el Redactor no registra evidencia ni borrador anterior en su entrada, y el Verificador registra solo 200 caracteres del borrador, sin evidencia. No constituyen transcripciones completas de todos los mensajes.
+
 Las 29 comprobaciones simuladas y la auditoría de archivos no sustituyen una nueva corrida GPU ni una recalificación independiente.

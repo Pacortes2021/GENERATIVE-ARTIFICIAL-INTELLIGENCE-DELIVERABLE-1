@@ -21,8 +21,5 @@ Contenido del ZIP:
 | `fallo_H03_historico.json` | Traza del caso de falla, rotulada como histórica |
 | `entorno.json` | GPU, versiones, modelo, parámetros de generación, commit y hash del paquete |
 | `fuentes/` | Copia del código, prompts y corpus usados |
-| `indice_video.json` | `run_id` de la ejecución que aparece en el video |
+| `indice_video.json` | `run_id` de la ejecución que aparece en el video y enlace al video |
 | `manifiesto.json` | Hashes de los archivos del ZIP |
-
-El ZIP se conserva tal como lo exportó el cuaderno; su campo `video_url` quedó vacío porque el enlace se publicó
-después de la grabación. El enlace está arriba y en el informe.

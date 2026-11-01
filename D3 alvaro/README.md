@@ -69,6 +69,7 @@ Para recompilar el informe (Tectonic):
 
 ```bash
 cd 'D3 alvaro/Deliverable3/documento'
+tectonic grafo_compacto.tex
 tectonic main.tex
 pdfinfo main.pdf
 ```

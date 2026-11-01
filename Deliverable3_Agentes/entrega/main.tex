@@ -6,7 +6,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{microtype}
-\usepackage[margin=0.95cm,top=0.48cm,bottom=0.48cm]{geometry}
+\usepackage[margin=0.90cm,top=0.36cm,bottom=0.36cm]{geometry}
 \usepackage{multicol}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -30,15 +30,15 @@
 
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.1pt}
-\setlength{\columnsep}{0.50cm}
+\setlength{\parskip}{0.0pt}
+\setlength{\columnsep}{0.48cm}
 
 % Configuración de listas compactas para 2 columnas
 \setlist{nosep}
-\setlist[itemize]{leftmargin=1.1em, itemsep=0.2pt, topsep=0.3pt}
-\setlist[enumerate]{leftmargin=1.2em, itemsep=0.2pt, topsep=0.3pt}
+\setlist[itemize]{leftmargin=1.0em, itemsep=0.1pt, topsep=0.2pt}
+\setlist[enumerate]{leftmargin=1.1em, itemsep=0.1pt, topsep=0.2pt}
 
-\newcommand{\seccion}[1]{\par\vspace{1.2pt}\nopagebreak{\color{azul}\bfseries\small #1}\par\vspace{0.3pt}\nopagebreak}
+\newcommand{\seccion}[1]{\par\vspace{0.7pt}\nopagebreak{\color{azul}\bfseries\small #1}\par\vspace{0.1pt}\nopagebreak}
 
 \begin{document}
 
@@ -62,27 +62,27 @@
   >=Latex, font=\scriptsize,
   agent/.style={
     draw=azul, line width=0.85pt, fill=celeste,
-    rounded corners=3.5pt, minimum height=8.8mm, minimum width=27.5mm,
+    rounded corners=3.5pt, minimum height=8.0mm, minimum width=27.0mm,
     align=center
   },
   tool/.style={
     draw=acento, line width=0.65pt, fill=white,
-    rounded corners=2pt, minimum height=6.5mm, minimum width=22.5mm,
+    rounded corners=2pt, minimum height=5.8mm, minimum width=22.0mm,
     align=center, font=\tiny
   },
   startnode/.style={
     draw=azul!85, line width=0.7pt, fill=white,
-    rounded corners=3pt, minimum height=8.0mm, minimum width=17.5mm,
+    rounded corners=3pt, minimum height=7.5mm, minimum width=17.0mm,
     align=center, font=\tiny
   },
   endnodeValid/.style={
     draw=azul, line width=0.95pt, fill=azul!12,
-    rounded corners=3.5pt, minimum height=8.0mm, minimum width=19.5mm,
+    rounded corners=3.5pt, minimum height=7.5mm, minimum width=19.0mm,
     align=center, font=\tiny
   },
   endnodeAbort/.style={
     draw=gris, dashed, line width=0.65pt, fill=gris!8,
-    rounded corners=2.5pt, minimum height=7.0mm, minimum width=26.5mm,
+    rounded corners=2.5pt, minimum height=6.5mm, minimum width=26.0mm,
     align=center, font=\tiny
   },
   lab/.style={
@@ -109,10 +109,10 @@
 \node[agent] (a) at (13.3,0) {\textbf{\color{azul}Auditor}\\[1.5pt]{\fontsize{5.3}{6.3}\selectfont\color{azul!90!black}\textbf{Verifica extractos}}};
 \node[endnodeValid] (f) at (17.3,0) {\textbf{\color{azul}Respuesta}\\[1pt]\textbf{\color{azul}validada}};
 
-% 2. Entorno de Herramientas Normativas (y = -1.45)
-\node[tool] (b) at (2.3,-1.45) {\texttt{\textbf{\color{acento}buscar\_normativa}}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont E5 dense retrieval}};
-\node[tool] (l) at (4.5,-1.45) {\texttt{\textbf{\color{acento}leer\_articulo}}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont Unidades completas}};
-\node[tool] (n) at (6.7,-1.45) {\texttt{\textbf{\color{acento}inventario}}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont Catálogo articulado}};
+% 2. Entorno de Herramientas Normativas (y = -1.35)
+\node[tool] (b) at (2.3,-1.35) {\texttt{\textbf{\color{acento}buscar\_normativa}}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont E5 dense retrieval}};
+\node[tool] (l) at (4.5,-1.35) {\texttt{\textbf{\color{acento}leer\_articulo}}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont Unidades completas}};
+\node[tool] (n) at (6.7,-1.35) {\texttt{\textbf{\color{acento}inventario}}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont Catálogo articulado}};
 
 % Caja contenedora visual para herramientas
 \begin{scope}[on background layer]
@@ -120,8 +120,8 @@
   \node[font=\fontsize{4.8}{5.8}\selectfont\bfseries\color{acento}, anchor=north] at (tbox.south) {Herramientas Normativas (acceso exclusivo del Investigador)};
 \end{scope}
 
-% 3. Estado Terminal de Abstención (y = -1.45)
-\node[endnodeAbort] (x) at (13.3,-1.45) {\textbf{\color{gris!95!black}Abstención técnica}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont Límite salidas / llamadas}};
+% 3. Estado Terminal de Abstención (y = -1.35)
+\node[endnodeAbort] (x) at (13.3,-1.35) {\textbf{\color{gris!95!black}Abstención técnica}\\[0.5pt]{\fontsize{4.8}{5.8}\selectfont Límite salidas / llamadas}};
 
 % 4. Conexiones hacia adelante (flujo principal)
 \draw[arr] (q) -- node[lab, above]{inicio} (i);
@@ -150,8 +150,8 @@
 
 \end{tikzpicture}
 \end{center}
-\vspace{-6.5pt}
-{\fontsize{7.0}{8.5}\selectfont
+\vspace{-8.5pt}
+{\fontsize{6.8}{8.0}\selectfont
 \textbf{Roles diferenciados y contratos JSON:}
 \textbf{\color{azul}Investigador:} descompone la consulta, planifica y recupera evidencia con herramientas normativas.
 \textbf{\color{azul}Redactor:} sintetiza la respuesta condicionada a la evidencia recuperada y formula citas oficiales.
@@ -170,7 +170,7 @@ Cada técnica ataca una falla diagnosticada en E1/E2 mediante módulos concatena
 \seccion{4. Resultados empíricos y análisis comparativo}
 Se evaluaron en GPU T4 las seis configuraciones sobre ambos conjuntos de prueba bajo la pauta estricta de E2 (450 inferencias en total):
 \begin{center}
-\vspace{-2pt}
+\vspace{-3pt}
 {\fontsize{6.2}{7.6}\selectfont
 \begin{tabular}{@{}l@{\hspace{7pt}}c@{\hspace{7pt}}c@{\hspace{7pt}}c@{}}
 \toprule
@@ -179,7 +179,7 @@ Se evaluaron en GPU T4 las seis configuraciones sobre ambos conjuntos de prueba 
 Directo (E1)             & 1/50 \ (2\%)   & 0/25 \ (0\%)   & 1{,}0 \\
 RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \midrule
-\textbf{Multi-Agente (E3)}& \textbf{43/50 (86\%)} & \textbf{21/25 (84\%)} & \textbf{4{,}5} \\
+\textbf{Multi-Agente (E3)}& \textbf{43/50 (86\%)} & \textbf{18/25 (72\%)\textsuperscript{*}} & \textbf{4{,}5} \\
 \quad -- sin descomp.    & 34/50 (68\%)  & 14/25 (56\%)  & 5{,}4 \\
 \quad -- sin complet.    & 34/50 (68\%)  & 12/25 (48\%)  & 5{,}2 \\
 \quad -- sin verific.    & 32/50 (64\%)  & 14/25 (56\%)  & 4{,}9 \\
@@ -187,20 +187,20 @@ RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \end{tabular}
 }
 \par\vspace{1.5pt}
-{\fontsize{5.2}{6.2}\selectfont\color{gris}
-\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: 50 consultas oficiales D1/D2 (40 vigentes donde la base obtiene 34/40 y 10 premisas falsas donde el consenso añade 9 aciertos; las variantes de ablación del lote inicial no incluyen este ajuste). \textit{Difícil}: casos límite H01--H25 (25 consultas). \textit{Llam./q}: promedio de inferencias de modelo por consulta.}
+{\fontsize{5.1}{6.1}\selectfont\color{gris}
+\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: 50 consultas oficiales D1/D2 (40 vigentes donde la base obtiene 34/40 y 10 premisas falsas donde el consenso añade 9 aciertos; las variantes de ablación del lote inicial no incluyen este ajuste). \textit{Difícil}: casos límite H01--H25 (25 consultas; \textsuperscript{*}el Auditor aceptó internamente 21/25 [84\%], pero la pauta externa estricta califica 18/25 [72\%] al penalizar cálculo sin división en H07, plazo no aplicable en H12 y confirmación de fecha en H23). \textit{Llam./q}: promedio de inferencias de modelo por consulta.}
 \vspace{-2pt}
 \end{center}
 
 \textbf{Desempeño sustantivo y resolución de premisas falsas:}
 \begin{enumerate}
   \item \textbf{Banco base y ajuste de premisas falsas:} En las 40 preguntas vigentes, los agentes logran 34/40 (85\%) superando a RAG D2 (30/40, 75\%) en cruces normativos y requisitos encadenados. Inicialmente, las 10 preguntas con premisas falsas fallaban (0/10) por bucle cerrado (\textit{livelock}) del Auditor ante hechos negativos. La \textit{alineación de parada} resolvió los artículos inexistentes y el \textit{consenso semántico} las premisas falsas sobre normas reales, alcanzando 9/10 en abstenciones y elevando el total a \textbf{43/50 (86\%)}. Este ajuste se diseñó observando las trazas de error de estas mismas preguntas. El único fallo remanente (P44) ocurrió al alucinar el modelo 4B que el artículo figuraba en el inventario.
-  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria, RI-FI Art.~30); b)~\textit{prelación simultánea}; y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética, los agentes resolvieron estos razonamientos multi-regla, alcanzando \textbf{21/25 (84\%)} en GPU T4.
+  \item \textbf{Casos límite (banco difícil):} 25 consultas de estrés evaluaron capacidades ausentes en D2: a)~\textit{cálculo numérico} (titulación 60\% asignaturas, 40\% memoria, RI-FI Art.~30); b)~\textit{prelación simultánea}; y c)~\textit{plazos excepcionales} (suspensión > 3 años). Mientras D2 omitió condiciones o falló en aritmética (16/25, 64\%), los agentes resolvieron estos razonamientos multi-regla alcanzando \textbf{18/25 (72\%)} bajo pauta externa estricta (y 21/25, 84\% de aceptación interna del Auditor).
 \end{enumerate}
 
 \seccion{5. Diagnóstico de fallos, verificación y coste}
 \begin{itemize}
-  \item \textbf{Auditor y abstenciones en casos difíciles:} Con la normalización del validador, el sistema alcanza 21/25 (84\%) de respuestas aprobadas con respaldo riguroso. En las 4 restantes, 3 correspondieron a cálculos de calendario y multi-reglamento de alta complejidad (H03, H04, H06) donde el Auditor detuvo limpiamente la ejecución al agotar el presupuesto de 12 llamadas sin alucinar, y 1 premisa falsa sobre un artículo inexistente (H20).
+  \item \textbf{Auditor y discrepancia interno-externa:} El validador normalizado permitió al Auditor aceptar 21/25 respuestas. Sin embargo, bajo pauta externa estricta se obtienen 18/25 aciertos (72\%): el Auditor aceptó internamente 3 respuestas con imprecisiones no detectadas (cálculo sin división en H07, plazo no aplicable en H12 y fecha engañosa en H23). En las 4 restantes hubo abstención técnica legítima: 3 por agotar presupuesto de 12 llamadas en cálculos complejos (H03, H04, H06) y 1 por formato inválido en premisa falsa (H20).
   \item \textbf{Interpretación de ablaciones:} En las 40 consultas vigentes del banco base, el sistema completo y las variantes sin descomposición y sin completitud obtienen 34/40 (85\%), mientras que sin verificación se obtienen 32/40 (80\%). La brecha en el total de 50 preguntas proviene de las 9 premisas falsas resueltas tras incorporar consenso en el orquestador. En el conjunto difícil, retirar completitud o descomposición reduce el acierto a 12/25 y 14/25, lo que sugiere que la verificación estructurada contribuye a mitigar alucinaciones en razonamientos multi-regla.
   \item \textbf{Compensación de coste:} La deliberación requiere 4{,}5 llamadas de modelo y $\sim$133\,s por consulta en GPU T4 frente a 1 llamada y 15\,s de RAG D2, un coste justificable únicamente ante consultas de alta complejidad normativa.
 \end{itemize}

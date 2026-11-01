@@ -5,13 +5,13 @@
 El sistema responde preguntas en español sobre la normativa de pregrado de la Facultad de Ingeniería de la UdeC
 (Reglamento General, Reglamento Interno FI y Calendario 2026) con el dato exacto y la cita que lo respalda, y se
 abstiene cuando la información no existe o la pregunta parte de una premisa falsa. Todas las entregas usan
-**Qwen/Qwen3-4B** en 4 bits sobre una GPU T4 de Google Colab.
+**Qwen/Qwen3-4B** sobre una GPU T4 de Google Colab (cuantizado a 4 bits NF4 desde el Deliverable 2).
 
 | Entrega | Carpeta | Informe | Resultado principal |
 |---|---|---|---|
 | Deliverable 3 · sistema de agentes | [`Deliverable 3/`](Deliverable%203/README.md) | [PDF](Deliverable%203/Deliverable3/documento/main.pdf) | 46/50 y 20/25 (RAG del E2: 40/50 y 16/25) |
-| Deliverable 2 · RAG estructurado | [`Deliverable2/`](Deliverable2/README.md) | [PDF](Deliverable2/entrega/Informe_tecnico_D2.pdf) | 40/50 (baseline directo: 1/50) |
-| Deliverable 1 · diagnóstico y modelo | [`Deliverable1/`](Deliverable1/README.md) | [PDF](Deliverable1/informe/deliverable1.pdf) | Baseline directo 2/50: ausencia paramétrica |
+| Deliverable 2 · RAG estructurado | [`Deliverable2/`](Deliverable2/README.md) | [PDF](Deliverable2/entrega/Informe_tecnico_D2.pdf) | 40/50 (baseline directo con la misma configuración: 1/50) |
+| Deliverable 1 · diagnóstico y modelo | [`Deliverable1/`](Deliverable1/README.md) | [PDF](Deliverable1/informe/deliverable1.pdf) | Baseline directo 2/50 (decodificación greedy): ausencia paramétrica |
 
 ---
 

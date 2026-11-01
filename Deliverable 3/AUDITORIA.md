@@ -12,8 +12,8 @@ permiten revisar las sumas con Python estándar y registran el hash de la planil
 - Directorios separados por corrida; reanudación protegida por hashes y configuración.
 - Conteo de llamadas separado del número de eventos de traza.
 - Notebook de demostración y guía de grabación.
-- Informe y resúmenes con costos corregidos y evaluación propuesta declarada.
-- Marcador de video pendiente explícito, sin enlace ficticio o de D2.
+- Informe y resúmenes con costos corregidos y con la evaluación declarada (propuesta con apoyo de Claude, revisada por el equipo).
+- Enlace al video del D3 en el informe y en los README; no se reutiliza el video del D2.
 
 ## Costos corregidos
 

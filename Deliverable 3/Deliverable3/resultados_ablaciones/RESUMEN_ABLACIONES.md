@@ -1,7 +1,7 @@
 # Ablaciones de v6: resultados guardados y costo corregido
 
-Las planillas originales se conservan sin cambios. La corrección es propuesta y revisable;
-v6 conserva nueve filas marcadas REVISAR. Una aprobación interna no equivale a acierto.
+Las planillas originales se conservan sin cambios. La corrección se propuso con apoyo de Claude y el equipo la
+revisó, incluidas las nueve filas de v6 marcadas REVISAR (la marca es histórica). Una aprobación interna no equivale a acierto.
 
 | Variante | Originales | Difíciles | Llamadas reales/pregunta (75) |
 |---|---:|---:|---:|

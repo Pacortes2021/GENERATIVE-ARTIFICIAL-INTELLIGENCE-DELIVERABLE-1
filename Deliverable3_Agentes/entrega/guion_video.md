@@ -1,6 +1,6 @@
 # Guion del Video Oficial — Entregable 3 (≤ 3 minutos)
 
-**Cuaderno:** [`Deliverable3_Demo_Video.ipynb`](../Deliverable3_Demo_Video.ipynb)  
+**Cuaderno:** `Deliverable3_Demo_Video.ipynb` (exploración no entregada; el cuaderno no se subió al repositorio)  
 **Entorno:** Google Colab con acelerador GPU Tesla T4 (o ejecución previa para recorrido fluido).  
 **Equipo:** Álvaro Contreras y Pablo Cortés | Generative Artificial Intelligence (580694) — UdeC.  
 **Extensión total:** **327 palabras** (~2 min 45 s a ritmo pausado y tranquilo, ~119 ppm).  

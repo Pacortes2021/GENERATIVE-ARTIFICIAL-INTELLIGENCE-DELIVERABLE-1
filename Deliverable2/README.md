@@ -19,6 +19,8 @@ La [guía del cuaderno](notebooks/README.md) explica la configuración, los chec
 
 Deliverable 1 propuso Qwen3-4B, Salamandra-7B y Qwen3-8B. Se eligió **Qwen3-4B** por ser el menor de los tres y porque el conocimiento específico de la tarea se puede aportar desde un corpus recuperable. El 8B se probó en E1 como comparación histórica y también obtuvo 2/50; Salamandra no se ejecutó. La [configuración elegida](CONFIGURACION_ELEGIDA.md) registra revisión, cuantización, generación y límites.
 
+**Fe de erratas sobre la decodificación.** El [informe entregado](entrega/Informe_tecnico_D2.pdf) dice «decodificación greedy (`temperature=0`)». El código y las corridas usaron el muestreo recomendado por Qwen para el modo sin thinking: temperatura 0,7, top-p 0,8 y top-k 20, con semilla fija por pregunta ([`seleccion_sistema.json`](seleccion_sistema.json), [`crear_sistema.py`](notebooks/crear_sistema.py)). Las cifras reportadas corresponden a esa configuración, que el Deliverable 3 mantiene.
+
 La tubería consulta los fragmentos con `intfloat/multilingual-e5-small`, expande cada coincidencia a la unidad normativa completa, añade remisiones e inventarios cuando corresponde y envía la evidencia seleccionada a Qwen3-4B. El baseline recibe únicamente la pregunta y la instrucción directa de E1. Ambas condiciones de la comparación adicional comparten pesos, parámetros y semilla por pregunta. El corpus y los prompts se guardan con hashes; las respuestas de referencia quedan fuera de la generación.
 
 ```text

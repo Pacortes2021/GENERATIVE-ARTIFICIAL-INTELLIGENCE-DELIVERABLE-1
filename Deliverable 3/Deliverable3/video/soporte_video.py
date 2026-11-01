@@ -2,6 +2,7 @@
 from pathlib import Path
 from datetime import datetime, timezone
 import copy
+import base64
 import csv
 import hashlib
 import html
@@ -27,8 +28,10 @@ def serial(value):
     return value if isinstance(value, str) else json.dumps(value, ensure_ascii=False, indent=2)
 
 
-def bloque(value):
-    return '<pre style="white-space:pre-wrap;overflow-wrap:anywhere;font:15px/1.4 monospace;margin:8px 0">' + html.escape(serial(value)) + '</pre>'
+def bloque(value, altura=180):
+    return (f'<pre style="white-space:pre-wrap;overflow-wrap:anywhere;max-height:{altura}px;overflow:auto;'
+            'font:14px/1.4 ui-monospace,monospace;margin:8px 0;padding:10px;background:#f5f8fa;'
+            'border:1px solid #dbe4eb;border-radius:5px">' + html.escape(serial(value)) + '</pre>')
 
 
 def mostrar_html(content):
@@ -130,6 +133,7 @@ class SesionDemo:
             self._evento('llamada_error', call)
             raise
         call.update(estado='completa', salida_cruda=salida, fin_utc=utc(), segundos=round(time.perf_counter()-t, 3))
+        self.datos['activo'] = None
         self._evento('llamada_fin', call)
         return salida
 
@@ -160,38 +164,52 @@ class SesionDemo:
         d = self.datos
         actual = f"Generando: {d['activo']}" if d.get('activo') else d['estado']
         body = '<p><b>EJECUCIÓN REAL · Qwen3-4B</b> · ' + html.escape(actual) + '</p>'
-        body += '<p><b>Pregunta:</b> ' + html.escape(d['pregunta']) + '</p>'
-        body += '<p>Enrutador → Recuperador ⇄ herramientas → Redactor → Verificador ↺</p>'
-        body += f'<p>Llamadas al modelo: <b>{len(d["llamadas"])}</b> · Tiempo transcurrido: <b>{(self.fin if self.fin is not None else time.perf_counter())-self.inicio:.1f} s</b></p>'
-        body += '<p style="font-size:14px">Los mensajes aparecen al terminar cada llamada. Abre una fila para revisar su entrada y salida.</p>'
-        for i, e in enumerate(d['intercambios']):
-            auto = ' · acción automática' if e.get('decidido_por') else ''
-            abierto = ' open' if i >= len(d['intercambios'])-2 else ''
-            body += f'<details{abierto} style="border-top:1px solid #dbe4eb;padding:7px 0"><summary><b>{e["paso"]}. {html.escape(e["agente"].upper())}{auto}</b></summary>'
-            body += '<b>Entrada registrada:</b>' + bloque(e['entrada'])
-            body += '<b>Salida / decisión:</b>' + bloque(e['salida'])
-            if e.get('observacion') is not None:
-                body += '<b>Observación de herramienta:</b>' + bloque(e['observacion'])
-            body += '</details>'
+        body += '<p><b>Consulta:</b> ' + html.escape(d['pregunta']) + '</p>'
+        body += f'<p>Llamadas al modelo: <b>{len(d["llamadas"])}</b> · Duración: <b>{(self.fin if self.fin is not None else time.perf_counter())-self.inicio:.1f} s</b></p>'
         if d['resultado']:
-            body += '<hr><h3>Respuesta final</h3>' + bloque(d['resultado']['respuesta'])
-            body += '<b>Veredicto interno (no es una calificación externa):</b>' + bloque(d['resultado']['veredicto'])
+            body += '<h3>Respuesta final</h3>' + bloque(d['resultado']['respuesta'],280)
+            body += '<b>Veredicto interno</b>' + bloque(d['resultado']['veredicto'],150)
+            body += '<p style="font-size:14px">La aprobación interna no mide exactitud.</p>'
+        def intercambio(e, abierto=False):
+            auto = ' · acción automática' if e.get('decidido_por') else ''
+            apertura = ' open' if abierto else ''
+            text = f'<details{apertura} style="border-top:1px solid #dbe4eb;padding:7px 0"><summary><b>{e["paso"]}. {html.escape(e["agente"].upper())}{auto}</b></summary>'
+            text += '<b>Entrada registrada:</b>' + bloque(e['entrada'])
+            text += '<b>Salida / decisión:</b>' + bloque(e['salida'])
+            if e.get('observacion') is not None:
+                text += '<b>Observación:</b>' + bloque(e['observacion'])
+            return text + '</details>'
+        if d['intercambios']:
+            body += '<h4 style="margin-bottom:6px">Último intercambio</h4>' + intercambio(d['intercambios'][-1],True)
+            anteriores = d['intercambios'][:-1]
+            if anteriores:
+                body += f'<details><summary>Historial anterior ({len(anteriores)} intercambios)</summary>'
+                body += ''.join(intercambio(e) for e in anteriores) + '</details>'
         if d.get('error'):
             body += '<p><b>Ejecución detenida:</b> ' + html.escape(d['error']) + '</p>'
-        body += '<p style="font-size:13px">Run: ' + html.escape(self.id) + ' · El archivo descargable incluye prompts y salidas completos.</p>'
-        content = HTML(marco('Consulta ' + str(d['caso']), body))
+        body += '<p style="font-size:12px;color:#52616b">Registro: ' + html.escape(self.id) + '</p>'
+        content = HTML(marco('H17 · Reglas de asistencia y excepciones' if d['caso']=='H17' else 'Consulta '+str(d['caso']),body))
         if self.panel is None:
             self.panel = display(content, display_id=True)
         else:
             self.panel.update(content)
 
 
-def mostrar_portada():
-    mostrar_html(marco('D3 · Agentes para normativa de pregrado', '''
-<p><b>Pregunta:</b> cómo responder con respaldo y corregir fallos de recuperación o redacción.</p>
-<p><b>Enrutador</b> planifica → <b>Recuperador</b> elige herramientas → <b>Redactor</b> responde → <b>Verificador</b> termina o pide corregir.</p>
-<p>Todos los roles: <b>Qwen3-4B</b> · recuperación E5 · máximo 3 acciones por subconsulta y 2 ciclos de corrección.</p>
-<p>Mostraremos <b>dos consultas reales</b>. Después, un fallo histórico identificado y resultados revisados por el equipo.</p>'''))
+def mostrar_portada(base):
+    grafico = Path(base)/'documento/grafo_compacto.png'
+    imagen = base64.b64encode(grafico.read_bytes()).decode('ascii')
+    body = '<p>Un agente combina un rol, un prompt propio y una decisión sobre cómo continuar según lo observado.</p>'
+    body += f'<img src="data:image/png;base64,{imagen}" alt="Grafo de cuatro roles, herramientas y retornos de revisión" style="width:100%;height:auto;display:block">'
+    roles = [('Enrutador','Clasifica y descompone la consulta.'),
+             ('Recuperador','Elige herramientas y reúne evidencia.'),
+             ('Redactor','Construye o corrige una respuesta con citas.'),
+             ('Verificador','Decide terminar o pedir correcciones.')]
+    body += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px">'
+    for rol,funcion in roles:
+        body += '<div style="background:#eaf3f8;padding:9px;font-size:14px"><b>'+rol+'</b><br>'+funcion+'</div>'
+    body += '</div><p style="font-size:14px">Enrutador, Recuperador y Verificador deciden el recorrido; el Redactor entrega su borrador al Verificador.</p>'
+    body += '<p style="font-size:14px"><b>Qwen3-4B en todos los roles</b> · E5 para recuperar evidencia · Hasta 2 ciclos de corrección</p>'
+    mostrar_html(marco('D3 · Arquitectura de agentes',body))
 
 
 def cargar_fallo(base):
@@ -202,22 +220,24 @@ def cargar_fallo(base):
         fila = next(r for r in csv.DictReader(f) if r['id']=='H03' and r['set']=='dificil_25')
     return {'origen': 'traza_historica_v6', 'clave': 'dificil_25:H03', 'pregunta': fila['pregunta'],
             'fuente': 'resultados_v6/trazas_D3.json', 'fuente_sha256': hashlib.sha256(path.read_bytes()).hexdigest(),
-            'traza': traza}
+            'respuesta_referencia': fila['gold_dato'], 'fuentes_referencia': fila['gold_fuente'], 'traza': traza}
 
 
 def mostrar_fallo(base):
     fallo = cargar_fallo(base)
     borradores = [e['salida'] for e in fallo['traza'] if e['agente']=='redactor']
-    verificaciones = [e['salida'] for e in fallo['traza'] if e['agente']=='verificador']
+    verificaciones = [e for e in fallo['traza'] if e['agente']=='verificador']
     llamadas = sum(not e.get('decidido_por') for e in fallo['traza'])
     body = '<p><b>TRAZA HISTÓRICA · NO ES UNA EJECUCIÓN NUEVA</b></p>'
     body += '<p>' + html.escape(fallo['pregunta']) + '</p>'
-    body += '<b>Primer borrador:</b>' + bloque(borradores[0])
-    body += '<b>Último borrador:</b>' + bloque(borradores[-1])
-    body += f'<p><b>{llamadas} llamadas</b> · La selección de evidencia omitió fechas. La revisión no recuperó todo lo necesario.</p>'
-    body += '<b>Veredicto final:</b>' + bloque(verificaciones[-1])
-    body += '<details><summary>Ver todos los mensajes históricos disponibles</summary>' + bloque(fallo['traza']) + '</details>'
-    mostrar_html(marco('Fallo observado · H03', body, '#94611c'))
+    body += '<p><b>Exigencia:</b> recuperar cuatro fechas, calcular dos intervalos y compararlos.</p>'
+    body += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px"><div><b>Primer borrador</b>'+bloque(borradores[0],150)+'</div><div><b>Último borrador</b>'+bloque(borradores[-1],150)+'</div></div>'
+    body += '<p><b>Recorrido de revisión:</b> Verificador → Redactor → Verificador → Recuperador → Redactor → Verificador.</p>'
+    body += f'<p><b>{llamadas} llamadas · Terminó sin aprobación.</b> La selección de evidencia omitió fechas necesarias, aunque están en el corpus.</p>'
+    body += '<p><b>Respuesta de referencia:</b> ' + html.escape(fallo['respuesta_referencia']) + '</p>'
+    body += '<details><summary>Decisiones del Verificador</summary>' + bloque(verificaciones,200) + '</details>'
+    body += '<details><summary>Registro histórico completo disponible</summary>' + bloque(fallo['traza'],240) + '</details>'
+    mostrar_html(marco('H03 · Fallo de recuperación y corrección',body,'#94611c'))
     return fallo
 
 
@@ -242,7 +262,7 @@ def exportar_evidencia(base, carpeta, sesiones, seleccion, entorno):
     sesiones = list(sesiones)
     ids = {s.id for s in sesiones}
     if not seleccion or not set(seleccion).issubset(ids):
-        raise ValueError('Selecciona run_id existentes que coincidan con la grabación.')
+        raise ValueError('La selección de ejecuciones está vacía o contiene identificadores inexistentes.')
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S') + '_' + uuid.uuid4().hex[:6]
     path = carpeta/f'evidencia_video_{stamp}.zip'
     contenido = {}
@@ -255,6 +275,9 @@ def exportar_evidencia(base, carpeta, sesiones, seleccion, entorno):
         for f in sorted((base/directorio).rglob('*')):
             if f.is_file() and '__pycache__' not in f.parts and f.suffix in ('.py','.txt','.json','.csv'):
                 contenido['fuentes/'+str(f.relative_to(base))] = f.read_bytes()
+    grafico = base/'documento/grafo_compacto.png'
+    if grafico.is_file():
+        contenido['fuentes/documento/grafo_compacto.png'] = grafico.read_bytes()
     contenido['entorno.json'] = json.dumps(entorno, ensure_ascii=False, indent=2).encode()
     contenido['fallo_H03_historico.json'] = json.dumps(cargar_fallo(base), ensure_ascii=False, indent=2).encode()
     contenido['indice_video.json'] = json.dumps({'run_id_en_video': seleccion,

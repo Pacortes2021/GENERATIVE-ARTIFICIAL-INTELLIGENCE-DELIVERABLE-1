@@ -8,7 +8,7 @@ No se mezclaron respuestas ni porcentajes de ambos sistemas.
 
 - [Informe técnico](Deliverable3/documento/main.pdf): una página vertical en LaTeX; [fuente](Deliverable3/documento/main.tex).
 - [Notebook completo](Deliverable3/D3_colab_qwen3_4b.ipynb): completo v6, 75 preguntas por defecto.
-- [Notebook de demostración](Deliverable3/Demo_D3.ipynb): dos consultas reales con mensajes visibles, registro íntegro nuevo y fallo histórico identificado.
+- [Notebook de demostración](Deliverable3/Demo_D3.ipynb): grafo, roles y consulta compleja H17 con mensajes visibles, registro íntegro nuevo y fallo histórico H03 identificado.
 - [Paquete para Colab](Deliverable3_ejecucion.zip): subir este ZIP cuando lo solicite el notebook.
 - [Guía del video](VIDEO.md) y [guion con narración](Guion_video_D3.md): grabación de hasta tres minutos.
 - [Auditoría y limitaciones](AUDITORIA.md).
@@ -32,7 +32,7 @@ quedaron fijados completamente: la nueva reproducción registra el entorno, pero
 ## Grabar el video
 
 Abrir [Demo_D3 en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable%203/Deliverable3/Demo_D3.ipynb).
-Ejecutar A1–A5 con T4 antes de grabar; grabar B0–B4; usar C1 para descargar la evidencia.
+Ejecutar A1–A5 con T4 antes de grabar; grabar B0–B3; usar C1 para descargar la evidencia.
 El notebook descarga el paquete y verifica su hash. La opción de carga manual queda disponible.
 El [guion](Guion_video_D3.md) explica qué mostrar y narrar. No se ha ejecutado esta nueva demo en GPU durante la preparación.
 

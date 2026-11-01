@@ -4,14 +4,16 @@
 - [Notebook en el repositorio](Deliverable3/Demo_D3.ipynb).
 - [Guion con tiempos y narración](Guion_video_D3.md).
 
+La consulta H17 combina la regla de asistencia, sus excepciones y regímenes especiales. El fallo H03 exige cuatro fechas, dos intervalos y una comparación. El grafo del informe y las funciones de los cuatro roles se muestran en B0. Las instrucciones de preparación, grabación y solución de errores están en el guion.
+
 ## Uso
 
 1. En Colab con T4, ejecutar A1–A5 antes de grabar. El paquete se descarga de una versión fija del repositorio y se comprueba contra el manifiesto del mismo commit. Las copias antiguas que aún usan `D3 alvaro` deben reemplazarse por este notebook.
-2. Grabar B0–B4: arquitectura, dos consultas nuevas, fallo histórico H03 y resultados revisados por el equipo.
+2. Grabar B0–B3: grafo y roles, consulta compleja H17 en ejecución real, fallo histórico H03 y resultados revisados por el equipo.
 3. Ejecutar C1 al terminar. Confirmar los identificadores de las ejecuciones del video y descargar el ZIP de evidencia.
 4. Incorporar el ZIP en `evidencia_video/`, publicar una grabación de hasta tres minutos con acceso abierto y añadir su enlace al informe.
 
-Las consultas nuevas usan Qwen3-4B, corpus, prompts y controlador v6 sin cambios. El módulo
+La consulta nueva usa Qwen3-4B, corpus, prompts y controlador v6 sin cambios. El módulo
 `Deliverable3/video/soporte_video.py` añade visualización y registro de prompts completos, salidas crudas,
 resultados de herramientas y entorno. Las trazas históricas siguen siendo resumidas y se identifican como históricas.
 

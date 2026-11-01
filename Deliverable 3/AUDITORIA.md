@@ -57,3 +57,7 @@ Las 29 comprobaciones simuladas y la auditoría de archivos no sustituyen una nu
 ## Actualización editorial y de ubicación
 
 La carpeta de entrega se renombró a `Deliverable 3`; enlaces, notebooks y paquete de ejecución apuntan a esa ubicación. El PDF liga las técnicas a las fallas diagnosticadas y simplifica la explicación de reproducción. La revisión del equipo se declara a partir de su confirmación; se conservan cifras, controlador, prompts y evidencia histórica.
+
+## Presentación del video
+
+La demo muestra el grafo del informe como PNG, define los roles y ejecuta H17 (asistencia y excepciones). H03 permanece identificado como histórico y muestra el primer borrador, las correcciones y el resultado final. Los mensajes anteriores se conservan completos en un historial plegable; la respuesta final ocupa el primer lugar al terminar. Las instrucciones operativas están en el guion. El paquete exportado conserva también el grafo y su hash; no se modificaron agentes, herramientas, prompts ni resultados históricos.

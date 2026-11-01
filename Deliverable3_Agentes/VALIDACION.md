@@ -48,7 +48,7 @@ HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python3 Deliverable3_Agentes/validar_cpu
 
 ## Inferencia real y calidad
 
-El [piloto v1 en T4](resultados/piloto_222681994dcd692c0600/REPORTE.md) guardó las doce respuestas: baseline 0/4, D2 2/4 y agentes 0/4 según revisión asistida con la pauta D2. Los agentes agotaron límites de formato o llamadas. Esta corrida se conserva intacta y motivó las [correcciones v2](CORRECCION_V2.md).
+El [piloto v1 en T4](resultados/piloto_222681994dcd692c0600/REPORTE.md) guardó las doce respuestas: baseline 0/4, D2 2/4 y agentes 0/4 según revisión asistida con la pauta D2. Los agentes agotaron límites de formato o llamadas. Esta corrida se conserva intacta y motivó las correcciones de la versión v2.
 
 **Esta sección era previa a la inferencia v2, ahora registrada en su reporte.** Este equipo local no tiene CUDA; las pruebas locales no determinan su exactitud, tasa real de JSON válido, utilidad de decisiones ni latencia. El paso pendiente es repetir P05/P25/P38/P41 con el notebook actualizado en T4 y evaluar sus doce respuestas. La aceptación interna del auditor nunca sustituye esa evaluación.
 

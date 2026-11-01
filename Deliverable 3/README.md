@@ -2,8 +2,7 @@
 
 Esta carpeta contiene la entrega del Deliverable 3: un sistema de cuatro agentes (Enrutador, Recuperador ReAct,
 Redactor y Verificador) sobre Qwen3-4B, con su informe, video, cuadernos, prompts versionados, resultados y ablaciones.
-La exploración alternativa de tres agentes que se desarrolló en paralelo está en
-[`../Deliverable3_Agentes/`](../Deliverable3_Agentes/README.md); no forma parte de esta entrega y sus cifras no se mezclan con estas.
+La exploración previa de tres agentes desarrollada en paralelo se conserva respaldada en la rama `backup/deliverable3_agentes_exploracion`.
 
 ## Archivos principales
 

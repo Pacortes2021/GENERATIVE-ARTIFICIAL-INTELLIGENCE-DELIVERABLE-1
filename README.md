@@ -70,9 +70,10 @@ Las limitaciones conocidas están en [`Deliverable 3/AUDITORIA.md`](Deliverable%
 
 | Directorio | Descripción |
 |---|---|
-| [`Deliverable 3/`](Deliverable%203/README.md) | **Entrega del Deliverable 3**: agentes, prompts, resultados, ablaciones, informe, cuadernos de Colab y evidencia del video. |
+| [`Deliverable 3/`](Deliverable%203/README.md) | **Entrega oficial del Deliverable 3**: arquitectura de 4 agentes, prompts versionados, resultados, ablaciones, informe técnico en LaTeX, cuadernos de Colab y demostración en video. |
 | [`Deliverable2/`](Deliverable2/) | Solución RAG del Entregable 2: corpus procesado, índice E5, informe técnico y evaluaciones. |
 | [`Deliverable1/`](Deliverable1/) | Entregable 1: diagnóstico, selección de modelo y evaluación zero-shot. |
 | [`Corpus/`](Corpus/) | Los tres documentos PDF normativos oficiales de la Universidad de Concepción. |
-| [`Deliverable3_Agentes/`](Deliverable3_Agentes/README.md) | Exploración alternativa de tres agentes desarrollada en paralelo. **No es la versión entregada**; se conserva con sus resultados como registro. |
 | [`Archivo/`](Archivo/) | Prototipos históricos conservados con fines de trazabilidad. |
+
+*Nota:* La exploración paralela previa de tres agentes desarrollada durante la investigación se encuentra preservada íntegramente en la rama [`backup/deliverable3_agentes_exploracion`](https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/backup/deliverable3_agentes_exploracion).

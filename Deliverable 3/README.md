@@ -11,6 +11,7 @@ No se mezclaron respuestas ni porcentajes de ambos sistemas.
 - [Notebook de demostración](Deliverable3/Demo_D3.ipynb): grafo, roles y consulta compleja H17 con mensajes visibles, registro íntegro nuevo y fallo histórico H03 identificado.
 - [Paquete para Colab](Deliverable3_ejecucion.zip): subir este ZIP cuando lo solicite el notebook.
 - [Guía del video](VIDEO.md) y [guion con narración](Guion_video_D3.md): grabación de hasta tres minutos.
+- [Video demostrativo oficial en Google Drive](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing): acceso público abierto.
 - [Auditoría y limitaciones](AUDITORIA.md).
 - [Archivo original sin modificar](D3_nuestro_completo_original.zip).
 
@@ -69,9 +70,9 @@ El demo contiene 29 comprobaciones con un modelo simulado; no mide exactitud de 
 
 ## Estado de entrega
 
-La carpeta integra el sistema v6 y sus materiales. **El video real de D3 y su enlace público siguen pendientes.**
-El PDF lo indica expresamente. No se reutiliza el video de D2 ni se presenta una reproducción de trazas como inferencia nueva.
-Esta es la carpeta que debe consultarse para reproducir el sistema de cuatro agentes; el otro sistema conserva su carpeta independiente.
+La carpeta integra el sistema v6 y sus materiales. **El video demostrativo de D3 está completado y disponible públicamente** en Google Drive: [Acceso a la carpeta de video](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing).
+El informe técnico [`Deliverable3/documento/main.pdf`](Deliverable3/documento/main.pdf) incorpora este enlace oficial en su encabezado.
+Esta es la carpeta que debe consultarse para reproducir el sistema de cuatro agentes; el sistema de tres agentes conserva su carpeta independiente en [`../Deliverable3_Agentes/`](../Deliverable3_Agentes/).
 
 Para recompilar el informe (Tectonic):
 

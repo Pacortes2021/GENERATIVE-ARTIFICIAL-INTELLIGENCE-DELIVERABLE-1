@@ -1,5 +1,6 @@
-# Video D3
+# Video demostrativo · Entregable 3
 
+- **[Ver video en Google Drive (acceso abierto)](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing)**
 - [Abrir el notebook en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable%203/Deliverable3/Demo_D3.ipynb).
 - [Notebook en el repositorio](Deliverable3/Demo_D3.ipynb).
 - [Guion con tiempos y narración](Guion_video_D3.md).
@@ -20,4 +21,4 @@ resultados de herramientas y entorno. Las trazas históricas siguen siendo resum
 Las pruebas locales verifican la instrumentación con un modelo simulado y equivalencia de salida/traza con
 el controlador original. No sustituyen comprobar la carga de modelos ni la inferencia en Colab con GPU.
 
-**Estado:** notebook y guion preparados; grabación, evidencia de la ejecución GPU y enlace público pendientes.
+**Estado:** Video grabado, auditado y publicado con acceso abierto en Google Drive. El enlace oficial está incorporado en los informes técnicos de entrega.

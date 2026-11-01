@@ -5,4 +5,4 @@ El código de agentes y sus prompts conservan la versión evaluada. Los cambios 
 en [AUDITORIA.md](../AUDITORIA.md). El archivo original completo está preservado en la raíz de esta carpeta.
 
 Abrir `D3_colab_qwen3_4b.ipynb` para el lote o `Demo_D3.ipynb` para la demostración. Ambos reciben
-`Deliverable3_ejecucion.zip`. El video real y su enlace público siguen pendientes.
+`Deliverable3_ejecucion.zip`. El video demostrativo está publicado en Google Drive: [Video D3](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing).

@@ -34,7 +34,7 @@ El video muestra la ejecución real del sistema multi-agente en Google Colab sob
 - **Archivos locales de video:**
   - Con locución/audio guía: [`video_demostracion_colab_con_audio_guia.mp4`](video_demostracion_colab_con_audio_guia.mp4) (27 MB).
   - Pista muda (para locución directa): [`video_demostracion_colab_mudo.mp4`](video_demostracion_colab_mudo.mp4) (25 MB).
-- **Enlace de acceso abierto:** Disponible en Google Drive (enlace en el encabezado de [`main.pdf`](main.pdf)).
+- **Enlace de acceso abierto:** [Google Drive — Video Demostrativo Entregable 3](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing) (y en el encabezado de [`main.pdf`](main.pdf)).
 
 ---
 

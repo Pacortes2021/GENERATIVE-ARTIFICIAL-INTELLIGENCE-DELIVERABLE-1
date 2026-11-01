@@ -13,7 +13,7 @@ permiten revisar las sumas con Python estándar y registran el hash de la planil
 - Conteo de llamadas separado del número de eventos de traza.
 - Notebook de demostración y guía de grabación.
 - Informe y resúmenes con costos corregidos y evaluación propuesta declarada.
-- Marcador de video pendiente explícito, sin enlace ficticio o de D2.
+- Enlace público oficial al video demostrativo incorporado en el informe técnico y documentación.
 
 ## Costos corregidos
 

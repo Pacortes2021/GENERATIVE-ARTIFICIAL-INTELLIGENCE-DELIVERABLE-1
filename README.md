@@ -15,7 +15,10 @@ Repositorio oficial: [github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE
 2. **Documento Técnico A4 de 1 página compilado en LaTeX**:
    - PDF oficial: [`Deliverable3_Agentes/entrega/main.pdf`](Deliverable3_Agentes/entrega/main.pdf) (y copia [`Informe_tecnico_D3.pdf`](Deliverable3_Agentes/entrega/Informe_tecnico_D3.pdf)).
    - Fuentes LaTeX: [`Deliverable3_Agentes/entrega/main.tex`](Deliverable3_Agentes/entrega/main.tex) (compilado con Tectonic / pdfLaTeX).
-3. **Reproducibilidad y respaldo inmutable**:
+3. **Video demostrativo de ejecución real (≤ 3 min)**:
+   - Enlace público en Google Drive: [Acceso a la carpeta oficial del video](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing).
+   - Demostración de decisiones multi-agente en vivo, inspección de trazas intermedias y resolución de consultas con GPU Tesla T4.
+4. **Reproducibilidad y respaldo inmutable**:
    - 25 snapshots ZIP secuenciales preservados en [`Deliverable3_Agentes/conjunto_dificil_25/resultados/`](Deliverable3_Agentes/conjunto_dificil_25/resultados/) y [`Deliverable3_Agentes/resultados/`](Deliverable3_Agentes/resultados/).
    - Cuadernos reproducibles en Google Colab con ejecución por bloques y verificación SHA-256.
 
@@ -81,6 +84,7 @@ Para más detalles, consultar el [Reporte Final del Conjunto Difícil de 25](Del
 |---|---|
 | [`Deliverable3_Agentes/`](Deliverable3_Agentes/) | Implementación vigente de agentes: controlador, prompts versionados, herramientas, cuadernos y resultados. |
 | [`Deliverable3_Agentes/entrega/`](Deliverable3_Agentes/entrega/) | **Documento técnico oficial de 1 página**: [`main.pdf`](Deliverable3_Agentes/entrega/main.pdf) / [`main.tex`](Deliverable3_Agentes/entrega/main.tex), guion de video y trazas. |
+| [`Deliverable 3/`](Deliverable%203/) | Integración complementaria del sistema de 4 agentes (Enrutador, Recuperador, Redactor, Verificador) con `Demo_D3.ipynb`, informe técnico y guion. |
 | [`Deliverable3_Agentes/conjunto_dificil_25/`](Deliverable3_Agentes/conjunto_dificil_25/) | Set de 25 preguntas difíciles: [`reporte_final_dificiles_25.md`](Deliverable3_Agentes/conjunto_dificil_25/resultados/reporte_final_dificiles_25.md), 150 JSONs y 25 respaldos ZIP. |
 | [`Deliverable2/`](Deliverable2/) | Solución RAG del Entregable 2: corpus procesado, índice E5, informe técnico y evaluaciones. |
 | [`Deliverable1/`](Deliverable1/) | Archivos originales del Entregable 1: diagnóstico, selección y evaluación zero-shot. |

@@ -82,7 +82,7 @@ Sustituir parte del último párrafo de H17; no añadir todas estas frases al gu
 1. Ejecutar C1 y conservar el ZIP descargado. Por defecto selecciona el último intento H17; si grabaste otro, reemplazar `RUN_IDS_EN_VIDEO` por su identificador antes de exportar. El paquete conserva todos los intentos de la sesión y señala el que aparece en el video.
 2. Subir ese ZIP a `Deliverable 3/evidencia_video/` en el repositorio. Incluye prompts y respuestas completos de la ejecución nueva, herramientas, entorno, fuentes y el fallo histórico H03 identificado.
 3. Publicar el video con acceso público y comprobar que abre sin iniciar sesión. Debe durar como máximo tres minutos y mostrar mensajes intermedios y respuesta final reales.
-4. Añadir el enlace público al informe y a la guía del video; reemplazar el marcador de video pendiente y recompilar el PDF. Las trazas deben corresponder a lo que aparece en la grabación.
+4. Publicación oficial: [Google Drive — Video Entregable 3](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing), incorporado en el informe técnico y guías de video del repositorio.
 
 ## Si ocurre un error
 

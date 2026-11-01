@@ -6,7 +6,7 @@
 
 ## Uso
 
-1. En Colab con T4, ejecutar A1–A5 antes de grabar. El paquete se descarga del repositorio y se comprueba contra el manifiesto del mismo commit.
+1. En Colab con T4, ejecutar A1–A5 antes de grabar. El paquete se descarga de una versión fija del repositorio y se comprueba contra el manifiesto del mismo commit. Las copias antiguas que aún usan `D3 alvaro` deben reemplazarse por este notebook.
 2. Grabar B0–B4: arquitectura, dos consultas nuevas, fallo histórico H03 y resultados revisados por el equipo.
 3. Ejecutar C1 al terminar. Confirmar los identificadores de las ejecuciones del video y descargar el ZIP de evidencia.
 4. Incorporar el ZIP en `evidencia_video/`, publicar una grabación de hasta tres minutos con acceso abierto y añadir su enlace al informe.

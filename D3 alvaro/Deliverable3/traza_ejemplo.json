@@ -1,0 +1,229 @@
+{
+  "escenario": "C — el Verificador rechaza una cita y manda a re-buscar (modelo simulado)",
+  "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en Ingeniería?",
+  "respuesta_final": "Respuesta: 4,0.\nFuente: [RI-FI-ART-011]",
+  "veredicto": {
+    "aprobado": true,
+    "destino": "fin",
+    "motivo": "cita respaldada"
+  },
+  "ciclos": 2,
+  "traza": [
+    {
+      "paso": 1,
+      "agente": "enrutador",
+      "entrada": "¿Cuál es la nota mínima para aprobar una asignatura en Ingeniería?",
+      "salida": {
+        "tipo": "factual",
+        "sub_consultas": [
+          "nota minima de aprobacion de asignatura"
+        ],
+        "documentos": [
+          "RI-FI"
+        ]
+      },
+      "fallback": false
+    },
+    {
+      "paso": 2,
+      "agente": "recuperador",
+      "entrada": {
+        "sub": "nota minima de aprobacion de asignatura",
+        "tipo": "factual",
+        "documentos": [
+          "RI-FI"
+        ],
+        "evidencia_reunida": [],
+        "ultima_observacion": null,
+        "intento": 1,
+        "feedback_verificador": null
+      },
+      "salida": {
+        "accion": "buscar",
+        "args": {
+          "consulta": "asistencia"
+        }
+      },
+      "observacion": {
+        "hits": [
+          "RI-FI-ART-013",
+          "RI-FI-ART-025",
+          "RG-ART-010",
+          "RG-ART-019",
+          "RG-ART-020"
+        ]
+      },
+      "fallback": false
+    },
+    {
+      "paso": 3,
+      "agente": "recuperador",
+      "entrada": {
+        "sub": "nota minima de aprobacion de asignatura",
+        "tipo": "factual",
+        "documentos": [
+          "RI-FI"
+        ],
+        "evidencia_reunida": [
+          "RG-ART-010",
+          "RG-ART-019",
+          "RG-ART-020",
+          "RI-FI-ART-013",
+          "RI-FI-ART-025"
+        ],
+        "ultima_observacion": [
+          {
+            "id": "RI-FI-ART-013",
+            "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+          },
+          {
+            "id": "RI-FI-ART-025",
+            "extracto": "Artículo 25°. La y el estudiante podrá solicitar a la Vicedecanatura suspender estudios dentro de los plazos establecidos en el calendario anual de docencia de "
+          },
+          {
+            "id": "RG-ART-010",
+            "extracto": "Artículo 10° El Consejo de Carrera deberá sesionar al menos tres veces cada semestre, pudiendo existir reuniones extraordinarias solicitadas por acuerdo del 60%"
+          },
+          {
+            "id": "RG-ART-019",
+            "extracto": "Artículo 19º Al inicio de la dictación de cada asignatura, el Profesor Encargado dará a conocer a los alumnos por escrito o a través de otro canal de informació"
+          },
+          {
+            "id": "RG-ART-020",
+            "extracto": "Artículo 20º La Facultad a la que está adscrita la asignatura, determinará el régimen de asistencia a clases y a otras actividades que tengan un propósito forma"
+          }
+        ],
+        "intento": 2,
+        "feedback_verificador": null
+      },
+      "salida": {
+        "accion": "suficiente",
+        "args": {}
+      },
+      "observacion": null,
+      "fallback": false
+    },
+    {
+      "paso": 4,
+      "agente": "redactor",
+      "entrada": {
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en Ingeniería?",
+        "modo": "factual",
+        "estado": "suficiente",
+        "feedback": null
+      },
+      "salida": "Respuesta: 4,0.\nFuente: [RG-ART-026]"
+    },
+    {
+      "paso": 5,
+      "agente": "verificador",
+      "entrada": {
+        "borrador": "Respuesta: 4,0.\nFuente: [RG-ART-026]",
+        "chequeo_citas": {
+          "citas": [
+            {
+              "id": "RG-ART-026",
+              "existe": true,
+              "en_evidencia": false
+            }
+          ],
+          "sin_citas": false
+        }
+      },
+      "salida": {
+        "aprobado": false,
+        "destino": "recuperador",
+        "motivo": "la cita RG-ART-026 no está en la evidencia; traer RI-FI art. 11"
+      },
+      "fallback": false
+    },
+    {
+      "paso": 6,
+      "agente": "recuperador",
+      "entrada": {
+        "sub": "nota minima de aprobacion de asignatura",
+        "tipo": "factual",
+        "documentos": [
+          "RI-FI"
+        ],
+        "evidencia_reunida": [],
+        "ultima_observacion": null,
+        "intento": 1,
+        "feedback_verificador": "la cita RG-ART-026 no está en la evidencia; traer RI-FI art. 11"
+      },
+      "salida": {
+        "accion": "traer",
+        "args": {
+          "doc": "RI FI",
+          "n": "Art. 11"
+        }
+      },
+      "observacion": {
+        "traido": "RI-FI-ART-011"
+      },
+      "fallback": false
+    },
+    {
+      "paso": 7,
+      "agente": "recuperador",
+      "entrada": {
+        "sub": "nota minima de aprobacion de asignatura",
+        "tipo": "factual",
+        "documentos": [
+          "RI-FI"
+        ],
+        "evidencia_reunida": [
+          "RI-FI-ART-011"
+        ],
+        "ultima_observacion": [
+          {
+            "id": "RI-FI-ART-011",
+            "extracto": "Artículo 11°. Cada asignatura impartida por la Facultad de Ingeniería deberá contar con al menos tres evaluaciones sumativas, y para aprobarla deberá cumplirse "
+          }
+        ],
+        "intento": 2,
+        "feedback_verificador": "la cita RG-ART-026 no está en la evidencia; traer RI-FI art. 11"
+      },
+      "salida": {
+        "accion": "suficiente",
+        "args": {}
+      },
+      "observacion": null,
+      "fallback": false
+    },
+    {
+      "paso": 8,
+      "agente": "redactor",
+      "entrada": {
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en Ingeniería?",
+        "modo": "factual",
+        "estado": "suficiente",
+        "feedback": "la cita RG-ART-026 no está en la evidencia; traer RI-FI art. 11"
+      },
+      "salida": "Respuesta: 4,0.\nFuente: [RI-FI-ART-011]"
+    },
+    {
+      "paso": 9,
+      "agente": "verificador",
+      "entrada": {
+        "borrador": "Respuesta: 4,0.\nFuente: [RI-FI-ART-011]",
+        "chequeo_citas": {
+          "citas": [
+            {
+              "id": "RI-FI-ART-011",
+              "existe": true,
+              "en_evidencia": true
+            }
+          ],
+          "sin_citas": false
+        }
+      },
+      "salida": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "cita respaldada"
+      },
+      "fallback": false
+    }
+  ]
+}

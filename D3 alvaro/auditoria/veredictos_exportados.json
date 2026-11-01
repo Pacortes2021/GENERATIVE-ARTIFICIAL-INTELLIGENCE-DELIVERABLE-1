@@ -1,0 +1,2426 @@
+{
+  "completo": {
+    "fuente": "Deliverable3/resultados_v6/correccion_D3_v6.xlsx",
+    "sha256_fuente": "3ef37f48ddec8a732f779cd6e8d92731c96ef18560b477ba74544dd71dd98e4b",
+    "casos": [
+      {
+        "id": "1",
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+        "respuesta": "Respuesta: 4,0\nCondiciones o límites: La nota debe ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.\nFuente: [RI-FI-ART-011] [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "4,0 (RI-FI art. 11, RG art. 23); la condición de escala está respaldada.",
+        "revisar": false
+      },
+      {
+        "id": "2",
+        "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+        "respuesta": "Respuesta: tres evaluaciones sumativas\nCondiciones o límites: \nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Tres evaluaciones sumativas, RI-FI art. 11.",
+        "revisar": false
+      },
+      {
+        "id": "3",
+        "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+        "respuesta": "Respuesta: 1\nCondiciones o límites: No hay límites adicionales mencionados en la normativa.\nFuente: [RI-FI-ART-012] [RG-ART-022]",
+        "correcta": 1,
+        "motivo": "Una evaluación de recuperación, RI-FI art. 12 (condiciones: relleno).",
+        "revisar": false
+      },
+      {
+        "id": "4",
+        "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+        "respuesta": "Respuesta: La nota final de una asignatura se expresa en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.\nCondiciones o límites: No se aplican condiciones o límites adicionales.\nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Escala oficial 1 a 7 con un decimal, RG art. 23.",
+        "revisar": false
+      },
+      {
+        "id": "5",
+        "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+        "respuesta": "Respuesta: La actividad final de titulación en las carreras de Ingeniería es la \"Memoria de Título\".\nCondiciones o límites: La actividad final de titulación es obligatoria y se regirá por el Reglamento de Memoria de Título de la Facultad de Ingeniería.\nFuente: [RI-FI-ART-029]",
+        "correcta": 1,
+        "motivo": "Memoria de Título, RI-FI art. 29.",
+        "revisar": false
+      },
+      {
+        "id": "6",
+        "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+        "respuesta": "Respuesta: una semana\nCondiciones o límites: \nFuente: [RI-FI-ART-010]",
+        "correcta": 1,
+        "motivo": "Una semana, RI-FI art. 10.",
+        "revisar": false
+      },
+      {
+        "id": "7",
+        "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+        "respuesta": "Respuesta: El Comité de Docencia y Asuntos Estudiantiles resuelve en primera instancia una solicitud de continuación de estudios.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-016] [RG-ART-030]",
+        "correcta": 1,
+        "motivo": "Comité de Docencia y Asuntos Estudiantiles, RI-FI art. 16.",
+        "revisar": false
+      },
+      {
+        "id": "8",
+        "pregunta": "¿La renuncia a la carrera es revocable?",
+        "respuesta": "Respuesta: La renuncia a la carrera no es revocable.\nCondiciones o límites: La renuncia es irrevocable e implica que el alumno no podrá reincorporarse a la carrera.\nFuente: [RI-FI-ART-026], [RG-ART-034]",
+        "correcta": 1,
+        "motivo": "Irrevocable, RI-FI art. 26 y RG art. 34.",
+        "revisar": false
+      },
+      {
+        "id": "9",
+        "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+        "respuesta": "Respuesta: El año académico tiene dos períodos lectivos ordinarios, cada uno de 19 semanas.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dos períodos de 19 semanas, RG art. 16.",
+        "revisar": false
+      },
+      {
+        "id": "10",
+        "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar asignaturas.\nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas según el artículo [RI-FI-ART-022].\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "No pueden, RI-FI art. 22.",
+        "revisar": false
+      },
+      {
+        "id": "11",
+        "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+        "respuesta": "Respuesta: Ocho créditos.\nCondiciones o límites: Salvo los estudiantes que estén terminando sus estudios o que por falta de requisitos se vean impedidos de inscribir el mínimo de créditos exigidos.\nFuente: [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "Ocho créditos con ambas excepciones, RI-FI art. 8.",
+        "revisar": false
+      },
+      {
+        "id": "12",
+        "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+        "respuesta": "Respuesta: Con menos de 15 créditos aprobados al término del segundo semestre quedo en baja académica.\nCondiciones o límites: El límite es \"menos de 15 créditos\".\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Menos de 15 créditos, RI-FI art. 14 a).",
+        "revisar": false
+      },
+      {
+        "id": "13",
+        "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+        "respuesta": "Respuesta: Inferior a diez créditos semestrales a partir del cuarto semestre.\nCondiciones o límites: El promedio se calcula como el total de créditos aprobados dividido por el número de semestres de permanencia.\nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Umbral correcto (RI-FI art. 14 b), pero agrega la fórmula del promedio citando solo RI-FI art. 14; la fórmula está en RG art. 28 (afirmación extra mal citada, precedente D2: P01).",
+        "revisar": true
+      },
+      {
+        "id": "14",
+        "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+        "respuesta": "Respuesta: 80%\nCondiciones o límites: No se permite superar el 80% en clases teóricas y prácticas.\nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "80% como tope, RI-FI art. 13.",
+        "revisar": false
+      },
+      {
+        "id": "15",
+        "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+        "respuesta": "Respuesta: 4,5 en la escala de 1 a 7.\nCondiciones o límites: \nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "4,5, RI-FI art. 21.",
+        "revisar": false
+      },
+      {
+        "id": "16",
+        "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+        "respuesta": "Respuesta: Cuatro semanas iniciales.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Cuatro semanas, RI-FI art. 22.",
+        "revisar": false
+      },
+      {
+        "id": "17",
+        "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+        "respuesta": "Respuesta: Treinta días del periodo respectivo.\nCondiciones o límites: Solo aplica para alumnos regulares y dentro del periodo respectivo.\nFuente: [RG-ART-038] [RI-FI-ART-023]",
+        "correcta": 1,
+        "motivo": "Treinta días del período; 'alumnos regulares' está en RG art. 38.",
+        "revisar": false
+      },
+      {
+        "id": "18",
+        "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+        "respuesta": "Respuesta: Debes cursar un máximo de 36 créditos adicionales.\nCondiciones o límites: No se especifican condiciones adicionales en la normativa consultada.\nFuente: [RI-FI-ART-031]",
+        "correcta": 1,
+        "motivo": "36 créditos, RI-FI art. 31.",
+        "revisar": false
+      },
+      {
+        "id": "19",
+        "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+        "respuesta": "Respuesta: 19 semanas\nCondiciones o límites: No aplica\nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "19 semanas, RG art. 16.",
+        "revisar": false
+      },
+      {
+        "id": "20",
+        "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+        "respuesta": "Respuesta: 3 días hábiles\nCondiciones o límites: No aplica\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "3 días hábiles, RG art. 26.",
+        "revisar": false
+      },
+      {
+        "id": "21",
+        "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+        "respuesta": "Respuesta: Para ingresar a Ingeniería desde otra universidad se necesita un promedio ponderado mínimo de 4,5 en la escala de 1 a 7, y para cambiar dentro de Ingeniería se necesita un promedio ponderado mínimo de 4,2 en la escala de 1 a 7.\nCondiciones o límites: No se especifican plazos, excepciones o condiciones adicionales.\nFuente: [RI-FI-ART-017] [RI-FI-ART-018]",
+        "correcta": 1,
+        "motivo": "4,5 y 4,2, RI-FI arts. 17 y 18 (condiciones: relleno, precedente D2: P18).",
+        "revisar": false
+      },
+      {
+        "id": "22",
+        "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+        "respuesta": "Respuesta: Un promedio ponderado mínimo de 5,0 en la escala de 1 a 7.\nCondiciones o límites: Solo aplica para estudiantes que estén cursando una carrera de pregrado y deseen solicitar una segunda carrera de la Facultad de Ingeniería.\nFuente: [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "5,0, RI-FI art. 19.",
+        "revisar": false
+      },
+      {
+        "id": "23",
+        "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+        "respuesta": "Respuesta: Si una asignatura ha sido previamente cursada y reprobada en el Plan de Estudio.\nCondiciones o límites: No se mencionan otras condiciones específicas para este caso.\nFuente: [RI-FI-ART-020]",
+        "correcta": 1,
+        "motivo": "Cursada y reprobada, RI-FI art. 20.",
+        "revisar": false
+      },
+      {
+        "id": "24",
+        "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+        "respuesta": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.  \nCondiciones o límites: Esta situación solo ocurre si no se cumple ninguna de las excepciones mencionadas en el artículo.  \nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "correcta": 0,
+        "motivo": "Consecuencia correcta, pero no dice cuáles son las excepciones (PLEV y primer año); solo alude a ellas. Precedente D2: omitir excepciones necesarias (P11, P36).",
+        "revisar": true
+      },
+      {
+        "id": "25",
+        "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+        "respuesta": "Respuesta: Las asignaturas correspondientes a las prioridades a) y b) del Artículo 7° no pueden eliminarse al modificar la inscripción.\nCondiciones o límites: Las prioridades a) y b) son: a) Las asignaturas atrasadas con respecto a su nivel de avance en el Plan de Estudio. b) Las asignaturas obligatorias reprobadas anteriormente y no aprobadas a la fecha.\nFuente: [RI-FI-ART-009] [RI-FI-ART-007]",
+        "correcta": 1,
+        "motivo": "Por primera vez (ni D2 ni v4/v5) identifica las prioridades a) y b): atrasadas y obligatorias reprobadas, RI-FI arts. 9 y 7.",
+        "revisar": false
+      },
+      {
+        "id": "26",
+        "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+        "respuesta": "Respuesta: Para volver a los estudios después de una suspensión, el estudiante debe solicitar su reincorporación al Vicedecano, cumplir con los requisitos establecidos por la Facultad, adjuntar los documentos necesarios y, si la suspensión fue por razones de salud, acompañar los antecedentes oficiales que demuestren que los impedimentos han cesado.\nCondiciones o límites: La reincorporación puede extenderse por un máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-031] [RI-FI-ART-027] [RG-ART-035] [RG-ART-033] [RG-ART-032] [RI-FI-ART-028]",
+        "correcta": 0,
+        "motivo": "Reincorporación ante el Vicedecano es correcto, pero afirma que 'la reincorporación puede extenderse por un máximo de tres años' (el RG art. 33 se refiere a la suspensión).",
+        "revisar": true
+      },
+      {
+        "id": "27",
+        "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+        "respuesta": "Respuesta: Los documentos requeridos para la solicitud de suspensión de estudios son el certificado de la División de Asistencia Financiera al Estudiante (DAFE) en que conste que el alumno no tiene deudas con la Universidad de Concepción por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado, y el certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\n\nCondiciones o límites: Los documentos deben ser adjuntos a la solicitud de suspensión de estudios.\n\nFuente: [RG-ART-035] [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Certificados DAFE y Bibliotecas, RG art. 35 y RI-FI art. 25.",
+        "revisar": false
+      },
+      {
+        "id": "28",
+        "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+        "respuesta": "Respuesta: Si estando habilitado no inscribo asignaturas en el período, perderé el derecho a continuar estudios y la calidad de alumno de pregrado, a menos que en el periodo lectivo anterior hayan inscrito una o más asignaturas anuales. Además, la calidad de alumno regular se mantendrá hasta el inicio del periodo de inscripción de asignaturas del Período Lectivo Ordinario siguiente.\nCondiciones o límites: El incumplimiento se aplicará salvo excepciones justificadas o si se han inscrito asignaturas anuales en el periodo lectivo anterior.\nFuente: [RG-ART-029], [RG-ART-042], [RG-ART-050]",
+        "correcta": 1,
+        "motivo": "Consecuencia y excepción (RG art. 29); lo de la calidad de alumno regular está en RG art. 50, citado.",
+        "revisar": true
+      },
+      {
+        "id": "29",
+        "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+        "respuesta": "Respuesta: Si no te presentas a una evaluación por causa justificada, puedes solicitar al profesor encargado de la asignatura regularizar tu situación en un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación, presentando los documentos que justifiquen tu inasistencia. Si no lo haces dentro de ese plazo, serás calificado con la nota mínima o con el concepto NCR.\nCondiciones o límites: El plazo máximo es de tres días hábiles posteriores a la aplicación de la evaluación.\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Tres días hábiles, documentos y consecuencia, RG art. 26.",
+        "revisar": false
+      },
+      {
+        "id": "30",
+        "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+        "respuesta": "Respuesta: Un profesor puede exigir un 100% de asistencia en laboratorios, talleres o salidas a terreno.\nCondiciones o límites: No hay límite máximo superior al 100% para estas actividades.\nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "100% en laboratorios, talleres y salidas, RI-FI art. 13.",
+        "revisar": false
+      },
+      {
+        "id": "31",
+        "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+        "respuesta": "Respuesta: El Reglamento General de Docencia prevalece sobre el Reglamento Interno de Ingeniería en caso de contradicción.\nCondiciones o límites: sin información adicional.\nFuente: [RI-FI-ART-034], [RI-FI-ART-002], [RG-TRANS-002]",
+        "correcta": 1,
+        "motivo": "Prevalece el RG, RI-FI art. 34 (y art. 2).",
+        "revisar": false
+      },
+      {
+        "id": "32",
+        "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+        "respuesta": "Respuesta: 04 de septiembre.\nCondiciones o límites: No aplica.\nFuente: [CAL-2026-S2-03]",
+        "correcta": 1,
+        "motivo": "04 de septiembre, calendario.",
+        "revisar": false
+      },
+      {
+        "id": "33",
+        "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+        "respuesta": "Respuesta: 02 de abril.\nCondiciones o límites: \nFuente: [CAL-2026-S1-03]",
+        "correcta": 1,
+        "motivo": "02 de abril, calendario.",
+        "revisar": false
+      },
+      {
+        "id": "34",
+        "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+        "respuesta": "Respuesta: Sí, tiene derecho a suspender estudios y puede hacerlo hasta cuatro semanas antes del término del periodo lectivo respectivo.\nCondiciones o límites: La suspensión de estudios deja sin efecto la inscripción de asignaturas e interrumpe la calidad de alumno de pregrado. La solicitud debe presentarse al Vicedecano antes de que finalice el periodo lectivo correspondiente. La suspensión de estudios no libera al alumno de las obligaciones que pudiere tener pendientes con la universidad.\nFuente: [RG-ART-031]",
+        "correcta": 1,
+        "motivo": "Derecho y plazo de cuatro semanas antes del término, con condiciones de RG art. 31 (el D2 aceptó RG art. 31 como suficiente).",
+        "revisar": false
+      },
+      {
+        "id": "35",
+        "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+        "respuesta": "Respuesta: 10 de agosto.\nCondiciones o límites: No aplica.\nFuente: [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "10 de agosto, calendario.",
+        "revisar": false
+      },
+      {
+        "id": "36",
+        "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+        "respuesta": "Respuesta: Las inscripciones se realizan del 03 al 07 de agosto y el mínimo de créditos es ocho.\nCondiciones o límites: No se aplican condiciones o límites adicionales.\nFuente: [CAL-2026-S2-01] [RI-FI-ART-008]",
+        "correcta": 0,
+        "motivo": "Afirma que no hay condiciones y omite las excepciones del art. 8 (precedente D2: P36).",
+        "revisar": false
+      },
+      {
+        "id": "37",
+        "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+        "respuesta": "Respuesta: 11 de diciembre.\nCondiciones o límites: \nFuente: [CAL-2026-S2-04]",
+        "correcta": 1,
+        "motivo": "11 de diciembre, calendario.",
+        "revisar": false
+      },
+      {
+        "id": "38",
+        "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+        "respuesta": "Respuesta: La escala de notas del Reglamento General sí se aplica en Ingeniería. La nota de aprobación es 4,0 (cuatro coma cero).\nCondiciones o límites: No se menciona excepción específica.\nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Se aplica y 4,0, RG art. 23 (no cita RI-FI art. 2; mismo criterio que v5).",
+        "revisar": true
+      },
+      {
+        "id": "39",
+        "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+        "respuesta": "Respuesta: 14 – 23 de diciembre.\nCondiciones o límites: No aplica.\nFuente: [CAL-2026-S2-05]",
+        "correcta": 1,
+        "motivo": "14–23 de diciembre, calendario.",
+        "revisar": false
+      },
+      {
+        "id": "40",
+        "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+        "respuesta": "Respuesta: El reglamento que rige la Memoria de Título es el Reglamento de Memoria de Título de la Facultad de Ingeniería. La Memoria de Título pondera un 40% en la nota de titulación.  \nCondiciones o límites: La ponderación es del 40% en la nota de titulación, según la evidencia.  \nFuente: [RI-FI-ART-029] [RI-FI-ART-030]",
+        "correcta": 1,
+        "motivo": "Reglamento de Memoria y 40%, RI-FI arts. 29 y 30.",
+        "revisar": false
+      },
+      {
+        "id": "41",
+        "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: El Artículo 90 no existe en el Reglamento Interno de Docencia de Pregrado de Ingeniería según la normativa consultada.\nCondiciones o límites: El artículo no está presente en la normativa.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Indica que el art. 90 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "42",
+        "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: No existe el Artículo 36 en el Reglamento Interno de Docencia de Pregrado de Ingeniería según la normativa consultada.\nCondiciones o límites: El artículo no existe en la normativa.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Indica que el art. 36 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "43",
+        "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: El Artículo 100 no existe en el Reglamento General de Docencia de Pregrado.\nCondiciones o límites: Ninguna.\nFuente: [estado: no_existe | no existen en la normativa: RG art. 100]",
+        "correcta": 1,
+        "motivo": "Indica que el art. 100 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "44",
+        "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: No existe información en la normativa consultada sobre el Artículo 70 del Reglamento General de Docencia de Pregrado.\nCondiciones o límites: No hay información disponible.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Se abstiene sin inventar sobre el art. 70.",
+        "revisar": false
+      },
+      {
+        "id": "45",
+        "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+        "respuesta": "Respuesta: No hay información sobre el inciso d) del Artículo 14 del RI-FI en la evidencia proporcionada.\nCondiciones o límites: No se puede afirmar la existencia del inciso d) por falta de evidencia.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Se abstiene sin inventar sobre el inciso d).",
+        "revisar": true
+      },
+      {
+        "id": "46",
+        "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+        "respuesta": "Respuesta: El inciso c) del Artículo 25 del RI-FI no existe, por lo que no establece nada sobre los documentos para suspender estudios.\nCondiciones o límites: El inciso c) no existe en el Artículo 25.\nFuente: [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Indica que el inciso c) no existe.",
+        "revisar": false
+      },
+      {
+        "id": "47",
+        "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+        "respuesta": "Respuesta: No existe información suficiente para determinar el número máximo de créditos fijado en el Artículo 8 del RI-FI.  \nCondiciones o límites: No se proporciona información sobre un límite máximo.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "No inventa un máximo; se abstiene.",
+        "revisar": true
+      },
+      {
+        "id": "48",
+        "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+        "respuesta": "Respuesta: No hay evidencia que respalde la nota mínima fijada por el Artículo 12 del RI-FI para la Evaluación de Recuperación.\nCondiciones o límites: No aplica.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "No inventa una nota; se abstiene.",
+        "revisar": false
+      },
+      {
+        "id": "49",
+        "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+        "respuesta": "Respuesta: No hay evidencia para confirmar que el 30 de septiembre es un feriado nacional según el calendario de docencia 2026.\nCondiciones o límites: No hay registros que mencionen el 30 de septiembre como feriado nacional.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "No confirma el feriado; se abstiene sin inventar.",
+        "revisar": false
+      },
+      {
+        "id": "50",
+        "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+        "respuesta": "Respuesta: No hay evidencia para determinar el promedio exigido para una tercera carrera simultánea.\nCondiciones o límites: No se puede determinar el promedio exigido para una tercera carrera simultánea.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "No inventa un promedio; se abstiene.",
+        "revisar": false
+      },
+      {
+        "id": "H01",
+        "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+        "respuesta": "Respuesta: Para ingresar, el promedio mínimo es 4,5 en la escala de 1 a 7. Para convalidar una asignatura, la nota mínima es 4,5 en la escala de 1 a 7.\nCondiciones o límites: No se aplica.\nFuente: [RI-FI-ART-017], [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "4,5 y 4,5, RI-FI arts. 17 y 21.",
+        "revisar": false
+      },
+      {
+        "id": "H02",
+        "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+        "respuesta": "Respuesta: El promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería es de 4,2, mientras que para cursar simultáneamente una carrera de la Facultad es de 5,0.\nCondiciones o límites: El promedio se calcula en la escala de 1 a 7.\nFuente: [RI-FI-ART-018], [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "4,2 y 5,0, RI-FI arts. 18 y 19.",
+        "revisar": false
+      },
+      {
+        "id": "H03",
+        "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+        "respuesta": "Respuesta: No se puede calcular el número de días desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre debido a la falta de información sobre la fecha de inicio de clases. \nCondiciones o límites: Falta evidencia para calcular el número de días.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 0,
+        "motivo": "Dice que falta la fecha de inicio de clases (no la recupera).",
+        "revisar": false
+      },
+      {
+        "id": "H04",
+        "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+        "respuesta": "Respuesta: El alumno egresado dispone de un plazo máximo de seis semestres según el Reglamento General. El Reglamento Interno de Docencia de Pregrado de las Facultades define qué pasa si ese plazo vence.\nCondiciones o límites: \nFuente: [RG-ART-049]",
+        "correcta": 1,
+        "motivo": "Seis semestres y remisión al Reglamento Interno, RG art. 49.",
+        "revisar": false
+      },
+      {
+        "id": "H05",
+        "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: 5,72\nCondiciones o límites: \nFuente: [RI-FI-ART-030]",
+        "correcta": 1,
+        "motivo": "5,72 con RI-FI art. 30 (sin mostrar la operación, mismo criterio que v4).",
+        "revisar": false
+      },
+      {
+        "id": "H06",
+        "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: Sí, el estudiante cae en baja académica por el criterio de promedio de créditos del Artículo 14.\nCondiciones o límites: El promedio de créditos se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "'Sí, cae en baja' con la regla y la fórmula (RI-FI art. 14, RG art. 28); no muestra 38/4 = 9,5.",
+        "revisar": true
+      },
+      {
+        "id": "H07",
+        "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: No se puede determinar si el estudiante está en baja académica por el criterio de promedio de créditos del Artículo 14 debido a la falta de información sobre el promedio de créditos semestrales y el número de semestres de permanencia.\nCondiciones o límites: No hay suficiente información para evaluar el cumplimiento del criterio del Artículo 14.\nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Dice que no se puede determinar; los datos están en la pregunta.",
+        "revisar": false
+      },
+      {
+        "id": "H08",
+        "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: 4,0\nCondiciones o límites: No se aplica ningún límite adicional.\nFuente: [RI-FI-ART-030]",
+        "correcta": 1,
+        "motivo": "4,0 con RI-FI art. 30 (v4 y v5 citaban RG art. 24).",
+        "revisar": false
+      },
+      {
+        "id": "H09",
+        "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+        "respuesta": "Respuesta: El estudiante debe adjuntar el certificado de la División de Asistencia Financiera al Estudiante (DAFE) que certifique no tener deudas con la Universidad de Concepción por concepto de aranceles y préstamos o que el pago de dichas deudas haya sido debidamente garantizado, y el certificado de la Dirección de Bibliotecas que certifique no adeudar material bibliográfico.\nCondiciones o límites: Los certificados deben ser emitidos por las instituciones mencionadas y deben constar de los requisitos especificados.\nFuente: [RI-FI-ART-025] [RG-ART-035]",
+        "correcta": 1,
+        "motivo": "Certificados DAFE y Bibliotecas, RI-FI art. 25 y RG art. 35.",
+        "revisar": false
+      },
+      {
+        "id": "H10",
+        "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+        "respuesta": "Respuesta: Hasta cuatro semanas antes del término del periodo lectivo respectivo.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-031]",
+        "correcta": 1,
+        "motivo": "Cuatro semanas antes del término, RG art. 31.",
+        "revisar": false
+      },
+      {
+        "id": "H11",
+        "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+        "respuesta": "Respuesta: El Promedio Ponderado se calcula con las notas finales iguales o superiores a 4,0, ponderadas por los créditos, mientras que el Promedio Curricular se calcula con todas las notas finales, ponderadas por los créditos.\nCondiciones o límites: No se consideran los conceptos APR y REP en el cálculo de ambos promedios.\nFuente: [RG-ART-024]",
+        "correcta": 1,
+        "motivo": "Diferencia correcta; lo de APR y REP está en RG art. 24.",
+        "revisar": false
+      },
+      {
+        "id": "H12",
+        "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+        "respuesta": "Respuesta: Sí, puede volver a estudiar con un plazo máximo de un año desde la fecha de la baja por no inscripción.\nCondiciones o límites: El plazo máximo es de un año para solicitar la continuación de estudios.\nFuente: [RG-ART-030]",
+        "correcta": 1,
+        "motivo": "Sí, plazo de un año, RG art. 30 (sin mezclar con la baja académica).",
+        "revisar": false
+      },
+      {
+        "id": "H13",
+        "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes.\nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas según el artículo RI-FI-ART-022.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "No pueden, RI-FI art. 22.",
+        "revisar": false
+      },
+      {
+        "id": "H14",
+        "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+        "respuesta": "Respuesta: Sí, el estudiante queda automáticamente en baja académica si ha reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: Las excepciones mencionadas en la normativa aplican si el estudiante cumple con los criterios establecidos.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "correcta": 0,
+        "motivo": "'Sí, queda automáticamente' contradice las excepciones (igual que v4 y v5).",
+        "revisar": false
+      },
+      {
+        "id": "H15",
+        "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+        "respuesta": "Respuesta: No se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio.\nCondiciones o límites: No se permite convalidar una asignatura previamente reprobada.\nFuente: [RI-FI-ART-021] [RI-FI-ART-020]",
+        "correcta": 1,
+        "motivo": "No; RI-FI arts. 21 y 20.",
+        "revisar": false
+      },
+      {
+        "id": "H16",
+        "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+        "respuesta": "Respuesta: Un estudiante de Ingeniería queda en baja académica si: a) aprueba menos de 15 créditos al término del segundo semestre de permanencia en la carrera; b) tiene un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera; o c) ha reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: No se aplican límites adicionales fuera del Artículo 14°.\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Las tres causales con umbrales y excepciones, RI-FI art. 14.",
+        "revisar": false
+      },
+      {
+        "id": "H17",
+        "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+        "respuesta": "Respuesta: El profesor puede exigir una asistencia mínima a clases, con un tope máximo de 80% para clases teóricas y prácticas, y hasta 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares. El tope puede ser distinto en casos de razones religiosas o discapacidad, según lo establecido en los artículos [RI-FI-ART-013] y [RG-ART-020].\nCondiciones o límites: El tope máximo de asistencia es 80% para clases teóricas y prácticas, y puede llegar al 100% en actividades específicas. Los casos de razones religiosas o discapacidad permiten un régimen especial de asistencia.\nFuente: [RI-FI-ART-013], [RG-ART-020]",
+        "correcta": 1,
+        "motivo": "80% y 100% (RI-FI art. 13); régimen especial por RG art. 20.",
+        "revisar": false
+      },
+      {
+        "id": "H18",
+        "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+        "respuesta": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\nCondiciones o límites: La suspensión de estudios puede extenderse por un período máximo de tres años calendario.\nFuente: [RI-FI-ART-031]",
+        "correcta": 0,
+        "motivo": "36 créditos correcto, pero agrega el plazo de tres años de suspensión citando solo RI-FI art. 31 (está en RG art. 33; precedente D2: P01).",
+        "revisar": true
+      },
+      {
+        "id": "H19",
+        "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+        "respuesta": "Respuesta: Un alumno pierde la calidad de alumno si aprobó menos créditos que el promedio mínimo exigido por la carrera, calculado dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\nCondiciones o límites: El cálculo del promedio se basa en la cantidad de créditos aprobados y el número de semestres de permanencia, sin especificar fórmulas numéricas.\nFuente: [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "Fórmula correcta, RG art. 28.",
+        "revisar": false
+      },
+      {
+        "id": "H20",
+        "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+        "respuesta": "Respuesta: No existe información en la normativa consultada sobre la nota mínima para aprobar la práctica profesional según el Artículo 45.\nCondiciones o límites: No hay datos suficientes para determinar la nota mínima.\nFuente: [sin respaldo en la normativa consultada]",
+        "correcta": 1,
+        "motivo": "Se abstiene sin inventar sobre el art. 45.",
+        "revisar": false
+      },
+      {
+        "id": "H21",
+        "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+        "respuesta": "Respuesta: El Artículo 8° no establece un límite máximo de créditos por semestre, sino un mínimo de 8 créditos. \nCondiciones o límites: No existe un límite máximo de créditos por semestre según el Artículo 8°.\nFuente: [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "El art. 8 fija un mínimo, no un máximo.",
+        "revisar": false
+      },
+      {
+        "id": "H22",
+        "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+        "respuesta": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0, según el Artículo 11°.\nCondiciones o límites: La nota mínima de 4,0 se refiere específicamente a la aprobación de una asignatura, no a otros contextos como convalidación o ingreso.\nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Corrige la premisa: 4,0, RI-FI art. 11.",
+        "revisar": false
+      },
+      {
+        "id": "H23",
+        "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+        "respuesta": "Respuesta: El segundo semestre inicia el 03 de agosto con la inscripción de asignaturas, pero el inicio oficial de clases es el 10 de agosto.\nCondiciones o límites: La fecha de inicio del segundo semestre se refiere a la inscripción de asignaturas, no al inicio oficial de clases.\nFuente: [CAL-2026-S2-01] [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Corrige la premisa: inscripción 03 de agosto, clases 10 de agosto.",
+        "revisar": false
+      },
+      {
+        "id": "H24",
+        "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+        "respuesta": "Respuesta: Tienes tres días hábiles posteriores a la aplicación de la evaluación para regularizar tu situación ante el profesor encargado de la asignatura.\nCondiciones o límites: El plazo es máximo de tres días hábiles y la regularización puede consistir en una evaluación oral, escrita o de otra modalidad.\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Tres días hábiles ante el profesor, RG art. 26.",
+        "revisar": false
+      },
+      {
+        "id": "H25",
+        "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+        "respuesta": "Respuesta: Los estudiantes de Ingreso Común se seleccionan para asignarlos a una carrera de la Facultad al término del segundo semestre según el número de créditos aprobados, el promedio curricular de notas de las asignaturas del Plan Común de Primer Año, el orden de sus preferencias en las carreras de Ingeniería Civil según la oferta de la Facultad y los cupos disponibles.\nCondiciones o límites: La selección se basa únicamente en los criterios mencionados en el Artículo 5°, y no se consideran otros factores como el promedio general o la nota en asignaturas fuera del Plan Común de Primer Año.\nFuente: [RI-FI-ART-005] [RI-FI-ART-006]",
+        "correcta": 0,
+        "motivo": "No da el orden de desempate (créditos, luego promedio).",
+        "revisar": false
+      }
+    ]
+  },
+  "sin_cot": {
+    "fuente": "Deliverable3/resultados_ablaciones/correccion_sin_cot.xlsx",
+    "sha256_fuente": "595ceb9374228135ab6677e402ed7c6a6f3b87d83690b8bfef1581094d297e5e",
+    "casos": [
+      {
+        "id": "1",
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+        "respuesta": "Respuesta: La nota mínima para aprobar una asignatura es 4,0 en la escala de 1 a 7.  \nCondiciones o límites: La nota final debe ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.  \nFuente: [RI-FI-ART-011] [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "2",
+        "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+        "respuesta": "Respuesta: 3\nCondiciones o límites: No hay límites adicionales\nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "3",
+        "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+        "respuesta": "Respuesta: El estudiante tiene derecho a una evaluación de recuperación por asignatura.  \nCondiciones o límites: No se aplica a actividades que requieran tiempo prolongado, como laboratorios, talleres, proyectos, etc.  \nFuente: [RI-FI-ART-012] [RG-ART-022] [RG-ART-025]",
+        "correcta": 1,
+        "motivo": "Una evaluación (RI-FI art. 12); la exclusión de laboratorios, talleres, etc. está en RG art. 22, citado.",
+        "revisar": false
+      },
+      {
+        "id": "4",
+        "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+        "respuesta": "Respuesta: La nota final de una asignatura se expresa en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.  \nCondiciones o límites: Las centésimas inferiores al dígito 5 no afectan a la décima, mientras que las superiores se aproximan a la décima superior.  \nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Escala 1 a 7 con un decimal y regla de redondeo, RG art. 23.",
+        "revisar": false
+      },
+      {
+        "id": "5",
+        "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+        "respuesta": "Respuesta: La actividad final de titulación en las carreras de Ingeniería es la Memoria de Título, una asignatura de un semestre de duración, regida por el Reglamento de Memoria de Título de la Facultad de Ingeniería.  \nCondiciones o límites: La Memoria de Título es la actividad final de titulación para todas las carreras de Ingeniería.  \nFuente: [RI-FI-ART-029]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "6",
+        "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+        "respuesta": "Respuesta: La anticipación mínima es de una semana para comunicar las evaluaciones a los estudiantes.  \nCondiciones o límites: No obstante, las fechas de los certámenes y evaluación de recuperación deben ser informadas en el syllabus de la asignatura.  \nFuente: [RI-FI-ART-010]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "7",
+        "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+        "respuesta": "Respuesta: El Comité de Docencia y Asuntos Estudiantiles resuelve en primera instancia una solicitud de continuación de estudios.  \nCondiciones o límites: Solo en el caso de los alumnos en situación de Baja por no Inscripción.  \nFuente: [RI-FI-ART-016] [RG-ART-030]",
+        "correcta": 0,
+        "motivo": "Comité correcto (RI-FI art. 16), pero agrega \"solo en el caso de Baja por no Inscripción\": falso, también aplica a Baja Académica (RG art. 30). Afirmación extra incorrecta (P01).",
+        "revisar": true
+      },
+      {
+        "id": "8",
+        "pregunta": "¿La renuncia a la carrera es revocable?",
+        "respuesta": "Respuesta: La renuncia a la carrera es irrevocable.  \nCondiciones o límites: La renuncia implica que el alumno no podrá reincorporarse a la carrera.  \nFuente: [RI-FI-ART-026] [RG-ART-034]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "9",
+        "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+        "respuesta": "Respuesta: El año académico tiene dos períodos lectivos ordinarios de diecinueve semanas cada uno y un período lectivo extraordinario de verano de seis semanas.  \nCondiciones o límites: No se especifica un número máximo de períodos lectivos ordinarios.  \nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "10",
+        "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar asignaturas.  \nCondiciones o límites: Según el Artículo 22°, los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas.  \nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "11",
+        "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+        "respuesta": "Respuesta: El mínimo de créditos que deben inscribirse por período lectivo ordinario en Ingeniería es ocho, salvo para estudiantes que estén terminando sus estudios o por falta de requisitos.  \nCondiciones o límites: Excepción para estudiantes que estén terminando sus estudios o por falta de requisitos.  \nFuente: [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "12",
+        "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+        "respuesta": "Respuesta: Con menos de 15 créditos aprobados al término del segundo semestre quedo en baja académica.  \nCondiciones o límites: El cálculo se basa en el artículo 14° [RI-FI-ART-014].  \nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "13",
+        "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+        "respuesta": "Respuesta: Bajo un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera se cae en baja académica.  \nCondiciones o límites: El promedio se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.  \nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Mismo error que v6: fórmula del promedio citada solo a RI-FI art. 14 (está en RG art. 28) (P01).",
+        "revisar": false
+      },
+      {
+        "id": "14",
+        "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+        "respuesta": "Respuesta: El profesor puede exigir una asistencia mínima máxima de un 80% de las clases teóricas y prácticas.  \nCondiciones o límites: El 80% es el límite máximo, pero puede llegar al 100% en actividades específicas como seminarios, laboratorios, talleres, etc.  \nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "15",
+        "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+        "respuesta": "Respuesta: 4,5  \nCondiciones o límites: La calificación mínima es 4,5 en la escala de 1 a 7, y debe ser equivalente a la calificación de la asignatura en el Plan de Estudio.  \nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "4,5 (RI-FI art. 21); la frase \"equivalente a la calificación de la asignatura en el Plan\" es una paráfrasis confusa pero no contradice el artículo.",
+        "revisar": true
+      },
+      {
+        "id": "16",
+        "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+        "respuesta": "Respuesta: 4 semanas iniciales\nCondiciones o límites: Excepto los estudiantes de Primer Año Común quienes no podrán revalidar ni convalidar asignaturas.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "17",
+        "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+        "respuesta": "Respuesta: Treinta días del periodo respectivo.  \nCondiciones o límites: Solo para alumnos regulares.  \nFuente: [RG-ART-038] [RI-FI-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "18",
+        "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+        "respuesta": "Respuesta: Debe cursar y aprobar un máximo de 36 créditos adicionales en asignaturas.  \nCondiciones o límites: El número máximo de créditos adicionales es 36, que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.  \nFuente: [RI-FI-ART-031]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "19",
+        "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+        "respuesta": "Respuesta: 19 semanas  \nCondiciones o límites: No existe información adicional sobre duración del semestre en la normativa consultada.  \nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "20",
+        "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+        "respuesta": "Respuesta: El plazo para regularizar una evaluación no rendida por causa justificada es de tres días hábiles posteriores a la aplicación de la evaluación.  \nCondiciones o límites: El plazo es máximo de tres días hábiles y se aplica cuando el alumno no se presenta a la evaluación o no cumple actividades obligatorias por razones justificadas.  \nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "21",
+        "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+        "respuesta": "Respuesta: Para ingresar a Ingeniería desde otra universidad, se necesita un promedio ponderado mínimo de 4,5 en la escala de 1 a 7. Para cambio dentro de Ingeniería, se necesita un promedio ponderado mínimo de 4,2.  \nCondiciones o límites: El promedio se calcula según el Reglamento General de Docencia de Pregrado y las Normas de Ingreso a las Carreras de Pregrado de la Universidad de Concepción.  \nFuente: [RI-FI-ART-017] [RI-FI-ART-018]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "22",
+        "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+        "respuesta": "Respuesta: Se exige un promedio ponderado mínimo de calificaciones de 5,0 en la escala de 1 a 7.  \nCondiciones o límites: Solo aplicable para estudiantes que estén cursando una carrera de pregrado en la Universidad de Concepción y deseen cursar simultáneamente una carrera de la Facultad de Ingeniería.  \nFuente: [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "23",
+        "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+        "respuesta": "Respuesta: No se puede revalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio.  \nCondiciones o límites: El estudiante debe haber aprobado la asignatura en otra carrera, y no puede revalidar si la asignatura fue reprobada en el mismo plan de estudio.  \nFuente: [RI-FI-ART-020]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "24",
+        "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+        "respuesta": "Respuesta: Si un estudiante reprueba por segunda vez una misma asignatura obligatoria, perderá el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.  \nCondiciones o límites: Esta situación solo ocurre si la asignatura no fue aprobada en el PLEV del año académico correspondiente y el estudiante no está en el primer año de permanencia en la carrera.  \nFuente: [RI-FI-ART-014], [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "Consecuencia y las dos excepciones (PLEV y primer año), RI-FI art. 14 c). Mejora respecto de v6.",
+        "revisar": false
+      },
+      {
+        "id": "25",
+        "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+        "respuesta": "Respuesta: No puedes eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°.  \nCondiciones o límites: La modificación de la inscripción de asignaturas deberá hacerse en las fechas que se indiquen en el calendario anual de docencia.  \nFuente: [RI-FI-ART-009]",
+        "correcta": 0,
+        "motivo": "Solo remite a prioridades a) y b) sin decir cuáles son; mismo criterio que D2, v4 y v5.",
+        "revisar": false
+      },
+      {
+        "id": "26",
+        "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+        "respuesta": "Respuesta: Si suspendí mis estudios, debes solicitar tu reincorporación al Vicedecano para continuarlos, presentando los documentos requeridos y justificando la suspensión.  \nCondiciones o límites: La suspensión puede extenderse por un máximo de tres años calendario. Si no solicitas tu reincorporación dentro de este plazo, pierdes la calidad de alumno de pregrado.  \nFuente: [RG-ART-031] [RG-ART-035] [RI-FI-ART-027] [RG-ART-033]",
+        "correcta": 1,
+        "motivo": "Reincorporación ante el Vicedecano (RI-FI art. 27, RG art. 33) y plazo de tres años bien atribuido a la suspensión. \"Justificando la suspensión\" es impreciso (solo se exige en caso de salud).",
+        "revisar": true
+      },
+      {
+        "id": "27",
+        "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+        "respuesta": "Respuesta: Los documentos requeridos para la solicitud de suspensión de estudios son: a) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y b) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\nCondiciones o límites: La solicitud debe realizarse dentro de los plazos establecidos en el calendario anual de docencia de pregrado. La suspensión de estudios podrá extenderse por un período máximo de tres años calendario.\nFuente: [RG-ART-035] [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "28",
+        "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+        "respuesta": "Respuesta: Si estando habilitado no inscribo asignaturas en el período, perderá el derecho a continuar estudios y la calidad de alumno de pregrado, a menos que en el periodo lectivo anterior hayan inscrito una o más asignaturas anuales.  \nCondiciones o límites: La pérdida de derecho se aplica si no se inscriben asignaturas en el período, salvo excepción cuando se hayan inscrito asignaturas anuales en el periodo lectivo anterior.  \nFuente: [RG-ART-029]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "29",
+        "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+        "respuesta": "Respuesta: Si no se presenta a una evaluación por causa justificada, el alumno puede solicitar al profesor encargado de la asignatura la regularización de su situación en un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación, presentando los documentos que justifiquen su inasistencia. Si no lo hace dentro de ese plazo, será calificado con la nota mínima o con el concepto NCR.  \nCondiciones o límites: La regularización puede consistir en una evaluación oral, escrita o de otra modalidad establecida por el profesor, y el alumno podrá apelar al Vicedecano de la Facultad.  \nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "30",
+        "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+        "respuesta": "Respuesta: Un profesor puede exigir una asistencia mínima de un 80% de las clases teóricas y prácticas, y un 100% en actividades como laboratorios, talleres, salidas a terreno.  \nCondiciones o límites: La asistencia mínima no puede ser superior a un 80% en clases teóricas y prácticas, y puede llegar a un 100% en actividades específicas.  \nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "31",
+        "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+        "respuesta": "Respuesta: El Reglamento General de Docencia prevalece sobre el Reglamento Interno de Ingeniería cuando hay contradicción.  \nCondiciones o límites: La prevalencia se establece explícitamente en el Artículo 34 del Reglamento Interno de Ingeniería.  \nFuente: [RI-FI-ART-034]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "32",
+        "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+        "respuesta": "Respuesta: La fecha límite para modificar las asignaturas inscritas este segundo semestre 2026 es 04 de septiembre.  \nCondiciones o límites: La fecha límite corresponde al segundo semestre y no se aplica para otros semestres.  \nFuente: [CAL-2026-S2-03]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "33",
+        "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+        "respuesta": "Respuesta: Hasta el 02 de abril de 2026.  \nCondiciones o límites: Solo para modificaciones de asignaturas en el primer semestre 2026.  \nFuente: [CAL-2026-S1-03]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "34",
+        "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+        "respuesta": "Respuesta: Tienes derecho a suspender estudios hasta cuatro semanas antes del término del periodo lectivo.  \nCondiciones o límites: La suspensión no libera al alumno de las obligaciones pendientes con la universidad.  \nFuente: [RG-ART-031], [RG-ART-032], [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "35",
+        "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+        "respuesta": "Respuesta: 10 de agosto.  \nCondiciones o límites: Segundo semestre 2026.  \nFuente: [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "36",
+        "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+        "respuesta": "Respuesta: Las asignaturas del segundo semestre 2026 se inscriben entre el 03 y el 07 de agosto. El mínimo de créditos es ocho, salvo casos excepcionales.  \nCondiciones o límites: El mínimo de créditos es aplicable a todos los estudiantes salvo los que estén terminando sus estudios o que por falta de requisitos no puedan inscribirse en el mínimo.  \nFuente: [CAL-2026-S2-01] [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "03–07 de agosto y 8 créditos con las excepciones del art. 8. Mejora respecto de v6.",
+        "revisar": false
+      },
+      {
+        "id": "37",
+        "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+        "respuesta": "Respuesta: El segundo semestre 2026 termina el 11 de diciembre.  \nCondiciones o límites: No hay condiciones adicionales.  \nFuente: [CAL-2026-S2-04]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "38",
+        "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+        "respuesta": "Respuesta: La escala de notas del Reglamento General sí se aplica en Ingeniería. La nota de aprobación es 4,0 (cuatro coma cero) en la escala de 1 a 7.  \nCondiciones o límites: La nota final debe ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.  \nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "39",
+        "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+        "respuesta": "Respuesta: 14 – 23 de diciembre.  \nCondiciones o límites: No se realizan evaluaciones el 21 y 22 de septiembre.  \nFuente: [CAL-2026-S2-05]",
+        "correcta": 0,
+        "motivo": "Fechas correctas, pero agrega \"no se realizan evaluaciones el 21 y 22 de septiembre\": dato real (CAL-2026-S2-07) pero no citado; afirmación extra mal citada (P01).",
+        "revisar": true
+      },
+      {
+        "id": "40",
+        "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+        "respuesta": "Respuesta: El Reglamento que rige la Memoria de Título es el Reglamento de Memoria de Título de la Facultad de Ingeniería, y la Memoria de Título se pondera en un 40% en la nota de titulación.  \nCondiciones o límites: No aplica.  \nFuente: [RI-FI-ART-029], [RI-FI-ART-030]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "41",
+        "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: El Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería no existe en la normativa consultada.  \nCondiciones o límites: No hay evidencia que respalde la existencia de este artículo.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "42",
+        "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: El Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería no fija ningún requisito específico, ya que no existe este artículo en la normativa.  \nCondiciones o límites: No aplica.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "43",
+        "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: El Artículo 100 del Reglamento General de Docencia de Pregrado no existe en la normativa consultada.  \nCondiciones o límites: No hay disposición en el RG art. 100.  \nFuente: [RG art. 100]",
+        "correcta": 1,
+        "motivo": "Indica que el art. 100 no existe; la línea Fuente cita el propio artículo inexistente, pero no inventa contenido.",
+        "revisar": true
+      },
+      {
+        "id": "44",
+        "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: El Artículo 70 del Reglamento General de Docencia de Pregrado no existe en la normativa consultada.  \nCondiciones o límites: No hay evidencia que respalde la existencia del artículo mencionado.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "45",
+        "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+        "respuesta": "Respuesta: El inciso d) del Artículo 14 del RI-FI no existe. La normativa consultada no menciona un inciso d) en el Artículo 14. \nCondiciones o límites: No hay inciso d) en el Artículo 14 del RI-FI.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "46",
+        "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+        "respuesta": "Respuesta: El inciso c) del Artículo 25 del RI-FI no establece ningún requisito específico, ya que el Artículo 25 solo menciona los documentos a) y b) como requisitos para suspender estudios. El inciso c) no existe en el texto del artículo.  \nCondiciones o límites: No existe el inciso c) en el Artículo 25 del RI-FI.  \nFuente: [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "47",
+        "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+        "respuesta": "Respuesta: No se especifica un número máximo de créditos en el Artículo 8 del RI-FI.  \nCondiciones o límites: No hay información sobre un máximo de créditos.  \nFuente: [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "48",
+        "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+        "respuesta": "Respuesta: No existe información en la normativa consultada sobre la nota mínima fija por el Artículo 12 del RI-FI para la Evaluación de Recuperación.  \nCondiciones o límites: No se menciona la nota mínima en el Artículo 12.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "49",
+        "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+        "respuesta": "Respuesta: No hay información en la evidencia que indique qué feriado nacional cae el 30 de septiembre según el calendario de docencia 2026.  \nCondiciones o límites: El estado de la consulta es \"suficiente\", pero no existe dato específico sobre el 30 de septiembre.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "50",
+        "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+        "respuesta": "Respuesta: El Artículo 19 no establece un promedio para una tercera carrera simultánea.  \nCondiciones o límites: El artículo 19 solo menciona el promedio 5,0 para una segunda carrera simultánea.  \nFuente: [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H01",
+        "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+        "respuesta": "Respuesta: Para ingresar a la Facultad de Ingeniería desde otra universidad chilena, el estudiante necesita un promedio ponderado mínimo de 4,5 en la escala de 1 a 7. Para convalidar una asignatura, la nota mínima debe ser equivalente a 4,5 en la escala de 1 a 7.  \nCondiciones o límites: La convalidación solo es posible si la asignatura fue aprobada y no reprobada previamente en el Plan de Estudio.  \nFuente: [RI-FI-ART-017] [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H02",
+        "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+        "respuesta": "Respuesta: El promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería es de 4,2 en la escala de 1 a 7, mientras que para cursar simultáneamente una carrera de la Facultad de Ingeniería es de 5,0 en la misma escala.  \nCondiciones o límites: El promedio mínimo varía según el tipo de solicitud (cambio de carrera vs. cursar simultáneamente).  \nFuente: [RI-FI-ART-018] [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H03",
+        "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+        "respuesta": "Respuesta: En el primer semestre, hay 73 días desde el inicio de clases hasta la fecha límite de modificación de asignaturas (02 de abril), y en el segundo semestre, hay 122 días (desde 04 de septiembre hasta 11 de diciembre). El plazo es más largo en el segundo semestre.  \nCondiciones o límites: Los cálculos se basan en las fechas proporcionadas en la normativa consultada.  \nFuente: [CAL-2026-S1-03], [CAL-2026-S2-03], [CAL-2026-S2-04]",
+        "correcta": 0,
+        "motivo": "Cálculo erróneo (73 y 122 días); correcto: 24 y 25 días.",
+        "revisar": false
+      },
+      {
+        "id": "H04",
+        "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+        "respuesta": "Respuesta: El alumno egresado dispone de seis semestres según el Reglamento General. El Reglamento Interno de Docencia de Pregrado define las consecuencias si el plazo vence.  \nCondiciones o límites: No se especifica el artículo del Reglamento Interno de Docencia de Pregrado que define las consecuencias si el plazo vence.  \nFuente: [RG-ART-049], [RG-ART-003-DEF-10]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H05",
+        "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: La nota de titulación se calcula como el 60% del promedio ponderado de las asignaturas sin la Memoria de Título (5,2) más el 40% de la nota de la Memoria de Título (6,5). Por lo tanto, (0,6 × 5,2) + (0,4 × 6,5) = 3,12 + 2,6 = 5,72. Redondeando a una decimal, es 5,7.  \nCondiciones o límites: El cálculo se basa en los porcentajes establecidos en el artículo [RI-FI-ART-030].  \nFuente: [RI-FI-ART-030]",
+        "correcta": 1,
+        "motivo": "5,72 con la operación (0,6×5,2 + 0,4×6,5), RI-FI art. 30.",
+        "revisar": false
+      },
+      {
+        "id": "H06",
+        "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: No, el estudiante no cae en baja académica por el criterio de promedio de créditos del Artículo 14.  \nCondiciones o límites: El Artículo 14 menciona \"promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre\", no \"menos de 15 créditos al término del segundo semestre\".  \nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Responde \"No\"; 38/4 = 9,5 < 10, sí cae en baja.",
+        "revisar": false
+      },
+      {
+        "id": "H07",
+        "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: El estudiante no está en baja académica por el criterio de promedio de créditos del Artículo 14°.  \nCondiciones o límites: El promedio de créditos aprobados debe ser inferior a diez créditos semestrales a partir del cuarto semestre.  \nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "\"No está en baja\" correcto, con la regla del art. 14 b); no muestra 42/4 = 10,5 (mismo criterio que H05 de v6: sin operación se acepta si el resultado y la regla son correctos).",
+        "revisar": true
+      },
+      {
+        "id": "H08",
+        "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: La nota de titulación es 4,0. Se calcula como 60% del promedio ponderado de las asignaturas sin la Memoria (4,0) más 40% de la nota de la Memoria (4,0), es decir: 0,6×4,0 + 0,4×4,0 = 4,0.  \nCondiciones o límites: No se aplican restricciones adicionales.  \nFuente: [RI-FI-ART-030] [RI-FI-ART-031]",
+        "correcta": 1,
+        "motivo": "4,0 con la operación, RI-FI art. 30 (cita extra al art. 31, irrelevante).",
+        "revisar": false
+      },
+      {
+        "id": "H09",
+        "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+        "respuesta": "Respuesta: Un estudiante debe adjuntar el certificado de la División de Asistencia Financiera al Estudiante (DAFE) que conste que no tiene deudas por aranceles y préstamos o que el pago haya sido garantizado, y el certificado de la Dirección de Bibliotecas que conste que no adeuda material bibliográfico.  \nCondiciones o límites: Los certificados deben ser emitidos por las instituciones mencionadas y cumplir con los requisitos establecidos en los artículos citados.  \nFuente: [RI-FI-ART-025] [RG-ART-035]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H10",
+        "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+        "respuesta": "Respuesta: Hasta cuatro semanas antes del término del periodo lectivo respectivo.  \nCondiciones o límites: La solicitud debe presentarse antes de que finalice el periodo lectivo correspondiente.  \nFuente: [RG-ART-031]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H11",
+        "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+        "respuesta": "Respuesta: El Promedio Ponderado corresponde al promedio de las notas finales iguales o superiores a 4,0, ponderadas por el número de créditos, mientras que el Promedio Curricular corresponde al promedio de todas las notas finales, también ponderadas por el número de créditos.  \nCondiciones o límites: No se consideran los conceptos APR y REP en el cálculo de ambos promedios.  \nFuente: [RG-ART-024]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H12",
+        "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+        "respuesta": "Respuesta: Un estudiante en situación de Baja por no Inscripción puede volver a estudiar presentando una solicitud en un plazo máximo de un año al Comité de Docencia y Asuntos Estudiantiles respectivo.  \nCondiciones o límites: La solicitud se presenta únicamente en una oportunidad, no en tres.  \nFuente: [RG-ART-030]",
+        "correcta": 0,
+        "motivo": "Plazo de un año ante el Comité correcto, pero agrega \"la solicitud se presenta únicamente en una oportunidad, no en tres\": RG art. 30 no lo dice (el límite de tres es para la baja académica). Afirmación extra sin respaldo.",
+        "revisar": true
+      },
+      {
+        "id": "H13",
+        "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes.  \nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas según el artículo 22.  \nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H14",
+        "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+        "respuesta": "Respuesta: No, el estudiante no queda automáticamente en baja académica por reprobar una asignatura obligatoria por segunda vez.  \nCondiciones o límites: La baja académica se aplica si el estudiante ha reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes en el primer año de permanencia.  \nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "\"No queda automáticamente\" con las dos excepciones (PLEV y primer año), RI-FI art. 14 y RG art. 28. Mejora respecto de v6.",
+        "revisar": false
+      },
+      {
+        "id": "H15",
+        "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+        "respuesta": "Respuesta: No se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio.  \nCondiciones o límites: La convalidación no está permitida para asignaturas previamente cursadas y reprobadas.  \nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H16",
+        "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+        "respuesta": "Respuesta: Un estudiante de Ingeniería queda en baja académica si aprueba menos de 15 créditos al término del segundo semestre, tiene un promedio de créditos aprobados inferior a diez semestrales a partir del cuarto semestre, o reprobó por segunda vez una asignatura obligatoria salvo excepciones.  \nCondiciones o límites: El inciso c) del artículo 14° menciona excepciones para estudiantes en primer año y aquellos con asignaturas aprobadas en el PLEV.  \nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Las tres causales con umbrales; las excepciones de c) se nombran en condiciones.",
+        "revisar": false
+      },
+      {
+        "id": "H17",
+        "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+        "respuesta": "Respuesta: Los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería son una asistencia mínima a clases, que no podrá ser superior a un 80% de las clases teóricas y prácticas, y podrá llegar a un 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares. En casos especiales, como razones religiosas, discapacidad acreditada o solicitud de régimen especial, el tope puede ser distinto.  \nCondiciones o límites: El tope máximo de asistencia es 80% para clases teóricas y prácticas, y 100% para actividades específicas. Los estudiantes con discapacidad o razones religiosas pueden acreditar su situación al inscribirse, y los alumnos con discapacidad pueden solicitar un régimen especial.  \nFuente: [RI-FI-ART-013] [RG-ART-020]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H18",
+        "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+        "respuesta": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.  \nCondiciones o límites: La suspensión de estudios no libera al alumno de las obligaciones que pudiere tener pendientes con la universidad. La suspensión puede extenderse por un período máximo de tres años calendario.  \nFuente: [RI-FI-ART-031]",
+        "correcta": 0,
+        "motivo": "36 créditos correcto, pero atribuye a RI-FI art. 31 el plazo de tres años y las obligaciones pendientes (están en RG arts. 33 y 31). Mismo criterio que v6 (P01).",
+        "revisar": false
+      },
+      {
+        "id": "H19",
+        "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+        "respuesta": "Respuesta: Un alumno pierde la calidad de alumno por el criterio de créditos aprobados si ha aprobado menos créditos que el promedio mínimo exigido por la carrera, según el cálculo establecido en el artículo 28.  \nCondiciones o límites: El promedio de créditos se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.  \nFuente: [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H20",
+        "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+        "respuesta": "Respuesta: No existe en la normativa el artículo 45 del Reglamento Interno de la Facultad de Ingeniería que fija la nota mínima para aprobar la práctica profesional.  \nCondiciones o límites: No hay evidencia que respalde la existencia del artículo 45 en el Reglamento Interno de la Facultad de Ingeniería.  \nFuente: [estado: no_existe | no existen en la normativa: RI-FI art. 45]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H21",
+        "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+        "respuesta": "Respuesta: 8 créditos\nCondiciones o límites: Salvo los estudiantes que estén terminando sus estudios o aquellos con restricciones por requisitos.\nFuente: [RI-FI-ART-008]",
+        "correcta": 0,
+        "motivo": "Responde \"8 créditos\" como máximo: confirma la premisa falsa (8 es el mínimo).",
+        "revisar": false
+      },
+      {
+        "id": "H22",
+        "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+        "respuesta": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0. La pregunta menciona 4,5, que no está respaldada por la normativa consultada.  \nCondiciones o límites: La nota mínima está establecida en el Artículo 11°.  \nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H23",
+        "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+        "respuesta": "Respuesta: No, es incorrecto. El segundo semestre inicia el 10 de agosto según el calendario 2026. El 03 de agosto es la fecha de inscripción de asignaturas.  \nCondiciones o límites: La fecha de inicio del segundo semestre se basa en el calendario oficial proporcionado.  \nFuente: [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H24",
+        "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+        "respuesta": "Respuesta: Si no se presenta a una evaluación por una razón justificada, el alumno tendrá un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación para regularizar su situación ante el profesor encargado de la asignatura.  \nCondiciones o límites: El plazo es de tres días hábiles y la regularización puede consistir en una evaluación oral, escrita o de otra modalidad según el profesor.  \nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H25",
+        "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+        "respuesta": "Respuesta: Los estudiantes del Ingreso Común se seleccionan para asignarlos a una carrera de la Facultad al término de su segundo semestre de permanencia, considerando el número de créditos aprobados, el promedio curricular de notas, el orden de sus preferencias en las carreras de Ingeniería Civil según oferta de la Facultad, y los cupos disponibles por carrera.  \nCondiciones o límites: La selección se basa en los créditos aprobados, el promedio curricular, el orden de preferencias y los cupos disponibles.  \nFuente: [RI-FI-ART-005]",
+        "correcta": 0,
+        "motivo": "No da el orden de desempate (créditos, luego promedio). Mismo criterio que v6.",
+        "revisar": false
+      }
+    ]
+  },
+  "sin_react": {
+    "fuente": "Deliverable3/resultados_ablaciones/correccion_sin_react.xlsx",
+    "sha256_fuente": "347d82a3186b1fbcf136e0bfdce89ddb33042fb0a9f1c9ddead52fedf7e5df8e",
+    "casos": [
+      {
+        "id": "H01",
+        "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+        "respuesta": "Respuesta: Para ingresar a la Facultad de Ingeniería, el estudiante necesita un promedio ponderado mínimo de 4,5 en la escala de 1 a 7. Para convalidar una asignatura, la nota mínima debe ser equivalente a 4,5 en la escala de 1 a 7.\nCondiciones o límites: No se aplica.\nFuente: [RI-FI-ART-017], [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H02",
+        "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+        "respuesta": "Respuesta: El promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería es 4,2, mientras que para cursar simultáneamente una carrera de la Facultad es 5,0.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-018], [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H03",
+        "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+        "respuesta": "Respuesta: no_existe\nCondiciones o límites: no hay información sobre la fecha del inicio de clases para ambos semestres.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 0,
+        "motivo": "Responde \"no_existe\": no recupera la fecha de inicio de clases.",
+        "revisar": false
+      },
+      {
+        "id": "H04",
+        "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+        "respuesta": "Respuesta: El alumno egresado dispone de seis semestres según el Reglamento General. El Reglamento Interno de Docencia de Pregrado de las Facultades define qué pasa si ese plazo vence.\nCondiciones o límites: \nFuente: [RG-ART-049]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H05",
+        "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: No hay suficiente información en la normativa consultada para calcular la nota de titulación.\nCondiciones o límites: \nFuente: [RI-FI-ART-030]",
+        "correcta": 0,
+        "motivo": "Dice que no hay información para calcular; RI-FI art. 30 da la fórmula y los datos están en la pregunta.",
+        "revisar": false
+      },
+      {
+        "id": "H06",
+        "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: Sí, el estudiante cae en baja académica por el criterio de promedio de créditos del Artículo 14°.  \nCondiciones o límites: El promedio de créditos semestrales debe ser inferior a diez.  \nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "\"Sí, cae en baja\" con la regla del art. 14 b); no muestra 38/4 = 9,5 (mismo criterio que H07 de sin_cot).",
+        "revisar": true
+      },
+      {
+        "id": "H07",
+        "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: No, el estudiante no está en baja académica por el criterio de promedio de créditos del Artículo 14.\nCondiciones o límites: El promedio de créditos se calcula como la totalidad de créditos aprobados divididos entre el número de semestres de permanencia. En este caso, el estudiante aprobó 42 créditos al término del cuarto semestre, lo cual equivale a 10,5 créditos semestrales, lo cual no cumple con el criterio de baja académica según el Artículo 14.\nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Conclusión y cálculo correctos, pero atribuye la fórmula del promedio solo a RI-FI art. 14 (está en RG art. 28). Mismo criterio que P13 y que H07 de sin_fewshot (P01).",
+        "revisar": false
+      },
+      {
+        "id": "H08",
+        "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: 4,0\nCondiciones o límites: No aplica\nFuente: [RG-ART-024]",
+        "correcta": 0,
+        "motivo": "4,0 correcto, pero cita RG art. 24 (promedios) y no RI-FI art. 30. Mismo criterio que v4 y v5.",
+        "revisar": false
+      },
+      {
+        "id": "H09",
+        "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+        "respuesta": "Respuesta: Un estudiante debe adjuntar el certificado de la División de Asistencia Financiera al Estudiante que conste que no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado, y el certificado de la Dirección de Bibliotecas que conste que no adeuda material bibliográfico.\nCondiciones o límites: No se mencionan condiciones o límites específicos en este contexto.\nFuente: [RG-ART-035], [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H10",
+        "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+        "respuesta": "Respuesta: hasta cuatro semanas antes del término del periodo lectivo respectivo.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-031]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H11",
+        "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+        "respuesta": "Respuesta: El Promedio Ponderado corresponde al promedio de las notas finales iguales o superiores a 4,0, ponderadas por el número de créditos, mientras que el Promedio Curricular corresponde al promedio de todas las notas finales, también ponderadas por el número de créditos. La diferencia radica en que el Promedio Ponderado solo incluye notas finales iguales o superiores a 4,0, mientras que el Promedio Curricular incluye todas las notas finales.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-024]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H12",
+        "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+        "respuesta": "Respuesta: Sí, puede volver a estudiar en un plazo máximo de un año.  \nCondiciones o límites: El plazo máximo es de un año para presentar la solicitud.  \nFuente: [RG-ART-030]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H13",
+        "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar o revalidar asignaturas durante las primeras cuatro semanas.  \nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas según el artículo [RI-FI-ART-022].  \nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H14",
+        "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+        "respuesta": "Respuesta: Sí, queda automáticamente en baja académica, salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente, o que el estudiante se encuentre en el primer año de permanencia en la carrera.\nCondiciones o límites: Las excepciones son: si la asignatura fue aprobada en el PLEV del año académico correspondiente, o si el estudiante está en el primer año de permanencia en la carrera.\nFuente: [RI-FI-ART-014], [RG-ART-028]",
+        "correcta": 0,
+        "motivo": "\"Sí, queda automáticamente...\" — misma formulación que v6, v4 y v5.",
+        "revisar": false
+      },
+      {
+        "id": "H15",
+        "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+        "respuesta": "Respuesta: No se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio.\nCondiciones o límites: La convalidación no es permitida si la asignatura fue previamente cursada y reprobada.\nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H16",
+        "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+        "respuesta": "Respuesta: Un estudiante queda en baja académica si: a) aprueba menos de 15 créditos al término del segundo semestre de permanencia en la carrera; b) tiene un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera; o c) ha reprobado por segunda vez una asignatura obligatoria, salvo que esta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes en el primer año de permanencia en la carrera.\nCondiciones o límites: Las condiciones se aplican según el Artículo 14 del Reglamento Interno.\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H17",
+        "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+        "respuesta": "Respuesta: Los profesores pueden exigir una asistencia mínima, con un tope máximo de 80% para clases teóricas y prácticas, pero puede llegar al 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares. Este tope puede ser distinto en actividades específicas. Además, los estudiantes con discapacidad o razones religiosas pueden solicitar un régimen especial de asistencia.\nCondiciones o límites: El tope máximo de 80% se aplica a clases teóricas y prácticas, mientras que el 100% se aplica a actividades específicas. Los estudiantes con discapacidad o razones religiosas pueden solicitar un régimen especial de asistencia.\nFuente: [RI-FI-ART-013], [RG-ART-020]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H18",
+        "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+        "respuesta": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas. Además, deberá solicitar su reincorporación al Vicedecano, y si no lo hace dentro del plazo máximo de tres años, perderá la calidad de alumno de pregrado.\nCondiciones o límites: El estudiante debe cumplir con los requisitos establecidos por la Facultad y adjuntar los documentos mencionados en [RG-ART-035]. La suspensión de estudios podrá extenderse por un período máximo de tres años calendario.\nFuente: [RI-FI-ART-031], [RG-ART-033], [RG-ART-035]",
+        "correcta": 0,
+        "motivo": "36 créditos correcto, pero dice que hay que adjuntar los documentos del RG art. 35 (son para suspender o renunciar). Afirmación extra incorrecta.",
+        "revisar": true
+      },
+      {
+        "id": "H19",
+        "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+        "respuesta": "Respuesta: El criterio es \"haber aprobado menos créditos que el promedio mínimo exigido por la carrera\", y el promedio de créditos del alumno se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\nCondiciones o límites: El promedio mínimo exigido por la carrera no está especificado en la normativa consultada.\nFuente: [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "Criterio y fórmula, RG art. 28.",
+        "revisar": false
+      },
+      {
+        "id": "H20",
+        "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+        "respuesta": "Respuesta: No existe información en la normativa consultada sobre la nota mínima para aprobar la práctica profesional según el Artículo 45.\nCondiciones o límites: No hay datos suficientes para determinar la nota mínima.\nFuente: [sin respaldo en la normativa consultada]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Se abstiene sin inventar sobre el art. 45.",
+        "revisar": false
+      },
+      {
+        "id": "H21",
+        "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+        "respuesta": "Respuesta: No existe información sobre el máximo.  \nCondiciones o límites: No se especifica un máximo en la normativa consultada.  \nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "No inventa un máximo; se abstiene sin inventar (mismo criterio que P47).",
+        "revisar": false
+      },
+      {
+        "id": "H22",
+        "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+        "respuesta": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0, no 4,5.\nCondiciones o límites: La nota mínima está establecida en el Artículo 11°.\nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H23",
+        "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+        "respuesta": "Respuesta: No, el segundo semestre no inicia el 03 de agosto. La inscripción de asignaturas es el 03 de agosto, pero el inicio de clases es el 10 de agosto según la evidencia.\nCondiciones o límites: El 03 de agosto es la fecha de inscripción de asignaturas, no el inicio del semestre.\nFuente: [CAL-2026-S2-01] [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H24",
+        "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+        "respuesta": "Respuesta: tres días hábiles, ante el profesor encargado de la asignatura.\nCondiciones o límites: la solicitud debe hacerse por razones justificadas.\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H25",
+        "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+        "respuesta": "Respuesta: Los estudiantes de Ingreso Común se seleccionan según el número de créditos aprobados, el promedio curricular de notas ponderadas por créditos, el orden de sus preferencias en las carreras de Ingeniería Civil según la oferta y los cupos disponibles por carrera.  \nCondiciones o límites: Solo se consideran las asignaturas obligatorias de Primer Año.  \nFuente: [RI-FI-ART-005]",
+        "correcta": 0,
+        "motivo": "No da el orden de desempate (créditos, luego promedio). Mismo criterio que v6.",
+        "revisar": false
+      },
+      {
+        "id": "1",
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+        "respuesta": "Respuesta: 4,0\nCondiciones o límites: \nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "2",
+        "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+        "respuesta": "Respuesta: Al menos tres evaluaciones sumativas.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "3",
+        "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+        "respuesta": "Respuesta: El estudiante tiene derecho a una evaluación de recuperación por asignatura.\nCondiciones o límites: No hay límites adicionales mencionados en la normativa.\nFuente: [RI-FI-ART-012] [RG-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "4",
+        "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+        "respuesta": "Respuesta: La nota final de una asignatura se expresa en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.\nCondiciones o límites: No se menciona ningún límite adicional en la escala.\nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "5",
+        "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+        "respuesta": "Respuesta: La actividad final de titulación en las carreras de Ingeniería es la \"Memoria de Título\".\nCondiciones o límites: La actividad es una asignatura de un semestre de duración, regida por el Reglamento de Memoria de Título.\nFuente: [RI-FI-ART-029]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "6",
+        "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+        "respuesta": "Respuesta: Una semana\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-010]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "7",
+        "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+        "respuesta": "Respuesta: El Comité de Docencia y Asuntos Estudiantiles resuelve en primera instancia una solicitud de continuación de estudios.\nCondiciones o límites: Solo aplicable para estudiantes que soliciten continuación de estudios según los artículos mencionados.\nFuente: [RI-FI-ART-016] [RG-ART-030]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "8",
+        "pregunta": "¿La renuncia a la carrera es revocable?",
+        "respuesta": "Respuesta: La renuncia a la carrera no es revocable.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-034] [RI-FI-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "9",
+        "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+        "respuesta": "Respuesta: El año académico tiene dos períodos lectivos ordinarios, cada uno de diecinueve semanas.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "10",
+        "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar asignaturas.\nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "11",
+        "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+        "respuesta": "Respuesta: Ocho créditos.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-008]",
+        "correcta": 0,
+        "motivo": "Ocho créditos, pero \"Condiciones: No aplica\" omite las excepciones del art. 8 (es justamente el precedente P11 del D2).",
+        "revisar": false
+      },
+      {
+        "id": "12",
+        "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+        "respuesta": "Respuesta: Menos de 15 créditos aprobados al término del segundo semestre.\nCondiciones o límites: El cálculo se basa en el artículo 14°, que establece claramente el umbral de 15 créditos.\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "13",
+        "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+        "respuesta": "Respuesta: Bajo un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera.\nCondiciones o límites: El cálculo se basa en el promedio semestral de créditos aprobados, desde el cuarto semestre.\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Inferior a 10 créditos desde el 4.º semestre, RI-FI art. 14 b); esta vez no atribuye la fórmula a un artículo equivocado.",
+        "revisar": false
+      },
+      {
+        "id": "14",
+        "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+        "respuesta": "Respuesta: 80%\nCondiciones o límites: No se permite superar el 80% en clases teóricas y prácticas.\nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. 80% como tope, RI-FI art. 13.",
+        "revisar": false
+      },
+      {
+        "id": "15",
+        "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+        "respuesta": "Respuesta: 4,5 en la escala de 1 a 7.\nCondiciones o límites: La calificación debe ser equivalente a 4,5 en la escala de 1 a 7.\nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "16",
+        "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+        "respuesta": "Respuesta: Durante las cuatro primeras semanas de ingreso a la nueva carrera.\nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "17",
+        "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+        "respuesta": "Respuesta: Treinta días del periodo respectivo.\nCondiciones o límites: Solo aplica para los alumnos regulares y dentro del periodo respectivo.\nFuente: [RG-ART-038], [RI-FI-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "18",
+        "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+        "respuesta": "Respuesta: Si suspendí más de 3 años y solo me faltaba la Memoria, debo cursar y aprobar un máximo de 36 créditos adicionales en asignaturas.  \nCondiciones o límites: Los créditos adicionales deben cursarse además de la Memoria de Título, y las asignaturas serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.  \nFuente: [RI-FI-ART-031]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "19",
+        "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+        "respuesta": "Respuesta: 19 semanas\nCondiciones o límites: sin límites específicos\nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "20",
+        "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+        "respuesta": "Respuesta: Tres días hábiles.\nCondiciones o límites: El plazo es máximo de tres días hábiles posteriores a la aplicación de la evaluación.\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "21",
+        "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+        "respuesta": "Respuesta: Para ingresar a Ingeniería desde otra universidad se necesita un promedio ponderado mínimo de 4,5 en la escala de 1 a 7, y para cambiar dentro de Ingeniería se necesita un promedio ponderado mínimo de 4,2 en la escala de 1 a 7.\nCondiciones o límites: No se mencionan otros requisitos o límites específicos.\nFuente: [RI-FI-ART-017], [RI-FI-ART-018]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "22",
+        "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+        "respuesta": "Respuesta: 5,0 en la escala de 1 a 7\nCondiciones o límites: Solo aplica para estudiantes que estén cursando una carrera de pregrado en la Universidad de Concepción.\nFuente: [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "23",
+        "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+        "respuesta": "Respuesta: Si una asignatura ha sido previamente cursada y reprobada en el Plan de Estudio.\nCondiciones o límites: No se mencionan otras condiciones específicas en la normativa consultada.\nFuente: [RI-FI-ART-020]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "24",
+        "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+        "respuesta": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno de pregrado, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: Las excepciones son: aprobación en el PLEV del año académico correspondiente o estar en el primer año de permanencia.\nFuente: [RG-ART-028] [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Consecuencia y las dos excepciones (PLEV y primer año), RI-FI art. 14 y RG art. 28.",
+        "revisar": false
+      },
+      {
+        "id": "25",
+        "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+        "respuesta": "Respuesta: No puedo eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°.\nCondiciones o límites: No se podrá eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°.\nFuente: [RI-FI-ART-009]",
+        "correcta": 0,
+        "motivo": "Solo remite a prioridades a) y b) sin decir cuáles son. Mismo criterio que D2, v4 y v5.",
+        "revisar": false
+      },
+      {
+        "id": "26",
+        "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+        "respuesta": "Respuesta: Si suspendiste tus estudios, debes solicitar tu reincorporación a la Vicedecanatura, cumplir con los requisitos establecidos y adjuntar los documentos mencionados en [RG-ART-035]. Si la suspensión fue por salud, debes acompañar antecedentes oficiales. Además, si no solicitas tu reincorporación dentro de los tres años calendario, pierdes la calidad de estudiante.  \nCondiciones o límites: La suspensión por elección no está en la evidencia.  \nFuente: [RG-ART-035], [RI-FI-ART-027], [RG-ART-033]",
+        "correcta": 0,
+        "motivo": "Reincorporación ante la Vicedecanatura y plazo de tres años correctos (RI-FI art. 27, RG art. 33), pero dice que hay que adjuntar los documentos del RG art. 35, que son para suspender o renunciar, no para reincorporarse. Afirmación extra incorrecta (P01).",
+        "revisar": true
+      },
+      {
+        "id": "27",
+        "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+        "respuesta": "Respuesta: Los documentos requeridos para la solicitud de suspensión de estudios son: a) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y b) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\nCondiciones o límites: La solicitud debe realizarse dentro de los plazos establecidos en el calendario anual de docencia de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-035] [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "28",
+        "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+        "respuesta": "Respuesta: Si estando habilitado no inscribo asignaturas en el período, perderé el derecho a continuar estudios y la calidad de alumno de pregrado, a menos que en el periodo lectivo anterior hayan inscrito una o más asignaturas anuales. El Vicedecano podrá autorizar inscripciones fuera de plazo en casos justificados y excepcionales.\nCondiciones o límites: El abandono de asignaturas no es aplicable en este caso.\nFuente: [RG-ART-029] [RG-ART-042]",
+        "correcta": 1,
+        "motivo": "Consecuencia y excepción (RG art. 29); la autorización fuera de plazo del Vicedecano está en RG art. 42, citado.",
+        "revisar": false
+      },
+      {
+        "id": "29",
+        "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+        "respuesta": "Respuesta: Si no se presenta a una evaluación por causa justificada, el alumno puede solicitar al profesor encargado de la asignatura regularizar su situación en un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación, presentando los documentos que justifiquen su inasistencia. Si no se resuelve de manera satisfactoria, podrá apelar al Vicedecano de la Facultad que dicta la asignatura.\n\nCondiciones o límites: El plazo máximo es de tres días hábiles posteriores a la aplicación de la evaluación, y la regularización puede consistir en una evaluación oral, escrita o de otra modalidad acordada por el profesor.\n\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "30",
+        "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+        "respuesta": "Respuesta: El profesor puede exigir un 100% de asistencia en laboratorios, talleres o salidas a terreno.\nCondiciones o límites: No se establece un mínimo, solo un máximo de 80% en otras actividades.\nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "31",
+        "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+        "respuesta": "Respuesta: El Reglamento General de Docencia prevalece ante una contradicción con el Reglamento Interno de Ingeniería.\nCondiciones o límites: \nFuente: [RI-FI-ART-034]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "32",
+        "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+        "respuesta": "Respuesta: 04 de septiembre.\nCondiciones o límites: No aplica.\nFuente: [CAL-2026-S2-03]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. 04 de septiembre, calendario.",
+        "revisar": false
+      },
+      {
+        "id": "33",
+        "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+        "respuesta": "Respuesta: 02 de abril.\nCondiciones o límites: No aplica.\nFuente: [CAL-2026-S1-03]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "34",
+        "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+        "respuesta": "Respuesta: Tienes derecho a suspender estudios hasta cuatro semanas antes del término del periodo lectivo respectivo.\nCondiciones o límites: Debe cumplir con los requisitos establecidos en el Artículo 35º [RG-ART-035] y no haya condiciones como la incompatibilidad con la carrera según el Artículo 32º [RG-ART-032].\nFuente: [RG-ART-031], [RG-ART-032], [RG-ART-035]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "35",
+        "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+        "respuesta": "Respuesta: 10 de agosto.\nCondiciones o límites: Ninguna.\nFuente: [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "36",
+        "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+        "respuesta": "Respuesta: Las fechas de inscripción de las asignaturas del segundo semestre 2026 son del 03 al 07 de agosto. No hay información sobre el mínimo de créditos en la normativa consultada.\nCondiciones o límites: No hay información sobre el mínimo de créditos en la normativa consultada.\nFuente: [CAL-2026-S2-01]",
+        "correcta": 0,
+        "motivo": "Da las fechas, pero dice que no hay información del mínimo de créditos (8, RI-FI art. 8).",
+        "revisar": false
+      },
+      {
+        "id": "37",
+        "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+        "respuesta": "Respuesta: 11 de diciembre\nCondiciones o límites: \nFuente: [CAL-2026-S2-04]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "38",
+        "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+        "respuesta": "Respuesta: La escala de notas del Reglamento General sí se aplica en Ingeniería. La nota de aprobación es 4,0 (cuatro coma cero).\nCondiciones o límites: La nota de aprobación se aplica según la escala de 1 a 7, y se expresa con un decimal de aproximación.\nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "39",
+        "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+        "respuesta": "Respuesta: 14 – 23 de diciembre.\nCondiciones o límites: No hay condiciones o límites específicos.\nFuente: [CAL-2026-S2-05]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "40",
+        "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+        "respuesta": "Respuesta: El Reglamento de Memoria de Título de la Facultad de Ingeniería rige la Memoria de Título, y esta se pondera en un 60% en la nota de titulación.\nCondiciones o límites: No se aplica límite adicional.\nFuente: [RI-FI-ART-029] [RI-FI-ART-030]",
+        "correcta": 0,
+        "motivo": "Dice que la Memoria pondera 60%; es 40% (RI-FI art. 30).",
+        "revisar": false
+      },
+      {
+        "id": "41",
+        "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: El Artículo 90 no existe en el Reglamento Interno de Docencia de Pregrado de Ingeniería según la normativa consultada.\nCondiciones o límites: El artículo no está presente en la normativa.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Indica que el art. 90 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "42",
+        "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: No existe el Artículo 36 en el Reglamento Interno de Docencia de Pregrado de Ingeniería según la normativa consultada.\nCondiciones o límites: El artículo no existe en la normativa.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Indica que el art. 36 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "43",
+        "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: El Artículo 100 no existe en el Reglamento General de Docencia de Pregrado.\nCondiciones o límites: Ninguna.\nFuente: [estado: no_existe | no existen en la normativa: RG art. 100]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Indica que el art. 100 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "44",
+        "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: No existe información en la normativa consultada sobre el Artículo 70 del Reglamento General de Docencia de Pregrado.\nCondiciones o límites: No hay información disponible.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Se abstiene sin inventar sobre el art. 70.",
+        "revisar": false
+      },
+      {
+        "id": "45",
+        "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+        "respuesta": "Respuesta: No existe información sobre el inciso d) del Artículo 14 del RI-FI, ya que el Artículo 14° no incluye un inciso d).\nCondiciones o límites: no aplica\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "46",
+        "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+        "respuesta": "Respuesta: No se establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios.\nCondiciones o límites: No hay evidencia para el inciso c) del Artículo 25 del RI-FI.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "47",
+        "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+        "respuesta": "Respuesta: No se establece un número máximo de créditos en el Artículo 8 del RI-FI.  \nCondiciones o límites: No hay evidencia que muestre un número máximo de créditos aplicable en general.  \nFuente: [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "48",
+        "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+        "respuesta": "Respuesta: No hay evidencia suficiente para determinar la nota mínima fijada por el Artículo 12 del RI-FI para la Evaluación de Recuperación.\nCondiciones o límites: No aplica.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "49",
+        "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+        "respuesta": "Respuesta: No hay evidencia para confirmar que el 30 de septiembre es un feriado nacional según el calendario de docencia 2026.\nCondiciones o límites: No hay registros que mencionen el 30 de septiembre como feriado nacional.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. No confirma el feriado; se abstiene sin inventar.",
+        "revisar": false
+      },
+      {
+        "id": "50",
+        "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+        "respuesta": "Respuesta: No se establece el promedio exigido para una tercera carrera simultánea según el Artículo 19 del RI-FI.\nCondiciones o límites: No hay información suficiente en la normativa consultada.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      }
+    ]
+  },
+  "sin_fewshot": {
+    "fuente": "Deliverable3/resultados_ablaciones/correccion_sin_fewshot.xlsx",
+    "sha256_fuente": "aac25829dbccc5f41bb72ab0a91cb68ce09828df05827f2ac5ecf4a9ea0b678d",
+    "casos": [
+      {
+        "id": "H01",
+        "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+        "respuesta": "Respuesta: El promedio mínimo es 4,5 en la escala de 1 a 7 y la nota mínima para convalidar es 4,5 en la escala de 1 a 7.\nCondiciones o límites: sin condiciones o límites específicos mencionados.\nFuente: [RI-FI-ART-017] [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H02",
+        "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+        "respuesta": "Respuesta: El promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería es 4,2, mientras que para cursar simultáneamente una carrera de la Facultad es 5,0.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-018], [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H03",
+        "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+        "respuesta": "Respuesta: No se puede calcular el plazo para el primer semestre debido a la falta de la fecha de inicio de clases. El plazo para el segundo semestre es de 23 días.\nCondiciones o límites: Falta la fecha de inicio de clases del primer semestre para calcular el plazo correspondiente.\nFuente: [CAL-2026-S2-02], [CAL-2026-S2-03]",
+        "correcta": 0,
+        "motivo": "No calcula el primer semestre y da 23 días para el segundo (correcto: 24 y 25).",
+        "revisar": false
+      },
+      {
+        "id": "H04",
+        "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+        "respuesta": "Respuesta: El alumno egresado dispone de seis semestres según el Reglamento General. El Reglamento Interno de Docencia de Pregrado define qué pasa si ese plazo vence.  \nCondiciones o límites: No hay evidencia específica sobre las consecuencias si el plazo vence.  \nFuente: [RG-ART-049], [RG-TRANS-001], [RG-ART-003-DEF-22]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H05",
+        "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: 5,7\nCondiciones o límites: La nota se redondea según las reglas de aproximación del artículo 23º.\nFuente: [RI-FI-ART-030] [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "5,7 (0,6×5,2 + 0,4×6,5 = 5,72, redondeado por RG art. 23), RI-FI art. 30.",
+        "revisar": false
+      },
+      {
+        "id": "H06",
+        "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: No, el estudiante no cae en baja académica por el criterio de promedio de créditos del Artículo 14, ya que no hay evidencia que respalde la afirmación de que el promedio es 9.5. \nCondiciones o límites: No hay evidencia que respalde el cálculo del promedio. \nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Responde \"No\"; 38/4 = 9,5 < 10, sí cae en baja.",
+        "revisar": false
+      },
+      {
+        "id": "H07",
+        "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+        "respuesta": "Respuesta: No, el estudiante no está en baja académica por el criterio de promedio de créditos del Artículo 14.\nCondiciones o límites: El promedio de créditos se calcula como la totalidad de créditos aprobados divididos entre el número de semestres de permanencia. En este caso, el estudiante aprobó 42 créditos al término del cuarto semestre, lo cual equivale a 10,5 créditos semestrales, lo cual no cumple con el criterio de baja académica según el Artículo 14.\nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Conclusión y cálculo correctos (42/4 = 10,5), pero la fórmula del promedio se atribuye solo a RI-FI art. 14; está en RG art. 28. Mismo criterio que P13 (P01).",
+        "revisar": true
+      },
+      {
+        "id": "H08",
+        "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+        "respuesta": "Respuesta: 4,0\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-030]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H09",
+        "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+        "respuesta": "Respuesta: Un estudiante debe adjuntar el certificado de la División de Asistencia Financiera al Estudiante (DAFE) que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado, y el certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\nCondiciones o límites: No se especifican condiciones adicionales en cuanto a los certificados.\nFuente: [RG-ART-035], [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H10",
+        "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+        "respuesta": "Respuesta: Hasta cuatro semanas antes del término del periodo lectivo respectivo.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-031]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Cuatro semanas antes del término, RG art. 31.",
+        "revisar": false
+      },
+      {
+        "id": "H11",
+        "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+        "respuesta": "Respuesta: El Promedio Ponderado corresponde al promedio de las notas finales iguales o superiores a 4,0, ponderadas por el número de créditos, mientras que el Promedio Curricular corresponde al promedio de todas las notas finales, también ponderadas por el número de créditos. La diferencia radica en que el Promedio Ponderado solo incluye notas a partir de 4,0, mientras que el Promedio Curricular incluye todas las notas finales.\nCondiciones o límites: No aplica.\nFuente: [RG-ART-024]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H12",
+        "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+        "respuesta": "Respuesta: Sí, puede volver a estudiar con un plazo máximo de un año.\nCondiciones o límites: No se especifican los plazos para cada instancia.\nFuente: [RG-ART-030]",
+        "correcta": 1,
+        "motivo": "Sí, plazo máximo de un año, RG art. 30. No dice ante quién, pero la pregunta pide si puede y con qué plazo.",
+        "revisar": true
+      },
+      {
+        "id": "H13",
+        "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar o revalidar asignaturas durante las primeras cuatro semanas, a diferencia de los demás estudiantes.\nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H14",
+        "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+        "respuesta": "Respuesta: Un estudiante que reprobó una asignatura obligatoria por segunda vez queda automáticamente en baja académica, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: No se aplican límites ni condiciones adicionales.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "correcta": 0,
+        "motivo": "\"Queda automáticamente en baja académica, salvo...\" — misma formulación que v6, v4 y v5, marcada 0 por contradecir el \"no necesariamente\".",
+        "revisar": true
+      },
+      {
+        "id": "H15",
+        "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+        "respuesta": "Respuesta: No se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio.\nCondiciones o límites: La convalidación no es permitida si la asignatura fue previamente cursada y reprobada.\nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H16",
+        "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+        "respuesta": "Respuesta: Un estudiante de Ingeniería queda en baja académica si: a) aprueba menos de 15 créditos al término del segundo semestre de permanencia en la carrera; b) tiene un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera; o c) ha reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: Las situaciones descritas son las únicas que llevan a la baja académica según el Artículo 14 del Reglamento Interno.\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H17",
+        "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+        "respuesta": "Respuesta: Un profesor en la Facultad de Ingeniería puede exigir una asistencia mínima a clases, con un tope máximo del 80% para clases teóricas y prácticas, y puede llegar al 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras de naturaleza similar. En casos de discapacidad o razones religiosas, el tope puede ser distinto.\nCondiciones o límites: El tope máximo es del 80% para clases teóricas y prácticas, y puede llegar al 100% en actividades específicas. En casos de discapacidad o razones religiosas, el tope puede ser distinto.\nFuente: [RI-FI-ART-013] [RG-ART-020] [RG-ART-032]",
+        "correcta": 1,
+        "motivo": "80% y 100% (RI-FI art. 13); régimen especial por religión o discapacidad está en RG art. 20, citado.",
+        "revisar": false
+      },
+      {
+        "id": "H18",
+        "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+        "respuesta": "Respuesta: El estudiante deberá cursar y aprobar, además de la Memoria de Título, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\nCondiciones o límites: El estudiante debe haber mantenido suspendidos sus estudios por más de tres años y al momento de suspender solo le restaba aprobar la Memoria de Título.\nFuente: [RI-FI-ART-031]",
+        "correcta": 1,
+        "motivo": "36 créditos fijados por el Comité, RI-FI art. 31; los \"más de tres años\" son la premisa del propio art. 31.",
+        "revisar": false
+      },
+      {
+        "id": "H19",
+        "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+        "respuesta": "Respuesta: Un alumno pierde la calidad de alumno por el criterio de créditos aprobados si ha aprobado menos créditos que el promedio mínimo exigido por la carrera, donde el promedio de créditos se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\nCondiciones o límites: El promedio de créditos se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\nFuente: [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H20",
+        "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+        "respuesta": "Respuesta: No hay información disponible sobre la nota mínima para aprobar la práctica profesional según el Artículo 45.  \nCondiciones o límites: No hay evidencia en la normativa consultada que respalde la afirmación.  \nFuente: [RI-FI-ART-002]",
+        "correcta": 1,
+        "motivo": "No inventa una nota para un artículo inexistente.",
+        "revisar": false
+      },
+      {
+        "id": "H21",
+        "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+        "respuesta": "Respuesta: No existe información suficiente para determinar el máximo de créditos que puede inscribir un estudiante regular por semestre según el Artículo 8.\nCondiciones o límites: No aplica.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "No inventa un máximo; se abstiene sin inventar (mismo criterio que P47).",
+        "revisar": false
+      },
+      {
+        "id": "H22",
+        "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+        "respuesta": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0, no 4,5.\nCondiciones o límites: La nota final debe ser igual o superior a 4,0 en la escala de 1 a 7.\nFuente: [RI-FI-ART-011] [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H23",
+        "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+        "respuesta": "Respuesta: No, el calendario 2026 no indica que el segundo semestre inicie el 03 de agosto. El inicio de clases es el 10 de agosto.\nCondiciones o límites: El inicio de clases es el 10 de agosto según [CAL-2026-S2-02].\nFuente: [CAL-2026-S2-01] [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "H24",
+        "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+        "respuesta": "Respuesta: Tienes un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación para regularizar tu situación.  \nCondiciones o límites: No se indican condiciones o límites adicionales.  \nFuente: [RG-ART-026]",
+        "correcta": 0,
+        "motivo": "Da los tres días hábiles pero no dice ante quién (profesor encargado); la pregunta pide ambas cosas.",
+        "revisar": false
+      },
+      {
+        "id": "H25",
+        "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+        "respuesta": "Respuesta: Los estudiantes de Ingreso Común se seleccionan según el número de créditos aprobados, el promedio curricular de notas, el orden de preferencias en las carreras de Ingeniería Civil, y los cupos disponibles por carrera.  \nCondiciones o límites: La selección se basa en los criterios mencionados, sin exigir aprobación de al menos 15 créditos como requisito.  \nFuente: [RI-FI-ART-005]",
+        "correcta": 0,
+        "motivo": "Nombra los criterios pero no el orden de desempate (créditos, luego promedio curricular). Mismo criterio que v6.",
+        "revisar": false
+      },
+      {
+        "id": "1",
+        "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+        "respuesta": "Respuesta: 4,0\nCondiciones o límites: La nota mínima es 4,0 según el syllabus correspondiente.\nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "2",
+        "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+        "respuesta": "Respuesta: Al menos tres evaluaciones sumativas.\nCondiciones o límites: Ninguna.\nFuente: [RI-FI-ART-011]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "3",
+        "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+        "respuesta": "Respuesta: 1 evaluación de recuperación por asignatura\nCondiciones o límites: No hay condiciones o límites específicos mencionados en la normativa consultada.\nFuente: [RI-FI-ART-012] [RG-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "4",
+        "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+        "respuesta": "Respuesta: La nota final de una asignatura se expresa en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.\nCondiciones o límites: La escala se aplica a la nota final, y se redondea según las reglas establecidas.\nFuente: [RG-ART-023]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "5",
+        "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+        "respuesta": "Respuesta: La actividad final de titulación en las carreras de Ingeniería es la \"Memoria de Título\".\nCondiciones o límites: La actividad final de titulación es obligatoria y se regirá por el Reglamento de Memoria de Título de la Facultad de Ingeniería.\nFuente: [RI-FI-ART-029]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Memoria de Título, RI-FI art. 29.",
+        "revisar": false
+      },
+      {
+        "id": "6",
+        "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+        "respuesta": "Respuesta: Al menos una semana (7 días) antes de la realización de la evaluación.\nCondiciones o límites: El plazo máximo de diez días hábiles para comunicar las calificaciones y pautas de corrección.\nFuente: [RG-ART-025] [RI-FI-ART-010]",
+        "correcta": 1,
+        "motivo": "Una semana (RI-FI art. 10); el plazo de diez días hábiles para calificaciones es correcto y citado (RG art. 25).",
+        "revisar": false
+      },
+      {
+        "id": "7",
+        "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+        "respuesta": "Respuesta: El Comité de Docencia y Asuntos Estudiantiles resuelve en primera instancia una solicitud de continuación de estudios.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-016] [RG-ART-030]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Comité de Docencia y Asuntos Estudiantiles, RI-FI art. 16.",
+        "revisar": false
+      },
+      {
+        "id": "8",
+        "pregunta": "¿La renuncia a la carrera es revocable?",
+        "respuesta": "Respuesta: No, la renuncia a la carrera no es revocable.  \nCondiciones o límites: La renuncia es irrevocable según los artículos citados.  \nFuente: [RG-ART-034], [RI-FI-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "9",
+        "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+        "respuesta": "Respuesta: El año académico tiene dos períodos lectivos ordinarios, cada uno de diecinueve semanas.\nCondiciones o límites: No aplicables.\nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "10",
+        "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+        "respuesta": "Respuesta: No, los estudiantes de Primer Año Común no pueden convalidar asignaturas.\nCondiciones o límites: Los estudiantes de Primer Año Común no podrán revalidar ni convalidar asignaturas.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "11",
+        "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+        "respuesta": "Respuesta: El mínimo de créditos que debe inscribirse por período lectivo ordinario en Ingeniería es ocho.\nCondiciones o límites: Salvo las y los estudiantes que estén terminando sus estudios o aquellos que por falta de requisitos se vean impedidos de inscribir el mínimo de créditos exigidos.\nFuente: [RI-FI-ART-008]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "12",
+        "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+        "respuesta": "Respuesta: Con menos de 15 créditos aprobados al término del segundo semestre quedo en baja académica.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-014]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "13",
+        "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+        "respuesta": "Respuesta: Bajo un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera.\nCondiciones o límites: El promedio se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\nFuente: [RI-FI-ART-014]",
+        "correcta": 0,
+        "motivo": "Mismo error que v6: fórmula del promedio citada solo a RI-FI art. 14 (está en RG art. 28) (P01).",
+        "revisar": false
+      },
+      {
+        "id": "14",
+        "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+        "respuesta": "Respuesta: 80%\nCondiciones o límites: No se especifica un mínimo, pero el límite máximo es 80% para clases teóricas y prácticas.\nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "15",
+        "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+        "respuesta": "Respuesta: 4,5 en la escala de 1 a 7.\nCondiciones o límites: \nFuente: [RI-FI-ART-021]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. 4,5, RI-FI art. 21.",
+        "revisar": false
+      },
+      {
+        "id": "16",
+        "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+        "respuesta": "Respuesta: Cuatro semanas iniciales.\nCondiciones o límites: Excepto los estudiantes de Primer Año Común quienes no podrán revalidar ni convalidar asignaturas.\nFuente: [RI-FI-ART-022]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "17",
+        "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+        "respuesta": "Respuesta: 30 días hábiles\nCondiciones o límites: \nFuente: [RG-ART-038] [RI-FI-ART-023]",
+        "correcta": 0,
+        "motivo": "Dice \"30 días hábiles\"; RI-FI art. 23 y RG art. 38 dicen treinta días, sin \"hábiles\". Dato alterado.",
+        "revisar": true
+      },
+      {
+        "id": "18",
+        "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+        "respuesta": "Respuesta: Debes cursar un máximo de 36 créditos adicionales.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-031]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "19",
+        "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+        "respuesta": "Respuesta: 19 semanas\nCondiciones o límites: sin\nFuente: [RG-ART-016]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "20",
+        "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+        "respuesta": "Respuesta: Tres días hábiles posteriores a la aplicación de la evaluación.\nCondiciones o límites: La solicitud debe realizarse dentro de los tres días hábiles posteriores a la aplicación de la evaluación.\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "21",
+        "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+        "respuesta": "Respuesta: Para ingresar a Ingeniería desde otra universidad chilena, se necesita un promedio ponderado mínimo de 4,5 en la escala de 1 a 7. Para cambio dentro de Ingeniería, se necesita un promedio ponderado mínimo de 4,2 en la escala de 1 a 7.\nCondiciones o límites: No hay evidencia suficiente para el caso de otra universidad extranjera.\nFuente: [RI-FI-ART-017], [RI-FI-ART-018]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "22",
+        "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+        "respuesta": "Respuesta: Un promedio ponderado mínimo de calificaciones de 5,0 en la escala de 1 a 7.\nCondiciones o límites: El estudiante debe cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado de la Universidad de Concepción.\nFuente: [RI-FI-ART-019]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "23",
+        "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+        "respuesta": "Respuesta: Una asignatura no se puede revalidar si ha sido previamente cursada y reprobada en el Plan de Estudio.\nCondiciones o límites: La revalidación no es permitida si la asignatura fue reprobada en el Plan de Estudio.\nFuente: [RI-FI-ART-020]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "24",
+        "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+        "respuesta": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.\nCondiciones o límites: Salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes en el primer año de permanencia.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "correcta": 1,
+        "motivo": "Consecuencia y las dos excepciones (PLEV y primer año), RI-FI art. 14 c).",
+        "revisar": false
+      },
+      {
+        "id": "25",
+        "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+        "respuesta": "Respuesta: No se pueden eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°.\nCondiciones o límites: No se proporciona información específica sobre qué asignaturas corresponden a esas prioridades.\nFuente: [RI-FI-ART-009]",
+        "correcta": 0,
+        "motivo": "Solo remite a prioridades a) y b) y dice que no hay información sobre cuáles son (RI-FI art. 7 estaba disponible). Mismo criterio que D2, v4, v5.",
+        "revisar": false
+      },
+      {
+        "id": "26",
+        "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+        "respuesta": "Respuesta: Para volver a los estudios después de una suspensión, el estudiante debe solicitar su reincorporación al Vicedecano, cumpliendo con los requisitos establecidos y presentando los documentos necesarios. Si la suspensión fue por razones de salud, debe acompañar antecedentes oficiales que demuestren que han cesado los impedimentos que justificaron la suspensión.\nCondiciones o límites: No existe evidencia del plazo máximo de tres años calendario para la extensión de la suspensión.\nFuente: [RG-ART-033], [RI-FI-ART-027], [RG-ART-035]",
+        "correcta": 1,
+        "motivo": "Reincorporación ante el Vicedecano (RI-FI art. 27, RG art. 33). La línea de condiciones dice que no hay evidencia del plazo de tres años (sí está en RG art. 33): afirmación sobre la evidencia, no sobre la norma.",
+        "revisar": true
+      },
+      {
+        "id": "27",
+        "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+        "respuesta": "Respuesta: Los documentos requeridos para la solicitud de suspensión de estudios son: a) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y b) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\nCondiciones o límites: La solicitud debe realizarse dentro de los plazos establecidos en el calendario anual de docencia de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-035] [RI-FI-ART-025]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "28",
+        "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+        "respuesta": "Respuesta: Si estando habilitado no inscribo asignaturas en el período, perderé el derecho a continuar estudios y la calidad de alumno de pregrado, a menos que en el periodo lectivo anterior hayan inscrito una o más asignaturas anuales. Además, el abandono de asignaturas está limitado a un solo caso y solo si no queda con un número de créditos inferior al mínimo establecido.\nCondiciones o límites: El abandono de asignaturas solo puede realizarse una vez por asignatura y solo si no queda con un número de créditos inferior al mínimo establecido.\nFuente: [RG-ART-029], [RG-ART-043]",
+        "correcta": 1,
+        "motivo": "Consecuencia y excepción (RG art. 29); lo del abandono es irrelevante pero correcto y citado (RG art. 43).",
+        "revisar": false
+      },
+      {
+        "id": "29",
+        "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+        "respuesta": "Respuesta: Si no te presentas a una evaluación por causa justificada, puedes solicitar al profesor encargado de la asignatura regularizar tu situación en un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación, presentando los documentos que justifiquen tu inasistencia. Si no lo haces dentro de ese plazo, serás calificado con la nota mínima o con el concepto NCR.\nCondiciones o límites: El plazo es de tres días hábiles posteriores a la aplicación de la evaluación. La regularización puede consistir en una evaluación oral, escrita o de otra modalidad acordada por el profesor.\nFuente: [RG-ART-026]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "30",
+        "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+        "respuesta": "Respuesta: Un profesor puede exigir un 100% de asistencia en actividades como laboratorios, talleres o salidas a terreno.\nCondiciones o límites: La asistencia puede llegar al 100% en actividades tales como laboratorios, talleres, salidas a terreno u otras de naturaleza similar.\nFuente: [RI-FI-ART-013]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "31",
+        "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+        "respuesta": "Respuesta: El Reglamento General de Docencia prevalece sobre el Reglamento Interno de Ingeniería en caso de contradicción.\nCondiciones o límites: No aplica.\nFuente: [RI-FI-ART-034]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "32",
+        "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+        "respuesta": "Respuesta: Hasta el 04 de septiembre.\nCondiciones o límites: No aplica.\nFuente: [CAL-2026-S2-03]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "33",
+        "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+        "respuesta": "Respuesta: 02 de abril.\nCondiciones o límites: Solo aplica para el primer semestre 2026.\nFuente: [CAL-2026-S1-03]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "34",
+        "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+        "respuesta": "Respuesta: Sí tienes derecho a suspender estudios, pero solo hasta cuatro semanas antes del término del periodo lectivo respectivo. \nCondiciones o límites: La suspensión de estudios debe ser solicitada al Vicedecano, con antecedentes oficiales, y no libera al alumno de las obligaciones pendientes. Además, si la suspensión es por más de tres años, se deben cursar y aprobar un máximo de 36 créditos. \nFuente: [RG-ART-031], [RG-ART-032], [RG-ART-035], [RI-FI-ART-027], [RI-FI-ART-031]",
+        "correcta": 0,
+        "motivo": "Derecho y plazo correctos, pero afirma que \"si la suspensión es por más de tres años se deben cursar 36 créditos\": RI-FI art. 31 lo limita a quien solo le faltaba la Memoria. Afirmación extra incorrecta (P01).",
+        "revisar": true
+      },
+      {
+        "id": "35",
+        "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+        "respuesta": "Respuesta: 10 de agosto.\nCondiciones o límites: sin información adicional.\nFuente: [CAL-2026-S2-02]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "36",
+        "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+        "respuesta": "Respuesta: Las fechas de inscripción de las asignaturas del segundo semestre 2026 son 03 – 07 de agosto. No existe información sobre el mínimo de créditos.\nCondiciones o límites: No hay condiciones o límites específicos que se mencionen en la normativa consultada para este caso.\nFuente: [CAL-2026-S2-01] (fechas de inscripción), sin respaldo en la normativa consultada (mínimo de créditos)",
+        "correcta": 0,
+        "motivo": "Da las fechas, pero dice que no hay información del mínimo de créditos (8, RI-FI art. 8). Respuesta incompleta.",
+        "revisar": false
+      },
+      {
+        "id": "37",
+        "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+        "respuesta": "Respuesta: 11 de diciembre\nCondiciones o límites: \nFuente: [CAL-2026-S2-04]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "38",
+        "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+        "respuesta": "Respuesta: La escala de notas del Reglamento General sí se aplica en Ingeniería, y la nota de aprobación es 4,0.\nCondiciones o límites: La escala se aplica en general, incluyendo en Ingeniería, según el Reglamento General de Docencia de Pregrado.\nFuente: [RG-ART-023], [RG-ART-048], [RG-PREAMBULO]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "39",
+        "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+        "respuesta": "Respuesta: 14 – 23 de diciembre.\nCondiciones o límites: \nFuente: [CAL-2026-S2-05]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "40",
+        "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+        "respuesta": "Respuesta: El Reglamento de Memoria de Título de la Facultad de Ingeniería rige la Memoria de Título, y esta pesa un 40% en la nota de titulación.\nCondiciones o límites: \nFuente: [RI-FI-ART-029]",
+        "correcta": 0,
+        "motivo": "Reglamento y 40% correctos, pero solo cita RI-FI art. 29; el 40% está en art. 30. Dato sin respaldo en la cita.",
+        "revisar": false
+      },
+      {
+        "id": "41",
+        "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: El Artículo 90 no existe en el Reglamento Interno de Docencia de Pregrado de Ingeniería según la normativa consultada.\nCondiciones o límites: El artículo no está presente en la normativa.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Indica que el art. 90 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "42",
+        "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+        "respuesta": "Respuesta: El Artículo 36 no existe en la normativa consultada.\nCondiciones o límites: El artículo en cuestión no está presente en la normativa consultada.\nFuente: [RI-FI art. 36]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "43",
+        "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: El Artículo 100 no existe en el Reglamento General de Docencia de Pregrado.\nCondiciones o límites: Ninguna.\nFuente: [estado: no_existe | no existen en la normativa: RG art. 100]",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Indica que el art. 100 no existe.",
+        "revisar": false
+      },
+      {
+        "id": "44",
+        "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+        "respuesta": "Respuesta: No existe información en la normativa consultada sobre el Artículo 70 del Reglamento General de Docencia de Pregrado.\nCondiciones o límites: No hay información disponible.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Respuesta idéntica a v6: mismo veredicto. Se abstiene sin inventar sobre el art. 70.",
+        "revisar": false
+      },
+      {
+        "id": "45",
+        "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+        "respuesta": "Respuesta: El inciso d) del Artículo 14 del RI-FI no existe.\nCondiciones o límites: El Artículo 14° solo menciona tres incisos (a), b) y c).\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "46",
+        "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+        "respuesta": "Respuesta: El inciso c) del Artículo 25 del RI-FI no está disponible en la normativa consultada.\nCondiciones o límites: No hay evidencia que respalde el inciso c) del Artículo 25.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "47",
+        "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+        "respuesta": "Respuesta: No existe información en el texto proporcionado que indique el número máximo de créditos fijado por el Artículo 8° para inscribir por semestre.\nCondiciones o límites: No hay información suficiente en el texto proporcionado.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "48",
+        "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+        "respuesta": "Respuesta: No existe información sobre la nota mínima del Artículo 12.  \nCondiciones o límites: El Artículo 12 no establece una nota mínima, sino que habla del derecho a una evaluación de recuperación.  \nFuente: [RI-FI-ART-012]",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "49",
+        "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+        "respuesta": "Respuesta: No existe un feriado nacional el 30 de septiembre según el calendario de docencia 2026.\nCondiciones o límites: No hay información sobre el 30 de septiembre.\nFuente: sin respaldo en la normativa consultada",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      },
+      {
+        "id": "50",
+        "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+        "respuesta": "Respuesta: Falta evidencia para determinar el promedio exigido para una tercera carrera simultánea.\nCondiciones o límites: No hay información suficiente en la normativa consultada para responder la pregunta.\nFuente: sin respaldo en la normativa consultada.",
+        "correcta": 1,
+        "motivo": "Dato correcto y respaldado por la cita; condiciones correctas o relleno (P18).",
+        "revisar": false
+      }
+    ]
+  }
+}

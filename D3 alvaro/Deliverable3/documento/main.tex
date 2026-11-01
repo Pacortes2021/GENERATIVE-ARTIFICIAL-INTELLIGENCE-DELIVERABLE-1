@@ -1,0 +1,100 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-noshorthands,es-tabla]{babel}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[margin=0.95cm,top=0.85cm,bottom=0.85cm]{geometry}
+\usepackage{multicol}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage[table]{xcolor}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\definecolor{azul}{HTML}{14334B}
+\definecolor{celeste}{HTML}{EAF3F8}
+\definecolor{acento}{HTML}{006699}
+\definecolor{gris}{HTML}{4A5560}
+\hypersetup{colorlinks=true,urlcolor=acento,linkcolor=acento}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+\setlength{\columnsep}{0.6cm}
+\newcommand{\seccion}[1]{\par\vspace{4pt}{\color{azul}\bfseries\normalsize #1}\par\vspace{1pt}}
+\newcommand{\agente}[1]{{\color{azul}\bfseries #1}}
+\newcommand{\VIDEO}{\textcolor{red}{Pendiente}}
+
+\begin{document}
+
+{\color{azul}\bfseries\large Sistema de agentes para el asistente de normativa de pregrado (Ingeniería UdeC)}\par
+\vspace{1pt}
+{\color{acento}\bfseries\footnotesize Entregable 3: cuatro agentes con decisiones y bucles sobre Qwen3-4B, con ablación por técnica}\par
+\vspace{2pt}
+{\scriptsize \textbf{Generative Artificial Intelligence (580694)} \textbar{} Segundo semestre 2026 \textbar{} \textbf{Equipo:} Álvaro Contreras y Pablo Cortés}\par
+\vspace{1pt}
+{\scriptsize \textbf{Repositorio:} \href{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1}{github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1} \hfill \textbf{Video (3 min):} \VIDEO}\par
+\vspace{2pt}\hrule height 0.8pt\vspace{3pt}
+
+{\centering\includegraphics[width=0.64\linewidth]{grafo_compacto.pdf}\par}
+\vspace{1pt}
+{\scriptsize\color{gris} \textbf{Grafo de agentes.} Negro: flujo principal (cada arista indica lo que se pasa); \textcolor{red!65}{rojo discontinuo}: bucles de decisión; \textcolor{violet!75}{violeta punteado}: ramas decididas por el Enrutador; naranjo: herramientas. Parada: el Verificador aprueba, o se agotan los topes (ReAct $\leq$3 acciones por sub-consulta, $\leq$2 ciclos de corrección) y sale el último borrador \emph{marcado como no aprobado}.\par}
+\vspace{1pt}\hrule height 0.4pt
+
+\begin{multicols}{2}\fontsize{9.5}{11.3}\selectfont
+
+\seccion{1. Continuidad con E1 y E2}
+Misma tarea y criterio: responder preguntas sobre el Reglamento General, el Reglamento Interno FI y el Calendario 2026 con el dato exacto y la cita que lo respalda (abstención si no existe o la premisa es falsa). Misma falla: con el RAG del E2 quedan excepciones omitidas, preguntas de cruce a medias y citas que no respaldan el dato. Se mantienen \textbf{Qwen3-4B} (NF4, sin thinking), el corpus, el recuperador E5 y la generación del E2; las herramientas envuelven ese recuperador.
+
+\textbf{Desviación declarada:} se agregan 25 preguntas difíciles (cálculo, multi-salto, colisión léxica, premisa falsa) porque en las 50 originales el E2 ya acierta 40; el E2 se corrió \emph{sin cambios} sobre ellas.
+
+\seccion{2. Agentes, decisiones y técnicas}
+Cada agente: una llamada a Qwen3-4B con prompt propio (\texttt{prompts/01-04}).
+
+\agente{Enrutador.} pregunta $\to$ JSON \{tipo, sub-consultas, documentos\}. \emph{Decide}: premisa falsa con artículo $\to$ \texttt{existe\_articulo} sin buscar; el tipo fija el modo del Redactor. \emph{Técnica:} few-shot $\to$ preguntas de cruce respondidas a medias.
+
+\agente{Recuperador.} sub-consulta + última observación $\to$ evidencia + estado. \emph{Decide} cada turno: buscar, traer, verificar o \emph{suficiente}. \emph{Técnica:} ReAct con acciones JSON $\to$ artículo equivocado por colisión léxica.
+
+\agente{Redactor.} pregunta + modo + evidencia (+ motivo del Verificador) $\to$ Respuesta / Condiciones / Fuente. Se abstiene si el estado es \emph{no\_existe} o \emph{insuficiente}. \emph{Técnica:} cadena de pensamiento en \texttt{<pensar>} (se elimina) $\to$ excepciones omitidas y cálculos.
+
+\agente{Verificador.} borrador + evidencia + \texttt{chequear\_citas} $\to$ \{aprobado, destino, motivo\}. \emph{Decide}: aprobar (STOP), devolver al Redactor o al Recuperador con el motivo. \emph{Técnica:} self-refine con criterios explícitos $\to$ cita que no respalda el dato.
+
+\textbf{Por qué esta división:} separar \emph{buscar} de \emph{redactar} permite re-buscar sin rehacer la redacción; separar \emph{redactar} de \emph{auditar} evita que el modelo apruebe su propio texto; cruce y premisa falsa necesitan otro camino desde el inicio.
+
+\seccion{3. Resultados y ablación}
+Mismas 75 entradas e igual criterio en todas las filas; cada ablación quita \emph{una} técnica.
+
+\vspace{2pt}
+{\small
+\begin{tabularx}{\linewidth}{@{}Xccc@{}}
+\toprule
+\textbf{Configuración} & \textbf{50 orig.} & \textbf{25 dif.} & \textbf{Llam.}\\
+\midrule
+Prompting directo & 1 (2\,\%) & 0 (0\,\%) & 1\\
+RAG del E2 & 40 (80\,\%) & 16 (64\,\%) & 1\\
+\rowcolor{celeste}\textbf{Agentes (completo)} & \textbf{46 (92\,\%)} & \textbf{20 (80\,\%)} & 9,5\\
+\quad sin few-shot & 44 (88\,\%) & 19 (76\,\%) & 10,7\\
+\quad sin ReAct & 45 (90\,\%) & 18 (72\,\%) & 3,9\\
+\quad sin CoT & 46 (92\,\%) & 19 (76\,\%) & 8,3\\
+\quad sin Verificador & 44 (88\,\%) & 19 (76\,\%) & 6,4\\
+\bottomrule
+\end{tabularx}}
+{\scriptsize\color{gris} Llam.: llamadas al modelo por pregunta, excluyendo herramientas automáticas. \emph{Sin Verificador}: primer borrador del Redactor (de las trazas; mismo prompt y semilla).\par}
+
+Frente al E2, pregunta a pregunta: en las 50 originales \textbf{7 mejoran y 1 empeora}; en las difíciles \textbf{6 mejoran y 2 empeoran}. El completo es el mejor o empata, pero ninguna ablación baja más de 2 preguntas por set: con $n=50/25$ y una corrida, no se demuestra una ventaja estable de cada técnica.
+
+\seccion{4. Qué aporta cada técnica}
+\textbf{ReAct:} la mayor caída en las difíciles ($-2$); sin re-buscar falta evidencia (H05 no puede calcular la nota de titulación).
+\textbf{Few-shot:} sin ejemplos el Enrutador marca 6 premisas falsas en vez de 14 y nunca usa el tipo \emph{cruce}; la herramienta \texttt{existe} compensa.
+\textbf{CoT:} empata en las originales y duplica el tiempo (55 vs.\ 110\,s por pregunta en una T4), pero sin él falla un cálculo y acepta una premisa falsa (H06, H21).
+\textbf{Verificador:} +2 y +1 netos, pero su aprobación separa poco (89\,\% de acierto en lo aprobado vs.\ 82\,\% en lo rechazado).
+
+\seccion{5. Caso de falla (H03)}
+\emph{Días entre el inicio de clases y la fecha límite de modificación de cada semestre.} Las fechas de inicio no quedan entre las 6 evidencias del Redactor, que inventa 31 y 262 días. El Verificador lo rechaza; el Redactor se abstiene y el Verificador lo devuelve dos veces al Recuperador, que repite búsquedas parecidas. Sale \textbf{no aprobada} tras 19 llamadas: el bucle evita un cálculo inventado, pero no corrige la recuperación.
+
+\seccion{6. Límites y reproducibilidad}
+El sistema se ajustó en tres iteraciones con mecanismos generales (no reglas por pregunta), diagnosticados con las trazas de estas mismas preguntas: las cifras describen el sistema final sobre preguntas conocidas, no su generalización. Corrección propuesta con Claude según la pauta del E2, con motivo por fila; nueve casos v6 siguen marcados para revisión. Se puntúa el último borrador aunque no esté aprobado internamente. Costo: $\sim$9,5 llamadas y $\sim$2\,min por pregunta. El repositorio guarda prompts, trazas, planillas de corrección y el cuaderno de Colab.
+
+\end{multicols}
+\end{document}

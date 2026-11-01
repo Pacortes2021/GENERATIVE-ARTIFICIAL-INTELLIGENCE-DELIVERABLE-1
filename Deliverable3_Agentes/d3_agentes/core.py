@@ -44,12 +44,8 @@ def _quote_matches(quote: str, source: str) -> bool:
             return True
         if words[-1] in stopwords and ' '.join(words[:-1]) in norm_s:
             return True
-        min_match_len = max(5, int(len(words) * 0.7))
-        for window in range(len(words) - 1, min_match_len - 1, -1):
-            for i in range(len(words) - window + 1):
-                sub = ' '.join(words[i:i + window])
-                if sub in norm_s:
-                    return True
+        if words[0] in stopwords and words[-1] in stopwords and ' '.join(words[1:-1]) in norm_s:
+            return True
     return False
 
 
@@ -142,10 +138,7 @@ def parse_decision(raw, role, evidence):
             raw_quote = item['extracto'].strip()
             if len(raw_quote) < 8:
                 raise ValueError('El extracto no coincide con la fuente.')
-            palabras_ausencia = ('no existe', 'no figura', 'no se encuentra', 'no incluye',
-                                 'no contiene', 'no establece', 'ausente', 'no contempla',
-                                 'no cuenta', 'no está', 'inexistente')
-            es_ausencia = item['fuente'].startswith('INV-') or any(p in raw_quote.lower() for p in palabras_ausencia)
+            es_ausencia = item['fuente'].startswith('INV-')
             if not es_ausencia and not _quote_matches(raw_quote, evidence[item['fuente']]['texto']):
                 healed = False
                 for src_id, doc in evidence.items():
@@ -304,15 +297,22 @@ class AgentSystem:
                     patrones_ausencia = (
                         'no establece', 'no especifica', 'no fija', 'no contempla',
                         'no menciona', 'no incluye', 'no contiene', 'no existe',
-                        'no figura', 'ausente', 'no se encuentra', 'no se señala'
+                        'no figura', 'ausente', 'no se encuentra', 'no se señala',
+                        'no identifica'
+                    )
+                    patrones_objecion = (
+                        'es incorrecto', 'no es correcto', 'incorrecto', 'falso',
+                        'erróneo', 'error', 'sí existe', 'sí se encuentra', 'sí figura',
+                        'sí establece', 'sí contempla', 'sí fija', 'sí señala',
+                        'el artículo establece', 'el reglamento establece'
                     )
                     draft_lower = draft.lower()
                     notice_lower = notice.lower()
                     missing = cited_ids(draft) - evidence.keys()
-                    if (not missing and
+                    es_objecion = any(p in notice_lower for p in patrones_objecion)
+                    if (not missing and not es_objecion and
                             any(p in draft_lower for p in patrones_ausencia) and
-                            any(p in notice_lower for p in patrones_ausencia) and
-                            'sí existe' not in notice_lower and 'sí se encuentra' not in notice_lower):
+                            any(p in notice_lower for p in patrones_ausencia)):
                         emit('consenso_semantico', detalle='Auditor y Redactor coinciden en la ausencia de la condición o norma.')
                         return finish('aceptada', draft)
                 target = 'redactor' if action == 'corregir' else 'investigador'

@@ -171,24 +171,27 @@ Cada técnica ataca una falla diagnosticada en E1/E2 mediante módulos concatena
 Se evaluaron en GPU T4 las seis configuraciones sobre ambos conjuntos en el diseño factorial controlado (450 inferencias base):
 \begin{center}
 \vspace{-3pt}
-{\fontsize{6.2}{7.6}\selectfont
-\begin{tabular}{@{}l@{\hspace{7pt}}c@{\hspace{7pt}}c@{\hspace{7pt}}c@{}}
+{\fontsize{5.9}{7.1}\selectfont
+\begin{tabular}{@{}l@{\hspace{5pt}}c@{\hspace{5pt}}c@{\hspace{5pt}}c@{}}
 \toprule
 \textbf{Configuración} & \textbf{Base (50)} & \textbf{Difícil (25)} & \textbf{Llam./q} \\
 \midrule
 Directo (E1)             & 1/50 \ (2\%)   & 0/25 \ (0\%)   & 1{,}0 \\
 RAG Monolítico (E2)      & 40/50 (80\%)  & 16/25 (64\%)  & 1{,}0 \\
 \midrule
-\textbf{Multi-Agente (E3)}& \textbf{43/50 (86\%)} & \textbf{18/25 (72\%)\textsuperscript{*}} & \textbf{4{,}5} \\
+\multicolumn{4}{@{}l}{\textit{Diseño factorial controlado (versión base congelada):}} \\
+Multi-Agente base        & 34/50 (68\%)  & 11/25 (44\%)  & 5{,}1 \\
 \quad -- sin descomp.    & 34/50 (68\%)  & 14/25 (56\%)  & 5{,}4 \\
 \quad -- sin complet.    & 34/50 (68\%)  & 12/25 (48\%)  & 5{,}2 \\
 \quad -- sin verific.    & 32/50 (64\%)  & 14/25 (56\%)  & 4{,}9 \\
+\midrule
+\textbf{Multi-Agente Final (E3)} & \textbf{43/50 (86\%)} & \textbf{18/25 (72\%)\textsuperscript{*}} & \textbf{4{,}5} \\
 \bottomrule
 \end{tabular}
 }
 \par\vspace{1.5pt}
-{\fontsize{5.1}{6.1}\selectfont\color{gris}
-\textbf{Tabla 1:} Evaluación experimental en GPU T4 (Qwen3-4B, 450 corridas). \textit{Base}: 50 consultas oficiales D1/D2 (40 vigentes donde la base obtiene 34/40 y 10 premisas falsas donde el consenso añade 9 aciertos; las variantes de ablación del lote inicial no incluyen este ajuste). \textit{Difícil}: casos límite H01--H25 (25 consultas; \textsuperscript{*}el Auditor aceptó internamente 21/25 [84\%], pero la pauta externa estricta califica 18/25 [72\%] al penalizar cálculo sin división en H07, plazo no aplicable en H12 y confirmación de fecha en H23). \textit{Llam./q}: promedio de inferencias de modelo por consulta.}
+{\fontsize{4.8}{5.8}\selectfont\color{gris}
+\textbf{Tabla 1:} Evaluación en GPU T4 (Qwen3-4B). \textit{Lote factorial}: 450 corridas en versión congelada donde el validador estricto provocó bloqueo en premisas falsas y sobre-cautela en difíciles. \textit{Final}: validaciones posteriores con consenso en premisas falsas (+9 aciertos en base) y normalización en difíciles (\textsuperscript{*}21/25 interna; 18/25 externa al penalizar H07, H12 y H23). \textit{Llam./q}: inferencias por consulta.}
 \vspace{-2pt}
 \end{center}
 

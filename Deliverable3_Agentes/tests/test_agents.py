@@ -293,5 +293,27 @@ class AgentTests(unittest.TestCase):
             combine(current,[{'id':'B','cita':'B','texto':'otro'}],replace(Limits(),evidence_units=1))
         self.assertEqual(current,initial)
 
+    def test_fabricated_absence_quote_rejected_on_standard_article(self):
+        evidence = {'RG-ART-011': {'texto': 'La calificación final mínima de aprobación es 4,0.'}}
+        value = reviewer()
+        value['apoyos'] = [{'afirmacion': 'No hay nota', 'fuente': 'RG-ART-011',
+                            'extracto': 'No existe ningún requisito para aprobar'}]
+        with self.assertRaises(ValueError):
+            parse_decision(json.dumps(value), 'auditor', evidence)
+
+    def test_adversarial_auditor_correction_does_not_trigger_consensus(self):
+        draft_text = 'La nota mínima no existe en el reglamento. [RI-FI-ART-011]'
+        correction_msg = 'Es incorrecto decir que la nota mínima no existe; el artículo establece 4,0.'
+        result = self.run_script([
+            investigate(),
+            writer(answer=draft_text),
+            {'accion': 'corregir', 'mensaje': correction_msg, 'apoyos': []},
+            writer(answer='La nota mínima es 4,0. [RI-FI-ART-011]'),
+            reviewer(action='aceptar')
+        ])
+        self.assertFalse(any(e['tipo'] == 'consenso_semantico' for e in result['traza']))
+        self.assertEqual(result['estado'], 'aceptada')
+        self.assertEqual(result['respuesta_modelo'], 'La nota mínima es 4,0. [RI-FI-ART-011]')
+
 
 if __name__ == '__main__': unittest.main()

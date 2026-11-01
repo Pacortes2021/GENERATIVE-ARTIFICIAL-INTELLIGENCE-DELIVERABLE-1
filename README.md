@@ -36,11 +36,13 @@ Evaluación bajo la pauta estricta oficial (`LEEME_PAUTA.md` y criterios D2 en G
 |---|:---:|:---:|:---:|:---:|:---:|
 | **`baseline_directo` (E1)** | 1 / 50 (2,0%) | 1 / 40 (2,5%) | 0 / 25 (0,0%) | 1,0 llam. | 6,7 s |
 | **`rag_d2` (E2)** | 40 / 50 (80,0%) | 30 / 40 (75,0%) | 16 / 25 (64,0%) | 1,0 llam. | 15,1 s |
-| **`agentes_completo` (Final Normalizado)** | **43 / 50 (86,0%)** | **34 / 40 (85,0%)** | **18 / 25 (72,0%)\*** | **4,5 llam.** | **133,0 s** |
-| \quad -- Preliminar (auditor estricto) | 34 / 50 (68,0%) | 34 / 40 (85,0%) | 11 / 25 (44,0%) | 5,1 llam. | 152,3 s |
-| **`sin_descomposicion`** | 34 / 50 (68,0%) | 32 / 40 (80,0%) | 14 / 25 (56,0%) | 5,4 llam. | 161,5 s |
-| **`sin_completitud`** | 34 / 50 (68,0%) | 33 / 40 (82,5%) | 12 / 25 (48,0%) | 5,2 llam. | 142,1 s |
-| **`sin_verificacion`** | 32 / 50 (64,0%) | 31 / 40 (77,5%) | 14 / 25 (56,0%) | 4,9 llam. | 139,2 s |
+| **Diseño Factorial Controlado (Versión Base):** | | | | | |
+| \quad **`agentes_completo` (Preliminar)** | 34 / 50 (68,0%) | 34 / 40 (85,0%) | 11 / 25 (44,0%) | 5,1 llam. | 152,3 s |
+| \quad -- `sin_descomposicion` | 34 / 50 (68,0%) | 32 / 40 (80,0%) | 14 / 25 (56,0%) | 5,4 llam. | 161,5 s |
+| \quad -- `sin_completitud` | 34 / 50 (68,0%) | 33 / 40 (82,5%) | 12 / 25 (48,0%) | 5,2 llam. | 142,1 s |
+| \quad -- `sin_verificacion` | 32 / 50 (64,0%) | 31 / 40 (77,5%) | 14 / 25 (56,0%) | 4,9 llam. | 139,2 s |
+| **Multi-Agente Final (E3 Optimizado):** | | | | | |
+| \quad **`agentes_completo` (Final Normalizado)** | **43 / 50 (86,0%)** | **34 / 40 (85,0%)** | **18 / 25 (72,0%)\*** | **4,5 llam.** | **133,0 s** |
 
 *Nota metodológica:* En la corrida preliminar factorial, el validador estricto provocó livelock en premisas falsas (0/10) y sobre-cautela léxica en consultas complejas (11/25). Tras implementar la *alineación de parada* y el *consenso semántico* para premisas falsas (alcanzando 9/10 y 43/50 global) junto con la normalización tipográfica del validador de extractos en el conjunto difícil, el sistema multi-agente emitió 21 respuestas aceptadas internamente por el Auditor (84,0%). Bajo la pauta de corrección externa estricta (`LEEME_PAUTA.md`), alcanza un definitivo **18/25 (72,0%)\***, superando a RAG D2 (16/25, 64,0%) por +8,0 pp en razonamiento multi-regla. Las 3 respuestas penalizadas externamente pese a la aceptación interna corresponden a razonamiento aritmético sin división (H07), adición de un plazo no aplicable (H12) y confirmación de fecha engañosa en calendario (H23).
 

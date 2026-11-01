@@ -16,12 +16,12 @@
 \setlength{\parskip}{2pt}
 \newcommand{\seccion}[1]{\par\vspace{3pt}{\color{azul}\bfseries\fontsize{10}{11}\selectfont #1}\par\vspace{1pt}}
 \newcommand{\rol}[1]{{\color{azul}\bfseries #1}}
-\newcommand{\REPO}{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/main/D3\%20alvaro}
+\newcommand{\REPO}{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/main/Deliverable\%203}
 \begin{document}
 {\color{azul}\bfseries\fontsize{14}{16}\selectfont Agentes para consultas de normativa de pregrado}\par
-{\color{acento}\bfseries\fontsize{10}{12}\selectfont Ingeniería UdeC $\cdot$ Entregable 3 $\cdot$ Diseño y evaluación del sistema v6}\par
+{\color{acento}\bfseries\fontsize{10}{12}\selectfont Entregable 3 $\cdot$ Diseño y evaluación de agentes para consultas normativas}\par
 {\fontsize{8}{9.4}\selectfont \textbf{Generative Artificial Intelligence (580694)} $\cdot$ Segundo semestre 2026\hfill Álvaro Contreras y Pablo Cortés}\par
-{\fontsize{8}{9.4}\selectfont \textbf{Repositorio y reproducción:} \href{\REPO}{D3 alvaro / README}\hfill \textbf{Video ($\leq$3 min):} \textcolor{gris}{Pendiente de enlace público}}\par
+{\fontsize{8}{9.4}\selectfont \textbf{Repositorio y reproducción:} \href{\REPO}{Deliverable 3 / README}\hfill \textbf{Video ($\leq$3 min):} \textcolor{gris}{Pendiente de enlace público}}\par
 \vspace{2pt}{\color{azul}\hrule height .7pt}\vspace{2pt}
 
 \seccion{1. Continuidad, tarea y modelo}
@@ -38,25 +38,25 @@ Continuamos D1/D2: consultas al Reglamento General, al Reglamento Interno de Ing
 \seccion{3. Roles, contratos y técnicas}
 Cada rol tiene un prompt en \texttt{prompts/01-04}. Enrutador, Recuperador y Verificador deciden cómo continuar o detenerse. El controlador envía siempre el borrador al Verificador.
 
-\rol{Enrutador.} Recibe la pregunta y entrega un plan JSON \{tipo, sub\_consultas, documentos\}. Clasifica, descompone y define el modo de respuesta; no usa herramientas directas. \textbf{Few-shot}: ejemplos para orientar clasificación y descomposición.
+\rol{Enrutador.} Recibe la pregunta y entrega un plan JSON \{tipo, sub\_consultas, documentos\}. Clasifica, descompone y define el modo de respuesta; no usa herramientas directas. \textbf{Few-shot}: guía la descomposición de preguntas que combinan normas.
 
-\rol{Recuperador.} Recibe subconsulta, evidencia y última observación. Elige una acción JSON \{accion, args\}: \texttt{buscar}, \texttt{traer}, \texttt{existe} o \texttt{suficiente}. Entrega evidencia y estado. Termina cada subconsulta por suficiencia, artículo inexistente o tres acciones. \textbf{ReAct}: adapta la búsqueda a sus resultados.
+\rol{Recuperador.} Recibe subconsulta, evidencia y última observación. Elige una acción JSON \{accion, args\}: \texttt{buscar}, \texttt{traer}, \texttt{existe} o \texttt{suficiente}. Entrega evidencia y estado. Termina cada subconsulta por suficiencia, artículo inexistente o tres acciones. \textbf{ReAct}: permite buscar de nuevo cuando se recupera un artículo equivocado.
 
-\rol{Redactor.} Recibe pregunta, modo, evidencia y objeciones; v6 no incluye el borrador anterior en su prompt. Produce Respuesta / Condiciones / Fuente; corrige o declara falta de respaldo. No usa herramientas directas. \textbf{CoT por prompt}: razona sobre cálculos y excepciones; ese bloque se retira de la respuesta final.
+\rol{Redactor.} Recibe pregunta, modo, evidencia y objeciones; el prompt no incluye el borrador anterior. Produce Respuesta / Condiciones / Fuente; corrige o declara falta de respaldo. No usa herramientas directas. \textbf{CoT}: guía el razonamiento para aplicar excepciones y resolver cálculos; ese bloque se retira de la respuesta final.
 
-\rol{Verificador.} Recibe pregunta, borrador, evidencia y resultado de \texttt{chequear\_citas}. Devuelve JSON \{aprobado, destino, motivo\}: termina o solicita correcciones al Redactor o Recuperador. \textbf{Self-refine}: revisión iterativa de suficiencia y citas.
+\rol{Verificador.} Recibe pregunta, borrador, evidencia y resultado de \texttt{chequear\_citas}. Devuelve JSON \{aprobado, destino, motivo\}: termina o solicita correcciones al Redactor o Recuperador. \textbf{Self-refine}: solicita corregir respuestas con citas sin respaldo o información insuficiente.
 
 \textbf{División del trabajo.} Separar planificación, búsqueda, redacción y revisión permite corregir la etapa que falla. Usar el mismo modelo no garantiza independencia entre sus juicios.
 
 \seccion{4. Ablaciones y alcance}
-\textbf{Sin few-shot:} retira ejemplos del Enrutador. \textbf{Sin CoT:} retira la instrucción del Redactor; conserva la del Verificador. \textbf{Sin ReAct:} elimina ciclo y llamadas del Recuperador, manteniendo la búsqueda inicial. \textbf{Sin Verificador:} evalúa el primer borrador guardado en las trazas de v6; no es otra ejecución GPU. Estas dos últimas variantes eliminan componentes completos.
+\textbf{Sin few-shot:} retira ejemplos del Enrutador. \textbf{Sin CoT:} retira la instrucción del Redactor; conserva la del Verificador. \textbf{Sin ReAct:} elimina ciclo y llamadas del Recuperador, manteniendo la búsqueda inicial. \textbf{Sin Verificador:} evalúa el primer borrador guardado en las trazas del sistema completo; no es otra ejecución GPU. Estas dos últimas variantes eliminan componentes completos.
 
 Todas usan las mismas consultas y pauta. La semilla depende del prompt: modificarlo cambia también el muestreo. Una ejecución por condición y diferencias de uno o dos aciertos no establecen ventajas robustas. Las consultas se usaron durante el desarrollo; no se demuestra generalización.
 \end{minipage}\hfill
 \begin{minipage}[t]{0.486\linewidth}
 \fontsize{9}{10.4}\selectfont
-\seccion{5. Resultados provisionales}
-Calificación propuesta con apoyo de Claude, según la pauta de D2 y con justificación por caso. \textbf{Nueve casos de v6 requieren revisión}. Se evalúa el texto final, independientemente de la aprobación interna.
+\seccion{5. Resultados}
+Calificación propuesta con apoyo de Claude y revisada por el equipo, según la pauta de D2 y con justificación por caso. Se evalúa el texto final, independientemente de la aprobación interna.
 
 {\fontsize{8.2}{9.6}\selectfont\setlength{\tabcolsep}{3pt}
 \renewcommand{\arraystretch}{1.08}
@@ -66,7 +66,7 @@ Calificación propuesta con apoyo de Claude, según la pauta de D2 y con justifi
 \midrule
 Directo & 1 (2\%) & 0 (0\%) & 1\\
 RAG D2 & 40 (80\%) & 16 (64\%) & 1\\
-\rowcolor{suave}\textbf{Completo v6} & \textbf{46 (92\%)} & \textbf{20 (80\%)} & \textbf{9,5}\\
+\rowcolor{suave}\textbf{Sistema completo} & \textbf{46 (92\%)} & \textbf{20 (80\%)} & \textbf{9,5}\\
 Sin few-shot & 44 (88\%) & 19 (76\%) & 10,7\\
 Sin ReAct & 45 (90\%) & 18 (72\%) & 3,9\\
 Sin CoT (Redactor) & 46 (92\%) & 19 (76\%) & 8,3\\
@@ -82,9 +82,9 @@ Sin ReAct hay dos aciertos menos en las difíciles; H05 no recupera evidencia pa
 \seccion{6. Fallo, costo y límites}
 \textbf{H03: plazo para modificar asignaturas en cada semestre.} La evidencia seleccionada omite fechas necesarias y el primer borrador inventa 31 y 262 días. El Verificador rechaza, pero las nuevas búsquedas y correcciones no lo resuelven: termina \textbf{no aprobado tras 19 llamadas}. Traza: \texttt{resultados\_v6/trazas\_D3.json}, clave \texttt{dificil\_25:H03}.
 
-\textbf{Aprobar no equivale a acertar:} siete de 64 aprobaciones son incorrectas; nueve aciertos son borradores rechazados. El Verificador recibe hasta 700 caracteres por unidad; comprobar citas no garantiza respaldo semántico. Promedio de v6: 9,48 llamadas y 110 s por consulta (711 llamadas en 75 consultas, T4).
+\textbf{Aprobar no equivale a acertar:} siete de 64 aprobaciones son incorrectas; nueve aciertos son borradores rechazados. El Verificador recibe hasta 700 caracteres por unidad; comprobar citas no garantiza respaldo semántico. Promedio del sistema: 9,48 llamadas y 110 s por consulta (711 llamadas en 75 consultas, T4).
 
-\seccion{7. Reproducción y trazabilidad}
-\href{\REPO}{\texttt{D3 alvaro/README.md}} enlaza Colab, prompts, CSV, planillas y trazas resumidas por consulta. \texttt{Demo\_D3.ipynb} permite ejecutar una consulta e inspeccionar H03 histórico; \texttt{auditar.py} comprueba archivos y concordancia CSV/trazas. Se conserva el ZIP original, pero no todas las versiones del entorno; no se garantizan resultados idénticos.
+\seccion{7. Cómo ejecutar y revisar el sistema}
+El \href{\REPO}{README de Deliverable 3} explica cómo abrir el notebook en Colab y ejecutar consultas con una GPU T4. Allí se muestran las decisiones de los agentes y la respuesta final. El repositorio incluye código, prompts y resultados para comprobar la evaluación. Los registros guardados permiten revisar qué ocurrió en cada consulta, incluido H03. Como no se fijaron todas las versiones originales de las bibliotecas, una nueva ejecución puede dar respuestas distintas.
 \end{minipage}
 \end{document}

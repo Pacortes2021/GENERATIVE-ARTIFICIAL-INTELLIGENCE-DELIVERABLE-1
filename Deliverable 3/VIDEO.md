@@ -1,13 +1,13 @@
 # Video D3
 
-- [Abrir el notebook en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/D3%20alvaro/Deliverable3/Demo_D3.ipynb).
+- [Abrir el notebook en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable%203/Deliverable3/Demo_D3.ipynb).
 - [Notebook en el repositorio](Deliverable3/Demo_D3.ipynb).
 - [Guion con tiempos y narración](Guion_video_D3.md).
 
 ## Uso
 
 1. En Colab con T4, ejecutar A1–A5 antes de grabar. El paquete se descarga del repositorio y se comprueba contra el manifiesto del mismo commit.
-2. Grabar B0–B4: arquitectura, dos consultas nuevas, fallo histórico H03 y resultados provisionales.
+2. Grabar B0–B4: arquitectura, dos consultas nuevas, fallo histórico H03 y resultados revisados por el equipo.
 3. Ejecutar C1 al terminar. Confirmar los identificadores de las ejecuciones del video y descargar el ZIP de evidencia.
 4. Incorporar el ZIP en `evidencia_video/`, publicar una grabación de hasta tres minutos con acceso abierto y añadir su enlace al informe.
 

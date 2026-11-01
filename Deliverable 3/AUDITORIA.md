@@ -38,7 +38,7 @@ Se documentan sin modificar la lógica, porque cambiarla generaría otra versió
 4. El Verificador recibe solo los primeros 700 caracteres por unidad, mientras el Redactor recibe el texto completo.
 5. La semilla depende del prompt: las ablaciones también cambian el muestreo. Son una corrida por condición sobre preguntas usadas durante desarrollo.
 6. Sin ReAct y sin Verificador eliminan componentes, no solo un bloque de instrucciones; sin CoT afecta únicamente al Redactor.
-7. Nueve etiquetas v6 siguen marcadas para revisión. Hay 64 aprobaciones internas: 57 correctas y siete incorrectas según la planilla; otros nueve aciertos son borradores rechazados internamente.
+7. El equipo confirmó el 31 de octubre de 2026 que revisó las calificaciones, incluidos los nueve casos antes pendientes. Se conservan sin modificar las planillas originales y sus marcas históricas; no se ha recalificado ni alterado ninguna respuesta durante esta edición. Hay 64 aprobaciones internas: 57 correctas y siete incorrectas según la planilla; otros nueve aciertos son borradores rechazados internamente.
 8. Los 44/50 y 19/25 de sin Verificador proceden de evaluar el primer borrador de v6; no son una corrida GPU independiente.
 9. Las revisiones exactas originales de pesos/dependencias no están completamente conservadas. Registrar el entorno nuevo no reconstruye el histórico.
 
@@ -53,3 +53,7 @@ Se documentan sin modificar la lógica, porque cambiarla generaría otra versió
 `video/test_soporte_video.py` compara salida y traza con el orquestador original usando un modelo simulado, y verifica feedback, herramientas, interrupción, HTML, hashes del paquete y sintaxis del notebook. No prueba la inferencia GPU; esa comprobación queda para Colab.
 
 Las 29 comprobaciones simuladas y la auditoría de archivos no sustituyen una nueva corrida GPU ni una recalificación independiente.
+
+## Actualización editorial y de ubicación
+
+La carpeta de entrega se renombró a `Deliverable 3`; enlaces, notebooks y paquete de ejecución apuntan a esa ubicación. El PDF liga las técnicas a las fallas diagnosticadas y simplifica la explicación de reproducción. La revisión del equipo se declara a partir de su confirmación; se conservan cifras, controlador, prompts y evidencia histórica.

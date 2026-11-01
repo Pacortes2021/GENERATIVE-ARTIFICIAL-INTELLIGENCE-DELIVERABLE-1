@@ -25,7 +25,7 @@ Los tiempos son orientativos. Mientras el modelo calcula, explicar el recorrido 
 | **Al finalizar B1** | Mostrar **Respuesta final** y **Veredicto interno**. Leer el dato y la cita que efectivamente aparezcan. | «La respuesta obtenida es [leer el dato visible], con estas referencias. Este veredicto es una revisión interna: no sustituye la evaluación externa de exactitud.» |
 | **1:25–2:05** | Ejecutar **B2**. Mostrar la pregunta sobre el artículo 90 y el resultado de existencia. | «Ahora preguntamos por un artículo inexistente. Esta consulta comprueba si el sistema contrasta la premisa antes de responder. Observamos la decisión del Enrutador y la comprobación de existencia. La salida que aparece es [describir brevemente la salida real].» |
 | **2:05–2:30** | Ejecutar **B3**. Señalar el aviso de traza histórica, primer borrador y último borrador. | «Este es un fallo histórico, no una ejecución nueva. En H03 faltaron fechas en la evidencia seleccionada. El primer borrador inventó dos plazos y las correcciones no resolvieron la falta de información. El sistema terminó sin aprobación tras diecinueve llamadas. Detectar un problema no garantiza corregirlo.» |
-| **2:30–2:50** | Ejecutar **B4**. Señalar las filas D2, completo y ablaciones. | «En la evaluación histórica, v6 pasa de cuarenta a cuarenta y seis aciertos sobre cincuenta; en las difíciles, de dieciséis a veinte sobre veinticinco. Las ablaciones comparan qué ocurre al retirar técnicas o componentes. Son resultados provisionales: nueve casos requieren revisión. Código, prompts y evidencia se conservan en el repositorio.» |
+| **2:30–2:50** | Ejecutar **B4**. Señalar las filas D2, completo y ablaciones. | «En la evaluación histórica, el sistema pasa de cuarenta a cuarenta y seis aciertos sobre cincuenta; en las difíciles, de dieciséis a veinte sobre veinticinco. Las ablaciones comparan qué ocurre al retirar técnicas o componentes. La calificación se realizó con apoyo de Claude y fue revisada por el equipo. Código, prompts y evidencia se conservan en el repositorio.» |
 
 ### Si la salida real no coincide con la esperada
 
@@ -49,7 +49,7 @@ No hace falta forzar un bucle de corrección en las consultas en vivo: H03 permi
 
 1. Ejecutar **C1**. Revisar los `run_id` seleccionados y confirmar que coincidan con las ejecuciones visibles en el video. Si grabaste un intento anterior, ajustar `RUN_IDS_EN_VIDEO` antes de exportar.
 2. Descargar `evidencia_video_…zip`. Incluye los intentos, prompts completos, salidas crudas, resultados de herramientas, entorno, fuentes y el fallo H03 histórico separado.
-3. Guardar ese ZIP en `D3 alvaro/evidencia_video/`. Los archivos locales de Colab se pierden al cerrar o reiniciar el entorno.
+3. Guardar ese ZIP en `Deliverable 3/evidencia_video/`. Los archivos locales de Colab se pierden al cerrar o reiniciar el entorno.
 4. Publicar la grabación con acceso abierto y comprobar el enlace desde una ventana sin sesión iniciada.
 5. Incorporar el enlace público en el encabezado de `Deliverable3/documento/main.tex`, donde ahora dice «Pendiente de enlace público». Recompilar y verificar que siga siendo una página.
 6. Actualizar el README y el manifiesto de auditoría al incorporar la evidencia. No marcar el video como completo antes de tener grabación y enlace comprobado.

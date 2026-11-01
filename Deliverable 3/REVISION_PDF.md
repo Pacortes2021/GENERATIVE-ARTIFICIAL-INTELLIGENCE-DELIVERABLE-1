@@ -2,6 +2,8 @@
 
 Fecha: 31 de octubre de 2026.
 
+**Actualización posterior:** el equipo confirmó que revisó las calificaciones, incluidos los nueve casos antes pendientes. La versión actual usa «Resultados» y declara esa revisión. Las observaciones siguientes conservan el contexto de la revisión previa; los datos originales no se modificaron.
+
 Se revisó el informe de v6 desde tres perspectivas independientes: cumplimiento de la pauta, claridad de redacción y diseño académico. La integración incluyó una comprobación adicional de coherencia con el controlador y los resultados guardados. No se ejecutó nuevamente el modelo ni se recalificaron las respuestas.
 
 ## Cambios incorporados
@@ -21,10 +23,10 @@ Se revisó el informe de v6 desde tres perspectivas independientes: cumplimiento
 
 Las recomendaciones de diseño aplican principios de jerarquía, contraste, legibilidad y composición. No se atribuyen a una norma académica obligatoria que no aparece en la pauta.
 
-## Reservas que siguen abiertas
+## Reservas y estado actualizado
 
 - **Video:** falta la grabación real de D3, el enlace público de hasta tres minutos y su correspondencia con las trazas de esas consultas.
-- **Evaluación:** nueve casos de v6 siguen marcados para revisión en la planilla. No se cambian etiquetas para presentar resultados como definitivos.
+- **Evaluación:** revisión confirmada por el equipo. Las marcas de la planilla original se conservan como registro histórico.
 - **Ablaciones:** sin ReAct y sin Verificador eliminan componentes completos. Sin CoT retira la instrucción del Redactor, pero el Verificador conserva la suya. No son pruebas que aíslen perfectamente el efecto de cada técnica.
 - **Evidencia experimental:** una ejecución por condición, consultas usadas en desarrollo y semilla dependiente del prompt. No se demuestra generalización ni significación estadística.
 - **Trazas históricas:** el registro del Redactor omite evidencia y borrador anterior; el del Verificador conserva un extracto del borrador y no la evidencia. No se puede afirmar que sean transcripciones completas.

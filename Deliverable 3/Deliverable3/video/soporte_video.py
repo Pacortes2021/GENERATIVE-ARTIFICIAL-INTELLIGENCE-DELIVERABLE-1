@@ -191,7 +191,7 @@ def mostrar_portada():
 <p><b>Pregunta:</b> cómo responder con respaldo y corregir fallos de recuperación o redacción.</p>
 <p><b>Enrutador</b> planifica → <b>Recuperador</b> elige herramientas → <b>Redactor</b> responde → <b>Verificador</b> termina o pide corregir.</p>
 <p>Todos los roles: <b>Qwen3-4B</b> · recuperación E5 · máximo 3 acciones por subconsulta y 2 ciclos de corrección.</p>
-<p>Mostraremos <b>dos consultas reales</b>. Después, un fallo histórico identificado y resultados provisionales.</p>'''))
+<p>Mostraremos <b>dos consultas reales</b>. Después, un fallo histórico identificado y resultados revisados por el equipo.</p>'''))
 
 
 def cargar_fallo(base):
@@ -223,15 +223,15 @@ def mostrar_fallo(base):
 
 def mostrar_resultados():
     filas = [('Directo','1/50 (2%)','0/25 (0%)'), ('RAG D2','40/50 (80%)','16/25 (64%)'),
-             ('Completo v6','46/50 (92%)','20/25 (80%)'), ('Sin few-shot','44/50 (88%)','19/25 (76%)'),
+             ('Sistema completo','46/50 (92%)','20/25 (80%)'), ('Sin few-shot','44/50 (88%)','19/25 (76%)'),
              ('Sin ReAct','45/50 (90%)','18/25 (72%)'), ('Sin CoT del Redactor','46/50 (92%)','19/25 (76%)'),
              ('Sin Verificador: primer borrador','44/50 (88%)','19/25 (76%)')]
-    body = '<p><b>RESULTADOS HISTÓRICOS PROVISIONALES · NO SE CALCULAN EN ESTA DEMO</b></p>'
+    body = '<p><b>RESULTADOS HISTÓRICOS · NO SE CALCULAN EN ESTA DEMO</b></p>'
     body += '<table style="border-collapse:collapse;width:100%;text-align:left"><tr><th>Configuración</th><th>50 originales</th><th>25 difíciles</th></tr>'
     for i, fila in enumerate(filas):
         body += '<tr style="border-top:1px solid #ccd7df;' + ('background:#eaf3f8;font-weight:bold' if i==2 else '') + '">'
         body += ''.join('<td style="padding:6px">'+html.escape(c)+'</td>' for c in fila) + '</tr>'
-    body += '</table><p>Calificación propuesta con apoyo de Claude; <b>9 casos de v6 pendientes de revisión</b>. Aprobar internamente no garantiza acertar.</p>'
+    body += '</table><p>Calificación propuesta con apoyo de Claude y <b>revisada por el equipo</b>. Aprobar internamente no garantiza acertar.</p>'
     body += '<p>Las ablaciones sin ReAct y sin Verificador eliminan componentes; una ejecución por condición no demuestra una ventaja estable.</p>'
     mostrar_html(marco('Evaluación y límites', body))
 
@@ -265,7 +265,7 @@ def exportar_evidencia(base, carpeta, sesiones, seleccion, entorno):
         'fallo_H03_historico.json: caso anterior, identificado como histórico.\n'
         'fuentes/: copia del código, corpus y prompts utilizados.\n'
         'indice_video.json: ejecuciones que deben coincidir con el video; enlace aún pendiente.\n'
-        'Subir este ZIP al repositorio en D3 alvaro/evidencia_video/ junto al enlace público.\n').encode()
+        'Subir este ZIP al repositorio en Deliverable 3/evidencia_video/ junto al enlace público.\n').encode()
     contenido['manifiesto.json'] = json.dumps({k:hashlib.sha256(v).hexdigest() for k,v in contenido.items()}, indent=2).encode()
     with zipfile.ZipFile(path, 'w', zipfile.ZIP_DEFLATED) as z:
         for nombre, datos in contenido.items():

@@ -1,12 +1,14 @@
 # Deliverable 3 — agentes para consultas de normativa de pregrado
 
-Esta carpeta integra el trabajo de cuatro agentes sin modificar su controlador ni los prompts evaluados.
-El sistema anterior de Pablo permanece en `../Deliverable3_Agentes/`, con sus resultados independientes.
-No se mezclaron respuestas ni porcentajes de ambos sistemas.
+Esta carpeta contiene la entrega del Deliverable 3: un sistema de cuatro agentes (Enrutador, Recuperador ReAct,
+Redactor y Verificador) sobre Qwen3-4B, con su informe, video, cuadernos, prompts versionados, resultados y ablaciones.
+La exploración alternativa de tres agentes que se desarrolló en paralelo está en
+[`../Deliverable3_Agentes/`](../Deliverable3_Agentes/README.md); no forma parte de esta entrega y sus cifras no se mezclan con estas.
 
 ## Archivos principales
 
 - [Informe técnico](Deliverable3/documento/main.pdf): una página vertical en LaTeX; [fuente](Deliverable3/documento/main.tex).
+- [Video de la demostración](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing) (≤ 3 minutos, acceso abierto).
 - [Notebook completo](Deliverable3/D3_colab_qwen3_4b.ipynb): completo v6, 75 preguntas por defecto.
 - [Notebook de demostración](Deliverable3/Demo_D3.ipynb): grafo, roles y consulta compleja H17 con mensajes visibles, registro íntegro nuevo y fallo histórico H03 identificado.
 - [Paquete para Colab](Deliverable3_ejecucion.zip): subir este ZIP cuando lo solicite el notebook.
@@ -29,12 +31,13 @@ Para las ablaciones, cambiar `ABLACION` por `sin_fewshot`, `sin_react`, `sin_cot
 Cada variante tiene una carpeta independiente. Los pesos y las dependencias de la corrida original no
 quedaron fijados completamente: la nueva reproducción registra el entorno, pero no promete resultados idénticos.
 
-## Grabar el video
+## Reproducir el video
 
 Abrir [Demo_D3 en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/Deliverable%203/Deliverable3/Demo_D3.ipynb).
-Ejecutar A1–A5 con T4 antes de grabar; grabar B0–B3; usar C1 para descargar la evidencia.
-El notebook descarga el paquete y verifica su hash. La opción de carga manual queda disponible.
-El [guion](Guion_video_D3.md) explica qué mostrar y narrar. No se ha ejecutado esta nueva demo en GPU durante la preparación.
+Ejecutar A1–A5 con T4 (preparación), luego B0–B3 (lo que muestra el video) y C1 para descargar la evidencia.
+El notebook descarga el paquete desde el repositorio y verifica su hash; la carga manual queda como alternativa.
+El [guion](Guion_video_D3.md) describe qué se muestra en cada parte. La evidencia de la ejecución se guarda en
+[`evidencia_video/`](evidencia_video/README.md).
 
 ## Resultados históricos, sin nueva inferencia
 
@@ -69,9 +72,9 @@ El demo contiene 29 comprobaciones con un modelo simulado; no mide exactitud de 
 
 ## Estado de entrega
 
-La carpeta integra el sistema v6 y sus materiales. **El video real de D3 y su enlace público siguen pendientes.**
-El PDF lo indica expresamente. No se reutiliza el video de D2 ni se presenta una reproducción de trazas como inferencia nueva.
-Esta es la carpeta que debe consultarse para reproducir el sistema de cuatro agentes; el otro sistema conserva su carpeta independiente.
+Entregado el 31 de octubre de 2026: el [informe](Deliverable3/documento/main.pdf), el
+[video](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing) y este repositorio.
+En el video, la consulta H17 es una ejecución nueva y el fallo H03 se muestra desde su traza guardada, rotulado como histórico.
 
 Para recompilar el informe (Tectonic):
 

@@ -19,4 +19,4 @@ Fuente: `Deliverables/Deliverable 3 (1).pdf`, fuera de este repositorio, revisad
 
 ## Estado operativo actual
 
-El bloqueo de pantalla nocturno se resolvió tras «continúa». El ZIP v3 se descargó, auditó y evaluó sin sobrescribir los anteriores. Se inició un piloto v4 desde el commit `de2951b22214f294e9f9eb1f5b0fae9a25c622da`; se observó T4 conectada y carga de modelos iniciada. El piloto v4 fue evaluado (1/4 estricto de agentes). El lote 50 × 6 está en ejecución con la misma versión congelada. Consultar `../ESTADO_TRABAJO.md` para la pestaña y el próximo paso.
+El bloqueo de pantalla nocturno se resolvió tras «continúa». El ZIP v3 se descargó, auditó y evaluó sin sobrescribir los anteriores. Se inició un piloto v4 desde el commit `de2951b22214f294e9f9eb1f5b0fae9a25c622da`; se observó T4 conectada y carga de modelos iniciada. El piloto v4 fue evaluado (1/4 estricto de agentes). El lote 50 × 6 está en ejecución con la misma versión congelada.

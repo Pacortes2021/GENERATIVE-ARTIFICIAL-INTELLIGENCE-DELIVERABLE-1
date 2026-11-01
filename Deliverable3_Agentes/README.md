@@ -1,4 +1,9 @@
-# Deliverable 3 · Sistema nuevo de tres agentes
+# Exploración alternativa · sistema de tres agentes (no entregado)
+
+> [!NOTE]
+> Esta carpeta conserva una exploración paralela del Deliverable 3. **No es la versión entregada.**
+> La entrega oficial (cuatro agentes, informe y video) está en [`../Deliverable 3/`](../Deliverable%203/README.md).
+> Los documentos de esta carpeta describen el estado de esta exploración y se conservan sin cambios como registro.
 
 **Estado final (30 de octubre de 2026):** **450/450 respuestas reales completadas, respaldadas, auditadas y evaluadas**.
 - **Lote base de 50 preguntas (300/300 respuestas)**: Ejecutado en las seis condiciones experimentales (`baseline_directo`, `rag_d2`, `agentes_completo`, `sin_descomposicion`, `sin_completitud`, `sin_verificacion`) en Google Colab con GPU Tesla T4 (Qwen/Qwen3-4B en NF4, sin thinking). El respaldo final `agentes_99b9b55bd79d4572f743_respaldo_300de300.zip` (SHA-256: `9756a348858cf1a8cdbbec8e509e013307a348f7f47714e6e647e50c1bc8d411`) fue auditado e integrado íntegramente.

@@ -1,4 +1,8 @@
-# Materiales Oficiales de Entrega — Deliverable 3
+# Materiales de la exploración alternativa — Deliverable 3 (no entregados)
+
+> [!NOTE]
+> Este informe y estos materiales corresponden a la exploración de tres agentes y **no fueron entregados**.
+> El informe y el video oficiales del Deliverable 3 están en [`../../Deliverable 3/`](../../Deliverable%203/README.md).
 
 **Generative Artificial Intelligence (580694) · Semestre Primavera 2026**  
 **Equipo:** Álvaro Contreras y Pablo Cortés  

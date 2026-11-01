@@ -1,10 +1,13 @@
 # Evidencia de la grabación
 
-Pendiente de ejecutar la demo real en Colab y grabar el video.
+[Video de la demostración](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing) (≤ 3 minutos, acceso abierto).
 
-1. Ejecutar C1 del notebook y descargar `evidencia_video_…zip`.
-2. Guardar aquí el ZIP. No sustituir las trazas históricas.
-3. Añadir el enlace público del video y comprobar que los `run_id` seleccionados en `indice_video.json` coincidan con las consultas visibles.
-4. Actualizar el manifiesto de auditoría al incorporar archivos.
+Trazas de las entradas que aparecen en el video:
 
-El ZIP distingue nuevas inferencias y fallo H03 histórico. Los archivos temporales producidos por las pruebas simuladas no son evidencia del video.
+- **H17 (ejecución nueva):** ZIP `evidencia_video_…zip` que exporta la celda C1 de `Demo_D3.ipynb`, con prompts completos,
+  salidas crudas, resultados de herramientas y entorno. Los `run_id` de `indice_video.json` corresponden a las consultas visibles.
+  **Pendiente de incorporar:** subir aquí el ZIP de la sesión grabada.
+- **H03 (caso de falla, histórico):** clave `dificil_25:H03` en
+  [`../Deliverable3/resultados_v6/trazas_D3.json`](../Deliverable3/resultados_v6/trazas_D3.json).
+
+Los archivos temporales producidos por las pruebas simuladas no son evidencia del video.

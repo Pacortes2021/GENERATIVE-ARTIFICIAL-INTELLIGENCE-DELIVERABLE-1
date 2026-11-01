@@ -10,7 +10,7 @@ Se revisó el informe de v6 desde tres perspectivas independientes: cumplimiento
 |---|---|---|
 | Pauta | Las nueve etiquetas pendientes impiden presentar la evaluación como cerrada. | Sección «Resultados provisionales», con advertencia explícita. |
 | Pauta y código | La salida sin aprobación también puede ocurrir por `destino=fin`, además del límite y JSON inválido. | Se agregó esa condición al grafo. |
-| Pauta y código | Faltaban detalles del contexto y de la parada del Recuperador. | Se explicitan suficiencia, artículo inexistente o tres acciones; se añade borrador anterior al contexto y al contrato del Redactor. |
+| Pauta y código | Faltaban detalles del contexto y de la parada del Recuperador. | Se explicitan suficiencia, artículo inexistente o tres acciones; el controlador conserva el borrador anterior. La prueba posterior del notebook confirmó que el prompt restaurado de v6 no lo incorpora; el contrato del PDF se corrigió. |
 | Redacción | Algunas frases eran telegráficas o mezclaban magnitudes. | Se explican acciones de cada rol con oraciones completas y se separan llamadas y segundos por consulta. |
 | Redacción | La frecuencia de etiqueta «premisa falsa» no mide exactitud. | Se reemplaza ese indicador por la diferencia observada de aciertos sin few-shot. |
 | Redacción | El caso H03 no indicaba qué se modifica. | Se precisa que trata del plazo para modificar asignaturas en cada semestre. |

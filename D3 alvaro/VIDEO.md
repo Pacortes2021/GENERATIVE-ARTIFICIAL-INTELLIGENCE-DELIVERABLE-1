@@ -1,28 +1,21 @@
-# Video de D3 — máximo tres minutos
+# Video D3
 
-Usar `Deliverable3/Demo_D3.ipynb` en Colab con una T4. Cargar paquetes, corpus y modelos antes
-de empezar a grabar. La grabación debe mostrar ejecución real; no cambiar las salidas ni presentar
-el fallo histórico como una ejecución nueva.
+- [Abrir el notebook en Colab](https://colab.research.google.com/github/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/blob/main/D3%20alvaro/Deliverable3/Demo_D3.ipynb).
+- [Notebook en el repositorio](Deliverable3/Demo_D3.ipynb).
+- [Guion con tiempos y narración](Guion_video_D3.md).
 
-## Guion sugerido
+## Uso
 
-- **0:00–0:20:** explicar la tarea y mostrar el grafo del informe. Cuatro roles, un Qwen3-4B.
-- **0:20–1:40:** ejecutar la celda de consulta real. Mostrar pregunta, mensajes de agentes y resultado.
-  La pregunta corta por defecto pide la nota mínima de aprobación. El tiempo puede variar.
-- **1:40–2:15:** mostrar el fallo H03 desde su traza guardada, rotulado como histórico.
-  Explicar que no recuperó todas las fechas y agotó el ciclo de corrección.
-- **2:15–2:50:** mostrar la tabla del informe. Aclarar que son correcciones externas propuestas,
-  que la aprobación del Verificador no es exactitud y que las diferencias entre ablaciones son pequeñas.
+1. En Colab con T4, ejecutar A1–A5 antes de grabar. El paquete se descarga del repositorio y se comprueba contra el manifiesto del mismo commit.
+2. Grabar B0–B4: arquitectura, dos consultas nuevas, fallo histórico H03 y resultados provisionales.
+3. Ejecutar C1 al terminar. Confirmar los identificadores de las ejecuciones del video y descargar el ZIP de evidencia.
+4. Incorporar el ZIP en `evidencia_video/`, publicar una grabación de hasta tres minutos con acceso abierto y añadir su enlace al informe.
 
-Si la consulta tarda demasiado, elegir una grabación nueva con el modelo ya cargado. No inventar tiempos
-ni ocultar un fallo. Se puede editar preparación y esperas, señalando los cortes si los hay.
+Las consultas nuevas usan Qwen3-4B, corpus, prompts y controlador v6 sin cambios. El módulo
+`Deliverable3/video/soporte_video.py` añade visualización y registro de prompts completos, salidas crudas,
+resultados de herramientas y entorno. Las trazas históricas siguen siendo resumidas y se identifican como históricas.
 
-## Conservación y publicación
+Las pruebas locales verifican la instrumentación con un modelo simulado y equivalencia de salida/traza con
+el controlador original. No sustituyen comprobar la carga de modelos ni la inferencia en Colab con GPU.
 
-La celda real guarda `demo_consulta_real.json` con pregunta, respuesta y traza del caso ejecutado.
-Descargarlo y conservarlo en esta carpeta junto a una nota del entorno utilizado. La traza H03 ya está
-en `Deliverable3/resultados_v6/trazas_D3.json`, clave `dificil_25:H03`.
-
-Subir el video real a un servicio con acceso abierto, comprobar que dure como máximo tres minutos
-y reemplazar `\\VIDEO` en `Deliverable3/documento/main.tex`. Recompilar, revisar que siga siendo una página
-y actualizar el estado del README. El video y su enlace no se han generado en esta preparación.
+**Estado:** notebook y guion preparados; grabación, evidencia de la ejecución GPU y enlace público pendientes.

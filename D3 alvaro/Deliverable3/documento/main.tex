@@ -42,7 +42,7 @@ Cada rol tiene un prompt en \texttt{prompts/01-04}. Enrutador, Recuperador y Ver
 
 \rol{Recuperador.} Recibe subconsulta, evidencia y última observación. Elige una acción JSON \{accion, args\}: \texttt{buscar}, \texttt{traer}, \texttt{existe} o \texttt{suficiente}. Entrega evidencia y estado. Termina cada subconsulta por suficiencia, artículo inexistente o tres acciones. \textbf{ReAct}: adapta la búsqueda a sus resultados.
 
-\rol{Redactor.} Recibe pregunta, modo, evidencia, objeciones y borrador anterior. Produce Respuesta / Condiciones / Fuente; corrige o declara falta de respaldo. No usa herramientas directas. \textbf{CoT por prompt}: razona sobre cálculos y excepciones; ese bloque se retira de la respuesta final.
+\rol{Redactor.} Recibe pregunta, modo, evidencia y objeciones; v6 no incluye el borrador anterior en su prompt. Produce Respuesta / Condiciones / Fuente; corrige o declara falta de respaldo. No usa herramientas directas. \textbf{CoT por prompt}: razona sobre cálculos y excepciones; ese bloque se retira de la respuesta final.
 
 \rol{Verificador.} Recibe pregunta, borrador, evidencia y resultado de \texttt{chequear\_citas}. Devuelve JSON \{aprobado, destino, motivo\}: termina o solicita correcciones al Redactor o Recuperador. \textbf{Self-refine}: revisión iterativa de suficiencia y citas.
 

@@ -44,4 +44,12 @@ Se documentan sin modificar la lógica, porque cambiarla generaría otra versió
 
 10. Los registros históricos son resumidos: el Redactor no registra evidencia ni borrador anterior en su entrada, y el Verificador registra solo 200 caracteres del borrador, sin evidencia. No constituyen transcripciones completas de todos los mensajes.
 
+11. El controlador conserva el borrador anterior, pero el prompt restaurado de v6 no contiene `{{BORRADOR_ANTERIOR}}`; por ello no lo recibe el Redactor. El informe se corrigió al detectar esta diferencia durante las pruebas del video.
+
+## Instrumentación del video
+
+`video/soporte_video.py` observa llamadas sin cambiar el controlador ni los prompts: conserva el prompt completo de cada llamada nueva, salida cruda, resultados de herramientas, traza original y entorno. Guarda cada intento por separado y persiste errores o interrupciones. La exportación distingue las nuevas consultas del fallo histórico H03.
+
+`video/test_soporte_video.py` compara salida y traza con el orquestador original usando un modelo simulado, y verifica feedback, herramientas, interrupción, HTML, hashes del paquete y sintaxis del notebook. No prueba la inferencia GPU; esa comprobación queda para Colab.
+
 Las 29 comprobaciones simuladas y la auditoría de archivos no sustituyen una nueva corrida GPU ni una recalificación independiente.

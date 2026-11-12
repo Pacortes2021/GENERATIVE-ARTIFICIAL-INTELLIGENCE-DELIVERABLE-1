@@ -1,0 +1,3475 @@
+{
+  "fuentes": {
+    "csv": "Deliverable 3/Deliverable3/resultados_v6/resultados_agentes_D3.csv",
+    "trazas": "Deliverable 3/Deliverable3/resultados_v6/trazas_D3.json",
+    "auditoria": "Deliverable 3/auditoria/veredictos_exportados.json",
+    "corpus_unidades": 197
+  },
+  "resumen_global": {
+    "total": {
+      "total": 75,
+      "correctos": 66,
+      "incorrectos": 9,
+      "accuracy_pct": 88.0,
+      "ids_incorrectos": [
+        "congelado_50:13",
+        "congelado_50:24",
+        "congelado_50:26",
+        "congelado_50:36",
+        "dificil_25:H03",
+        "dificil_25:H07",
+        "dificil_25:H14",
+        "dificil_25:H18",
+        "dificil_25:H25"
+      ]
+    },
+    "congelado_50": {
+      "total": 50,
+      "correctos": 46,
+      "incorrectos": 4,
+      "accuracy_pct": 92.0,
+      "ids_incorrectos": [
+        "congelado_50:13",
+        "congelado_50:24",
+        "congelado_50:26",
+        "congelado_50:36"
+      ]
+    },
+    "dificil_25": {
+      "total": 25,
+      "correctos": 20,
+      "incorrectos": 5,
+      "accuracy_pct": 80.0,
+      "ids_incorrectos": [
+        "dificil_25:H03",
+        "dificil_25:H07",
+        "dificil_25:H14",
+        "dificil_25:H18",
+        "dificil_25:H25"
+      ]
+    },
+    "llamadas_modelo_llm_total": 711,
+    "llamadas_modelo_llm_promedio": 9.48,
+    "llamadas_llm_por_agente": {
+      "enrutador": 75,
+      "recuperador": 416,
+      "redactor": 110,
+      "verificador": 110
+    },
+    "eventos_traza_total": 798,
+    "fallbacks_total": 0,
+    "distribucion_ciclos": {
+      "1": 54,
+      "2": 7,
+      "3": 14
+    },
+    "casos_correctos_con_reintento": 17,
+    "rechazos_verificador_a_redactor": 25,
+    "rechazos_verificador_a_recuperador": 21
+  },
+  "desglose_errores": {
+    "total_errores": 9,
+    "origen_redactor_con_evidencia_top6": 8,
+    "origen_recuperador_evidencia_faltante": 1,
+    "ids_origen_redactor": [
+      "congelado_50:13",
+      "congelado_50:24",
+      "congelado_50:26",
+      "congelado_50:36",
+      "dificil_25:H07",
+      "dificil_25:H14",
+      "dificil_25:H18",
+      "dificil_25:H25"
+    ],
+    "ids_origen_recuperador": [
+      "dificil_25:H03"
+    ],
+    "casos": [
+      {
+        "case_key": "congelado_50:13",
+        "categoria": "numerica",
+        "tipo_enrutador": "condicional",
+        "ciclos": 1,
+        "top6": [
+          "RI-FI-ART-014",
+          "RG-ART-028",
+          "RG-ART-032",
+          "RG-ART-003-DEF-07",
+          "RG-ART-043",
+          "RG-ART-024"
+        ],
+        "gold_fuente_csv": "Art. 14 b), RI-FI",
+        "requeridas": [
+          "RI-FI-ART-014"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-028"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_cita_incompleta_afirmacion_extra",
+        "explicacion": "Responde el umbral de 10 creditos, pero agrega la formula del promedio citando solo [RI-FI-ART-014] cuando esa formula pertenece a [RG-ART-028].",
+        "motivo_auditoria": "Umbral correcto (RI-FI art. 14 b), pero agrega la fórmula del promedio citando solo RI-FI art. 14; la fórmula está en RG art. 28 (afirmación extra mal citada, precedente D2: P01).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Inferior a diez créditos semestrales a partir del cuarto semestre.\nCondiciones o límites: El promedio se calcula como el total de créditos aprobados dividido por el número de semestres de permanencia.\nFuente: [RI-FI-ART-014]",
+        "respuesta_final": "Respuesta: Inferior a diez créditos semestrales a partir del cuarto semestre.\nCondiciones o límites: El promedio se calcula como el total de créditos aprobados dividido por el número de semestres de permanencia.\nFuente: [RI-FI-ART-014]"
+      },
+      {
+        "case_key": "congelado_50:24",
+        "categoria": "condicional",
+        "tipo_enrutador": "condicional",
+        "ciclos": 1,
+        "top6": [
+          "RI-FI-ART-020",
+          "RI-FI-ART-014",
+          "RG-ART-028",
+          "RI-FI-ART-028",
+          "RG-ART-037",
+          "RG-ART-044"
+        ],
+        "gold_fuente_csv": "Art. 14 c), RI-FI",
+        "requeridas": [
+          "RI-FI-ART-014"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-028"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_omision_excepciones",
+        "explicacion": "Alude genericamente a 'las excepciones mencionadas en el articulo', sin enumerar PLEV ni estudiantes en su primer ano de permanencia.",
+        "motivo_auditoria": "Consecuencia correcta, pero no dice cuáles son las excepciones (PLEV y primer año); solo alude a ellas. Precedente D2: omitir excepciones necesarias (P11, P36).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.  \nCondiciones o límites: Esta situación solo ocurre si no se cumple ninguna de las excepciones mencionadas en el artículo.  \nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "respuesta_final": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.  \nCondiciones o límites: Esta situación solo ocurre si no se cumple ninguna de las excepciones mencionadas en el artículo.  \nFuente: [RI-FI-ART-014] [RG-ART-028]"
+      },
+      {
+        "case_key": "congelado_50:26",
+        "categoria": "condicional",
+        "tipo_enrutador": "condicional",
+        "ciclos": 1,
+        "top6": [
+          "RI-FI-ART-028",
+          "RG-ART-031",
+          "RG-ART-035",
+          "RI-FI-ART-027",
+          "RG-ART-032",
+          "RG-ART-033"
+        ],
+        "gold_fuente_csv": "Art. 27, RI-FI",
+        "requeridas": [
+          "RI-FI-ART-027"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-031",
+          "RG-ART-033"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_distorsion_lectura",
+        "explicacion": "Confunde sujeto y plazo de la evidencia: afirma que 'la reincorporacion puede extenderse por un maximo de tres anos', cuando el plazo de 3 anos aplica a la suspension.",
+        "motivo_auditoria": "Reincorporación ante el Vicedecano es correcto, pero afirma que 'la reincorporación puede extenderse por un máximo de tres años' (el RG art. 33 se refiere a la suspensión).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta está correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Para volver a los estudios después de una suspensión, el estudiante debe solicitar su reincorporación al Vicedecano, cumplir con los requisitos establecidos por la Facultad, adjuntar los documentos necesarios y, si la suspensión fue por razones de salud, acompañar los antecedentes oficiales que demuestren que los impedimentos han cesado.\nCondiciones o límites: La reincorporación puede extenderse por un máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-031] [RI-FI-ART-027] [RG-ART-035] [RG-ART-033] [RG-ART-032] [RI-FI-ART-028]",
+        "respuesta_final": "Respuesta: Para volver a los estudios después de una suspensión, el estudiante debe solicitar su reincorporación al Vicedecano, cumplir con los requisitos establecidos por la Facultad, adjuntar los documentos necesarios y, si la suspensión fue por razones de salud, acompañar los antecedentes oficiales que demuestren que los impedimentos han cesado.\nCondiciones o límites: La reincorporación puede extenderse por un máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-031] [RI-FI-ART-027] [RG-ART-035] [RG-ART-033] [RG-ART-032] [RI-FI-ART-028]"
+      },
+      {
+        "case_key": "congelado_50:36",
+        "categoria": "cruce",
+        "tipo_enrutador": "cruce",
+        "ciclos": 1,
+        "top6": [
+          "RI-FI-ART-008",
+          "CAL-2026-S2-01",
+          "CAL-2026-S2-03",
+          "CAL-2026-S2-04",
+          "CAL-2026-S2-07",
+          "CAL-2026-S2-09"
+        ],
+        "gold_fuente_csv": "CAL 2º sem 2026 + Art. 8, RI-FI",
+        "requeridas": [
+          "CAL-2026-S2-01",
+          "RI-FI-ART-008"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_omision_condiciones_y_excepciones",
+        "explicacion": "Declara falsamente 'No se aplican condiciones o limites adicionales' y omite las excepciones del minimo de 8 creditos establecidas en [RI-FI-ART-008].",
+        "motivo_auditoria": "Afirma que no hay condiciones y omite las excepciones del art. 8 (precedente D2: P36).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Las inscripciones se realizan del 03 al 07 de agosto y el mínimo de créditos es ocho.\nCondiciones o límites: No se aplican condiciones o límites adicionales.\nFuente: [CAL-2026-S2-01] [RI-FI-ART-008]",
+        "respuesta_final": "Respuesta: Las inscripciones se realizan del 03 al 07 de agosto y el mínimo de créditos es ocho.\nCondiciones o límites: No se aplican condiciones o límites adicionales.\nFuente: [CAL-2026-S2-01] [RI-FI-ART-008]"
+      },
+      {
+        "case_key": "dificil_25:H03",
+        "categoria": "multi_salto",
+        "tipo_enrutador": "cruce",
+        "ciclos": 3,
+        "top6": [
+          "CAL-2026-S2-03",
+          "CAL-2026-S1-03",
+          "CAL-2026-S1-05",
+          "CAL-2026-S2-07",
+          "CAL-2026-S1-04",
+          "CAL-2026-S2-04"
+        ],
+        "gold_fuente_csv": "CAL-2026-S1-02; CAL-2026-S1-03; CAL-2026-S2-02; CAL-2026-S2-03",
+        "requeridas": [
+          "CAL-2026-S1-02",
+          "CAL-2026-S1-03",
+          "CAL-2026-S2-02",
+          "CAL-2026-S2-03"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": false,
+        "todas_con_extra_en_top6": false,
+        "requeridas_faltantes_top6": [
+          "CAL-2026-S1-02",
+          "CAL-2026-S2-02"
+        ],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [
+          "CAL-2026-S2-02"
+        ],
+        "agente_origen": "recuperador",
+        "categoria_fallo": "recuperador_evidencia_faltante",
+        "explicacion": "El Recuperador no incorpora al top-6 las unidades de inicio de clases ([CAL-2026-S1-02] y [CAL-2026-S2-02]). En el ciclo 1 el Redactor alucina conteos de dias y en ciclos 2-3 se abstiene por falta de fechas.",
+        "motivo_auditoria": "Dice que falta la fecha de inicio de clases (no la recupera).",
+        "aprobado_verificador_final": false,
+        "motivo_verificador_final": "Falta evidencia para calcular el número de días desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre",
+        "primer_borrador": "Respuesta: En el primer semestre hay 31 días desde el inicio de clases hasta la fecha límite de modificación de asignaturas, mientras que en el segundo semestre hay 262 días. El plazo más largo es en el segundo semestre.\nCondiciones o límites: No se mencionan fechas de inicio de clases explícitamente, se dedujeron a partir del contexto del calendario.\nFuente: [CAL-2026-S1-03], [CAL-2026-S2-03]",
+        "respuesta_final": "Respuesta: No se puede calcular el número de días desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre debido a la falta de información sobre la fecha de inicio de clases. \nCondiciones o límites: Falta evidencia para calcular el número de días.\nFuente: sin respaldo en la normativa consultada"
+      },
+      {
+        "case_key": "dificil_25:H07",
+        "categoria": "calculo",
+        "tipo_enrutador": "condicional",
+        "ciclos": 3,
+        "top6": [
+          "RI-FI-ART-014",
+          "RG-ART-024",
+          "RG-ART-028",
+          "RG-ART-043",
+          "RI-FI-ART-031",
+          "RI-FI-ART-013"
+        ],
+        "gold_fuente_csv": "RI-FI-ART-014; RG-ART-028",
+        "requeridas": [
+          "RI-FI-ART-014",
+          "RG-ART-028"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_derivacion_implicita_y_colapso_feedback",
+        "explicacion": "Ciclo 1 concluye bien (10,5 > 10) pero sin explicitar el paso aritmetico (42 / 4 = 10,5); el Verificador rechaza falsamente y el Redactor colapsa en ciclos 2-3 hacia una falsa abstencion pese a estar todos los datos en la pregunta.",
+        "motivo_auditoria": "Dice que no se puede determinar; los datos están en la pregunta.",
+        "aprobado_verificador_final": false,
+        "motivo_verificador_final": "El borrador no responde la pregunta completa, ya que no evalúa si el estudiante está en baja académica según el Artículo 14, ni menciona la falta de información sobre el promedio de créditos semestrales y el número de semestres de permanencia.",
+        "primer_borrador": "Respuesta: No, el estudiante no está en baja académica por el criterio de promedio de créditos del Artículo 14.\nCondiciones o límites: El promedio de créditos es 10,5, superior a 10, por lo que no cumple con el criterio de baja académica.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "respuesta_final": "Respuesta: No se puede determinar si el estudiante está en baja académica por el criterio de promedio de créditos del Artículo 14 debido a la falta de información sobre el promedio de créditos semestrales y el número de semestres de permanencia.\nCondiciones o límites: No hay suficiente información para evaluar el cumplimiento del criterio del Artículo 14.\nFuente: [RI-FI-ART-014]"
+      },
+      {
+        "case_key": "dificil_25:H14",
+        "categoria": "negacion_excepcion",
+        "tipo_enrutador": "condicional",
+        "ciclos": 2,
+        "top6": [
+          "RI-FI-ART-014",
+          "RI-FI-ART-020",
+          "RG-ART-028",
+          "RI-FI-ART-028",
+          "RG-ART-030",
+          "RG-ART-037"
+        ],
+        "gold_fuente_csv": "RI-FI-ART-014; RG-ART-028",
+        "requeridas": [
+          "RI-FI-ART-014",
+          "RG-ART-028"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_contradiccion_polar_excepciones",
+        "explicacion": "Ante una pregunta cerrada ('¿Queda automaticamente...?'), responde primero 'Si, el estudiante queda automaticamente' y luego enumera excepciones que lo contradicen.",
+        "motivo_auditoria": "'Sí, queda automáticamente' contradice las excepciones (igual que v4 y v5).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "El borrador es correcto y está respaldado por la evidencia.",
+        "primer_borrador": "Respuesta: Sí, queda automáticamente en baja académica.\nCondiciones o límites: No se aplican excepciones mencionadas en la normativa.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "respuesta_final": "Respuesta: Sí, el estudiante queda automáticamente en baja académica si ha reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: Las excepciones mencionadas en la normativa aplican si el estudiante cumple con los criterios establecidos.\nFuente: [RI-FI-ART-014] [RG-ART-028]"
+      },
+      {
+        "case_key": "dificil_25:H18",
+        "categoria": "sintesis",
+        "tipo_enrutador": "condicional",
+        "ciclos": 2,
+        "top6": [
+          "RI-FI-ART-031",
+          "RG-ART-035",
+          "RG-ART-003-DEF-19",
+          "RG-ART-031",
+          "RG-ART-003-DEF-20",
+          "RG-ART-033"
+        ],
+        "gold_fuente_csv": "RI-FI-ART-031",
+        "requeridas": [
+          "RI-FI-ART-031"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-033"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_perdida_cita_bajo_feedback",
+        "explicacion": "Ciclo 1 acierta los 36 creditos y cita [RG-ART-033] para los 3 anos, pero arrastra citas de definiciones y el Verificador rechaza; en ciclo 2 conserva la afirmacion de los 3 anos y borra la cita [RG-ART-033], dejando solo [RI-FI-ART-031].",
+        "motivo_auditoria": "36 créditos correcto, pero agrega el plazo de tres años de suspensión citando solo RI-FI art. 31 (está en RG art. 33; precedente D2: P01).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "El borrador cumple con todos los criterios: responde la pregunta, cita correctamente el artículo 31°, y menciona los 36 créditos como se especifica en la evidencia.",
+        "primer_borrador": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\nCondiciones o límites: La suspensión de estudios puede extenderse por un período máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RI-FI-ART-031] [RG-ART-035] [RG-ART-003-DEF-19] [RG-ART-003-DEF-20] [RG-ART-033]",
+        "respuesta_final": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\nCondiciones o límites: La suspensión de estudios puede extenderse por un período máximo de tres años calendario.\nFuente: [RI-FI-ART-031]"
+      },
+      {
+        "case_key": "dificil_25:H25",
+        "categoria": "sintesis",
+        "tipo_enrutador": "condicional",
+        "ciclos": 1,
+        "top6": [
+          "RI-FI-ART-005",
+          "RG-ART-055",
+          "RI-FI-ART-006",
+          "RI-FI-ART-004",
+          "RG-ART-018",
+          "RI-FI-ART-032"
+        ],
+        "gold_fuente_csv": "RI-FI-ART-005",
+        "requeridas": [
+          "RI-FI-ART-005"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_sintesis_incompleta_desempate",
+        "explicacion": "Enumera factores de seleccion teniendo [RI-FI-ART-005] en el puesto #1, pero omite el orden de prelacion y el criterio de desempate (mayor numero de creditos aprobados y, en caso de igualdad, mayor promedio curricular).",
+        "motivo_auditoria": "No da el orden de desempate (créditos, luego promedio).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Los estudiantes de Ingreso Común se seleccionan para asignarlos a una carrera de la Facultad al término del segundo semestre según el número de créditos aprobados, el promedio curricular de notas de las asignaturas del Plan Común de Primer Año, el orden de sus preferencias en las carreras de Ingeniería Civil según la oferta de la Facultad y los cupos disponibles.\nCondiciones o límites: La selección se basa únicamente en los criterios mencionados en el Artículo 5°, y no se consideran otros factores como el promedio general o la nota en asignaturas fuera del Plan Común de Primer Año.\nFuente: [RI-FI-ART-005] [RI-FI-ART-006]",
+        "respuesta_final": "Respuesta: Los estudiantes de Ingreso Común se seleccionan para asignarlos a una carrera de la Facultad al término del segundo semestre según el número de créditos aprobados, el promedio curricular de notas de las asignaturas del Plan Común de Primer Año, el orden de sus preferencias en las carreras de Ingeniería Civil según la oferta de la Facultad y los cupos disponibles.\nCondiciones o límites: La selección se basa únicamente en los criterios mencionados en el Artículo 5°, y no se consideran otros factores como el promedio general o la nota en asignaturas fuera del Plan Común de Primer Año.\nFuente: [RI-FI-ART-005] [RI-FI-ART-006]"
+      }
+    ]
+  },
+  "ablaciones_auditoria_d3": {
+    "completo": {
+      "total": 75,
+      "correctos": 66
+    },
+    "sin_cot": {
+      "total": 75,
+      "correctos": 65
+    },
+    "sin_react": {
+      "total": 75,
+      "correctos": 63
+    },
+    "sin_fewshot": {
+      "total": 75,
+      "correctos": 63
+    }
+  },
+  "casos": [
+    {
+      "case_key": "congelado_50:1",
+      "set": "congelado_50",
+      "id": "1",
+      "categoria": "factual",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-013",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RG-ART-027",
+        "RI-FI-ART-005",
+        "RG-ART-023"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-013",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RG-ART-027",
+        "RI-FI-ART-005",
+        "RG-ART-023",
+        "RI-FI-ART-030",
+        "RI-FI-ART-024",
+        "RG-ART-039",
+        "RG-ART-041"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:2",
+      "set": "congelado_50",
+      "id": "2",
+      "categoria": "factual",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-013",
+        "RG-ART-013",
+        "RG-ART-007",
+        "RI-FI-ART-010",
+        "RG-ART-023"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-013",
+        "RG-ART-013",
+        "RG-ART-007",
+        "RI-FI-ART-010",
+        "RG-ART-023",
+        "RI-FI-ART-008",
+        "RI-FI-ART-021"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:3",
+      "set": "congelado_50",
+      "id": "3",
+      "categoria": "factual",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-012",
+        "RG-ART-022",
+        "RG-ART-026",
+        "RI-FI-ART-010",
+        "RG-ART-025",
+        "CAL-2026-S2-05"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-012",
+        "RG-ART-022",
+        "RG-ART-026",
+        "RI-FI-ART-010",
+        "RG-ART-025",
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "RG-ART-041"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:4",
+      "set": "congelado_50",
+      "id": "4",
+      "categoria": "factual",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 5,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 2,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 6,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-023",
+        "RG-ANEXO-44",
+        "RG-ART-027",
+        "RG-ANEXO-45",
+        "RG-ART-041",
+        "RG-ANEXO-15"
+      ],
+      "pool_ordenado": [
+        "RG-ART-023",
+        "RG-ANEXO-44",
+        "RG-ART-027",
+        "RG-ANEXO-45",
+        "RG-ART-041",
+        "RG-ANEXO-15",
+        "RG-ANEXO-08",
+        "RG-ANEXO-42"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:5",
+      "set": "congelado_50",
+      "id": "5",
+      "categoria": "factual",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-006",
+        "RG-ART-003-DEF-10",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030",
+        "RG-ART-008"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-006",
+        "RG-ART-003-DEF-10",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030",
+        "RG-ART-008"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:6",
+      "set": "congelado_50",
+      "id": "6",
+      "categoria": "factual",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-011",
+        "RG-ART-023",
+        "RG-ART-025",
+        "RI-FI-ART-010",
+        "RG-ART-013",
+        "RG-ART-008"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-011",
+        "RG-ART-023",
+        "RG-ART-025",
+        "RI-FI-ART-010",
+        "RG-ART-013",
+        "RG-ART-008",
+        "RG-ART-021"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:7",
+      "set": "congelado_50",
+      "id": "7",
+      "categoria": "factual",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-016",
+        "RI-FI-ART-028",
+        "RG-ART-030",
+        "RI-FI-ART-027",
+        "RI-FI-ART-001",
+        "RG-ART-037"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-016",
+        "RI-FI-ART-028",
+        "RG-ART-030",
+        "RI-FI-ART-027",
+        "RI-FI-ART-001",
+        "RG-ART-037",
+        "RI-FI-ART-021"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:8",
+      "set": "congelado_50",
+      "id": "8",
+      "categoria": "factual",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-026",
+        "RG-ART-035",
+        "RG-ART-034",
+        "RG-ART-044",
+        "RG-ART-032",
+        "RI-FI-ART-022"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-026",
+        "RG-ART-035",
+        "RG-ART-034",
+        "RG-ART-044",
+        "RG-ART-032",
+        "RI-FI-ART-022"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:9",
+      "set": "congelado_50",
+      "id": "9",
+      "categoria": "factual",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 8,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 5,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 9,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-016",
+        "RG-ART-050",
+        "RI-FI-ART-007",
+        "RI-FI-ART-008",
+        "RG-ART-003-DEF-07"
+      ],
+      "pool_ordenado": [
+        "RG-ART-016",
+        "RG-ART-050",
+        "RI-FI-ART-007",
+        "RI-FI-ART-008",
+        "RG-ART-003-DEF-07"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:10",
+      "set": "congelado_50",
+      "id": "10",
+      "categoria": "factual",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-022",
+        "RI-FI-ART-024",
+        "RG-ART-044",
+        "RG-ART-039",
+        "RG-ART-029",
+        "RI-FI-ART-021"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-022",
+        "RI-FI-ART-024",
+        "RG-ART-044",
+        "RG-ART-039",
+        "RG-ART-029",
+        "RI-FI-ART-021",
+        "RG-ART-037"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:11",
+      "set": "congelado_50",
+      "id": "11",
+      "categoria": "numerica",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-008",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-017",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030",
+        "RG-ART-050"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-008",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-017",
+        "RI-FI-ART-005",
+        "RI-FI-ART-030",
+        "RG-ART-050",
+        "RI-FI-ART-014",
+        "RI-FI-ART-007"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:12",
+      "set": "congelado_50",
+      "id": "12",
+      "categoria": "numerica",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-003-DEF-07",
+        "RG-ART-043",
+        "RI-FI-ART-031",
+        "RG-ART-029"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-003-DEF-07",
+        "RG-ART-043",
+        "RI-FI-ART-031",
+        "RG-ART-029",
+        "RI-FI-ART-008"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:13",
+      "set": "congelado_50",
+      "id": "13",
+      "categoria": "numerica",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-032",
+        "RG-ART-003-DEF-07",
+        "RG-ART-043",
+        "RG-ART-024"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-032",
+        "RG-ART-003-DEF-07",
+        "RG-ART-043",
+        "RG-ART-024",
+        "RG-ART-030",
+        "RI-FI-ART-031",
+        "RG-ART-051",
+        "RG-ART-035",
+        "RG-ART-029",
+        "RI-FI-ART-013"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "Art. 14 b), RI-FI",
+        "requeridas": [
+          "RI-FI-ART-014"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-028"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_cita_incompleta_afirmacion_extra",
+        "explicacion": "Responde el umbral de 10 creditos, pero agrega la formula del promedio citando solo [RI-FI-ART-014] cuando esa formula pertenece a [RG-ART-028].",
+        "motivo_auditoria": "Umbral correcto (RI-FI art. 14 b), pero agrega la fórmula del promedio citando solo RI-FI art. 14; la fórmula está en RG art. 28 (afirmación extra mal citada, precedente D2: P01).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Inferior a diez créditos semestrales a partir del cuarto semestre.\nCondiciones o límites: El promedio se calcula como el total de créditos aprobados dividido por el número de semestres de permanencia.\nFuente: [RI-FI-ART-014]",
+        "respuesta_final": "Respuesta: Inferior a diez créditos semestrales a partir del cuarto semestre.\nCondiciones o límites: El promedio se calcula como el total de créditos aprobados dividido por el número de semestres de permanencia.\nFuente: [RI-FI-ART-014]"
+      }
+    },
+    {
+      "case_key": "congelado_50:14",
+      "set": "congelado_50",
+      "id": "14",
+      "categoria": "numerica",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RG-ART-026",
+        "RG-ART-049",
+        "RG-ART-023",
+        "RI-FI-ART-021"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RG-ART-026",
+        "RG-ART-049",
+        "RG-ART-023",
+        "RI-FI-ART-021"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:15",
+      "set": "congelado_50",
+      "id": "15",
+      "categoria": "numerica",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-021",
+        "RI-FI-ART-011",
+        "RG-ART-039",
+        "RI-FI-ART-024",
+        "RI-FI-ART-013",
+        "RI-FI-ART-022"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-021",
+        "RI-FI-ART-011",
+        "RG-ART-039",
+        "RI-FI-ART-024",
+        "RI-FI-ART-013",
+        "RI-FI-ART-022"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:16",
+      "set": "congelado_50",
+      "id": "16",
+      "categoria": "numerica",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-022",
+        "RG-ART-025",
+        "RI-FI-ART-015",
+        "RI-FI-ART-023",
+        "RG-ART-044",
+        "RG-ART-037"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-022",
+        "RG-ART-025",
+        "RI-FI-ART-015",
+        "RI-FI-ART-023",
+        "RG-ART-044",
+        "RG-ART-037"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:17",
+      "set": "congelado_50",
+      "id": "17",
+      "categoria": "numerica",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-038",
+        "RI-FI-ART-023",
+        "RG-ART-025",
+        "RG-ART-037",
+        "RI-FI-ART-028",
+        "RI-FI-ART-022"
+      ],
+      "pool_ordenado": [
+        "RG-ART-038",
+        "RI-FI-ART-023",
+        "RG-ART-025",
+        "RG-ART-037",
+        "RI-FI-ART-028",
+        "RI-FI-ART-022",
+        "RG-ART-043"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:18",
+      "set": "congelado_50",
+      "id": "18",
+      "categoria": "numerica",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-031",
+        "RI-FI-ART-008",
+        "RG-ART-035",
+        "RI-FI-ART-014",
+        "RG-ART-033",
+        "RG-ART-031"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-031",
+        "RI-FI-ART-008",
+        "RG-ART-035",
+        "RI-FI-ART-014",
+        "RG-ART-033",
+        "RG-ART-031",
+        "RG-ART-028"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:19",
+      "set": "congelado_50",
+      "id": "19",
+      "categoria": "numerica",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-016",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-008",
+        "RG-ART-050",
+        "RG-ART-043",
+        "RI-FI-ART-007"
+      ],
+      "pool_ordenado": [
+        "RG-ART-016",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-008",
+        "RG-ART-050",
+        "RG-ART-043",
+        "RI-FI-ART-007"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:20",
+      "set": "congelado_50",
+      "id": "20",
+      "categoria": "numerica",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 10,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 11,
+      "rechazos_redactor": 3,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-026",
+        "RG-ART-025",
+        "RG-ART-030",
+        "RG-ART-038",
+        "RG-ART-013",
+        "RG-TRANS-002"
+      ],
+      "pool_ordenado": [
+        "RG-ART-026",
+        "RG-ART-025",
+        "RG-ART-030",
+        "RG-ART-038",
+        "RG-ART-013",
+        "RG-TRANS-002"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:21",
+      "set": "congelado_50",
+      "id": "21",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-030",
+        "RI-FI-ART-005",
+        "RI-FI-ART-001",
+        "RI-FI-ART-019"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-030",
+        "RI-FI-ART-005",
+        "RI-FI-ART-001",
+        "RI-FI-ART-019",
+        "RI-FI-ART-006",
+        "RG-ART-055"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:22",
+      "set": "congelado_50",
+      "id": "22",
+      "categoria": "condicional",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RG-ART-028",
+        "RI-FI-ART-014",
+        "RG-ART-024"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RG-ART-028",
+        "RI-FI-ART-014",
+        "RG-ART-024"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:23",
+      "set": "congelado_50",
+      "id": "23",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-020",
+        "RG-ART-037",
+        "RI-FI-ART-022",
+        "RG-ART-041",
+        "RG-ART-044",
+        "RI-FI-ART-024"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-020",
+        "RG-ART-037",
+        "RI-FI-ART-022",
+        "RG-ART-041",
+        "RG-ART-044",
+        "RI-FI-ART-024",
+        "RG-ART-039"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:24",
+      "set": "congelado_50",
+      "id": "24",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-020",
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RI-FI-ART-028",
+        "RG-ART-037",
+        "RG-ART-044"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-020",
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RI-FI-ART-028",
+        "RG-ART-037",
+        "RG-ART-044",
+        "RG-ART-029",
+        "RI-FI-ART-007",
+        "RI-FI-ART-027"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "Art. 14 c), RI-FI",
+        "requeridas": [
+          "RI-FI-ART-014"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-028"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_omision_excepciones",
+        "explicacion": "Alude genericamente a 'las excepciones mencionadas en el articulo', sin enumerar PLEV ni estudiantes en su primer ano de permanencia.",
+        "motivo_auditoria": "Consecuencia correcta, pero no dice cuáles son las excepciones (PLEV y primer año); solo alude a ellas. Precedente D2: omitir excepciones necesarias (P11, P36).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.  \nCondiciones o límites: Esta situación solo ocurre si no se cumple ninguna de las excepciones mencionadas en el artículo.  \nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "respuesta_final": "Respuesta: Si repruebo por segunda vez una misma asignatura obligatoria, perderé el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica.  \nCondiciones o límites: Esta situación solo ocurre si no se cumple ninguna de las excepciones mencionadas en el artículo.  \nFuente: [RI-FI-ART-014] [RG-ART-028]"
+      }
+    },
+    {
+      "case_key": "congelado_50:25",
+      "set": "congelado_50",
+      "id": "25",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 17,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 12,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 18,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 1,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-042",
+        "RI-FI-ART-009",
+        "RG-ART-003-DEF-09",
+        "RG-ART-029",
+        "RG-ART-003-DEF-13",
+        "RI-FI-ART-007"
+      ],
+      "pool_ordenado": [
+        "RG-ART-042",
+        "RI-FI-ART-009",
+        "RG-ART-003-DEF-09",
+        "RG-ART-029",
+        "RG-ART-003-DEF-13",
+        "RI-FI-ART-007",
+        "RG-ART-003-DEF-10",
+        "RG-ART-020"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:26",
+      "set": "congelado_50",
+      "id": "26",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-028",
+        "RG-ART-031",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RG-ART-032",
+        "RG-ART-033"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-028",
+        "RG-ART-031",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RG-ART-032",
+        "RG-ART-033",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RI-FI-ART-017",
+        "RI-FI-ART-001"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "Art. 27, RI-FI",
+        "requeridas": [
+          "RI-FI-ART-027"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-031",
+          "RG-ART-033"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_distorsion_lectura",
+        "explicacion": "Confunde sujeto y plazo de la evidencia: afirma que 'la reincorporacion puede extenderse por un maximo de tres anos', cuando el plazo de 3 anos aplica a la suspension.",
+        "motivo_auditoria": "Reincorporación ante el Vicedecano es correcto, pero afirma que 'la reincorporación puede extenderse por un máximo de tres años' (el RG art. 33 se refiere a la suspensión).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta está correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Para volver a los estudios después de una suspensión, el estudiante debe solicitar su reincorporación al Vicedecano, cumplir con los requisitos establecidos por la Facultad, adjuntar los documentos necesarios y, si la suspensión fue por razones de salud, acompañar los antecedentes oficiales que demuestren que los impedimentos han cesado.\nCondiciones o límites: La reincorporación puede extenderse por un máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-031] [RI-FI-ART-027] [RG-ART-035] [RG-ART-033] [RG-ART-032] [RI-FI-ART-028]",
+        "respuesta_final": "Respuesta: Para volver a los estudios después de una suspensión, el estudiante debe solicitar su reincorporación al Vicedecano, cumplir con los requisitos establecidos por la Facultad, adjuntar los documentos necesarios y, si la suspensión fue por razones de salud, acompañar los antecedentes oficiales que demuestren que los impedimentos han cesado.\nCondiciones o límites: La reincorporación puede extenderse por un máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RG-ART-031] [RI-FI-ART-027] [RG-ART-035] [RG-ART-033] [RG-ART-032] [RI-FI-ART-028]"
+      }
+    },
+    {
+      "case_key": "congelado_50:27",
+      "set": "congelado_50",
+      "id": "27",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-032",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RI-FI-ART-025",
+        "RG-ART-003-DEF-19",
+        "RG-ART-033"
+      ],
+      "pool_ordenado": [
+        "RG-ART-032",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RI-FI-ART-025",
+        "RG-ART-003-DEF-19",
+        "RG-ART-033",
+        "RG-ART-031",
+        "RG-ART-003-DEF-20"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:28",
+      "set": "congelado_50",
+      "id": "28",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-029",
+        "RG-ART-042",
+        "RG-ART-020",
+        "RI-FI-ART-007",
+        "RG-ART-043",
+        "RG-ART-050"
+      ],
+      "pool_ordenado": [
+        "RG-ART-029",
+        "RG-ART-042",
+        "RG-ART-020",
+        "RI-FI-ART-007",
+        "RG-ART-043",
+        "RG-ART-050",
+        "RI-FI-ART-009",
+        "RG-TRANS-002"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:29",
+      "set": "congelado_50",
+      "id": "29",
+      "categoria": "condicional",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-026",
+        "RG-ART-038",
+        "RG-ART-025",
+        "RG-ART-020",
+        "RI-FI-ART-023",
+        "RG-ART-059"
+      ],
+      "pool_ordenado": [
+        "RG-ART-026",
+        "RG-ART-038",
+        "RG-ART-025",
+        "RG-ART-020",
+        "RI-FI-ART-023",
+        "RG-ART-059",
+        "RG-ART-032",
+        "RG-ART-022"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:30",
+      "set": "congelado_50",
+      "id": "30",
+      "categoria": "condicional",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-013",
+        "RG-ART-010",
+        "RG-ART-020",
+        "RG-ART-026",
+        "RG-ART-003-DEF-07",
+        "RG-TRANS-001"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-013",
+        "RG-ART-010",
+        "RG-ART-020",
+        "RG-ART-026",
+        "RG-ART-003-DEF-07",
+        "RG-TRANS-001",
+        "RG-ART-014"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:31",
+      "set": "congelado_50",
+      "id": "31",
+      "categoria": "cruce",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-034",
+        "RI-FI-ART-002",
+        "RI-FI-ART-001",
+        "RG-TRANS-002",
+        "RG-ART-001",
+        "RI-FI-ART-020"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-034",
+        "RI-FI-ART-002",
+        "RI-FI-ART-001",
+        "RG-TRANS-002",
+        "RG-ART-001",
+        "RI-FI-ART-020",
+        "RI-FI-ART-018",
+        "RG-ART-011",
+        "RI-FI-ART-005",
+        "RG-PREAMBULO",
+        "RI-FI-ART-015",
+        "RI-FI-ART-035"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:32",
+      "set": "congelado_50",
+      "id": "32",
+      "categoria": "cruce",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-01",
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-11",
+        "CAL-2026-S2-02"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-01",
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-11",
+        "CAL-2026-S2-02",
+        "CAL-2026-S1-05"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:33",
+      "set": "congelado_50",
+      "id": "33",
+      "categoria": "cruce",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S1-08"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S1-08"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:34",
+      "set": "congelado_50",
+      "id": "34",
+      "categoria": "cruce",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 19,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 12,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 20,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 1,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-027",
+        "RI-FI-ART-031",
+        "RG-ART-031",
+        "RG-ART-032",
+        "RI-FI-ART-025",
+        "RG-ART-035"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-027",
+        "RI-FI-ART-031",
+        "RG-ART-031",
+        "RG-ART-032",
+        "RI-FI-ART-025",
+        "RG-ART-035",
+        "RG-ART-033",
+        "RI-FI-ART-028"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:35",
+      "set": "congelado_50",
+      "id": "35",
+      "categoria": "cruce",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 5,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 2,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 6,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-03"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-03"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:36",
+      "set": "congelado_50",
+      "id": "36",
+      "categoria": "cruce",
+      "tipo_enrutador": "cruce",
+      "correcta": false,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 8,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 5,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 9,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-008",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-008",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-009",
+        "RG-ART-029",
+        "RI-FI-ART-014"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "CAL 2º sem 2026 + Art. 8, RI-FI",
+        "requeridas": [
+          "CAL-2026-S2-01",
+          "RI-FI-ART-008"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_omision_condiciones_y_excepciones",
+        "explicacion": "Declara falsamente 'No se aplican condiciones o limites adicionales' y omite las excepciones del minimo de 8 creditos establecidas en [RI-FI-ART-008].",
+        "motivo_auditoria": "Afirma que no hay condiciones y omite las excepciones del art. 8 (precedente D2: P36).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Las inscripciones se realizan del 03 al 07 de agosto y el mínimo de créditos es ocho.\nCondiciones o límites: No se aplican condiciones o límites adicionales.\nFuente: [CAL-2026-S2-01] [RI-FI-ART-008]",
+        "respuesta_final": "Respuesta: Las inscripciones se realizan del 03 al 07 de agosto y el mínimo de créditos es ocho.\nCondiciones o límites: No se aplican condiciones o límites adicionales.\nFuente: [CAL-2026-S2-01] [RI-FI-ART-008]"
+      }
+    },
+    {
+      "case_key": "congelado_50:37",
+      "set": "congelado_50",
+      "id": "37",
+      "categoria": "cruce",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-07",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-09"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-07",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-11"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:38",
+      "set": "congelado_50",
+      "id": "38",
+      "categoria": "cruce",
+      "tipo_enrutador": "cruce",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-023",
+        "RG-ANEXO-15",
+        "RG-ANEXO-08",
+        "RG-ANEXO-44",
+        "RG-ANEXO-45",
+        "RG-ANEXO-35"
+      ],
+      "pool_ordenado": [
+        "RG-ART-023",
+        "RG-ANEXO-15",
+        "RG-ANEXO-08",
+        "RG-ANEXO-44",
+        "RG-ANEXO-45",
+        "RG-ANEXO-35",
+        "RG-ANEXO-04",
+        "RG-ANEXO-18",
+        "RG-ANEXO-05",
+        "RG-ANEXO-32",
+        "RG-ANEXO-01",
+        "RG-ANEXO-22"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:39",
+      "set": "congelado_50",
+      "id": "39",
+      "categoria": "cruce",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 5,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 2,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 6,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-08"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-14"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:40",
+      "set": "congelado_50",
+      "id": "40",
+      "categoria": "cruce",
+      "tipo_enrutador": "cruce",
+      "correcta": true,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 11,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 12,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-030",
+        "RI-FI-ART-029",
+        "RI-FI-ART-031",
+        "RG-ART-024",
+        "RG-ART-048",
+        "RG-PREAMBULO"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-030",
+        "RI-FI-ART-029",
+        "RI-FI-ART-031",
+        "RG-ART-024",
+        "RG-ART-048",
+        "RG-PREAMBULO",
+        "RG-ART-058",
+        "RG-ART-021"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:41",
+      "set": "congelado_50",
+      "id": "41",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 3,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 4,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [],
+      "pool_ordenado": [],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:42",
+      "set": "congelado_50",
+      "id": "42",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 3,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 4,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [],
+      "pool_ordenado": [],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:43",
+      "set": "congelado_50",
+      "id": "43",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 3,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 4,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [],
+      "pool_ordenado": [],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:44",
+      "set": "congelado_50",
+      "id": "44",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 3,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 4,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [],
+      "pool_ordenado": [],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:45",
+      "set": "congelado_50",
+      "id": "45",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 25,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 18,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 29,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 2,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RI-FI-ART-015",
+        "RI-FI-ART-027",
+        "RI-FI-ART-001",
+        "RI-FI-ART-034",
+        "RI-FI-ART-022"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RI-FI-ART-015",
+        "RI-FI-ART-027",
+        "RI-FI-ART-001",
+        "RI-FI-ART-034",
+        "RI-FI-ART-022",
+        "RI-FI-ART-026",
+        "RI-FI-ART-035",
+        "RI-FI-ART-031",
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RI-FI-ART-020",
+        "RI-FI-ART-025"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:46",
+      "set": "congelado_50",
+      "id": "46",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 15,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 10,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 18,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 1,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RI-FI-ART-035",
+        "RI-FI-ART-005",
+        "RI-FI-ART-001",
+        "RG-ART-035"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RI-FI-ART-035",
+        "RI-FI-ART-005",
+        "RI-FI-ART-001",
+        "RG-ART-035",
+        "RI-FI-ART-026",
+        "RI-FI-ART-031",
+        "RI-FI-ART-015"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:47",
+      "set": "congelado_50",
+      "id": "47",
+      "categoria": "abstencion",
+      "tipo_enrutador": "cruce",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 25,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 18,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 26,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 3,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-008",
+        "RI-FI-ART-031",
+        "RI-FI-ART-015",
+        "RI-FI-ART-014",
+        "RI-FI-ART-005",
+        "RI-FI-ART-009"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-008",
+        "RI-FI-ART-031",
+        "RI-FI-ART-015",
+        "RI-FI-ART-014",
+        "RI-FI-ART-005",
+        "RI-FI-ART-009",
+        "RI-FI-ART-022",
+        "RI-FI-ART-011"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:48",
+      "set": "congelado_50",
+      "id": "48",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 24,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 17,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 28,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 3,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-012",
+        "RI-FI-ART-011",
+        "RG-ART-023",
+        "RI-FI-ART-028",
+        "RI-FI-ART-013",
+        "RG-ART-022"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-012",
+        "RI-FI-ART-011",
+        "RG-ART-023",
+        "RI-FI-ART-028",
+        "RI-FI-ART-013",
+        "RG-ART-022",
+        "RI-FI-ART-022",
+        "RI-FI-ART-021",
+        "RI-FI-ART-020",
+        "RG-ART-027",
+        "RI-FI-ART-018",
+        "RG-ART-026",
+        "RI-FI-ART-031",
+        "RI-FI-ART-010"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:49",
+      "set": "congelado_50",
+      "id": "49",
+      "categoria": "abstencion",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 16,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 9,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 17,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 3,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-10",
+        "CAL-2026-S2-11"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-10",
+        "CAL-2026-S2-11"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "congelado_50:50",
+      "set": "congelado_50",
+      "id": "50",
+      "categoria": "abstencion",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 24,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 17,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 28,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 3,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-015",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RI-FI-ART-011",
+        "RG-ART-028"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-015",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RI-FI-ART-011",
+        "RG-ART-028",
+        "RI-FI-ART-014",
+        "RI-FI-ART-031",
+        "RI-FI-ART-013",
+        "RI-FI-ART-003",
+        "RI-FI-ART-022",
+        "RI-FI-ART-030",
+        "RI-FI-ART-032",
+        "RI-FI-ART-020",
+        "RG-ART-024",
+        "RI-FI-ART-033",
+        "RI-FI-ART-027",
+        "RI-FI-ART-026"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H01",
+      "set": "dificil_25",
+      "id": "H01",
+      "categoria": "multi_salto",
+      "tipo_enrutador": "cruce",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-021",
+        "RG-ART-039",
+        "RI-FI-ART-005",
+        "RI-FI-ART-019"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-021",
+        "RG-ART-039",
+        "RI-FI-ART-005",
+        "RI-FI-ART-019",
+        "RI-FI-ART-024",
+        "RG-ART-028",
+        "RG-ART-023",
+        "RI-FI-ART-006",
+        "RI-FI-ART-001",
+        "RG-ART-041"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H02",
+      "set": "dificil_25",
+      "id": "H02",
+      "categoria": "multi_salto",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-019",
+        "RI-FI-ART-017",
+        "RI-FI-ART-005",
+        "RG-ART-054",
+        "RG-ART-055"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-019",
+        "RI-FI-ART-017",
+        "RI-FI-ART-005",
+        "RG-ART-054",
+        "RG-ART-055",
+        "RI-FI-ART-001"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H03",
+      "set": "dificil_25",
+      "id": "H03",
+      "categoria": "multi_salto",
+      "tipo_enrutador": "cruce",
+      "correcta": false,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 19,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 12,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 20,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 2,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-07",
+        "CAL-2026-S1-04",
+        "CAL-2026-S2-04"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-07",
+        "CAL-2026-S1-04",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-08"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "CAL-2026-S1-02; CAL-2026-S1-03; CAL-2026-S2-02; CAL-2026-S2-03",
+        "requeridas": [
+          "CAL-2026-S1-02",
+          "CAL-2026-S1-03",
+          "CAL-2026-S2-02",
+          "CAL-2026-S2-03"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": false,
+        "todas_con_extra_en_top6": false,
+        "requeridas_faltantes_top6": [
+          "CAL-2026-S1-02",
+          "CAL-2026-S2-02"
+        ],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [
+          "CAL-2026-S2-02"
+        ],
+        "agente_origen": "recuperador",
+        "categoria_fallo": "recuperador_evidencia_faltante",
+        "explicacion": "El Recuperador no incorpora al top-6 las unidades de inicio de clases ([CAL-2026-S1-02] y [CAL-2026-S2-02]). En el ciclo 1 el Redactor alucina conteos de dias y en ciclos 2-3 se abstiene por falta de fechas.",
+        "motivo_auditoria": "Dice que falta la fecha de inicio de clases (no la recupera).",
+        "aprobado_verificador_final": false,
+        "motivo_verificador_final": "Falta evidencia para calcular el número de días desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre",
+        "primer_borrador": "Respuesta: En el primer semestre hay 31 días desde el inicio de clases hasta la fecha límite de modificación de asignaturas, mientras que en el segundo semestre hay 262 días. El plazo más largo es en el segundo semestre.\nCondiciones o límites: No se mencionan fechas de inicio de clases explícitamente, se dedujeron a partir del contexto del calendario.\nFuente: [CAL-2026-S1-03], [CAL-2026-S2-03]",
+        "respuesta_final": "Respuesta: No se puede calcular el número de días desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre debido a la falta de información sobre la fecha de inicio de clases. \nCondiciones o límites: Falta evidencia para calcular el número de días.\nFuente: sin respaldo en la normativa consultada"
+      }
+    },
+    {
+      "case_key": "dificil_25:H04",
+      "set": "dificil_25",
+      "id": "H04",
+      "categoria": "multi_salto",
+      "tipo_enrutador": "cruce",
+      "correcta": true,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 11,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 12,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-049",
+        "RG-TRANS-001",
+        "RG-ART-003-DEF-10",
+        "RG-ART-003-DEF-23",
+        "RG-ART-003-DEF-22",
+        "RG-ART-028"
+      ],
+      "pool_ordenado": [
+        "RG-ART-049",
+        "RG-TRANS-001",
+        "RG-ART-003-DEF-10",
+        "RG-ART-003-DEF-23",
+        "RG-ART-003-DEF-22",
+        "RG-ART-028",
+        "RG-ART-026",
+        "RG-TRANS-002",
+        "RG-ART-030",
+        "RG-ART-048"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H05",
+      "set": "dificil_25",
+      "id": "H05",
+      "categoria": "calculo",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 12,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 5,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 13,
+      "rechazos_redactor": 3,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RI-FI-ART-031",
+        "RI-FI-ART-029",
+        "RG-ART-028",
+        "RI-FI-ART-021"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RI-FI-ART-031",
+        "RI-FI-ART-029",
+        "RG-ART-028",
+        "RI-FI-ART-021",
+        "RG-ANEXO-22",
+        "RG-ART-048",
+        "RG-ART-021",
+        "RI-FI-ART-011",
+        "RG-ANEXO-32"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H06",
+      "set": "dificil_25",
+      "id": "H06",
+      "categoria": "calculo",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 13,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 14,
+      "rechazos_redactor": 2,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RI-FI-ART-031",
+        "RG-ART-043",
+        "RG-ART-003-DEF-07",
+        "RG-ART-024"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RI-FI-ART-031",
+        "RG-ART-043",
+        "RG-ART-003-DEF-07",
+        "RG-ART-024",
+        "RI-FI-ART-008",
+        "RI-FI-ART-015"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H07",
+      "set": "dificil_25",
+      "id": "H07",
+      "categoria": "calculo",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 13,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 14,
+      "rechazos_redactor": 3,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RG-ART-024",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RI-FI-ART-031",
+        "RI-FI-ART-013"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RG-ART-024",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RI-FI-ART-031",
+        "RI-FI-ART-013",
+        "RI-FI-ART-015",
+        "RG-ART-003-DEF-07",
+        "RI-FI-ART-022",
+        "RI-FI-ART-030",
+        "RI-FI-ART-020",
+        "RI-FI-ART-005"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "RI-FI-ART-014; RG-ART-028",
+        "requeridas": [
+          "RI-FI-ART-014",
+          "RG-ART-028"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_derivacion_implicita_y_colapso_feedback",
+        "explicacion": "Ciclo 1 concluye bien (10,5 > 10) pero sin explicitar el paso aritmetico (42 / 4 = 10,5); el Verificador rechaza falsamente y el Redactor colapsa en ciclos 2-3 hacia una falsa abstencion pese a estar todos los datos en la pregunta.",
+        "motivo_auditoria": "Dice que no se puede determinar; los datos están en la pregunta.",
+        "aprobado_verificador_final": false,
+        "motivo_verificador_final": "El borrador no responde la pregunta completa, ya que no evalúa si el estudiante está en baja académica según el Artículo 14, ni menciona la falta de información sobre el promedio de créditos semestrales y el número de semestres de permanencia.",
+        "primer_borrador": "Respuesta: No, el estudiante no está en baja académica por el criterio de promedio de créditos del Artículo 14.\nCondiciones o límites: El promedio de créditos es 10,5, superior a 10, por lo que no cumple con el criterio de baja académica.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "respuesta_final": "Respuesta: No se puede determinar si el estudiante está en baja académica por el criterio de promedio de créditos del Artículo 14 debido a la falta de información sobre el promedio de créditos semestrales y el número de semestres de permanencia.\nCondiciones o límites: No hay suficiente información para evaluar el cumplimiento del criterio del Artículo 14.\nFuente: [RI-FI-ART-014]"
+      }
+    },
+    {
+      "case_key": "dificil_25:H08",
+      "set": "dificil_25",
+      "id": "H08",
+      "categoria": "calculo",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 10,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 11,
+      "rechazos_redactor": 3,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RG-ART-021",
+        "RI-FI-ART-031",
+        "RG-ART-048",
+        "RI-FI-ART-029"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RG-ART-021",
+        "RI-FI-ART-031",
+        "RG-ART-048",
+        "RI-FI-ART-029"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H09",
+      "set": "dificil_25",
+      "id": "H09",
+      "categoria": "colision_lexica",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-025",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RI-FI-ART-031",
+        "RG-ART-032",
+        "RI-FI-ART-028"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-025",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RI-FI-ART-031",
+        "RG-ART-032",
+        "RI-FI-ART-028"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H10",
+      "set": "dificil_25",
+      "id": "H10",
+      "categoria": "colision_lexica",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-031",
+        "RI-FI-ART-027",
+        "RG-ART-033",
+        "RG-ART-032",
+        "RG-ART-029",
+        "RG-ART-003-DEF-20"
+      ],
+      "pool_ordenado": [
+        "RG-ART-031",
+        "RI-FI-ART-027",
+        "RG-ART-033",
+        "RG-ART-032",
+        "RG-ART-029",
+        "RG-ART-003-DEF-20",
+        "RG-ART-003-DEF-19"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H11",
+      "set": "dificil_25",
+      "id": "H11",
+      "categoria": "colision_lexica",
+      "tipo_enrutador": "factual",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-024",
+        "RG-PREAMBULO",
+        "RG-ART-021",
+        "RG-ANEXO-36",
+        "RG-ART-003-DEF-12",
+        "RG-ANEXO-22"
+      ],
+      "pool_ordenado": [
+        "RG-ART-024",
+        "RG-PREAMBULO",
+        "RG-ART-021",
+        "RG-ANEXO-36",
+        "RG-ART-003-DEF-12",
+        "RG-ANEXO-22",
+        "RG-ANEXO-15",
+        "RG-ART-020",
+        "RG-ANEXO-32",
+        "RG-ANEXO-21",
+        "RG-ART-003-DEF-23",
+        "RG-ANEXO-28",
+        "RG-ANEXO-35"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H12",
+      "set": "dificil_25",
+      "id": "H12",
+      "categoria": "colision_lexica",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 11,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 12,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-030",
+        "RI-FI-ART-014",
+        "RG-ART-026",
+        "RG-ART-043",
+        "RG-ART-032",
+        "RG-ART-051"
+      ],
+      "pool_ordenado": [
+        "RG-ART-030",
+        "RI-FI-ART-014",
+        "RG-ART-026",
+        "RG-ART-043",
+        "RG-ART-032",
+        "RG-ART-051",
+        "RG-ART-033"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H13",
+      "set": "dificil_25",
+      "id": "H13",
+      "categoria": "negacion_excepcion",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-022",
+        "RG-ART-044",
+        "RG-ART-037",
+        "RI-FI-ART-015",
+        "RI-FI-ART-020",
+        "RG-ART-025"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-022",
+        "RG-ART-044",
+        "RG-ART-037",
+        "RI-FI-ART-015",
+        "RI-FI-ART-020",
+        "RG-ART-025"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H14",
+      "set": "dificil_25",
+      "id": "H14",
+      "categoria": "negacion_excepcion",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 11,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 12,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RI-FI-ART-020",
+        "RG-ART-028",
+        "RI-FI-ART-028",
+        "RG-ART-030",
+        "RG-ART-037"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RI-FI-ART-020",
+        "RG-ART-028",
+        "RI-FI-ART-028",
+        "RG-ART-030",
+        "RG-ART-037",
+        "RG-ART-026"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "RI-FI-ART-014; RG-ART-028",
+        "requeridas": [
+          "RI-FI-ART-014",
+          "RG-ART-028"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_contradiccion_polar_excepciones",
+        "explicacion": "Ante una pregunta cerrada ('¿Queda automaticamente...?'), responde primero 'Si, el estudiante queda automaticamente' y luego enumera excepciones que lo contradicen.",
+        "motivo_auditoria": "'Sí, queda automáticamente' contradice las excepciones (igual que v4 y v5).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "El borrador es correcto y está respaldado por la evidencia.",
+        "primer_borrador": "Respuesta: Sí, queda automáticamente en baja académica.\nCondiciones o límites: No se aplican excepciones mencionadas en la normativa.\nFuente: [RI-FI-ART-014] [RG-ART-028]",
+        "respuesta_final": "Respuesta: Sí, el estudiante queda automáticamente en baja académica si ha reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\nCondiciones o límites: Las excepciones mencionadas en la normativa aplican si el estudiante cumple con los criterios establecidos.\nFuente: [RI-FI-ART-014] [RG-ART-028]"
+      }
+    },
+    {
+      "case_key": "dificil_25:H15",
+      "set": "dificil_25",
+      "id": "H15",
+      "categoria": "negacion_excepcion",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-021",
+        "RI-FI-ART-022",
+        "RG-ART-037",
+        "RI-FI-ART-020",
+        "RI-FI-ART-024",
+        "RG-ART-045"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-021",
+        "RI-FI-ART-022",
+        "RG-ART-037",
+        "RI-FI-ART-020",
+        "RI-FI-ART-024",
+        "RG-ART-045",
+        "RI-FI-ART-028"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H16",
+      "set": "dificil_25",
+      "id": "H16",
+      "categoria": "sintesis",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 8,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 5,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-014",
+        "RG-ART-051",
+        "RI-FI-ART-015",
+        "RI-FI-ART-035",
+        "RG-TRANS-001",
+        "RI-FI-ART-001"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-014",
+        "RG-ART-051",
+        "RI-FI-ART-015",
+        "RI-FI-ART-035",
+        "RG-TRANS-001",
+        "RI-FI-ART-001",
+        "RI-FI-ART-028",
+        "RI-FI-ART-026",
+        "RI-FI-ART-031",
+        "RI-FI-ART-027"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H17",
+      "set": "dificil_25",
+      "id": "H17",
+      "categoria": "sintesis",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-001",
+        "RI-FI-ART-021"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-001",
+        "RI-FI-ART-021",
+        "RI-FI-ART-020",
+        "RG-ART-035",
+        "RI-FI-ART-011",
+        "RI-FI-ART-022",
+        "RI-FI-ART-035",
+        "RI-FI-ART-016"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H18",
+      "set": "dificil_25",
+      "id": "H18",
+      "categoria": "sintesis",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 2,
+      "llamadas_modelo_llm": 10,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 5,
+        "redactor": 2,
+        "verificador": 2
+      },
+      "eventos_traza": 11,
+      "rechazos_redactor": 1,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-031",
+        "RG-ART-035",
+        "RG-ART-003-DEF-19",
+        "RG-ART-031",
+        "RG-ART-003-DEF-20",
+        "RG-ART-033"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-031",
+        "RG-ART-035",
+        "RG-ART-003-DEF-19",
+        "RG-ART-031",
+        "RG-ART-003-DEF-20",
+        "RG-ART-033",
+        "RI-FI-ART-027",
+        "RG-ART-032"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "RI-FI-ART-031",
+        "requeridas": [
+          "RI-FI-ART-031"
+        ],
+        "requeridas_cita_extra": [
+          "RG-ART-033"
+        ],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_perdida_cita_bajo_feedback",
+        "explicacion": "Ciclo 1 acierta los 36 creditos y cita [RG-ART-033] para los 3 anos, pero arrastra citas de definiciones y el Verificador rechaza; en ciclo 2 conserva la afirmacion de los 3 anos y borra la cita [RG-ART-033], dejando solo [RI-FI-ART-031].",
+        "motivo_auditoria": "36 créditos correcto, pero agrega el plazo de tres años de suspensión citando solo RI-FI art. 31 (está en RG art. 33; precedente D2: P01).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "El borrador cumple con todos los criterios: responde la pregunta, cita correctamente el artículo 31°, y menciona los 36 créditos como se especifica en la evidencia.",
+        "primer_borrador": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\nCondiciones o límites: La suspensión de estudios puede extenderse por un período máximo de tres años calendario. Si el alumno no solicita su reincorporación dentro de este plazo, pierde la calidad de alumno de pregrado de la Universidad de Concepción.\nFuente: [RI-FI-ART-031] [RG-ART-035] [RG-ART-003-DEF-19] [RG-ART-003-DEF-20] [RG-ART-033]",
+        "respuesta_final": "Respuesta: Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de ésta, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\nCondiciones o límites: La suspensión de estudios puede extenderse por un período máximo de tres años calendario.\nFuente: [RI-FI-ART-031]"
+      }
+    },
+    {
+      "case_key": "dificil_25:H19",
+      "set": "dificil_25",
+      "id": "H19",
+      "categoria": "sintesis",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 8,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 5,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 9,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-028",
+        "RI-FI-ART-014",
+        "RG-ART-051",
+        "RG-ART-029",
+        "RG-ART-050",
+        "RG-ART-003-DEF-20"
+      ],
+      "pool_ordenado": [
+        "RG-ART-028",
+        "RI-FI-ART-014",
+        "RG-ART-051",
+        "RG-ART-029",
+        "RG-ART-050",
+        "RG-ART-003-DEF-20"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H20",
+      "set": "dificil_25",
+      "id": "H20",
+      "categoria": "premisa_falsa",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 3,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 4,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [],
+      "pool_ordenado": [],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H21",
+      "set": "dificil_25",
+      "id": "H21",
+      "categoria": "premisa_falsa",
+      "tipo_enrutador": "numerica",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 13,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 14,
+      "rechazos_redactor": 2,
+      "rechazos_recuperador": 1,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-008",
+        "RI-FI-ART-031",
+        "RI-FI-ART-014",
+        "RI-FI-ART-015",
+        "RG-ART-049",
+        "RG-ART-028"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-008",
+        "RI-FI-ART-031",
+        "RI-FI-ART-014",
+        "RI-FI-ART-015",
+        "RG-ART-049",
+        "RG-ART-028",
+        "RI-FI-ART-005",
+        "RG-ART-042"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H22",
+      "set": "dificil_25",
+      "id": "H22",
+      "categoria": "premisa_falsa",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 3,
+      "llamadas_modelo_llm": 19,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 12,
+        "redactor": 3,
+        "verificador": 3
+      },
+      "eventos_traza": 20,
+      "rechazos_redactor": 2,
+      "rechazos_recuperador": 1,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-013",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RI-FI-ART-021",
+        "RI-FI-ART-024",
+        "RI-FI-ART-030"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-013",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RI-FI-ART-021",
+        "RI-FI-ART-024",
+        "RI-FI-ART-030",
+        "RI-FI-ART-018",
+        "RI-FI-ART-005",
+        "RI-FI-ART-031",
+        "RI-FI-ART-012",
+        "RI-FI-ART-009"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H23",
+      "set": "dificil_25",
+      "id": "H23",
+      "categoria": "premisa_falsa",
+      "tipo_enrutador": "premisa_falsa",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 6,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 3,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 7,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-08",
+        "CAL-2026-S1-02"
+      ],
+      "pool_ordenado": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-08",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-12"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H24",
+      "set": "dificil_25",
+      "id": "H24",
+      "categoria": "colision_lexica",
+      "tipo_enrutador": "condicional",
+      "correcta": true,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RG-ART-026",
+        "RG-ART-030",
+        "RG-ART-025",
+        "RI-FI-ART-023",
+        "RG-ART-013",
+        "RI-FI-ART-035"
+      ],
+      "pool_ordenado": [
+        "RG-ART-026",
+        "RG-ART-030",
+        "RG-ART-025",
+        "RI-FI-ART-023",
+        "RG-ART-013",
+        "RI-FI-ART-035",
+        "RG-ART-043",
+        "RG-ART-022",
+        "RG-TRANS-002",
+        "RG-ART-032"
+      ],
+      "error_detalle": null
+    },
+    {
+      "case_key": "dificil_25:H25",
+      "set": "dificil_25",
+      "id": "H25",
+      "categoria": "sintesis",
+      "tipo_enrutador": "condicional",
+      "correcta": false,
+      "ciclos": 1,
+      "llamadas_modelo_llm": 9,
+      "llamadas_llm_por_agente": {
+        "enrutador": 1,
+        "recuperador": 6,
+        "redactor": 1,
+        "verificador": 1
+      },
+      "eventos_traza": 10,
+      "rechazos_redactor": 0,
+      "rechazos_recuperador": 0,
+      "fallbacks": [],
+      "top6": [
+        "RI-FI-ART-005",
+        "RG-ART-055",
+        "RI-FI-ART-006",
+        "RI-FI-ART-004",
+        "RG-ART-018",
+        "RI-FI-ART-032"
+      ],
+      "pool_ordenado": [
+        "RI-FI-ART-005",
+        "RG-ART-055",
+        "RI-FI-ART-006",
+        "RI-FI-ART-004",
+        "RG-ART-018",
+        "RI-FI-ART-032",
+        "RI-FI-ART-001",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "RI-FI-ART-017",
+        "RG-ART-042"
+      ],
+      "error_detalle": {
+        "gold_fuente_csv": "RI-FI-ART-005",
+        "requeridas": [
+          "RI-FI-ART-005"
+        ],
+        "requeridas_cita_extra": [],
+        "todas_requeridas_en_top6": true,
+        "todas_con_extra_en_top6": true,
+        "requeridas_faltantes_top6": [],
+        "extra_faltantes_top6": [],
+        "requeridas_faltantes_pool": [],
+        "agente_origen": "redactor",
+        "categoria_fallo": "redactor_sintesis_incompleta_desempate",
+        "explicacion": "Enumera factores de seleccion teniendo [RI-FI-ART-005] en el puesto #1, pero omite el orden de prelacion y el criterio de desempate (mayor numero de creditos aprobados y, en caso de igualdad, mayor promedio curricular).",
+        "motivo_auditoria": "No da el orden de desempate (créditos, luego promedio).",
+        "aprobado_verificador_final": true,
+        "motivo_verificador_final": "La respuesta es correcta y está respaldada por la evidencia.",
+        "primer_borrador": "Respuesta: Los estudiantes de Ingreso Común se seleccionan para asignarlos a una carrera de la Facultad al término del segundo semestre según el número de créditos aprobados, el promedio curricular de notas de las asignaturas del Plan Común de Primer Año, el orden de sus preferencias en las carreras de Ingeniería Civil según la oferta de la Facultad y los cupos disponibles.\nCondiciones o límites: La selección se basa únicamente en los criterios mencionados en el Artículo 5°, y no se consideran otros factores como el promedio general o la nota en asignaturas fuera del Plan Común de Primer Año.\nFuente: [RI-FI-ART-005] [RI-FI-ART-006]",
+        "respuesta_final": "Respuesta: Los estudiantes de Ingreso Común se seleccionan para asignarlos a una carrera de la Facultad al término del segundo semestre según el número de créditos aprobados, el promedio curricular de notas de las asignaturas del Plan Común de Primer Año, el orden de sus preferencias en las carreras de Ingeniería Civil según la oferta de la Facultad y los cupos disponibles.\nCondiciones o límites: La selección se basa únicamente en los criterios mencionados en el Artículo 5°, y no se consideran otros factores como el promedio general o la nota en asignaturas fuera del Plan Común de Primer Año.\nFuente: [RI-FI-ART-005] [RI-FI-ART-006]"
+      }
+    }
+  ]
+}

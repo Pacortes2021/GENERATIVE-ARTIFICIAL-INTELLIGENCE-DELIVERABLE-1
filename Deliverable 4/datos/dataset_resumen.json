@@ -1,0 +1,260 @@
+{
+  "total_ejemplos": 210,
+  "train_ejemplos": 180,
+  "val_ejemplos": 30,
+  "seed_barajado_evidencia": 202604,
+  "unidades_corpus_total": 197,
+  "unidades_corpus_cubiertas_en_evidencia": 163,
+  "distribucion_bloques": {
+    "citas_cruce": {
+      "train": 35,
+      "val": 5,
+      "total": 40
+    },
+    "condiciones_excepciones": {
+      "train": 35,
+      "val": 5,
+      "total": 40
+    },
+    "polares_y_lectura": {
+      "train": 30,
+      "val": 5,
+      "total": 35
+    },
+    "calculos_y_orden": {
+      "train": 30,
+      "val": 5,
+      "total": 35
+    },
+    "resiliencia_feedback": {
+      "train": 25,
+      "val": 5,
+      "total": 30
+    },
+    "abstencion_honesta": {
+      "train": 25,
+      "val": 5,
+      "total": 30
+    }
+  },
+  "distribucion_modos": {
+    "cruce": 53,
+    "condicional": 76,
+    "premisa_falsa": 16,
+    "numerica": 49,
+    "factual": 16
+  },
+  "distribucion_estados": {
+    "suficiente": 192,
+    "insuficiente": 13,
+    "no_existe": 5
+  },
+  "evidencia_unidades_por_ejemplo": {
+    "min": 3,
+    "mediana": 6.0,
+    "promedio": 5.8,
+    "p95": 6,
+    "max": 6
+  },
+  "longitudes_caracteres": {
+    "user": {
+      "min": 2104,
+      "mediana": 5898.5,
+      "promedio": 6091.8,
+      "p95": 10497,
+      "max": 12055
+    },
+    "assistant": {
+      "min": 373,
+      "mediana": 846.5,
+      "promedio": 852.4,
+      "p95": 1238,
+      "max": 1518
+    },
+    "total": {
+      "min": 2577,
+      "mediana": 6740.5,
+      "promedio": 6944.2,
+      "p95": 11516,
+      "max": 13142
+    }
+  },
+  "tokens_estimados_conservadores_3_4_chars_por_token": {
+    "min": 758,
+    "mediana": 1982.5,
+    "promedio": 2042.4,
+    "p95": 3387,
+    "max": 3865
+  },
+  "antifuga_evaluacion_d3": {
+    "total_preguntas_dataset": 210,
+    "total_preguntas_eval": 75,
+    "duplicados_internos": 0,
+    "coincidencias_exactas_eval": 0,
+    "alertas_sobre_umbral": 0,
+    "umbrales": {
+      "seq_ratio_max": 0.85,
+      "jaccard_contenido_max": 0.8
+    },
+    "top_10_pares_mas_cercanos": [
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "44",
+        "seq_ratio": 0.6802,
+        "jaccard_contenido": 0.3571,
+        "score_max": 0.6802,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?"
+      },
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "41",
+        "seq_ratio": 0.6729,
+        "jaccard_contenido": 0.3333,
+        "score_max": 0.6729,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+      },
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "43",
+        "seq_ratio": 0.6633,
+        "jaccard_contenido": 0.3571,
+        "score_max": 0.6633,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?"
+      },
+      {
+        "dataset_id": "B5-T01",
+        "bloque": "resiliencia_feedback",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "34",
+        "seq_ratio": 0.6404,
+        "jaccard_contenido": 0.2308,
+        "score_max": 0.6404,
+        "pregunta_dataset": "¿Qué documentos debe presentar un estudiante de Ingeniería que desea suspender estudios y hasta cuándo puede hacerlo?",
+        "pregunta_eval": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?"
+      },
+      {
+        "dataset_id": "B4-T14",
+        "bloque": "calculos_y_orden",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "11",
+        "seq_ratio": 0.6387,
+        "jaccard_contenido": 0.25,
+        "score_max": 0.6387,
+        "pregunta_dataset": "¿Cuál es el orden exacto de prioridad que rige la inscripción de asignaturas al inicio de un período lectivo ordinario en la Facultad de Ingeniería?",
+        "pregunta_eval": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?"
+      },
+      {
+        "dataset_id": "B4-T27",
+        "bloque": "calculos_y_orden",
+        "split": "train",
+        "eval_set": "dificil_25",
+        "eval_id": "H05",
+        "seq_ratio": 0.6378,
+        "jaccard_contenido": 0.5,
+        "score_max": 0.6378,
+        "pregunta_dataset": "Un egresado de Ingeniería Civil obtuvo 6,0 de promedio ponderado en su Plan de Estudio (sin Memoria) y 5,0 en su Memoria de Título. Calcula su nota de titulación y su concepto.",
+        "pregunta_eval": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?"
+      },
+      {
+        "dataset_id": "B5-T11",
+        "bloque": "resiliencia_feedback",
+        "split": "train",
+        "eval_set": "dificil_25",
+        "eval_id": "H07",
+        "seq_ratio": 0.6375,
+        "jaccard_contenido": 0.3333,
+        "score_max": 0.6375,
+        "pregunta_dataset": "Un estudiante que cursó seis semestres en Ingeniería aprobó en total 54 créditos sin convalidaciones. ¿Está en situación de Baja Académica por el criterio de promedio de créditos?",
+        "pregunta_eval": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?"
+      },
+      {
+        "dataset_id": "B6-T14",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "dificil_25",
+        "eval_id": "H03",
+        "seq_ratio": 0.6258,
+        "jaccard_contenido": 0.4,
+        "score_max": 0.6258,
+        "pregunta_dataset": "En el calendario 2026, ¿cuántos días transcurren desde la fecha límite de retiro de asignaturas del PLEV hasta el término de clases del PLEV?",
+        "pregunta_eval": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?"
+      },
+      {
+        "dataset_id": "B6-T08",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "41",
+        "seq_ratio": 0.6238,
+        "jaccard_contenido": 0.4167,
+        "score_max": 0.6238,
+        "pregunta_dataset": "¿Qué establece el inciso d) del Artículo 3° del Reglamento Interno de Ingeniería sobre el ingreso especial deportivo?",
+        "pregunta_eval": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+      },
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "42",
+        "seq_ratio": 0.6182,
+        "jaccard_contenido": 0.2353,
+        "score_max": 0.6182,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+      }
+    ]
+  },
+  "muestra_revision_manual_ids": [
+    "B1-T01",
+    "B1-T18",
+    "B1-T35",
+    "B1-V01",
+    "B1-V05",
+    "B2-T01",
+    "B2-T18",
+    "B2-T35",
+    "B2-V01",
+    "B2-V05",
+    "B3-T01",
+    "B3-T16",
+    "B3-T30",
+    "B3-V01",
+    "B3-V05",
+    "B4-T01",
+    "B4-T16",
+    "B4-T30",
+    "B4-V01",
+    "B4-V05",
+    "B5-T01",
+    "B5-T13",
+    "B5-T25",
+    "B5-V01",
+    "B5-V05",
+    "B6-T01",
+    "B6-T13",
+    "B6-T25",
+    "B6-V01",
+    "B6-V05"
+  ],
+  "archivos_generados": {
+    "train_jsonl": "Deliverable 4/datos/redactor_train.jsonl",
+    "val_jsonl": "Deliverable 4/datos/redactor_val.jsonl",
+    "resumen_json": "Deliverable 4/datos/dataset_resumen.json",
+    "muestra_md": "Deliverable 4/datos/MUESTRA_REVISION_MANUAL.md"
+  }
+}

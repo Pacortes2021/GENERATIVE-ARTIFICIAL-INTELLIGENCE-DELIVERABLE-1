@@ -339,6 +339,11 @@ model.eval()
 """
 
 
+def es_bf16_nativo(capability: tuple[int, int], bf16_supported: bool) -> bool:
+    """Usa bf16 solo en GPUs Ampere+ (sm_80+); Turing (T4) calcula en fp16 nativo."""
+    return bool(bf16_supported and capability[0] >= 8)
+
+
 def _resolver_versiones() -> dict[str, str]:
     paquetes = (
         "torch",
@@ -464,7 +469,9 @@ def entrenar(args: argparse.Namespace) -> dict[str, Any]:
         def __getitem__(self, idx: int) -> dict[str, Any]:
             return self.items[idx]
 
-    use_bf16 = torch.cuda.is_bf16_supported()
+    use_bf16 = es_bf16_nativo(
+        torch.cuda.get_device_capability(0), torch.cuda.is_bf16_supported()
+    )
     compute_dtype = torch.bfloat16 if use_bf16 else torch.float16
     bnb_config = BitsAndBytesConfig(
         load_in_4bit=True,

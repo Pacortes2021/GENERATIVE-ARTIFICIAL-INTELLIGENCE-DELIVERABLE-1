@@ -151,6 +151,7 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
 
         codigo_total = "\n".join(fuente_completa)
         self.assertIn("Deliverable 4/scripts/entrenar_redactor.py", codigo_total)
+        self.assertIn('"huggingface-hub>=0.30,<2.0"', codigo_total)
         for flag_usado in (
             "--train-jsonl",
             "--val-jsonl",
@@ -163,6 +164,10 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
         ):
             self.assertIn(flag_usado, flags_validos)
             self.assertIn(flag_usado, codigo_total)
+
+        self.assertFalse(er.es_bf16_nativo((7, 5), True))
+        self.assertTrue(er.es_bf16_nativo((8, 9), True))
+        self.assertFalse(er.es_bf16_nativo((8, 0), False))
 
 
 if __name__ == "__main__":

@@ -10,16 +10,16 @@ La exploración previa de tres agentes desarrollada en paralelo se conserva resp
 - [Video de la demostración](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing) (≤ 3 minutos, acceso abierto).
 - [Notebook completo](Deliverable3/D3_colab_qwen3_4b.ipynb): completo v6, 75 preguntas por defecto.
 - [Notebook de demostración](Deliverable3/Demo_D3.ipynb): grafo, roles y consulta compleja H17 con mensajes visibles, registro íntegro nuevo y fallo histórico H03 identificado.
-- [Paquete para Colab](Deliverable3_ejecucion.zip): subir este ZIP cuando lo solicite el notebook.
+- [Paquete para Colab](Deliverable3_ejecucion.zip): los dos notebooks lo descargan del repositorio y verifican su hash; también se puede subir a mano.
 - [Guía del video](VIDEO.md) y [guion con narración](Guion_video_D3.md): grabación de hasta tres minutos.
-- [Video demostrativo oficial en Google Drive](https://drive.google.com/drive/folders/1tkhRhI4_G7ArWNHW7zNoeZi8lL9RyPf2?usp=sharing): acceso público abierto.
 - [Auditoría y limitaciones](AUDITORIA.md).
 - [Archivo original sin modificar](D3_nuestro_completo_original.zip).
 
 ## Reproducir
 
 1. Abrir el notebook completo en Google Colab y seleccionar una GPU T4.
-2. Ejecutar las celdas de preparación y subir `Deliverable3_ejecucion.zip` en el Paso 2.
+2. Ejecutar las celdas de preparación. El Paso 2 descarga `Deliverable3_ejecucion.zip` del repositorio y verifica su hash
+   (con `DESCARGAR_DEL_REPO = False` se sube a mano).
 3. Las consultas individuales sirven para comprobar el sistema. No son los resultados del lote.
 4. Para el lote, conservar `ABLACION = None` y `SOLO_DIFICILES = False`.
 5. Conectar Drive en su celda. Cada intento crea una carpeta nueva. Para reanudar, pegar su ruta en

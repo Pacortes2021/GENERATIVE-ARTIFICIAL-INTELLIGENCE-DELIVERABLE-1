@@ -16,12 +16,17 @@ import torch
 
 DELIVERABLE4_DIR = Path(__file__).resolve().parents[1]
 SCRIPTS_DIR = DELIVERABLE4_DIR / "scripts"
+VIDEO_DIR = DELIVERABLE4_DIR / "video"
 NOTEBOOK_EVAL_PATH = DELIVERABLE4_DIR / "D4_colab_evaluacion.ipynb"
+NOTEBOOK_VIDEO_PATH = DELIVERABLE4_DIR / "D4_colab_video_demo.ipynb"
 
-if str(SCRIPTS_DIR) not in sys.path:
-    sys.path.insert(0, str(SCRIPTS_DIR))
+for _p in (SCRIPTS_DIR, VIDEO_DIR):
+    if str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
 
 import evaluar_d4 as ed  # noqa: E402
+import generar_auditoria_d4 as ga  # noqa: E402
+import mostrar_demo_d4 as demo  # noqa: E402
 
 
 class _BatchEncoding(dict):
@@ -253,6 +258,95 @@ class TestEvaluarD4(unittest.TestCase):
         for flag in ("--hf-repo", "--output-dir", "--qids", "--solo-comparativa", "--comparar-ids"):
             self.assertIn(flag, flags_validos)
             self.assertIn(flag, codigo)
+
+
+class TestAuditoriaArtefactosD4(unittest.TestCase):
+    def test_artefactos_evaluacion_y_auditoria_consistentes(self) -> None:
+        eval_dir = DELIVERABLE4_DIR / "evaluacion"
+        aud = json.loads((eval_dir / "auditoria_D4.json").read_text(encoding="utf-8"))
+        fallos = json.loads(
+            (eval_dir / "casos_fallo_y_regresion.json").read_text(encoding="utf-8")
+        )
+        with (eval_dir / "resultados_agentes_D4_auditados.csv").open(
+            encoding="utf-8", newline=""
+        ) as f:
+            rows = list(csv.DictReader(f))
+
+        self.assertEqual(len(rows), 75)
+        self.assertTrue(all(r["correcto"] in {"0", "1"} for r in rows))
+
+        cong_ok = sum(int(r["correcto"]) for r in rows if r["set"] == "congelado_50")
+        dif_ok = sum(int(r["correcto"]) for r in rows if r["set"] == "dificil_25")
+        rg = aud["resumen_global"]
+        self.assertEqual(cong_ok, rg["congelado_50"]["aciertos_estrictos"])
+        self.assertEqual(dif_ok, rg["dificil_25"]["aciertos_estrictos"])
+        self.assertEqual(cong_ok + dif_ok, rg["global_75"]["aciertos_estrictos"])
+        self.assertEqual(aud["telemetria_y_aislamiento"]["violaciones_aislamiento_lora"], 0)
+        self.assertEqual(
+            sum(aud["comparacion_d3_a_d4"]["transiciones_vs_d3"].values()), 75
+        )
+        qids_fallos = {c["qid"] for c in fallos["casos"]}
+        self.assertTrue(
+            {"dificil_25:H03", "dificil_25:H06", "dificil_25:H19", "congelado_50:6"}.issubset(
+                qids_fallos
+            )
+        )
+        for caso in fallos["casos"]:
+            self.assertGreater(len(caso["traza_completa"]), 0)
+            self.assertGreater(len(caso["telemetria"]), 0)
+
+    def test_generar_auditoria_determinista_en_directorio_temporal(self) -> None:
+        eval_dir = DELIVERABLE4_DIR / "evaluacion"
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_eval = Path(tmp)
+            for fname in (
+                "resultados_agentes_D4.csv",
+                "trazas_D4.json",
+                "telemetria_llamadas.json",
+                "comparativa_base_vs_finetuned.json",
+                "configuracion_evaluacion.json",
+            ):
+                (tmp_eval / fname).write_bytes((eval_dir / fname).read_bytes())
+            res = ga.generar_auditoria(eval_dir=tmp_eval)
+            self.assertEqual(res["resumen_global"]["global_75"]["aciertos_estrictos"], 64)
+            self.assertTrue((tmp_eval / "resultados_agentes_D4_auditados.csv").exists())
+            self.assertTrue((tmp_eval / "casos_fallo_y_regresion.json").exists())
+
+
+class TestDemoVideoD4(unittest.TestCase):
+    def test_etiqueta_adaptador_y_formato_comparativa_y_fallo(self) -> None:
+        self.assertEqual(demo.etiqueta_adaptador("redactor", solo_base=False), "LoRA ON (Redactor FT)")
+        self.assertEqual(demo.etiqueta_adaptador("redactor", solo_base=True), "LoRA OFF (Base)")
+        self.assertEqual(demo.etiqueta_adaptador("verificador", solo_base=False), "LoRA OFF (Base)")
+
+        comparativas = demo.cargar_comparativas()
+        self.assertIn("dificil_25:H07", comparativas)
+        txt = demo.formatear_comparativa_texto(comparativas["dificil_25:H07"])
+        self.assertIn("SISTEMA BASE D3", txt)
+        self.assertIn("SISTEMA D4 FINE-TUNED", txt)
+        self.assertIn("REDACTOR · LoRA ON (Redactor FT)", txt)
+        self.assertIn("42 / 4 = 10,5", txt)
+
+        html_card = demo.renderizar_comparativa_html(comparativas["dificil_25:H07"])
+        self.assertIn("Mensajes intermedios", html_card)
+        self.assertIn("LoRA ON (Redactor FT)", html_card)
+
+        fallos = demo.cargar_fallos()
+        self.assertIn("dificil_25:H19", fallos)
+        txt_fallo = demo.formatear_fallo_texto(fallos["dificil_25:H19"])
+        self.assertIn("ANÁLISIS DE FALLO dificil_25:H19", txt_fallo)
+        self.assertIn("VERIFICADOR · LoRA OFF (Base)", txt_fallo)
+
+    def test_cli_demo_y_notebook_video_valido(self) -> None:
+        self.assertEqual(demo.main(["--listar"]), 0)
+        with self.assertRaises(ValueError):
+            demo.main(["--qid", "qid_inexistente:999"])
+
+        nb = json.loads(NOTEBOOK_VIDEO_PATH.read_text(encoding="utf-8"))
+        self.assertEqual(nb.get("nbformat"), 4)
+        src_total = "\n".join("".join(c.get("source", [])) for c in nb.get("cells", []))
+        self.assertIn("mostrar_demo_d4", src_total)
+        self.assertIn("dificil_25:H07", src_total)
 
 
 if __name__ == "__main__":

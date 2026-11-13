@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import ast
+import hashlib
 import json
 import sys
 import tempfile
@@ -168,6 +169,46 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
         self.assertFalse(er.es_bf16_nativo((7, 5), True))
         self.assertTrue(er.es_bf16_nativo((8, 9), True))
         self.assertFalse(er.es_bf16_nativo((8, 0), False))
+
+    def test_artefactos_entrenamiento_paso3_completos(self) -> None:
+        ent_dir = DELIVERABLE4_DIR / "entrenamiento"
+        metricas_path = ent_dir / "training_metrics.json"
+        png_path = ent_dir / "loss_curve.png"
+        pdf_path = ent_dir / "loss_curve.pdf"
+        smoke_path = ent_dir / "smoke_test_val.json"
+        card_path = ent_dir / "adapter" / "README.md"
+
+        for p in (metricas_path, png_path, pdf_path, smoke_path, card_path):
+            self.assertTrue(p.is_file(), f"Falta artefacto de Paso 3: {p}")
+
+        metricas = json.loads(metricas_path.read_text(encoding="utf-8"))
+        self.assertEqual(metricas["modelo_base"], "Qwen/Qwen3-4B")
+        self.assertEqual(metricas["hf_repo"], "Pablox0333/qwen3-4b-redactor-udec-d4")
+        self.assertEqual(
+            metricas["hf_url"],
+            "https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4",
+        )
+        self.assertEqual(
+            metricas["datos"]["train_sha256"],
+            hashlib.sha256((DATOS_DIR / "redactor_train.jsonl").read_bytes()).hexdigest(),
+        )
+        self.assertEqual(
+            metricas["datos"]["val_sha256"],
+            hashlib.sha256((DATOS_DIR / "redactor_val.jsonl").read_bytes()).hexdigest(),
+        )
+        self.assertEqual(metricas["datos"]["tokens_train"]["truncados"], 0)
+        self.assertEqual(metricas["datos"]["tokens_val"]["truncados"], 0)
+        self.assertLess(
+            metricas["resultados"]["mejor_eval_loss"],
+            metricas["resultados"]["eval_loss_inicial"],
+        )
+        self.assertTrue(png_path.read_bytes().startswith(b"\x89PNG"))
+        self.assertTrue(pdf_path.read_bytes().startswith(b"%PDF-"))
+
+        smoke = json.loads(smoke_path.read_text(encoding="utf-8"))
+        self.assertEqual(len(smoke), 3)
+        card = card_path.read_text(encoding="utf-8")
+        self.assertIn("Pablox0333/qwen3-4b-redactor-udec-d4", card)
 
 
 if __name__ == "__main__":

@@ -731,12 +731,19 @@ Condiciones o límites: No aplica
 Fuente: sin respaldo en la normativa consultada
 ```
 
-## 29. `B6-V01` — bloque `abstencion_honesta` | split `val` | modo `factual` | estado `insuficiente`
+## 29. `B6-V01` — bloque `abstencion_honesta` | split `val` | modo `factual` | estado `suficiente`
 
 **Pregunta:** ¿Qué plazo exacto en años establece el Artículo 3°.10 del Reglamento General para rendir la defensa o examen final de titulación en cada Facultad?
 
-**Evidencia ensamblada (3 unidades, orden barajado):** `RG-ART-003-DEF-22`, `RG-ART-048`, `RG-ART-003-DEF-10`
-- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-003-DEF-22, RG-ART-048, RG-ART-003-DEF-10`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-003-DEF-12`, `RG-ART-003-DEF-10`, `RG-ART-048`, `RG-ART-003-DEF-22`
+- Clave esperada: `RG-ART-003-DEF-10` | Distractores incluidos: `RG-ART-003-DEF-12, RG-ART-048, RG-ART-003-DEF-22`
+
+<details>
+<summary>Textos literales de las unidades clave en corpus.json</summary>
+
+- **[RG-ART-003-DEF-10]** 3.10. PLAN DE ESTUDIO: El plan de estudio de una carrera es el conjunto de asignaturas, módulos y demás actividades curriculares ordenadas en una secuencia preestablecida conducente a la obtención de un grado académico o un título profesional. Consecuentemente, cada carrera tendrá asociado, un plan de estudio y los alumnos quedarán adscritos al plan de estudio vigente en el momento de su ingreso a la carrera, el que deberán aprobar íntegramente para acceder al grado o título profesional que corresponda. Los Planes de Estudio de las carreras que imparta la universidad deberán contener: a) Descripción General; b) Grado o título que otorga; c) Objetivos de la carrera; d) Perfil de egreso del graduado o profesional con sus competencias; e) Ordenamiento de las asignaturas y de las otras actividades curriculares que lo forman; f) Distribución de los créditos en asignaturas obligatorias, fundamentales, integradoras, electivas y complementarias; g) Distribución de los créditos de asignaturas que contribuyen a la formación integral del alumno, los que deben ser al menos el 10% del total de créditos transferibles del plan de estudios. h) Actividades finales de graduación o titulación. Las actividades finales de graduación o titulación podrán consistir en Habilitación Profesional, Examen de Grado o Título, Defensa de Título, Proyecto de Grado o Título o Proposición Plástica. Las actividades de habilitación profesional o trabajo de fin de carrera podrán consistir en Memoria, Internado, Práctica Preprofesional, u otra. Estas actividades deberán estar normadas en el Reglamento Interno de Docencia de Pregrado de la Facultad. El Reglamento Interno de Docencia de Pregrado de las Facultades fijará los plazos o términos dentro de los cuales deberá cumplirse con los requisitos de las señaladas actividades finales de graduación y titulación, pudiendo considerar, además y previamente, revalidaciones de estudio. Los nuevos Planes de Estudios de una carrera o sus modificaciones se pondrán en práctica para los alumnos que ingresan al primer año de la carrera. Los alumnos afectos al plan antiguo podrán solicitar, sólo por una vez y durante el periodo de inscripción de asignaturas correspondiente al inicio del año académico en que se pone en vigencia el nuevo plan, al Vicedecano de su Facultad su adscripción al nuevo plan. Lo anterior, sin perjuicio de los planes transitorios de ajuste que se puedan establecer.
+
+</details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
@@ -745,7 +752,7 @@ Fuente: sin respaldo en la normativa consultada
 </pensar>
 Respuesta: No existe un plazo numérico único en el Artículo 3°.10 del Reglamento General: esa norma delega en el Reglamento Interno de Docencia de Pregrado de cada Facultad la fijación de los plazos para las actividades finales de graduación y titulación [RG-ART-003-DEF-10].
 Condiciones o límites: No aplica
-Fuente: sin respaldo en la normativa consultada
+Fuente: [RG-ART-003-DEF-10]
 ```
 
 ## 30. `B6-V05` — bloque `abstencion_honesta` | split `val` | modo `cruce` | estado `insuficiente`

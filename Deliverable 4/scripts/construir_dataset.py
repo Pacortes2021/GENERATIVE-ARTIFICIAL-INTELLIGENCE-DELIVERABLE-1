@@ -340,7 +340,19 @@ def validar_especificacion(
 
     # Verificar coherencia mínima con D3: cada afirmación en respuesta/condiciones de bloques 1-5
     # o en respuestas con fuente explícita cita en corchetes o remite al bloque Fuente:.
-    if not sin_respaldo and not CITA_RE.search(spec["respuesta"]) and spec["bloque"] in {
+    citas_resp = set(CITA_RE.findall(spec["respuesta"]))
+    citas_cond = set(CITA_RE.findall(spec["condiciones"]))
+    citas_visibles = citas_resp | citas_cond
+    if not citas_visibles.issubset(citas_fuente):
+        raise ValueError(
+            f"{sid}: citas en Respuesta/Condiciones ausentes en Fuente: "
+            f"{sorted(citas_visibles - citas_fuente)}"
+        )
+    if sin_respaldo and citas_visibles:
+        raise ValueError(
+            f"{sid}: usa 'sin respaldo en la normativa consultada' pese a citar {sorted(citas_visibles)}"
+        )
+    if not sin_respaldo and not citas_resp and spec["bloque"] in {
         "citas_cruce",
         "condiciones_excepciones",
         "resiliencia_feedback",

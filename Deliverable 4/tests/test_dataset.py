@@ -128,6 +128,21 @@ class TestDatasetRedactorD4(unittest.TestCase):
                 self.assertIn(cid, self.corpus_by_id, f"Cita inexistente [{cid}] en {sid}")
                 self.assertIn(cid, ev_set, f"Cita fuera de evidencia [{cid}] en {sid}")
 
+            citas_resp_cond = set(cd.CITA_RE.findall(respuesta)) | set(
+                cd.CITA_RE.findall(condiciones)
+            )
+            citas_fuente = set(cd.CITA_RE.findall(fuente))
+            self.assertTrue(
+                citas_resp_cond.issubset(citas_fuente),
+                f"{sid}: citas en Respuesta/Condiciones faltantes en Fuente: {sorted(citas_resp_cond - citas_fuente)}",
+            )
+            if fuente == "sin respaldo en la normativa consultada":
+                self.assertEqual(
+                    citas_resp_cond,
+                    set(),
+                    f"{sid}: contradicción Fuente sin respaldo con citas {sorted(citas_resp_cond)}",
+                )
+
             claves = specs_by_id[sid]["evidencia_clave"]
             if claves:
                 con_claves += 1

@@ -6,7 +6,7 @@
   "seed_barajado_evidencia": 202604,
   "unidades_corpus_total": 197,
   "unidades_corpus_cubiertas_en_evidencia": 112,
-  "ejemplos_condiciones_no_aplica": 73,
+  "ejemplos_condiciones_no_aplica": 74,
   "distribucion_bloques": {
     "citas_cruce": {
       "train": 35,
@@ -47,8 +47,8 @@
     "numerica": 48
   },
   "distribucion_estados": {
-    "suficiente": 188,
-    "insuficiente": 17,
+    "suficiente": 189,
+    "insuficiente": 16,
     "no_existe": 5
   },
   "evidencia_unidades_por_ejemplo": {
@@ -61,30 +61,30 @@
   "longitudes_caracteres": {
     "user": {
       "min": 2097,
-      "mediana": 5578.0,
-      "promedio": 5979.0,
+      "mediana": 5677.0,
+      "promedio": 6023.9,
       "p95": 10853,
       "max": 11920
     },
     "assistant": {
-      "min": 303,
+      "min": 313,
       "mediana": 780.5,
-      "promedio": 788.7,
+      "promedio": 788.0,
       "p95": 1218,
       "max": 1460
     },
     "total": {
       "min": 2573,
-      "mediana": 6448.5,
-      "promedio": 6767.7,
+      "mediana": 6628.5,
+      "promedio": 6811.9,
       "p95": 11929,
       "max": 12887
     }
   },
   "tokens_estimados_conservadores_3_4_chars_por_token": {
     "min": 757,
-    "mediana": 1896.5,
-    "promedio": 1990.5,
+    "mediana": 1949.5,
+    "promedio": 2003.5,
     "p95": 3509,
     "max": 3790
   },

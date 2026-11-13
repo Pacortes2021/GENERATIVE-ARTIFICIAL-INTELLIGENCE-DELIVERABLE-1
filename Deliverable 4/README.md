@@ -41,7 +41,7 @@ Evaluación bajo la pauta estricta heredada de D2/D3 ([`LEEME_PAUTA.md`](../Deli
 - `prompts/`: prompts versionados por agente heredados bit a bit desde Deliverable 3 v6 (`01_enrutador.txt`, `02_recuperador.txt`, `03_redactor.txt`, `04_verificador.txt`).
 - `scripts/`:
   - `diagnostico_d3.py`: diagnostica `top-6` y origen de los 9 errores de D3 (`diagnostico/`).
-  - `dataset_blocks/` (`reglas_v2.py`, `bloques_1_2.py`, `bloques_3_4.py`, `bloques_5_6.py`) y `construir_dataset.py`: generan el **dataset v2 (`180 train / 30 val`)** desde fragmentos literales de `corpus.json` con **asistencia de Antigravity (IA)**, imponiendo `0` solapamiento con las `40` unidades eval D3 y las `21` unidades de `preguntas_nuevas_20.csv`, `0` menciones a QIDs/trampas y `73/210` ejemplos con `No aplica`.
+  - `dataset_blocks/` (`reglas_v2.py`, `bloques_1_2.py`, `bloques_3_4.py`, `bloques_5_6.py`) y `construir_dataset.py`: generan el **dataset v2 (`180 train / 30 val`)** desde fragmentos literales de `corpus.json` con **asistencia de Antigravity (IA)**, imponiendo `0` solapamiento con las `40` unidades eval D3 y las `21` unidades de `preguntas_nuevas_20.csv`, `0` menciones a QIDs/trampas y `74/210` ejemplos con `No aplica`.
   - `entrenar_redactor.py`: entrenamiento QLoRA reproducible en Colab T4 (`NF4`, `r=16`, `alpha=32`, `3,0` épocas, `~33,03M` parámetros entrenables = `1,48%` de `2,24B` cuantizados / `~0,82%` de ~`4,0B` nominales).
   - `evaluar_d4.py`: orquestador multi-agente con `--solo-base` (control en mismo entorno), `--preguntas-csv` / `--nombre-set` y `--output-prefix`.
   - `generar_auditoria_d4.py`: auditoría v1 archivada + auditoría general sin diccionarios fijos (`auditar_fila_determinista`, soporte `--resultados-csv` y `--control-csv`).

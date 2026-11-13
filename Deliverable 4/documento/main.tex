@@ -25,12 +25,12 @@
 {\color{azul}\bfseries\fontsize{13.0}{14.8}\selectfont Especialización QLoRA del agente Redactor en normativa UdeC}\par
 {\color{acento}\bfseries\fontsize{9.1}{10.5}\selectfont Entregable 4 $\cdot$ Fine-tuning supervisado sobre Qwen/Qwen3-4B en arquitectura multi-agente}\par
 {\fontsize{7.7}{8.9}\selectfont \textbf{Generative Artificial Intelligence (580694)} $\cdot$ Segundo semestre 2026\hfill Álvaro Contreras y Pablo Cortés}\par
-{\fontsize{7.7}{8.9}\selectfont \textbf{Repo:} \href{\REPO}{Deliverable 4 (deliverable-4)} $\cdot$ \textbf{HF (abierto):} \href{\HFURL}{Pablox0333/qwen3-4b-redactor-udec-d4} $\cdot$ \textbf{Video ($\leq$3 min):} \href{\REPO/video}{Guía/script en video/ (link en README)}}\par
+{\fontsize{7.7}{8.9}\selectfont \textbf{Repo:} \href{\REPO}{Deliverable 4 (rama deliverable-4)} $\cdot$ \textbf{HF (abierto):} \href{\HFURL}{Pablox0333/qwen3-4b-redactor-udec-d4} $\cdot$ \textbf{Video ($\leq$3 min):} [Pendiente enlace público] (\href{\REPO/video}{guía en vivo en video/})}\par
 \vspace{1.8pt}{\color{azul}\hrule height .68pt}\vspace{1.5pt}
 
 \seccion{1. Continuidad D1--D3, elección empírica del agente y restricción de modelo}
 {\sub
-Continuamos D1--D3 sobre normativa UdeC (\textbf{197 unidades / 201 fragmentos} de RG, RI-FI y Calendario 2026), embeddings E5, las \textbf{75 preguntas oficiales} (50 originales + 25 difíciles) y el grafo de cuatro agentes sobre \textbf{Qwen/Qwen3-4B} (NF4, T4, $T=0{,}7$, modo \textit{thinking} desactivado). Al auditar las trazas v6 de D3 (\textbf{66/75}), \textbf{8 de los 9 errores finales (88,9\%)} (\texttt{P13, P24, P26, P36, H07, H14, H18, H25}) ya contaban con la evidencia necesaria en el \texttt{top-6} del \textbf{Redactor}, además de 11 fallos en primer borrador (\texttt{sin\_verificador}: 63/75) y 25 rechazos hacia ese rol. Seguir ajustando prompts fracasó: en D3 v5 editar \texttt{03\_redactor.txt} bajó la exactitud de 58/75 a 55/75 (obligando a revertir a v4), y desactivar CoT (\texttt{sin\_cot}: 65/75) casi empató al sistema completo. Por ello fine-tuneamos únicamente al \textbf{Redactor} desde \texttt{Qwen/Qwen3-4B}; en inferencia, \texttt{Enrutador}, \texttt{Recuperador} y \texttt{Verificador} conservan pesos base vía \texttt{disable\_adapter()} (565/565 llamadas OFF, 101/101 Redactor ON, \textbf{0 violaciones}, $\max|\Delta\mathrm{logits}|=14{,}06$).}
+Continuamos D1--D3 sobre normativa UdeC (\textbf{197 unidades / 201 fragmentos} de RG, RI-FI y Calendario 2026), embeddings E5, las \textbf{75 preguntas oficiales} (50 originales + 25 difíciles) y el grafo de cuatro agentes sobre \textbf{Qwen/Qwen3-4B} (NF4, T4, $T=0{,}7$, modo \textit{thinking} desactivado). Al auditar las trazas v6 de D3 (\textbf{66/75}), \textbf{8 de los 9 errores finales (88,9\%)} (\texttt{P13, P24, P26, H07, H14, H18, H25, P36}) ya contaban con la evidencia necesaria en el \texttt{top-6} del \textbf{Redactor}, además de 11 fallos en primer borrador (\texttt{sin\_verificador}: 63/75) y 25 rechazos hacia ese rol. Seguir ajustando prompts fracasó: en D3 v5 editar \texttt{03\_redactor.txt} bajó la exactitud de 58/75 a 55/75 (obligando a revertir a v4), y desactivar CoT (\texttt{sin\_cot}: 65/75) casi empató al sistema completo. Por ello fine-tuneamos únicamente al \textbf{Redactor} desde \texttt{Qwen/Qwen3-4B}; en inferencia, \texttt{Enrutador}, \texttt{Recuperador} y \texttt{Verificador} conservan pesos base vía \texttt{disable\_adapter()} (565/565 llamadas OFF, 101/101 Redactor ON, \textbf{0 violaciones}, $\max|\Delta\mathrm{logits}|=14{,}06$ en la corrida v1 archivada).}
 
 \seccion{2. Grafo multi-agente con aislamiento LoRA en el Redactor}
 \vspace{-2pt}\centerline{\includegraphics[width=\linewidth]{grafo_d4.pdf}}
@@ -39,51 +39,50 @@ Continuamos D1--D3 sobre normativa UdeC (\textbf{197 unidades / 201 fragmentos} 
 
 \noindent\begin{minipage}[t]{0.486\linewidth}
 \sub
-\seccion{3. Datos de entrenamiento y validación antifuga}
-Construimos un corpus supervisado de \textbf{210 pares híbridos (180 train / 30 val)} en \texttt{redactor\_train.jsonl} y \texttt{redactor\_val.jsonl} bajo el esquema exacto de \texttt{03\_redactor.txt} (\texttt{<pensar>...</pensar>} + \texttt{Respuesta / Condiciones o límites / Fuente}). Cada ejemplo ensambla \textbf{3--6 unidades literales} de \texttt{corpus.json} (mediana 6,0; barajadas, \texttt{seed=202604}), cubriendo 163/197 unidades del corpus.
+\seccion{3. Datos (v2 antifuga), autoría y control de solapamiento}
+Construimos un corpus supervisado de \textbf{210 pares híbridos (180 train / 30 val)} en \texttt{redactor\_train.jsonl} y \texttt{redactor\_val.jsonl} bajo el esquema exacto de \texttt{03\_redactor.txt} (\texttt{<pensar>...</pensar>} + \texttt{Respuesta / Condiciones o límites / Fuente}). Cada ejemplo ensambla \textbf{3--6 unidades literales} de \texttt{corpus.json} (mediana 4,0 en v2; \texttt{seed=202604}), cubriendo 112/197 unidades.
 
-\textbf{Bloques (train/val):} \texttt{citas\_cruce} (35/5), \texttt{condiciones\_excepciones} (35/5), \texttt{polares\_y\_lectura} (30/5), \texttt{calculos\_y\_orden} (30/5), \texttt{resiliencia\_feedback} (25/5) y \texttt{abstencion\_honesta} (25/5); estados: \texttt{suficiente} (192), \texttt{insuficiente} (13) y \texttt{no\_existe} (5).
+\textbf{Bloques (train/val):} \texttt{citas\_cruce} (35/5), \texttt{condiciones\_excepciones} (35/5), \texttt{polares\_y\_lectura} (30/5), \texttt{calculos\_y\_orden} (30/5), \texttt{resiliencia\_feedback} (25/5) y \texttt{abstencion\_honesta} (25/5); estados v2: \texttt{suficiente} (188), \texttt{insuficiente} (17) y \texttt{no\_existe} (5).
 
-\textbf{Autoría, revisión humana y antifuga:} Todas las salidas fueron curadas determinísticamente por el equipo en Python sobre artículos literales del reglamento (sin modelo externo generador). Auditamos a mano una muestra estratificada de \textbf{30 casos} (\texttt{MUESTRA\_REVISION\_MANUAL.md}: 3 train + 2 val por bloque). Frente a las 75 consultas de evaluación: \textbf{0 duplicados, 0 coincidencias exactas y 0 alertas} sobre umbral ($\text{seq\_ratio}\ge 0{,}85$ o $\text{Jaccard}\ge 0{,}80$), con \textbf{0 ejemplos truncados} a 4096 tokens ($\bar{L}_{\text{tr}}=1907{,}4$, $\bar{L}_{\text{val}}=1993{,}4$).
+\textbf{Corrección v1$\rightarrow$v2, autoría y auditoría:} En la corrida v1 detectamos fuga semántica (0 ejemplos con \texttt{No aplica} en Condiciones y 4 trazas que nombraban QIDs de evaluación). En \textbf{dataset v2} imponemos \textbf{0\% de solapamiento de unidades} frente a las 40 unidades de eval D3 y a las 21 unidades reservadas del nuevo set ciego \texttt{preguntas\_nuevas\_20.csv}, \textbf{0 menciones a QIDs/trampas} y \textbf{73/210} ejemplos con \texttt{Condiciones o límites: No aplica}; antifuga léxico marca \textbf{0 alertas} sobre umbral ($\text{seq\_ratio}\ge 0{,}85$, $\text{Jaccard}\ge 0{,}80$). \textbf{Autoría:} pares curados sobre normativa literal con \textbf{asistencia de IA (Antigravity)} y muestra de 30 casos en \texttt{MUESTRA\_REVISION\_MANUAL.md} (bitácora de firma humana lista para validación v2).
 
-\seccion{4. Configuración QLoRA y curva de pérdida}
-Entrenamiento QLoRA de \texttt{Qwen/Qwen3-4B} (4-bit NF4, doble cuantización, \texttt{float16}) en \textbf{Tesla T4 (15,64 GB VRAM)} durante \textbf{54,75 min (3285 s, 90 pasos / 3,0 épocas)}. LoRA $r=16$, $\alpha=32$, \texttt{dropout}=0,05 en 7 proyecciones (\texttt{q,k,v,o,gate,up,down\_proj}: 33,03M entrenables = \textbf{1,48\%} de 2,24B), \texttt{batch}=1, \texttt{grad\_accum}=6 (efectivo 6), \texttt{lr}=$10^{-4}$ coseno (\texttt{warmup}=9), \texttt{paged\_adamw\_8bit} y \texttt{completion\_only\_loss=True}. \texttt{eval\_loss} baja de \textbf{1,6195} (paso 0) a \textbf{0,5753} (paso 90), y \texttt{train\_loss} de 1,4703 (paso 5) a 0,4463 (paso 90).
+\seccion{4. Configuración QLoRA y curva de pérdida (corrida v1)}
+Entrenamiento QLoRA de \texttt{Qwen/Qwen3-4B} ($\sim$4,0B parámetros nominales; 2,24B empaquetados en 4-bit NF4, doble cuantización, \texttt{float16}) en \textbf{Tesla T4 (15,64 GB VRAM)} durante \textbf{54,75 min (90 pasos / 3,0 épocas)}. LoRA $r=16$, $\alpha=32$, \texttt{dropout}=0,05 en 7 proyecciones (\texttt{q,k,v,o,gate,up,down\_proj}: 33,03M entrenables = \textbf{1,48\%} del modelo NF4 / $\sim$0,82\% de 4B), \texttt{batch}=1, \texttt{grad\_accum}=6, \texttt{lr}=$10^{-4}$ coseno (\texttt{warmup}=9), \texttt{paged\_adamw\_8bit} y \texttt{completion\_only\_loss=True}. En la corrida v1 (0 truncados a 4096 tokens), \texttt{eval\_loss} baja de \textbf{1,6195} (paso 0) a \textbf{0,5753} (paso 90), y \texttt{train\_loss} final agregada = 0,6445; queda listo el notebook para re-entrenar sobre v2.
 
-\vspace{2pt}\centerline{\includegraphics[width=0.95\linewidth]{../entrenamiento/loss_curve.pdf}}
-\vspace{-1pt}{\raggedright\fontsize{7.1}{8.1}\selectfont\color{gris} Checkpoint óptimo (paso 90) publicado con acceso abierto en HF: \texttt{Pablox0333/qwen3-4b-redactor-udec-d4}.\par}
+\vspace{2pt}\centerline{\includegraphics[width=0.92\linewidth]{../entrenamiento/loss_curve.pdf}}
+\vspace{-1pt}{\raggedright\fontsize{7.1}{8.1}\selectfont\color{gris} Adaptador en HF: \texttt{Pablox0333/qwen3-4b-redactor-udec-d4} (corrida v1 archivada; pipeline Colab v2 listo para re-subida).\par}
 \end{minipage}\hfill
 \begin{minipage}[t]{0.486\linewidth}
 \sub
-\seccion{5. Resultados: cuatro sistemas, control y comparativa}
-Evaluamos las 75 preguntas con la pauta estricta heredada de D2/D3 (\texttt{LEEME\_PAUTA.md}, incluyendo Regla 3 / \texttt{P01} por afirmaciones extra mal citadas).
+\seccion{5. Resultados v1: 4 sistemas, control y balance completo}
+Evaluamos las 75 preguntas con la pauta estricta de D2/D3 (\texttt{LEEME\_PAUTA.md}, incluyendo Regla 3 / \texttt{P01}). \textit{Nota:} retiramos la métrica ``núcleo 68/75'' de D4 por asimétrica (bajo ella D3 también sube de 66 a 68 vía \texttt{P13} y \texttt{H18}).
 
-{\fontsize{7.7}{8.9}\selectfont\setlength{\tabcolsep}{2.3pt}
-\renewcommand{\arraystretch}{1.07}
+{\fontsize{7.5}{8.6}\selectfont\setlength{\tabcolsep}{2.2pt}
+\renewcommand{\arraystretch}{1.06}
 \begin{tabularx}{\linewidth}{@{}Xcccc@{}}
 \toprule
-\textbf{Sistema / Control} & \textbf{Orig. (50)} & \textbf{Dif. (25)} & \textbf{Total (75)} & \textbf{Llam./q}\\
+\textbf{Sistema (v1 archivada)} & \textbf{Orig. (50)} & \textbf{Dif. (25)} & \textbf{Total (75)} & \textbf{Llam./q}\\
 \midrule
-Directo D1 (control) & 1 (2\%) & 0 (0\%) & 1 (1,3\%) & 1,0\\
+Directo D1 (0-shot) & 1 (2\%) & 0 (0\%) & 1 (1,3\%) & 1,0\\
 RAG D2 (E5) & 40 (80\%) & 16 (64\%) & 56 (74,7\%) & 1,0\\
 Multi-agente D3 Base & \textbf{46 (92\%)} & \textbf{20 (80\%)} & \textbf{66 (88,0\%)} & 9,5\\
-\rowcolor{ftsuave}\textbf{Multi-agente D4 (FT)} & 45 (90\%) & 19 (76\%) & 64 (85,3\%) & \textbf{8,9}\\
-\rowcolor{suave}\textit{D4 núcleo (sin P01)} & \textit{47 (94\%)} & \textit{21 (84\%)} & \textit{68 (90,7\%)} & \textit{8,9}\\
+\rowcolor{ftsuave}\textbf{Multi-agente D4 (FT v1)} & 45 (90\%) & 19 (76\%) & 64 (85,3\%) & \textbf{8,9}\\
 \bottomrule
 \end{tabularx}}
-\vspace{-1pt}{\raggedright\fontsize{7.1}{8.1}\selectfont\color{gris} 0 fallbacks y 0 violaciones LoRA. Tiempo T4: 137,6 min (D3) $\rightarrow$ \textbf{114,4 min} (D4, \textbf{$-$16,9\%}); llamadas reales: 711 $\rightarrow$ \textbf{666} (\textbf{$-$6,3\%}); casos $>$1 ciclo: 21 $\rightarrow$ \textbf{15} (\textbf{$-$28,6\%}).\par}
+\vspace{-1pt}{\raggedright\fontsize{7.1}{8.1}\selectfont\color{gris} 0 fallbacks y 0 violaciones LoRA. Llamadas reales: 711 $\rightarrow$ \textbf{666} (\textbf{$-$6,3\%}); ciclos $>1$: 21 $\rightarrow$ \textbf{15} (\textbf{$-$28,6\%}). El tiempo T4 D3 vs D4 (137,6 vs 114,4 min, $-$16,9\%) no es estrictamente comparable al venir de sesiones Colab distintas.\par}
 
-\textbf{Mejoras y control pareado (6 casos idénticos):} D4 resuelve \textbf{6/9 fallos estrictos de D3} (\texttt{P13, P24, P26, H07, H14, H25}) y logra 100\% en \texttt{numerica} (10/10), \texttt{condicional} (10/10), \texttt{negacion\_excepcion} (3/3), \texttt{abstencion} (10/10), \texttt{colision\_lexica} (5/5) y \texttt{premisa\_falsa} (4/4). En la comparativa controlada en el mismo entorno (\texttt{comparativa\_base\_vs\_finetuned.json}), FT logra \textbf{4/6 vs 1/6} del base: resuelve \texttt{H07} en 1 ciclo ($42/4=10{,}5$; Base falla tras 227,7\,s) y elimina la contradicción polar de \texttt{H14}.
+\textbf{Balance real ($+6 / -8$) y control en mismo entorno:} D4 v1 corrige \textbf{6 fallos de D3} (\texttt{P13, P24, P26, H07, H14, H25}), pero sufre \textbf{8 regresiones} (\texttt{P6, P7, P10, P31, P36, H02, H04, H06}). Por categoría vs D3: mejora \texttt{condicional} ($8\rightarrow 10/10$), \texttt{numerica} ($9\rightarrow 10/10$) y \texttt{negacion\_excepcion} ($2\rightarrow 3/3$); mantiene 100\% \texttt{abstencion} ($10/10$), \texttt{colision\_lexica} ($5/5$) y \texttt{premisa\_falsa} ($4/4$); retrocede en \textbf{\texttt{factual} ($10\rightarrow 7/10$)}, \textbf{\texttt{multi\_salto} ($3\rightarrow 1/4$)} y \texttt{cruce} ($9\rightarrow 8/10$); empata en \texttt{calculo} ($3/4$) y \texttt{sintesis} ($3/5$). En la muestra pareada de 6 casos D3 en igual entorno, FT logra \textbf{4/6 vs 1/6} del Base (\texttt{H07} en 1 ciclo / 78,7\,s vs 227,7\,s). Limitación v1: faltó correr el \textbf{Control Base (LoRA OFF) completo} sobre las 75 en el mismo entorno; implementamos \texttt{--solo-base} y el set ciego \texttt{preguntas\_nuevas\_20.csv} para la corrida v2 en Colab.
 
-\seccion{6. Fallos, degradaciones y cuello arquitectónico}
-El delta estricto respecto a D3 (64 vs 66) expone tres mecanismos empíricos guardados en \texttt{evaluacion/casos\_fallo\_y\_regresion.json}:
+\seccion{6. Fallos v1, causa raíz de regresiones y cuello de botella}
+{\raggedright El delta estricto de v1 ($64/75 < 66/75$) se explica por tres mecanismos registrados en \texttt{casos\_fallo\_y\_regresion.json}:\par}
 
-\textbf{1) \texttt{H03} (fallo persistente Recuperador + sobreconfianza FT):} \texttt{CAL-2026-S2-02} (10 ago) queda fuera del \texttt{top-6}; en lugar de abstenerse como D3, el Redactor FT calcula $04\text{ sep}\rightarrow 11\text{ dic}=98\text{ días}$ (\texttt{[CAL-2026-S2-04]}).
+\textbf{1) Sobre-agregado en Condiciones y desvíos de citas (\texttt{P01}):} Al tener \textbf{0/210} ejemplos con \texttt{No aplica} en v1, el Redactor FT agregó cláusulas extra mal citadas o sustituyó IDs (\texttt{P6, P7, P10, P31, P36, H02, H04, H18}), motivación directa del balance \texttt{No aplica} en v2.
 
-\textbf{2) \texttt{H19} y \texttt{H06} (degradación por Verificador base):} En \texttt{H19}, el Redactor FT responde \textbf{exactamente bien} según \texttt{[RG-ART-028]} en ciclos 1--2, pero el Verificador base objeta pidiendo umbrales de \texttt{RI-FI-ART-014} (15/10 créditos) y fuerza un ciclo 3 erróneo. En \texttt{H06}, rechaza $38/4=9{,}5$ en ciclo 1 y aprueba la retracción en ciclo 2. En total, \textbf{8/68 aprobaciones son incorrectas} y \textbf{4/7 rechazos eran válidos}.
+\textbf{2) \texttt{H19} y \texttt{H06} (Verificador base):} En \texttt{H19}, FT acierta \texttt{[RG-ART-028]} en ciclos 1--2, pero el Verificador exige umbrales de \texttt{RI-FI-ART-014} y fuerza un ciclo 3 erróneo. En \texttt{H06}, FT parte con prefijo \textit{``No, 38 créditos...''} pese a calcular bien $38/4=9{,}5$; el Verificador objeta semestres totales y aprueba la retracción en ciclo 2. En total, \textbf{8/68} aprobaciones fueron incorrectas y \textbf{4 de 7 respuestas rechazadas} correspondían a borradores válidos.
 
-\textbf{3) Desvíos de citas \texttt{[ID]} y mezcla en Condiciones (\texttt{P01}):} El Redactor FT sustituye IDs (\texttt{P6}: \texttt{RG-ART-010} fuera de evidencia; \texttt{P36}: \texttt{CAL-2026-S2-04}; \texttt{H04}: \texttt{RG-ART-003-DEF-10}), acota mal \texttt{P10} (4 semanas) y añade cláusulas mal citadas en Condiciones (\texttt{P7, P31, H02, H18}), situando al \texttt{Verificador} y al \texttt{top-6} como siguiente cuello de mejora.
+\textbf{3) \texttt{H03} (Recuperador):} \texttt{CAL-2026-S2-02} queda fuera del \texttt{top-6} y FT calcula $04\text{ sep}\rightarrow 11\text{ dic}=98\text{ días}$ en lugar de abstenerse.
 
 \seccion{7. Reproducibilidad}
-{\raggedright En \texttt{Deliverable 4/}: \texttt{scripts/} (\texttt{construir\_dataset.py}, \texttt{entrenar\_redactor.py}, \texttt{evaluar\_d4.py}, \texttt{generar\_auditoria\_d4.py}), prompts versionados \texttt{prompts/01--04}, registros en \texttt{evaluacion/} (\texttt{trazas\_D4.json}, \texttt{auditoria\_D4.json}, \texttt{casos\_fallo\_y\_regresion.json}), notebooks Colab y guía/soporte en \texttt{video/}.\par}
+{\raggedright En \texttt{Deliverable 4/}: \texttt{scripts/} (\texttt{construir\_dataset.py}, \texttt{entrenar\_redactor.py}, \texttt{evaluar\_d4.py} con \texttt{--solo-base} y \texttt{--preguntas-csv}, \texttt{generar\_auditoria\_d4.py}), prompts \texttt{prompts/01--04}, \texttt{datos/preguntas\_nuevas\_20.csv}, cuadernos Colab v2 y guía en vivo en \texttt{video/}.\par}
 \end{minipage}
 \end{document}

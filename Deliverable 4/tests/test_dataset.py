@@ -21,6 +21,11 @@ if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
 import construir_dataset as cd  # noqa: E402
+from dataset_blocks.reglas_v2 import (  # noqa: E402
+    BLOCKED_UNIT_IDS,
+    LEAK_QID_RE,
+    UNIT_ID_REF_RE,
+)
 
 
 def _leer_jsonl(path: Path) -> list[dict]:
@@ -135,17 +140,58 @@ class TestDatasetRedactorD4(unittest.TestCase):
 
     def test_antifuga_contra_evaluacion_d3(self) -> None:
         specs = cd.todas_las_especificaciones()
-        auditoria = cd.auditar_antifuga(specs, self.eval_rows)
+        auditoria = cd.auditar_antifuga(specs, self.eval_rows, etiqueta="evaluacion_d3")
         self.assertEqual(auditoria["duplicados_internos"], 0)
         self.assertEqual(auditoria["coincidencias_exactas_eval"], 0)
         self.assertEqual(auditoria["alertas_sobre_umbral"], 0)
         max_score = auditoria["top_10_pares_mas_cercanos"][0]["score_max"]
         self.assertLess(max_score, 0.75)
 
+        nuevas_rows = cd.cargar_preguntas_nuevas(cd.DEFAULT_NUEVAS_CSV_PATH)
+        self.assertEqual(len(nuevas_rows), 20)
+        auditoria_nuevas = cd.auditar_antifuga(
+            specs, nuevas_rows, etiqueta="evaluacion_nuevas_20"
+        )
+        self.assertEqual(auditoria_nuevas["coincidencias_exactas_eval"], 0)
+        self.assertEqual(auditoria_nuevas["alertas_sobre_umbral"], 0)
+
+    def test_separacion_estricta_unidades_sin_fugas_y_balance_no_aplica(self) -> None:
+        todos = self.train_rows + self.val_rows
+        no_aplica_count = 0
+        for reg in todos:
+            sid = reg["id"]
+            ev_set = set(reg["evidencia_ids"])
+            self.assertTrue(
+                ev_set.isdisjoint(BLOCKED_UNIT_IDS),
+                f"{sid} contiene unidades reservadas de eval en evidencia_ids: {sorted(ev_set & BLOCKED_UNIT_IDS)}",
+            )
+            asst_txt = reg["messages"][1]["content"]
+            self.assertFalse(
+                LEAK_QID_RE.search(asst_txt),
+                f"{sid} contiene fuga QID/trampa: {LEAK_QID_RE.findall(asst_txt)}",
+            )
+            refs = set(UNIT_ID_REF_RE.findall(asst_txt))
+            self.assertTrue(
+                refs.isdisjoint(BLOCKED_UNIT_IDS),
+                f"{sid} refiere unidad reservada en respuesta: {sorted(refs & BLOCKED_UNIT_IDS)}",
+            )
+            if "\nCondiciones o límites: No aplica\n" in asst_txt:
+                no_aplica_count += 1
+        self.assertGreaterEqual(no_aplica_count, 40)
+
     def test_muestra_manual_y_artefactos_sincronizados(self) -> None:
         self.assertEqual(len(self.resumen["muestra_revision_manual_ids"]), 30)
         for sid in self.resumen["muestra_revision_manual_ids"]:
             self.assertIn(f"`{sid}`", self.muestra_md)
+
+        for fname in (
+            "redactor_train.jsonl",
+            "redactor_val.jsonl",
+            "MUESTRA_REVISION_MANUAL.md",
+            "preguntas_nuevas_20.csv",
+        ):
+            raw = (DATOS_DIR / fname).read_bytes()
+            self.assertNotIn(b"\r\n", raw, f"CRLF encontrado en {fname}")
 
         with tempfile.TemporaryDirectory() as tmp:
             tmp_dir = Path(tmp)
@@ -159,8 +205,8 @@ class TestDatasetRedactorD4(unittest.TestCase):
                 "MUESTRA_REVISION_MANUAL.md",
             ):
                 self.assertEqual(
-                    (DATOS_DIR / fname).read_text(encoding="utf-8"),
-                    (tmp_dir / fname).read_text(encoding="utf-8"),
+                    (DATOS_DIR / fname).read_bytes(),
+                    (tmp_dir / fname).read_bytes(),
                 )
 
 

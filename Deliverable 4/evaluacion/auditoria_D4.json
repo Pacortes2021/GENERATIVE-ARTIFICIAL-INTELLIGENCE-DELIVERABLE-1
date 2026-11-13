@@ -167,6 +167,10 @@
     "minutos_totales": 114.4,
     "segundos_promedio_congelado": 80.14,
     "segundos_promedio_dificil": 114.28,
+    "segundos_promedio_por_set": {
+      "congelado_50": 80.14,
+      "dificil_25": 114.28
+    },
     "casos_ciclos_mayor_1": {
       "congelado_50": 8,
       "dificil_25": 7,
@@ -242,6 +246,10 @@
       "d4_nucleo": 4,
       "d3_v6": 4
     }
+  },
+  "trazabilidad_calificacion": {
+    "evaluadores": "Álvaro Contreras y Pablo Cortés (criterios LEEME_PAUTA.md) con auditoría externa de par",
+    "nota_nucleo_equivalente": "El criterio relajado sin Regla 3/P01 también elevaría a D3 v6 (congelado_50:13 y dificil_25:H18 eran fallos P01 en D3: 66+2 = 68/75), por lo que no debe usarse como ventaja unilateral de D4 sobre D3."
   },
   "comparativa_controlada_6_casos": {
     "total_pares": 6,

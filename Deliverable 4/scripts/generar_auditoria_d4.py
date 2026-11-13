@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import hashlib
 import json
 import re
 from collections import Counter
@@ -271,7 +272,10 @@ def _cargar_veredictos_d3(
 def _verificar_telemetria(
     telemetry: dict[str, list[dict[str, Any]]],
     rows: list[dict[str, str]],
+    solo_base: bool | None = None,
 ) -> dict[str, Any]:
+    if solo_base is None:
+        solo_base = bool(rows and rows[0].get("condicion") == "control_base_lora_apagado")
     by_agent: Counter[str] = Counter()
     violaciones: list[dict[str, Any]] = []
     tokens_in: Counter[str] = Counter()
@@ -280,7 +284,7 @@ def _verificar_telemetria(
         for idx, c in enumerate(calls):
             ag = str(c["agente"])
             usa = bool(c["usa_adaptador"])
-            esperado = ag == "redactor"
+            esperado = False if solo_base else (ag == "redactor")
             if usa != esperado:
                 violaciones.append(
                     {"qid": qid, "indice": idx, "agente": ag, "usa_adaptador": usa}
@@ -295,7 +299,7 @@ def _verificar_telemetria(
     return {
         "total_consultas": len(rows),
         "llamadas_modelo_totales": total_calls,
-        "llamadas_por_pregunta": round(total_calls / len(rows), 2),
+        "llamadas_por_pregunta": round(total_calls / max(1, len(rows)), 2),
         "llamadas_por_agente": dict(by_agent),
         "tokens_entrada_por_agente": dict(tokens_in),
         "tokens_salida_por_agente": dict(tokens_out),
@@ -305,13 +309,27 @@ def _verificar_telemetria(
         "segundos_totales": total_sec,
         "minutos_totales": round(total_sec / 60.0, 2),
         "segundos_promedio_congelado": round(
-            sum(float(r["segundos"]) for r in rows if r["set"] == "congelado_50") / 50.0,
+            sum(float(r["segundos"]) for r in rows if r["set"] == "congelado_50")
+            / max(1, sum(1 for r in rows if r["set"] == "congelado_50")),
             2,
-        ),
+        )
+        if any(r["set"] == "congelado_50" for r in rows)
+        else 0.0,
         "segundos_promedio_dificil": round(
-            sum(float(r["segundos"]) for r in rows if r["set"] == "dificil_25") / 25.0,
+            sum(float(r["segundos"]) for r in rows if r["set"] == "dificil_25")
+            / max(1, sum(1 for r in rows if r["set"] == "dificil_25")),
             2,
-        ),
+        )
+        if any(r["set"] == "dificil_25" for r in rows)
+        else 0.0,
+        "segundos_promedio_por_set": {
+            nombre_set: round(
+                sum(float(r["segundos"]) for r in rows if r["set"] == nombre_set)
+                / sum(1 for r in rows if r["set"] == nombre_set),
+                2,
+            )
+            for nombre_set in sorted({str(r["set"]) for r in rows})
+        },
         "casos_ciclos_mayor_1": {
             "congelado_50": sum(
                 1 for r in rows if r["set"] == "congelado_50" and int(r["ciclos"]) > 1
@@ -480,6 +498,381 @@ def _construir_casos_fallo(
     }
 
 
+V1_LEGACY_CSV_LF_SHA256 = (
+    "8958abdb15cb37f5947e34bcb59dd151cf5a05ed567bf71612c79a9d9c733cb8"
+)
+
+
+def _escribir_texto_lf(path: Path, contenido: str) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(contenido)
+
+
+def _extraer_fuentes_lista(fuentes_str: str) -> list[str]:
+    tokens = [tok.strip(" []") for tok in str(fuentes_str or "").replace(",", ";").split(";")]
+    return [tok for tok in tokens if tok]
+
+
+UNIT_CITE_RE = re.compile(r"\[([A-Z]+(?:-[A-Z0-9]+)+)\]")
+
+
+def auditar_fila_determinista(row: dict[str, Any], corpus_ids: set[str]) -> dict[str, Any]:
+    """Ejecuta comprobaciones automáticas y reproducibles sobre una salida del sistema."""
+    resp = str(row.get("respuesta_sistema", "") or "")
+    citas = UNIT_CITE_RE.findall(resp)
+    fuentes_traidas = _extraer_fuentes_lista(row.get("fuentes_traidas", ""))
+    fuentes_set = set(fuentes_traidas)
+
+    citas_inexistentes = sorted({c for c in citas if c not in corpus_ids})
+    citas_fuera_evidencia = sorted(
+        {c for c in citas if c in corpus_ids and fuentes_set and c not in fuentes_set}
+    )
+    formato_ok = all(
+        etq in resp for etq in ("Respuesta:", "Condiciones o límites:", "Fuente:")
+    )
+    tiene_no_aplica = bool(
+        re.search(r"Condiciones o l[íi]mites:\s*No aplica", resp, flags=re.IGNORECASE)
+    )
+    resp_lower = resp.lower()
+    es_abstencion = any(
+        frase in resp_lower
+        for frase in (
+            "no se puede determinar",
+            "no es posible determinar",
+            "no existe en la normativa",
+            "no está regulad",
+            "no se encuentra regulad",
+            "información insuficiente",
+            "premisa falsa",
+            "no contiene información",
+        )
+    )
+    error_ejecucion = bool(str(row.get("error", "")).strip()) or (not resp.strip())
+    alertas: list[str] = []
+    if citas_inexistentes:
+        alertas.append("cita_inexistente_corpus")
+    if citas_fuera_evidencia:
+        alertas.append("cita_fuera_de_evidencia")
+    if not citas and not es_abstencion:
+        alertas.append("sin_citas")
+    if not formato_ok:
+        alertas.append("formato_incompleto")
+    if error_ejecucion:
+        alertas.append("error_ejecucion")
+    if str(row.get("aprobado_verificador", "")).strip() == "False":
+        alertas.append("verificador_aprobado_false")
+
+    return {
+        "citas_respuesta": citas,
+        "citas_inexistentes_en_corpus": citas_inexistentes,
+        "citas_fuera_de_evidencia": citas_fuera_evidencia,
+        "formato_3_lineas_ok": formato_ok,
+        "tiene_condicion_no_aplica": tiene_no_aplica,
+        "es_abstencion": es_abstencion,
+        "error_ejecucion": error_ejecucion,
+        "alertas_automaticas": alertas,
+    }
+
+
+def _resolver_rutas_por_csv(eval_dir: Path, csv_path: Path) -> tuple[Path, Path, Path, str]:
+    stem = csv_path.stem
+    if stem == "resultados_agentes_D4":
+        return (
+            eval_dir / "trazas_D4.json",
+            eval_dir / "telemetria_llamadas.json",
+            eval_dir / "comparativa_base_vs_finetuned.json",
+            "D4",
+        )
+    sufijo = stem[len("resultados_") :] if stem.startswith("resultados_") else stem
+    return (
+        eval_dir / f"trazas_{sufijo}.json",
+        eval_dir / f"telemetria_{sufijo}.json",
+        eval_dir / f"comparativa_{sufijo}.json",
+        sufijo,
+    )
+
+
+def generar_auditoria_general(
+    eval_dir: Path = EVAL_DIR,
+    corpus_path: Path = DEFAULT_CORPUS_PATH,
+    resultados_csv: Path | None = None,
+    trazas_json: Path | None = None,
+    telemetria_json: Path | None = None,
+    comparativa_json: Path | None = None,
+    control_csv: Path | None = None,
+    prefijo_salida: str = "",
+    revisor: str = "[Pendiente revisor]",
+) -> dict[str, Any]:
+    """Audita cualquier corrida (v2 FT, Control Base 75 o Nuevas 20) sin veredictos fijos."""
+    csv_in = resultados_csv or (eval_dir / "resultados_agentes_D4.csv")
+    if not csv_in.is_file():
+        raise FileNotFoundError(f"No existe CSV de resultados: {csv_in}")
+
+    trazas_def, tel_def, comp_def, sufijo_def = _resolver_rutas_por_csv(eval_dir, csv_in)
+    trazas_path = trazas_json or trazas_def
+    tel_path = telemetria_json or tel_def
+    comp_path = comparativa_json or comp_def
+    sufijo = prefijo_salida.strip().rstrip("_") or sufijo_def
+
+    corpus_ids = _cargar_corpus_ids(corpus_path)
+    with csv_in.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        rows = list(reader)
+        fieldnames = list(reader.fieldnames or [])
+
+    trazas = (
+        json.loads(trazas_path.read_text(encoding="utf-8"))
+        if trazas_path.is_file()
+        else {}
+    )
+    telemetria = (
+        json.loads(tel_path.read_text(encoding="utf-8"))
+        if tel_path.is_file()
+        else {}
+    )
+    comparativa = (
+        json.loads(comp_path.read_text(encoding="utf-8"))
+        if comp_path.is_file()
+        else []
+    )
+
+    telemetria_resumen = (
+        _verificar_telemetria(telemetria, rows)
+        if telemetria
+        else {
+            "total_consultas": len(rows),
+            "llamadas_modelo_totales": sum(int(r.get("llamadas_modelo") or 0) for r in rows),
+            "llamadas_por_pregunta": round(
+                sum(int(r.get("llamadas_modelo") or 0) for r in rows) / max(1, len(rows)),
+                2,
+            ),
+            "violaciones_aislamiento_lora": 0,
+            "segundos_totales": round(sum(float(r.get("segundos") or 0.0) for r in rows), 2),
+        }
+    )
+
+    rows_auditados: list[dict[str, Any]] = []
+    detalles_por_qid: list[dict[str, Any]] = []
+    por_set: dict[str, dict[str, Any]] = {}
+    por_cat: dict[str, dict[str, Any]] = {}
+    casos_revisar: list[dict[str, Any]] = []
+
+    for row in rows:
+        qid = f"{row['set']}:{row['id']}"
+        det = auditar_fila_determinista(row, corpus_ids)
+        corr_raw = str(row.get("correcto", "")).strip()
+        corr_val: int | None = int(corr_raw) if corr_raw in {"0", "1"} else None
+
+        nuevo_row = dict(row)
+        nuevo_row["correcto"] = corr_raw if corr_val is not None else ""
+        rows_auditados.append(nuevo_row)
+
+        for grupo, mapa in ((row["set"], por_set), (row.get("categoria", "sin_cat"), por_cat)):
+            b = mapa.setdefault(
+                grupo,
+                {
+                    "total": 0,
+                    "evaluadas_humanamente": 0,
+                    "pendientes_revision_humana": 0,
+                    "aciertos": 0,
+                    "alertas_citas": 0,
+                    "formato_3_lineas_ok": 0,
+                    "con_no_aplica": 0,
+                    "ciclos_gt1": 0,
+                    "segundos_totales": 0.0,
+                },
+            )
+            b["total"] += 1
+            if corr_val is None:
+                b["pendientes_revision_humana"] += 1
+            else:
+                b["evaluadas_humanamente"] += 1
+                b["aciertos"] += corr_val
+            if det["citas_inexistentes_en_corpus"] or det["citas_fuera_de_evidencia"]:
+                b["alertas_citas"] += 1
+            if det["formato_3_lineas_ok"]:
+                b["formato_3_lineas_ok"] += 1
+            if det["tiene_condicion_no_aplica"]:
+                b["con_no_aplica"] += 1
+            if int(row.get("ciclos") or 0) > 1:
+                b["ciclos_gt1"] += 1
+            b["segundos_totales"] = round(b["segundos_totales"] + float(row.get("segundos") or 0.0), 2)
+
+        traza_obj = trazas.get(qid, {}) if isinstance(trazas, dict) else {}
+        traza_lista = traza_obj.get("traza", []) if isinstance(traza_obj, dict) else traza_obj
+        det_item = {
+            "qid": qid,
+            "set": row["set"],
+            "id": row["id"],
+            "categoria": row.get("categoria", ""),
+            "correcto_humano": corr_val,
+            "revision_humana_pendiente": corr_val is None,
+            "revisor": revisor if corr_val is not None else "[Pendiente revisor]",
+            "aprobado_verificador": row.get("aprobado_verificador") == "True",
+            "ciclos": int(row.get("ciclos") or 0),
+            "segundos": float(row.get("segundos") or 0.0),
+            **det,
+        }
+        detalles_por_qid.append(det_item)
+        if corr_val == 0 or det["alertas_automaticas"]:
+            casos_revisar.append(
+                {
+                    **det_item,
+                    "pregunta": row.get("pregunta", ""),
+                    "gold_dato": row.get("gold_dato", ""),
+                    "gold_fuente": row.get("gold_fuente", ""),
+                    "respuesta_final": row.get("respuesta_sistema", ""),
+                    "traza_completa": traza_lista,
+                    "telemetria": telemetria.get(qid, []) if isinstance(telemetria, dict) else [],
+                }
+            )
+
+    for mapa in (por_set, por_cat):
+        for b in mapa.values():
+            ev = b["evaluadas_humanamente"]
+            b["porcentaje_humano"] = round(100.0 * b["aciertos"] / ev, 1) if ev > 0 else None
+            b["segundos_promedio"] = round(b["segundos_totales"] / max(1, b["total"]), 2)
+
+    comparativa_control = None
+    if control_csv is not None and control_csv.is_file():
+        with control_csv.open("r", encoding="utf-8", newline="") as f:
+            ctrl_rows = list(csv.DictReader(f))
+        ctrl_by_qid = {f"{r['set']}:{r['id']}": r for r in ctrl_rows}
+        pares = []
+        cambios = 0
+        ctrl_llam = 0
+        ctrl_seg = 0.0
+        ctrl_citas_mal = 0
+        ctrl_no_aplica = 0
+        ctrl_ok = 0
+        ctrl_eval = 0
+        for row in rows:
+            qid = f"{row['set']}:{row['id']}"
+            cr = ctrl_by_qid.get(qid)
+            if cr is None:
+                continue
+            det_c = auditar_fila_determinista(cr, corpus_ids)
+            ctrl_llam += int(cr.get("llamadas_modelo") or 0)
+            ctrl_seg += float(cr.get("segundos") or 0.0)
+            if det_c["citas_inexistentes_en_corpus"] or det_c["citas_fuera_de_evidencia"]:
+                ctrl_citas_mal += 1
+            if det_c["tiene_condicion_no_aplica"]:
+                ctrl_no_aplica += 1
+            cc_raw = str(cr.get("correcto", "")).strip()
+            if cc_raw in {"0", "1"}:
+                ctrl_eval += 1
+                ctrl_ok += int(cc_raw)
+            distinta = str(row.get("respuesta_sistema", "")).strip() != str(
+                cr.get("respuesta_sistema", "")
+            ).strip()
+            if distinta:
+                cambios += 1
+            pares.append(
+                {
+                    "qid": qid,
+                    "categoria": row.get("categoria", ""),
+                    "respuesta_distinta": distinta,
+                    "control_ciclos": int(cr.get("ciclos") or 0),
+                    "ft_ciclos": int(row.get("ciclos") or 0),
+                    "control_llamadas": int(cr.get("llamadas_modelo") or 0),
+                    "ft_llamadas": int(row.get("llamadas_modelo") or 0),
+                    "control_alertas": det_c["alertas_automaticas"],
+                    "ft_alertas": auditar_fila_determinista(row, corpus_ids)["alertas_automaticas"],
+                }
+            )
+        comparativa_control = {
+            "control_csv": control_csv.name,
+            "preguntas_emparejadas": len(pares),
+            "respuestas_distintas_ft_vs_control": cambios,
+            "control_llamadas_totales": ctrl_llam,
+            "ft_llamadas_totales": sum(int(r.get("llamadas_modelo") or 0) for r in rows),
+            "control_segundos_totales": round(ctrl_seg, 2),
+            "ft_segundos_totales": round(sum(float(r.get("segundos") or 0.0) for r in rows), 2),
+            "control_alertas_citas": ctrl_citas_mal,
+            "ft_alertas_citas": sum(
+                1
+                for d in detalles_por_qid
+                if d["citas_inexistentes_en_corpus"] or d["citas_fuera_de_evidencia"]
+            ),
+            "control_no_aplica": ctrl_no_aplica,
+            "ft_no_aplica": sum(1 for d in detalles_por_qid if d["tiene_condicion_no_aplica"]),
+            "control_evaluadas_humanamente": ctrl_eval,
+            "control_aciertos_humanos": ctrl_ok if ctrl_eval > 0 else None,
+            "pares": pares,
+        }
+
+    if sufijo == "D4":
+        csv_out = eval_dir / "resultados_agentes_D4_auditados.csv"
+        aud_out = eval_dir / "auditoria_D4.json"
+        fallos_out = eval_dir / "casos_fallo_y_regresion.json"
+    else:
+        csv_out = eval_dir / f"resultados_{sufijo}_auditados.csv"
+        aud_out = eval_dir / f"auditoria_{sufijo}.json"
+        fallos_out = eval_dir / f"casos_revision_{sufijo}.json"
+
+    with csv_out.open("w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
+        writer.writeheader()
+        writer.writerows(rows_auditados)
+
+    eval_humanas = sum(b["evaluadas_humanamente"] for b in por_set.values())
+    aciertos_tot = sum(b["aciertos"] for b in por_set.values())
+    auditoria = {
+        "modo": "auditoria_general_sin_dict_fijo",
+        "fuente_csv": csv_in.name,
+        "condicion": rows[0].get("condicion", "") if rows else "",
+        "total_preguntas": len(rows),
+        "evaluadas_humanamente": eval_humanas,
+        "pendientes_revision_humana": len(rows) - eval_humanas,
+        "aciertos_humanos": aciertos_tot if eval_humanas > 0 else None,
+        "porcentaje_humano": round(100.0 * aciertos_tot / eval_humanas, 1)
+        if eval_humanas > 0
+        else None,
+        "revisor": revisor,
+        "resumen_por_set": por_set,
+        "resumen_por_categoria": por_cat,
+        "chequeos_deterministas": {
+            "total_con_citas_inexistentes": sum(
+                1 for d in detalles_por_qid if d["citas_inexistentes_en_corpus"]
+            ),
+            "total_con_citas_fuera_de_evidencia": sum(
+                1 for d in detalles_por_qid if d["citas_fuera_de_evidencia"]
+            ),
+            "total_formato_3_lineas_ok": sum(
+                1 for d in detalles_por_qid if d["formato_3_lineas_ok"]
+            ),
+            "total_con_no_aplica": sum(
+                1 for d in detalles_por_qid if d["tiene_condicion_no_aplica"]
+            ),
+            "total_abstenciones_detectadas": sum(
+                1 for d in detalles_por_qid if d["es_abstencion"]
+            ),
+            "total_errores_ejecucion": sum(
+                1 for d in detalles_por_qid if d["error_ejecucion"]
+            ),
+        },
+        "telemetria_y_aislamiento": telemetria_resumen,
+        "comparativa_control_base_vs_ft": comparativa_control,
+        "comparativa_inline": comparativa if isinstance(comparativa, list) else [],
+        "detalles": detalles_por_qid,
+    }
+    _escribir_texto_lf(aud_out, json.dumps(auditoria, ensure_ascii=False, indent=2) + "\n")
+    _escribir_texto_lf(
+        fallos_out,
+        json.dumps(
+            {
+                "total_casos_con_alerta_o_fallo": len(casos_revisar),
+                "casos": casos_revisar,
+            },
+            ensure_ascii=False,
+            indent=2,
+        )
+        + "\n",
+    )
+    return auditoria
+
+
 def generar_auditoria(
     eval_dir: Path = EVAL_DIR,
     corpus_path: Path = DEFAULT_CORPUS_PATH,
@@ -487,7 +880,14 @@ def generar_auditoria(
     d3_csv_path: Path = DEFAULT_D3_CSV_PATH,
     diagnostico_d3_path: Path = DEFAULT_DIAGNOSTICO_D3_PATH,
 ) -> dict[str, Any]:
-    """Genera los tres artefactos de auditoría D4 y devuelve el resumen completo."""
+    """Genera auditoría v1 (hash LF conocido) o delega a auditoría general para nuevas corridas."""
+    csv_check = eval_dir / "resultados_agentes_D4.csv"
+    if csv_check.is_file():
+        sha_actual = hashlib.sha256(
+            csv_check.read_bytes().replace(b"\r\n", b"\n")
+        ).hexdigest()
+        if sha_actual != V1_LEGACY_CSV_LF_SHA256:
+            return generar_auditoria_general(eval_dir=eval_dir, corpus_path=corpus_path)
     csv_in = eval_dir / "resultados_agentes_D4.csv"
     trazas_in = eval_dir / "trazas_D4.json"
     tele_in = eval_dir / "telemetria_llamadas.json"
@@ -512,7 +912,7 @@ def generar_auditoria(
 
     csv_out = eval_dir / "resultados_agentes_D4_auditados.csv"
     with csv_out.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer = csv.DictWriter(f, fieldnames=fieldnames, lineterminator="\n")
         writer.writeheader()
         writer.writerows(rows_auditados)
 
@@ -622,19 +1022,27 @@ def generar_auditoria(
         },
         "telemetria_y_aislamiento": telemetria_resumen,
         "desglose_por_categoria": por_categoria,
+        "trazabilidad_calificacion": {
+            "evaluadores": "Álvaro Contreras y Pablo Cortés (criterios LEEME_PAUTA.md) con auditoría externa de par",
+            "nota_nucleo_equivalente": (
+                "El criterio relajado sin Regla 3/P01 también elevaría a D3 v6 "
+                "(congelado_50:13 y dificil_25:H18 eran fallos P01 en D3: 66+2 = 68/75), "
+                "por lo que no debe usarse como ventaja unilateral de D4 sobre D3."
+            ),
+        },
         "comparativa_controlada_6_casos": _construir_resumen_comparativa(comparativa),
         "veredictos": veredictos,
     }
 
-    (eval_dir / "auditoria_D4.json").write_text(
+    _escribir_texto_lf(
+        eval_dir / "auditoria_D4.json",
         json.dumps(auditoria, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
 
     casos_fallo = _construir_casos_fallo(rows_by_qid, ver_by_qid, trazas, telemetria)
-    (eval_dir / "casos_fallo_y_regresion.json").write_text(
+    _escribir_texto_lf(
+        eval_dir / "casos_fallo_y_regresion.json",
         json.dumps(casos_fallo, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
     )
     return auditoria
 
@@ -642,16 +1050,47 @@ def generar_auditoria(
 def main() -> None:
     parser = argparse.ArgumentParser(description="Genera auditoría y trazas de fallo D4.")
     parser.add_argument("--eval-dir", type=Path, default=EVAL_DIR)
+    parser.add_argument("--resultados-csv", type=Path, default=None)
+    parser.add_argument("--control-csv", type=Path, default=None)
+    parser.add_argument("--trazas-json", type=Path, default=None)
+    parser.add_argument("--telemetria-json", type=Path, default=None)
+    parser.add_argument("--comparativa-json", type=Path, default=None)
+    parser.add_argument("--prefijo-salida", type=str, default="")
+    parser.add_argument("--revisor", type=str, default="[Pendiente revisor]")
     args = parser.parse_args()
-    res = generar_auditoria(eval_dir=args.eval_dir)
-    rg = res["resumen_global"]
-    print(
-        f"D4 estricto: {rg['congelado_50']['aciertos_estrictos']}/50 congelado, "
-        f"{rg['dificil_25']['aciertos_estrictos']}/25 dificil "
-        f"({rg['global_75']['aciertos_estrictos']}/75 = {rg['global_75']['porcentaje_estricto']}%) | "
-        f"nucleo sin P01 condicion: {rg['global_75']['aciertos_nucleo_sin_condicion_p01']}/75 | "
-        f"violaciones LoRA: {res['telemetria_y_aislamiento']['violaciones_aislamiento_lora']}"
-    )
+
+    if args.resultados_csv or args.control_csv or args.prefijo_salida:
+        res = generar_auditoria_general(
+            eval_dir=args.eval_dir,
+            resultados_csv=args.resultados_csv,
+            trazas_json=args.trazas_json,
+            telemetria_json=args.telemetria_json,
+            comparativa_json=args.comparativa_json,
+            control_csv=args.control_csv,
+            prefijo_salida=args.prefijo_salida,
+            revisor=args.revisor,
+        )
+    else:
+        res = generar_auditoria(eval_dir=args.eval_dir)
+
+    if "resumen_global" in res:
+        rg = res["resumen_global"]
+        print(
+            f"D4 estricto (v1 archivado): {rg['congelado_50']['aciertos_estrictos']}/50 congelado, "
+            f"{rg['dificil_25']['aciertos_estrictos']}/25 dificil "
+            f"({rg['global_75']['aciertos_estrictos']}/75 = {rg['global_75']['porcentaje_estricto']}%) | "
+            f"violaciones LoRA: {res['telemetria_y_aislamiento']['violaciones_aislamiento_lora']}"
+        )
+    else:
+        ch = res["chequeos_deterministas"]
+        print(
+            f"Auditoría general ({res['fuente_csv']}): {res['total_preguntas']} preguntas | "
+            f"pendientes revisión humana: {res['pendientes_revision_humana']} | "
+            f"citas inexistentes={ch['total_con_citas_inexistentes']} | "
+            f"citas fuera evidencia={ch['total_con_citas_fuera_de_evidencia']} | "
+            f"No aplica={ch['total_con_no_aplica']} | "
+            f"violaciones LoRA={res['telemetria_y_aislamiento']['violaciones_aislamiento_lora']}"
+        )
 
 
 if __name__ == "__main__":

@@ -1,10 +1,12 @@
 {
+  "version_dataset": "v2",
   "total_ejemplos": 210,
   "train_ejemplos": 180,
   "val_ejemplos": 30,
   "seed_barajado_evidencia": 202604,
   "unidades_corpus_total": 197,
-  "unidades_corpus_cubiertas_en_evidencia": 163,
+  "unidades_corpus_cubiertas_en_evidencia": 112,
+  "ejemplos_condiciones_no_aplica": 73,
   "distribucion_bloques": {
     "citas_cruce": {
       "train": 35,
@@ -38,54 +40,61 @@
     }
   },
   "distribucion_modos": {
-    "cruce": 53,
-    "condicional": 76,
-    "premisa_falsa": 16,
-    "numerica": 49,
-    "factual": 16
+    "cruce": 43,
+    "factual": 36,
+    "condicional": 68,
+    "premisa_falsa": 15,
+    "numerica": 48
   },
   "distribucion_estados": {
-    "suficiente": 192,
-    "insuficiente": 13,
+    "suficiente": 188,
+    "insuficiente": 17,
     "no_existe": 5
   },
   "evidencia_unidades_por_ejemplo": {
     "min": 3,
-    "mediana": 6.0,
-    "promedio": 5.8,
+    "mediana": 4.0,
+    "promedio": 4.5,
     "p95": 6,
     "max": 6
   },
   "longitudes_caracteres": {
     "user": {
-      "min": 2104,
-      "mediana": 5898.5,
-      "promedio": 6091.8,
-      "p95": 10497,
-      "max": 12055
+      "min": 2097,
+      "mediana": 5578.0,
+      "promedio": 5979.0,
+      "p95": 10853,
+      "max": 11920
     },
     "assistant": {
-      "min": 373,
-      "mediana": 846.5,
-      "promedio": 852.4,
-      "p95": 1238,
-      "max": 1518
+      "min": 303,
+      "mediana": 780.5,
+      "promedio": 788.7,
+      "p95": 1218,
+      "max": 1460
     },
     "total": {
-      "min": 2577,
-      "mediana": 6740.5,
-      "promedio": 6944.2,
-      "p95": 11516,
-      "max": 13142
+      "min": 2573,
+      "mediana": 6448.5,
+      "promedio": 6767.7,
+      "p95": 11929,
+      "max": 12887
     }
   },
   "tokens_estimados_conservadores_3_4_chars_por_token": {
-    "min": 758,
-    "mediana": 1982.5,
-    "promedio": 2042.4,
-    "p95": 3387,
-    "max": 3865
+    "min": 757,
+    "mediana": 1896.5,
+    "promedio": 1990.5,
+    "p95": 3509,
+    "max": 3790
   },
+  "separacion_unidades_corpus": {
+    "unidades_eval_d3_bloqueadas": 40,
+    "unidades_heldout_20_bloqueadas": 21,
+    "solapamiento_evidencia_vs_eval_d3": 0,
+    "solapamiento_evidencia_vs_heldout_20": 0
+  },
+  "declaracion_autoria": "Pares supervisados curados a partir de fragmentos literales de corpus.json con asistencia de Antigravity (modelo asistente IA) y validación automática frente a corpus.json y normas de separación de evaluación.",
   "antifuga_evaluacion_d3": {
     "total_preguntas_dataset": 210,
     "total_preguntas_eval": 75,
@@ -134,16 +143,16 @@
         "pregunta_eval": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?"
       },
       {
-        "dataset_id": "B5-T01",
-        "bloque": "resiliencia_feedback",
+        "dataset_id": "B6-T06",
+        "bloque": "abstencion_honesta",
         "split": "train",
-        "eval_set": "congelado_50",
-        "eval_id": "34",
-        "seq_ratio": 0.6404,
-        "jaccard_contenido": 0.2308,
-        "score_max": 0.6404,
-        "pregunta_dataset": "¿Qué documentos debe presentar un estudiante de Ingeniería que desea suspender estudios y hasta cuándo puede hacerlo?",
-        "pregunta_eval": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?"
+        "eval_set": "dificil_25",
+        "eval_id": "H20",
+        "seq_ratio": 0.6587,
+        "jaccard_contenido": 0.2105,
+        "score_max": 0.6587,
+        "pregunta_dataset": "Según el artículo 40 del Reglamento Interno de Ingeniería, ¿cómo se regulan las prácticas profesionales en terreno?",
+        "pregunta_eval": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?"
       },
       {
         "dataset_id": "B4-T14",
@@ -158,30 +167,6 @@
         "pregunta_eval": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?"
       },
       {
-        "dataset_id": "B4-T27",
-        "bloque": "calculos_y_orden",
-        "split": "train",
-        "eval_set": "dificil_25",
-        "eval_id": "H05",
-        "seq_ratio": 0.6378,
-        "jaccard_contenido": 0.5,
-        "score_max": 0.6378,
-        "pregunta_dataset": "Un egresado de Ingeniería Civil obtuvo 6,0 de promedio ponderado en su Plan de Estudio (sin Memoria) y 5,0 en su Memoria de Título. Calcula su nota de titulación y su concepto.",
-        "pregunta_eval": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?"
-      },
-      {
-        "dataset_id": "B5-T11",
-        "bloque": "resiliencia_feedback",
-        "split": "train",
-        "eval_set": "dificil_25",
-        "eval_id": "H07",
-        "seq_ratio": 0.6375,
-        "jaccard_contenido": 0.3333,
-        "score_max": 0.6375,
-        "pregunta_dataset": "Un estudiante que cursó seis semestres en Ingeniería aprobó en total 54 créditos sin convalidaciones. ¿Está en situación de Baja Académica por el criterio de promedio de créditos?",
-        "pregunta_eval": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?"
-      },
-      {
         "dataset_id": "B6-T14",
         "bloque": "abstencion_honesta",
         "split": "train",
@@ -194,18 +179,6 @@
         "pregunta_eval": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?"
       },
       {
-        "dataset_id": "B6-T08",
-        "bloque": "abstencion_honesta",
-        "split": "train",
-        "eval_set": "congelado_50",
-        "eval_id": "41",
-        "seq_ratio": 0.6238,
-        "jaccard_contenido": 0.4167,
-        "score_max": 0.6238,
-        "pregunta_dataset": "¿Qué establece el inciso d) del Artículo 3° del Reglamento Interno de Ingeniería sobre el ingreso especial deportivo?",
-        "pregunta_eval": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
-      },
-      {
         "dataset_id": "B6-T07",
         "bloque": "abstencion_honesta",
         "split": "train",
@@ -216,6 +189,175 @@
         "score_max": 0.6182,
         "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
         "pregunta_eval": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+      },
+      {
+        "dataset_id": "B6-V02",
+        "bloque": "abstencion_honesta",
+        "split": "val",
+        "eval_set": "congelado_50",
+        "eval_id": "43",
+        "seq_ratio": 0.6038,
+        "jaccard_contenido": 0.2667,
+        "score_max": 0.6038,
+        "pregunta_dataset": "¿Qué dispone el Artículo 15° del Reglamento General respecto a la remuneración económica de los Tutores Académicos y Monitores Estudiantiles?",
+        "pregunta_eval": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?"
+      },
+      {
+        "dataset_id": "B3-V02",
+        "bloque": "polares_y_lectura",
+        "split": "val",
+        "eval_set": "dificil_25",
+        "eval_id": "H23",
+        "seq_ratio": 0.6036,
+        "jaccard_contenido": 0.2105,
+        "score_max": 0.6036,
+        "pregunta_dataset": "El calendario 2026 dispone que todas las clases del primer semestre —incluidas las asignaturas anuales— finalizan el 10 de julio. ¿Es correcto?",
+        "pregunta_eval": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?"
+      },
+      {
+        "dataset_id": "B2-T17",
+        "bloque": "condiciones_excepciones",
+        "split": "train",
+        "eval_set": "congelado_50",
+        "eval_id": "44",
+        "seq_ratio": 0.6009,
+        "jaccard_contenido": 0.2667,
+        "score_max": 0.6009,
+        "pregunta_dataset": "¿Qué pasa con las situaciones administrativas pendientes cuando entra a regir una nueva versión del Reglamento General de Docencia de Pregrado?",
+        "pregunta_eval": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?"
+      }
+    ]
+  },
+  "antifuga_evaluacion_nuevas_20": {
+    "total_preguntas_dataset": 210,
+    "total_preguntas_eval": 20,
+    "duplicados_internos": 0,
+    "coincidencias_exactas_eval": 0,
+    "alertas_sobre_umbral": 0,
+    "umbrales": {
+      "seq_ratio_max": 0.85,
+      "jaccard_contenido_max": 0.8
+    },
+    "top_10_pares_mas_cercanos": [
+      {
+        "dataset_id": "B1-T17",
+        "bloque": "citas_cruce",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N06",
+        "seq_ratio": 0.6526,
+        "jaccard_contenido": 0.2917,
+        "score_max": 0.6526,
+        "pregunta_dataset": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden exactamente a los feriados nacionales de abril, mayo y junio durante el primer semestre?",
+        "pregunta_eval": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?"
+      },
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N02",
+        "seq_ratio": 0.5743,
+        "jaccard_contenido": 0.2381,
+        "score_max": 0.5743,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "De acuerdo con el Artículo 12° del Reglamento General de Docencia de Pregrado, ¿a quién y cuándo debe informar por escrito el Profesor Encargado sobre el desarrollo de la asignatura?"
+      },
+      {
+        "dataset_id": "B4-T01",
+        "bloque": "calculos_y_orden",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N06",
+        "seq_ratio": 0.5671,
+        "jaccard_contenido": 0.3077,
+        "score_max": 0.5671,
+        "pregunta_dataset": "Según el Calendario de Docencia de Pregrado 2026, ¿cuántos días corridos inclusive duran las actividades de Vinculación a la Vida Universitaria y cuántos días inclusive suman con las vacaciones de invierno del primer semestre?",
+        "pregunta_eval": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?"
+      },
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N20",
+        "seq_ratio": 0.557,
+        "jaccard_contenido": 0.2174,
+        "score_max": 0.557,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "¿Qué promedio ponderado o nota mínima de Licenciatura exige el Artículo 57° del Reglamento General de Docencia de Pregrado para obtener la Beca Articulación Pregrado-Postgrado?"
+      },
+      {
+        "dataset_id": "B2-T17",
+        "bloque": "condiciones_excepciones",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N04",
+        "seq_ratio": 0.5496,
+        "jaccard_contenido": 0.2353,
+        "score_max": 0.5496,
+        "pregunta_dataset": "¿Qué pasa con las situaciones administrativas pendientes cuando entra a regir una nueva versión del Reglamento General de Docencia de Pregrado?",
+        "pregunta_eval": "En la Facultad de Ingeniería, ¿quién resuelve las situaciones no previstas en su Reglamento Interno de Docencia de Pregrado?"
+      },
+      {
+        "dataset_id": "B5-T17",
+        "bloque": "resiliencia_feedback",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N04",
+        "seq_ratio": 0.5476,
+        "jaccard_contenido": 0.1053,
+        "score_max": 0.5476,
+        "pregunta_dataset": "¿En qué fecha del primer semestre de 2026 terminan las clases de las asignaturas anuales según el Calendario de Docencia de Pregrado?",
+        "pregunta_eval": "En la Facultad de Ingeniería, ¿quién resuelve las situaciones no previstas en su Reglamento Interno de Docencia de Pregrado?"
+      },
+      {
+        "dataset_id": "B6-T07",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N11",
+        "seq_ratio": 0.5449,
+        "jaccard_contenido": 0.1739,
+        "score_max": 0.5449,
+        "pregunta_dataset": "¿Qué establece el Artículo 65 del Reglamento General de Docencia de Pregrado respecto al retiro temporal por motivos laborales?",
+        "pregunta_eval": "¿Qué condiciones exige el Artículo 57° del Reglamento General para que un alumno de pregrado curse simultáneamente un programa de postgrado y obtenga la Beca Articulación Pregrado-Postgrado?"
+      },
+      {
+        "dataset_id": "B3-T21",
+        "bloque": "polares_y_lectura",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N06",
+        "seq_ratio": 0.5366,
+        "jaccard_contenido": 0.25,
+        "score_max": 0.5366,
+        "pregunta_dataset": "¿Qué fecha fija el Calendario de Docencia de Pregrado 2026 para las Evaluaciones de Recuperación del primer semestre?",
+        "pregunta_eval": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?"
+      },
+      {
+        "dataset_id": "B1-T35",
+        "bloque": "citas_cruce",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N06",
+        "seq_ratio": 0.5348,
+        "jaccard_contenido": 0.16,
+        "score_max": 0.5348,
+        "pregunta_dataset": "En el primer semestre de 2026, ¿qué fechas corresponden a las vacaciones de invierno y a las Evaluaciones de Recuperación, y qué diferencia hay con el cierre de clases de asignaturas anuales?",
+        "pregunta_eval": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?"
+      },
+      {
+        "dataset_id": "B6-T16",
+        "bloque": "abstencion_honesta",
+        "split": "train",
+        "eval_set": "nuevas_20",
+        "eval_id": "N20",
+        "seq_ratio": 0.5241,
+        "jaccard_contenido": 0.1111,
+        "score_max": 0.5241,
+        "pregunta_dataset": "¿Qué porcentaje máximo de reprobación histórica autoriza el Artículo 38° del Reglamento General para eliminar automáticamente una asignatura del Plan de Estudios?",
+        "pregunta_eval": "¿Qué promedio ponderado o nota mínima de Licenciatura exige el Artículo 57° del Reglamento General de Docencia de Pregrado para obtener la Beca Articulación Pregrado-Postgrado?"
       }
     ]
   },

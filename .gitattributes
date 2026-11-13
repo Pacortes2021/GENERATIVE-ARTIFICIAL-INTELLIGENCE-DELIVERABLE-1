@@ -1,0 +1,10 @@
+# Garantizar finales de línea LF en archivos de texto, código y datos JSONL para hashes reproducibles en Windows/macOS/Linux
+* text=auto eol=lf
+*.jsonl text eol=lf
+*.json text eol=lf
+*.csv text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.tex text eol=lf
+*.ipynb text eol=lf

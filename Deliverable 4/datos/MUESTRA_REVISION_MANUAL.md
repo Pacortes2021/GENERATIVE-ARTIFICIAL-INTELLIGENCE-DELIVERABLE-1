@@ -1,12 +1,54 @@
-# Muestra de Revisión Manual — Dataset Redactor D4 (30 casos)
+# Muestra de Revisión Manual — Dataset Redactor D4 v2 (30 casos)
 
 Muestra estratificada de **30 ejemplos** (`3 train + 2 val` por cada uno de los 6 bloques) extraída desde `redactor_train.jsonl` y `redactor_val.jsonl` para verificación humana previa al entrenamiento QLoRA (Paso 3).
+
+## Autoría y Separación de Datos (v2)
+- **Fuente normativa:** Fragmentos literales de `corpus.json` (reglamentos y calendario UdeC).
+- **Autoría de los pares supervisados:** Especificaciones redactadas y curadas por el equipo con asistencia de **Antigravity (modelo asistente IA)** y verificadas programáticamente contra `corpus.json` (citas, cálculos aritméticos y fechas).
+- **Separación estricta:** 0 de las 40 unidades de corpus evaluadas en las 75 preguntas de D3 y 0 de las 21 unidades reservadas para `preguntas_nuevas_20.csv` aparecen en `evidencia_clave`, `distractores` ni referencias textuales del dataset.
+
+## Registro de Verificación Humana (30 casos)
+
+> **Nota:** Complete esta tabla al revisar los casos antes de validar la entrega final (revisor, fecha y estado).
+
+| # | ID | Bloque / Split | Revisor | Fecha | Resultado | Observaciones |
+|---|---|---|---|:---:|---|---|
+| 01 | `B1-T01` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 02 | `B1-T18` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 03 | `B1-T35` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 04 | `B1-V01` | `citas_cruce` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 05 | `B1-V05` | `citas_cruce` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 06 | `B2-T01` | `condiciones_excepciones` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 07 | `B2-T18` | `condiciones_excepciones` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 08 | `B2-T35` | `condiciones_excepciones` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 09 | `B2-V01` | `condiciones_excepciones` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 10 | `B2-V05` | `condiciones_excepciones` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 11 | `B3-T01` | `polares_y_lectura` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 12 | `B3-T16` | `polares_y_lectura` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 13 | `B3-T30` | `polares_y_lectura` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 14 | `B3-V01` | `polares_y_lectura` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 15 | `B3-V05` | `polares_y_lectura` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 16 | `B4-T01` | `calculos_y_orden` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 17 | `B4-T16` | `calculos_y_orden` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 18 | `B4-T30` | `calculos_y_orden` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 19 | `B4-V01` | `calculos_y_orden` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 20 | `B4-V05` | `calculos_y_orden` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 21 | `B5-T01` | `resiliencia_feedback` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 22 | `B5-T13` | `resiliencia_feedback` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 23 | `B5-T25` | `resiliencia_feedback` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 24 | `B5-V01` | `resiliencia_feedback` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 25 | `B5-V05` | `resiliencia_feedback` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 26 | `B6-T01` | `abstencion_honesta` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 27 | `B6-T13` | `abstencion_honesta` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 28 | `B6-T25` | `abstencion_honesta` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 29 | `B6-V01` | `abstencion_honesta` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 30 | `B6-V05` | `abstencion_honesta` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
 
 Criterios a revisar en cada ejemplo:
 1. La respuesta esperada se deduce íntegramente de los fragmentos literales mostrados en `<evidencia>`.
 2. Todas las citas `[ID]` existen en la evidencia entregada y cubren cada afirmación relevante.
 3. El bloque `<pensar>` razona sin saltos lógicos ni contradecir la salida final.
-4. Cuando la evidencia falta o es parcial, el modelo no inventa datos y se abstiene honestamente.
+4. Cuando la evidencia falta o es parcial, el modelo no inventa datos y se abstiene honestamente; si no hay salvedades extra aplicables, usa `Condiciones o límites: No aplica`.
 
 ---
 
@@ -14,8 +56,8 @@ Criterios a revisar en cada ejemplo:
 
 **Pregunta:** ¿Qué requisito previo sobre docencia debe cumplir un alumno para inscribir asignaturas y en qué casos un profesor queda exento de ser evaluado en esa encuesta?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-007`, `RG-ART-042`, `RG-ART-019`, `RI-FI-ART-008`, `RI-FI-ART-007`, `RG-ART-010`
-- Clave esperada: `RG-ART-042, RG-ART-007` | Distractores incluidos: `RG-ART-019, RI-FI-ART-008, RI-FI-ART-007, RG-ART-010`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-007`, `RG-ART-042`, `RG-ART-019`, `RI-FI-ART-007`, `RG-ART-010`
+- Clave esperada: `RG-ART-042, RG-ART-007` | Distractores incluidos: `RG-ART-019, RI-FI-ART-007, RG-ART-010`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -63,37 +105,36 @@ Fuente: [RG-ART-008] [RG-ART-011] [RI-FI-ART-033]
 
 ## 03. `B1-T35` — bloque `citas_cruce` | split `train` | modo `cruce` | estado `suficiente`
 
-**Pregunta:** ¿Qué feriados nacionales contempla el segundo semestre de 2026 en agosto, octubre y diciembre, y cuándo comienzan las Evaluaciones de Recuperación de ese mismo semestre?
+**Pregunta:** En el primer semestre de 2026, ¿qué fechas corresponden a las vacaciones de invierno y a las Evaluaciones de Recuperación, y qué diferencia hay con el cierre de clases de asignaturas anuales?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `CAL-2026-S2-04`, `CAL-2026-S2-11`, `CAL-2026-S2-10`, `CAL-2026-S2-09`, `CAL-2026-S2-05`, `CAL-2026-S2-08`
-- Clave esperada: `CAL-2026-S2-08, CAL-2026-S2-10, CAL-2026-S2-11, CAL-2026-S2-05` | Distractores incluidos: `CAL-2026-S2-04, CAL-2026-S2-09`
+**Evidencia ensamblada (6 unidades, orden barajado):** `CAL-2026-S1-13`, `CAL-2026-S1-05`, `CAL-2026-S1-06`, `CAL-2026-S1-01`, `CAL-2026-S1-04`, `CAL-2026-S1-14`
+- Clave esperada: `CAL-2026-S1-14, CAL-2026-S1-06, CAL-2026-S1-05` | Distractores incluidos: `CAL-2026-S1-13, CAL-2026-S1-01, CAL-2026-S1-04`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[CAL-2026-S2-08]** Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: jueves 20 de agosto.
-- **[CAL-2026-S2-10]** Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: lunes 12 de octubre.
-- **[CAL-2026-S2-11]** Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: martes 08 de diciembre.
-- **[CAL-2026-S2-05]** Calendario de docencia de pregrado 2026. Segundo semestre. Evaluaciones de Recuperación: 14 – 23 de diciembre.
+- **[CAL-2026-S1-14]** Calendario de docencia de pregrado 2026. Primer semestre. Vacaciones de invierno (aprobación transitoria): 30 junio – 05 de julio.
+- **[CAL-2026-S1-06]** Calendario de docencia de pregrado 2026. Primer semestre. Evaluaciones de Recuperación: 13 - 24 de julio.
+- **[CAL-2026-S1-05]** Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas anuales: 24 de julio.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Feriados nacionales S2: [CAL-2026-S2-08] jueves 20 de agosto, [CAL-2026-S2-10] lunes 12 de octubre, [CAL-2026-S2-11] martes 08 de diciembre. Evaluaciones de Recuperación S2: [CAL-2026-S2-05] 14 – 23 de diciembre.
+[CAL-2026-S1-14] señala Vacaciones de invierno (con aprobación transitoria) del 30 de junio al 05 de julio. [CAL-2026-S1-06] fija las Evaluaciones de Recuperación del 13 al 24 de julio. [CAL-2026-S1-05] fija el término de clases de asignaturas anuales el 24 de julio.
 </pensar>
-Respuesta: Los feriados nacionales en esos meses del segundo semestre de 2026 son el jueves 20 de agosto [CAL-2026-S2-08], lunes 12 de octubre [CAL-2026-S2-10] y martes 08 de diciembre [CAL-2026-S2-11]; las Evaluaciones de Recuperación se rinden del 14 al 23 de diciembre [CAL-2026-S2-05].
-Condiciones o límites: Las fechas pertenecen al Segundo Semestre del Calendario de docencia de pregrado 2026 [CAL-2026-S2-05] [CAL-2026-S2-08] [CAL-2026-S2-10] [CAL-2026-S2-11].
-Fuente: [CAL-2026-S2-05] [CAL-2026-S2-08] [CAL-2026-S2-10] [CAL-2026-S2-11]
+Respuesta: Las vacaciones de invierno se programan del 30 de junio al 05 de julio [CAL-2026-S1-14] y las Evaluaciones de Recuperación del 13 al 24 de julio [CAL-2026-S1-06], coincidiendo el fin de ese período (24 de julio) con el término de clases de las asignaturas anuales [CAL-2026-S1-05].
+Condiciones o límites: Las vacaciones de invierno de 30 junio a 05 julio figuran con aprobación transitoria en el calendario [CAL-2026-S1-14].
+Fuente: [CAL-2026-S1-05] [CAL-2026-S1-06] [CAL-2026-S1-14]
 ```
 
 ## 04. `B1-V01` — bloque `citas_cruce` | split `val` | modo `cruce` | estado `suficiente`
 
 **Pregunta:** ¿Qué facilidades académicas corresponden a dirigentes estudiantiles acreditados y qué deben hacer estudiantes con impedimentos religiosos o discapacidad al inscribir asignaturas?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-014`, `RG-ART-020`, `RG-ART-052`, `RG-ART-015`, `RG-ART-042`, `RI-FI-ART-013`
-- Clave esperada: `RG-ART-052, RG-ART-020` | Distractores incluidos: `RG-ART-014, RG-ART-015, RG-ART-042, RI-FI-ART-013`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-014`, `RG-ART-020`, `RG-ART-052`, `RG-ART-015`, `RG-ART-042`
+- Clave esperada: `RG-ART-052, RG-ART-020` | Distractores incluidos: `RG-ART-014, RG-ART-015, RG-ART-042`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -113,39 +154,37 @@ Condiciones o límites: Los dirigentes estudiantiles igualmente deben cumplir lo
 Fuente: [RG-ART-020] [RG-ART-052]
 ```
 
-## 05. `B1-V05` — bloque `citas_cruce` | split `val` | modo `cruce` | estado `suficiente`
+## 05. `B1-V05` — bloque `citas_cruce` | split `val` | modo `factual` | estado `suficiente`
 
-**Pregunta:** En el calendario del primer semestre de 2026, ¿en qué fechas son la pausa activa, las vacaciones de invierno y los feriados nacionales de mayo?
+**Pregunta:** ¿Qué define reglamentariamente al 'Alumno Autorizado a Matricularse' y hasta qué momento del período lectivo conserva su calidad quien ya es Alumno Regular?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `CAL-2026-S1-12`, `CAL-2026-S1-08`, `CAL-2026-S1-10`, `CAL-2026-S1-07`, `CAL-2026-S1-14`, `CAL-2026-S1-11`
-- Clave esperada: `CAL-2026-S1-07, CAL-2026-S1-14, CAL-2026-S1-10, CAL-2026-S1-11` | Distractores incluidos: `CAL-2026-S1-12, CAL-2026-S1-08`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-003-DEF-14`, `RG-ART-033`, `RG-ART-003-DEF-21`, `RG-ART-050`, `RG-ART-003-DEF-15`
+- Clave esperada: `RG-ART-003-DEF-21, RG-ART-050` | Distractores incluidos: `RG-ART-003-DEF-14, RG-ART-033, RG-ART-003-DEF-15`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[CAL-2026-S1-07]** Calendario de docencia de pregrado 2026. Primer semestre. Pausa activa de docencia de pregrado: 11 – 15 de mayo.
-- **[CAL-2026-S1-14]** Calendario de docencia de pregrado 2026. Primer semestre. Vacaciones de invierno (aprobación transitoria): 30 junio – 05 de julio.
-- **[CAL-2026-S1-10]** Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: viernes 01 de mayo.
-- **[CAL-2026-S1-11]** Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 21 de mayo.
+- **[RG-ART-003-DEF-21]** 3.21. ALUMNO AUTORIZADO A MATRICULARSE: Alumno de pregrado perteneciente a una carrera de la Universidad que ha cumplido con las exigencias académicas para matricularse en el periodo académico siguiente.
+- **[RG-ART-050]** Artículo 50º La calidad de alumno regular se mantendrá hasta el inicio del periodo de inscripción de asignaturas del Período Lectivo Ordinario siguiente.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[CAL-2026-S1-07]: pausa activa de docencia del 11 al 15 de mayo. [CAL-2026-S1-14]: vacaciones de invierno (aprobación transitoria) del 30 de junio al 05 de julio. Feriados de mayo: [CAL-2026-S1-10] viernes 01 de mayo y [CAL-2026-S1-11] jueves 21 de mayo.
+[RG-ART-003-DEF-21] define al Alumno Autorizado a Matricularse como el alumno de pregrado perteneciente a una carrera de la UdeC que ha cumplido las exigencias académicas para matricularse en el período académico siguiente. [RG-ART-050] fija que la calidad de alumno regular se mantiene hasta el inicio del período de inscripción de asignaturas del Período Lectivo Ordinario siguiente. Pregunta directa sobre dos definiciones claras -> Condiciones: No aplica.
 </pensar>
-Respuesta: En el primer semestre de 2026, la pausa activa de docencia ocurre del 11 al 15 de mayo [CAL-2026-S1-07], los feriados nacionales de mayo son el viernes 01 de mayo [CAL-2026-S1-10] y el jueves 21 de mayo [CAL-2026-S1-11], y las vacaciones de invierno (con aprobación transitoria) van del 30 de junio al 05 de julio [CAL-2026-S1-14].
-Condiciones o límites: Además, el calendario establece que los días 18 y 19 de mayo no se realizarán evaluaciones [CAL-2026-S1-08].
-Fuente: [CAL-2026-S1-07] [CAL-2026-S1-08] [CAL-2026-S1-10] [CAL-2026-S1-11] [CAL-2026-S1-14]
+Respuesta: El Alumno Autorizado a Matricularse es el estudiante de pregrado perteneciente a una carrera que cumplió las exigencias académicas para matricularse en el período siguiente [RG-ART-003-DEF-21], y la calidad de alumno regular se conserva hasta el inicio de la inscripción de asignaturas del Período Lectivo Ordinario siguiente [RG-ART-050].
+Condiciones o límites: No aplica
+Fuente: [RG-ART-003-DEF-21] [RG-ART-050]
 ```
 
 ## 06. `B2-T01` — bloque `condiciones_excepciones` | split `train` | modo `condicional` | estado `suficiente`
 
 **Pregunta:** ¿Qué condiciones, límites de tiempo y excepciones rigen el abandono de asignaturas sin especificación de motivos?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `CAL-2026-S1-03`, `RI-FI-ART-008`, `RG-ART-042`, `RG-ART-045`, `RI-FI-ART-009`, `RG-ART-043`
-- Clave esperada: `RG-ART-043` | Distractores incluidos: `CAL-2026-S1-03, RI-FI-ART-008, RG-ART-042, RG-ART-045, RI-FI-ART-009`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-021`, `RG-ART-042`, `RG-ART-045`, `RG-ART-043`
+- Clave esperada: `RG-ART-043` | Distractores incluidos: `RG-ART-021, RG-ART-042, RG-ART-045`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -168,8 +207,8 @@ Fuente: [RG-ART-043]
 
 **Pregunta:** ¿Qué condiciones regulan la participación de colaboradores externos o estudiantes en la docencia de pregrado?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-015`, `RG-ART-006`, `RG-ART-001`, `RG-ART-002`, `RG-ART-012`, `RG-ART-052`
-- Clave esperada: `RG-ART-002` | Distractores incluidos: `RG-ART-015, RG-ART-006, RG-ART-001, RG-ART-012, RG-ART-052`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-052`, `RG-ART-006`, `RG-ART-001`, `RG-ART-002`, `RG-ART-015`
+- Clave esperada: `RG-ART-002` | Distractores incluidos: `RG-ART-052, RG-ART-006, RG-ART-001, RG-ART-015`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -192,8 +231,8 @@ Fuente: [RG-ART-002]
 
 **Pregunta:** ¿Qué requisitos y restricciones temporales aplican cuando se requiere cambiar una carrera por vía de cambio interno frente al ingreso a una carrera distinta?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-044`, `RG-ART-055`, `RI-FI-ART-017`, `RG-ART-054`, `RI-FI-ART-019`, `RI-FI-ART-018`
-- Clave esperada: `RG-ART-054, RG-ART-055` | Distractores incluidos: `RG-ART-044, RI-FI-ART-017, RI-FI-ART-019, RI-FI-ART-018`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-037`, `RG-ART-055`, `RG-ART-044`, `RG-ART-054`, `RG-ART-035`
+- Clave esperada: `RG-ART-054, RG-ART-055` | Distractores incluidos: `RG-ART-037, RG-ART-044, RG-ART-035`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -240,35 +279,34 @@ Fuente: [RG-ART-003-DEF-01] [RG-ART-003-DEF-02]
 
 ## 10. `B2-V05` — bloque `condiciones_excepciones` | split `val` | modo `condicional` | estado `suficiente`
 
-**Pregunta:** ¿Qué obligación de informe al término del semestre recae en el Profesor Encargado de una asignatura y cómo se distingue el modo de trabajo presencial del semipresencial?
+**Pregunta:** ¿Qué diferencia las condiciones y documentación exigida para solicitar revalidación frente a convalidación de asignaturas aprobadas?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-019`, `RG-ART-006`, `RG-ART-003-DEF-11`, `RG-ART-012`, `RG-ART-003-DEF-09`, `RG-ART-027`
-- Clave esperada: `RG-ART-012, RG-ART-003-DEF-09` | Distractores incluidos: `RG-ART-019, RG-ART-006, RG-ART-003-DEF-11, RG-ART-027`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-040`, `RG-ART-041`, `RG-ART-037`, `RI-FI-ART-015`
+- Clave esperada: `RG-ART-037` | Distractores incluidos: `RG-ART-040, RG-ART-041, RI-FI-ART-015`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RG-ART-012]** Artículo 12º En cada asignatura habrá al menos un Profesor Encargado cuyas funciones serán coordinar el trabajo de los profesores participantes, velar por el cumplimiento de los objetivos del programa respectivo, de las normas y plazos establecidos en los reglamentos correspondientes, y entregar el Acta de Notas Finales e informar por escrito al Director de Departamento, al final del período lectivo, sobre el desarrollo de la asignatura.
-- **[RG-ART-003-DEF-09]** 3.9. ASIGNATURA: Asignatura es el conjunto de actividades de enseñanza-aprendizaje de un área del conocimiento conducentes a que el alumno adquiera y desarrolle, en una unidad de tiempo determinada, conocimientos, habilidades, destrezas, actitudes o valores. Las asignaturas adquieren, en el contexto de un plan de estudio, la calidad de obligatorias, electivas, complementarias o de libre elección. ASIGNATURAS OBLIGATORIAS: Son asignaturas esenciales para el logro del perfil de egreso de una carrera, que deben ser aprobadas para obtener el título o grado académico. ASIGNATURAS COMPLEMENTARIAS: Son asignaturas que permiten al alumno complementar su formación académico-profesional con temas o áreas que incrementan su acervo cultural o su formación personal. Son optativas dentro de un número de créditos preestablecidos en el plan de estudios. ASIGNATURAS ELECTIVAS: Son asignaturas del área académico-profesional correspondiente al plan de estudio, que profundizan o diversifican la formación en un área disciplinaria de la carrera. Son de carácter opcional para el alumno dentro de un número de créditos o asignaturas preestablecidas en el plan de estudios. ASIGNATURAS DE LIBRE ELECCIÓN: Son asignaturas que no siendo asignaturas obligatorias, electivas o complementarias del correspondiente plan de estudios, el alumno las cursa por iniciativa propia. El alumno puede elegir asignaturas impartidas en otras carreras de la propia universidad o en otras universidades, siempre que se haya establecido algún convenio y quedarán incorporadas a su currículum y constituirán carga académica del periodo lectivo correspondiente. Adicionalmente las asignaturas pueden, en el contexto de un plan de estudios, tener el carácter de fundamental, integradora o de formación general. ASIGNATURAS FUNDAMENTALES: Son asignaturas obligatorias, establecidas por la universidad, para lograr aprender los fundamentos de una disciplina. ASIGNATURAS INTEGRADORAS: Son asignaturas obligatorias establecidas para evidenciar el nivel de logro de competencias del perfil de egreso o de los perfiles intermedios, expresadas en el plan de estudios. Sus resultados de aprendizaje están referidos a la integración de distintos saberes: conceptuales, procedimentales y actitudinales. ASIGNATURAS DE FORMACIÓN INTEGRAL: Son asignaturas que contribuyen a dar una formación integral dentro del contexto de un plan de estudios aportando a la formación profesional de un alumno, con el propósito de proporcionarle valoración de la diversidad y la interdisciplina, desarrollar competencias genéricas y desarrollar un currículum adecuado a sus propios intereses. Las asignaturas de formación integral pueden tener la calidad de obligatorias, electivas o complementarias en un plan de estudios. Las asignaturas pueden dictarse en alguna de las siguientes modalidades: ASIGNATURAS PRESENCIALES: Modalidad en que el proceso de enseñanza – aprendizaje es conducido principalmente por el o los docentes con presencia física del alumno. ASIGNATURAS SEMIPRESENCIALES: Modalidad en que el proceso de enseñanza–aprendizaje, principalmente, otorga al alumno espacios para el trabajo autónomo orientado por los docentes.
+- **[RG-ART-037]** Artículo 37° Los alumnos regulares podrán solicitar la revalidación de una misma asignatura ya aprobada en otro plan de estudio de otra carrera de esta universidad. Los alumnos regulares podrán solicitar la convalidación de una asignatura de su plan de estudio por otra ya aprobada en ésta o en otra institución de educación superior. Esta solicitud deberá ir acompañada de un certificado completo de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas, salvo que se trate de asignaturas aprobadas en esta universidad. El Vicedecano, previo informe del Departamento a cargo de la asignatura, resolverá dentro de un plazo de quince días e informará de lo resuelto tanto al alumno como a la Facultad a la que éste pertenece.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[RG-ART-012]: el Profesor Encargado coordina a los docentes participantes, vela por objetivos del programa y plazos, entrega el Acta de Notas Finales e informa por escrito al Director de Departamento al final del período lectivo sobre el desarrollo de la asignatura. [RG-ART-003-DEF-09]: presencial es conducido principalmente por el o los docentes con presencia física del alumno; semipresencial otorga principalmente espacios para trabajo autónomo orientado por docentes.
+[RG-ART-037]: la revalidación aplica a alumnos regulares para una misma asignatura ya aprobada en otro plan de otra carrera de la UdeC; la convalidación aplica a una asignatura del plan por otra aprobada en la UdeC u otra institución de educación superior. La convalidación exige certificado completo de calificaciones y programas debidamente acreditados, salvo asignaturas aprobadas en la UdeC. Resuelve el Vicedecano en 15 días previo informe del Departamento a cargo.
 </pensar>
-Respuesta: Al final del período lectivo, el Profesor Encargado debe entregar el Acta de Notas Finales e informar por escrito al Director de Departamento sobre el desarrollo de la asignatura [RG-ART-012]. Respecto de las modalidades, la asignatura presencial es conducida principalmente por los docentes con presencia física del estudiante, mientras que la semipresencial otorga principalmente espacios para el trabajo autónomo orientado por los docentes [RG-ART-003-DEF-09].
-Condiciones o límites: El Profesor Encargado también debe coordinar al equipo docente y velar por el cumplimiento de normas y plazos reglamentarios [RG-ART-012].
-Fuente: [RG-ART-003-DEF-09] [RG-ART-012]
+Respuesta: Solo pueden pedirlas alumnos regulares: la revalidación cubre una misma asignatura aprobada en otra carrera de la UdeC, mientras la convalidación cubre una equivalente cursada en la UdeC u otra institución superior, exigiendo certificado de calificaciones y programas acreditados [RG-ART-037].
+Condiciones o límites: La acreditación de programas no se exige si las asignaturas se aprobaron en la propia UdeC; en todo caso el Vicedecano resuelve en 15 días previo informe del Departamento a cargo e informa al alumno y su Facultad [RG-ART-037].
+Fuente: [RG-ART-037]
 ```
 
 ## 11. `B3-T01` — bloque `polares_y_lectura` | split `train` | modo `condicional` | estado `suficiente`
 
 **Pregunta:** Si un estudiante inscribe una asignatura en el PLEV y luego decide retirarse dentro de las primeras tres semanas, ¿puede hacer abandono sin especificación de motivos?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-016`, `RI-FI-ART-009`, `RG-ART-042`, `CAL-2026-S1-03`, `RG-ART-045`, `RG-ART-043`
-- Clave esperada: `RG-ART-043` | Distractores incluidos: `RG-ART-016, RI-FI-ART-009, RG-ART-042, CAL-2026-S1-03, RG-ART-045`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-045`, `RG-ART-042`, `RG-ART-022`, `RG-ART-043`
+- Clave esperada: `RG-ART-043` | Distractores incluidos: `RG-ART-045, RG-ART-042, RG-ART-022`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -287,37 +325,36 @@ Condiciones o límites: La facultad de abandono dentro de cuatro semanas desde e
 Fuente: [RG-ART-043]
 ```
 
-## 12. `B3-T16` — bloque `polares_y_lectura` | split `train` | modo `condicional` | estado `suficiente`
+## 12. `B3-T16` — bloque `polares_y_lectura` | split `train` | modo `factual` | estado `suficiente`
 
-**Pregunta:** Si la Facultad de Ingeniería solicita al Decano resolver una contradicción entre su Reglamento Interno y el Reglamento General, ¿prevalece el Reglamento Interno por ser norma específica de la Facultad?
+**Pregunta:** ¿Por cuántos días hábiles como mínimo debe conservar el profesor las evaluaciones escritas realizadas después de terminado el período académico correspondiente?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-001`, `RI-FI-ART-002`, `RI-FI-ART-034`, `RI-FI-ART-035`, `RG-TRANS-002`, `RG-ART-060`
-- Clave esperada: `RI-FI-ART-034, RG-ART-060` | Distractores incluidos: `RG-ART-001, RI-FI-ART-002, RI-FI-ART-035, RG-TRANS-002`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-027`, `RG-ART-019`, `RG-ART-025`, `RG-ART-013`
+- Clave esperada: `RG-ART-025` | Distractores incluidos: `RG-ART-027, RG-ART-019, RG-ART-013`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RI-FI-ART-034]** Artículo 34°. Ante la situación de que disposiciones del presente reglamento no se concilien con aquellas contenidas en el Reglamento General de Docencia de Pregrado y en las Normas de Ingreso a las Carreras de Pregrado que imparte la Universidad de Concepción, prevalecerán siempre estas últimas, respecto de las primeras.
-- **[RG-ART-060]** Artículo 60º Las normas del presente reglamento prevalecerán sobre cualesquiera otras que no se concilien con éstas, no importando de donde provengan.
+- **[RG-ART-025]** Artículo 25º La evaluación forma parte del proceso de enseñanza - aprendizaje. Por ello los alumnos tendrán derecho a recibir sus instrumentos de evaluación escritos corregidos, a aclarar sus dudas ante el profesor y a conocer por medios escritos, electrónicos u otros las pautas de corrección de aquellos. Los profesores deberán dar a conocer las calificaciones y pautas de corrección a los alumnos en un plazo máximo de diez días hábiles y los alumnos tendrán un plazo de cinco días hábiles para ejercer el derecho señalado. Sin embargo, el Vicedecano por razones justificadas podrá ampliar dichos plazos. El profesor deberá conservar las evaluaciones escritas realizadas a lo menos por 30 días hábiles después de concluido el periodo académico correspondiente. En el momento de informar las calificaciones, el Profesor de la Asignatura, comunicará las fechas y el horario de la revisión de las evaluaciones. Si luego de la revisión existiera desacuerdo con la calificación, o en el caso de alguna situación de las señaladas en el artículo 13, el alumno podrá solicitar por escrito y fundamentadamente una nueva revisión ante el Vicedecano de la Facultad responsable de la asignatura. Lo anterior deberá efectuarse en un plazo máximo de cinco días hábiles, a contar de la fecha en que se realizó la revisión ante el profesor. El Vicedecano, si estima fundamentada la solicitud, nombrará una Comisión ad hoc, la que recopilará los antecedentes correspondientes y analizará la situación. Esta comisión deberá resolver en el plazo de 10 días corridos a contar desde aquél en que se presentó la reclamación, haciendo constar su decisión inapelable en un acta y comunicándola en forma personal al alumno, dejando constancia de ello a través de la firma de éste.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Justo al revés: tanto [RI-FI-ART-034] como [RG-ART-060] señalan que ante inconciliabilidad prevalecen SIEMPRE el Reglamento General de Docencia de Pregrado (y las Normas de Ingreso según RI-FI art. 34), sin importar de dónde provenga la otra norma.
+[RG-ART-025] párrafo tercero dispone literalmente: 'El profesor deberá conservar las evaluaciones escritas realizadas a lo menos por 30 días hábiles después de concluido el periodo académico correspondiente.' Pregunta factual sobre un único plazo sin excepciones en ese párrafo -> Condiciones o límites: No aplica.
 </pensar>
-Respuesta: No, prevalecen siempre el Reglamento General de Docencia de Pregrado y las Normas de Ingreso a las Carreras de Pregrado de la Universidad sobre el Reglamento Interno de Ingeniería [RG-ART-060] [RI-FI-ART-034].
-Condiciones o límites: La supremacía del Reglamento General rige sobre cualesquiera otras disposiciones que no se concilien con éste, sin importar de dónde provengan [RG-ART-060].
-Fuente: [RG-ART-060] [RI-FI-ART-034]
+Respuesta: El profesor debe conservar las evaluaciones escritas a lo menos por 30 días hábiles después de concluido el período académico correspondiente [RG-ART-025].
+Condiciones o límites: No aplica
+Fuente: [RG-ART-025]
 ```
 
 ## 13. `B3-T30` — bloque `polares_y_lectura` | split `train` | modo `premisa_falsa` | estado `suficiente`
 
 **Pregunta:** Para pedir una modificación de un Acta de Notas ya ingresada en el SAC basta con que el Profesor Encargado la envíe dentro de los dos años siguientes al semestre calificado. ¿Es así?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-025`, `RG-ART-012`, `RG-ART-027`, `RG-ART-003-DEF-05`, `RG-ART-013`, `RG-ART-005`
-- Clave esperada: `RG-ART-027` | Distractores incluidos: `RG-ART-025, RG-ART-012, RG-ART-003-DEF-05, RG-ART-013, RG-ART-005`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-013`, `RG-ART-027`, `RG-ART-025`, `RG-ART-003-DEF-05`
+- Clave esperada: `RG-ART-027` | Distractores incluidos: `RG-ART-013, RG-ART-025, RG-ART-003-DEF-05`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -336,28 +373,28 @@ Condiciones o límites: No basta con la sola gestión del Profesor Encargado ni 
 Fuente: [RG-ART-027]
 ```
 
-## 14. `B3-V01` — bloque `polares_y_lectura` | split `val` | modo `condicional` | estado `suficiente`
+## 14. `B3-V01` — bloque `polares_y_lectura` | split `val` | modo `factual` | estado `suficiente`
 
-**Pregunta:** Si un estudiante entrega un informe grupal redactado fuera del aula en que copió gran parte del contenido de forma ilícita, ¿está obligado el reglamento a aplicarle solo un 1,0 o existe otra calificación posible?
+**Pregunta:** Según las equivalencias del Anexo del Reglamento General, ¿a qué nota en escala 1,0 a 7,0 equivale el puntaje de aprobación mínimo 51 en la escala de 1 a 100?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-051`, `RG-ART-021`, `RG-ART-024`, `RI-FI-ART-011`, `RG-ART-023`, `RG-ART-013`
-- Clave esperada: `RG-ART-023` | Distractores incluidos: `RG-ART-051, RG-ART-021, RG-ART-024, RI-FI-ART-011, RG-ART-013`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-021`, `RG-ANEXO-02`, `RG-ANEXO-01`, `RG-ANEXO-10`
+- Clave esperada: `RG-ANEXO-01` | Distractores incluidos: `RG-ART-021, RG-ANEXO-02, RG-ANEXO-10`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RG-ART-023]** Artículo 23º La Nota Final deberá ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación. En esta escala, las centésimas inferiores al dígito 5 no afectarán a la décima. Las centésimas iguales o superiores al dígito 5 se aproximarán a la décima superior. Los alumnos que obtengan Nota Final igual o superior a 4,0 (cuatro coma cero) en la escala de 1 a 7 aprobarán la asignatura. Cuando el alumno no cumpla alguno de los requisitos establecidos en el programa de la asignatura, será calificado con el concepto NCR (no cumple requisito). Reprobarán la asignatura, quienes obtengan Nota Final inferior a 4,0 y también los que no cumplan requisitos (NCR). El alumno que para rendir un instrumento de evaluación obtenga o facilite información en forma ilícita o por medios no autorizados por el profesor, podrá ser calificado con la nota mínima. Si dicha acción involucra gran parte de un instrumento desarrollado fuera del aula y que es requisito en la asignatura, tales como proyectos, trabajos grupales u otros, el alumno podrá ser calificado con NCR.
+- **[RG-ANEXO-01]** Anexo: equivalencia de escalas de notas. Reprobación: 1 en escala de 1 a 100 equivale a 1,0 en escala de 1,0 a 7,0. Aprobación: 51 en escala de 1 a 100 equivale a 4,0 en escala de 1,0 a 7,0. La celda de concepto está vacía en el documento.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[RG-ART-023] párrafo final: quien obtenga o facilite información ilícita puede recibir nota mínima, pero si involucra gran parte de un instrumento desarrollado fuera del aula y requisito (como proyectos o trabajos grupales), el alumno podrá ser calificado con NCR.
+[RG-ANEXO-01] señala literalmente: 'Aprobación: 51 en escala de 1 a 100 equivale a 4,0 en escala de 1,0 a 7,0. La celda de concepto está vacía en el documento.' No inventar concepto donde la celda está vacía ni agregar condiciones -> Condiciones o límites: No aplica.
 </pensar>
-Respuesta: Existe otra calificación posible: tratándose de gran parte de un instrumento desarrollado fuera del aula que sea requisito de la asignatura (como proyectos o trabajos grupales), el alumno puede ser calificado con NCR (no cumple requisito), además de la opción general de nota mínima [RG-ART-023].
-Condiciones o límites: El concepto NCR (no cumple requisito) implica reprobar la asignatura; la nota mínima de la escala oficial (1 a 7) es 1,0 y también reprueban quienes obtengan Nota Final inferior a 4,0 [RG-ART-023].
-Fuente: [RG-ART-023]
+Respuesta: El puntaje de aprobación 51 en la escala de 1 a 100 equivale a 4,0 en la escala de 1,0 a 7,0 [RG-ANEXO-01].
+Condiciones o límites: No aplica
+Fuente: [RG-ANEXO-01]
 ```
 
 ## 15. `B3-V05` — bloque `polares_y_lectura` | split `val` | modo `condicional` | estado `suficiente`
@@ -386,26 +423,27 @@ Fuente: [RG-ART-009]
 
 ## 16. `B4-T01` — bloque `calculos_y_orden` | split `train` | modo `numerica` | estado `suficiente`
 
-**Pregunta:** Un alumno cursó cuatro actividades: Cálculo I (6 créditos, nota 5,5), Física I (4 créditos, nota 3,2), Taller (5 créditos, NCR) y Deporte (3 créditos, APR). ¿Cuál es su Promedio Ponderado y cuál es su Promedio Curricular?
+**Pregunta:** Según el Calendario de Docencia de Pregrado 2026, ¿cuántos días corridos inclusive duran las actividades de Vinculación a la Vida Universitaria y cuántos días inclusive suman con las vacaciones de invierno del primer semestre?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RI-FI-ART-030`, `RG-ART-021`, `RG-ART-024`, `RG-ART-023`, `RG-ART-046`, `RG-ART-003-DEF-07`
-- Clave esperada: `RG-ART-024` | Distractores incluidos: `RI-FI-ART-030, RG-ART-021, RG-ART-023, RG-ART-046, RG-ART-003-DEF-07`
+**Evidencia ensamblada (5 unidades, orden barajado):** `CAL-2026-S1-05`, `CAL-2026-S1-14`, `CAL-2026-S1-01`, `CAL-2026-S1-04`, `CAL-2026-S1-06`
+- Clave esperada: `CAL-2026-S1-01, CAL-2026-S1-14` | Distractores incluidos: `CAL-2026-S1-05, CAL-2026-S1-04, CAL-2026-S1-06`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RG-ART-024]** Artículo 24° El registro académico del alumno deberá proporcionar, a lo menos, los siguientes dos tipos de promedios de notas: a) Promedio Ponderado (“Prom. Pond.”): Corresponde al promedio de las notas finales iguales o superiores a 4,0, ponderadas por el correspondiente número de créditos. b) Promedio Curricular (“Prom. Curr.”): Corresponde al promedio de las todas notas finales, ponderadas por el correspondiente número de créditos. Para efectos del cálculo de los promedios señalados, el concepto NCR (no cumple requisitos) equivaldrá a la nota final 1,0; y no se considerarán los conceptos APR (aprobado) y REP (reprobado).
+- **[CAL-2026-S1-01]** Calendario de docencia de pregrado 2026. Primer semestre. Vinculación a la Vida Universitaria: "Actividades de bienvenida y de inducción a la UdeC": 02 – 06 de marzo.
+- **[CAL-2026-S1-14]** Calendario de docencia de pregrado 2026. Primer semestre. Vacaciones de invierno (aprobación transitoria): 30 junio – 05 de julio.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Aplico [RG-ART-024]: a) Promedio Ponderado usa solo notas >= 4,0 -> solo Cálculo I (6 cr, 5,5); APR se excluye. Prom. Pond. = (5,5 * 6) / 6 = 5,5. b) Promedio Curricular usa todas las notas finales ponderadas por créditos, con NCR = 1,0 y excluyendo APR/REP: suma = 5,5*6 + 3,2*4 + 1,0*5 = 33,0 + 12,8 + 5,0 = 50,8; créditos = 6 + 4 + 5 = 15. 50,8 / 15 = 3,3866... -> 3,4 con redondeo de [RG-ART-023] o 3,39 con dos decimales. Indicar valor exacto y aproximado según [RG-ART-024]!
+[CAL-2026-S1-01] fija Vinculación a la Vida Universitaria del 02 al 06 de marzo: 6 - 2 + 1 = 5 días inclusive. [CAL-2026-S1-14] fija Vacaciones de invierno del 30 de junio al 05 de julio: 1 día de junio (30) + 5 días de julio (1 al 5) = 6 días inclusive. Suma total: 5 + 6 = 11 días. Nota sobre aprobación transitoria de vacaciones de invierno como único límite aplicable.
 </pensar>
-Respuesta: Su Promedio Ponderado es 5,5 y su Promedio Curricular es 3,39 (50,8 / 15; aproximadamente 3,4 a un decimal) [RG-ART-024].
-Condiciones o límites: Cálculo: el Promedio Ponderado incluye solo notas finales >= 4,0 y excluye APR, dando (5,5 × 6) / 6 = 5,5; el Promedio Curricular incluye todas las notas finales asignando 1,0 al NCR y excluyendo APR: (5,5 × 6 + 3,2 × 4 + 1,0 × 5) / (6 + 4 + 5) = 50,8 / 15 = 3,3867 [RG-ART-024].
-Fuente: [RG-ART-024]
+Respuesta: La Vinculación a la Vida Universitaria (02 al 06 de marzo) dura 5 días inclusive [CAL-2026-S1-01] y las vacaciones de invierno (30 de junio al 05 de julio) duran 6 días inclusive [CAL-2026-S1-14]; entre ambos suman 5 + 6 = 11 días.
+Condiciones o límites: Las vacaciones de invierno de 30 de junio al 05 de julio se encuentran con aprobación transitoria en el calendario [CAL-2026-S1-14].
+Fuente: [CAL-2026-S1-01] [CAL-2026-S1-14]
 ```
 
 ## 17. `B4-T16` — bloque `calculos_y_orden` | split `train` | modo `numerica` | estado `suficiente`
@@ -434,61 +472,61 @@ Fuente: [RG-ART-010]
 
 ## 18. `B4-T30` — bloque `calculos_y_orden` | split `train` | modo `numerica` | estado `suficiente`
 
-**Pregunta:** Si un estudiante postula por cambio de carrera desde otra Facultad hacia Ingeniería con un promedio ponderado de 4,48 y luego solicita convalidar una asignatura aprobada en su origen con nota 4,45, ¿cumple los requisitos numéricos mínimos en ambos trámites considerando la escala de notas?
+**Pregunta:** En la escala de aprobación 1–100 del Anexo, ¿a qué nota de 1,0 a 7,0 y concepto equivalen 65, 85 y 95 puntos, y cuántas décimas de diferencia hay entre los dos primeros y entre los dos últimos?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-023`, `RG-ART-055`, `RI-FI-ART-017`, `RI-FI-ART-020`, `RI-FI-ART-021`, `RI-FI-ART-018`
-- Clave esperada: `RI-FI-ART-017, RI-FI-ART-021, RG-ART-023` | Distractores incluidos: `RG-ART-055, RI-FI-ART-020, RI-FI-ART-018`
+**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ANEXO-45`, `RG-ANEXO-44`, `RG-ANEXO-15`, `RG-ANEXO-36`, `RG-ANEXO-35`, `RG-ANEXO-16`
+- Clave esperada: `RG-ANEXO-15, RG-ANEXO-35, RG-ANEXO-45` | Distractores incluidos: `RG-ANEXO-44, RG-ANEXO-36, RG-ANEXO-16`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RI-FI-ART-017]** Artículo 17°. La y el estudiante que haya cursado estudios en carreras de otras Facultades de la Universidad de Concepción o en otra Universidad chilena, podrá solicitar ingresar a la Facultad de Ingeniería, siempre que, además de cumplir con los requisitos establecidos en el Reglamento General de Docencia de Pregrado y en las Normas de Ingreso a las Carreras de Pregrado de la Universidad de Concepción, haya obtenido un promedio ponderado mínimo de calificaciones, equivalente a 4,5 en la escala de 1 a 7, en la carrera de origen.
-- **[RI-FI-ART-021]** Artículo 21°. La y el estudiante de especialidad podrá solicitar la convalidación de una asignatura de su Plan de Estudio por otra(s) aprobada(s), con calificación(es) mínima(s) equivalente(s) a 4,5 en la escala de notas 1 a 7, en esta u otra Institución de Educación Superior. La solicitud deberá ir acompañada de un certificado de calificaciones y de los programas debidamente acreditados de las asignaturas aprobadas. No se podrá convalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio.
-- **[RG-ART-023]** Artículo 23º La Nota Final deberá ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación. En esta escala, las centésimas inferiores al dígito 5 no afectarán a la décima. Las centésimas iguales o superiores al dígito 5 se aproximarán a la décima superior. Los alumnos que obtengan Nota Final igual o superior a 4,0 (cuatro coma cero) en la escala de 1 a 7 aprobarán la asignatura. Cuando el alumno no cumpla alguno de los requisitos establecidos en el programa de la asignatura, será calificado con el concepto NCR (no cumple requisito). Reprobarán la asignatura, quienes obtengan Nota Final inferior a 4,0 y también los que no cumplan requisitos (NCR). El alumno que para rendir un instrumento de evaluación obtenga o facilite información en forma ilícita o por medios no autorizados por el profesor, podrá ser calificado con la nota mínima. Si dicha acción involucra gran parte de un instrumento desarrollado fuera del aula y que es requisito en la asignatura, tales como proyectos, trabajos grupales u otros, el alumno podrá ser calificado con NCR.
+- **[RG-ANEXO-15]** Anexo: equivalencia de escalas de notas. Reprobación: 15 en escala de 1 a 100 equivale a 1,8 en escala de 1,0 a 7,0. Aprobación: 65 en escala de 1 a 100 equivale a 4,8 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado por Unanimidad.
+- **[RG-ANEXO-35]** Anexo: equivalencia de escalas de notas. Reprobación: 35 en escala de 1 a 100 equivale a 3,1 en escala de 1,0 a 7,0. Aprobación: 85 en escala de 1 a 100 equivale a 6,4 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción.
+- **[RG-ANEXO-45]** Anexo: equivalencia de escalas de notas. Reprobación: 45 en escala de 1 a 100 equivale a 3,6 en escala de 1,0 a 7,0. Aprobación: 95 en escala de 1 a 100 equivale a 7,0 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción Máxima.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[RI-FI-ART-017]: cambio desde otra Facultad UdeC exige promedio ponderado mínimo equivalente a 4,5 en escala 1 a 7. [RI-FI-ART-021]: convalidar exige calificación mínima equivalente a 4,5 en escala 1 a 7. En escala oficial ([RG-ART-023]), si una nota viene a dos decimales y se aproxima a un decimal (centésima >= 5 sube): 4,48 -> 4,5 (cumple si está expresada a un decimal), y 4,45 -> 4,5; sin embargo, si se comparan directamente sin aproximar (4,48 < 4,5 y 4,45 < 4,5), estarían bajo 4,5. Indicar la regla literal de ambos!
+[RG-ANEXO-15]: 65 -> 4,8 ('Aprobado por Unanimidad'). [RG-ANEXO-35]: 85 -> 6,4 ('Aprobado con Distinción'). [RG-ANEXO-45]: 95 -> 7,0 ('Aprobado con Distinción Máxima'). Diferencias: 6,4 - 4,8 = 1,6 puntos (16 décimas); 7,0 - 6,4 = 0,6 puntos (6 décimas). Lectura y resta directas -> No aplica.
 </pensar>
-Respuesta: Sin aproximación a un decimal, ni 4,48 ni 4,45 alcanzan el mínimo de 4,5 exigido tanto para ingresar desde otra Facultad [RI-FI-ART-017] como para convalidar asignaturas [RI-FI-ART-021]; sin embargo, expresadas en la escala oficial de un decimal conforme a la regla de aproximación de centésimas iguales o superiores a 5, tanto 4,48 como 4,45 aproximan a 4,5 [RG-ART-023].
-Condiciones o límites: La nota oficial se expresa con un decimal de aproximación (centésimas >= 5 suben a la décima superior) [RG-ART-023]; además, la convalidación solo procede para estudiantes de especialidad sobre asignaturas no reprobadas en el plan [RI-FI-ART-021].
-Fuente: [RG-ART-023] [RI-FI-ART-017] [RI-FI-ART-021]
+Respuesta: 65 equivale a 4,8 ('Aprobado por Unanimidad') [RG-ANEXO-15], 85 a 6,4 ('Aprobado con Distinción') [RG-ANEXO-35] y 95 a 7,0 ('Aprobado con Distinción Máxima') [RG-ANEXO-45]; entre 65 y 85 hay 1,6 puntos (16 décimas) y entre 85 y 95 hay 0,6 puntos (6 décimas).
+Condiciones o límites: No aplica
+Fuente: [RG-ANEXO-15] [RG-ANEXO-35] [RG-ANEXO-45]
 ```
 
 ## 19. `B4-V01` — bloque `calculos_y_orden` | split `val` | modo `numerica` | estado `suficiente`
 
-**Pregunta:** Un estudiante de Ingeniería Civil obtuvo promedio ponderado de su Plan de Estudio (sin Memoria) de 5,5 y calificación 6,0 en su Memoria de Título. Calcula su nota de titulación exacta y qué concepto correspondería en su Diploma.
+**Pregunta:** En las filas de reprobación de la escala 1 a 100 del Anexo, ¿a qué calificaciones en escala 1,0 a 7,0 equivalen 5 y 31 puntos, y cuál es la diferencia entre ambas notas?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-023`, `RI-FI-ART-030`, `RI-FI-ART-029`, `RG-ART-024`, `RG-ART-047`, `RG-ART-048`
-- Clave esperada: `RI-FI-ART-030, RG-ART-048` | Distractores incluidos: `RG-ART-023, RI-FI-ART-029, RG-ART-024, RG-ART-047`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ANEXO-30`, `RG-ANEXO-04`, `RG-ANEXO-05`, `RG-ANEXO-32`, `RG-ANEXO-31`
+- Clave esperada: `RG-ANEXO-05, RG-ANEXO-31` | Distractores incluidos: `RG-ANEXO-30, RG-ANEXO-04, RG-ANEXO-32`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RI-FI-ART-030]** Artículo 30°. La nota de graduación correspondiente al Grado de Licenciado en Ciencias de la Ingeniería se obtendrá como el promedio ponderado por los créditos de las asignaturas aprobadas del respectivo Plan de Estudio de la Licenciatura. La nota de titulación correspondiente al Título Profesional de las carreras de Ingeniería Civil se obtendrá ponderando en un 60% el promedio ponderado de las asignaturas del Plan de Estudio sin considerar la Memoria de Título, y en un 40% la nota de la Memoria de Título.
-- **[RG-ART-048]** Artículo 48° El Diploma de Grado Académico que otorgue la Universidad de Concepción, indicará la Nota obtenida por el egresado. Cuando se trate del Diploma de Título Profesional indicará los conceptos de “Aprobado por Unanimidad”, “Aprobado con Distinción” o “Aprobado con Distinción Máxima”, según el caso y conforme a la pauta siguiente: Concepto Calificación/Nota Aprobado por Unanimidad 4,0 - 4,9 Aprobado con Distinción 5,0 - 5,6 Aprobado con Distinción Máxima 5,7 - 7,0 Esta última disposición será aplicable también a los Diplomas de Grado Académico de Licenciado en carreras terminales, esto es, carreras en las que la Universidad de Concepción no otorga un título profesional. Las Facultades deberán indicar en cada expediente en que se solicite el otorgamiento de un Título Profesional o un Grado Académico la nota correspondiente y, además, en el caso del Título Profesional o de un Grado Académico de Licenciado en carreras terminales, el concepto a expresarse en el Diploma que se otorgue, conforme a la escala precedente. La Nota de graduación o titulación se obtendrá en la forma que lo establezca el Reglamento Interno de Docencia de Pregrado de la Facultad respectiva.
+- **[RG-ANEXO-05]** Anexo: equivalencia de escalas de notas. Reprobación: 5 en escala de 1 a 100 equivale a 1,2 en escala de 1,0 a 7,0. Aprobación: 55 en escala de 1 a 100 equivale a 4,2 en escala de 1,0 a 7,0. La celda de concepto está vacía en el documento.
+- **[RG-ANEXO-31]** Anexo: equivalencia de escalas de notas. Reprobación: 31 en escala de 1 a 100 equivale a 2,8 en escala de 1,0 a 7,0. Aprobación: 81 en escala de 1 a 100 equivale a 6,2 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[RI-FI-ART-030]: 0,6 × 5,5 + 0,4 × 6,0 = 3,30 + 2,40 = 5,70 = 5,7. [RG-ART-048]: 5,7 cae en 5,7–7,0 -> 'Aprobado con Distinción Máxima'.
+[RG-ANEXO-05]: reprobación 5 -> 1,2. [RG-ANEXO-31]: reprobación 31 -> 2,8. Diferencia: 2,8 - 1,2 = 1,6 puntos en escala 1,0 a 7,0. Cálculo directo sin condiciones adicionales -> No aplica.
 </pensar>
-Respuesta: Su nota de titulación es 5,7 [RI-FI-ART-030] y en su Diploma de Título Profesional corresponderá el concepto 'Aprobado con Distinción Máxima' [RG-ART-048].
-Condiciones o límites: Cálculo: (0,60 × 5,5) + (0,40 × 6,0) = 3,30 + 2,40 = 5,7 [RI-FI-ART-030]; el tramo 5,7–7,0 recibe Aprobado con Distinción Máxima [RG-ART-048].
-Fuente: [RG-ART-048] [RI-FI-ART-030]
+Respuesta: En escala de reprobación, 5 puntos equivalen a 1,2 [RG-ANEXO-05] y 31 puntos a 2,8 [RG-ANEXO-31], lo que arroja una diferencia de 2,8 - 1,2 = 1,6 puntos en escala de 1,0 a 7,0.
+Condiciones o límites: No aplica
+Fuente: [RG-ANEXO-05] [RG-ANEXO-31]
 ```
 
 ## 20. `B4-V05` — bloque `calculos_y_orden` | split `val` | modo `numerica` | estado `suficiente`
 
 **Pregunta:** Un curso de 10 créditos transferibles (SCT) equivale exactamente a cuántas horas de trabajo académico total según el Reglamento General, y qué diferencia hay frente a un crédito UdeC de clase práctica semanal?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-017`, `RG-ART-003-DEF-08`, `RG-ART-003-DEF-11`, `RG-ART-003-DEF-06`, `RG-ART-003-DEF-12`, `RG-ART-003-DEF-07`
-- Clave esperada: `RG-ART-003-DEF-08, RG-ART-003-DEF-07` | Distractores incluidos: `RG-ART-017, RG-ART-003-DEF-11, RG-ART-003-DEF-06, RG-ART-003-DEF-12`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-003-DEF-12`, `RG-ART-003-DEF-08`, `RG-ART-003-DEF-11`, `RG-ART-003-DEF-06`, `RG-ART-003-DEF-07`
+- Clave esperada: `RG-ART-003-DEF-08, RG-ART-003-DEF-07` | Distractores incluidos: `RG-ART-003-DEF-12, RG-ART-003-DEF-11, RG-ART-003-DEF-06`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -508,57 +546,56 @@ Condiciones o límites: Cálculo: 10 SCT × 27 horas = 270 horas [RG-ART-003-DEF
 Fuente: [RG-ART-003-DEF-07] [RG-ART-003-DEF-08]
 ```
 
-## 21. `B5-T01` — bloque `resiliencia_feedback` | split `train` | modo `condicional` | estado `suficiente`
+## 21. `B5-T01` — bloque `resiliencia_feedback` | split `train` | modo `factual` | estado `suficiente`
 
-**Pregunta:** ¿Qué documentos debe presentar un estudiante de Ingeniería que desea suspender estudios y hasta cuándo puede hacerlo?
+**Pregunta:** ¿Cuántos minutos reales dura una Hora Docente en la Universidad de Concepción?
 
-**Observaciones del Verificador (entrada):** El borrador menciona el plazo de cuatro semanas antes del término del período lectivo citando solo [RI-FI-ART-025], pero ese plazo no aparece en [RI-FI-ART-025] sino en otra unidad de la evidencia.
+**Observaciones del Verificador (entrada):** El borrador anterior responde 45 minutos correctamente, pero agrega en 'Condiciones o límites' detalles sobre créditos teóricos y semanales que corresponden a otro artículo y no fueron consultados. Limítate al dato preguntado e indica 'No aplica' en condiciones.
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RI-FI-ART-025`, `RG-ART-031`, `RG-ART-033`, `RI-FI-ART-027`, `RG-ART-035`, `CAL-2026-S1-03`
-- Clave esperada: `RI-FI-ART-025, RG-ART-031` | Distractores incluidos: `RG-ART-033, RI-FI-ART-027, RG-ART-035, CAL-2026-S1-03`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-003-DEF-06`, `RG-ART-003-DEF-07`, `RG-ART-019`, `RG-ART-003-DEF-08`
+- Clave esperada: `RG-ART-003-DEF-06` | Distractores incluidos: `RG-ART-003-DEF-07, RG-ART-019, RG-ART-003-DEF-08`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RI-FI-ART-025]** Artículo 25°. La y el estudiante podrá solicitar a la Vicedecanatura suspender estudios dentro de los plazos establecidos en el calendario anual de docencia de pregrado de la Universidad de Concepción. La solicitud deberá ir acompañada de los siguientes documentos: a) Certificado de la División de Asistencia Financiera al Estudiante (DAFE) en que conste que el alumno no tiene deudas con la Universidad de Concepción por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado. b) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.
-- **[RG-ART-031]** Artículo 31º Los alumnos de pregrado podrán solicitar, al Vicedecano, suspender estudios hasta cuatro semanas antes del término del periodo lectivo respectivo. La suspensión de estudios deja sin efecto la inscripción de asignaturas e interrumpe la calidad de alumno de pregrado de la Universidad de Concepción. La solicitud y los antecedentes oficiales que justifiquen la suspensión de estudios, tales como, informe de la Dirección de Servicios Estudiantiles u otros fidedignos, deberán ser presentados al Vicedecano respectivo, que resolverá dicha solicitud antes de que finalice el periodo lectivo correspondiente. De lo resuelto por el Vicedecano podrá dentro de cinco días apelarse al Decano, siendo su decisión definitiva. El Vicedecano informará lo resuelto al Jefe de Carrera respectivo, al alumno y lo registrará en el Sistema de Administración Curricular. La suspensión de estudios no libera al alumno de las obligaciones que pudiere tener pendientes con la universidad.
+- **[RG-ART-003-DEF-06]** 3.6. HORA DOCENTE: Una hora docente corresponde a una sesión de docencia de 45 minutos.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Observación del verificador: el borrador anterior citó solo [RI-FI-ART-025], pero las 4 semanas antes del fin del período lectivo están en [RG-ART-031]. Al corregir, NO debo eliminar [RI-FI-ART-025] (donde están la Vicedecanatura y los certificados a y b), sino conservar [RI-FI-ART-025] y agregar [RG-ART-031].
+Atendiendo la observación del verificador, consulto únicamente [RG-ART-003-DEF-06]: 'Una hora docente corresponde a una sesión de docencia de 45 minutos.' No añado explicaciones de créditos ni carga semanal -> Condiciones o límites: No aplica.
 </pensar>
-Respuesta: Debe presentar la solicitud a la Vicedecanatura junto con los certificados de la División de Asistencia Financiera al Estudiante (DAFE) y de la Dirección de Bibliotecas [RI-FI-ART-025], dentro del plazo máximo de hasta cuatro semanas antes del término del período lectivo respectivo [RG-ART-031].
-Condiciones o límites: Además debe acompañar antecedentes oficiales que justifiquen la suspensión (como informe de DISE) [RG-ART-031]; el certificado DAFE debe acreditar ausencia o debida garantía de deudas de aranceles y préstamos y el de Bibliotecas no adeudar material bibliográfico [RI-FI-ART-025].
-Fuente: [RG-ART-031] [RI-FI-ART-025]
+Respuesta: Una hora docente corresponde a una sesión de docencia de 45 minutos [RG-ART-003-DEF-06].
+Condiciones o límites: No aplica
+Fuente: [RG-ART-003-DEF-06]
 ```
 
-## 22. `B5-T13` — bloque `resiliencia_feedback` | split `train` | modo `numerica` | estado `suficiente`
+## 22. `B5-T13` — bloque `resiliencia_feedback` | split `train` | modo `factual` | estado `suficiente`
 
-**Pregunta:** En una asignatura de Ingeniería con 30 clases teóricas cuyo programa exige el tope máximo permitido para ese tipo de sesiones (80 %), ¿cumple el requisito un estudiante que asistió a 23 clases?
+**Pregunta:** Según el Anexo de equivalencia de escalas de notas, ¿a qué calificación en escala de 1,0 a 7,0 equivale exactamente una nota de aprobación de 80 puntos en escala de 1 a 100?
 
-**Observaciones del Verificador (entrada):** El borrador afirmó que sí aprueba por asistencia sin calcular el porcentaje real de 23 de 30 ni compararlo con el límite reglamentario del artículo 13.
+**Observaciones del Verificador (entrada):** El borrador respondió '6,1' bien, pero inventó condiciones sobre promedio ponderado y recuperación que no aparecen en [RG-ANEXO-30]. Responde solo el dato y pon 'No aplica'.
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RI-FI-ART-013`, `RG-ART-026`, `RG-ART-023`, `RG-ART-022`, `RI-FI-ART-012`, `RI-FI-ART-011`
-- Clave esperada: `RI-FI-ART-013` | Distractores incluidos: `RG-ART-026, RG-ART-023, RG-ART-022, RI-FI-ART-012, RI-FI-ART-011`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ANEXO-30`, `RG-ANEXO-31`, `RG-ART-048`, `RG-ANEXO-29`
+- Clave esperada: `RG-ANEXO-30` | Distractores incluidos: `RG-ANEXO-31, RG-ART-048, RG-ANEXO-29`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
 
-- **[RI-FI-ART-013]** Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá ser superior a un 80% de las clases teóricas y prácticas, y que podrá llegar a un 100% en las actividades tales como seminarios, laboratorios, talleres, salidas a terreno u otras de naturaleza similar a las mencionadas.
+- **[RG-ANEXO-30]** Anexo: equivalencia de escalas de notas. Reprobación: 30 en escala de 1 a 100 equivale a 2,7 en escala de 1,0 a 7,0. Aprobación: 80 en escala de 1 a 100 equivale a 6,1 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción.
 
 </details>
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Según [RI-FI-ART-013], el Profesor Encargado puede exigir asistencia mínima de hasta un 80 % en clases teóricas y prácticas (y hasta 100 % en laboratorios, talleres, seminarios o salidas a terreno). Verifico las cifras: 80 % de 30 = 24 clases; 23 / 30 = 76,67 % (76,7 %). No alcanza las 24 sesiones requeridas.
+[RG-ANEXO-30] dice literalmente: 'Aprobación: 80 en escala de 1 a 100 equivale a 6,1 en escala de 1,0 a 7,0. Concepto en el título o grado: Aprobado con Distinción.' La pregunta pide la calificación en escala 1,0 a 7,0: 6,1. No debo inventar reglas de promedio ni recuperación -> Condiciones o límites: No aplica.
 </pensar>
-Respuesta: No cumple con el requisito mínimo: un 80 % sobre 30 clases teóricas exige asistir al menos a 24 sesiones, mientras que 23 clases corresponden a un 76,7 % de asistencia [RI-FI-ART-013].
-Condiciones o límites: Operación: 0,80 × 30 = 24 clases mínimas (23 / 30 = 76,7 % < 80 %). Para clases teóricas y prácticas la exigencia no puede superar el 80 %, pero puede llegar al 100 % en seminarios, laboratorios, talleres o salidas a terreno [RI-FI-ART-013].
-Fuente: [RI-FI-ART-013]
+Respuesta: Una calificación de aprobación de 80 en escala de 1 a 100 equivale a 6,1 en la escala de 1,0 a 7,0 [RG-ANEXO-30].
+Condiciones o límites: No aplica
+Fuente: [RG-ANEXO-30]
 ```
 
 ## 23. `B5-T25` — bloque `resiliencia_feedback` | split `train` | modo `condicional` | estado `suficiente`
@@ -567,8 +604,8 @@ Fuente: [RI-FI-ART-013]
 
 **Observaciones del Verificador (entrada):** El borrador respondió solo sobre el choque horario y omitió las consecuencias de incumplir prerrequisitos y de no haber respondido la Encuesta Docente.
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RI-FI-ART-007`, `RG-ART-014`, `RG-ART-003-DEF-13`, `RI-FI-ART-008`, `RG-ART-007`, `RG-ART-042`
-- Clave esperada: `RG-ART-042, RG-ART-014` | Distractores incluidos: `RI-FI-ART-007, RG-ART-003-DEF-13, RI-FI-ART-008, RG-ART-007`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RI-FI-ART-007`, `RG-ART-014`, `RG-ART-003-DEF-13`, `RG-ART-007`, `RG-ART-042`
+- Clave esperada: `RG-ART-042, RG-ART-014` | Distractores incluidos: `RI-FI-ART-007, RG-ART-003-DEF-13, RG-ART-007`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -594,8 +631,8 @@ Fuente: [RG-ART-014] [RG-ART-042]
 
 **Observaciones del Verificador (entrada):** El borrador anterior mencionó los 10 días hábiles de entrega de notas citando únicamente [RG-ART-014], donde ese plazo no aparece.
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RI-FI-ART-010`, `RG-ART-025`, `RG-ART-014`, `RG-ART-005`, `RG-ART-012`, `RG-ART-006`
-- Clave esperada: `RG-ART-014, RG-ART-025` | Distractores incluidos: `RI-FI-ART-010, RG-ART-005, RG-ART-012, RG-ART-006`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-034`, `RG-ART-025`, `RG-ART-014`, `RG-ART-006`, `RG-ART-033`
+- Clave esperada: `RG-ART-014, RG-ART-025` | Distractores incluidos: `RG-ART-034, RG-ART-006, RG-ART-033`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -621,8 +658,8 @@ Fuente: [RG-ART-014] [RG-ART-025]
 
 **Observaciones del Verificador (entrada):** El borrador omitió distinguir entre quien reingresa sin pérdida de carrera y quien sí incurrió en pérdida de carrera.
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-033`, `RG-ART-044`, `RG-ART-028`, `RG-ART-037`, `RI-FI-ART-020`, `RG-ART-047`
-- Clave esperada: `RG-ART-044` | Distractores incluidos: `RG-ART-033, RG-ART-028, RG-ART-037, RI-FI-ART-020, RG-ART-047`
+**Evidencia ensamblada (4 unidades, orden barajado):** `RG-ART-037`, `RG-ART-044`, `RG-ART-033`, `RG-ART-038`
+- Clave esperada: `RG-ART-044` | Distractores incluidos: `RG-ART-037, RG-ART-033, RG-ART-038`
 
 <details>
 <summary>Textos literales de las unidades clave en corpus.json</summary>
@@ -645,8 +682,8 @@ Fuente: [RG-ART-044]
 
 **Pregunta:** ¿Qué establece exactamente el Artículo 57 de los Estatutos de la Corporación respecto a la coordinación académica entre Departamentos?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RG-ART-006`, `RI-FI-ART-032`, `RG-ART-008`, `RG-ART-010`, `RG-PREAMBULO`, `RG-ART-004`
-- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-006, RI-FI-ART-032, RG-ART-008, RG-ART-010, RG-PREAMBULO, RG-ART-004`
+**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-006`, `RG-ART-008`, `RG-ART-010`, `RG-PREAMBULO`, `RI-FI-ART-032`
+- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-006, RG-ART-008, RG-ART-010, RG-PREAMBULO, RI-FI-ART-032`
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
@@ -654,24 +691,24 @@ Fuente: [RG-ART-044]
 [RG-ART-010] menciona al pasar 'cautelando el cumplimiento de lo dispuesto en el primer párrafo del Artículo 57 de los Estatutos de la Corporación', pero el texto completo o contenido del Artículo 57 de los Estatutos NO está en la evidencia entregada. No debo inventarlo.
 </pensar>
 Respuesta: No es posible responder qué establece el Artículo 57 de los Estatutos de la Corporación porque su contenido no forma parte de la normativa consultada.
-Condiciones o límites: La evidencia únicamente hace referencia a cautelar el primer párrafo de ese artículo al coordinar con Directores de Departamento [RG-ART-010], sin reproducir el texto de los Estatutos.
+Condiciones o límites: No aplica
 Fuente: sin respaldo en la normativa consultada
 ```
 
-## 27. `B6-T13` — bloque `abstencion_honesta` | split `train` | modo `numerica` | estado `suficiente`
+## 27. `B6-T13` — bloque `abstencion_honesta` | split `train` | modo `numerica` | estado `insuficiente`
 
-**Pregunta:** ¿Cuál es la nota mínima exigida en el examen de admisión para alumnos libres y visitantes?
+**Pregunta:** ¿Cuántos pesos cuesta el certificado emitido por DAFE o cuántos días antes debe pedirse el certificado de la Dirección de Bibliotecas en caso de renuncia?
 
-**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-053`, `RG-ART-002`, `RG-ART-003-DEF-16`, `RI-FI-ART-017`, `RG-ART-003-DEF-18`
-- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-053, RG-ART-002, RG-ART-003-DEF-16, RI-FI-ART-017, RG-ART-003-DEF-18`
+**Evidencia ensamblada (3 unidades, orden barajado):** `RG-ART-035`, `RG-ART-033`, `RG-ART-034`
+- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-035, RG-ART-033, RG-ART-034`
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[RG-ART-053] remite a un reglamento especial y a los convenios correspondientes; ni [RG-ART-003-DEF-16] ni [RG-ART-003-DEF-18] contienen nota mínima.
+[RG-ART-035] enumera ambos certificados (DAFE y Dirección de Bibliotecas) como documentos obligatorios para renunciar o suspender, pero no menciona costo monetario alguno ni antelación en días para solicitarlos.
 </pensar>
-Respuesta: No hay respaldo en la normativa consultada acerca de una nota mínima de admisión para alumnos libres ni alumnos visitantes.
-Condiciones o límites: La normativa general remite el régimen de requisitos, derechos y obligaciones de alumnos libres y visitantes a un reglamento especial y convenios que no constan en la evidencia [RG-ART-053].
+Respuesta: No existe información en la normativa consultada sobre el costo monetario ni la antelación mínima en días para tramitar los certificados de DAFE o de la Dirección de Bibliotecas.
+Condiciones o límites: No aplica
 Fuente: sin respaldo en la normativa consultada
 ```
 
@@ -681,49 +718,50 @@ Fuente: sin respaldo en la normativa consultada
 
 **Artículos marcados como inexistentes:** RI-FI-ART-038
 
-**Evidencia ensamblada (3 unidades, orden barajado):** `RG-ART-040`, `RG-ART-038`, `RI-FI-ART-035`
-- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-040, RG-ART-038, RI-FI-ART-035`
+**Evidencia ensamblada (3 unidades, orden barajado):** `RI-FI-ART-015`, `RG-ART-040`, `RG-ART-038`
+- Clave esperada: `(ninguna)` | Distractores incluidos: `RI-FI-ART-015, RG-ART-040, RG-ART-038`
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Estado: no_existe | RI-FI termina en el Artículo 35°. No confundirlo con [RG-ART-038] (reconocimiento en Reglamento General).
+Estado: no_existe | no existen en la normativa: RI-FI-ART-038. El Artículo 38° del Reglamento Interno de Ingeniería no existe en la normativa consultada (no confundirlo con [RG-ART-038] del Reglamento General).
 </pensar>
-Respuesta: No existe el Artículo 38° en el Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería, cuyo articulado termina en el Artículo 35°.
-Condiciones o límites: La normativa consultada del RI-FI no incluye un Artículo 38°.
+Respuesta: No existe el Artículo 38° en el Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería dentro de la normativa consultada.
+Condiciones o límites: No aplica
 Fuente: sin respaldo en la normativa consultada
 ```
 
-## 29. `B6-V01` — bloque `abstencion_honesta` | split `val` | modo `factual` | estado `suficiente`
+## 29. `B6-V01` — bloque `abstencion_honesta` | split `val` | modo `factual` | estado `insuficiente`
 
-**Pregunta:** ¿Qué nota mínima o exigencia de aprobación establece el reglamento de la Facultad cuando un egresado excedió el plazo de seis semestres para titularse?
+**Pregunta:** ¿Qué plazo exacto en años establece el Artículo 3°.10 del Reglamento General para rendir la defensa o examen final de titulación en cada Facultad?
 
-**Evidencia ensamblada (6 unidades, orden barajado):** `RI-FI-ART-031`, `RG-ART-049`, `RI-FI-ART-030`, `RI-FI-ART-035`, `RG-ART-048`, `RI-FI-ART-029`
-- Clave esperada: `(ninguna)` | Distractores incluidos: `RI-FI-ART-031, RG-ART-049, RI-FI-ART-030, RI-FI-ART-035, RG-ART-048, RI-FI-ART-029`
+**Evidencia ensamblada (3 unidades, orden barajado):** `RG-ART-003-DEF-22`, `RG-ART-048`, `RG-ART-003-DEF-10`
+- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-003-DEF-22, RG-ART-048, RG-ART-003-DEF-10`
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-[RG-ART-049] remite las exigencias tras vencer los 6 semestres al Reglamento Interno de la Facultad; sin embargo, en todo el RI-FI solo está [RI-FI-ART-031] (suspensión > 3 años cuando solo faltaba Memoria), no un artículo sobre egresados con más de 6 semestres sin suspensión!
+[RG-ART-003-DEF-10] señala explícitamente que 'El Reglamento Interno de Docencia de Pregrado de las Facultades fijará los plazos o términos dentro de los cuales deberá cumplirse con los requisitos de las señaladas actividades finales de graduación y titulación', sin fijar un plazo numérico en el propio Reglamento General.
 </pensar>
-Respuesta: No existe respaldo en la normativa consultada sobre las exigencias específicas aplicables en Ingeniería cuando vence el plazo de seis semestres desde el egreso sin haberse titulado.
-Condiciones o límites: El Reglamento General fija el límite de seis semestres y delega tales exigencias en el Reglamento Interno de la Facultad [RG-ART-049], pero dicho supuesto específico no aparece regulado en el Reglamento Interno de Ingeniería consultado.
+Respuesta: No existe un plazo numérico único en el Artículo 3°.10 del Reglamento General: esa norma delega en el Reglamento Interno de Docencia de Pregrado de cada Facultad la fijación de los plazos para las actividades finales de graduación y titulación [RG-ART-003-DEF-10].
+Condiciones o límites: No aplica
 Fuente: sin respaldo en la normativa consultada
 ```
 
 ## 30. `B6-V05` — bloque `abstencion_honesta` | split `val` | modo `cruce` | estado `insuficiente`
 
-**Pregunta:** ¿Qué fecha límite del Calendario 2026 rige para inscribir cursos de verano PLEV y cuántas horas semanales máximas permite el Artículo 8 de Ingeniería?
+**Pregunta:** ¿Qué fecha límite del Calendario 2026 rige para inscribir cursos PLEV y qué porcentaje exacto de descuento se aplica al arancel al inscribir menos créditos en Ingeniería?
 
-**Evidencia ensamblada (5 unidades, orden barajado):** `RG-ART-045`, `CAL-2026-S1-01`, `RI-FI-ART-008`, `CAL-2026-S2-01`, `RG-ART-017`
-- Clave esperada: `(ninguna)` | Distractores incluidos: `RG-ART-045, CAL-2026-S1-01, RI-FI-ART-008, CAL-2026-S2-01, RG-ART-017`
+**Evidencia ensamblada (3 unidades, orden barajado):** `CAL-2026-S1-06`, `RI-FI-ART-007`, `RG-ART-045`
+- Clave esperada: `(ninguna)` | Distractores incluidos: `CAL-2026-S1-06, RI-FI-ART-007, RG-ART-045`
 
 **Salida esperada del Redactor (`assistant`):**
 ```text
 <pensar>
-Ninguno de los dos datos pedidos existe: (1) el Calendario 2026 no tiene fechas de PLEV, y (2) [RI-FI-ART-008] fija mínimo de 8 créditos (no horas semanales máximas; el máximo de 54 horas semanales de Trabajo Académico es del Plan de Estudio en [RG-ART-017], no del Art. 8 RI-FI).
+En la evidencia no aparecen fechas de inscripción del PLEV 2026 en el Calendario ni tampoco ninguna disposición arancelaria sobre descuentos por inscribir menor carga de créditos.
 </pensar>
-Respuesta: No existe respaldo en la normativa consultada sobre una fecha límite de inscripción para el PLEV 2026 ni sobre un máximo de horas semanales en el Artículo 8° del Reglamento Interno de Ingeniería.
-Condiciones o límites: El Calendario 2026 disponible no contempla fechas del PLEV y el Artículo 8° de Ingeniería establece únicamente un mínimo de ocho créditos por período lectivo ordinario, sin tope de horas.
+Respuesta: No existe respaldo en la normativa consultada sobre una fecha límite de inscripción para el PLEV 2026 ni sobre porcentajes de descuento arancelario por inscribir menos créditos.
+Condiciones o límites: No aplica
 Fuente: sin respaldo en la normativa consultada
 ```
+

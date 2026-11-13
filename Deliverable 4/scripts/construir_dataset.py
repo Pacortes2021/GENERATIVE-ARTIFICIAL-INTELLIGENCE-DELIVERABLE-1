@@ -39,6 +39,13 @@ from dataset_blocks import (  # noqa: E402
     BLOQUE_5_RESILIENCIA_FEEDBACK,
     BLOQUE_6_ABSTENCION_HONESTA,
 )
+from dataset_blocks.reglas_v2 import (  # noqa: E402
+    BLOCKED_UNIT_IDS,
+    EVAL_40_UNIT_IDS,
+    HELDOUT_21_UNIT_IDS,
+    LEAK_QID_RE,
+    UNIT_ID_REF_RE,
+)
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 DEFAULT_CORPUS_PATH = (
@@ -51,6 +58,9 @@ DEFAULT_EVAL_CSV_PATH = (
     / "Deliverable3"
     / "resultados_v6"
     / "resultados_agentes_D3.csv"
+)
+DEFAULT_NUEVAS_CSV_PATH = (
+    REPO_ROOT / "Deliverable 4" / "datos" / "preguntas_nuevas_20.csv"
 )
 DEFAULT_DATOS_DIR = REPO_ROOT / "Deliverable 4" / "datos"
 
@@ -135,6 +145,15 @@ def cargar_preguntas_eval(eval_csv_path: Path) -> list[dict[str, str]]:
         raise ValueError(
             f"Se esperaban 75 filas en {eval_csv_path}, encontradas: {len(rows)}"
         )
+    return rows
+
+
+def cargar_preguntas_nuevas(nuevas_csv_path: Path) -> list[dict[str, str]]:
+    """Carga el conjunto ciego de 20 preguntas nuevas (`preguntas_nuevas_20.csv`)."""
+    with nuevas_csv_path.open("r", encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+    for r in rows:
+        r.setdefault("set", "nuevas_20")
     return rows
 
 
@@ -330,14 +349,35 @@ def validar_especificacion(
             f"{sid}: se esperaba al menos una cita inline [ID] en 'respuesta'"
         )
 
+    # Verificar separación estricta v2: cero unidades bloqueadas en evidencia o textos,
+    # y cero menciones meta-referenciales a IDs de evaluación (Hxx/Pxx/Nxx).
+    fuga_ev = sorted(set(evidencia_ids) & BLOCKED_UNIT_IDS)
+    if fuga_ev:
+        raise ValueError(
+            f"{sid}: unidades reservadas de evaluación en evidencia_ids: {fuga_ev}"
+        )
+    for campo in ("pregunta", "pensar", "respuesta", "condiciones", "fuente"):
+        texto_campo = spec[campo]
+        leaks_qid = LEAK_QID_RE.findall(texto_campo)
+        if leaks_qid:
+            raise ValueError(
+                f"{sid}: mención meta/QID prohibida en '{campo}': {leaks_qid}"
+            )
+        refs_bloqueadas = sorted(set(UNIT_ID_REF_RE.findall(texto_campo)) & BLOCKED_UNIT_IDS)
+        if refs_bloqueadas:
+            raise ValueError(
+                f"{sid}: referencia textual a unidad reservada en '{campo}': {refs_bloqueadas}"
+            )
+
 
 def auditar_antifuga(
     specs: list[dict[str, Any]],
     eval_rows: list[dict[str, str]],
     seq_threshold: float = 0.85,
     jaccard_threshold: float = 0.80,
+    etiqueta: str = "evaluación",
 ) -> dict[str, Any]:
-    """Verifica cero duplicados internos y evalúa similitud contra las 75 preguntas de test."""
+    """Verifica cero duplicados internos y evalúa similitud contra un conjunto de test."""
     norm_vistas: dict[str, str] = {}
     for spec in specs:
         norm = normalizar_texto(spec["pregunta"])
@@ -450,21 +490,44 @@ def generar_muestra_manual(
             seleccionados.append(val_list[idx])
 
     lineas: list[str] = [
-        "# Muestra de Revisión Manual — Dataset Redactor D4 (30 casos)",
+        "# Muestra de Revisión Manual — Dataset Redactor D4 v2 (30 casos)",
         "",
         "Muestra estratificada de **30 ejemplos** (`3 train + 2 val` por cada uno de los 6 bloques) "
         "extraída desde `redactor_train.jsonl` y `redactor_val.jsonl` para verificación humana previa "
         "al entrenamiento QLoRA (Paso 3).",
         "",
-        "Criterios a revisar en cada ejemplo:",
-        "1. La respuesta esperada se deduce íntegramente de los fragmentos literales mostrados en `<evidencia>`.",
-        "2. Todas las citas `[ID]` existen en la evidencia entregada y cubren cada afirmación relevante.",
-        "3. El bloque `<pensar>` razona sin saltos lógicos ni contradecir la salida final.",
-        "4. Cuando la evidencia falta o es parcial, el modelo no inventa datos y se abstiene honestamente.",
+        "## Autoría y Separación de Datos (v2)",
+        "- **Fuente normativa:** Fragmentos literales de `corpus.json` (reglamentos y calendario UdeC).",
+        "- **Autoría de los pares supervisados:** Especificaciones redactadas y curadas por el equipo con asistencia de **Antigravity (modelo asistente IA)** y verificadas programáticamente contra `corpus.json` (citas, cálculos aritméticos y fechas).",
+        "- **Separación estricta:** 0 de las 40 unidades de corpus evaluadas en las 75 preguntas de D3 y 0 de las 21 unidades reservadas para `preguntas_nuevas_20.csv` aparecen en `evidencia_clave`, `distractores` ni referencias textuales del dataset.",
         "",
-        "---",
+        "## Registro de Verificación Humana (30 casos)",
         "",
+        "> **Nota:** Complete esta tabla al revisar los casos antes de validar la entrega final (revisor, fecha y estado).",
+        "",
+        "| # | ID | Bloque / Split | Revisor | Fecha | Resultado | Observaciones |",
+        "|---|---|---|---|:---:|---|---|",
     ]
+
+    for i, reg in enumerate(seleccionados, start=1):
+        sid = reg["id"]
+        lineas.append(
+            f"| {i:02d} | `{sid}` | `{reg['bloque']}` / `{reg['split']}` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |"
+        )
+
+    lineas.extend(
+        [
+            "",
+            "Criterios a revisar en cada ejemplo:",
+            "1. La respuesta esperada se deduce íntegramente de los fragmentos literales mostrados en `<evidencia>`.",
+            "2. Todas las citas `[ID]` existen en la evidencia entregada y cubren cada afirmación relevante.",
+            "3. El bloque `<pensar>` razona sin saltos lógicos ni contradecir la salida final.",
+            "4. Cuando la evidencia falta o es parcial, el modelo no inventa datos y se abstiene honestamente; si no hay salvedades extra aplicables, usa `Condiciones o límites: No aplica`.",
+            "",
+            "---",
+            "",
+        ]
+    )
 
     for i, reg in enumerate(seleccionados, start=1):
         sid = reg["id"]
@@ -507,7 +570,8 @@ def generar_muestra_manual(
         lineas.append("```")
         lineas.append("")
 
-    output_path.write_text("\n".join(lineas), encoding="utf-8")
+    with output_path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write("\n".join(lineas) + "\n")
     return [reg["id"] for reg in seleccionados]
 
 
@@ -515,13 +579,17 @@ def construir_dataset(
     corpus_path: Path = DEFAULT_CORPUS_PATH,
     prompt_path: Path = DEFAULT_PROMPT_PATH,
     eval_csv_path: Path = DEFAULT_EVAL_CSV_PATH,
+    nuevas_csv_path: Path = DEFAULT_NUEVAS_CSV_PATH,
     datos_dir: Path = DEFAULT_DATOS_DIR,
     seed: int = 202604,
 ) -> dict[str, Any]:
-    """Construye, valida y escribe todos los archivos del dataset del Redactor."""
+    """Construye, valida y escribe todos los archivos del dataset v2 del Redactor."""
     corpus_by_id = cargar_unidades_corpus(corpus_path)
     prompt_template = cargar_prompt_redactor(prompt_path)
     eval_rows = cargar_preguntas_eval(eval_csv_path)
+    nuevas_rows = (
+        cargar_preguntas_nuevas(nuevas_csv_path) if nuevas_csv_path.is_file() else []
+    )
     specs = todas_las_especificaciones()
 
     # Verificar IDs únicos y conteos exactos por bloque y split.
@@ -542,7 +610,12 @@ def construir_dataset(
                     f"Conteo inválido para {bloque}/{split}: esperado {esperado[split]}, actual {actual}"
                 )
 
-    auditoria = auditar_antifuga(specs, eval_rows)
+    auditoria = auditar_antifuga(specs, eval_rows, etiqueta="evaluacion_d3")
+    auditoria_nuevas = (
+        auditar_antifuga(specs, nuevas_rows, etiqueta="evaluacion_nuevas_20")
+        if nuevas_rows
+        else None
+    )
 
     registros: list[dict[str, Any]] = []
     train_rows: list[dict[str, Any]] = []
@@ -601,11 +674,11 @@ def construir_dataset(
     resumen_path = datos_dir / "dataset_resumen.json"
     muestra_path = datos_dir / "MUESTRA_REVISION_MANUAL.md"
 
-    with train_path.open("w", encoding="utf-8") as f:
+    with train_path.open("w", encoding="utf-8", newline="\n") as f:
         for row in train_rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
-    with val_path.open("w", encoding="utf-8") as f:
+    with val_path.open("w", encoding="utf-8", newline="\n") as f:
         for row in val_rows:
             f.write(json.dumps(row, ensure_ascii=False) + "\n")
 
@@ -621,20 +694,25 @@ def construir_dataset(
     }
     distribucion_modos = dict(Counter(r["modo"] for r in registros))
     distribucion_estados = dict(Counter(r["estado"] for r in registros))
+    ejemplos_no_aplica = sum(
+        1 for s in specs if s["condiciones"].strip().lower() == "no aplica"
+    )
 
     def _ruta_legible(path: Path) -> str:
         try:
-            return str(path.resolve().relative_to(REPO_ROOT.resolve()))
+            return path.resolve().relative_to(REPO_ROOT.resolve()).as_posix()
         except ValueError:
-            return str(path)
+            return path.as_posix()
 
     resumen = {
+        "version_dataset": "v2",
         "total_ejemplos": len(registros),
         "train_ejemplos": len(train_rows),
         "val_ejemplos": len(val_rows),
         "seed_barajado_evidencia": seed,
         "unidades_corpus_total": len(corpus_by_id),
         "unidades_corpus_cubiertas_en_evidencia": len(unidades_usadas),
+        "ejemplos_condiciones_no_aplica": ejemplos_no_aplica,
         "distribucion_bloques": distribucion_bloques,
         "distribucion_modos": distribucion_modos,
         "distribucion_estados": distribucion_estados,
@@ -647,7 +725,19 @@ def construir_dataset(
         "tokens_estimados_conservadores_3_4_chars_por_token": _stats_enteros(
             total_est_tokens
         ),
+        "separacion_unidades_corpus": {
+            "unidades_eval_d3_bloqueadas": len(EVAL_40_UNIT_IDS),
+            "unidades_heldout_20_bloqueadas": len(HELDOUT_21_UNIT_IDS),
+            "solapamiento_evidencia_vs_eval_d3": len(unidades_usadas & EVAL_40_UNIT_IDS),
+            "solapamiento_evidencia_vs_heldout_20": len(unidades_usadas & HELDOUT_21_UNIT_IDS),
+        },
+        "declaracion_autoria": (
+            "Pares supervisados curados a partir de fragmentos literales de corpus.json "
+            "con asistencia de Antigravity (modelo asistente IA) y validación automática "
+            "frente a corpus.json y normas de separación de evaluación."
+        ),
         "antifuga_evaluacion_d3": auditoria,
+        "antifuga_evaluacion_nuevas_20": auditoria_nuevas,
         "muestra_revision_manual_ids": muestra_ids,
         "archivos_generados": {
             "train_jsonl": _ruta_legible(train_path),
@@ -656,19 +746,19 @@ def construir_dataset(
             "muestra_md": _ruta_legible(muestra_path),
         },
     }
-    resumen_path.write_text(
-        json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    with resumen_path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(resumen, ensure_ascii=False, indent=2) + "\n")
     return resumen
 
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="Construye y valida el dataset de fine-tuning para el agente Redactor (D4)."
+        description="Construye y valida el dataset de fine-tuning para el agente Redactor (D4 v2)."
     )
     parser.add_argument("--corpus", type=Path, default=DEFAULT_CORPUS_PATH)
     parser.add_argument("--prompt", type=Path, default=DEFAULT_PROMPT_PATH)
     parser.add_argument("--eval-csv", type=Path, default=DEFAULT_EVAL_CSV_PATH)
+    parser.add_argument("--nuevas-csv", type=Path, default=DEFAULT_NUEVAS_CSV_PATH)
     parser.add_argument("--datos-dir", type=Path, default=DEFAULT_DATOS_DIR)
     parser.add_argument("--seed", type=int, default=202604)
     args = parser.parse_args()
@@ -677,6 +767,7 @@ def main() -> None:
         corpus_path=args.corpus,
         prompt_path=args.prompt,
         eval_csv_path=args.eval_csv,
+        nuevas_csv_path=args.nuevas_csv,
         datos_dir=args.datos_dir,
         seed=args.seed,
     )

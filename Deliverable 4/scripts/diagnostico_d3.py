@@ -338,9 +338,9 @@ def generar_diagnostico(
 
     return {
         "fuentes": {
-            "csv": str((d3_dir / "resultados_v6" / "resultados_agentes_D3.csv").relative_to(REPO_ROOT)),
-            "trazas": str((d3_dir / "resultados_v6" / "trazas_D3.json").relative_to(REPO_ROOT)),
-            "auditoria": str(audit_file.relative_to(REPO_ROOT)),
+            "csv": (d3_dir / "resultados_v6" / "resultados_agentes_D3.csv").relative_to(REPO_ROOT).as_posix(),
+            "trazas": (d3_dir / "resultados_v6" / "trazas_D3.json").relative_to(REPO_ROOT).as_posix(),
+            "auditoria": audit_file.relative_to(REPO_ROOT).as_posix(),
             "corpus_unidades": len(unidades),
         },
         "resumen_global": {

@@ -255,7 +255,17 @@ class TestEvaluarD4(unittest.TestCase):
         self.assertIn('"evaluar_d4.py"', codigo)
         self.assertIn("Pablox0333/qwen3-4b-redactor-udec-d4", codigo)
         self.assertIn('"huggingface-hub>=0.30,<2.0"', codigo)
-        for flag in ("--hf-repo", "--output-dir", "--qids", "--solo-comparativa", "--comparar-ids"):
+        for flag in (
+            "--hf-repo",
+            "--output-dir",
+            "--qids",
+            "--solo-comparativa",
+            "--comparar-ids",
+            "--solo-base",
+            "--preguntas-csv",
+            "--nombre-set",
+            "--output-prefix",
+        ):
             self.assertIn(flag, flags_validos)
             self.assertIn(flag, codigo)
 
@@ -347,6 +357,110 @@ class TestDemoVideoD4(unittest.TestCase):
         src_total = "\n".join("".join(c.get("source", [])) for c in nb.get("cells", []))
         self.assertIn("mostrar_demo_d4", src_total)
         self.assertIn("dificil_25:H07", src_total)
+
+    def test_preguntas_nuevas_20_control_solo_base_y_auditoria_general(self) -> None:
+        nuevas_csv = DELIVERABLE4_DIR / "datos" / "preguntas_nuevas_20.csv"
+        self.assertTrue(nuevas_csv.is_file())
+        preguntas_n20 = ed.cargar_preguntas_desde_csv(nuevas_csv, nombre_set="nuevas_20")
+        self.assertEqual(len(preguntas_n20), 20)
+        self.assertEqual(preguntas_n20[0]["qid"], "nuevas_20:N01")
+        self.assertEqual(preguntas_n20[-1]["qid"], "nuevas_20:N20")
+
+        sub_n20 = ed.cargar_preguntas_desde_csv(
+            nuevas_csv,
+            nombre_set="nuevas_20",
+            filtro_qids={"nuevas_20:N01", "nuevas_20:N19"},
+        )
+        self.assertEqual([p["qid"] for p in sub_n20], ["nuevas_20:N01", "nuevas_20:N19"])
+        with self.assertRaises(ValueError):
+            ed.cargar_preguntas_desde_csv(nuevas_csv, filtro_qids={"nuevas_20:N999"})
+
+        parser = ed.construir_arg_parser()
+        flags_validos = {opt for act in parser._actions for opt in act.option_strings}
+        for flag in ("--solo-base", "--preguntas-csv", "--nombre-set", "--output-prefix"):
+            self.assertIn(flag, flags_validos)
+
+        corpus = ed.construir_corpus_d3(use_e5=False)
+        tok = _DummyTokenizer()
+        model = _DummyPeftModel(tok)
+        with tempfile.TemporaryDirectory() as tmp:
+            out_dir = Path(tmp) / "eval_general"
+            gen_ft = ed.AdaptadorRedactorGenerator(model, tok, greedy=True, solo_base=False)
+            gen_base = ed.AdaptadorRedactorGenerator(model, tok, greedy=True, solo_base=True)
+
+            ed.ejecutar_evaluacion_lote(
+                sub_n20,
+                corpus,
+                gen_ft,
+                out_dir,
+                condicion="finetuned_redactor",
+                metadata_extra={"condicion": "finetuned_redactor"},
+                limpiar_cache_cuda_cada=0,
+                output_prefix="nuevas20_ft_D4",
+            )
+            ed.ejecutar_evaluacion_lote(
+                sub_n20,
+                corpus,
+                gen_base,
+                out_dir,
+                condicion="control_base_lora_apagado",
+                metadata_extra={"condicion": "control_base_lora_apagado"},
+                limpiar_cache_cuda_cada=0,
+                output_prefix="nuevas20_base_D4",
+            )
+            self.assertTrue(all(not c["usa_adaptador"] for c in gen_base.telemetria))
+            for fname in (
+                "resultados_nuevas20_ft_D4.csv",
+                "trazas_nuevas20_ft_D4.json",
+                "telemetria_nuevas20_ft_D4.json",
+                "configuracion_nuevas20_ft_D4.json",
+                "resultados_nuevas20_base_D4.csv",
+                "trazas_nuevas20_base_D4.json",
+                "telemetria_nuevas20_base_D4.json",
+                "configuracion_nuevas20_base_D4.json",
+            ):
+                p = out_dir / fname
+                self.assertTrue(p.is_file(), f"Falta salida esperada: {fname}")
+                self.assertNotIn(b"\r\n", p.read_bytes(), f"CRLF inesperado en {fname}")
+
+            aud_ft = ga.generar_auditoria_general(
+                eval_dir=out_dir,
+                resultados_csv=out_dir / "resultados_nuevas20_ft_D4.csv",
+                control_csv=out_dir / "resultados_nuevas20_base_D4.csv",
+                prefijo_salida="nuevas20_ft_D4",
+            )
+            self.assertEqual(aud_ft["total_preguntas"], 2)
+            self.assertEqual(aud_ft["pendientes_revision_humana"], 2)
+            self.assertIsNone(aud_ft["aciertos_humanos"])
+            self.assertEqual(aud_ft["telemetria_y_aislamiento"]["violaciones_aislamiento_lora"], 0)
+            self.assertEqual(aud_ft["chequeos_deterministas"]["total_formato_3_lineas_ok"], 2)
+            self.assertEqual(aud_ft["chequeos_deterministas"]["total_con_citas_inexistentes"], 0)
+            comp = aud_ft["comparativa_control_base_vs_ft"]
+            self.assertEqual(comp["preguntas_emparejadas"], 2)
+            self.assertEqual(comp["respuestas_distintas_ft_vs_control"], 2)
+
+            aud_base = ga.generar_auditoria_general(
+                eval_dir=out_dir,
+                resultados_csv=out_dir / "resultados_nuevas20_base_D4.csv",
+                prefijo_salida="nuevas20_base_D4",
+            )
+            self.assertEqual(
+                aud_base["telemetria_y_aislamiento"]["violaciones_aislamiento_lora"],
+                0,
+                "El modo control_base_lora_apagado no debe marcar falso aislamiento LoRA.",
+            )
+            corpus_ids = ga._cargar_corpus_ids(ga.DEFAULT_CORPUS_PATH)
+            det_aluc = ga.auditar_fila_determinista(
+                {
+                    "respuesta_sistema": "Respuesta: Regla [RG-ART-999].\nCondiciones o límites: No aplica.\nFuente: [RG-ART-999]",
+                    "fuentes_traidas": "RI-FI-ART-011",
+                    "aprobado_verificador": "True",
+                    "error": "",
+                },
+                corpus_ids,
+            )
+            self.assertEqual(det_aluc["citas_inexistentes_en_corpus"], ["RG-ART-999"])
+            self.assertTrue(det_aluc["tiene_condicion_no_aplica"])
 
 
 if __name__ == "__main__":

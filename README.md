@@ -9,7 +9,7 @@ abstiene cuando la información no existe o la pregunta parte de una premisa fal
 
 | Entrega | Carpeta | Informe | Resultado principal |
 |---|---|---|---|
-| **Deliverable 4 · fine-tuning del Redactor** | [`Deliverable 4/`](Deliverable%204/README.md) | [PDF](Deliverable%204/documento/main.pdf) | 45/50 y 19/25 estricto (68/75 núcleo; resuelve 6/9 fallos D3; -16,9% tiempo) |
+| **Deliverable 4 · fine-tuning del Redactor** | [`Deliverable 4/`](Deliverable%204/README.md) | [PDF](Deliverable%204/documento/main.pdf) | Corrida v1: 45/50 y 19/25 estricto (`64/75`; `+6/-8` vs D3); pipeline v2 listo para re-entrenar |
 | Deliverable 3 · sistema de agentes | [`Deliverable 3/`](Deliverable%203/README.md) | [PDF](Deliverable%203/Deliverable3/documento/main.pdf) | 46/50 y 20/25 (RAG del E2: 40/50 y 16/25) |
 | Deliverable 2 · RAG estructurado | [`Deliverable2/`](Deliverable2/README.md) | [PDF](Deliverable2/entrega/Informe_tecnico_D2.pdf) | 40/50 (baseline directo con la misma configuración: 1/50) |
 | Deliverable 1 · diagnóstico y modelo | [`Deliverable1/`](Deliverable1/README.md) | [PDF](Deliverable1/informe/deliverable1.pdf) | Baseline directo 2/50 (decodificación greedy): ausencia paramétrica |
@@ -19,11 +19,11 @@ abstiene cuando la información no existe o la pregunta parte de una premisa fal
 ## Deliverable 4: especialización QLoRA del agente Redactor
 
 - **Informe técnico (1 página, LaTeX):** [`Deliverable 4/documento/main.pdf`](Deliverable%204/documento/main.pdf)
-- **Adaptador público en Hugging Face:** [`Pablox0333/qwen3-4b-redactor-udec-d4`](https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4)
-- **Video (≤ 3 min):** `[Pendiente: enlace público tras grabación]` · guion y visor listo en [`Deliverable 4/video/GUION_VIDEO_D4.md`](Deliverable%204/video/GUION_VIDEO_D4.md) y [`Deliverable 4/D4_colab_video_demo.ipynb`](Deliverable%204/D4_colab_video_demo.ipynb)
-- **Guía completa, datos y auditoría:** [`Deliverable 4/README.md`](Deliverable%204/README.md)
+- **Adaptador público en Hugging Face:** [`Pablox0333/qwen3-4b-redactor-udec-d4`](https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4) *(pesos v1 actuales; actualizar tras re-correr Colab v2)*
+- **Video en vivo (≤ 3 min):** `[Pendiente: enlace público tras grabación]` · guía y notebook en vivo en [`Deliverable 4/video/GUION_VIDEO_D4.md`](Deliverable%204/video/GUION_VIDEO_D4.md) y [`Deliverable 4/D4_colab_video_demo.ipynb`](Deliverable%204/D4_colab_video_demo.ipynb)
+- **Guía completa, datos v2 y checklist v2:** [`Deliverable 4/README.md`](Deliverable%204/README.md)
 
-Se entrena un adaptador QLoRA (`NF4`, `r=16`, `alpha=32`, 210 pares supervisados `180 train / 30 val` verificados sin fuga) **solo para el agente `Redactor`**, manteniendo los pesos base de `Qwen/Qwen3-4B` vía `model.disable_adapter()` en `Enrutador`, `Recuperador` y `Verificador`. En la evaluación controlada sobre las mismas 75 preguntas, D4 resuelve **6/9 fallos estrictos de D3**, gana **4/6 vs 1/6** en comparativa pareada Base vs Fine-tuned y reduce llamadas LLM (`711 → 666`, `-6,3%`) y tiempo en T4 (`137,6 → 114,4 min`, `-16,9%`), alcanzando `64/75 (85,3%)` estricto y `68/75 (90,7%)` en núcleo normativo (análisis de fallos y degradaciones del Verificador base en [`Deliverable 4/evaluacion/casos_fallo_y_regresion.json`](Deliverable%204/evaluacion/casos_fallo_y_regresion.json)).
+Se entrena un adaptador QLoRA (`NF4`, `r=16`, `alpha=32`, 210 pares supervisados `180 train / 30 val` curados con asistencia de Antigravity y `0%` solapamiento de unidades frente a evaluación y al set ciego `preguntas_nuevas_20.csv`) **solo para el agente `Redactor`**, manteniendo los pesos base de `Qwen/Qwen3-4B` vía `model.disable_adapter()` en `Enrutador`, `Recuperador` y `Verificador`. En la corrida v1 archivada (`64/75`, `+6/-8` frente a D3 `66/75`; `4/6 vs 1/6` en comparativa pareada; análisis completo en [`Deliverable 4/evaluacion/casos_fallo_y_regresion.json`](Deliverable%204/evaluacion/casos_fallo_y_regresion.json)), la falta de ejemplos `"No aplica"` en Condiciones explicó las regresiones de citas; el **dataset v2 (`73/210` `No aplica`)** y el modo **`--solo-base`** quedaron preparados para re-ejecución final en Colab GPU.
 
 ---
 

@@ -101,7 +101,8 @@ def escribir_texto_atomico(path: Path, contenido: str) -> None:
     """Escribe un archivo de texto de forma atómica usando temporal + reemplazo."""
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(f".{path.name}.tmp")
-    tmp.write_text(contenido, encoding="utf-8")
+    with tmp.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(contenido)
     tmp.replace(path)
 
 
@@ -118,7 +119,12 @@ def escribir_csv_atomico(path: Path, filas: list[dict[str, Any]], fieldnames: tu
     path.parent.mkdir(parents=True, exist_ok=True)
     tmp = path.with_name(f".{path.name}.tmp")
     with tmp.open("w", encoding="utf-8", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=list(fieldnames), extrasaction="ignore")
+        writer = csv.DictWriter(
+            f,
+            fieldnames=list(fieldnames),
+            extrasaction="ignore",
+            lineterminator="\n",
+        )
         writer.writeheader()
         for fila in filas:
             writer.writerow({k: fila.get(k, "") for k in fieldnames})
@@ -162,6 +168,39 @@ def extraer_fuentes_de_traza(traza: list[dict[str, Any]]) -> str:
             for hid in obs.get("hits", []):
                 out.add(str(hid))
     return "; ".join(sorted(out))
+
+
+def cargar_preguntas_desde_csv(
+    csv_path: Path,
+    nombre_set: str = "nuevas_20",
+    filtro_qids: set[str] | None = None,
+) -> list[dict[str, str]]:
+    """Carga preguntas externas con esquema gold (`id,categoria,pregunta,gold_dato,gold_fuente`)."""
+    if not csv_path.is_file():
+        raise FileNotFoundError(f"No existe el archivo de preguntas CSV: {csv_path}")
+    preguntas: list[dict[str, str]] = []
+    with csv_path.open("r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            pid = str(row["id"]).strip()
+            qid = f"{nombre_set}:{pid}"
+            preguntas.append(
+                {
+                    "set": nombre_set,
+                    "id": pid,
+                    "qid": qid,
+                    "categoria": str(row.get("categoria", "")).strip(),
+                    "pregunta": str(row["pregunta"]).strip(),
+                    "gold_dato": str(row.get("gold_dato", "")).strip(),
+                    "gold_fuente": str(row.get("gold_fuente", "")).strip(),
+                }
+            )
+    if filtro_qids is not None:
+        existentes = {p["qid"] for p in preguntas}
+        faltantes = sorted(filtro_qids - existentes)
+        if faltantes:
+            raise ValueError(f"QIDs solicitados inexistentes en {csv_path}: {faltantes}")
+        preguntas = [p for p in preguntas if p["qid"] in filtro_qids]
+    return preguntas
 
 
 def cargar_preguntas_evaluacion(
@@ -412,13 +451,21 @@ def ejecutar_evaluacion_lote(
     metadata_extra: dict[str, Any] | None = None,
     progreso_callback: Callable[[str, dict[str, Any]], None] | None = None,
     limpiar_cache_cuda_cada: int = 10,
+    output_prefix: str = "",
 ) -> dict[str, Any]:
     """Ejecuta el lote con guardado incremental tras cada pregunta y soporte de reanudación."""
     output_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = output_dir / "resultados_agentes_D4.csv"
-    trazas_path = output_dir / "trazas_D4.json"
-    telemetria_path = output_dir / "telemetria_llamadas.json"
-    config_path = output_dir / "configuracion_evaluacion.json"
+    prefijo = output_prefix.strip().rstrip("_")
+    if prefijo:
+        csv_path = output_dir / f"resultados_{prefijo}.csv"
+        trazas_path = output_dir / f"trazas_{prefijo}.json"
+        telemetria_path = output_dir / f"telemetria_{prefijo}.json"
+        config_path = output_dir / f"configuracion_{prefijo}.json"
+    else:
+        csv_path = output_dir / "resultados_agentes_D4.csv"
+        trazas_path = output_dir / "trazas_D4.json"
+        telemetria_path = output_dir / "telemetria_llamadas.json"
+        config_path = output_dir / "configuracion_evaluacion.json"
 
     filas = _cargar_csv_previo(csv_path)
     trazas: dict[str, Any] = _cargar_json_previo(trazas_path, {})
@@ -607,6 +654,29 @@ def construir_arg_parser() -> argparse.ArgumentParser:
     parser.add_argument("--modelo-base", default=MODELO_BASE_DEFAULT)
     parser.add_argument("--hf-repo", default=HF_ADAPTER_DEFAULT)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_EVAL_OUTPUT_DIR)
+    parser.add_argument(
+        "--output-prefix",
+        type=str,
+        default="",
+        help="Prefijo opcional para archivos de salida (ej. `control_base_D4` o `nuevas20_ft_D4`).",
+    )
+    parser.add_argument(
+        "--solo-base",
+        action="store_true",
+        help="Ejecuta los 4 agentes con LoRA desactivado (`disable_adapter()`) como control en el mismo entorno.",
+    )
+    parser.add_argument(
+        "--preguntas-csv",
+        type=Path,
+        default=None,
+        help="CSV alternativo de preguntas con esquema gold (ej. `preguntas_nuevas_20.csv`).",
+    )
+    parser.add_argument(
+        "--nombre-set",
+        type=str,
+        default="nuevas_20",
+        help="Etiqueta de `set` cuando se usa `--preguntas-csv`.",
+    )
     parser.add_argument("--solo-dificiles", action="store_true")
     parser.add_argument(
         "--qids",
@@ -681,11 +751,20 @@ def main(argv: list[str] | None = None) -> int:
     }
 
     if not args.solo_comparativa:
-        preguntas = cargar_preguntas_evaluacion(
-            solo_dificiles=args.solo_dificiles,
-            filtro_qids=filtro_qids,
+        if args.preguntas_csv is not None:
+            preguntas = cargar_preguntas_desde_csv(
+                args.preguntas_csv,
+                nombre_set=args.nombre_set,
+                filtro_qids=filtro_qids,
+            )
+        else:
+            preguntas = cargar_preguntas_evaluacion(
+                solo_dificiles=args.solo_dificiles,
+                filtro_qids=filtro_qids,
+            )
+        generador = AdaptadorRedactorGenerator(
+            model, tokenizer, greedy=args.greedy, solo_base=args.solo_base
         )
-        generador = AdaptadorRedactorGenerator(model, tokenizer, greedy=args.greedy, solo_base=False)
 
         def _log_prog(qid: str, fila: dict[str, Any]) -> None:
             print(
@@ -697,23 +776,46 @@ def main(argv: list[str] | None = None) -> int:
                 flush=True,
             )
 
+        condicion_eval = (
+            "control_base_lora_apagado" if args.solo_base else "finetuned_redactor"
+        )
+        prefijo_out = args.output_prefix.strip()
+        if not prefijo_out:
+            if args.preguntas_csv is not None:
+                prefijo_out = f"{args.nombre_set}_{'base' if args.solo_base else 'ft'}_D4"
+            elif args.solo_base:
+                prefijo_out = "control_base_D4"
         resumen = ejecutar_evaluacion_lote(
             preguntas,
             corpus,
             generador,
             args.output_dir,
+            condicion=condicion_eval,
             metadata_extra=metadata,
             progreso_callback=_log_prog,
+            output_prefix=prefijo_out,
         )
         print("Lote completado:", json.dumps(resumen, ensure_ascii=False))
 
     if args.comparar_ids or args.solo_comparativa:
         raw_ids = args.comparar_ids or ",".join(COMPARATIVA_IDS_DEFAULT)
         ids_comp = {q.strip() for q in raw_ids.split(",") if q.strip()}
-        preguntas_comp = cargar_preguntas_evaluacion(filtro_qids=ids_comp)
+        if args.preguntas_csv is not None:
+            preguntas_comp = cargar_preguntas_desde_csv(
+                args.preguntas_csv,
+                nombre_set=args.nombre_set,
+                filtro_qids=ids_comp,
+            )
+        else:
+            preguntas_comp = cargar_preguntas_evaluacion(filtro_qids=ids_comp)
         gen_base = AdaptadorRedactorGenerator(model, tokenizer, greedy=args.greedy, solo_base=True)
         gen_ft = AdaptadorRedactorGenerator(model, tokenizer, greedy=args.greedy, solo_base=False)
-        comp_path = args.output_dir / "comparativa_base_vs_finetuned.json"
+        comp_name = (
+            f"comparativa_{args.output_prefix.strip().rstrip('_')}.json"
+            if args.output_prefix.strip()
+            else "comparativa_base_vs_finetuned.json"
+        )
+        comp_path = args.output_dir / comp_name
         ejecutar_comparativa_base_vs_finetuned(
             preguntas_comp,
             corpus,

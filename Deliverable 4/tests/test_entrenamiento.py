@@ -152,7 +152,8 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
 
         codigo_total = "\n".join(fuente_completa)
         self.assertIn("Deliverable 4/scripts/entrenar_redactor.py", codigo_total)
-        self.assertIn('"huggingface-hub>=0.30,<2.0"', codigo_total)
+        self.assertIn("transformers==5.23.0", codigo_total)
+        self.assertIn("huggingface-hub==1.33.0", codigo_total)
         for flag_usado in (
             "--train-jsonl",
             "--val-jsonl",

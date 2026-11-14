@@ -37,6 +37,7 @@ DEFAULT_EVAL_OUTPUT_DIR = DELIVERABLE4_DIR / "evaluacion"
 
 MODELO_BASE_DEFAULT = "Qwen/Qwen3-4B"
 HF_ADAPTER_DEFAULT = "Pablox0333/qwen3-4b-redactor-udec-d4"
+HF_ADAPTER_REVISION_DEFAULT = "739b031acbd5feef2c49f946b94722712209bce0"
 E5_MODELO_DEFAULT = "intfloat/multilingual-e5-small"
 
 PROMPT_FILES: tuple[str, ...] = (
@@ -307,6 +308,8 @@ class AdaptadorRedactorGenerator:
         semilla_base: int = SEMILLA_BASE,
         max_tokens_por_agente: dict[str, int] | None = None,
         solo_base: bool = False,
+        verbose: bool = False,
+        step_callback: Callable[[dict[str, Any]], None] | None = None,
     ) -> None:
         self.model = model
         self.tokenizer = tokenizer
@@ -314,6 +317,8 @@ class AdaptadorRedactorGenerator:
         self.semilla_base = semilla_base
         self.max_tokens = dict(max_tokens_por_agente or MAX_TOKENS_POR_AGENTE)
         self.solo_base = solo_base
+        self.verbose = verbose
+        self.step_callback = step_callback
         self.telemetria: list[dict[str, Any]] = []
 
     def __call__(self, agente: str, prompt: str, max_new_tokens: int | None = None) -> str:
@@ -357,16 +362,28 @@ class AdaptadorRedactorGenerator:
         gen_ids = out[0][input_len:]
         salida = self.tokenizer.decode(gen_ids, skip_special_tokens=True).strip()
 
-        self.telemetria.append(
-            {
-                "agente": agente,
-                "usa_adaptador": usa_adaptador,
-                "input_tokens": input_len,
-                "output_tokens": int(len(gen_ids)),
-                "segundos": round(dt, 3),
-                "semilla": semilla,
-            }
-        )
+        registro_llamada = {
+            "agente": agente,
+            "usa_adaptador": usa_adaptador,
+            "input_tokens": input_len,
+            "output_tokens": int(len(gen_ids)),
+            "segundos": round(dt, 3),
+            "semilla": semilla,
+        }
+        self.telemetria.append(registro_llamada)
+        if self.verbose or self.step_callback is not None:
+            evento = {**registro_llamada, "paso": len(self.telemetria), "salida": salida}
+            if self.verbose:
+                etiqueta_lora = "LoRA ON" if usa_adaptador else "LoRA OFF"
+                resumen = " ".join(salida.split())
+                if len(resumen) > 320:
+                    resumen = resumen[:317] + "..."
+                print(
+                    f"  [Paso {evento['paso']:02d} | {agente.upper():11s} | {etiqueta_lora:8s} | {dt:5.2f}s] {resumen}",
+                    flush=True,
+                )
+            if self.step_callback is not None:
+                self.step_callback(evento)
         return salida
 
 
@@ -577,10 +594,14 @@ def ejecutar_comparativa_base_vs_finetuned(
 
     resultados: list[dict[str, Any]] = []
     for item in preguntas:
+        if getattr(generador_base, "verbose", False):
+            print(f"\n>>> [BASE · LoRA OFF en los 4 roles] {item['qid']}: {item['pregunta']}", flush=True)
         t0 = time.time()
         res_base = orq_base.responder(item["pregunta"])
         dt_base = round(time.time() - t0, 2)
 
+        if getattr(generador_ft, "verbose", False):
+            print(f"\n>>> [D4 FT · LoRA ON solo Redactor] {item['qid']}: {item['pregunta']}", flush=True)
         t1 = time.time()
         res_ft = orq_ft.responder(item["pregunta"])
         dt_ft = round(time.time() - t1, 2)
@@ -618,7 +639,11 @@ def ejecutar_comparativa_base_vs_finetuned(
     return resultados
 
 
-def _cargar_modelo_y_adaptador(modelo_base: str, hf_repo: str) -> tuple[Any, Any, str, str]:
+def _cargar_modelo_y_adaptador(
+    modelo_base: str,
+    hf_repo: str,
+    hf_revision: str | None = HF_ADAPTER_REVISION_DEFAULT,
+) -> tuple[Any, Any, str, str]:
     import torch
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
@@ -642,7 +667,10 @@ def _cargar_modelo_y_adaptador(modelo_base: str, hf_repo: str) -> tuple[Any, Any
         quantization_config=bnb_config,
         device_map="auto",
     )
-    model = PeftModel.from_pretrained(base, hf_repo)
+    peft_kwargs: dict[str, Any] = {}
+    if hf_revision:
+        peft_kwargs["revision"] = hf_revision
+    model = PeftModel.from_pretrained(base, hf_repo, **peft_kwargs)
     model.eval()
     return model, tokenizer, str(compute_dtype), getattr(base.config, "_commit_hash", None) or ""
 
@@ -653,6 +681,11 @@ def construir_arg_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--modelo-base", default=MODELO_BASE_DEFAULT)
     parser.add_argument("--hf-repo", default=HF_ADAPTER_DEFAULT)
+    parser.add_argument(
+        "--hf-revision",
+        default=HF_ADAPTER_REVISION_DEFAULT,
+        help="Commit SHA exacto del adaptador en Hugging Face.",
+    )
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_EVAL_OUTPUT_DIR)
     parser.add_argument(
         "--output-prefix",
@@ -699,6 +732,11 @@ def construir_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="Omite el lote principal y ejecuta únicamente --comparar-ids.",
     )
+    parser.add_argument(
+        "--verbose-pasos",
+        action="store_true",
+        help="Imprime cada mensaje intermedio de los agentes en tiempo real al ejecutarse.",
+    )
     return parser
 
 
@@ -717,6 +755,7 @@ def main(argv: list[str] | None = None) -> int:
     model, tokenizer, compute_dtype_str, base_commit = _cargar_modelo_y_adaptador(
         args.modelo_base,
         args.hf_repo,
+        hf_revision=args.hf_revision,
     )
     aislamiento = verificar_aislamiento_adaptador(model, tokenizer)
     print("Aislamiento LoRA verificado:", aislamiento)
@@ -733,6 +772,7 @@ def main(argv: list[str] | None = None) -> int:
         "modelo_base": args.modelo_base,
         "revision_modelo_base": base_commit,
         "hf_adaptador_redactor": args.hf_repo,
+        "hf_adaptador_revision": args.hf_revision,
         "agentes_base": ["enrutador", "recuperador", "verificador"],
         "agentes_finetuned": ["redactor"],
         "decoding": (
@@ -763,7 +803,11 @@ def main(argv: list[str] | None = None) -> int:
                 filtro_qids=filtro_qids,
             )
         generador = AdaptadorRedactorGenerator(
-            model, tokenizer, greedy=args.greedy, solo_base=args.solo_base
+            model,
+            tokenizer,
+            greedy=args.greedy,
+            solo_base=args.solo_base,
+            verbose=args.verbose_pasos,
         )
 
         def _log_prog(qid: str, fila: dict[str, Any]) -> None:
@@ -808,8 +852,20 @@ def main(argv: list[str] | None = None) -> int:
             )
         else:
             preguntas_comp = cargar_preguntas_evaluacion(filtro_qids=ids_comp)
-        gen_base = AdaptadorRedactorGenerator(model, tokenizer, greedy=args.greedy, solo_base=True)
-        gen_ft = AdaptadorRedactorGenerator(model, tokenizer, greedy=args.greedy, solo_base=False)
+        gen_base = AdaptadorRedactorGenerator(
+            model,
+            tokenizer,
+            greedy=args.greedy,
+            solo_base=True,
+            verbose=args.verbose_pasos,
+        )
+        gen_ft = AdaptadorRedactorGenerator(
+            model,
+            tokenizer,
+            greedy=args.greedy,
+            solo_base=False,
+            verbose=args.verbose_pasos,
+        )
         comp_name = (
             f"comparativa_{args.output_prefix.strip().rstrip('_')}.json"
             if args.output_prefix.strip()

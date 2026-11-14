@@ -63,6 +63,7 @@ DEFAULT_NUEVAS_CSV_PATH = (
     REPO_ROOT / "Deliverable 4" / "datos" / "preguntas_nuevas_20.csv"
 )
 DEFAULT_DATOS_DIR = REPO_ROOT / "Deliverable 4" / "datos"
+DEFAULT_FIRMAS_CSV_PATH = DEFAULT_DATOS_DIR / "revision_manual_firmas.csv"
 
 # Copia exacta del diccionario MODOS en Deliverable 3/Deliverable3/agentes/orquestador.py
 MODOS: dict[str, str] = {
@@ -478,11 +479,41 @@ def _stats_enteros(valores: list[int]) -> dict[str, float | int]:
     }
 
 
+def _cargar_firmas_manuales(
+    firmas_csv_path: Path = DEFAULT_FIRMAS_CSV_PATH,
+) -> dict[str, dict[str, str]]:
+    """Carga firmas humanas desde `datos/revision_manual_firmas.csv` si el archivo existe."""
+    if not firmas_csv_path.is_file():
+        return {}
+    firmas: dict[str, dict[str, str]] = {}
+    with firmas_csv_path.open("r", encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            sid = str(row.get("sample_id") or "").strip()
+            if not sid:
+                continue
+            firmas[sid] = {
+                "revisor": str(row.get("revisor") or "").strip(),
+                "fecha": str(row.get("fecha") or "").strip(),
+                "veredicto": str(row.get("veredicto") or "").strip(),
+                "observacion": str(row.get("observacion") or "").strip(),
+            }
+    return firmas
+
+
+def _formatear_celda_firma(valor: str, marcador_pendiente: str) -> str:
+    limpio = valor.strip().replace("|", "\\|")
+    if not limpio or limpio == marcador_pendiente:
+        return f"`{marcador_pendiente}`"
+    return limpio
+
+
 def generar_muestra_manual(
     registros: list[dict[str, Any]],
     specs_by_id: dict[str, dict[str, Any]],
     corpus_by_id: dict[str, str],
     output_path: Path,
+    firmas_csv_path: Path | None = None,
 ) -> list[str]:
     """Crea `MUESTRA_REVISION_MANUAL.md` con 30 casos (3 train + 2 val por bloque)."""
     seleccionados: list[dict[str, Any]] = []
@@ -521,10 +552,17 @@ def generar_muestra_manual(
         "|---|---|---|---|:---:|---|---|",
     ]
 
+    firmas = _cargar_firmas_manuales(firmas_csv_path or DEFAULT_FIRMAS_CSV_PATH)
     for i, reg in enumerate(seleccionados, start=1):
         sid = reg["id"]
+        firma = firmas.get(sid, {})
+        rev_cell = _formatear_celda_firma(firma.get("revisor", ""), "[Pendiente revisor]")
+        fecha_cell = _formatear_celda_firma(firma.get("fecha", ""), "[YYYY-MM-DD]")
+        ver_cell = _formatear_celda_firma(firma.get("veredicto", ""), "[Pendiente]")
+        obs = firma.get("observacion", "").strip().replace("|", "\\|")
+        obs_cell = f" {obs} " if obs else " "
         lineas.append(
-            f"| {i:02d} | `{sid}` | `{reg['bloque']}` / `{reg['split']}` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |"
+            f"| {i:02d} | `{sid}` | `{reg['bloque']}` / `{reg['split']}` | {rev_cell} | {fecha_cell} | {ver_cell} |{obs_cell}|"
         )
 
     lineas.extend(

@@ -337,25 +337,28 @@ FALLOS_ESTRICTOS_D4_V2: dict[str, dict[str, Any]] = {
         ),
     },
     "dificil_25:H04": {
-        "tipo": "regresion_verificador_base",
+        "tipo": "cita_glosario_y_rechazo_verificador",
         "solo_condicion_p01": False,
-        "causa_raiz": "verificador_base",
+        "causa_raiz": "redactor_y_verificador_base",
         "motivo": (
-            "En el ciclo 1 el Redactor FT acierta plazo de 6 semestres [RG-ART-049] y remite "
-            "al Reglamento Interno; el Verificador base lo rechaza 3 veces y fuerza la cita "
-            "errónea al glosario [RG-ART-003-DEF-10] omitiendo el párrafo 2 de [RG-ART-049] "
-            "sobre las exigencias al vencer dicho plazo."
+            "En el ciclo 1 el Redactor FT acierta plazo de 6 semestres [RG-ART-049] pero ya "
+            "incluye la cita [RG-ART-003-DEF-10] (patrón reforzado por 8 ejemplos del corpus); "
+            "el chequeo de citas normaliza esa referencia a RG-ART-003 (en_evidencia=false) "
+            "y el Verificador base rechaza los borradores hasta la salida final, que omite el "
+            "párrafo 2 de [RG-ART-049] sobre las exigencias al vencer dicho plazo."
         ),
     },
     "dificil_25:H06": {
-        "tipo": "regresion_verificador_base",
+        "tipo": "polaridad_invertida_y_verificador_base",
         "solo_condicion_p01": False,
-        "causa_raiz": "verificador_base",
+        "causa_raiz": "redactor_y_verificador_base",
         "motivo": (
-            "En el ciclo 1 el Redactor FT calcula bien '38 / 4 = 9,5 < 10 -> cae en Baja Académica "
-            "[RI-FI-ART-014]'; el Verificador base objeta falsamente 'El cálculo de 38 / 4 = 9,5 es "
-            "incorrecto' y empuja un ciclo 3 con polaridad invertida ('No, al aprobar 38 créditos... "
-            "incumple el criterio') y sin citar [RG-ART-028]."
+            "En el ciclo 1 el Redactor FT calcula bien '38 / 4 = 9,5 < 10 -> cae en Baja "
+            "Académica [RI-FI-ART-014]', pero ya arranca con polaridad contradictoria "
+            "('Respuesta: No, ...'); luego el Verificador base agrava el fallo al objetar "
+            "falsamente 'El cálculo de 38 / 4 = 9,5 es incorrecto' y empujar el ciclo 2 a "
+            "abstención y el ciclo 3 a 'No, al aprobar 38 créditos... incumple el criterio' "
+            "sin citar [RG-ART-028]."
         ),
     },
     "dificil_25:H12": {
@@ -370,14 +373,15 @@ FALLOS_ESTRICTOS_D4_V2: dict[str, dict[str, Any]] = {
         ),
     },
     "dificil_25:H21": {
-        "tipo": "regresion_verificador_base",
+        "tipo": "respuesta_parcial_y_verificador_base",
         "solo_condicion_p01": False,
-        "causa_raiz": "verificador_base",
+        "causa_raiz": "redactor_y_verificador_base",
         "motivo": (
-            "En el ciclo 1 el Redactor FT explica el mínimo de 8 créditos de [RI-FI-ART-008], "
-            "pero el Verificador base rechaza exigiendo responder por el máximo y empuja los "
-            "ciclos 2 y 3 hacia una abstención pura ('No existe información'), omitiendo corregir "
-            "la premisa falsa del tope."
+            "Caso mixto/discutible: en el ciclo 1 el Redactor FT responde el mínimo de 8 créditos "
+            "de [RI-FI-ART-008] sin explicitar aún que el artículo no fija tope máximo; tras el "
+            "rechazo del Verificador base exigiendo responder por el máximo, los ciclos 2 y 3 "
+            "se limitan a 'No existe información sobre el máximo' sin reportar el mínimo de 8 "
+            "ni corregir la premisa falsa del tope."
         ),
     },
     "dificil_25:H22": {
@@ -968,9 +972,10 @@ def _construir_casos_fallo(
     return {
         "descripcion": descripcion
         or (
-            "Trazas completas de los fallos estrictos de Deliverable 4 v2 (A100 bf16) bajo "
-            "LEEME_PAUTA.md, destacando H03 (CAL-2026-S2-02 fuera del top-6) y H04/H06/H21/H22 "
-            "(borradores válidos en ciclo 1 degradados por el Verificador base en ciclos 2–3)."
+            "Trazas completas de los 15 fallos estrictos de Deliverable 4 v2 (A100 bf16) bajo "
+            "LEEME_PAUTA.md, destacando H03 (CAL-2026-S2-02 fuera del top-6), degradación pura "
+            "del Verificador base (H22; además N05 en casos_revision_nuevas20_ft_D4.json) y fallos "
+            "mixtos Redactor + Verificador (H04, H06, H21)."
         ),
         "total_casos_documentados": len(casos),
         "casos": casos,
@@ -1424,8 +1429,9 @@ _REGISTRO_AUDITORIA_75: dict[str, dict[str, Any]] = {
         "errores_d3_resueltos_nucleo": [],
         "descripcion_fallos": (
             "Trazas completas de los 15 fallos estrictos de Deliverable 4 v2 (A100 bf16, 60/75) "
-            "bajo LEEME_PAUTA.md, destacando H03 (CAL-2026-S2-02 fuera del top-6) y H04/H06/H21/H22 "
-            "(borradores válidos en ciclo 1 degradados por el Verificador base en ciclos 2–3)."
+            "bajo LEEME_PAUTA.md, destacando H03 (CAL-2026-S2-02 fuera del top-6), degradación pura "
+            "del Verificador base (H22; además N05 en casos_revision_nuevas20_ft_D4.json) y fallos "
+            "mixtos Redactor + Verificador (H04, H06, H21)."
         ),
     },
 }
@@ -1561,6 +1567,7 @@ def generar_auditoria(
             "control_global_75_ok": (ctrl_cong_ok + ctrl_dif_ok) if ctrl_eval > 0 else None,
             "ft_gana_a_control_qids": solo_ft_gana,
             "control_gana_a_ft_qids": solo_base_gana,
+            "balance_neto_ft_menos_control": (len(solo_ft_gana) - len(solo_base_gana)) if ctrl_eval > 0 else None,
         }
 
     auditoria = {

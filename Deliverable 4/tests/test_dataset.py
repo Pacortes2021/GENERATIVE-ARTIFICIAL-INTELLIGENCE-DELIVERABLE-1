@@ -224,6 +224,36 @@ class TestDatasetRedactorD4(unittest.TestCase):
                     (tmp_dir / fname).read_bytes(),
                 )
 
+    def test_firmas_manuales_csv_y_aislamiento_tmp_dir(self) -> None:
+        registros = self.train_rows + self.val_rows
+        specs_by_id = {s["id"]: s for s in cd.todas_las_especificaciones()}
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_dir = Path(tmp)
+            firmas_csv = tmp_dir / "revision_manual_firmas.csv"
+            firmas_csv.write_bytes(
+                (
+                    "sample_id,revisor,fecha,veredicto,observacion\n"
+                    "B1-T01,Álvaro Contreras,2026-11-14,Aprobado,\n"
+                    "B1-T18,Álvaro Contreras,2026-11-14,Observado,Cita RG-ART-011 junto a RI-FI-ART-033\n"
+                ).encode("utf-8")
+            )
+            out_md = tmp_dir / "MUESTRA_REVISION_MANUAL.md"
+            ids = cd.generar_muestra_manual(
+                registros,
+                specs_by_id,
+                self.corpus_by_id,
+                out_md,
+                firmas_csv_path=firmas_csv,
+            )
+            self.assertEqual(len(ids), 30)
+            txt = out_md.read_text(encoding="utf-8")
+            self.assertIn("| 01 | `B1-T01` | `citas_cruce` / `train` | Álvaro Contreras | 2026-11-14 | Aprobado | |", txt)
+            self.assertIn(
+                "| 02 | `B1-T18` | `citas_cruce` / `train` | Álvaro Contreras | 2026-11-14 | Observado | Cita RG-ART-011 junto a RI-FI-ART-033 |",
+                txt,
+            )
+            self.assertIn("| 03 | `B1-T35` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |", txt)
+
 
 if __name__ == "__main__":
     unittest.main()

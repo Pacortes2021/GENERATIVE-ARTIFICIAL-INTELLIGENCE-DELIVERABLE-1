@@ -159,11 +159,20 @@ class TestEvaluarD4(unittest.TestCase):
             ed.verificar_aislamiento_adaptador(model, tok)
         model.logits_identicos = False
 
-        generador = ed.AdaptadorRedactorGenerator(model, tok, greedy=True, solo_base=False)
+        eventos_vivo: list[dict] = []
+        generador = ed.AdaptadorRedactorGenerator(
+            model,
+            tok,
+            greedy=True,
+            solo_base=False,
+            step_callback=eventos_vivo.append,
+        )
         orq = ed.crear_orquestador_d4(corpus, generador)
         res = orq.responder("¿Cuál es la nota mínima para aprobar una asignatura?")
 
         self.assertEqual(res["ciclos"], 2)
+        self.assertEqual(len(eventos_vivo), len(generador.telemetria))
+        self.assertTrue(any(e["agente"] == "redactor" and e["usa_adaptador"] for e in eventos_vivo))
         self.assertIn("[LORA]", res["respuesta"])
         self.assertFalse(model.adapter_disabled)
 
@@ -254,9 +263,12 @@ class TestEvaluarD4(unittest.TestCase):
         codigo = "\n".join(fuentes)
         self.assertIn('"evaluar_d4.py"', codigo)
         self.assertIn("Pablox0333/qwen3-4b-redactor-udec-d4", codigo)
-        self.assertIn('"huggingface-hub>=0.30,<2.0"', codigo)
+        self.assertIn("739b031acbd5feef2c49f946b94722712209bce0", codigo)
+        self.assertIn("transformers==5.23.0", codigo)
+        self.assertIn("huggingface-hub==1.33.0", codigo)
         for flag in (
             "--hf-repo",
+            "--hf-revision",
             "--output-dir",
             "--qids",
             "--solo-comparativa",
@@ -366,9 +378,23 @@ class TestDemoVideoD4(unittest.TestCase):
 
         nb = json.loads(NOTEBOOK_VIDEO_PATH.read_text(encoding="utf-8"))
         self.assertEqual(nb.get("nbformat"), 4)
-        src_total = "\n".join("".join(c.get("source", [])) for c in nb.get("cells", []))
+        src_celdas = []
+        for idx, celda in enumerate(nb.get("cells", [])):
+            if celda.get("cell_type") != "code":
+                continue
+            src = "".join(celda.get("source", []))
+            src_celdas.append(src)
+            py_lines = [l for l in src.splitlines() if not l.lstrip().startswith("%")]
+            ast.parse("\n".join(py_lines), filename=f"video_cell_{idx}")
+        src_total = "\n".join(src_celdas)
         self.assertIn("mostrar_demo_d4", src_total)
         self.assertIn("dificil_25:H07", src_total)
+        self.assertIn("dificil_25:H06", src_total)
+        self.assertIn("dificil_25:H03", src_total)
+        self.assertIn("verbose=True", src_total)
+        self.assertIn("HF_ADAPTER_REVISION_DEFAULT", src_total)
+        self.assertIn("transformers==5.23.0", src_total)
+        self.assertIn("huggingface-hub==1.33.0", src_total)
 
     def test_preguntas_nuevas_20_control_solo_base_y_auditoria_general(self) -> None:
         nuevas_csv = DELIVERABLE4_DIR / "datos" / "preguntas_nuevas_20.csv"

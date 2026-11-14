@@ -10,12 +10,12 @@
 
 ## Modo obligatorio de grabación — Vivo en Google Colab GPU (≤ 3 min)
 
-1. Abrir [`Deliverable 4/D4_colab_video_demo.ipynb`](../D4_colab_video_demo.ipynb) en Google Colab con GPU (`T4`, `L4` o `A100`).
-2. **Antes de iniciar la grabación:** ejecutar las celdas de la **Sección 1** (instalación, clonado de `deliverable-4`, carga única de `Qwen/Qwen3-4B`, E5 y el adaptador v2 `Pablox0333/qwen3-4b-redactor-udec-d4`, más chequeo de aislamiento `max|Δlogits| = 13,56 > 0` en A100 bf16).
-3. **Al iniciar la grabación de pantalla:** ejecutar en vivo la **Sección 2** sobre **`dificil_25:H07`** (corre Base `LoRA OFF` vs FT `Redactor LoRA ON` en directo). Para mantener el video **≤ 3 min**, acelerar en edición **solo** las esperas de inferencia con un rótulo explícito en pantalla (por ejemplo, `[x6 velocidad durante inferencia]`) sin recortar nunca los mensajes intermedios desplegados.
+1. Abrir [`Deliverable 4/D4_colab_video_demo.ipynb`](../D4_colab_video_demo.ipynb) en Google Colab con **GPU A100 (`bf16`)** para reproducir exactamente los tiempos (`173,5 s` Base vs `89,0 s` FT) y la configuración oficial `greedy=False` / `semilla=2026` (también funciona en `T4`/`L4`, con mayor tiempo de espera y posible variación menor por `float16`).
+2. **Antes de iniciar la grabación:** ejecutar las celdas de la **Sección 1** (dependencias fijadas, clonado de `deliverable-4` con respaldo `main`, carga única de `Qwen/Qwen3-4B`, E5 y el adaptador v2 `Pablox0333/qwen3-4b-redactor-udec-d4` fijado en `739b031`, más chequeo de aislamiento `max|Δlogits| = 13,56 > 0` en A100 `bf16`).
+3. **Al iniciar la grabación de pantalla:** ejecutar en vivo la **Sección 2** sobre **`dificil_25:H07`** (corre Base `LoRA OFF` vs FT `Redactor LoRA ON` con **`verbose=True`**, imprimiendo en tiempo real cada paso y mensaje intermedio apenas responde cada agente, más la tarjeta HTML comparativa final). Para mantener el video **≤ 3 min**, acelerar en edición **solo** las esperas de inferencia con un rótulo explícito en pantalla (por ejemplo, `[x6 velocidad durante inferencia]`) sin recortar nunca los mensajes intermedios desplegados.
 4. Cerrar mostrando la **Sección 3** (casos de fallo reales **`dificil_25:H06`** y **`dificil_25:H03`**) y el resumen en [`documento/main.pdf`](../documento/main.pdf).
 
-> Nota: `video/mostrar_demo_d4.py` también ofrece modo `--live` desde terminal (`python3 video/mostrar_demo_d4.py --live --qid dificil_25:H07`); el modo offline solo debe usarse para inspeccionar fallos auditados (`H06`, `H03`), **nunca** para reemplazar la corrida en vivo exigida por la pauta.
+> Nota: `video/mostrar_demo_d4.py` también ofrece modo `--live` desde terminal (`python3 video/mostrar_demo_d4.py --live --qid dificil_25:H07`, ya con `--verbose-pasos` activado); el modo offline solo debe usarse para inspeccionar fallos auditados (`H06`, `H03`), **nunca** para reemplazar la corrida en vivo exigida por la pauta.
 
 ---
 
@@ -39,12 +39,12 @@
 ### `[1:40 – 2:10]` Comparación cuantitativa y análisis crítico (Sección 5 de `main.pdf`)
 - **En pantalla:** Tabla comparativa v2 y desglose en [`documento/main.pdf`](../documento/main.pdf).
 - **Qué decir:**
-  - Mostrar los resultados completos v2 en A100 (`bf16`): en el benchmark oficial de 75 preguntas, `FT v2` corrige `5/9` fallos de D3 (`P13, P24, H07, H14, H18`), recupera `6` errores de v1 (`H19` incluido) y sube `No aplica` a `37/75`, alcanzando **`60/75` (`80,0%`; `62/75` núcleo)** con **`8,64` llamadas/pregunta (`-8,86%` vs D3)**, frente a **`62/75` (`82,7%`)** del **Control Base completo (`--solo-base`)** en idéntico entorno (`4/6 vs 2/6` en la muestra pareada).
-  - Mostrar también el set ciego **`preguntas_nuevas_20.csv` (`0%` solapamiento de artículos):** `FT v2` obtiene **`10/20` (`50,0%`, `25,07 min`)** frente a **`11/20` (`55,0%`, `32,84 min`)** del Control Base (`-23,7%` latencia y `2/3 vs 1/3` en la comparativa pareada).
+  - Mostrar los resultados completos v2 en A100 (`bf16`): en el benchmark oficial de 75 preguntas, `FT v2` corrige `5/9` fallos de D3 (`P13, P24, H07, H14, H18`), recupera `6` errores de v1 (`H19` incluido) y sube `No aplica` a `37/75`, alcanzando **`60/75` (`80,0%`; `62/75` núcleo)** con **`8,64` llamadas/pregunta (`-8,86%` vs D3)**. Frente al **Control Base (`--solo-base`, `62/75`, `82,7%`)** en idéntico entorno, FT gana en `6` preguntas y Control Base en `8` (`balance -2`), mientras en la submuestra pareada de `6` casos diagnósticos D3 marca `4/6 vs 2/6`.
+  - Mostrar también el set ciego **`preguntas_nuevas_20.csv` (`0%` solapamiento de artículos):** `FT v2` obtiene **`10/20` (`50,0%`, `25,07 min`)** frente a **`11/20` (`55,0%`, `32,84 min`)** del Control Base (`-16,5%` llamadas, `-23,7%` latencia y `2/3 vs 1/3` en divergencias).
 
 ### `[2:10 – 2:45]` Transparencia: dónde falla o lo frena la arquitectura (`H06`, `H03`) y cierre
-- **En pantalla:** Traza de `dificil_25:H06` (Sección 3 de `D4_colab_video_demo.ipynb`) y Sección 6 de `main.pdf`.
+- **En pantalla:** Trazas de `dificil_25:H06` y `dificil_25:H03` (Sección 3 de `D4_colab_video_demo.ipynb`) y Sección 6 de `main.pdf`.
 - **Qué decir:**
-  - Mostrar **`H06`**: en ciclo 1, `Redactor FT v2` calcula bien `38 / 4 = 9,5 < 10 -> cae en Baja Académica [RI-FI-ART-014]`; sin embargo, el `Verificador base [LoRA OFF]` rechaza falsamente el cálculo (`"38 / 4 = 9,5 es incorrecto"`) y empuja el ciclo 3 hacia `"No, ... incumple el criterio..."` (lo mismo ocurre en **`H04, H21, H22` y `N05`**: `4` de las `7` respuestas rechazadas en FT75 eran válidas, y `12/68` aprobaciones fueron incorrectas).
-  - Señalar además el cuello de botella del **`Recuperador`** (`H03`: `CAL-2026-S2-02` sigue fuera del `top-6`) y del **`Enrutador`** en `N12`/`N19` (`RI-FI` excluye `RG`), más errores puntuales de aritmética en fechas (`N06, N07`) y `Condiciones: No aplica` omitiendo excepciones (`P36, H25`).
-  - Cerrar mostrando el adaptador público en Hugging Face (`Pablox0333/qwen3-4b-redactor-udec-d4`), el repositorio GitHub y confirmando enlace abierto del video.
+  - Mostrar **`H06`**: en ciclo 1, `Redactor FT v2` calcula bien `38 / 4 = 9,5 < 10 -> cae en Baja Académica [RI-FI-ART-014]`, **pero ya parte con polaridad contradictoria (`"Respuesta: No, ..."`)**; luego, el `Verificador base [LoRA OFF]` agrava el error rechazando falsamente la división `38 / 4 = 9,5` y empujando ciclo 2 a abstención y ciclo 3 a `"No, ... incumple el criterio"`. Señalar también los **2 casos puros** donde el `Verificador` base degradó borradores correctos (**`H22`** y **`N05`**, además de **`H21`** mixto/discutible; en las 75, `12/68` aprobaciones fallaron).
+  - Señalar además el cuello de botella del **`Recuperador`** (**`H03`**: `CAL-2026-S2-02` sigue fuera del `top-6`) y del **`Enrutador`** en `N12`/`N19` (`RI-FI` excluye `RG`), más errores residuales de aritmética en fechas (`N06, N07`) y `Condiciones: No aplica` omitiendo excepciones (`P36, H25`).
+  - Cerrar mostrando el adaptador público en Hugging Face (`Pablox0333/qwen3-4b-redactor-udec-d4`, revisión `739b031`), el repositorio GitHub y confirmando enlace abierto del video.

@@ -255,6 +255,7 @@ def ejecutar_comparativa_en_vivo(
         ",".join(qids),
         "--output-dir",
         str(output_dir),
+        "--verbose-pasos",
     ]
     if greedy:
         cmd.append("--greedy")

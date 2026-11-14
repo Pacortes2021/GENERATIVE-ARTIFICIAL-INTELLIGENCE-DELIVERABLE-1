@@ -160,7 +160,8 @@
       "dificil_25:H02",
       "dificil_25:H04",
       "dificil_25:H21"
-    ]
+    ],
+    "balance_neto_ft_menos_control": -2
   },
   "telemetria_y_aislamiento": {
     "total_consultas": 75,
@@ -1611,10 +1612,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "regresion_verificador_base",
-      "causa_raiz": "verificador_base",
+      "tipo_fallo": "cita_glosario_y_rechazo_verificador",
+      "causa_raiz": "redactor_y_verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "En el ciclo 1 el Redactor FT acierta plazo de 6 semestres [RG-ART-049] y remite al Reglamento Interno; el Verificador base lo rechaza 3 veces y fuerza la cita errónea al glosario [RG-ART-003-DEF-10] omitiendo el párrafo 2 de [RG-ART-049] sobre las exigencias al vencer dicho plazo."
+      "motivo_auditoria": "En el ciclo 1 el Redactor FT acierta plazo de 6 semestres [RG-ART-049] pero ya incluye la cita [RG-ART-003-DEF-10] (patrón reforzado por 8 ejemplos del corpus); el chequeo de citas normaliza esa referencia a RG-ART-003 (en_evidencia=false) y el Verificador base rechaza los borradores hasta la salida final, que omite el párrafo 2 de [RG-ART-049] sobre las exigencias al vencer dicho plazo."
     },
     {
       "qid": "dificil_25:H05",
@@ -1657,10 +1658,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "regresion_verificador_base",
-      "causa_raiz": "verificador_base",
+      "tipo_fallo": "polaridad_invertida_y_verificador_base",
+      "causa_raiz": "redactor_y_verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "En el ciclo 1 el Redactor FT calcula bien '38 / 4 = 9,5 < 10 -> cae en Baja Académica [RI-FI-ART-014]'; el Verificador base objeta falsamente 'El cálculo de 38 / 4 = 9,5 es incorrecto' y empuja un ciclo 3 con polaridad invertida ('No, al aprobar 38 créditos... incumple el criterio') y sin citar [RG-ART-028]."
+      "motivo_auditoria": "En el ciclo 1 el Redactor FT calcula bien '38 / 4 = 9,5 < 10 -> cae en Baja Académica [RI-FI-ART-014]', pero ya arranca con polaridad contradictoria ('Respuesta: No, ...'); luego el Verificador base agrava el fallo al objetar falsamente 'El cálculo de 38 / 4 = 9,5 es incorrecto' y empujar el ciclo 2 a abstención y el ciclo 3 a 'No, al aprobar 38 créditos... incumple el criterio' sin citar [RG-ART-028]."
     },
     {
       "qid": "dificil_25:H07",
@@ -2005,10 +2006,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "regresion_verificador_base",
-      "causa_raiz": "verificador_base",
+      "tipo_fallo": "respuesta_parcial_y_verificador_base",
+      "causa_raiz": "redactor_y_verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "En el ciclo 1 el Redactor FT explica el mínimo de 8 créditos de [RI-FI-ART-008], pero el Verificador base rechaza exigiendo responder por el máximo y empuja los ciclos 2 y 3 hacia una abstención pura ('No existe información'), omitiendo corregir la premisa falsa del tope."
+      "motivo_auditoria": "Caso mixto/discutible: en el ciclo 1 el Redactor FT responde el mínimo de 8 créditos de [RI-FI-ART-008] sin explicitar aún que el artículo no fija tope máximo; tras el rechazo del Verificador base exigiendo responder por el máximo, los ciclos 2 y 3 se limitan a 'No existe información sobre el máximo' sin reportar el mínimo de 8 ni corregir la premisa falsa del tope."
     },
     {
       "qid": "dificil_25:H22",

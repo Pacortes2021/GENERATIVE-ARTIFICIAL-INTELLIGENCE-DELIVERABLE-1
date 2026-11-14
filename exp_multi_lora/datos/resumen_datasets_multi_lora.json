@@ -1,0 +1,81 @@
+{
+  "version": "exp_multi_lora_v1",
+  "seed": 202604,
+  "agentes": {
+    "enrutador": {
+      "train": 210,
+      "val": 36,
+      "total": 246,
+      "antifuga": {
+        "agente": "enrutador",
+        "total": 246,
+        "unidades_bloqueadas_solapadas": 0,
+        "menciones_qid_eval": 0,
+        "solapamiento_train_val": 0,
+        "unidades_distintas_usadas": 97
+      },
+      "distribucion": {
+        "splits": {
+          "train": 210,
+          "val": 36
+        },
+        "tipos": {
+          "cruce": 58,
+          "factual": 35,
+          "condicional": 72,
+          "premisa_falsa": 28,
+          "numerica": 53
+        }
+      }
+    },
+    "recuperador": {
+      "train": 230,
+      "val": 39,
+      "total": 269,
+      "antifuga": {
+        "agente": "recuperador",
+        "total": 269,
+        "unidades_bloqueadas_solapadas": 0,
+        "menciones_qid_eval": 0,
+        "solapamiento_train_val": 0,
+        "unidades_distintas_usadas": 109
+      },
+      "distribucion": {
+        "splits": {
+          "train": 230,
+          "val": 39
+        },
+        "acciones": {
+          "suficiente": 88,
+          "buscar": 111,
+          "traer": 61,
+          "existe": 9
+        }
+      }
+    },
+    "verificador": {
+      "train": 305,
+      "val": 68,
+      "total": 373,
+      "antifuga": {
+        "agente": "verificador",
+        "total": 373,
+        "unidades_bloqueadas_solapadas": 0,
+        "menciones_qid_eval": 0,
+        "solapamiento_train_val": 0,
+        "unidades_distintas_usadas": 116
+      },
+      "distribucion": {
+        "splits": {
+          "train": 305,
+          "val": 68
+        },
+        "destinos": {
+          "fin": 155,
+          "redactor": 155,
+          "recuperador": 63
+        }
+      }
+    }
+  }
+}

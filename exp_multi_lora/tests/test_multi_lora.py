@@ -611,6 +611,7 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
         )
         self.assertEqual(resumen_global["nuevas_20"]["multi_lora_4_agentes"]["aciertos"], 14)
         self.assertEqual(resumen_global["nuevas_20"]["ablacion_red_ver"]["aciertos"], 9)
+        self.assertEqual(resumen_global["nuevas_20"]["multi_lora_sin_verificador"]["aciertos"], 10)
         self.assertEqual(resumen_global["benchmark_75_d3"]["multi_lora_4_agentes"]["aciertos"], 58)
         self.assertEqual(
             resumen_global["benchmark_75_d3"]["multi_lora_4_agentes"]["por_set"]["congelado_50"]["aciertos_estrictos"],
@@ -620,7 +621,17 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
             resumen_global["benchmark_75_d3"]["multi_lora_4_agentes"]["por_set"]["dificil_25"]["aciertos_estrictos"],
             18,
         )
+        self.assertEqual(resumen_global["benchmark_75_d3"]["multi_lora_sin_verificador"]["aciertos"], 64)
+        self.assertEqual(
+            resumen_global["benchmark_75_d3"]["multi_lora_sin_verificador"]["por_set"]["congelado_50"]["aciertos_estrictos"],
+            46,
+        )
+        self.assertEqual(
+            resumen_global["benchmark_75_d3"]["multi_lora_sin_verificador"]["por_set"]["dificil_25"]["aciertos_estrictos"],
+            18,
+        )
         self.assertEqual(resumen_global["consolidado_95_preguntas"]["multi_lora_4_agentes"]["aciertos"], 72)
+        self.assertEqual(resumen_global["consolidado_95_preguntas"]["multi_lora_sin_verificador"]["aciertos"], 74)
 
         esperados = [
             (
@@ -631,6 +642,7 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
                 "telemetria_multi_lora_nuevas20.json",
                 "configuracion_multi_lora_nuevas20.json",
                 14,
+                4,
             ),
             (
                 "ablacion_red_ver_nuevas20",
@@ -640,6 +652,7 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
                 "telemetria_ablacion_red_ver_nuevas20.json",
                 "configuracion_ablacion_red_ver_nuevas20.json",
                 9,
+                4,
             ),
             (
                 "multi_lora_75",
@@ -649,11 +662,32 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
                 "telemetria_multi_lora_75.json",
                 "configuracion_multi_lora_75.json",
                 58,
+                4,
+            ),
+            (
+                "sin_verificador_nuevas20",
+                "resultados_sin_verificador_nuevas20.csv",
+                "resultados_sin_verificador_nuevas20_auditados.csv",
+                "auditoria_sin_verificador_nuevas20.json",
+                "telemetria_sin_verificador_nuevas20.json",
+                "configuracion_sin_verificador_nuevas20.json",
+                10,
+                3,
+            ),
+            (
+                "sin_verificador_75",
+                "resultados_sin_verificador_75.csv",
+                "resultados_sin_verificador_75_auditados.csv",
+                "auditoria_sin_verificador_75.json",
+                "telemetria_sin_verificador_75.json",
+                "configuracion_sin_verificador_75.json",
+                64,
+                3,
             ),
         ]
         cfg_d4 = json.loads((D4_DIR / "evaluacion" / "configuracion_evaluacion.json").read_text(encoding="utf-8"))
 
-        for nombre, raw_csv, aud_csv, aud_json, tel_json, cfg_json, ok_esperados in esperados:
+        for nombre, raw_csv, aud_csv, aud_json, tel_json, cfg_json, ok_esperados, n_adaptadores in esperados:
             self.assertEqual(gam.sha256_archivo(eval_dir / raw_csv), gam.SHA256_CRUDOS[raw_csv])
             with (eval_dir / aud_csv).open("r", encoding="utf-8", newline="") as f:
                 filas = list(csv.DictReader(f))
@@ -667,8 +701,11 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
 
             cfg = json.loads((eval_dir / cfg_json).read_text(encoding="utf-8"))
             self.assertEqual(cfg["prompts_sha256"], cfg_d4["prompts_sha256"])
-            self.assertEqual(len(cfg["aislamiento_multi_lora"]["max_abs_diff_vs_base"]), 4)
+            self.assertEqual(len(cfg["aislamiento_multi_lora"]["max_abs_diff_vs_base"]), n_adaptadores)
             self.assertTrue(all(v > 0 for v in cfg["aislamiento_multi_lora"]["max_abs_diff_vs_base"].values()))
+            if n_adaptadores == 3:
+                self.assertEqual(cfg["roles_con_lora"], ["enrutador", "recuperador", "redactor"])
+                self.assertEqual(aud["configuracion_runtime"]["roles_en_base"], ["verificador"])
 
             res_rc = rc.resumir_corrida(nombre, eval_dir / aud_csv, eval_dir / tel_json)
             self.assertEqual(res_rc["correctos"], ok_esperados)
@@ -679,6 +716,8 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
             "multi_lora_nuevas20",
             "ablacion_red_ver_nuevas20",
             "multi_lora_75",
+            "sin_verificador_nuevas20",
+            "sin_verificador_75",
         )
         with tempfile.TemporaryDirectory() as tmp:
             tmp_eval = Path(tmp) / "evaluacion"
@@ -702,9 +741,13 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
                 "auditoria_multi_lora_nuevas20.json",
                 "auditoria_ablacion_red_ver_nuevas20.json",
                 "auditoria_multi_lora_75.json",
+                "auditoria_sin_verificador_nuevas20.json",
+                "auditoria_sin_verificador_75.json",
                 "resultados_multi_lora_nuevas20_auditados.csv",
                 "resultados_ablacion_red_ver_nuevas20_auditados.csv",
                 "resultados_multi_lora_75_auditados.csv",
+                "resultados_sin_verificador_nuevas20_auditados.csv",
+                "resultados_sin_verificador_75_auditados.csv",
                 "resumen_comparativo_global.json",
             ):
                 self.assertEqual(

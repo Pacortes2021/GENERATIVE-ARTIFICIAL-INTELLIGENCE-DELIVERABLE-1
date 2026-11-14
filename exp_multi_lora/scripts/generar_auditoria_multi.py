@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
-"""Auditoría estricta y determinista de las evaluaciones Multi-LoRA y Ablación Red+Ver.
+"""Auditoría estricta y determinista de las evaluaciones Multi-LoRA y ablaciones.
 
 Replica exactamente la metodología de ``Deliverable 4/scripts/generar_auditoria_d4.py``
 bajo las reglas de ``Deliverable 3/paquete_25_dificiles/LEEME_PAUTA.md`` (incluyendo
 Regla 2 sobre excepciones y Regla 3 / precedente P01 sobre atribuciones en Condiciones):
 
-1. Valida la integridad SHA-256 de los tres CSV crudos emitidos por Colab A100.
+1. Valida la integridad SHA-256 de los cinco CSV crudos emitidos por Colab A100.
 2. Verifica cada cita contra ``corpus.json`` y contra ``fuentes_traidas`` (evidencia).
 3. Aplica los veredictos auditados pregunta por pregunta para:
-   - ``multi_lora_nuevas20`` (20 preguntas nuevas)
-   - ``ablacion_red_ver_nuevas20`` (20 preguntas nuevas)
-   - ``multi_lora_75`` (``congelado_50`` + ``dificil_25`` = 75 preguntas)
+   - ``multi_lora_nuevas20`` (20 preguntas nuevas, 4 LoRAs)
+   - ``ablacion_red_ver_nuevas20`` (20 preguntas nuevas, Red+Ver LoRA)
+   - ``multi_lora_75`` (``congelado_50`` + ``dificil_25`` = 75 preguntas, 4 LoRAs)
+   - ``sin_verificador_nuevas20`` (20 preguntas nuevas, 3 LoRAs sin Verificador)
+   - ``sin_verificador_75`` (75 preguntas D3, 3 LoRAs sin Verificador)
 4. Emite los ``resultados_*_auditados.csv``, ``auditoria_*.json`` y
    ``resumen_comparativo_global.json`` consolidando Control Base D4, Solo Redactor D4 v2,
-   Ablación Red+Ver y Multi-LoRA (4 agentes).
+   Ablación Red+Ver, 3-LoRA Sin Verificador y Multi-LoRA (4 agentes).
 """
 from __future__ import annotations
 
@@ -48,6 +50,12 @@ SHA256_CRUDOS: dict[str, str] = {
     ),
     "resultados_multi_lora_75.csv": (
         "a47da7a66a1fd1ccdf1d0d29c5b6ceb1ef25c04d109caa391465cc56ff947459"
+    ),
+    "resultados_sin_verificador_nuevas20.csv": (
+        "2376c5b48e4c153e7875df8e7e78fb9918cde923af0e4ce564f13e182bd48536"
+    ),
+    "resultados_sin_verificador_75.csv": (
+        "c2c05f5f65e1646135710266bd5e5f97111f3bc8a680be98208e0ab969d8c6d6"
     ),
 }
 
@@ -399,6 +407,229 @@ VEREDICTOS_MULTI_LORA_75: dict[tuple[str, str], dict[str, Any]] = {
 }
 
 
+VEREDICTOS_SIN_VERIFICADOR_NUEVAS20: dict[tuple[str, str], dict[str, Any]] = {
+    ("nuevas_20", "N01"): _fallo(
+        "respuesta_incompleta_regla_5",
+        "redactor",
+        "Omite 'los créditos' al responder qué deben establecer los programas de asignaturas según [RG-ART-017] (Regla 5; mismo fallo que en 4-LoRA).",
+    ),
+    ("nuevas_20", "N02"): _ok(),
+    ("nuevas_20", "N03"): _ok(),
+    ("nuevas_20", "N04"): _ok(),
+    ("nuevas_20", "N05"): _fallo(
+        "bucle_verificador_regla_3",
+        "verificador",
+        "Ciclo 2 respondía exactamente que el Art. 6° RI-FI no fija puntaje mínimo [RI-FI-ART-006], pero el Verificador base la rechaza exigiendo citar otro artículo; en ciclo 3 el Redactor atribuye erróneamente '4,5 ... para otras Facultades [RI-FI-ART-017]' a estudiantes del Ingreso Común (Regla 3 / P01).",
+    ),
+    ("nuevas_20", "N06"): _fallo(
+        "alucinacion_condicion_p01",
+        "redactor",
+        "Acierta fechas [CAL-2026-S1-08]/[CAL-2026-S2-07] y suma 4 días, pero Condiciones cita [CAL-2026-S2-04] (Término de Clases: 11 de diciembre) dentro de fechas de feriados y evaluaciones de recuperación (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("nuevas_20", "N07"): _fallo(
+        "error_aritmetico_fechas",
+        "redactor",
+        "Calcula erróneamente 134 días corridos entre el 11 de mayo y el 14 de septiembre (en lugar de 126) y escribe '14 al 14' para septiembre.",
+    ),
+    ("nuevas_20", "N08"): _ok(
+        "Acierta requisitos en [RG-ART-046] y caracteriza bien asignaturas complementarias con [RG-ART-003-DEF-09] pese a 2 rechazos falsos previos del Verificador base."
+    ),
+    ("nuevas_20", "N09"): _ok(),
+    ("nuevas_20", "N10"): _fallo(
+        "mezcla_normativa_p01",
+        "redactor",
+        "Atribuye a [RG-ART-047] reglas de [RG-ART-044] sobre reingreso a Primer Año y mezcla cambio de carrera [RG-ART-054] (Regla 3 / P01; mismo fallo que en 4-LoRA).",
+    ),
+    ("nuevas_20", "N11"): _fallo(
+        "regresion_verificador_omision_requisito",
+        "verificador",
+        "Ciclo 1 incluía todos los elementos de [RG-ART-057] (idéntico a 4-LoRA=1); tras rechazo falso del Verificador base, ciclo 2 afirma 'en ese caso... No establece otros requisitos de acceso' omitiendo ser aceptado en un programa de postgrado (Reglas 2 y 5).",
+    ),
+    ("nuevas_20", "N12"): _ok(
+        "Enrutador LoRA filtra ['RG'], recupera [RG-ART-036] y [RG-ART-059] y responde exactamente Dirección de Servicios Estudiantiles."
+    ),
+    ("nuevas_20", "N13"): _ok(),
+    ("nuevas_20", "N14"): _ok(),
+    ("nuevas_20", "N15"): _ok(),
+    ("nuevas_20", "N16"): _fallo(
+        "recuperacion_incompleta_regla_8",
+        "recuperador",
+        "Recuperador LoRA deja fuera [CAL-2026-S1-07], [CAL-2026-S1-08] y [CAL-2026-S2-07]; provoca abstención falsa para mayo y omite el 21–22 de septiembre (Reglas 5 y 8).",
+    ),
+    ("nuevas_20", "N17"): _ok(),
+    ("nuevas_20", "N18"): _fallo(
+        "recuperacion_incompleta_regla_5",
+        "recuperador",
+        "Recuperador LoRA no trae [RG-TRANS-002] (y al ejecutar traer(doc='RG', n=2) obtiene [RG-ART-002] ordinario), omitiendo la adecuación en máximo 90 días hábiles (Regla 5).",
+    ),
+    ("nuevas_20", "N19"): _fallo(
+        "recuperacion_incompleta_regla_5",
+        "recuperador",
+        "Recuperador LoRA no recupera [RG-ART-018]; refuta embarazo [RG-ART-036] pero desvía la segunda parte a abandono [RG-ART-043] (mismo fallo que en 4-LoRA).",
+    ),
+    ("nuevas_20", "N20"): _fallo(
+        "bucle_verificador_omision_condiciones",
+        "verificador",
+        "Ciclo 2 respondía exactamente sin omitir condiciones de [RG-ART-057], pero el Verificador base la rechaza 3 veces forzando 'solo exige ser alumno regular y poseer Licenciado para acceder a la Beca', omitiendo aceptación en postgrado y proposición de la Facultad (Reglas 2 y 3).",
+    ),
+}
+
+
+VEREDICTOS_SIN_VERIFICADOR_75: dict[tuple[str, str], dict[str, Any]] = {
+    ("congelado_50", "1"): _ok(),
+    ("congelado_50", "2"): _ok(),
+    ("congelado_50", "3"): _ok(),
+    ("congelado_50", "4"): _ok(),
+    ("congelado_50", "5"): _ok(),
+    ("congelado_50", "6"): _ok(
+        "Verificador base detecta en ciclo 1 la respuesta errónea con [RG-ART-025] y guía al Recuperador/Redactor hacia 'no inferior a una semana' [RI-FI-ART-010], corrigiendo el fallo de 4-LoRA."
+    ),
+    ("congelado_50", "7"): _ok(
+        "Responde exactamente Comité de Docencia y Asuntos Estudiantiles con cita inline [RI-FI-ART-016] y segunda/última instancia; presenta alerta de formato por omitir la tercera línea literal 'Fuente:' (alerta_formato_sin_fuente)."
+    ),
+    ("congelado_50", "8"): _ok(
+        "Responde exactamente que la renuncia es irrevocable con citas inline [RG-ART-034] [RI-FI-ART-026]; presenta alerta de formato por omitir la tercera línea literal 'Fuente:' (alerta_formato_sin_fuente)."
+    ),
+    ("congelado_50", "9"): _ok(),
+    ("congelado_50", "10"): _ok(),
+    ("congelado_50", "11"): _ok(
+        "Incluye mínimo de 8 créditos y ambas excepciones (término de estudios y falta de requisitos) de [RI-FI-ART-008], corrigiendo el fallo de 4-LoRA."
+    ),
+    ("congelado_50", "12"): _ok(
+        "Acierta menos de 15 créditos al término del 2° semestre [RI-FI-ART-014] sin mezcla en Condiciones, corrigiendo el fallo de 4-LoRA."
+    ),
+    ("congelado_50", "13"): _ok(),
+    ("congelado_50", "14"): _ok(),
+    ("congelado_50", "15"): _ok(),
+    ("congelado_50", "16"): _ok(
+        "Acierta las 4 primeras semanas e incorpora la excepción de Primer Año Común [RI-FI-ART-022], corrigiendo la inversión de [RG-ART-044] de 4-LoRA."
+    ),
+    ("congelado_50", "17"): _ok(),
+    ("congelado_50", "18"): _ok(),
+    ("congelado_50", "19"): _ok(),
+    ("congelado_50", "20"): _ok(),
+    ("congelado_50", "21"): _ok(),
+    ("congelado_50", "22"): _ok(),
+    ("congelado_50", "23"): _ok(),
+    ("congelado_50", "24"): _fallo(
+        "respuesta_incompleta_y_p01",
+        "redactor",
+        "Contesta 'Sí es posible, salvo...' sin explicitar que la consecuencia es baja académica/pérdida de calidad de alumno, y en Condiciones atribuye a [RG-ART-044] una restricción inexistente sobre la excepción del PLEV (Reglas 3 y 5).",
+    ),
+    ("congelado_50", "25"): _fallo(
+        "recuperacion_incompleta_regla_5",
+        "recuperador",
+        "No recupera [RI-FI-ART-007] y repite 'prioridades a) y b) del Artículo 7° [RI-FI-ART-009]' sin desglosar asignaturas atrasadas ni obligatorias reprobadas (Regla 5).",
+    ),
+    ("congelado_50", "26"): _fallo(
+        "regla_mal_aplicada_art_35",
+        "redactor",
+        "Exige certificados DAFE y Dirección de Bibliotecas [RG-ART-035] para solicitar reincorporación, cuando [RG-ART-035] rige suspensión y renuncia mientras la reincorporación se rige por [RG-ART-033].",
+    ),
+    ("congelado_50", "27"): _ok(),
+    ("congelado_50", "28"): _ok(
+        "Responde exactamente Baja por no Inscripción [RG-ART-029] con excepción de asignaturas anuales y modificación excepcional [RG-ART-042], evitando la alucinación en ciclo 3 provocada por el Verificador LoRA en 4-LoRA."
+    ),
+    ("congelado_50", "29"): _ok(),
+    ("congelado_50", "30"): _ok(),
+    ("congelado_50", "31"): _ok(),
+    ("congelado_50", "32"): _ok(),
+    ("congelado_50", "33"): _ok(),
+    ("congelado_50", "34"): _ok(),
+    ("congelado_50", "35"): _ok(),
+    ("congelado_50", "36"): _fallo(
+        "abstencion_falsa_regla_8",
+        "recuperador",
+        "Acierta fechas de inscripción [CAL-2026-S2-01], pero Recuperador LoRA devuelve solo hits de CAL y declara suficiente sin buscar [RI-FI-ART-008], generando falsa abstención sobre el mínimo de créditos (Reglas 5 y 8).",
+    ),
+    ("congelado_50", "37"): _ok(),
+    ("congelado_50", "38"): _ok(),
+    ("congelado_50", "39"): _ok(),
+    ("congelado_50", "40"): _ok(),
+    ("congelado_50", "41"): _ok(),
+    ("congelado_50", "42"): _ok(),
+    ("congelado_50", "43"): _ok(),
+    ("congelado_50", "44"): _ok(),
+    ("congelado_50", "45"): _ok(),
+    ("congelado_50", "46"): _ok(
+        "Declara expresamente que no figura el inciso c) en [RI-FI-ART-025] e incluye a) y b), corrigiendo el fallo de 4-LoRA."
+    ),
+    ("congelado_50", "47"): _ok(
+        "En ciclo 2 rechaza expresamente que [RI-FI-ART-008] establezca un máximo de créditos y aporta el tope específico de 36 créditos post-suspensión [RI-FI-ART-031], corrigiendo el fallo de 4-LoRA."
+    ),
+    ("congelado_50", "48"): _ok(
+        "En ciclo 2 refuta expresamente que [RI-FI-ART-012] fije una nota mínima de recuperación tras ser reencauzado por el Verificador base, corrigiendo el fallo de 4-LoRA."
+    ),
+    ("congelado_50", "49"): _ok(),
+    ("congelado_50", "50"): _ok(),
+    ("dificil_25", "H01"): _ok(),
+    ("dificil_25", "H02"): _ok(),
+    ("dificil_25", "H03"): _fallo(
+        "recuperacion_incompleta_y_aritmetica",
+        "recuperador",
+        "Recuperador LoRA deja fuera [CAL-2026-S1-02] y [CAL-2026-S2-02]; el Redactor calcula 153 días entre 02 de abril y 04 de septiembre sin responder los plazos desde el inicio de clases (Reglas 5 y 6).",
+    ),
+    ("dificil_25", "H04"): _ok(
+        "Acierta plazo de 6 semestres y remisión al Reglamento Interno de cada Facultad con cita exacta [RG-ART-049] (y [RG-TRANS-001] adicional válido bajo Regla 4), corrigiendo el error P01 de 4-LoRA y Solo Redactor D4."
+    ),
+    ("dificil_25", "H05"): _ok(
+        "Calcula correctamente 5,2 * 0,6 + 6,5 * 0,4 = 5,72 [RI-FI-ART-030], corrigiendo la inversión de pesos de 4-LoRA."
+    ),
+    ("dificil_25", "H06"): _fallo(
+        "polaridad_invertida_y_abstencion_tras_ciclo",
+        "redactor",
+        "En ciclo 1 el Redactor invierte la polaridad ('No cae... 38/4 = 9,5 < 10'); en ciclo 2 inicia contradictoriamente con 'No, ... por lo que sí cae' y el Verificador base rechaza falsamente el cálculo 38/4=9,5 induciendo en ciclo 3 una falsa abstención (Reglas 6 y 8).",
+    ),
+    ("dificil_25", "H07"): _ok(
+        "Calcula 42/4 = 10,5 > 10 [RI-FI-ART-014] sin atribuir la fórmula de [RG-ART-028] a [RI-FI-ART-014], corrigiendo el fallo P01 de 4-LoRA."
+    ),
+    ("dificil_25", "H08"): _ok(),
+    ("dificil_25", "H09"): _ok(
+        "Acierta DAFE y Bibliotecas [RG-ART-035] [RI-FI-ART-025] sin la contradicción con [RG-ART-032] que afectó a 4-LoRA."
+    ),
+    ("dificil_25", "H10"): _ok(),
+    ("dificil_25", "H11"): _ok(),
+    ("dificil_25", "H12"): _fallo(
+        "mezcla_baja_academica_y_no_inscripcion_h12",
+        "redactor",
+        "Acierta 1 año ante el Comité [RG-ART-030], pero agrega plazo de 10 días hábiles y apelación al quinto día que corresponden en [RG-ART-030] a Baja Académica y no a Baja por no Inscripción (Regla 3 / precedente H12).",
+    ),
+    ("dificil_25", "H13"): _ok(),
+    ("dificil_25", "H14"): _ok(),
+    ("dificil_25", "H15"): _ok(),
+    ("dificil_25", "H16"): _ok(),
+    ("dificil_25", "H17"): _fallo(
+        "bucle_verificador_inversion_tope",
+        "verificador",
+        "Ciclo 1 respondía exactamente 'máximo 80% ... o hasta 100%' [RI-FI-ART-013] + [RG-ART-020]; tras 3 rechazos con objeciones alucinadas del Verificador base, ciclo 3 invierte la regla a 'asistencia mínima entre el 80% y el 100% de clases teóricas y prácticas'.",
+    ),
+    ("dificil_25", "H18"): _ok(),
+    ("dificil_25", "H19"): _fallo(
+        "bucle_verificador_omision_criterio",
+        "verificador",
+        "Ciclos 1 y 2 respondían completamente cuándo se pierde la calidad de alumno y cómo se divide [RG-ART-028]; el Verificador base exige indebidamente agregar la causal b) y otros artículos, dejando en ciclo 3 solo la fórmula de división sin la condición de pérdida (Regla 5).",
+    ),
+    ("dificil_25", "H20"): _ok(),
+    ("dificil_25", "H21"): _ok(
+        "Rechaza expresamente la existencia de un máximo en el Art. 8° [RI-FI-ART-008] pese a 3 rechazos falsos del Verificador base."
+    ),
+    ("dificil_25", "H22"): _fallo(
+        "alucinacion_condicion_p01",
+        "redactor",
+        "Refuta bien 4,0 vs 4,5 en Respuesta [RI-FI-ART-011], pero Condiciones afirma erróneamente que 4,5 aplica 'a estudiantes de otras Facultades o de Ingeniería que soliciten cambio de carrera [RI-FI-ART-017] [RI-FI-ART-018]', cuando [RI-FI-ART-018] exige 4,2 (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("dificil_25", "H23"): _ok(),
+    ("dificil_25", "H24"): _ok(),
+    ("dificil_25", "H25"): _fallo(
+        "respuesta_incompleta_reglas_2_y_5",
+        "redactor",
+        "Ordena créditos, promedio curricular, preferencias y cupos, pero escribe 'Condiciones o límites: No aplica' omitiendo que solo cuentan asignaturas obligatorias de Primer Año y del Plan Común (incluyendo reprobadas) de [RI-FI-ART-005] (Reglas 2 y 5; igual que Solo Redactor D4).",
+    ),
+}
+
+
 def sha256_archivo(path: Path) -> str:
     """Calcula el SHA-256 hexadecimal de un archivo."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -538,10 +769,26 @@ def _matriz_verificador(items: list[dict[str, Any]]) -> dict[str, int]:
     }
 
 
+def _etiqueta_fuente_referencia(ref_csv_path: Path, eval_dir: Path | None = None) -> str:
+    """Normaliza la ruta de referencia respecto al repo o al directorio de evaluación temporal."""
+    ref_res = ref_csv_path.resolve()
+    try:
+        return str(ref_res.relative_to(REPO_ROOT.resolve()))
+    except ValueError:
+        if eval_dir is not None:
+            try:
+                rel_eval = ref_res.relative_to(eval_dir.resolve())
+                return str(Path("exp_multi_lora") / "evaluacion" / rel_eval)
+            except ValueError:
+                pass
+        return ref_csv_path.name
+
+
 def _comparar_contra_referencia(
     veredictos: list[dict[str, Any]],
     ref_csv_path: Path,
     nombre_ref: str,
+    eval_dir: Path | None = None,
 ) -> dict[str, Any]:
     """Calcula emparejamiento pregunta a pregunta contra una corrida de referencia D4."""
     with ref_csv_path.open("r", encoding="utf-8", newline="") as f:
@@ -573,7 +820,7 @@ def _comparar_contra_referencia(
     exp_aciertos = sum(x["correcto_estricto"] for x in veredictos)
     return {
         "referencia": nombre_ref,
-        "fuente_referencia": str(ref_csv_path.relative_to(REPO_ROOT)),
+        "fuente_referencia": _etiqueta_fuente_referencia(ref_csv_path, eval_dir=eval_dir),
         "total_emparejadas": len(veredictos),
         "aciertos_referencia": ref_aciertos,
         "aciertos_experimento": exp_aciertos,
@@ -676,7 +923,7 @@ def auditar_corrida(
 
     tel_resumen = agregar_telemetria(telemetria)
     comparativas = {
-        k: _comparar_contra_referencia(veredictos_lista, p, k)
+        k: _comparar_contra_referencia(veredictos_lista, p, k, eval_dir=out_csv_path.parent)
         for k, p in refs_comparacion.items()
     }
 
@@ -863,6 +1110,49 @@ def ejecutar_auditoria(
         ),
     )
 
+    aud_sv_n20 = auditar_corrida(
+        nombre_corrida="sin_verificador_3_agentes_nuevas20",
+        raw_csv_path=eval_dir / "resultados_sin_verificador_nuevas20.csv",
+        raw_sha256_esperado=SHA256_CRUDOS["resultados_sin_verificador_nuevas20.csv"],
+        config_path=eval_dir / "configuracion_sin_verificador_nuevas20.json",
+        telemetria_path=eval_dir / "telemetria_sin_verificador_nuevas20.json",
+        trazas_path=eval_dir / "trazas_sin_verificador_nuevas20.json",
+        out_csv_path=eval_dir / "resultados_sin_verificador_nuevas20_auditados.csv",
+        out_json_path=eval_dir / "auditoria_sin_verificador_nuevas20.json",
+        veredictos_dict=VEREDICTOS_SIN_VERIFICADOR_NUEVAS20,
+        corpus_ids=corpus_ids,
+        refs_comparacion={
+            "control_base_d4": d4_eval_dir / "resultados_nuevas20_base_D4_auditados.csv",
+            "solo_redactor_d4": d4_eval_dir / "resultados_nuevas20_ft_D4_auditados.csv",
+            "ablacion_red_ver": eval_dir / "resultados_ablacion_red_ver_nuevas20_auditados.csv",
+            "multi_lora_4_agentes": eval_dir / "resultados_multi_lora_nuevas20_auditados.csv",
+        },
+    )
+
+    aud_sv_75 = auditar_corrida(
+        nombre_corrida="sin_verificador_3_agentes_75",
+        raw_csv_path=eval_dir / "resultados_sin_verificador_75.csv",
+        raw_sha256_esperado=SHA256_CRUDOS["resultados_sin_verificador_75.csv"],
+        config_path=eval_dir / "configuracion_sin_verificador_75.json",
+        telemetria_path=eval_dir / "telemetria_sin_verificador_75.json",
+        trazas_path=eval_dir / "trazas_sin_verificador_75.json",
+        out_csv_path=eval_dir / "resultados_sin_verificador_75_auditados.csv",
+        out_json_path=eval_dir / "auditoria_sin_verificador_75.json",
+        veredictos_dict=VEREDICTOS_SIN_VERIFICADOR_75,
+        corpus_ids=corpus_ids,
+        refs_comparacion={
+            "control_base_d4": d4_eval_dir / "resultados_control_base_D4_auditados.csv",
+            "solo_redactor_d4": d4_eval_dir / "resultados_agentes_D4_auditados.csv",
+            "multi_lora_4_agentes": eval_dir / "resultados_multi_lora_75_auditados.csv",
+        },
+        nota_especial=(
+            "En congelado_50:7 ([RI-FI-ART-016]) y congelado_50:8 ([RG-ART-034] [RI-FI-ART-026]) el contenido y "
+            "las citas inline son correctos bajo LEEME_PAUTA.md (46/50 en congelado_50, 64/75 global), aunque "
+            "omiten la tercera línea literal 'Fuente:' (formato_3_lineas_ok=False; bajo exigencia estricta de 3 líneas "
+            "sería 44/50 y 62/75)."
+        ),
+    )
+
     d4_base_75 = _resumen_referencia_d4(
         d4_eval_dir / "resultados_control_base_D4_auditados.csv",
         d4_eval_dir / "telemetria_control_base_D4.json",
@@ -880,37 +1170,38 @@ def ejecutar_auditoria(
         d4_eval_dir / "telemetria_nuevas20_ft_D4.json",
     )
 
+    def _bloque_global_95(aciertos: int) -> dict[str, Any]:
+        return {
+            "aciertos": aciertos,
+            "total": 95,
+            "porcentaje": round(100.0 * aciertos / 95, 1),
+        }
+
+    def _bloque_exp(aud: dict[str, Any], *, con_set: bool = False) -> dict[str, Any]:
+        bloque: dict[str, Any] = {
+            "aciertos": aud["resumen_global"]["aciertos_estrictos"],
+            "n": aud["resumen_global"]["total"],
+            "porcentaje": aud["resumen_global"]["porcentaje_estricto"],
+            "telemetria": aud["telemetria"],
+            "aprobacion_interna_vs_exactitud": aud["aprobacion_interna_vs_exactitud"],
+            "comparativas_d4": aud["comparativas_d4"],
+        }
+        if con_set:
+            bloque["por_set"] = aud["resumen_por_set"]
+            bloque["nota_especial"] = aud["nota_especial"]
+        return bloque
+
     global_95 = {
-        "control_base_d4": {
-            "aciertos": d4_base_75["aciertos"] + d4_base_n20["aciertos"],
-            "total": 95,
-            "porcentaje": round(
-                100.0 * (d4_base_75["aciertos"] + d4_base_n20["aciertos"]) / 95, 1
-            ),
-        },
-        "solo_redactor_d4": {
-            "aciertos": d4_red_75["aciertos"] + d4_red_n20["aciertos"],
-            "total": 95,
-            "porcentaje": round(
-                100.0 * (d4_red_75["aciertos"] + d4_red_n20["aciertos"]) / 95, 1
-            ),
-        },
-        "multi_lora_4_agentes": {
-            "aciertos": (
-                aud_ml_75["resumen_global"]["aciertos_estrictos"]
-                + aud_ml_n20["resumen_global"]["aciertos_estrictos"]
-            ),
-            "total": 95,
-            "porcentaje": round(
-                100.0
-                * (
-                    aud_ml_75["resumen_global"]["aciertos_estrictos"]
-                    + aud_ml_n20["resumen_global"]["aciertos_estrictos"]
-                )
-                / 95,
-                1,
-            ),
-        },
+        "control_base_d4": _bloque_global_95(d4_base_75["aciertos"] + d4_base_n20["aciertos"]),
+        "solo_redactor_d4": _bloque_global_95(d4_red_75["aciertos"] + d4_red_n20["aciertos"]),
+        "multi_lora_sin_verificador": _bloque_global_95(
+            aud_sv_75["resumen_global"]["aciertos_estrictos"]
+            + aud_sv_n20["resumen_global"]["aciertos_estrictos"]
+        ),
+        "multi_lora_4_agentes": _bloque_global_95(
+            aud_ml_75["resumen_global"]["aciertos_estrictos"]
+            + aud_ml_n20["resumen_global"]["aciertos_estrictos"]
+        ),
     }
 
     resumen_global = {
@@ -919,42 +1210,15 @@ def ejecutar_auditoria(
         "nuevas_20": {
             "control_base_d4": d4_base_n20,
             "solo_redactor_d4": d4_red_n20,
-            "ablacion_red_ver": {
-                "aciertos": aud_rv_n20["resumen_global"]["aciertos_estrictos"],
-                "n": 20,
-                "porcentaje": aud_rv_n20["resumen_global"]["porcentaje_estricto"],
-                "telemetria": aud_rv_n20["telemetria"],
-                "aprobacion_interna_vs_exactitud": aud_rv_n20[
-                    "aprobacion_interna_vs_exactitud"
-                ],
-                "comparativas_d4": aud_rv_n20["comparativas_d4"],
-            },
-            "multi_lora_4_agentes": {
-                "aciertos": aud_ml_n20["resumen_global"]["aciertos_estrictos"],
-                "n": 20,
-                "porcentaje": aud_ml_n20["resumen_global"]["porcentaje_estricto"],
-                "telemetria": aud_ml_n20["telemetria"],
-                "aprobacion_interna_vs_exactitud": aud_ml_n20[
-                    "aprobacion_interna_vs_exactitud"
-                ],
-                "comparativas_d4": aud_ml_n20["comparativas_d4"],
-            },
+            "ablacion_red_ver": _bloque_exp(aud_rv_n20),
+            "multi_lora_sin_verificador": _bloque_exp(aud_sv_n20),
+            "multi_lora_4_agentes": _bloque_exp(aud_ml_n20),
         },
         "benchmark_75_d3": {
             "control_base_d4": d4_base_75,
             "solo_redactor_d4": d4_red_75,
-            "multi_lora_4_agentes": {
-                "aciertos": aud_ml_75["resumen_global"]["aciertos_estrictos"],
-                "n": 75,
-                "porcentaje": aud_ml_75["resumen_global"]["porcentaje_estricto"],
-                "por_set": aud_ml_75["resumen_por_set"],
-                "telemetria": aud_ml_75["telemetria"],
-                "aprobacion_interna_vs_exactitud": aud_ml_75[
-                    "aprobacion_interna_vs_exactitud"
-                ],
-                "comparativas_d4": aud_ml_75["comparativas_d4"],
-                "nota_especial": aud_ml_75["nota_especial"],
-            },
+            "multi_lora_sin_verificador": _bloque_exp(aud_sv_75, con_set=True),
+            "multi_lora_4_agentes": _bloque_exp(aud_ml_75, con_set=True),
         },
         "consolidado_95_preguntas": global_95,
     }
@@ -983,11 +1247,15 @@ def main() -> None:
         f"nuevas_20 -> Base={n20['control_base_d4']['aciertos']}/20 | "
         f"SoloRed={n20['solo_redactor_d4']['aciertos']}/20 | "
         f"Red+Ver={n20['ablacion_red_ver']['aciertos']}/20 | "
+        f"3-LoRA(SV)={n20['multi_lora_sin_verificador']['aciertos']}/20 | "
         f"4-LoRA={n20['multi_lora_4_agentes']['aciertos']}/20"
     )
     print(
         f"75 D3     -> Base={b75['control_base_d4']['aciertos']}/75 | "
         f"SoloRed={b75['solo_redactor_d4']['aciertos']}/75 | "
+        f"3-LoRA(SV)={b75['multi_lora_sin_verificador']['aciertos']}/75 "
+        f"(C50={b75['multi_lora_sin_verificador']['por_set']['congelado_50']['aciertos_estrictos']}/50, "
+        f"H25={b75['multi_lora_sin_verificador']['por_set']['dificil_25']['aciertos_estrictos']}/25) | "
         f"4-LoRA={b75['multi_lora_4_agentes']['aciertos']}/75 "
         f"(C50={b75['multi_lora_4_agentes']['por_set']['congelado_50']['aciertos_estrictos']}/50, "
         f"H25={b75['multi_lora_4_agentes']['por_set']['dificil_25']['aciertos_estrictos']}/25)"

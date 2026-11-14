@@ -1,0 +1,20 @@
+[
+  {
+    "id": "ENR-B1-V01",
+    "esperado": "{\"tipo\": \"cruce\", \"sub_consultas\": [\"Qué facilidades académicas corresponden a dirigentes estudiantiles acreditados\", \"qué deben hacer estudiantes con impedimentos religiosos o discapacidad al inscribir asignaturas\"], \"documentos\": [\"RG\"]}",
+    "salida_base": "{\"tipo\":\"cruce\",\"sub_consultas\":[\"facilidades académicas para dirigentes estudiantiles acreditados\",\"obligaciones de estudiantes con impedimentos religiosos o discapacidad al inscribir asignaturas\"],\"documentos\":[\"RI-FI\",\"RG\"]}",
+    "salida_finetuned": "{\"tipo\": \"cruce\", \"sub_consultas\": [\"Qué facilidades académicas corresponden a dirigentes estudiantiles acreditados\", \"qué deben hacer estudiantes con impedimentos religiosos o discapacidad al inscribir asignaturas\"], \"documentos\": [\"RG\"]}"
+  },
+  {
+    "id": "ENR-B4-V04",
+    "esperado": "{\"tipo\": \"numerica\", \"sub_consultas\": [\"En una Facultad cuyo Reglamento Interno contempla el Inicio Adelantado, un alumno regular de nuevo ingreso obtiene 5,7 en la Evaluación Diagnóstica de una asignatura fundamental y otra alumna obtiene 5,8. Quién cumple el requisito numérico para rendir la evaluación específica y en cuántas décimas se diferencian del umbral\"], \"documentos\": [\"RI-FI\", \"RG\"]}",
+    "salida_base": "{\"tipo\":\"numerica\",\"sub_consultas\":[\"requisito numérico para rendir evaluación específica en RI-FI\",\"diferencia en décimas entre 5,7 y 5,8\"],\"documentos\":[\"RI-FI\"]}",
+    "salida_finetuned": "{\"tipo\": \"numerica\", \"sub_consultas\": [\"En una Facultad cuyo Reglamento Interno contempla el Inicio Adelantado, un alumno regular de nuevo ingreso obtiene 5,7 en la Evaluación Diagnóstica de una asignatura fundamental y otra alumna obtiene 5,8. Quién cumple el requisito numérico para rendir la evaluación específica y en cuántas décimas se diferencian del umbral\"], \"documentos\": [\"RI-FI\", \"RG\"]}"
+  },
+  {
+    "id": "ENR-X-V06",
+    "esperado": "{\"tipo\": \"factual\", \"sub_consultas\": [\"fecha de matrícula estudiantes nuevos 2027 en Calendario de Docencia 2026\"], \"documentos\": [\"CAL\"]}",
+    "salida_base": "{\"tipo\":\"cruce\",\"sub_consultas\":[\"fecha de apertura de matrícula de nuevos estudiantes 2027\",\"verificar existencia de fecha de apertura de matrícula de nuevos estudiantes en Calendario 2026\"],\"documentos\":[\"CAL\"]}",
+    "salida_finetuned": "{\"tipo\": \"factual\", \"sub_consultas\": [\"En qué fecha del año 2027 abre la matrícula de estudiantes nuevos según el Calendario de Docencia 2026\"], \"documentos\": [\"CAL\"]}"
+  }
+]

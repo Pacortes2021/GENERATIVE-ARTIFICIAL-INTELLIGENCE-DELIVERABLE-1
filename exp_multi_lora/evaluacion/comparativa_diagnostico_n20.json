@@ -1,0 +1,1073 @@
+[
+  {
+    "qid": "nuevas_20:N05",
+    "set": "nuevas_20",
+    "id": "N05",
+    "categoria": "abstencion",
+    "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+    "gold_dato": "El Artículo 6° del RI-FI no fija un puntaje mínimo numérico ni promedio; solo señala que la postulación y selección se realiza al final del año académico respectivo y que la Facultad establece la distribución porcentual de cupos por carrera.",
+    "gold_fuente": "RI-FI-ART-006",
+    "solo_redactor_d4": {
+      "respuesta": "Respuesta: No exige mínimo de notas en ese orden; el criterio de selección es primero por número de créditos aprobados, luego promedio curricular ponderado con dos decimales [RI-FI-ART-005].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-005]",
+      "veredicto": {
+        "aprobado": false,
+        "destino": "recuperador",
+        "motivo": "La pregunta se refiere al puntaje mínimo ponderado de notas exigido por el Artículo 6°, pero el borrador no menciona ningún mínimo ni criterio específico en ese artículo, y la información solicitada no está en la evidencia."
+      },
+      "ciclos": 3,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 143.92,
+      "fuentes_traidas": "RG-ART-003-INTRO; RG-ART-021; RG-ART-024; RI-FI-ART-001; RI-FI-ART-005; RI-FI-ART-006; RI-FI-ART-012; RI-FI-ART-016; RI-FI-ART-017; RI-FI-ART-018; RI-FI-ART-019; RI-FI-ART-026; RI-FI-ART-030; RI-FI-ART-031; RI-FI-ART-035",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar existencia del artículo 6° en RI-FI",
+              "contenido del artículo 6° RI-FI"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-006"
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-006",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 6° en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-006"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 6° en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-006",
+                "extracto": "Artículo 6°. El proceso de postulación y selección se realizará al final del año académico respectivo. La Facultad de Ingeniería establecerá en cada oportunidad"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 6° en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 6° RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "contenido del artículo 6° RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-035",
+              "RI-FI-ART-016",
+              "RI-FI-ART-026",
+              "RG-ART-003-INTRO",
+              "RI-FI-ART-001"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 6° RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-035",
+                "extracto": "Artículo 35°. Las situaciones no previstas en el presente reglamento serán resueltas por el Decano de la Facultad de Ingeniería, en el ámbito de su competencia."
+              },
+              {
+                "id": "RI-FI-ART-016",
+                "extracto": "Artículo 16°. Las y los estudiantes podrán solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles, el que resolverá en primera inst"
+              },
+              {
+                "id": "RI-FI-ART-026",
+                "extracto": "Artículo 26°. La y el estudiante podrá presentar por escrito su renuncia a la carrera a la Vicedecanatura, presentando los documentos señalados en el Artículo 2"
+              },
+              {
+                "id": "RG-ART-003-INTRO",
+                "extracto": "Artículo 3° Para los efectos contemplados en el reglamento, se da a los conceptos que se indican en los párrafos siguientes, el alcance y los significados que a"
+              },
+              {
+                "id": "RI-FI-ART-001",
+                "extracto": "Artículo 1°. Serán estudiantes de pregrado de la Facultad de Ingeniería aquellas y aquellos estudiantes que ingresan a una de sus carreras, cumpliendo con los r"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 6° RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 10,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No existe en el Reglamento Interno de la Facultad de Ingeniería un mínimo ponderado de notas exigido en el Artículo 6° para estudiantes del Ingreso Común en carreras de Ingeniería Civil [RI-FI-ART-006].\nCondiciones o límites: No aplica\nFuente: sin regla de mínimo ponderado en el Artículo 6° [RI-FI-ART-006]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-005] solo fija criterios de selección en el segundo semestre de permanencia: prioridad a créditos aprobados, luego promedio curricular ponderado por créditos del Plan Común de Primer Año (con dos decimales), y orden de preferencias en carreras de Ingeniería Civil según oferta y cupos. No contiene puntaje mínimo ni equivalencia numérica. No aplica condiciones adicionales.\n</pensar>\nRespuesta: No existe en el Reglamento Interno de la Facultad de Ingeniería un mínimo ponderado de notas exigido en el Artículo 6° para estudiantes del Ingreso Común en carreras de Ingeniería Civil [RI-FI-ART-006].\nCondiciones o límites: No aplica\nFuente: sin regla de mínimo ponderado en el Artículo 6° [RI-FI-ART-006]"
+        },
+        {
+          "paso": 11,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No existe en el Reglamento Interno de la Facultad de Ingeniería un mínimo ponderado de notas exigido en el Artículo 6° para estudiantes del Ingreso Común en carreras de Ingeniería Civil [RI",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-006",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "recuperador",
+            "motivo": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 12,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-006"
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 13,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 6° en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 14,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 6° en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 2,
+            "feedback_verificador": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 15,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 6° en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 16,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 6° RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 17,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 6° RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RI-FI-ART-018",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 2,
+            "feedback_verificador": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "promedio curricular notas ponderadas articulo 6 ri-fi",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-024",
+              "RI-FI-ART-030",
+              "RG-ART-021",
+              "RI-FI-ART-031",
+              "RI-FI-ART-012"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 18,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 6° RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-006",
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-035",
+              "RG-ART-024",
+              "RI-FI-ART-018"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-024",
+                "extracto": "Artículo 24° El registro académico del alumno deberá proporcionar, a lo menos, los siguientes dos tipos de promedios de notas: a) Promedio Ponderado (“Prom. Pon"
+              },
+              {
+                "id": "RI-FI-ART-030",
+                "extracto": "Artículo 30°. La nota de graduación correspondiente al Grado de Licenciado en Ciencias de la Ingeniería se obtendrá como el promedio ponderado por los créditos "
+              },
+              {
+                "id": "RG-ART-021",
+                "extracto": "Artículo 21º En el proceso de enseñanza - aprendizaje se podrán emplear para la evaluación diversas modalidades, instrumentos de evaluación y escalas de medició"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              },
+              {
+                "id": "RI-FI-ART-012",
+                "extracto": "Artículo 12°. En cada asignatura, las y los estudiantes tendrán derecho a una evaluación de recuperación para modificar la nota final. En la primera semana de c"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 6
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 19,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": "El borrador afirma que no existe un mínimo ponderado de notas en el Artículo 6°, pero el Artículo 5° menciona un promedio curricular de notas ponderadas, lo cual es relevante para la selección, por lo que la información es incorrecta."
+          },
+          "salida": "Respuesta: No existe un mínimo ponderado de notas en el Artículo 6°; su único contenido es la distribución porcentual de cupos por carrera para estudiantes del Ingreso Común que pueden aceptarse en segundo año en carreras de Ingeniería Civil [RI-FI-ART-006].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-006]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-005] fija el promedio curricular de notas ponderadas por créditos del Plan Común de Primer Año, pero no fija un mínimo en el Artículo 6°. [RI-FI-ART-017] y [RI-FI-ART-018] fijan un promedio ponderado mínimo de 4,5 y 4,2 respectivamente, pero para carreras distintas y distintos requisitos. [RI-FI-ART-006] solo fija la distribución porcentual de cupos.\n</pensar>\nRespuesta: No existe un mínimo ponderado de notas en el Artículo 6°; su único contenido es la distribución porcentual de cupos por carrera para estudiantes del Ingreso Común que pueden aceptarse en segundo año en carreras de Ingeniería Civil [RI-FI-ART-006].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-006]"
+        },
+        {
+          "paso": 20,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No existe un mínimo ponderado de notas en el Artículo 6°; su único contenido es la distribución porcentual de cupos por carrera para estudiantes del Ingreso Común que pueden aceptarse en se",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-006",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El borrador confirma que el Artículo 6° no establece un mínimo ponderado de notas, pero la pregunta pide el puntaje mínimo ponderado de notas exige el Artículo 6°, lo cual es falso. El borrador no dice que el Artículo 6° establece un mínimo, sino que lo nega, lo cual es incorrecto."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 21,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": "El borrador confirma que el Artículo 6° no establece un mínimo ponderado de notas, pero la pregunta pide el puntaje mínimo ponderado de notas exige el Artículo 6°, lo cual es falso. El borrador no dice que el Artículo 6° establece un mínimo, sino que lo nega, lo cual es incorrecto."
+          },
+          "salida": "Respuesta: No exige mínimo de notas en ese orden; el criterio de selección es primero por número de créditos aprobados, luego promedio curricular ponderado con dos decimales [RI-FI-ART-005].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-005]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-005] y [RG-ART-024] fijan el orden de selección por créditos aprobados -> promedio curricular ponderado (con dos decimales). [RI-FI-ART-006] fija solo la distribución de cupos por carrera y no exige mínimo de notas en ese orden. [RI-FI-ART-017] y [RI-FI-ART-018] fijan promedios mínimos para estudiantes de otras universidades o dentro de la Facultad, respectivamente, pero ambos no son para el Ingreso Común ni exigen mínimo de notas en ese orden.\n</pensar>\nRespuesta: No exige mínimo de notas en ese orden; el criterio de selección es primero por número de créditos aprobados, luego promedio curricular ponderado con dos decimales [RI-FI-ART-005].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-005]"
+        },
+        {
+          "paso": 22,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No exige mínimo de notas en ese orden; el criterio de selección es primero por número de créditos aprobados, luego promedio curricular ponderado con dos decimales [RI-FI-ART-005].\nCondicion",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-005",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "recuperador",
+            "motivo": "La pregunta se refiere al puntaje mínimo ponderado de notas exigido por el Artículo 6°, pero el borrador no menciona ningún mínimo ni criterio específico en ese artículo, y la información solicitada no está en la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "multi_lora_4": {
+      "respuesta": "Respuesta: No existe respuesta en la normativa consultada sobre un puntaje mínimo ponderado de notas en el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería.\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "abstención honesta fiel a la ausencia de respaldo en evidencia y chequeo de citas"
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "factual",
+      "segundos": 64.18,
+      "fuentes_traidas": "RI-FI-ART-005; RI-FI-ART-006; RI-FI-ART-017; RI-FI-ART-018; RI-FI-ART-019",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+          "salida": {
+            "tipo": "factual",
+            "sub_consultas": [
+              "Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-006",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil",
+            "tipo": "factual",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-005",
+              "RI-FI-ART-017",
+              "RI-FI-ART-006",
+              "RI-FI-ART-018",
+              "RI-FI-ART-019"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+            "modo": "factual",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No existe respuesta en la normativa consultada sobre un puntaje mínimo ponderado de notas en el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería.\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-005] solo regula la selección por número de créditos aprobados y promedio curricular de notas del Plan Común de Primer Año; [RI-FI-ART-017] [RI-FI-ART-018] [RI-FI-ART-019] se refieren a otros requisitos de ingreso (carreras de otras Facultades, cambio de carrera dentro de la Facultad o cursar simultáneamente); [RI-FI-ART-006] solo establece que la Facultad fija porcentajes de cupos anuales sin fijar un puntaje mínimo.\n</pensar>\nRespuesta: No existe respuesta en la normativa consultada sobre un puntaje mínimo ponderado de notas en el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería.\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No existe respuesta en la normativa consultada sobre un puntaje mínimo ponderado de notas en el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería.\nCondiciones o límites: No ap",
+            "chequeo_citas": {
+              "citas": [],
+              "sin_citas": true
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "abstención honesta fiel a la ausencia de respaldo en evidencia y chequeo de citas"
+          },
+          "fallback": false
+        }
+      ]
+    }
+  },
+  {
+    "qid": "nuevas_20:N12",
+    "set": "nuevas_20",
+    "id": "N12",
+    "categoria": "cruce",
+    "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+    "gold_dato": "En ambos casos interviene la Dirección de Servicios Estudiantiles de la UdeC (o su unidad equivalente en Campus Chillán o Campus Los Ángeles): visa el certificado médico o de matrona en el Art. 36° y evalúa y certifica las situaciones indicadas en el Art. 59°.",
+    "gold_fuente": "RG-ART-036; RG-ART-059",
+    "solo_redactor_d4": {
+      "respuesta": "Respuesta: No existe en la normativa consultada ni Art. 36 ni Art. 59 para conocer qué organismo visa o certifica la documentación [RI-FI art. 36].\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+      "veredicto": {
+        "aprobado": false,
+        "destino": "recuperador",
+        "motivo": "Falta evidencia para confirmar que no existe en la normativa consultada ni Art. 36 ni Art. 59 para conocer qué organismo visa o certifica la documentación"
+      },
+      "ciclos": 3,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 73.13,
+      "fuentes_traidas": "",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar existencia del artículo 36° en RI-FI",
+              "verificar existencia del artículo 59° en RI-FI",
+              "organismo que visa o certifica documentación en casos de interrupción de estudios por embarazo o situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "existe": false
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 3,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+            "modo": "premisa_falsa",
+            "estado": "no_existe",
+            "feedback": null
+          },
+          "salida": "Respuesta: No existe en la normativa consultada el Art. 36 ni el Art. 59 de RI-FI.\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+          "salida_cruda": "<pensar>\nNo existe la normativa consultada en la evidencia para ni el Art. 36 ni el Art. 59 de RI-FI. No puedo dar respuesta.\n</pensar>\nRespuesta: No existe en la normativa consultada el Art. 36 ni el Art. 59 de RI-FI.\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada"
+        },
+        {
+          "paso": 4,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No existe en la normativa consultada el Art. 36 ni el Art. 59 de RI-FI.\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+            "chequeo_citas": {
+              "citas": [],
+              "sin_citas": true
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "recuperador",
+            "motivo": "Falta evidencia para confirmar que el Art. 36 ni el Art. 59 de RI-FI existen y que no exista en la normativa consultada."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "existe": false
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+            "modo": "premisa_falsa",
+            "estado": "no_existe",
+            "feedback": "Falta evidencia para confirmar que el Art. 36 ni el Art. 59 de RI-FI existen y que no exista en la normativa consultada."
+          },
+          "salida": "Respuesta: No existe en la normativa consultada el Art. 36 de RI-FI ni el Art. 59 de RI-FI [sin respaldo en la normativa consultada].\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+          "salida_cruda": "<pensar>\nLa pregunta menciona Artículos 36 y 59 de RI-FI, pero ambos no existen en la normativa consultada. No debo inventar respuestas falsas ni citar artículos inexistentes.\n</pensar>\nRespuesta: No existe en la normativa consultada el Art. 36 de RI-FI ni el Art. 59 de RI-FI [sin respaldo en la normativa consultada].\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No existe en la normativa consultada el Art. 36 de RI-FI ni el Art. 59 de RI-FI [sin respaldo en la normativa consultada].\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normat",
+            "chequeo_citas": {
+              "citas": [],
+              "sin_citas": true
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "recuperador",
+            "motivo": "Falta evidencia para confirmar la ausencia de los artículos 36° y 59° en la normativa consultada"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "existe": false
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+            "modo": "premisa_falsa",
+            "estado": "no_existe",
+            "feedback": "Falta evidencia para confirmar la ausencia de los artículos 36° y 59° en la normativa consultada"
+          },
+          "salida": "Respuesta: No existe en la normativa consultada ni Art. 36 ni Art. 59 para conocer qué organismo visa o certifica la documentación [RI-FI art. 36].\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada",
+          "salida_cruda": "<pensar>\n[RI-FI art. 36] no existe en la normativa consultada. No tengo respaldo para afirmar sobre Art. 36 ni Art. 59.\n</pensar>\nRespuesta: No existe en la normativa consultada ni Art. 36 ni Art. 59 para conocer qué organismo visa o certifica la documentación [RI-FI art. 36].\nCondiciones o límites: No aplica\nFuente: sin respaldo en la normativa consultada"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No existe en la normativa consultada ni Art. 36 ni Art. 59 para conocer qué organismo visa o certifica la documentación [RI-FI art. 36].\nCondiciones o límites: No aplica\nFuente: sin respald",
+            "chequeo_citas": {
+              "citas": [],
+              "sin_citas": true
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "recuperador",
+            "motivo": "Falta evidencia para confirmar que no existe en la normativa consultada ni Art. 36 ni Art. 59 para conocer qué organismo visa o certifica la documentación"
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "multi_lora_4": {
+      "respuesta": "Respuesta: Para interrumpir estudios por embarazo se requiere certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036], mientras para situaciones de salud, socioeconómicas, enfermedad de hijo o fallecimiento de familiar directo se evalúa y certifica la Dirección de Servicios Estudiantiles de la UdeC o su Unidad equivalente en Chillán y Los Ángeles [RG-ART-059].\nCondiciones o límites: En el caso de embarazo, además de visado, debe conservar su calidad de alumna regular y mantener sus derechos y obligaciones [RG-ART-036]; en cambio, para otras situaciones el certificado debe ser evaluado y certificado por la Dirección de Servicios Estudiantiles [RG-ART-059].\nFuente: [RG-ART-036] [RG-ART-059]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "respuesta completa, verificada en evidencia y citas válidas"
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "cruce",
+      "segundos": 77.12,
+      "fuentes_traidas": "RG-ART-005; RG-ART-032; RG-ART-035; RG-ART-036; RG-ART-059",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+          "salida": {
+            "tipo": "cruce",
+            "sub_consultas": [
+              "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), qué organismo visa o certifica la documentación"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-059",
+              "RG-ART-032",
+              "RG-ART-035",
+              "RG-ART-005"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), qué organismo visa o certifica la documentación",
+            "tipo": "cruce",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-059",
+              "RG-ART-032",
+              "RG-ART-035",
+              "RG-ART-005"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+            "modo": "cruce",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Para interrumpir estudios por embarazo se requiere certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036], mientras para situaciones de salud, socioeconómicas, enfermedad de hijo o fallecimiento de familiar directo se evalúa y certifica la Dirección de Servicios Estudiantiles de la UdeC o su Unidad equivalente en Chillán y Los Ángeles [RG-ART-059].\nCondiciones o límites: En el caso de embarazo, además de visado, debe conservar su calidad de alumna regular y mantener sus derechos y obligaciones [RG-ART-036]; en cambio, para otras situaciones el certificado debe ser evaluado y certificado por la Dirección de Servicios Estudiantiles [RG-ART-059].\nFuente: [RG-ART-036] [RG-ART-059]",
+          "salida_cruda": "<pensar>\n[RG-ART-036] indica que el certificado del médico o matrona debe ser visado por la Dirección de Servicios Estudiantiles, mientras [RG-ART-059] exige evaluación y certificación por la misma Dirección de Servicios Estudiantiles de la UdeC o su Unidad equivalente en Chillán y Los Ángeles. Ambos artículos asignan el visado o certificación a esa Dirección.\n</pensar>\nRespuesta: Para interrumpir estudios por embarazo se requiere certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036], mientras para situaciones de salud, socioeconómicas, enfermedad de hijo o fallecimiento de familiar directo se evalúa y certifica la Dirección de Servicios Estudiantiles de la UdeC o su Unidad equivalente en Chillán y Los Ángeles [RG-ART-059].\nCondiciones o límites: En el caso de embarazo, además de visado, debe conservar su calidad de alumna regular y mantener sus derechos y obligaciones [RG-ART-036]; en cambio, para otras situaciones el certificado debe ser evaluado y certificado por la Dirección de Servicios Estudiantiles [RG-ART-059].\nFuente: [RG-ART-036] [RG-ART-059]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Para interrumpir estudios por embarazo se requiere certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036], mientras para situaciones de salud, soci",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-036",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RG-ART-059",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "respuesta completa, verificada en evidencia y citas válidas"
+          },
+          "fallback": false
+        }
+      ]
+    }
+  }
+]

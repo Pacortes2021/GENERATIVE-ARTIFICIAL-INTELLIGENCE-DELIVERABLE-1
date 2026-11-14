@@ -1,0 +1,20 @@
+[
+  {
+    "id": "VER-B1-V01-OK",
+    "esperado": "<pensar>Cumple los cinco criterios: responde todas las partes, los datos y cálculos coinciden con los artículos, todas las citas aparecen válidas y en evidencia en <chequeo_citas> y respeta condiciones.</pensar>\n{\"aprobado\": true, \"destino\": \"fin\", \"motivo\": \"respuesta completa, verificada en evidencia y citas válidas\"}",
+    "salida_base": "{\"aprobado\": false, \"destino\": \"redactor\", \"motivo\": \"El borrador menciona que los impedimentos religiosos deben acreditarse al inscribir para que el Profesor Encargado los considere, pero no especifica qué facilidades académicas corresponden a los dirigentes estudiantiles, ni menciona las facilidades académicas que se otorgan a ellos según el artículo 52.\"}",
+    "salida_finetuned": "<pensar>Cumple los cinco criterios: responde todas las partes, los datos y cálculos coinciden con los artículos, todas las citas aparecen válidas y en evidencia en <chequeo_citas> y respeta condiciones.</pensar>\n{\"aprobado\": true, \"destino\": \"fin\", \"motivo\": \"respuesta completa, verificada en evidencia y citas válidas\"}"
+  },
+  {
+    "id": "VER-B4-V01-OK",
+    "esperado": "<pensar>La respuesta responde todas las partes sin contradicciones; aunque chequear_citas abrevia o omite identificadores especiales (RG-ANEXO-05, RG-ANEXO-31), los textos citados constan literalmente en <evidencia>.</pensar>\n{\"aprobado\": true, \"destino\": \"fin\", \"motivo\": \"respuesta completa, citas verificables en <evidencia> y condiciones fieles\"}",
+    "salida_base": "{\"aprobado\": true, \"destino\": \"fin\", \"motivo\": \"La respuesta es correcta y está respaldada por la evidencia\"}",
+    "salida_finetuned": "<pensar>La respuesta responde todas las partes sin contradicciones; aunque chequear_citas abrevia o omite identificadores especiales (RG-ANEXO-05, RG-ANEXO-31), los textos citados constan literalmente en <evidencia>.</pensar>\n{\"aprobado\": true, \"destino\": \"fin\", \"motivo\": \"respuesta completa, citas verificables en <evidencia> y condiciones fieles\"}"
+  },
+  {
+    "id": "VER-ARIT-V02",
+    "esperado": "<pensar>Aunque la división 22 / 2 = 11 es correcta, 22 es menor que 24, por lo que no cumple el mínimo exigido en [RG-ART-003-DEF-12].</pensar>\n{\"aprobado\": false, \"destino\": \"redactor\", \"motivo\": \"afirma erróneamente que 22 supera el mínimo de 24 créditos transferibles\"}",
+    "salida_base": "{\"aprobado\": false, \"destino\": \"redactor\", \"motivo\": \"El cálculo de 22 créditos en 2 semestres es incorrecto; el mínimo es 24 créditos transferibles, no 22\"}",
+    "salida_finetuned": "<pensar>La pregunta plantea un supuesto erróneo y la evidencia entregada lo desmiente, pero el borrador confirma indebidamente la premisa falsa en lugar de corregirla.</pensar>\n{\"aprobado\": false, \"destino\": \"redactor\", \"motivo\": \"confirma una premisa falsa que la evidencia entregada desmiente\"}"
+  }
+]

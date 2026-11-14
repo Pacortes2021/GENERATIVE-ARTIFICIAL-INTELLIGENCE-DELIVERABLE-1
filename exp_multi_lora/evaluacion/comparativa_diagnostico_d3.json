@@ -1,0 +1,1758 @@
+[
+  {
+    "qid": "dificil_25:H06",
+    "set": "dificil_25",
+    "id": "H06",
+    "categoria": "calculo",
+    "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+    "gold_dato": "Sí. Promedio = créditos aprobados / semestres de permanencia (RG Art 28 a) = 38/4 = 9,5, inferior a 10 créditos semestrales, por lo que incurre en la causal del RI-FI Art 14 b).",
+    "gold_fuente": "RI-FI-ART-014; RG-ART-028",
+    "solo_redactor_d4": {
+      "respuesta": "Respuesta: No, al aprobar 38 créditos al término del cuarto semestre (38 ÷ 4 = 9,5 < 10) incumple el criterio de Art. 14° b) de Baja Académica [RI-FI-ART-014].\nCondiciones o límites: La regla aplica a partir del cuarto semestre de permanencia y no aplica a estudiantes en su primer año [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "El borrador indica que el estudiante cae en baja académica por el criterio de Art. 14° b), pero no menciona la condición de que el promedio de créditos aprobados debe ser inferior a diez créditos semestrales a partir del cuarto semestre, lo cual es necesario para la evaluación."
+      },
+      "ciclos": 3,
+      "tipo_enrutador": "condicional",
+      "segundos": 140.74,
+      "fuentes_traidas": "RG-ART-003-DEF-07; RG-ART-017; RG-ART-024; RG-ART-028; RG-ART-043; RI-FI-ART-008; RI-FI-ART-014; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "criterio de promedio de créditos según Artículo 14",
+              "créditos necesarios para no caer en baja académica según Artículo 14"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "criterio de promedio de créditos según Artículo 14",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 14
+            }
+          },
+          "observacion": {
+            "traido": "RI-FI-ART-014"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "criterio de promedio de créditos según Artículo 14",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 14
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "criterio de promedio de créditos según Artículo 14",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "créditos necesarios para no caer en baja académica según Artículo 14",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "créditos necesarios para no caer en baja académica según Artículo 14",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RI-FI-ART-008",
+              "RG-ART-003-DEF-07",
+              "RG-ART-028",
+              "RG-ART-017"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "créditos necesarios para no caer en baja académica según Artículo 14",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RI-FI-ART-008",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              },
+              {
+                "id": "RI-FI-ART-008",
+                "extracto": "Artículo 8°. En cada periodo lectivo ordinario las y los estudiantes deberán inscribir y cursar un número de créditos igual o superior a ocho del plan de estudi"
+              },
+              {
+                "id": "RG-ART-003-DEF-07",
+                "extracto": "3.7. CRÉDITO: Crédito es la unidad de medida de la docencia de una asignatura. Un crédito corresponde a una hora docente de clase teórica y a dos o tres horas d"
+              },
+              {
+                "id": "RG-ART-028",
+                "extracto": "Artículo 28° Los alumnos perderán el derecho a continuar estudios y la calidad de alumno de pregrado en las siguientes situaciones académicas: a) Haber aprobado"
+              },
+              {
+                "id": "RG-ART-017",
+                "extracto": "Artículo 17º Los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura, y constitu"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 14
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "créditos necesarios para no caer en baja académica según Artículo 14",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RI-FI-ART-008",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No, 38 / 4 = 9,5 < 10 -> cae en Baja Académica por tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre: 38 / 4 = 9,5 < 10 -> cae en Baja Académica. Condiciones: No aplica (no se pide calcular ni aplicar reglas adicionales).\n</pensar>\nRespuesta: No, 38 / 4 = 9,5 < 10 -> cae en Baja Académica por tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No, 38 / 4 = 9,5 < 10 -> cae en Baja Académica por tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre [RI-FI-ART-014].\nCondiciones o l",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo de 38 / 4 = 9,5 es incorrecto. El Artículo 14° no establece que el promedio se calcule como total de créditos dividido entre 4, sino que el promedio de créditos aprobados debe ser inferior a diez créditos semestrales a partir del cuarto semestre. La pregunta no proporciona el número total de semestres de permanencia, por lo que no se puede confirmar el cálculo."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 11,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "El cálculo de 38 / 4 = 9,5 es incorrecto. El Artículo 14° no establece que el promedio se calcule como total de créditos dividido entre 4, sino que el promedio de créditos aprobados debe ser inferior a diez créditos semestrales a partir del cuarto semestre. La pregunta no proporciona el número total de semestres de permanencia, por lo que no se puede confirmar el cálculo."
+          },
+          "salida": "Respuesta: No es posible determinar si el estudiante cayó en baja académica por el criterio de promedio de créditos del Artículo 14°, ya que la norma exige un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre, pero la pregunta no proporciona el número total de semestres de permanencia ni el promedio de créditos por semestre [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) exige un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre. No hay evidencia sobre el número total de semestres de permanencia ni el promedio de créditos por semestre. No es posible calcular el promedio semestral a partir de 38 créditos totales.\n</pensar>\nRespuesta: No es posible determinar si el estudiante cayó en baja académica por el criterio de promedio de créditos del Artículo 14°, ya que la norma exige un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre, pero la pregunta no proporciona el número total de semestres de permanencia ni el promedio de créditos por semestre [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 12,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No es posible determinar si el estudiante cayó en baja académica por el criterio de promedio de créditos del Artículo 14°, ya que la norma exige un promedio de créditos aprobados inferior a",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "La respuesta no responde a la pregunta completa: el estudiante ha aprobado 38 créditos al término del cuarto semestre, pero la respuesta no evalúa si este número cumple con el criterio de Art. 14° (inferior a 10 créditos semestrales)"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 13,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "La respuesta no responde a la pregunta completa: el estudiante ha aprobado 38 créditos al término del cuarto semestre, pero la respuesta no evalúa si este número cumple con el criterio de Art. 14° (inferior a 10 créditos semestrales)"
+          },
+          "salida": "Respuesta: No, al aprobar 38 créditos al término del cuarto semestre (38 ÷ 4 = 9,5 < 10) incumple el criterio de Art. 14° b) de Baja Académica [RI-FI-ART-014].\nCondiciones o límites: La regla aplica a partir del cuarto semestre de permanencia y no aplica a estudiantes en su primer año [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia. 38 créditos al término del cuarto semestre equivalen a 38 / 4 = 9,5, que es inferior a 10 (9,5 < 10). Condiciones: la regla aplica a partir del cuarto semestre de permanencia y no aplica a estudiantes en su primer año.\n</pensar>\nRespuesta: No, al aprobar 38 créditos al término del cuarto semestre (38 ÷ 4 = 9,5 < 10) incumple el criterio de Art. 14° b) de Baja Académica [RI-FI-ART-014].\nCondiciones o límites: La regla aplica a partir del cuarto semestre de permanencia y no aplica a estudiantes en su primer año [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 14,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No, al aprobar 38 créditos al término del cuarto semestre (38 ÷ 4 = 9,5 < 10) incumple el criterio de Art. 14° b) de Baja Académica [RI-FI-ART-014].\nCondiciones o límites: La regla aplica a",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "El borrador indica que el estudiante cae en baja académica por el criterio de Art. 14° b), pero no menciona la condición de que el promedio de créditos aprobados debe ser inferior a diez créditos semestrales a partir del cuarto semestre, lo cual es necesario para la evaluación."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "multi_lora_4": {
+      "respuesta": "Respuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "respuesta completa, citas verificables en <evidencia> y condiciones fieles"
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "numerica",
+      "segundos": 52.02,
+      "fuentes_traidas": "RG-ART-024; RG-ART-028; RG-ART-043; RI-FI-ART-014; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+          "salida": {
+            "tipo": "numerica",
+            "sub_consultas": [
+              "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. Cae en baja académica por el criterio de promedio de créditos del Artículo 14"
+            ],
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. Cae en baja académica por el criterio de promedio de créditos del Artículo 14",
+            "tipo": "numerica",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) indica que si el promedio semestral de créditos aprobados es inferior a 10 a partir del cuarto semestre: 38 / 4 = 9,5 < 10. No se aplica el criterio de reprobación de asignaturas obligatorias (no figura en la pregunta).\n</pensar>\nRespuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "respuesta completa, citas verificables en <evidencia> y condiciones fieles"
+          },
+          "fallback": false
+        }
+      ]
+    }
+  },
+  {
+    "qid": "dificil_25:H07",
+    "set": "dificil_25",
+    "id": "H07",
+    "categoria": "calculo",
+    "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+    "gold_dato": "No. Promedio = créditos aprobados / semestres de permanencia (RG Art 28 a) = 42/4 = 10,5, no es inferior a 10, así que NO incurre en la causal del RI-FI Art 14 b).",
+    "gold_fuente": "RI-FI-ART-014; RG-ART-028",
+    "solo_redactor_d4": {
+      "respuesta": "Respuesta: No, no se encuentra en Baja Académica porque 42 / 4 = 10,5 créditos semestrales, que supera estrictamente los 10 créditos semestrales exigidos [RI-FI-ART-014].\nCondiciones o límites: El promedio semestral se calcula dividiendo el total de créditos aprobados entre el número de semestres de permanencia [RG-ART-028].\nFuente: [RG-ART-028] [RI-FI-ART-014]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+      },
+      "ciclos": 2,
+      "tipo_enrutador": "condicional",
+      "segundos": 93.08,
+      "fuentes_traidas": "RG-ART-003-DEF-07; RG-ART-024; RG-ART-028; RG-ART-043; RI-FI-ART-005; RI-FI-ART-013; RI-FI-ART-014; RI-FI-ART-015; RI-FI-ART-020; RI-FI-ART-022; RI-FI-ART-030; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "requisitos para baja académica según Artículo 14 RI-FI",
+              "cálculo del promedio de créditos al final del cuarto semestre"
+            ],
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RG-ART-024"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "requisitos para baja académica según Artículo 14 RI-FI",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "requisitos baja académica articulo 14 ri-fi",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RI-FI-ART-013",
+              "RI-FI-ART-015",
+              "RI-FI-ART-022",
+              "RI-FI-ART-020"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "requisitos para baja académica según Artículo 14 RI-FI",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              },
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              },
+              {
+                "id": "RI-FI-ART-015",
+                "extracto": "Artículo 15°. La y el estudiante que, como consecuencia de revalidaciones, convalidaciones o reconocimiento, ingrese directamente a un nivel superior al primer "
+              },
+              {
+                "id": "RI-FI-ART-022",
+                "extracto": "Artículo 22°. La y el estudiante podrá solicitar la convalidación, revalidación y reconocimiento de asignaturas cursadas en otras carreras por única vez durante"
+              },
+              {
+                "id": "RI-FI-ART-020",
+                "extracto": "Artículo 20°. La y el estudiante de especialidad podrá solicitar la revalidación de una misma asignatura (igual código) ya aprobada en otra carrera de esta Univ"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 14
+            }
+          },
+          "observacion": {
+            "traido": "RI-FI-ART-014"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "requisitos para baja académica según Artículo 14 RI-FI",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 14
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "cálculo del promedio de créditos al final del cuarto semestre",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "cálculo promedio créditos semestre cuarto",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-024",
+              "RI-FI-ART-014",
+              "RG-ART-003-DEF-07",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "cálculo del promedio de créditos al final del cuarto semestre",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-024",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-024",
+                "extracto": "Artículo 24° El registro académico del alumno deberá proporcionar, a lo menos, los siguientes dos tipos de promedios de notas: a) Promedio Ponderado (“Prom. Pon"
+              },
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              },
+              {
+                "id": "RG-ART-003-DEF-07",
+                "extracto": "3.7. CRÉDITO: Crédito es la unidad de medida de la docencia de una asignatura. Un crédito corresponde a una hora docente de clase teórica y a dos o tres horas d"
+              },
+              {
+                "id": "RI-FI-ART-030",
+                "extracto": "Artículo 30°. La nota de graduación correspondiente al Grado de Licenciado en Ciencias de la Ingeniería se obtendrá como el promedio ponderado por los créditos "
+              },
+              {
+                "id": "RI-FI-ART-005",
+                "extracto": "Artículo 5°. Las y los estudiantes del Ingreso Común postularán a las carreras ofrecidas por la Facultad de Ingeniería al término de su segundo semestre de perm"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 24
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-024"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "cálculo del promedio de créditos al final del cuarto semestre",
+            "tipo": "condicional",
+            "documentos": [
+              "RI-FI",
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-024",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-024",
+                "extracto": "Artículo 24° El registro académico del alumno deberá proporcionar, a lo menos, los siguientes dos tipos de promedios de notas: a) Promedio Ponderado (“Prom. Pon"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "cálculo del promedio de créditos al final del cuarto semestre",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-024",
+              "RI-FI-ART-014",
+              "RG-ART-003-DEF-07",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No, al alcanzar 42 créditos al término del cuarto semestre (10,5 promedio semestral) supera el umbral de 10 créditos semestrales exigido en el Artículo 14 [RI-FI-ART-014].\nCondiciones o límites: El promedio semestral aprobado debe ser inferior a 10 créditos a partir del cuarto semestre [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] inciso b) establece que se pasa a Baja Académica si el promedio semestral aprobado es inferior a 10 créditos a partir del cuarto semestre. El estudiante alcanzó 42 créditos al finalizar su cuarto semestre (es decir, 42/4 = 10,5), por encima del umbral de 10, por lo que no aplica.\n</pensar>\nRespuesta: No, al alcanzar 42 créditos al término del cuarto semestre (10,5 promedio semestral) supera el umbral de 10 créditos semestrales exigido en el Artículo 14 [RI-FI-ART-014].\nCondiciones o límites: El promedio semestral aprobado debe ser inferior a 10 créditos a partir del cuarto semestre [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No, al alcanzar 42 créditos al término del cuarto semestre (10,5 promedio semestral) supera el umbral de 10 créditos semestrales exigido en el Artículo 14 [RI-FI-ART-014].\nCondiciones o lím",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo del promedio semestral como 10,5 es incorrecto. El promedio se calcula como total de créditos aprobados dividido entre el número de semestres. El borrador no justifica este cálculo y lo convierte en mínimo en máximo."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 11,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "El cálculo del promedio semestral como 10,5 es incorrecto. El promedio se calcula como total de créditos aprobados dividido entre el número de semestres. El borrador no justifica este cálculo y lo convierte en mínimo en máximo."
+          },
+          "salida": "Respuesta: No, no se encuentra en Baja Académica porque 42 / 4 = 10,5 créditos semestrales, que supera estrictamente los 10 créditos semestrales exigidos [RI-FI-ART-014].\nCondiciones o límites: El promedio semestral se calcula dividiendo el total de créditos aprobados entre el número de semestres de permanencia [RG-ART-028].\nFuente: [RG-ART-028] [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) establece que bajar de 10 créditos semestrales a partir del cuarto semestre (10 o menos) causa Baja Académica. 42 / 4 = 10,5 > 10. No aplica.\n</pensar>\nRespuesta: No, no se encuentra en Baja Académica porque 42 / 4 = 10,5 créditos semestrales, que supera estrictamente los 10 créditos semestrales exigidos [RI-FI-ART-014].\nCondiciones o límites: El promedio semestral se calcula dividiendo el total de créditos aprobados entre el número de semestres de permanencia [RG-ART-028].\nFuente: [RG-ART-028] [RI-FI-ART-014]"
+        },
+        {
+          "paso": 12,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No, no se encuentra en Baja Académica porque 42 / 4 = 10,5 créditos semestrales, que supera estrictamente los 10 créditos semestrales exigidos [RI-FI-ART-014].\nCondiciones o límites: El pro",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-028",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "multi_lora_4": {
+      "respuesta": "Respuesta: No está en baja académica: 42 créditos aprobados en 4 semestres equivalen a 42 / 4 = 10,5 créditos semestrales, que es mayor que el umbral de 10 [RI-FI-ART-014].\nCondiciones o límites: El cálculo del promedio se efectúa dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "respuesta completa, verificada en evidencia y citas válidas"
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "numerica",
+      "segundos": 73.28,
+      "fuentes_traidas": "RG-ART-003-DEF-07; RG-ART-024; RG-ART-028; RG-ART-042; RG-ART-043; RI-FI-ART-008; RI-FI-ART-014; RI-FI-ART-015; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+          "salida": {
+            "tipo": "numerica",
+            "sub_consultas": [
+              "Un estudiante aprobó 42 créditos al término de su cuarto semestre. Está en baja académica por el criterio de promedio de créditos del Artículo 14"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RG-ART-024"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. Está en baja académica por el criterio de promedio de créditos del Artículo 14",
+            "tipo": "numerica",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-031",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "credito articulo asignatura requisitos",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-008",
+              "RG-ART-042",
+              "RI-FI-ART-015",
+              "RG-ART-003-DEF-07",
+              "RI-FI-ART-031"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. Está en baja académica por el criterio de promedio de créditos del Artículo 14",
+            "tipo": "numerica",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-008",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-042"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-008",
+                "extracto": "Artículo 8°. En cada periodo lectivo ordinario las y los estudiantes deberán inscribir y cursar un número de créditos igual o superior a ocho del plan de estudi"
+              },
+              {
+                "id": "RG-ART-042",
+                "extracto": "Artículo 42º La inscripción de asignaturas deberá realizarse en las fechas indicadas por el Calendario de Docencia de Pregrado. En el caso de los alumnos que in"
+              },
+              {
+                "id": "RI-FI-ART-015",
+                "extracto": "Artículo 15°. La y el estudiante que, como consecuencia de revalidaciones, convalidaciones o reconocimiento, ingrese directamente a un nivel superior al primer "
+              },
+              {
+                "id": "RG-ART-003-DEF-07",
+                "extracto": "3.7. CRÉDITO: Crédito es la unidad de medida de la docencia de una asignatura. Un crédito corresponde a una hora docente de clase teórica y a dos o tres horas d"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 42
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-042"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. Está en baja académica por el criterio de promedio de créditos del Artículo 14",
+            "tipo": "numerica",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-042",
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-008",
+              "RI-FI-ART-031",
+              "RG-ART-043"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-042",
+                "extracto": "Artículo 42º La inscripción de asignaturas deberá realizarse en las fechas indicadas por el Calendario de Docencia de Pregrado. En el caso de los alumnos que in"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 42
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No está en baja académica: 42 créditos aprobados en 4 semestres equivalen a 42 / 4 = 10,5 créditos semestrales, que es mayor que el umbral de 10 [RI-FI-ART-014].\nCondiciones o límites: El cálculo del promedio se efectúa dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia. El promedio se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia. El estudiante aprobó 42 créditos al término de su cuarto semestre: 42 / 4 = 10,5 > 10. No se encuentra en baja académica.\n</pensar>\nRespuesta: No está en baja académica: 42 créditos aprobados en 4 semestres equivalen a 42 / 4 = 10,5 créditos semestrales, que es mayor que el umbral de 10 [RI-FI-ART-014].\nCondiciones o límites: El cálculo del promedio se efectúa dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia [RI-FI-ART-014].\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No está en baja académica: 42 créditos aprobados en 4 semestres equivalen a 42 / 4 = 10,5 créditos semestrales, que es mayor que el umbral de 10 [RI-FI-ART-014].\nCondiciones o límites: El c",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "respuesta completa, verificada en evidencia y citas válidas"
+          },
+          "fallback": false
+        }
+      ]
+    }
+  },
+  {
+    "qid": "dificil_25:H22",
+    "set": "dificil_25",
+    "id": "H22",
+    "categoria": "premisa_falsa",
+    "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+    "gold_dato": "Falso. La calificación final mínima de aprobación es 4,0 (Art 11), no 4,5. El 4,5 corresponde a otros trámites (ingreso desde otra universidad, convalidación).",
+    "gold_fuente": "RI-FI-ART-011",
+    "solo_redactor_d4": {
+      "respuesta": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0 (pese a que el Profesor/a Encargado/a puede exigir asistencia mínima del 80% o incluso 100% en actividades complementarias) [RI-FI-ART-011].\nCondiciones o límites: La nota de 4,5 (equivalente) figura en [RI-FI-ART-017] y [RI-FI-ART-021], pero en contextos distintos de ingreso y convalidación, no para aprobar una asignatura.\nFuente: [RI-FI-ART-011] [RI-FI-ART-017] [RI-FI-ART-021]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+      },
+      "ciclos": 2,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 92.46,
+      "fuentes_traidas": "RI-FI-ART-005; RI-FI-ART-011; RI-FI-ART-012; RI-FI-ART-013; RI-FI-ART-017; RI-FI-ART-018; RI-FI-ART-021; RI-FI-ART-024; RI-FI-ART-030; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar nota mínima de aprobación de una asignatura en RI-FI",
+              "contenido de la nota mínima para aprobar una asignatura en RI-FI"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5."
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar nota mínima de aprobación de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "nota mínima aprobación asignatura RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-013",
+              "RI-FI-ART-011",
+              "RI-FI-ART-021",
+              "RI-FI-ART-024",
+              "RI-FI-ART-031"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar nota mínima de aprobación de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-013",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              },
+              {
+                "id": "RI-FI-ART-011",
+                "extracto": "Artículo 11°. Cada asignatura impartida por la Facultad de Ingeniería deberá contar con al menos tres evaluaciones sumativas, y para aprobarla deberá cumplirse "
+              },
+              {
+                "id": "RI-FI-ART-021",
+                "extracto": "Artículo 21°. La y el estudiante de especialidad podrá solicitar la convalidación de una asignatura de su Plan de Estudio por otra(s) aprobada(s), con calificac"
+              },
+              {
+                "id": "RI-FI-ART-024",
+                "extracto": "Artículo 24°. La y el estudiante en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la Universidad de Co"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 13
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-013"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar nota mínima de aprobación de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-013",
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 13
+            }
+          },
+          "observacion": {
+            "traido": "RI-FI-ART-013"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido de la nota mínima para aprobar una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-013",
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "contenido de la nota mínima para aprobar una asignatura en RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-013",
+              "RI-FI-ART-011",
+              "RI-FI-ART-021",
+              "RI-FI-ART-024",
+              "RI-FI-ART-012"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido de la nota mínima para aprobar una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-013",
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-021",
+              "RI-FI-ART-030"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              },
+              {
+                "id": "RI-FI-ART-011",
+                "extracto": "Artículo 11°. Cada asignatura impartida por la Facultad de Ingeniería deberá contar con al menos tres evaluaciones sumativas, y para aprobarla deberá cumplirse "
+              },
+              {
+                "id": "RI-FI-ART-021",
+                "extracto": "Artículo 21°. La y el estudiante de especialidad podrá solicitar la convalidación de una asignatura de su Plan de Estudio por otra(s) aprobada(s), con calificac"
+              },
+              {
+                "id": "RI-FI-ART-024",
+                "extracto": "Artículo 24°. La y el estudiante en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la Universidad de Co"
+              },
+              {
+                "id": "RI-FI-ART-012",
+                "extracto": "Artículo 12°. En cada asignatura, las y los estudiantes tendrán derecho a una evaluación de recuperación para modificar la nota final. En la primera semana de c"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 13
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido de la nota mínima para aprobar una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-013",
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-021",
+              "RI-FI-ART-030"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No es correcto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final mínima de 4,0 calculada de acuerdo al syllabus correspondiente [RI-FI-ART-011].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-011]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-011] establece 4,0 como calificación final mínima para aprobar una asignatura (en escala 1 a 7). La nota mínima de aprobación de 4,5 no figura en ningún artículo de la evidencia.\n</pensar>\nRespuesta: No es correcto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final mínima de 4,0 calculada de acuerdo al syllabus correspondiente [RI-FI-ART-011].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-011]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No es correcto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final mínima de 4,0 calculada de acuerdo al syllabus correspondiente",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-011",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "La respuesta confirma que la calificación mínima es 4,0, pero la pregunta pide confirmar la nota mínima para aprobar, que según la evidencia es 4,5, no 4,0"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 11,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": "La respuesta confirma que la calificación mínima es 4,0, pero la pregunta pide confirmar la nota mínima para aprobar, que según la evidencia es 4,5, no 4,0"
+          },
+          "salida": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0 (pese a que el Profesor/a Encargado/a puede exigir asistencia mínima del 80% o incluso 100% en actividades complementarias) [RI-FI-ART-011].\nCondiciones o límites: La nota de 4,5 (equivalente) figura en [RI-FI-ART-017] y [RI-FI-ART-021], pero en contextos distintos de ingreso y convalidación, no para aprobar una asignatura.\nFuente: [RI-FI-ART-011] [RI-FI-ART-017] [RI-FI-ART-021]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-011] establece requisito mínimo de calificación final de 4,0; la nota mínima para aprobar es 4,0 (pese a que puede haber requisitos adicionales de asistencia). La nota de 4,5 (con equivalencia) aparece en [RI-FI-ART-017] y [RI-FI-ART-021], pero en contextos de ingreso y convalidación, no en el aprobo de una asignatura.\n</pensar>\nRespuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0 (pese a que el Profesor/a Encargado/a puede exigir asistencia mínima del 80% o incluso 100% en actividades complementarias) [RI-FI-ART-011].\nCondiciones o límites: La nota de 4,5 (equivalente) figura en [RI-FI-ART-017] y [RI-FI-ART-021], pero en contextos distintos de ingreso y convalidación, no para aprobar una asignatura.\nFuente: [RI-FI-ART-011] [RI-FI-ART-017] [RI-FI-ART-021]"
+        },
+        {
+          "paso": 12,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0 (pese a que el Profesor/a Encargado/a puede exigir asistencia mínima del 80% o incluso 100% en actividades com",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-011",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-017",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-021",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "multi_lora_4": {
+      "respuesta": "Respuesta: No es 4,5: la nota mínima para aprobar es 4,0 en la escala de 1 a 7 [RG-ART-023].\nCondiciones o límites: Si el alumno no cumple requisitos del programa de la asignatura, es calificado con NCR; si obtiene Nota Final igual o superior a 4,0 aprueba [RG-ART-023].\nFuente: [RG-ART-023]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "respuesta completa, verificada en evidencia y citas válidas"
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 61.9,
+      "fuentes_traidas": "RG-ART-023; RG-ART-039; RI-FI-ART-005; RI-FI-ART-011; RI-FI-ART-013; RI-FI-ART-017; RI-FI-ART-018; RI-FI-ART-021; RI-FI-ART-023; RI-FI-ART-030",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5."
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "nota minima aprobar articulo asignatura",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-023",
+              "RI-FI-ART-013",
+              "RI-FI-ART-021",
+              "RG-ART-039",
+              "RI-FI-ART-011"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RG-ART-023",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-013"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-023",
+                "extracto": "Artículo 23º La Nota Final deberá ser expresada en la escala numérica oficial de 1 a 7 hasta con un decimal de aproximación.\n\nEn esta escala, las centésimas inf"
+              },
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              },
+              {
+                "id": "RI-FI-ART-021",
+                "extracto": "Artículo 21°. La y el estudiante de especialidad podrá solicitar la convalidación de una asignatura de su Plan de Estudio por otra(s) aprobada(s), con calificac"
+              },
+              {
+                "id": "RG-ART-039",
+                "extracto": "Artículo 39º El alumno en intercambio que haya cursado y aprobado asignaturas en el marco de convenios de movilidad suscritos por la universidad, tendrá el dere"
+              },
+              {
+                "id": "RI-FI-ART-011",
+                "extracto": "Artículo 11°. Cada asignatura impartida por la Facultad de Ingeniería deberá contar con al menos tres evaluaciones sumativas, y para aprobarla deberá cumplirse "
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 23
+            }
+          },
+          "observacion": {
+            "traido": "RI-FI-ART-023"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-023",
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RG-ART-023",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-023",
+                "extracto": "Artículo 23°. La y el estudiante podrá solicitar a la Vicedecanatura, dentro de los primeros treinta días del período lectivo respectivo, el reconocimiento de c"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 23
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No es 4,5: la nota mínima para aprobar es 4,0 en la escala de 1 a 7 [RG-ART-023].\nCondiciones o límites: Si el alumno no cumple requisitos del programa de la asignatura, es calificado con NCR; si obtiene Nota Final igual o superior a 4,0 aprueba [RG-ART-023].\nFuente: [RG-ART-023]",
+          "salida_cruda": "<pensar>\n[RG-ART-023] párrafo 1: 'Los alumnos que obtengan Nota Final igual o superior a 4,0 (cuatro coma cero) en la escala de 1 a 7 aprobarán la asignatura'. No es 4,5: es 4,0.\n</pensar>\nRespuesta: No es 4,5: la nota mínima para aprobar es 4,0 en la escala de 1 a 7 [RG-ART-023].\nCondiciones o límites: Si el alumno no cumple requisitos del programa de la asignatura, es calificado con NCR; si obtiene Nota Final igual o superior a 4,0 aprueba [RG-ART-023].\nFuente: [RG-ART-023]"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No es 4,5: la nota mínima para aprobar es 4,0 en la escala de 1 a 7 [RG-ART-023].\nCondiciones o límites: Si el alumno no cumple requisitos del programa de la asignatura, es calificado con N",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-023",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "respuesta completa, verificada en evidencia y citas válidas"
+          },
+          "fallback": false
+        }
+      ]
+    }
+  }
+]

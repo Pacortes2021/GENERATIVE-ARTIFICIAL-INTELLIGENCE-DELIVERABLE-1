@@ -7,6 +7,7 @@ import contextlib
 import csv
 import json
 import re
+import shutil
 import sys
 import tempfile
 import types
@@ -33,6 +34,7 @@ import entrenar_agente as ea  # noqa: E402
 import entrenar_redactor as er  # noqa: E402
 import evaluar_d4 as ed4  # noqa: E402
 import evaluar_multi_lora as eml  # noqa: E402
+import generar_auditoria_multi as gam  # noqa: E402
 import resumir_comparativa as rc  # noqa: E402
 from orquestador import Orquestador  # noqa: E402
 
@@ -186,7 +188,7 @@ class TestDatasetsMultiLora(unittest.TestCase):
 
     def test_sin_crlf_en_todo_exp_multi_lora(self) -> None:
         for path in EXP_DIR.rglob("*"):
-            if path.is_file() and path.suffix in {".py", ".jsonl", ".json", ".md", ".ipynb"}:
+            if path.is_file() and path.suffix in {".py", ".jsonl", ".json", ".md", ".ipynb", ".csv"}:
                 self.assertNotIn(b"\r", path.read_bytes(), f"CRLF en {path}")
 
     def test_antifuga_estricto_en_todos_los_agentes(self) -> None:
@@ -561,6 +563,154 @@ class TestNotebookYCoherencia(unittest.TestCase):
         for pkg in ("transformers", "peft", "bitsandbytes", "accelerate", "huggingface_hub", "sentence-transformers"):
             pkg_pip = "huggingface-hub" if pkg == "huggingface_hub" else pkg
             self.assertIn(f"{pkg_pip}=={cfg['versiones'][pkg]}", unido)
+
+
+class TestAuditoriaYArtefactosColab(unittest.TestCase):
+    def test_artefactos_entrenamiento_completos_y_sin_truncados(self) -> None:
+        ent_dir = EXP_DIR / "entrenamiento"
+        for role in ("enrutador", "recuperador", "verificador"):
+            role_dir = ent_dir / role
+            for rel in (
+                "training_metrics.json",
+                "smoke_test_val.json",
+                "loss_curve.png",
+                "loss_curve.pdf",
+                "adapter/README.md",
+            ):
+                self.assertTrue((role_dir / rel).is_file(), f"Falta {role}/{rel}")
+
+            metrics = json.loads((role_dir / "training_metrics.json").read_text(encoding="utf-8"))
+            self.assertEqual(metrics["datos"]["tokens_train"]["truncados"], 0)
+            self.assertEqual(metrics["datos"]["tokens_val"]["truncados"], 0)
+            self.assertEqual(metrics["parametros"]["entrenables_lora"], 33030144)
+            res = metrics["resultados"]
+            self.assertLess(res["mejor_eval_loss"], res["eval_loss_inicial"])
+
+            smoke = json.loads((role_dir / "smoke_test_val.json").read_text(encoding="utf-8"))
+            self.assertEqual(len(smoke), 3)
+
+    def test_auditorias_en_disco_coherentes_con_csvs_y_reporte(self) -> None:
+        self.assertTrue((EXP_DIR / "README.md").is_file())
+        self.assertTrue((EXP_DIR / "REPORTE_RESULTADOS.md").is_file())
+
+        eval_dir = EXP_DIR / "evaluacion"
+        resumen_global = json.loads(
+            (eval_dir / "resumen_comparativo_global.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(resumen_global["nuevas_20"]["multi_lora_4_agentes"]["aciertos"], 14)
+        self.assertEqual(resumen_global["nuevas_20"]["ablacion_red_ver"]["aciertos"], 9)
+        self.assertEqual(resumen_global["benchmark_75_d3"]["multi_lora_4_agentes"]["aciertos"], 58)
+        self.assertEqual(
+            resumen_global["benchmark_75_d3"]["multi_lora_4_agentes"]["por_set"]["congelado_50"]["aciertos_estrictos"],
+            40,
+        )
+        self.assertEqual(
+            resumen_global["benchmark_75_d3"]["multi_lora_4_agentes"]["por_set"]["dificil_25"]["aciertos_estrictos"],
+            18,
+        )
+        self.assertEqual(resumen_global["consolidado_95_preguntas"]["multi_lora_4_agentes"]["aciertos"], 72)
+
+        esperados = [
+            (
+                "multi_lora_nuevas20",
+                "resultados_multi_lora_nuevas20.csv",
+                "resultados_multi_lora_nuevas20_auditados.csv",
+                "auditoria_multi_lora_nuevas20.json",
+                "telemetria_multi_lora_nuevas20.json",
+                "configuracion_multi_lora_nuevas20.json",
+                14,
+            ),
+            (
+                "ablacion_red_ver_nuevas20",
+                "resultados_ablacion_red_ver_nuevas20.csv",
+                "resultados_ablacion_red_ver_nuevas20_auditados.csv",
+                "auditoria_ablacion_red_ver_nuevas20.json",
+                "telemetria_ablacion_red_ver_nuevas20.json",
+                "configuracion_ablacion_red_ver_nuevas20.json",
+                9,
+            ),
+            (
+                "multi_lora_75",
+                "resultados_multi_lora_75.csv",
+                "resultados_multi_lora_75_auditados.csv",
+                "auditoria_multi_lora_75.json",
+                "telemetria_multi_lora_75.json",
+                "configuracion_multi_lora_75.json",
+                58,
+            ),
+        ]
+        cfg_d4 = json.loads((D4_DIR / "evaluacion" / "configuracion_evaluacion.json").read_text(encoding="utf-8"))
+
+        for nombre, raw_csv, aud_csv, aud_json, tel_json, cfg_json, ok_esperados in esperados:
+            self.assertEqual(gam.sha256_archivo(eval_dir / raw_csv), gam.SHA256_CRUDOS[raw_csv])
+            with (eval_dir / aud_csv).open("r", encoding="utf-8", newline="") as f:
+                filas = list(csv.DictReader(f))
+            self.assertEqual(sum(int(r["correcto"]) for r in filas), ok_esperados)
+
+            aud = json.loads((eval_dir / aud_json).read_text(encoding="utf-8"))
+            self.assertEqual(aud["resumen_global"]["aciertos_estrictos"], ok_esperados)
+            self.assertEqual(aud["chequeos_deterministas"]["total_con_citas_inexistentes"], 0)
+            self.assertEqual(aud["chequeos_deterministas"]["total_con_citas_fuera_de_evidencia"], 0)
+            self.assertEqual(aud["chequeos_deterministas"]["total_fallbacks_enrutador"], 0)
+
+            cfg = json.loads((eval_dir / cfg_json).read_text(encoding="utf-8"))
+            self.assertEqual(cfg["prompts_sha256"], cfg_d4["prompts_sha256"])
+            self.assertEqual(len(cfg["aislamiento_multi_lora"]["max_abs_diff_vs_base"]), 4)
+            self.assertTrue(all(v > 0 for v in cfg["aislamiento_multi_lora"]["max_abs_diff_vs_base"].values()))
+
+            res_rc = rc.resumir_corrida(nombre, eval_dir / aud_csv, eval_dir / tel_json)
+            self.assertEqual(res_rc["correctos"], ok_esperados)
+
+    def test_ejecutar_auditoria_en_directorio_temporal_y_sha_invalido(self) -> None:
+        eval_dir = EXP_DIR / "evaluacion"
+        prefijos = (
+            "multi_lora_nuevas20",
+            "ablacion_red_ver_nuevas20",
+            "multi_lora_75",
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            tmp_eval = Path(tmp) / "evaluacion"
+            tmp_eval.mkdir(parents=True, exist_ok=True)
+            for pref in prefijos:
+                for kind in ("resultados", "configuracion", "telemetria", "trazas"):
+                    ext = "csv" if kind == "resultados" else "json"
+                    shutil.copy2(eval_dir / f"{kind}_{pref}.{ext}", tmp_eval / f"{kind}_{pref}.{ext}")
+
+            resumen_tmp = gam.ejecutar_auditoria(
+                eval_dir=tmp_eval,
+                corpus_path=D3_AGENTES_DIR / "corpus.json",
+                d4_eval_dir=D4_DIR / "evaluacion",
+                entrenamiento_dir=EXP_DIR / "entrenamiento",
+            )
+            resumen_disco = json.loads(
+                (eval_dir / "resumen_comparativo_global.json").read_text(encoding="utf-8")
+            )
+            self.assertEqual(resumen_tmp, resumen_disco)
+            for fname in (
+                "auditoria_multi_lora_nuevas20.json",
+                "auditoria_ablacion_red_ver_nuevas20.json",
+                "auditoria_multi_lora_75.json",
+                "resultados_multi_lora_nuevas20_auditados.csv",
+                "resultados_ablacion_red_ver_nuevas20_auditados.csv",
+                "resultados_multi_lora_75_auditados.csv",
+                "resumen_comparativo_global.json",
+            ):
+                self.assertEqual(
+                    (tmp_eval / fname).read_bytes(),
+                    (eval_dir / fname).read_bytes(),
+                    f"Salida no determinista en {fname}",
+                )
+
+            # Corrupción en CSV crudo debe ser rechazada por verificación SHA-256
+            raw_n20 = tmp_eval / "resultados_multi_lora_nuevas20.csv"
+            raw_n20.write_text(raw_n20.read_text(encoding="utf-8") + "\n", encoding="utf-8")
+            with self.assertRaises(ValueError):
+                gam.ejecutar_auditoria(
+                    eval_dir=tmp_eval,
+                    corpus_path=D3_AGENTES_DIR / "corpus.json",
+                    d4_eval_dir=D4_DIR / "evaluacion",
+                    entrenamiento_dir=EXP_DIR / "entrenamiento",
+                )
 
 
 if __name__ == "__main__":

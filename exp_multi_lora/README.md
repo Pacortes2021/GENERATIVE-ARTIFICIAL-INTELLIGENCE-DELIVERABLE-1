@@ -26,9 +26,13 @@ El objetivo de `exp_multi_lora/` es entrenar adaptadores QLoRA independientes pa
 | `scripts/entrenar_agente.py` | Script único de entrenamiento QLoRA (`r=16, alpha=32, completion_only_loss=True`) parametrizado con `--agente {enrutador,recuperador,verificador,redactor}`. |
 | `scripts/evaluar_multi_lora.py` | Carga un único `Qwen/Qwen3-4B` NF4 y conmuta hasta 4 adaptadores por nombre mediante `model.set_adapter(rol)` / `model.disable_adapter()`, verifica aislamiento cruzado (`logits`) y permite comparativas pareadas (`--comparar-vs-solo-redactor`) o lotes completos (`ejecutar_evaluacion_lote`). |
 | `scripts/resumir_comparativa.py` | Compara CSVs y telemetría (`Control Base D4`, `Solo Redactor D4`, `Multi-LoRA`). |
+| `scripts/generar_auditoria_multi.py` | Auditoría estricta bajo `LEEME_PAUTA.md` (`*_auditados.csv`, `auditoria_*.json`, `resumen_comparativo_global.json`). |
 | `datos/` | Datasets deterministas (`*_train.jsonl`, `*_val.jsonl`) y resumen (`resumen_datasets_multi_lora.json`). |
+| `entrenamiento/` | Métricas (`training_metrics.json`), curvas (`loss_curve.png/pdf`), smoke tests (`smoke_test_val.json`) y tarjetas de adaptador de `enrutador`, `recuperador` y `verificador`. |
+| `evaluacion/` | Resultados crudos/auditados en `nuevas_20` (Multi-LoRA y ablación `Red+Ver`) y `75` D3, telemetrías, trazas y diagnósticos comparativos. |
+| `REPORTE_RESULTADOS.md` | Análisis completo de entrenamiento, aislamiento, matriz del Verificador, causas raíz y latencia. |
 | `Exp_MultiLoRA_Colab.ipynb` | Notebook listo para Google Colab (T4 / L4 / A100) que entrena los 3 adaptadores nuevos, valida aislamiento cruzado y evalúa `Solo Redactor` vs `Multi-LoRA`. |
-| `tests/test_multi_lora.py` | Suite de pruebas unitarias offline (determinismo byte a byte, LF, antifuga, tokenización Qwen3 con 0 truncados, `MultiLoraGenerator` + `Orquestador` y validación del notebook). |
+| `tests/test_multi_lora.py` | Suite de pruebas unitarias offline (determinismo byte a byte, LF, antifuga, tokenización Qwen3 con 0 truncados, `MultiLoraGenerator` + `Orquestador`, auditoría estricta y validación del notebook). |
 
 ---
 
@@ -87,4 +91,28 @@ python3 exp_multi_lora/scripts/resumir_comparativa.py \
   --benchmark 75 \
   --multi-csv exp_multi_lora/evaluacion/resultados_multi_lora_75.csv \
   --multi-telemetria exp_multi_lora/evaluacion/telemetria_multi_lora_75.json
+
+# Auditoría estricta completa (genera *_auditados.csv, auditoria_*.json y resumen_comparativo_global.json)
+python3 exp_multi_lora/scripts/generar_auditoria_multi.py
 ```
+
+---
+
+## Resultados obtenidos (resumen)
+
+Los detalles completos de entrenamiento, aislamiento, matriz de confusión del Verificador y análisis causal por pregunta se encuentran en [`REPORTE_RESULTADOS.md`](REPORTE_RESULTADOS.md).
+
+| Condición | `congelado_50` | `dificil_25` | `75` D3 | `nuevas_20` | Consolidado `95` | Llamadas (`75` / `N20`) |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Control Base D4** | **46/50 (92.0%)** | 16/25 (64.0%) | **62/75 (82.7%)** | 11/20 (55.0%) | **73/95 (76.8%)** | 658 / 254 |
+| **Solo Redactor D4** | 43/50 (86.0%) | 17/25 (68.0%) | 60/75 (80.0%) | 10/20 (50.0%) | 70/95 (73.7%) | 648 / 212 |
+| **Ablación Red+Ver** | — | — | — | 9/20 (45.0%) | — | — / 190 |
+| **Multi-LoRA (4 agentes)** | 40/50 (80.0%)\* | **18/25 (72.0%)** | 58/75 (77.3%)\* | **14/20 (70.0%)** | 72/95 (75.8%) | **493 / 138** |
+
+> \* En `congelado_50:8` el contenido jurídico y las citas inline (`[RG-ART-034] [RI-FI-ART-026]`) son correctos, pero se omite la tercera línea literal `Fuente:` (`39/50` / `57/75` bajo exigencia literal de 3 líneas).
+
+### Hallazgos clave
+
+1. **Salto de generalización por `Enrutador` + `Recuperador` LoRA:** `Multi-LoRA` sube **`+20 pp`** frente a `Solo Redactor D4` en `nuevas_20` (`70.0%` vs `50.0%`) y marca **`18/25` (`72.0%`)** en `dificil_25` (máximo histórico), bajando las llamadas del `Recuperador` en **`-51.2%`** (`75` D3) y **`-63.6%`** (`nuevas_20`), con `0` fallbacks del enrutador y `0` citas fuera de evidencia en las `95` preguntas.
+2. **El `Verificador` LoRA explica la caída en `congelado_50`:** la ablación `Red+Ver` (`9/20`) junto a la matriz interna muestran un filtro invertido por sobreajuste (`eval_loss=0.0344`): rechaza `17/17` respuestas ya correctas en `75 D3` (mayormente por `Condiciones o límites: No aplica`, induciendo mutaciones dañinas en reintentos) mientras aprueba `17/17` fallos estrictos.
+3. **Paradoja de latencia:** pese a usar `-23.9%` a `-34.9%` menos llamadas totales, conmutar 4 adaptadores reduce el throughput de generación de `8.93` (`Solo Redactor`) y `12.67 tok/s` (`Control Base`) a `6.79 tok/s`, y los reintentos del Verificador elevan las llamadas al Redactor (`118` vs `100` en `75 D3`).

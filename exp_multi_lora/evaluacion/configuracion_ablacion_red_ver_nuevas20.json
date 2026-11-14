@@ -1,0 +1,68 @@
+{
+  "modelo_base": "Qwen/Qwen3-4B",
+  "revision_modelo_base": "",
+  "roles_con_lora": [
+    "redactor",
+    "verificador"
+  ],
+  "fuentes_por_rol": {
+    "enrutador": {
+      "fuente": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/enrutador/adapter",
+      "revision": null
+    },
+    "recuperador": {
+      "fuente": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/recuperador/adapter",
+      "revision": null
+    },
+    "redactor": {
+      "fuente": "Pablox0333/qwen3-4b-redactor-udec-d4",
+      "revision": "739b031acbd5feef2c49f946b94722712209bce0"
+    },
+    "verificador": {
+      "fuente": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/verificador/adapter",
+      "revision": null
+    }
+  },
+  "hardware": {
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "compute_dtype": "torch.bfloat16"
+  },
+  "greedy": false,
+  "aislamiento_multi_lora": {
+    "roles_activos": [
+      "enrutador",
+      "recuperador",
+      "redactor",
+      "verificador"
+    ],
+    "max_abs_diff_vs_base": {
+      "enrutador": 18.0,
+      "recuperador": 16.375,
+      "redactor": 19.125,
+      "verificador": 16.625
+    },
+    "max_abs_diff_cruzada": {
+      "enrutador_vs_recuperador": 4.689034,
+      "enrutador_vs_redactor": 4.5625,
+      "enrutador_vs_verificador": 5.0625,
+      "recuperador_vs_redactor": 5.15625,
+      "recuperador_vs_verificador": 5.734375,
+      "redactor_vs_verificador": 4.695312
+    }
+  },
+  "prompts_sha256": {
+    "01_enrutador.txt": "cc0d5e40a40c71d2a8104d40201167279880033f9f868884350c6e77f31079f5",
+    "02_recuperador.txt": "2fe9b0afb5f22fa432b5180fcccc58c82604701ee146598368a645d0cf84ba41",
+    "03_redactor.txt": "6b3e4ac3a47ea54a337a54d9d803b23efc4005e81b2613d9698340e1cc841275",
+    "04_verificador.txt": "c141fe3686a2040bcb5cadeda769d70e8316fffa40b753aa0ea5f6a6784613bb"
+  },
+  "versiones": {
+    "torch": "2.14.1+cu130",
+    "transformers": "5.23.0",
+    "peft": "0.21.3",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.15.0",
+    "huggingface_hub": "1.33.0",
+    "sentence-transformers": "6.3.0"
+  }
+}

@@ -496,6 +496,7 @@ def main(argv: list[str] | None = None) -> int:
                 for r in roles_a_cargar
             },
             "hardware": {"gpu": gpu_nombre, "compute_dtype": compute_dtype_str},
+            "greedy": args.greedy,
             "aislamiento_multi_lora": aislamiento,
             "prompts_sha256": prompts_sha,
             "versiones": ed4._resolver_versiones_eval(),

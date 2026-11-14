@@ -529,8 +529,9 @@ class TestEvaluacionMultiLoraYComparativa(unittest.TestCase):
 
 
 class TestNotebookYCoherencia(unittest.TestCase):
-    def test_colab_notebook_ast_y_versiones(self) -> None:
-        nb_path = EXP_DIR / "Exp_MultiLoRA_Colab.ipynb"
+    def _validar_notebook_colab(self, nombre_nb: str, rama_esperada: str) -> str:
+        """Valida sintaxis AST, rama objetivo, rutas reales y versiones fijadas."""
+        nb_path = EXP_DIR / nombre_nb
         self.assertTrue(nb_path.is_file())
         nb = json.loads(nb_path.read_text(encoding="utf-8"))
         self.assertEqual(nb["nbformat"], 4)
@@ -539,12 +540,20 @@ class TestNotebookYCoherencia(unittest.TestCase):
             src = "".join(cell["source"])
             todo_src.append(src)
             if cell["cell_type"] == "code":
-                ast.parse(src, filename=f"notebook_cell_{idx}")
+                ast.parse(src, filename=f"{nombre_nb}_cell_{idx}")
         unido = "\n".join(todo_src)
-        self.assertIn("exp/multi-lora-todos", unido)
+        self.assertIn(rama_esperada, unido)
         self.assertIn("739b031", unido)
         for rel in re.findall(r'Path\("(Deliverable [^"]+)"\)', unido):
-            self.assertTrue((REPO_ROOT / rel).exists(), f"Ruta inexistente en notebook: {rel}")
+            self.assertTrue((REPO_ROOT / rel).exists(), f"Ruta inexistente en {nombre_nb}: {rel}")
+        cfg = json.loads((D4_DIR / "evaluacion" / "configuracion_evaluacion.json").read_text(encoding="utf-8"))
+        for pkg in ("transformers", "peft", "bitsandbytes", "accelerate", "huggingface_hub", "sentence-transformers"):
+            pkg_pip = "huggingface-hub" if pkg == "huggingface_hub" else pkg
+            self.assertIn(f"{pkg_pip}=={cfg['versiones'][pkg]}", unido)
+        return unido
+
+    def test_colab_notebook_ast_y_versiones(self) -> None:
+        self._validar_notebook_colab("Exp_MultiLoRA_Colab.ipynb", "exp/multi-lora-todos")
         self.assertEqual(
             len(ed4.cargar_preguntas_evaluacion(filtro_qids={"dificil_25:H06", "dificil_25:H07", "dificil_25:H22"})),
             3,
@@ -559,10 +568,13 @@ class TestNotebookYCoherencia(unittest.TestCase):
             ),
             2,
         )
-        cfg = json.loads((D4_DIR / "evaluacion" / "configuracion_evaluacion.json").read_text(encoding="utf-8"))
-        for pkg in ("transformers", "peft", "bitsandbytes", "accelerate", "huggingface_hub", "sentence-transformers"):
-            pkg_pip = "huggingface-hub" if pkg == "huggingface_hub" else pkg
-            self.assertIn(f"{pkg_pip}=={cfg['versiones'][pkg]}", unido)
+
+    def test_notebook_sin_verificador_ast_y_versiones(self) -> None:
+        unido = self._validar_notebook_colab("Exp_SinVerificador_Colab.ipynb", "exp/multi-lora-sin-verificador")
+        self.assertIn('ROLES_ACTIVOS = ("enrutador", "recuperador", "redactor")', unido)
+        self.assertIn('"verificador": None', unido)
+        self.assertIn("sin_verificador_nuevas20", unido)
+        self.assertIn("sin_verificador_75", unido)
 
 
 class TestAuditoriaYArtefactosColab(unittest.TestCase):

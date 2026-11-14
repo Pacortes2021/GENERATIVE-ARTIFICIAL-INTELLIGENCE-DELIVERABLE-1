@@ -1,7 +1,8 @@
 {
+  "version_corrida": "v2_a100_bf16",
   "criterio": "Auditoría estricta según Deliverable 3/paquete_25_dificiles/LEEME_PAUTA.md (incluye Regla 3 / precedente P01).",
   "configuracion_runtime": {
-    "fecha_utc": "2026-11-13T03:06:55.866110+00:00",
+    "fecha_utc": "2026-11-13T20:13:22.549555+00:00",
     "modelo_base": "Qwen/Qwen3-4B",
     "revision_modelo_base": "",
     "hf_adaptador_redactor": "Pablox0333/qwen3-4b-redactor-udec-d4",
@@ -30,20 +31,20 @@
     "enable_thinking": false,
     "recuperador_e5": "intfloat/multilingual-e5-small",
     "aislamiento_verificado": {
-      "max_abs_logit_diff": 14.0625,
+      "max_abs_logit_diff": 13.5625,
       "active_adapters": [
         "default"
       ]
     },
     "hardware": {
-      "gpu": "Tesla T4",
-      "vram_gb": 15.64,
-      "compute_dtype": "torch.float16"
+      "gpu": "NVIDIA A100-SXM4-40GB",
+      "vram_gb": 42.41,
+      "compute_dtype": "torch.bfloat16"
     },
     "versiones": {
       "torch": "2.14.1+cu130",
-      "transformers": "5.22.2",
-      "peft": "0.21.2",
+      "transformers": "5.23.0",
+      "peft": "0.21.3",
       "bitsandbytes": "0.50.2",
       "accelerate": "1.15.0",
       "huggingface_hub": "1.33.0",
@@ -58,27 +59,27 @@
   },
   "resumen_global": {
     "congelado_50": {
-      "aciertos_estrictos": 45,
+      "aciertos_estrictos": 43,
       "total": 50,
-      "porcentaje_estricto": 90.0,
-      "aciertos_nucleo_sin_condicion_p01": 47
+      "porcentaje_estricto": 86.0,
+      "aciertos_nucleo_sin_condicion_p01": 45
     },
     "dificil_25": {
-      "aciertos_estrictos": 19,
+      "aciertos_estrictos": 17,
       "total": 25,
-      "porcentaje_estricto": 76.0,
-      "aciertos_nucleo_sin_condicion_p01": 21
+      "porcentaje_estricto": 68.0,
+      "aciertos_nucleo_sin_condicion_p01": 17
     },
     "global_75": {
-      "aciertos_estrictos": 64,
+      "aciertos_estrictos": 60,
       "total": 75,
-      "porcentaje_estricto": 85.3,
-      "aciertos_nucleo_sin_condicion_p01": 68,
-      "porcentaje_nucleo": 90.7
+      "porcentaje_estricto": 80.0,
+      "aciertos_nucleo_sin_condicion_p01": 62,
+      "porcentaje_nucleo": 82.7
     },
     "aprobacion_interna_vs_exactitud": {
       "aprobadas_por_verificador": 68,
-      "aprobadas_pero_incorrectas_estricto": 8,
+      "aprobadas_pero_incorrectas_estricto": 12,
       "rechazadas_por_verificador": 7,
       "rechazadas_pero_correctas": 4
     }
@@ -93,26 +94,26 @@
       "redactor": 110,
       "verificador": 110
     },
-    "d4_llamadas_reales_llm": 666,
+    "d4_llamadas_reales_llm": 648,
     "d4_llamadas_llm_por_agente": {
       "enrutador": 75,
-      "recuperador": 389,
-      "redactor": 101,
-      "verificador": 101
+      "recuperador": 373,
+      "redactor": 100,
+      "verificador": 100
     },
-    "delta_llamadas_pct": -6.33,
+    "delta_llamadas_pct": -8.86,
     "d3_eventos_traza": 798,
-    "d4_eventos_traza": 749,
+    "d4_eventos_traza": 731,
     "d3_segundos": 8257.8,
-    "d4_segundos": 6864.11,
-    "delta_tiempo_pct": -16.88,
+    "d4_segundos": 4541.16,
+    "delta_tiempo_pct": -45.01,
     "d3_ciclos_gt1": 21,
-    "d4_ciclos_gt1": 15,
+    "d4_ciclos_gt1": 16,
     "transiciones_vs_d3": {
-      "acierto_mantenido": 58,
-      "regresion_d4": 8,
-      "corregido_en_d4": 6,
-      "fallo_persistente": 3
+      "acierto_mantenido": 55,
+      "regresion_d4": 11,
+      "corregido_en_d4": 5,
+      "fallo_persistente": 4
     },
     "errores_d3_originales": [
       "congelado_50:13",
@@ -128,53 +129,76 @@
     "errores_d3_resueltos_estrictos_en_d4": [
       "congelado_50:13",
       "congelado_50:24",
-      "congelado_50:26",
       "dificil_25:H07",
       "dificil_25:H14",
-      "dificil_25:H25"
+      "dificil_25:H18"
     ],
-    "errores_d3_resueltos_en_nucleo_p36_h18": [
-      "congelado_50:36 (contenido corregido, cambia ID cita)",
-      "dificil_25:H18 (contenido y RG-ART-033 corregidos; falla cita extra P01)"
+    "errores_d3_resueltos_en_nucleo_p36_h18": []
+  },
+  "comparativa_control_base_vs_ft": {
+    "control_csv": "resultados_control_base_D4.csv",
+    "control_llamadas_totales": 658,
+    "control_segundos_totales": 4520.46,
+    "control_ciclos_gt1": 13,
+    "control_congelado_50_ok": 46,
+    "control_dificil_25_ok": 16,
+    "control_global_75_ok": 62,
+    "ft_gana_a_control_qids": [
+      "congelado_50:11",
+      "congelado_50:43",
+      "dificil_25:H07",
+      "dificil_25:H18",
+      "dificil_25:H19",
+      "dificil_25:H24"
+    ],
+    "control_gana_a_ft_qids": [
+      "congelado_50:5",
+      "congelado_50:8",
+      "congelado_50:26",
+      "congelado_50:28",
+      "congelado_50:45",
+      "dificil_25:H02",
+      "dificil_25:H04",
+      "dificil_25:H21"
     ]
   },
   "telemetria_y_aislamiento": {
     "total_consultas": 75,
-    "llamadas_modelo_totales": 666,
-    "llamadas_por_pregunta": 8.88,
+    "llamadas_modelo_totales": 648,
+    "llamadas_por_pregunta": 8.64,
     "llamadas_por_agente": {
       "enrutador": 75,
-      "recuperador": 389,
-      "redactor": 101,
-      "verificador": 101
+      "recuperador": 373,
+      "redactor": 100,
+      "verificador": 100
     },
     "tokens_entrada_por_agente": {
       "enrutador": 46199,
-      "recuperador": 279872,
-      "redactor": 139534,
-      "verificador": 141246
+      "recuperador": 265772,
+      "redactor": 137098,
+      "verificador": 137356
     },
     "tokens_salida_por_agente": {
-      "enrutador": 3387,
-      "recuperador": 8567,
-      "redactor": 22879,
-      "verificador": 5915
+      "enrutador": 3365,
+      "recuperador": 8201,
+      "redactor": 22137,
+      "verificador": 5793
     },
-    "eventos_traza_totales": 749,
+    "eventos_traza_totales": 731,
     "fallbacks_totales": 0,
     "errores_ejecucion": 0,
-    "segundos_totales": 6864.11,
-    "minutos_totales": 114.4,
-    "segundos_promedio_congelado": 80.14,
-    "segundos_promedio_dificil": 114.28,
+    "segundos_totales": 4541.16,
+    "minutos_totales": 75.69,
+    "segundos_promedio_congelado": 52.09,
+    "segundos_promedio_dificil": 77.46,
     "segundos_promedio_por_set": {
-      "congelado_50": 80.14,
-      "dificil_25": 114.28
+      "congelado_50": 52.09,
+      "dificil_25": 77.46
     },
     "casos_ciclos_mayor_1": {
-      "congelado_50": 8,
-      "dificil_25": 7,
-      "total": 15
+      "congelado_50": 6,
+      "dificil_25": 10,
+      "total": 16
     },
     "violaciones_aislamiento_lora": 0,
     "detalle_violaciones_aislamiento": []
@@ -182,8 +206,8 @@
   "desglose_por_categoria": {
     "factual": {
       "total": 10,
-      "d4_estricto": 7,
-      "d4_nucleo": 8,
+      "d4_estricto": 8,
+      "d4_nucleo": 10,
       "d3_v6": 10
     },
     "numerica": {
@@ -194,26 +218,26 @@
     },
     "condicional": {
       "total": 10,
-      "d4_estricto": 10,
-      "d4_nucleo": 10,
+      "d4_estricto": 7,
+      "d4_nucleo": 7,
       "d3_v6": 8
     },
     "cruce": {
       "total": 10,
-      "d4_estricto": 8,
+      "d4_estricto": 9,
       "d4_nucleo": 9,
       "d3_v6": 9
     },
     "abstencion": {
       "total": 10,
-      "d4_estricto": 10,
-      "d4_nucleo": 10,
+      "d4_estricto": 9,
+      "d4_nucleo": 9,
       "d3_v6": 10
     },
     "multi_salto": {
       "total": 4,
       "d4_estricto": 1,
-      "d4_nucleo": 2,
+      "d4_nucleo": 1,
       "d3_v6": 3
     },
     "calculo": {
@@ -224,8 +248,8 @@
     },
     "colision_lexica": {
       "total": 5,
-      "d4_estricto": 5,
-      "d4_nucleo": 5,
+      "d4_estricto": 4,
+      "d4_nucleo": 4,
       "d3_v6": 5
     },
     "negacion_excepcion": {
@@ -236,38 +260,38 @@
     },
     "sintesis": {
       "total": 5,
-      "d4_estricto": 3,
+      "d4_estricto": 4,
       "d4_nucleo": 4,
       "d3_v6": 3
     },
     "premisa_falsa": {
       "total": 4,
-      "d4_estricto": 4,
-      "d4_nucleo": 4,
+      "d4_estricto": 2,
+      "d4_nucleo": 2,
       "d3_v6": 4
     }
   },
   "trazabilidad_calificacion": {
-    "evaluadores": "Álvaro Contreras y Pablo Cortés (criterios LEEME_PAUTA.md) con auditoría externa de par",
+    "evaluadores": "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2; pendiente revisión par y VoBo de Álvaro Contreras)",
     "nota_nucleo_equivalente": "El criterio relajado sin Regla 3/P01 también elevaría a D3 v6 (congelado_50:13 y dificil_25:H18 eran fallos P01 en D3: 66+2 = 68/75), por lo que no debe usarse como ventaja unilateral de D4 sobre D3."
   },
   "comparativa_controlada_6_casos": {
     "total_pares": 6,
-    "aciertos_base": 1,
+    "aciertos_base": 2,
     "aciertos_finetuned": 4,
     "casos": [
       {
         "qid": "congelado_50:13",
         "categoria": "numerica",
         "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
-        "base_correcto": 0,
+        "base_correcto": 1,
         "ft_correcto": 1,
         "base_ciclos": 1,
         "ft_ciclos": 1,
-        "base_segundos": 81.38,
-        "ft_segundos": 67.62,
-        "base_motivo": "Da umbral 10 créditos pero agrega la fórmula del promedio citando solo [RI-FI-ART-014] (fórmula en [RG-ART-028]; P01).",
-        "ft_motivo": "Acierta umbral < 10 desde 4.º semestre [RI-FI-ART-014] y añade condición propia del mismo [RI-FI-ART-014]."
+        "base_segundos": 47.35,
+        "ft_segundos": 51.39,
+        "base_motivo": "Acierta umbral < 10 desde cuarto semestre con [RI-FI-ART-014].",
+        "ft_motivo": "Acierta umbral < 10 [RI-FI-ART-014] y agrega correctamente la fórmula [RG-ART-028]."
       },
       {
         "qid": "congelado_50:24",
@@ -277,10 +301,10 @@
         "ft_correcto": 1,
         "base_ciclos": 1,
         "ft_ciclos": 1,
-        "base_segundos": 103.81,
-        "ft_segundos": 76.94,
-        "base_motivo": "Explicita ambas excepciones (PLEV y primer año) citando [RI-FI-ART-014].",
-        "ft_motivo": "Explicita ambas excepciones con [RG-ART-028] [RI-FI-ART-014] (errata menor 'Re reprobar')."
+        "base_segundos": 57.07,
+        "ft_segundos": 49.74,
+        "base_motivo": "Explicita segunda reprobación obligatoria y ambas excepciones (PLEV y primer año) [RI-FI-ART-014] [RG-ART-028].",
+        "ft_motivo": "Responde correctamente con ambas excepciones y paso a Baja Académica [RI-FI-ART-014]."
       },
       {
         "qid": "congelado_50:36",
@@ -290,10 +314,10 @@
         "ft_correcto": 0,
         "base_ciclos": 1,
         "ft_ciclos": 1,
-        "base_segundos": 61.88,
-        "ft_segundos": 72.16,
-        "base_motivo": "Afirma 'No se aplican condiciones o límites adicionales', omitiendo excepciones del [RI-FI-ART-008] (Regla 2).",
-        "ft_motivo": "Mejora el contenido al incluir excepciones, pero cita [CAL-2026-S2-04] en vez de [RI-FI-ART-008] (Regla 3 / P01)."
+        "base_segundos": 39.05,
+        "ft_segundos": 47.76,
+        "base_motivo": "Dice 'Condiciones o límites: No se aplican', omitiendo excepciones al mínimo de 8 créditos (Regla 2).",
+        "ft_motivo": "Dice 'Condiciones o límites: No aplica', omitiendo excepciones del [RI-FI-ART-008] (Regla 2)."
       },
       {
         "qid": "dificil_25:H03",
@@ -303,10 +327,10 @@
         "ft_correcto": 0,
         "base_ciclos": 3,
         "ft_ciclos": 3,
-        "base_segundos": 262.85,
-        "ft_segundos": 351.8,
-        "base_motivo": "Se abstiene en el ciclo 3 por falta de fecha de inicio S2.",
-        "ft_motivo": "Calcula 24 días en S1, pero reemplaza el S2 faltante por 04 sep->11 dic = 98 días [CAL-2026-S2-04] en lugar de abstenerse."
+        "base_segundos": 160.39,
+        "ft_segundos": 180.35,
+        "base_motivo": "Falsa abstención tras 3 ciclos (160,39 s) pese a que las fechas están en CAL 2026 (Regla 8).",
+        "ft_motivo": "Calcula mal (22 y 19 días con fechas erradas) al quedar CAL-2026-S2-02 fuera del top-6 (180,35 s)."
       },
       {
         "qid": "dificil_25:H07",
@@ -315,11 +339,11 @@
         "base_correcto": 0,
         "ft_correcto": 1,
         "base_ciclos": 3,
-        "ft_ciclos": 1,
-        "base_segundos": 227.68,
-        "ft_segundos": 78.7,
-        "base_motivo": "Falla en 3 ciclos (227,68 s): falsa abstención alegando falta de semestres y créditos totales.",
-        "ft_motivo": "Resuelve en 1 ciclo (78,70 s): 42 / 4 = 10,5 > 10 con [RG-ART-028] [RI-FI-ART-014]."
+        "ft_ciclos": 2,
+        "base_segundos": 173.54,
+        "ft_segundos": 89.03,
+        "base_motivo": "Falsa abstención tras 3 ciclos (173,54 s) alegando que faltan semestres de permanencia.",
+        "ft_motivo": "Resuelve en 2 ciclos (89,03 s): '42 / 4 = 10,5 > 10' con [RI-FI-ART-014] y [RG-ART-028]."
       },
       {
         "qid": "dificil_25:H14",
@@ -327,12 +351,12 @@
         "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
         "base_correcto": 0,
         "ft_correcto": 1,
-        "base_ciclos": 1,
+        "base_ciclos": 2,
         "ft_ciclos": 1,
-        "base_segundos": 89.47,
-        "ft_segundos": 85.0,
-        "base_motivo": "Contradicción polar: inicia afirmando 'Sí, el estudiante queda automáticamente en baja académica'.",
-        "ft_motivo": "Inicia correctamente 'No queda automáticamente en baja académica' con excepciones y apelación [RI-FI-ART-014] [RG-ART-028] [RG-ART-030]."
+        "base_segundos": 92.32,
+        "ft_segundos": 58.51,
+        "base_motivo": "Contradicción polar ('Sí, el estudiante queda en baja académica si no cumple...') tras 2 ciclos (92,32 s).",
+        "ft_motivo": "Resuelve en 1 ciclo (58,51 s): 'No queda automáticamente...' con excepciones y apelación [RI-FI-ART-014] [RG-ART-028] [RG-ART-030]."
       }
     ]
   },
@@ -436,6 +460,30 @@
       "id": "5",
       "categoria": "factual",
       "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 1,
+      "correcto_d3_v6": 1,
+      "transicion_d3_a_d4": "regresion_d4",
+      "aprobado_verificador": true,
+      "ciclos": 1,
+      "llamadas_modelo": 6,
+      "citas_en_respuesta": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-030"
+      ],
+      "citas_fuera_de_evidencia": [],
+      "citas_inexistentes_en_corpus": [],
+      "tipo_fallo": "mezcla_cita_condiciones_p01",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": true,
+      "motivo_auditoria": "Identifica la Memoria de Título [RI-FI-ART-029], pero Condiciones atribuye a [RI-FI-ART-030] (que solo define ponderación 60%/40%) la exigencia de aprobarla íntegramente para acceder al título profesional, regla ubicada en [RG-ART-003-DEF-10] y [RG-ART-047] (Regla 3 / precedente P01)."
+    },
+    {
+      "qid": "congelado_50:6",
+      "set": "congelado_50",
+      "id": "6",
+      "categoria": "factual",
+      "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
       "correcto_d4_estricto": 1,
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
@@ -444,8 +492,7 @@
       "ciclos": 1,
       "llamadas_modelo": 6,
       "citas_en_respuesta": [
-        "RG-ART-003-DEF-10",
-        "RI-FI-ART-029"
+        "RI-FI-ART-010"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -455,60 +502,11 @@
       "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
     },
     {
-      "qid": "congelado_50:6",
-      "set": "congelado_50",
-      "id": "6",
-      "categoria": "factual",
-      "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
-      "correcto_d4_estricto": 0,
-      "correcto_d4_nucleo": 0,
-      "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "regresion_d4",
-      "aprobado_verificador": true,
-      "ciclos": 1,
-      "llamadas_modelo": 6,
-      "citas_en_respuesta": [
-        "RG-ART-010"
-      ],
-      "citas_fuera_de_evidencia": [
-        "RG-ART-010"
-      ],
-      "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "cita_invalida_fuera_de_evidencia",
-      "causa_raiz": "redactor",
-      "solo_condicion_p01": false,
-      "motivo_auditoria": "El dato (al menos una semana) es correcto, pero cita tres veces [RG-ART-010] (sesiones del Consejo de Carrera, ni siquiera presente en fuentes_traidas) en lugar de [RI-FI-ART-010], que sí estaba en evidencia."
-    },
-    {
       "qid": "congelado_50:7",
       "set": "congelado_50",
       "id": "7",
       "categoria": "factual",
       "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
-      "correcto_d4_estricto": 0,
-      "correcto_d4_nucleo": 1,
-      "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "regresion_d4",
-      "aprobado_verificador": true,
-      "ciclos": 3,
-      "llamadas_modelo": 19,
-      "citas_en_respuesta": [
-        "RG-ART-030",
-        "RI-FI-ART-016"
-      ],
-      "citas_fuera_de_evidencia": [],
-      "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "mezcla_condiciones_p01",
-      "causa_raiz": "redactor",
-      "solo_condicion_p01": true,
-      "motivo_auditoria": "La respuesta principal es correcta [RI-FI-ART-016], pero Condiciones agrega que quienes están en Baja por no Inscripción pueden apelar al Vicedecano y al Decano [RG-ART-030]; en RG-ART-030 la apelación al Decano corresponde a Baja Académica, no a Baja por no Inscripción (Regla 3 / precedente H12)."
-    },
-    {
-      "qid": "congelado_50:8",
-      "set": "congelado_50",
-      "id": "8",
-      "categoria": "factual",
-      "pregunta": "¿La renuncia a la carrera es revocable?",
       "correcto_d4_estricto": 1,
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
@@ -517,8 +515,8 @@
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RG-ART-034",
-        "RI-FI-ART-026"
+        "RG-ART-030",
+        "RI-FI-ART-016"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -526,6 +524,31 @@
       "causa_raiz": null,
       "solo_condicion_p01": false,
       "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+    },
+    {
+      "qid": "congelado_50:8",
+      "set": "congelado_50",
+      "id": "8",
+      "categoria": "factual",
+      "pregunta": "¿La renuncia a la carrera es revocable?",
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 1,
+      "correcto_d3_v6": 1,
+      "transicion_d3_a_d4": "regresion_d4",
+      "aprobado_verificador": true,
+      "ciclos": 1,
+      "llamadas_modelo": 9,
+      "citas_en_respuesta": [
+        "RG-ART-034",
+        "RG-ART-044",
+        "RI-FI-ART-026"
+      ],
+      "citas_fuera_de_evidencia": [],
+      "citas_inexistentes_en_corpus": [],
+      "tipo_fallo": "extrapolacion_condiciones_p01",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": true,
+      "motivo_auditoria": "La respuesta principal acierta que la renuncia es irrevocable e impide reincorporarse [RI-FI-ART-026] [RG-ART-034], pero Condiciones afirma que quienes renuncien pueden reingresar como alumnos nuevos en Primer Año citando [RG-ART-044], artículo que regula el reingreso sin aludir ni habilitar expresamente el caso de renuncia (Regla 3 / P01)."
     },
     {
       "qid": "congelado_50:9",
@@ -556,10 +579,10 @@
       "id": "10",
       "categoria": "factual",
       "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
-      "correcto_d4_estricto": 0,
-      "correcto_d4_nucleo": 0,
+      "correcto_d4_estricto": 1,
+      "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "regresion_d4",
+      "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": true,
       "ciclos": 1,
       "llamadas_modelo": 9,
@@ -568,10 +591,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "regla_mal_interpretada",
-      "causa_raiz": "redactor",
+      "tipo_fallo": null,
+      "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Responde 'No' pero restringe falsamente la prohibición de Primer Año Común a 'durante las cuatro primeras semanas', malinterpretando [RI-FI-ART-022] (el plazo de 4 semanas rige para otras carreras; Primer Año Común no puede convalidar)."
+      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
     },
     {
       "qid": "congelado_50:11",
@@ -633,6 +656,7 @@
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
+        "RG-ART-028",
         "RI-FI-ART-014"
       ],
       "citas_fuera_de_evidencia": [],
@@ -749,7 +773,6 @@
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RG-ART-033",
         "RI-FI-ART-031"
       ],
       "citas_fuera_de_evidencia": [],
@@ -889,7 +912,6 @@
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RG-ART-028",
         "RI-FI-ART-014"
       ],
       "citas_fuera_de_evidencia": [],
@@ -905,23 +927,22 @@
       "id": "25",
       "categoria": "condicional",
       "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "acierto_mantenido",
+      "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
-      "ciclos": 2,
-      "llamadas_modelo": 17,
+      "ciclos": 1,
+      "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RI-FI-ART-007",
         "RI-FI-ART-009"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "respuesta_incompleta_sin_desglose",
+      "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Solo indica que no pueden eliminarse las asignaturas 'de prioridades a) y b) del Artículo 7°' [RI-FI-ART-009], sin explicitar que corresponden a las asignaturas atrasadas y las obligatorias reprobadas pese a tener [RI-FI-ART-007] en fuentes_traidas."
     },
     {
       "qid": "congelado_50:26",
@@ -929,22 +950,23 @@
       "id": "26",
       "categoria": "condicional",
       "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 0,
-      "transicion_d3_a_d4": "corregido_en_d4",
+      "transicion_d3_a_d4": "fallo_persistente",
       "aprobado_verificador": true,
-      "ciclos": 3,
-      "llamadas_modelo": 13,
+      "ciclos": 2,
+      "llamadas_modelo": 11,
       "citas_en_respuesta": [
-        "RG-ART-033"
+        "RG-ART-033",
+        "RG-ART-035"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "regla_mal_aplicada_art_35",
+      "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Exige certificados DAFE (no deudas) y Dirección de Bibliotecas de [RG-ART-035] para solicitar reincorporación, cuando [RG-ART-035] rige únicamente para suspender estudios o renunciar a la carrera (la reincorporación se rige por [RG-ART-033])."
     },
     {
       "qid": "congelado_50:27",
@@ -977,22 +999,23 @@
       "id": "28",
       "categoria": "condicional",
       "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "acierto_mantenido",
+      "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
-      "ciclos": 1,
-      "llamadas_modelo": 9,
+      "ciclos": 2,
+      "llamadas_modelo": 11,
       "citas_en_respuesta": [
-        "RG-ART-029"
+        "RG-ART-029",
+        "RG-ART-042"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "deformacion_normativa_art_29_42",
+      "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Fusiona erróneamente [RG-ART-029] y [RG-ART-042] al afirmar que la autorización excepcional del Vicedecano procede solo si en el período anterior el alumno inscribió asignaturas anuales."
     },
     {
       "qid": "congelado_50:29",
@@ -1046,23 +1069,22 @@
       "id": "31",
       "categoria": "cruce",
       "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
-      "correcto_d4_estricto": 0,
+      "correcto_d4_estricto": 1,
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "regresion_d4",
+      "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": true,
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RI-FI-ART-002",
         "RI-FI-ART-034"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "mezcla_cita_condiciones_p01",
-      "causa_raiz": "redactor",
-      "solo_condicion_p01": true,
-      "motivo_auditoria": "La respuesta principal acierta con [RI-FI-ART-034], pero Condiciones atribuye a [RI-FI-ART-002] la frase deformada 'y no se concilia directamente con él', proveniente de [RI-FI-ART-034] (Regla 3 / precedente P01)."
+      "tipo_fallo": null,
+      "causa_raiz": null,
+      "solo_condicion_p01": false,
+      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
     },
     {
       "qid": "congelado_50:32",
@@ -1121,12 +1143,15 @@
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": true,
-      "ciclos": 2,
-      "llamadas_modelo": 11,
+      "ciclos": 1,
+      "llamadas_modelo": 9,
       "citas_en_respuesta": [
         "RG-ART-031",
+        "RG-ART-032",
         "RG-ART-035",
-        "RI-FI-ART-025"
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RI-FI-ART-031"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -1149,7 +1174,6 @@
       "ciclos": 1,
       "llamadas_modelo": 5,
       "citas_en_respuesta": [
-        "CAL-2026-S2-01",
         "CAL-2026-S2-02"
       ],
       "citas_fuera_de_evidencia": [],
@@ -1171,17 +1195,17 @@
       "transicion_d3_a_d4": "fallo_persistente",
       "aprobado_verificador": true,
       "ciclos": 1,
-      "llamadas_modelo": 8,
+      "llamadas_modelo": 9,
       "citas_en_respuesta": [
         "CAL-2026-S2-01",
-        "CAL-2026-S2-04"
+        "RI-FI-ART-008"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "cambio_id_cita_p01",
+      "tipo_fallo": "omision_excepciones_regla_2",
       "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Corrige el contenido respecto a D3 al explicitar las excepciones al mínimo de 8 créditos, pero atribuye tanto el mínimo de 8 créditos como sus excepciones a [CAL-2026-S2-04] (Término de Clases) en vez de [RI-FI-ART-008]."
+      "motivo_auditoria": "Acierta fechas de inscripción [CAL-2026-S2-01] y mínimo de 8 créditos [RI-FI-ART-008], pero escribe 'Condiciones o límites: No aplica', omitiendo las excepciones al mínimo del Art. 8 RI-FI (Regla 2 / precedente P36)."
     },
     {
       "qid": "congelado_50:37",
@@ -1197,8 +1221,7 @@
       "ciclos": 1,
       "llamadas_modelo": 6,
       "citas_en_respuesta": [
-        "CAL-2026-S2-04",
-        "CAL-2026-S2-09"
+        "CAL-2026-S2-04"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -1217,12 +1240,10 @@
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "acierto_mantenido",
-      "aprobado_verificador": true,
-      "ciclos": 2,
-      "llamadas_modelo": 11,
+      "aprobado_verificador": false,
+      "ciclos": 3,
+      "llamadas_modelo": 13,
       "citas_en_respuesta": [
-        "RG-ANEXO-08",
-        "RG-ANEXO-45",
         "RG-ART-023"
       ],
       "citas_fuera_de_evidencia": [],
@@ -1230,7 +1251,7 @@
       "tipo_fallo": null,
       "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Aplica escala 1 a 7 y nota mínima 4,0 de [RG-ART-023]; correcto pese a aprobado=False."
     },
     {
       "qid": "congelado_50:39",
@@ -1246,8 +1267,8 @@
       "ciclos": 1,
       "llamadas_modelo": 5,
       "citas_en_respuesta": [
-        "CAL-2026-S2-04",
-        "CAL-2026-S2-05"
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-07"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -1270,7 +1291,6 @@
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RG-ART-048",
         "RI-FI-ART-029",
         "RI-FI-ART-030"
       ],
@@ -1371,10 +1391,10 @@
       "id": "45",
       "categoria": "abstencion",
       "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "acierto_mantenido",
+      "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
       "ciclos": 1,
       "llamadas_modelo": 9,
@@ -1383,10 +1403,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "nombre_reglamento_inventado",
+      "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Rechaza el inexistente inciso d), pero inventa el título 'Reglamento Integral de Formación de Ingeniería' en lugar de Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería y mezcla cita [RI-FI-ART-014] con 'Fuente: sin respaldo'."
     },
     {
       "qid": "congelado_50:46",
@@ -1425,16 +1445,13 @@
       "aprobado_verificador": false,
       "ciclos": 3,
       "llamadas_modelo": 25,
-      "citas_en_respuesta": [
-        "RI-FI-ART-008",
-        "RI-FI-ART-031"
-      ],
+      "citas_en_respuesta": [],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
       "tipo_fallo": null,
       "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Rechaza la premisa falsa de máximo en [RI-FI-ART-008] (cita además [RI-FI-ART-031] válido); correcto pese a aprobado=False."
+      "motivo_auditoria": "Indica correctamente que no existe máximo de créditos fijado en Art. 8 RI-FI (Regla 7); correcto pese a aprobado=False."
     },
     {
       "qid": "congelado_50:48",
@@ -1446,11 +1463,10 @@
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "acierto_mantenido",
-      "aprobado_verificador": true,
+      "aprobado_verificador": false,
       "ciclos": 3,
       "llamadas_modelo": 18,
       "citas_en_respuesta": [
-        "RG-ART-023",
         "RI-FI-ART-012"
       ],
       "citas_fuera_de_evidencia": [],
@@ -1458,7 +1474,7 @@
       "tipo_fallo": null,
       "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Indica correctamente que Art. 12 RI-FI no fija nota mínima en Evaluación de Recuperación; correcto pese a aprobado=False."
     },
     {
       "qid": "congelado_50:49",
@@ -1473,9 +1489,7 @@
       "aprobado_verificador": true,
       "ciclos": 1,
       "llamadas_modelo": 6,
-      "citas_en_respuesta": [
-        "CAL-2026-S2-09"
-      ],
+      "citas_en_respuesta": [],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
       "tipo_fallo": null,
@@ -1495,16 +1509,14 @@
       "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": false,
       "ciclos": 3,
-      "llamadas_modelo": 24,
-      "citas_en_respuesta": [
-        "RI-FI-ART-019"
-      ],
+      "llamadas_modelo": 25,
+      "citas_en_respuesta": [],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
       "tipo_fallo": null,
       "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Se abstiene sin inventar sobre tercera carrera simultánea y describe [RI-FI-ART-019]; correcto pese a aprobado=False."
+      "motivo_auditoria": "Indica que no existe norma sobre tercera carrera simultánea sin inventar; correcto pese a aprobado=False."
     },
     {
       "qid": "dificil_25:H01",
@@ -1537,7 +1549,7 @@
       "categoria": "multi_salto",
       "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
       "correcto_d4_estricto": 0,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
@@ -1549,10 +1561,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "afirmacion_extra_mal_citada_p01",
+      "tipo_fallo": "alucinacion_y_formato_sin_fuente",
       "causa_raiz": "redactor",
-      "solo_condicion_p01": true,
-      "motivo_auditoria": "Los promedios 4,2 y 5,0 son correctos [RI-FI-ART-018] [RI-FI-ART-019], pero Condiciones añade presentar la solicitud en el período de Dirección de Docencia en UDARAE citando solo [RI-FI-ART-018] [RI-FI-ART-019], omitiendo [RG-ART-054] / [RG-ART-055] que sí estaban en fuentes_traidas (precedente P01)."
+      "solo_condicion_p01": false,
+      "motivo_auditoria": "Los promedios 4,2 [RI-FI-ART-018] y 5,0 [RI-FI-ART-019] son correctos, pero Condiciones alucina el término 'simulink' y omite por completo la línea 'Fuente:'."
     },
     {
       "qid": "dificil_25:H03",
@@ -1566,19 +1578,19 @@
       "transicion_d3_a_d4": "fallo_persistente",
       "aprobado_verificador": false,
       "ciclos": 3,
-      "llamadas_modelo": 19,
+      "llamadas_modelo": 13,
       "citas_en_respuesta": [
-        "CAL-2026-S1-02",
         "CAL-2026-S1-03",
-        "CAL-2026-S2-03",
-        "CAL-2026-S2-04"
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "recuperacion_incompleta_y_sobreconfianza",
+      "tipo_fallo": "recuperacion_incompleta_y_aritmetica",
       "causa_raiz": "recuperador_y_redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Fallo persistente D1–D4: CAL-2026-S2-02 (inicio S2, 10 ago) no entra al top-6 del Recuperador (desplazado por CAL-2026-S2-04); en ciclo 3 el Redactor calcula 98 días entre 04 sep [CAL-2026-S2-03] y 11 dic [CAL-2026-S2-04] en lugar de abstenerse o reportar 25 días, mientras el Verificador base cuestiona la resta sin pedir S2 inicio."
+      "motivo_auditoria": "Fallo persistente D1–D4: CAL-2026-S2-02 (10 ago) sigue fuera del top-6 del Recuperador; en ciclo 3 el Redactor calcula 22 y 19 días usando fechas erradas (02 abr->24 jul y 04 sep->14 dic) y concluye erróneamente primer semestre."
     },
     {
       "qid": "dificil_25:H04",
@@ -1599,10 +1611,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "cita_sustituta_p01",
-      "causa_raiz": "redactor",
+      "tipo_fallo": "regresion_verificador_base",
+      "causa_raiz": "verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Acierta el plazo máximo de 6 semestres [RG-ART-049], pero atribuye al glosario [RG-ART-003-DEF-10] (definición de Plan de Estudio) que el Reglamento Interno fija exigencias/términos al vencer el plazo, regla contenida en el párrafo 2 de [RG-ART-049] (Regla 3 / precedente P01)."
+      "motivo_auditoria": "En el ciclo 1 el Redactor FT acierta plazo de 6 semestres [RG-ART-049] y remite al Reglamento Interno; el Verificador base lo rechaza 3 veces y fuerza la cita errónea al glosario [RG-ART-003-DEF-10] omitiendo el párrafo 2 de [RG-ART-049] sobre las exigencias al vencer dicho plazo."
     },
     {
       "qid": "dificil_25:H05",
@@ -1615,8 +1627,8 @@
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": true,
-      "ciclos": 1,
-      "llamadas_modelo": 8,
+      "ciclos": 2,
+      "llamadas_modelo": 16,
       "citas_en_respuesta": [
         "RI-FI-ART-030"
       ],
@@ -1638,8 +1650,8 @@
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
-      "ciclos": 2,
-      "llamadas_modelo": 11,
+      "ciclos": 3,
+      "llamadas_modelo": 13,
       "citas_en_respuesta": [
         "RI-FI-ART-014"
       ],
@@ -1648,7 +1660,7 @@
       "tipo_fallo": "regresion_verificador_base",
       "causa_raiz": "verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "En el ciclo 1 el Redactor fine-tuned calcula correctamente 38 / 4 = 9,5 < 10 [RI-FI-ART-014] (aunque con prefijo 'No, 38 créditos... no alcanzan'); luego el Verificador base objeta falsamente que faltan semestres totales y en el ciclo 2 empuja al Redactor a negar validez al cálculo ('No, el cálculo... no es válido') y lo aprueba."
+      "motivo_auditoria": "En el ciclo 1 el Redactor FT calcula bien '38 / 4 = 9,5 < 10 -> cae en Baja Académica [RI-FI-ART-014]'; el Verificador base objeta falsamente 'El cálculo de 38 / 4 = 9,5 es incorrecto' y empuja un ciclo 3 con polaridad invertida ('No, al aprobar 38 créditos... incumple el criterio') y sin citar [RG-ART-028]."
     },
     {
       "qid": "dificil_25:H07",
@@ -1661,8 +1673,8 @@
       "correcto_d3_v6": 0,
       "transicion_d3_a_d4": "corregido_en_d4",
       "aprobado_verificador": true,
-      "ciclos": 1,
-      "llamadas_modelo": 9,
+      "ciclos": 2,
+      "llamadas_modelo": 11,
       "citas_en_respuesta": [
         "RG-ART-028",
         "RI-FI-ART-014"
@@ -1685,8 +1697,8 @@
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": true,
-      "ciclos": 1,
-      "llamadas_modelo": 6,
+      "ciclos": 2,
+      "llamadas_modelo": 8,
       "citas_en_respuesta": [
         "RI-FI-ART-030"
       ],
@@ -1773,22 +1785,22 @@
       "id": "H12",
       "categoria": "colision_lexica",
       "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "acierto_mantenido",
+      "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
-      "ciclos": 3,
-      "llamadas_modelo": 13,
+      "ciclos": 1,
+      "llamadas_modelo": 9,
       "citas_en_respuesta": [
         "RG-ART-030"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "mezcla_baja_academica_y_no_inscripcion_h12",
+      "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Responde 'Sí' y 1 año ante el Comité [RG-ART-030], pero mezcla en la respuesta principal y condiciones el plazo de 10 días hábiles de resolución y la apelación al quinto día ante el Vicedecano, que en [RG-ART-030] rigen Baja Académica y no Baja por no Inscripción (Regla 3 / precedente H12)."
     },
     {
       "qid": "dificil_25:H13",
@@ -1852,7 +1864,6 @@
       "ciclos": 1,
       "llamadas_modelo": 9,
       "citas_en_respuesta": [
-        "RI-FI-ART-020",
         "RI-FI-ART-021"
       ],
       "citas_fuera_de_evidencia": [],
@@ -1874,10 +1885,9 @@
       "transicion_d3_a_d4": "acierto_mantenido",
       "aprobado_verificador": true,
       "ciclos": 1,
-      "llamadas_modelo": 9,
+      "llamadas_modelo": 8,
       "citas_en_respuesta": [
-        "RI-FI-ART-014",
-        "RI-FI-ART-015"
+        "RI-FI-ART-014"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -1896,9 +1906,9 @@
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
       "transicion_d3_a_d4": "acierto_mantenido",
-      "aprobado_verificador": false,
-      "ciclos": 3,
-      "llamadas_modelo": 13,
+      "aprobado_verificador": true,
+      "ciclos": 2,
+      "llamadas_modelo": 11,
       "citas_en_respuesta": [
         "RG-ART-020",
         "RI-FI-ART-013"
@@ -1908,7 +1918,7 @@
       "tipo_fallo": null,
       "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Da topes 80% y 100% [RI-FI-ART-013] más régimen especial [RG-ART-020]; correcto pese a aprobado=False."
+      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
     },
     {
       "qid": "dificil_25:H18",
@@ -1916,23 +1926,22 @@
       "id": "H18",
       "categoria": "sintesis",
       "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
-      "correcto_d4_estricto": 0,
+      "correcto_d4_estricto": 1,
       "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 0,
-      "transicion_d3_a_d4": "fallo_persistente",
+      "transicion_d3_a_d4": "corregido_en_d4",
       "aprobado_verificador": true,
       "ciclos": 1,
-      "llamadas_modelo": 9,
+      "llamadas_modelo": 8,
       "citas_en_respuesta": [
-        "RG-ART-003-DEF-19",
         "RI-FI-ART-031"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "afirmacion_extra_mal_citada_p01",
-      "causa_raiz": "redactor",
-      "solo_condicion_p01": true,
-      "motivo_auditoria": "La respuesta principal (máximo 36 créditos + Memoria) acierta con [RI-FI-ART-031], pero Condiciones afirma 'La suspensión de estudios no libera al estudiante de las obligaciones pendientes' citando [RG-ART-003-DEF-19] (solo definición) en lugar de [RG-ART-031], presente en fuentes_traidas (espejo P01 de D3 en H18)."
+      "tipo_fallo": null,
+      "causa_raiz": null,
+      "solo_condicion_p01": false,
+      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
     },
     {
       "qid": "dificil_25:H19",
@@ -1940,23 +1949,22 @@
       "id": "H19",
       "categoria": "sintesis",
       "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
-      "correcto_d4_estricto": 0,
-      "correcto_d4_nucleo": 0,
+      "correcto_d4_estricto": 1,
+      "correcto_d4_nucleo": 1,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "regresion_d4",
-      "aprobado_verificador": false,
+      "transicion_d3_a_d4": "acierto_mantenido",
+      "aprobado_verificador": true,
       "ciclos": 3,
-      "llamadas_modelo": 13,
+      "llamadas_modelo": 12,
       "citas_en_respuesta": [
-        "RG-ART-028",
-        "RI-FI-ART-014"
+        "RG-ART-028"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": "regresion_verificador_base",
-      "causa_raiz": "verificador_base",
+      "tipo_fallo": null,
+      "causa_raiz": null,
       "solo_condicion_p01": false,
-      "motivo_auditoria": "En los ciclos 1 y 2 el Redactor fine-tuned responde íntegramente bien según [RG-ART-028] (promedio = créditos aprobados / semestres de permanencia); en dos rechazos consecutivos, el Verificador base exige los umbrales de 15 y 10 créditos del [RI-FI-ART-014], forzando en el ciclo 3 un cambio erróneo a [RI-FI-ART-014] y al inexistente 'Reglamento de Ingreso y Permanencia', que luego rechaza."
+      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
     },
     {
       "qid": "dificil_25:H20",
@@ -1985,22 +1993,22 @@
       "id": "H21",
       "categoria": "premisa_falsa",
       "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "acierto_mantenido",
+      "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": false,
       "ciclos": 3,
-      "llamadas_modelo": 16,
+      "llamadas_modelo": 13,
       "citas_en_respuesta": [
         "RI-FI-ART-008"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "regresion_verificador_base",
+      "causa_raiz": "verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Corrige la premisa falsa del Art. 8 (fija mínimo de 8, no máximo) [RI-FI-ART-008]; correcto pese a aprobado=False."
+      "motivo_auditoria": "En el ciclo 1 el Redactor FT explica el mínimo de 8 créditos de [RI-FI-ART-008], pero el Verificador base rechaza exigiendo responder por el máximo y empuja los ciclos 2 y 3 hacia una abstención pura ('No existe información'), omitiendo corregir la premisa falsa del tope."
     },
     {
       "qid": "dificil_25:H22",
@@ -2008,13 +2016,13 @@
       "id": "H22",
       "categoria": "premisa_falsa",
       "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 1,
-      "transicion_d3_a_d4": "acierto_mantenido",
+      "transicion_d3_a_d4": "regresion_d4",
       "aprobado_verificador": true,
-      "ciclos": 1,
-      "llamadas_modelo": 9,
+      "ciclos": 2,
+      "llamadas_modelo": 11,
       "citas_en_respuesta": [
         "RI-FI-ART-011",
         "RI-FI-ART-017",
@@ -2022,10 +2030,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "regresion_verificador_base",
+      "causa_raiz": "verificador_base",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "En el ciclo 1 el Redactor FT refuta bien 4,5 -> 4,0 con [RI-FI-ART-011]; el Verificador base objeta que 'según la evidencia es 4,5, no 4,0', induciendo en ciclo 2 la inserción de asistencia mínima 80%/100% (regla de [RI-FI-ART-013]) citada como [RI-FI-ART-011] (Regla 3 / P01)."
     },
     {
       "qid": "dificil_25:H23",
@@ -2042,7 +2050,8 @@
       "llamadas_modelo": 6,
       "citas_en_respuesta": [
         "CAL-2026-S2-01",
-        "CAL-2026-S2-02"
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04"
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
@@ -2080,10 +2089,10 @@
       "id": "H25",
       "categoria": "sintesis",
       "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
-      "correcto_d4_estricto": 1,
-      "correcto_d4_nucleo": 1,
+      "correcto_d4_estricto": 0,
+      "correcto_d4_nucleo": 0,
       "correcto_d3_v6": 0,
-      "transicion_d3_a_d4": "corregido_en_d4",
+      "transicion_d3_a_d4": "fallo_persistente",
       "aprobado_verificador": true,
       "ciclos": 1,
       "llamadas_modelo": 9,
@@ -2092,10 +2101,10 @@
       ],
       "citas_fuera_de_evidencia": [],
       "citas_inexistentes_en_corpus": [],
-      "tipo_fallo": null,
-      "causa_raiz": null,
+      "tipo_fallo": "sintesis_incompleta_no_aplica",
+      "causa_raiz": "redactor",
       "solo_condicion_p01": false,
-      "motivo_auditoria": "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia."
+      "motivo_auditoria": "Ordena créditos y luego promedio curricular de Plan Común [RI-FI-ART-005], pero coloca 'Condiciones o límites: No aplica' omitiendo orden de preferencias, cupos por carrera y que solo cuentan asignaturas obligatorias de Primer Año (Reglas 2 y 5)."
     }
   ]
 }

@@ -1,0 +1,2085 @@
+[
+  {
+    "qid": "nuevas_20:N01",
+    "set": "nuevas_20",
+    "id": "N01",
+    "categoria": "factual",
+    "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+    "gold_dato": "El plan de estudios no debería exceder las 54 horas semanales de trabajo académico; los programas de asignaturas deben establecer los créditos y las horas de trabajo académico (carga académica del alumno).",
+    "gold_fuente": "RG-ART-017",
+    "base": {
+      "respuesta": "Respuesta: El plan de estudios no debería exceder 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura.\nCondiciones o límites: El límite de 54 horas semanales aplica a los alumnos a tiempo completo.\nFuente: [RG-ART-017] [RG-ART-003-DEF-11]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 46.88,
+      "fuentes_traidas": "RG-ART-003-DEF-07; RG-ART-003-DEF-11; RG-ART-016; RG-ART-017; RG-ART-043",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar existencia del artículo 17 en RG",
+              "contenido del artículo 17 RG"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RG-ART-017"
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 17 en RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RG-ART-017"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 17 en RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-017",
+                "extracto": "Artículo 17º Los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura, y constitu"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 17 en RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 17 RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-017"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 17 RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-017",
+                "extracto": "Artículo 17º Los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura, y constitu"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 17 RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 10,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: El plan de estudios no debería exceder 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura.\nCondiciones o límites: El límite de 54 horas semanales aplica a los alumnos a tiempo completo.\nFuente: [RG-ART-017] [RG-ART-003-DEF-11]",
+          "salida_cruda": "<pensar>\nLa pregunta se enfoca en el Artículo 17º del Reglamento General de Docencia de Pregrado, específicamente en dos aspectos: la cantidad máxima de horas semanales de trabajo académico que no debería exceder un plan de estudios, y qué deben establecer los programas de asignaturas.\n\nPrimero, reviso la evidencia relacionada con el Artículo 17º. La evidencia [RG-ART-017] menciona que \"el plan de estudios no debería exceder las 54 horas semanales\" de trabajo académico. Esto responde directamente a la primera parte de la pregunta.\n\nEn cuanto a la segunda parte, la misma evidencia [RG-ART-017] también menciona que \"los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura\". Esto se complementa con la evidencia [RG-ART-003-DEF-11], que detalla el contenido del Programa de Asignatura, incluyendo \"horas de trabajo académico\" como uno de los elementos que debe contener.\n\nNo hay contradicción ni información adicional que invalide estos datos. La evidencia confirma que el límite es 54 horas semanales y que los programas de asignaturas deben establecer las horas de trabajo académico.\n</pensar>\n\nRespuesta: El plan de estudios no debería exceder 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura.\nCondiciones o límites: El límite de 54 horas semanales aplica a los alumnos a tiempo completo.\nFuente: [RG-ART-017] [RG-ART-003-DEF-11]"
+        },
+        {
+          "paso": 11,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: El plan de estudios no debería exceder 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignat",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-003",
+                  "existe": true,
+                  "en_evidencia": false
+                },
+                {
+                  "id": "RG-ART-017",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "finetuned_redactor": {
+      "respuesta": "Respuesta: Según el Artículo 17º, el plan de estudios no debe exceder las 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura [RG-ART-017].\nCondiciones o límites: No aplica\nFuente: [RG-ART-017]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 39.18,
+      "fuentes_traidas": "RG-ART-003-DEF-07; RG-ART-003-DEF-11; RG-ART-016; RG-ART-017; RG-ART-043",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar existencia del artículo 17 en RG",
+              "contenido del artículo 17 RG"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "premisa_falsa",
+            "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?"
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RG-ART-017"
+          },
+          "decidido_por": "enrutador"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 17 en RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RG-ART-017"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 17 en RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-017",
+                "extracto": "Artículo 17º Los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura, y constitu"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar existencia del artículo 17 en RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 17 RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-017"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 17 RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-017",
+                "extracto": "Artículo 17º Los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura, y constitu"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 17
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "contenido del artículo 17 RG",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-017",
+              "RG-ART-003-DEF-07",
+              "RG-ART-043",
+              "RG-ART-003-DEF-11",
+              "RG-ART-016"
+            ],
+            "ultima_observacion": {
+              "aviso": "Ya hiciste exactamente esta acción y no aportó nada nuevo. Busca con OTRAS palabras o responde 'suficiente'."
+            },
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 10,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Según el Artículo 17º, el plan de estudios no debe exceder las 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura [RG-ART-017].\nCondiciones o límites: No aplica\nFuente: [RG-ART-017]",
+          "salida_cruda": "<pensar>\n[RG-ART-017]: 'El plan de estudios no debería exceder las 54 horas semanales de trabajo académico'; 'los programas de asignaturas de un Plan de Estudio, deberán establecer los créditos y las horas de trabajo académico de cada asignatura'. No aplica condiciones o límites adicionales.\n</pensar>\nRespuesta: Según el Artículo 17º, el plan de estudios no debe exceder las 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura [RG-ART-017].\nCondiciones o límites: No aplica\nFuente: [RG-ART-017]"
+        },
+        {
+          "paso": 11,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Según el Artículo 17º, el plan de estudios no debe exceder las 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo a",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-017",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    }
+  },
+  {
+    "qid": "nuevas_20:N15",
+    "set": "nuevas_20",
+    "id": "N15",
+    "categoria": "multi_salto",
+    "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+    "gold_dato": "Las facilidades al concluir la interrupción (nuevos plazos o derivación de pendientes al próximo período lectivo) las decide el Comité de Docencia y Asuntos Estudiantiles respectivo (Art. 36°); en cada Facultad, la Secretaría Académica (dependiente del Vicedecano) recibe, tramita y despacha las solicitudes de los alumnos (Art. 5°).",
+    "gold_fuente": "RG-ART-036; RG-ART-005",
+    "base": {
+      "respuesta": "Respuesta: Al concluir la interrupción temporal de estudios por embarazo, el Comité de Docencia y Asuntos Estudiantiles decide las facilidades académicas. El organismo técnico de la Facultad que tramita regularmente las solicitudes de los alumnos es la Secretaría Académica.\nCondiciones o límites: \nFuente: [RG-ART-036] [RG-ART-005]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": ""
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "cruce",
+      "segundos": 45.88,
+      "fuentes_traidas": "RG-ART-003-DEF-22; RG-ART-005; RG-ART-020; RG-ART-025; RG-ART-028; RG-ART-029; RG-ART-030; RG-ART-032; RG-ART-036; RG-ART-055; RI-FI-ART-014; RI-FI-ART-016",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+          "salida": {
+            "tipo": "cruce",
+            "sub_consultas": [
+              "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+              "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°"
+            ],
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RI-FI-ART-016"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "embarazo interrupción estudios académicos facilidades",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-032",
+              "RG-ART-003-DEF-22",
+              "RI-FI-ART-014"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RG-ART-029",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-036",
+                "extracto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conse"
+              },
+              {
+                "id": "RG-ART-029",
+                "extracto": "Artículo 29° Los alumnos que estando habilitados para inscribir asignaturas no lo hagan dentro del periodo correspondiente perderán el derecho a continuar estud"
+              },
+              {
+                "id": "RG-ART-032",
+                "extracto": "Artículo 32° Si un alumno presenta salud o condición física incompatible con la Carrera, se le suspenderá el derecho a continuar estudios. La decisión en esta m"
+              },
+              {
+                "id": "RG-ART-003-DEF-22",
+                "extracto": "3.22. ALUMNO EGRESADO: Alumno de pregrado que haya aprobado todas las actividades académicas del plan de estudios y sólo le falte cumplir con las actividades fi"
+              },
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-036"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RG-ART-029",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-036",
+                "extracto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conse"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RG-ART-029",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "organismo técnico facultad tramitar solicitudes alumnos art 5",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-005",
+              "RG-ART-055",
+              "RG-ART-030",
+              "RG-ART-020",
+              "RG-ART-025"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-030",
+              "RG-ART-028",
+              "RG-ART-029",
+              "RG-ART-055"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-005",
+                "extracto": "Artículo 5º En cada Facultad habrá una Secretaría Académica, organismo técnico dependiente del Vicedecano, que tendrá como funciones, la coordinación de horario"
+              },
+              {
+                "id": "RG-ART-055",
+                "extracto": "Artículo 55° Los alumnos de la Universidad de Concepción, cualquiera sea la carrera que cursen, podrán solicitar su ingreso a otra carrera, siempre que cumplan "
+              },
+              {
+                "id": "RG-ART-030",
+                "extracto": "Artículo 30º Los alumnos en situación de Baja por no Inscripción podrán solicitar, en un plazo máximo de un año, la continuación de estudios al Comité de Docenc"
+              },
+              {
+                "id": "RG-ART-020",
+                "extracto": "Artículo 20º La Facultad a la que está adscrita la asignatura, determinará el régimen de asistencia a clases y a otras actividades que tengan un propósito forma"
+              },
+              {
+                "id": "RG-ART-025",
+                "extracto": "Artículo 25º La evaluación forma parte del proceso de enseñanza - aprendizaje. Por ello los alumnos tendrán derecho a recibir sus instrumentos de evaluación esc"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 5
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-005"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-030",
+              "RG-ART-028",
+              "RG-ART-029",
+              "RG-ART-055"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-005",
+                "extracto": "Artículo 5º En cada Facultad habrá una Secretaría Académica, organismo técnico dependiente del Vicedecano, que tendrá como funciones, la coordinación de horario"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 5
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+            "modo": "cruce",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Al concluir la interrupción temporal de estudios por embarazo, el Comité de Docencia y Asuntos Estudiantiles decide las facilidades académicas. El organismo técnico de la Facultad que tramita regularmente las solicitudes de los alumnos es la Secretaría Académica.\nCondiciones o límites: \nFuente: [RG-ART-036] [RG-ART-005]",
+          "salida_cruda": "<pensar>\nLa pregunta tiene dos partes: \n\n1. ¿Qué instancia decide las facilidades académicas para finalizar las asignaturas al concluir la interrupción temporal de estudios por embarazo?\n2. ¿Qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos?\n\nPara responder la primera parte, revisamos el Artículo 36° (RG-ART-036), que menciona que \"Al concluir esta interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo, decidirá sobre las facilidades a otorgar para que la alumna finalice sus asignaturas...\". Esto respalda la primera parte de la pregunta.\n\nPara responder la segunda parte, revisamos el Artículo 5° (RG-ART-005), que menciona que \"En cada Facultad habrá una Secretaría Académica, organismo técnico dependiente del Vicedecano... que tendrá como funciones... recibir, tramitar y despachar las solicitudes de los alumnos\". Esto respalda la segunda parte de la pregunta.\n\nNo hay observaciones del verificador, por lo que no se requiere corrección adicional.\n</pensar>\n\nRespuesta: Al concluir la interrupción temporal de estudios por embarazo, el Comité de Docencia y Asuntos Estudiantiles decide las facilidades académicas. El organismo técnico de la Facultad que tramita regularmente las solicitudes de los alumnos es la Secretaría Académica.\nCondiciones o límites: \nFuente: [RG-ART-036] [RG-ART-005]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Al concluir la interrupción temporal de estudios por embarazo, el Comité de Docencia y Asuntos Estudiantiles decide las facilidades académicas. El organismo técnico de la Facultad que trami",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-005",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RG-ART-036",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": ""
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "finetuned_redactor": {
+      "respuesta": "Respuesta: Al concluir la interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo decide las facilidades (nuevos plazos o derivar a próximo período) [RG-ART-036], mientras que la Secretaría Académica es el organismo técnico dependiente del Vicedecano que tramita regularmente las solicitudes de los alumnos [RG-ART-005].\nCondiciones o límites: No aplica\nFuente: [RG-ART-005] [RG-ART-036]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta está correcta y respalda las afirmaciones con las citas correspondientes."
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "cruce",
+      "segundos": 51.79,
+      "fuentes_traidas": "RG-ART-003-DEF-22; RG-ART-005; RG-ART-020; RG-ART-025; RG-ART-028; RG-ART-029; RG-ART-030; RG-ART-032; RG-ART-036; RG-ART-055; RI-FI-ART-014; RI-FI-ART-016",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+          "salida": {
+            "tipo": "cruce",
+            "sub_consultas": [
+              "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+              "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°"
+            ],
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RI-FI-ART-016"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "embarazo interrupción estudios académicos facilidades",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-032",
+              "RG-ART-003-DEF-22",
+              "RI-FI-ART-014"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RG-ART-029",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-036",
+                "extracto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conse"
+              },
+              {
+                "id": "RG-ART-029",
+                "extracto": "Artículo 29° Los alumnos que estando habilitados para inscribir asignaturas no lo hagan dentro del periodo correspondiente perderán el derecho a continuar estud"
+              },
+              {
+                "id": "RG-ART-032",
+                "extracto": "Artículo 32° Si un alumno presenta salud o condición física incompatible con la Carrera, se le suspenderá el derecho a continuar estudios. La decisión en esta m"
+              },
+              {
+                "id": "RG-ART-003-DEF-22",
+                "extracto": "3.22. ALUMNO EGRESADO: Alumno de pregrado que haya aprobado todas las actividades académicas del plan de estudios y sólo le falte cumplir con las actividades fi"
+              },
+              {
+                "id": "RI-FI-ART-014",
+                "extracto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las sig"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-036"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "instancia que decide facilidades académicas por interrupción temporal de estudios por embarazo según Art. 36°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RG-ART-029",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-036",
+                "extracto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conse"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 36
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-028",
+              "RG-ART-030",
+              "RG-ART-029",
+              "RI-FI-ART-016"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "organismo técnico facultad tramitar solicitudes alumnos art 5",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-005",
+              "RG-ART-055",
+              "RG-ART-030",
+              "RG-ART-020",
+              "RG-ART-025"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-030",
+              "RG-ART-028",
+              "RG-ART-029",
+              "RG-ART-055"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-005",
+                "extracto": "Artículo 5º En cada Facultad habrá una Secretaría Académica, organismo técnico dependiente del Vicedecano, que tendrá como funciones, la coordinación de horario"
+              },
+              {
+                "id": "RG-ART-055",
+                "extracto": "Artículo 55° Los alumnos de la Universidad de Concepción, cualquiera sea la carrera que cursen, podrán solicitar su ingreso a otra carrera, siempre que cumplan "
+              },
+              {
+                "id": "RG-ART-030",
+                "extracto": "Artículo 30º Los alumnos en situación de Baja por no Inscripción podrán solicitar, en un plazo máximo de un año, la continuación de estudios al Comité de Docenc"
+              },
+              {
+                "id": "RG-ART-020",
+                "extracto": "Artículo 20º La Facultad a la que está adscrita la asignatura, determinará el régimen de asistencia a clases y a otras actividades que tengan un propósito forma"
+              },
+              {
+                "id": "RG-ART-025",
+                "extracto": "Artículo 25º La evaluación forma parte del proceso de enseñanza - aprendizaje. Por ello los alumnos tendrán derecho a recibir sus instrumentos de evaluación esc"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 5
+            }
+          },
+          "observacion": {
+            "traido": "RG-ART-005"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "organismo técnico de la Facultad que tramita solicitudes de alumnos según Art. 5°",
+            "tipo": "cruce",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-005",
+              "RG-ART-030",
+              "RG-ART-028",
+              "RG-ART-029",
+              "RG-ART-055"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-005",
+                "extracto": "Artículo 5º En cada Facultad habrá una Secretaría Académica, organismo técnico dependiente del Vicedecano, que tendrá como funciones, la coordinación de horario"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RG",
+              "n": 5
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+            "modo": "cruce",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Al concluir la interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo decide las facilidades (nuevos plazos o derivar a próximo período) [RG-ART-036], mientras que la Secretaría Académica es el organismo técnico dependiente del Vicedecano que tramita regularmente las solicitudes de los alumnos [RG-ART-005].\nCondiciones o límites: No aplica\nFuente: [RG-ART-005] [RG-ART-036]",
+          "salida_cruda": "<pensar>\n[RG-ART-036] señala que al concluir la interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo decide sobre las facilidades (nuevos plazos o derivar a próximo período). [RG-ART-005] establece que la Secretaría Académica es el organismo técnico dependiente del Vicedecano que tramita las solicitudes de los alumnos.\n</pensar>\nRespuesta: Al concluir la interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo decide las facilidades (nuevos plazos o derivar a próximo período) [RG-ART-036], mientras que la Secretaría Académica es el organismo técnico dependiente del Vicedecano que tramita regularmente las solicitudes de los alumnos [RG-ART-005].\nCondiciones o límites: No aplica\nFuente: [RG-ART-005] [RG-ART-036]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Al concluir la interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo decide las facilidades (nuevos plazos o derivar a próximo período) [RG-ART-036], mientras que la Secret",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-005",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RG-ART-036",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta está correcta y respalda las afirmaciones con las citas correspondientes."
+          },
+          "fallback": false
+        }
+      ]
+    }
+  },
+  {
+    "qid": "nuevas_20:N19",
+    "set": "nuevas_20",
+    "id": "N19",
+    "categoria": "premisa_falsa",
+    "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+    "gold_dato": "Ambas afirmaciones son incorrectas: el Art. 36° otorga la interrupción durante el embarazo y hasta dos meses después del nacimiento (no cuatro) y exige certificado médico o de matrona visado por la Dirección de Servicios Estudiantiles (o equivalente en Chillán/Los Ángeles); además, el Art. 18° permite organizar asignaturas también en un período distinto a un semestre según el plan de estudio.",
+    "gold_fuente": "RG-ART-036; RG-ART-018",
+    "base": {
+      "respuesta": "Respuesta: La afirmación sobre la interrupción temporal de estudios por embarazo es incorrecta, ya que cubre hasta dos meses después del nacimiento y requiere un certificado visado. La afirmación sobre la duración de una asignatura no se sostiene con la evidencia proporcionada.\nCondiciones o límites: La interrupción por embarazo es hasta dos meses, no cuatro. No hay evidencia sobre la duración máxima de una asignatura.\nFuente: [RG-ART-036]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta es correcta y está respaldada por la evidencia proporcionada."
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 53.01,
+      "fuentes_traidas": "RG-ART-028; RG-ART-029; RG-ART-031; RG-ART-036; RG-ART-043; RI-FI-ART-007; RI-FI-ART-009; RI-FI-ART-013; RI-FI-ART-016; RI-FI-ART-026; RI-FI-ART-027; RI-FI-ART-029; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+              "verificar límites de duración de una asignatura en RI-FI"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "condiciones de interrupción temporal de estudios por embarazo RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RI-FI-ART-027",
+              "RI-FI-ART-016",
+              "RI-FI-ART-031",
+              "RI-FI-ART-026"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-027",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-036",
+                "extracto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conse"
+              },
+              {
+                "id": "RI-FI-ART-027",
+                "extracto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+              },
+              {
+                "id": "RI-FI-ART-016",
+                "extracto": "Artículo 16°. Las y los estudiantes podrán solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles, el que resolverá en primera inst"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              },
+              {
+                "id": "RI-FI-ART-026",
+                "extracto": "Artículo 26°. La y el estudiante podrá presentar por escrito su renuncia a la carrera a la Vicedecanatura, presentando los documentos señalados en el Artículo 2"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 27
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-027"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-027",
+                "extracto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 27
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar límites de duración de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "límites de duración de una asignatura en RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-029",
+              "RI-FI-ART-007",
+              "RI-FI-ART-009",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar límites de duración de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RI-FI-ART-029",
+              "RG-ART-028",
+              "RG-ART-043"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-029",
+                "extracto": "Artículo 29°. La actividad final de titulación para todas las carreras será una asignatura denominada Memoria de Título, de un semestre de duración, la que se r"
+              },
+              {
+                "id": "RI-FI-ART-007",
+                "extracto": "Artículo 7°. En cada periodo lectivo ordinario, las y los estudiantes podrán inscribir las asignaturas para las cuales cumplan requisito, en las fechas que se i"
+              },
+              {
+                "id": "RI-FI-ART-009",
+                "extracto": "Artículo 9°. La modificación de la inscripción de asignaturas deberá hacerse en las fechas que se indiquen en el calendario anual de docencia y en ella se podrá"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              },
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 29
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-029"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar límites de duración de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-029",
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-029",
+                "extracto": "Artículo 29°. La actividad final de titulación para todas las carreras será una asignatura denominada Memoria de Título, de un semestre de duración, la que se r"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 29
+            }
+          },
+          "observacion": {
+            "traido": "RI-FI-ART-029"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: La afirmación sobre la interrupción temporal de estudios por embarazo es incorrecta, ya que cubre hasta dos meses después del nacimiento y requiere un certificado visado. La afirmación sobre la duración de una asignatura no se sostiene con la evidencia proporcionada.\nCondiciones o límites: La interrupción por embarazo es hasta dos meses, no cuatro. No hay evidencia sobre la duración máxima de una asignatura.\nFuente: [RG-ART-036]",
+          "salida_cruda": "<pensar>\nLa pregunta aborda dos afirmaciones: 1) la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y 2) una asignatura solo puede dictarse durante un semestre o dos semestres continuos.\n\nPrimero, analizamos la primera afirmación: \"la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado\". Según la evidencia [RG-ART-036], la interrupción temporal de estudios por embarazo es hasta dos meses después del nacimiento, no cuatro meses. Además, el certificado debe ser visado por la Dirección de Servicios Estudiantiles, no es un certificado simple sin visado. Por lo tanto, esta afirmación es incorrecta.\n\nSegundo, la afirmación \"una asignatura solo puede dictarse durante un semestre o dos semestres continuos\". Según la evidencia [RI-FI-ART-029], la actividad final de titulación es una asignatura de un semestre de duración. Sin embargo, no hay evidencia que indique que una asignatura no pueda dictarse durante dos semestres continuos. Por lo tanto, esta afirmación no se sostiene con la evidencia proporcionada.\n\nEn resumen, la primera afirmación es incorrecta y la segunda no se sostiene con la evidencia.\n</pensar>\n\nRespuesta: La afirmación sobre la interrupción temporal de estudios por embarazo es incorrecta, ya que cubre hasta dos meses después del nacimiento y requiere un certificado visado. La afirmación sobre la duración de una asignatura no se sostiene con la evidencia proporcionada.\nCondiciones o límites: La interrupción por embarazo es hasta dos meses, no cuatro. No hay evidencia sobre la duración máxima de una asignatura.\nFuente: [RG-ART-036]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: La afirmación sobre la interrupción temporal de estudios por embarazo es incorrecta, ya que cubre hasta dos meses después del nacimiento y requiere un certificado visado. La afirmación sobr",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-036",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia proporcionada."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    "finetuned_redactor": {
+      "respuesta": "Respuesta: No es correcto: la interrupción por embarazo es hasta dos meses después del nacimiento (no cuatro meses) y debe presentar certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036]; además, la asignatura de Memoria de Título es de un semestre [RI-FI-ART-029], aunque no existe regla específica sobre dictar asignaturas en dos semestres continuos.\nCondiciones o límites: No aplica\nFuente: [RG-ART-036] [RI-FI-ART-029]",
+      "veredicto": {
+        "aprobado": true,
+        "destino": "fin",
+        "motivo": "La respuesta es correcta y está respaldada por la evidencia"
+      },
+      "ciclos": 1,
+      "tipo_enrutador": "premisa_falsa",
+      "segundos": 54.59,
+      "fuentes_traidas": "RG-ART-028; RG-ART-029; RG-ART-031; RG-ART-036; RG-ART-043; RI-FI-ART-007; RI-FI-ART-009; RI-FI-ART-013; RI-FI-ART-016; RI-FI-ART-026; RI-FI-ART-027; RI-FI-ART-029; RI-FI-ART-031",
+      "traza": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+              "verificar límites de duración de una asignatura en RI-FI"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "condiciones de interrupción temporal de estudios por embarazo RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-036",
+              "RI-FI-ART-027",
+              "RI-FI-ART-016",
+              "RI-FI-ART-031",
+              "RI-FI-ART-026"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RI-FI-ART-027",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RG-ART-036",
+                "extracto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conse"
+              },
+              {
+                "id": "RI-FI-ART-027",
+                "extracto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+              },
+              {
+                "id": "RI-FI-ART-016",
+                "extracto": "Artículo 16°. Las y los estudiantes podrán solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles, el que resolverá en primera inst"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              },
+              {
+                "id": "RI-FI-ART-026",
+                "extracto": "Artículo 26°. La y el estudiante podrá presentar por escrito su renuncia a la carrera a la Vicedecanatura, presentando los documentos señalados en el Artículo 2"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 27
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-027"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar condiciones de interrupción temporal de estudios por embarazo en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-027",
+                "extracto": "Artículo 27°. La y el estudiante con suspensión de estudios deberá solicitar su reincorporación a la Vicedecanatura para continuarlos."
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 27
+            }
+          },
+          "observacion": {
+            "repetida": true
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar límites de duración de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043",
+              "RG-ART-031"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "límites de duración de una asignatura en RI-FI",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-029",
+              "RI-FI-ART-007",
+              "RI-FI-ART-009",
+              "RI-FI-ART-031",
+              "RI-FI-ART-013"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar límites de duración de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RI-FI-ART-029",
+              "RG-ART-028",
+              "RG-ART-043"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-029",
+                "extracto": "Artículo 29°. La actividad final de titulación para todas las carreras será una asignatura denominada Memoria de Título, de un semestre de duración, la que se r"
+              },
+              {
+                "id": "RI-FI-ART-007",
+                "extracto": "Artículo 7°. En cada periodo lectivo ordinario, las y los estudiantes podrán inscribir las asignaturas para las cuales cumplan requisito, en las fechas que se i"
+              },
+              {
+                "id": "RI-FI-ART-009",
+                "extracto": "Artículo 9°. La modificación de la inscripción de asignaturas deberá hacerse en las fechas que se indiquen en el calendario anual de docencia y en ella se podrá"
+              },
+              {
+                "id": "RI-FI-ART-031",
+                "extracto": "Artículo 31°. Las y los estudiantes que hayan mantenido suspendidos sus estudios por más de tres años y que al momento de suspender sólo le restaba aprobar la M"
+              },
+              {
+                "id": "RI-FI-ART-013",
+                "extracto": "Artículo 13°. El/La Profesor/a Encargado/a de la asignatura podrá establecer como requisito de aprobación una asistencia mínima a clases, exigencia que no podrá"
+              }
+            ],
+            "intento": 2,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "existe",
+            "args": {
+              "doc": "RI-FI",
+              "n": 29
+            }
+          },
+          "observacion": {
+            "existe": true,
+            "traido": "RI-FI-ART-029"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "verificar límites de duración de una asignatura en RI-FI",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-029",
+              "RI-FI-ART-027",
+              "RG-ART-036",
+              "RG-ART-029",
+              "RG-ART-028",
+              "RG-ART-043"
+            ],
+            "ultima_observacion": [
+              {
+                "id": "RI-FI-ART-029",
+                "extracto": "Artículo 29°. La actividad final de titulación para todas las carreras será una asignatura denominada Memoria de Título, de un semestre de duración, la que se r"
+              }
+            ],
+            "intento": 3,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "traer",
+            "args": {
+              "doc": "RI-FI",
+              "n": 29
+            }
+          },
+          "observacion": {
+            "traido": "RI-FI-ART-029"
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No es correcto: la interrupción por embarazo es hasta dos meses después del nacimiento (no cuatro meses) y debe presentar certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036]; además, la asignatura de Memoria de Título es de un semestre [RI-FI-ART-029], aunque no existe regla específica sobre dictar asignaturas en dos semestres continuos.\nCondiciones o límites: No aplica\nFuente: [RG-ART-036] [RI-FI-ART-029]",
+          "salida_cruda": "<pensar>\n[RG-ART-036] exige dos meses después del nacimiento, certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles, y el Comité de Docencia y Asuntos Estudiantiles decide sobre facilidades para finalizar asignaturas. [RG-ART-029] obliga a una sola asignatura de un semestre de duración; no hay regla sobre dictar asignaturas en dos semestres continuos.\n</pensar>\nRespuesta: No es correcto: la interrupción por embarazo es hasta dos meses después del nacimiento (no cuatro meses) y debe presentar certificado del médico o matrona visado por la Dirección de Servicios Estudiantiles [RG-ART-036]; además, la asignatura de Memoria de Título es de un semestre [RI-FI-ART-029], aunque no existe regla específica sobre dictar asignaturas en dos semestres continuos.\nCondiciones o límites: No aplica\nFuente: [RG-ART-036] [RI-FI-ART-029]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No es correcto: la interrupción por embarazo es hasta dos meses después del nacimiento (no cuatro meses) y debe presentar certificado del médico o matrona visado por la Dirección de Servici",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-036",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-029",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia"
+          },
+          "fallback": false
+        }
+      ]
+    }
+  }
+]

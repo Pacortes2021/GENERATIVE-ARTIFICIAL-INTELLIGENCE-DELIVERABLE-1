@@ -25,8 +25,8 @@ Adaptador QLoRA entrenado exclusivamente para el agente **Redactor** del sistema
 - **Método:** QLoRA (`r=16`, `alpha=32`, `dropout=0.05`, módulos `q_proj, k_proj, v_proj, o_proj, gate_proj, up_proj, down_proj`)
 - **Pérdida enmascarada:** solo sobre los tokens generados por el asistente (`labels = -100` en el prompt de entrada) con plantilla `enable_thinking=False`
 - **Hardware:** `Tesla T4` (`15.64 GB` VRAM, cómputo `torch.float16`)
-- **Tiempo total:** `54.75 min` (`90` pasos totales, `3.0` épocas)
-- **Pérdida inicial vs final (val):** `1.619545` → mejor `eval_loss` = `0.575349` (step `90`)
+- **Tiempo total:** `52.38 min` (`90` pasos totales, `3.0` épocas)
+- **Pérdida inicial vs final (val):** `1.600629` → mejor `eval_loss` = `0.516354` (step `90`)
 
 ## Carga rápida con PEFT
 

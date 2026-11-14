@@ -280,7 +280,7 @@ def construir_arg_parser() -> argparse.ArgumentParser:
         "--fallo",
         action="append",
         dest="fallos_qids",
-        help="QID adicional de `casos_fallo_y_regresion.json` a mostrar (ej. dificil_25:H19).",
+        help="QID adicional de `casos_fallo_y_regresion.json` a mostrar (ej. dificil_25:H06).",
     )
     parser.add_argument("--listar", action="store_true", help="Lista QIDs disponibles y termina.")
     parser.add_argument(

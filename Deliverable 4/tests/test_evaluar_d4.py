@@ -297,13 +297,25 @@ class TestAuditoriaArtefactosD4(unittest.TestCase):
         )
         qids_fallos = {c["qid"] for c in fallos["casos"]}
         self.assertTrue(
-            {"dificil_25:H03", "dificil_25:H06", "dificil_25:H19", "congelado_50:6"}.issubset(
+            {"dificil_25:H03", "dificil_25:H04", "dificil_25:H06", "congelado_50:36"}.issubset(
                 qids_fallos
             )
         )
         for caso in fallos["casos"]:
             self.assertGreater(len(caso["traza_completa"]), 0)
             self.assertGreater(len(caso["telemetria"]), 0)
+
+        for fname, exp_total, exp_ok in (
+            ("auditoria_control_base_D4.json", 75, 62),
+            ("auditoria_nuevas20_ft_D4.json", 20, 10),
+            ("auditoria_nuevas20_base_D4.json", 20, 11),
+        ):
+            p_aud = eval_dir / fname
+            self.assertTrue(p_aud.is_file(), f"Falta auditoría v2: {fname}")
+            d_aud = json.loads(p_aud.read_text(encoding="utf-8"))
+            self.assertEqual(d_aud["total_preguntas"], exp_total)
+            self.assertEqual(d_aud["aciertos_humanos"], exp_ok)
+            self.assertEqual(d_aud["telemetria_y_aislamiento"]["violaciones_aislamiento_lora"], 0)
 
     def test_generar_auditoria_determinista_en_directorio_temporal(self) -> None:
         eval_dir = DELIVERABLE4_DIR / "evaluacion"
@@ -318,7 +330,7 @@ class TestAuditoriaArtefactosD4(unittest.TestCase):
             ):
                 (tmp_eval / fname).write_bytes((eval_dir / fname).read_bytes())
             res = ga.generar_auditoria(eval_dir=tmp_eval)
-            self.assertEqual(res["resumen_global"]["global_75"]["aciertos_estrictos"], 64)
+            self.assertEqual(res["resumen_global"]["global_75"]["aciertos_estrictos"], 60)
             self.assertTrue((tmp_eval / "resultados_agentes_D4_auditados.csv").exists())
             self.assertTrue((tmp_eval / "casos_fallo_y_regresion.json").exists())
 
@@ -342,9 +354,9 @@ class TestDemoVideoD4(unittest.TestCase):
         self.assertIn("LoRA ON (Redactor FT)", html_card)
 
         fallos = demo.cargar_fallos()
-        self.assertIn("dificil_25:H19", fallos)
-        txt_fallo = demo.formatear_fallo_texto(fallos["dificil_25:H19"])
-        self.assertIn("ANÁLISIS DE FALLO dificil_25:H19", txt_fallo)
+        self.assertIn("dificil_25:H06", fallos)
+        txt_fallo = demo.formatear_fallo_texto(fallos["dificil_25:H06"])
+        self.assertIn("ANÁLISIS DE FALLO dificil_25:H06", txt_fallo)
         self.assertIn("VERIFICADOR · LoRA OFF (Base)", txt_fallo)
 
     def test_cli_demo_y_notebook_video_valido(self) -> None:

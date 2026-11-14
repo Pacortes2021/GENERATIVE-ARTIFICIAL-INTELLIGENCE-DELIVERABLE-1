@@ -45,8 +45,24 @@ DEFAULT_DIAGNOSTICO_D3_PATH = (
 
 CITE_RE = re.compile(r"\[([A-Z0-9-]+)\]")
 
-# Fallos estrictos según LEEME_PAUTA.md (incluye Regla 3 / precedente P01).
-FALLOS_ESTRICTOS_D4: dict[str, dict[str, Any]] = {
+V1_LEGACY_CSV_LF_SHA256 = (
+    "8958abdb15cb37f5947e34bcb59dd151cf5a05ed567bf71612c79a9d9c733cb8"
+)
+V2_FT_75_CSV_LF_SHA256 = (
+    "f57981031f069c38f4046892625a662a8d90724cc1273031b2abcf3764804de6"
+)
+V2_BASE_75_CSV_LF_SHA256 = (
+    "5e3a6d74fe0cdb4c8633ada6583239917bb82c9825f9856ba12297428573060f"
+)
+V2_FT_N20_CSV_LF_SHA256 = (
+    "f2470f1670bca5c750f836fcc86df793301c8ee054433c646b1f02c55cf61b7b"
+)
+V2_BASE_N20_CSV_LF_SHA256 = (
+    "f019768c6662bbe2bcc35c688ff9771079bcd8ace7323b33b939e33d225e1a1a"
+)
+
+# Fallos estrictos v1 archivados (64/75) según LEEME_PAUTA.md.
+FALLOS_ESTRICTOS_D4_V1: dict[str, dict[str, Any]] = {
     "congelado_50:6": {
         "tipo": "cita_invalida_fuera_de_evidencia",
         "solo_condicion_p01": False,
@@ -167,14 +183,14 @@ FALLOS_ESTRICTOS_D4: dict[str, dict[str, Any]] = {
     },
 }
 
-CASOS_APROB_FALSE_CORRECTOS: dict[str, str] = {
+CASOS_APROB_FALSE_CORRECTOS_V1: dict[str, str] = {
     "congelado_50:47": "Rechaza la premisa falsa de máximo en [RI-FI-ART-008] (cita además [RI-FI-ART-031] válido); correcto pese a aprobado=False.",
     "congelado_50:50": "Se abstiene sin inventar sobre tercera carrera simultánea y describe [RI-FI-ART-019]; correcto pese a aprobado=False.",
     "dificil_25:H17": "Da topes 80% y 100% [RI-FI-ART-013] más régimen especial [RG-ART-020]; correcto pese a aprobado=False.",
     "dificil_25:H21": "Corrige la premisa falsa del Art. 8 (fija mínimo de 8, no máximo) [RI-FI-ART-008]; correcto pese a aprobado=False.",
 }
 
-AUDITORIA_COMPARATIVA_6: dict[str, dict[str, Any]] = {
+AUDITORIA_COMPARATIVA_6_V1: dict[str, dict[str, Any]] = {
     "congelado_50:13": {
         "base_correcto": 0,
         "base_motivo": "Da umbral 10 créditos pero agrega la fórmula del promedio citando solo [RI-FI-ART-014] (fórmula en [RG-ART-028]; P01).",
@@ -213,7 +229,7 @@ AUDITORIA_COMPARATIVA_6: dict[str, dict[str, Any]] = {
     },
 }
 
-CASOS_FALLO_SELECCIONADOS = [
+CASOS_FALLO_SELECCIONADOS_V1 = [
     "dificil_25:H03",
     "dificil_25:H06",
     "dificil_25:H19",
@@ -226,6 +242,447 @@ CASOS_FALLO_SELECCIONADOS = [
     "dificil_25:H04",
     "dificil_25:H18",
 ]
+
+# Fallos estrictos v2 (A100 bf16, 60/75 = 43/50 + 17/25) bajo LEEME_PAUTA.md.
+FALLOS_ESTRICTOS_D4_V2: dict[str, dict[str, Any]] = {
+    "congelado_50:5": {
+        "tipo": "mezcla_cita_condiciones_p01",
+        "solo_condicion_p01": True,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Identifica la Memoria de Título [RI-FI-ART-029], pero Condiciones atribuye a "
+            "[RI-FI-ART-030] (que solo define ponderación 60%/40%) la exigencia de aprobarla "
+            "íntegramente para acceder al título profesional, regla ubicada en [RG-ART-003-DEF-10] "
+            "y [RG-ART-047] (Regla 3 / precedente P01)."
+        ),
+    },
+    "congelado_50:8": {
+        "tipo": "extrapolacion_condiciones_p01",
+        "solo_condicion_p01": True,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "La respuesta principal acierta que la renuncia es irrevocable e impide reincorporarse "
+            "[RI-FI-ART-026] [RG-ART-034], pero Condiciones afirma que quienes renuncien pueden "
+            "reingresar como alumnos nuevos en Primer Año citando [RG-ART-044], artículo que regula "
+            "el reingreso sin aludir ni habilitar expresamente el caso de renuncia (Regla 3 / P01)."
+        ),
+    },
+    "congelado_50:25": {
+        "tipo": "respuesta_incompleta_sin_desglose",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Solo indica que no pueden eliminarse las asignaturas 'de prioridades a) y b) del "
+            "Artículo 7°' [RI-FI-ART-009], sin explicitar que corresponden a las asignaturas "
+            "atrasadas y las obligatorias reprobadas pese a tener [RI-FI-ART-007] en fuentes_traidas."
+        ),
+    },
+    "congelado_50:26": {
+        "tipo": "regla_mal_aplicada_art_35",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Exige certificados DAFE (no deudas) y Dirección de Bibliotecas de [RG-ART-035] "
+            "para solicitar reincorporación, cuando [RG-ART-035] rige únicamente para suspender "
+            "estudios o renunciar a la carrera (la reincorporación se rige por [RG-ART-033])."
+        ),
+    },
+    "congelado_50:28": {
+        "tipo": "deformacion_normativa_art_29_42",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Fusiona erróneamente [RG-ART-029] y [RG-ART-042] al afirmar que la autorización "
+            "excepcional del Vicedecano procede solo si en el período anterior el alumno inscribió "
+            "asignaturas anuales."
+        ),
+    },
+    "congelado_50:36": {
+        "tipo": "omision_excepciones_regla_2",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Acierta fechas de inscripción [CAL-2026-S2-01] y mínimo de 8 créditos [RI-FI-ART-008], "
+            "pero escribe 'Condiciones o límites: No aplica', omitiendo las excepciones al mínimo "
+            "del Art. 8 RI-FI (Regla 2 / precedente P36)."
+        ),
+    },
+    "congelado_50:45": {
+        "tipo": "nombre_reglamento_inventado",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Rechaza el inexistente inciso d), pero inventa el título 'Reglamento Integral de "
+            "Formación de Ingeniería' en lugar de Reglamento Interno de Docencia de Pregrado de "
+            "la Facultad de Ingeniería y mezcla cita [RI-FI-ART-014] con 'Fuente: sin respaldo'."
+        ),
+    },
+    "dificil_25:H02": {
+        "tipo": "alucinacion_y_formato_sin_fuente",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Los promedios 4,2 [RI-FI-ART-018] y 5,0 [RI-FI-ART-019] son correctos, pero "
+            "Condiciones alucina el término 'simulink' y omite por completo la línea 'Fuente:'."
+        ),
+    },
+    "dificil_25:H03": {
+        "tipo": "recuperacion_incompleta_y_aritmetica",
+        "solo_condicion_p01": False,
+        "causa_raiz": "recuperador_y_redactor",
+        "motivo": (
+            "Fallo persistente D1–D4: CAL-2026-S2-02 (10 ago) sigue fuera del top-6 del "
+            "Recuperador; en ciclo 3 el Redactor calcula 22 y 19 días usando fechas erradas "
+            "(02 abr->24 jul y 04 sep->14 dic) y concluye erróneamente primer semestre."
+        ),
+    },
+    "dificil_25:H04": {
+        "tipo": "regresion_verificador_base",
+        "solo_condicion_p01": False,
+        "causa_raiz": "verificador_base",
+        "motivo": (
+            "En el ciclo 1 el Redactor FT acierta plazo de 6 semestres [RG-ART-049] y remite "
+            "al Reglamento Interno; el Verificador base lo rechaza 3 veces y fuerza la cita "
+            "errónea al glosario [RG-ART-003-DEF-10] omitiendo el párrafo 2 de [RG-ART-049] "
+            "sobre las exigencias al vencer dicho plazo."
+        ),
+    },
+    "dificil_25:H06": {
+        "tipo": "regresion_verificador_base",
+        "solo_condicion_p01": False,
+        "causa_raiz": "verificador_base",
+        "motivo": (
+            "En el ciclo 1 el Redactor FT calcula bien '38 / 4 = 9,5 < 10 -> cae en Baja Académica "
+            "[RI-FI-ART-014]'; el Verificador base objeta falsamente 'El cálculo de 38 / 4 = 9,5 es "
+            "incorrecto' y empuja un ciclo 3 con polaridad invertida ('No, al aprobar 38 créditos... "
+            "incumple el criterio') y sin citar [RG-ART-028]."
+        ),
+    },
+    "dificil_25:H12": {
+        "tipo": "mezcla_baja_academica_y_no_inscripcion_h12",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Responde 'Sí' y 1 año ante el Comité [RG-ART-030], pero mezcla en la respuesta "
+            "principal y condiciones el plazo de 10 días hábiles de resolución y la apelación al "
+            "quinto día ante el Vicedecano, que en [RG-ART-030] rigen Baja Académica y no Baja "
+            "por no Inscripción (Regla 3 / precedente H12)."
+        ),
+    },
+    "dificil_25:H21": {
+        "tipo": "regresion_verificador_base",
+        "solo_condicion_p01": False,
+        "causa_raiz": "verificador_base",
+        "motivo": (
+            "En el ciclo 1 el Redactor FT explica el mínimo de 8 créditos de [RI-FI-ART-008], "
+            "pero el Verificador base rechaza exigiendo responder por el máximo y empuja los "
+            "ciclos 2 y 3 hacia una abstención pura ('No existe información'), omitiendo corregir "
+            "la premisa falsa del tope."
+        ),
+    },
+    "dificil_25:H22": {
+        "tipo": "regresion_verificador_base",
+        "solo_condicion_p01": False,
+        "causa_raiz": "verificador_base",
+        "motivo": (
+            "En el ciclo 1 el Redactor FT refuta bien 4,5 -> 4,0 con [RI-FI-ART-011]; el "
+            "Verificador base objeta que 'según la evidencia es 4,5, no 4,0', induciendo en ciclo "
+            "2 la inserción de asistencia mínima 80%/100% (regla de [RI-FI-ART-013]) citada como "
+            "[RI-FI-ART-011] (Regla 3 / P01)."
+        ),
+    },
+    "dificil_25:H25": {
+        "tipo": "sintesis_incompleta_no_aplica",
+        "solo_condicion_p01": False,
+        "causa_raiz": "redactor",
+        "motivo": (
+            "Ordena créditos y luego promedio curricular de Plan Común [RI-FI-ART-005], pero "
+            "coloca 'Condiciones o límites: No aplica' omitiendo orden de preferencias, cupos por "
+            "carrera y que solo cuentan asignaturas obligatorias de Primer Año (Reglas 2 y 5)."
+        ),
+    },
+}
+
+CASOS_APROB_FALSE_CORRECTOS_V2: dict[str, str] = {
+    "congelado_50:38": "Aplica escala 1 a 7 y nota mínima 4,0 de [RG-ART-023]; correcto pese a aprobado=False.",
+    "congelado_50:47": "Indica correctamente que no existe máximo de créditos fijado en Art. 8 RI-FI (Regla 7); correcto pese a aprobado=False.",
+    "congelado_50:48": "Indica correctamente que Art. 12 RI-FI no fija nota mínima en Evaluación de Recuperación; correcto pese a aprobado=False.",
+    "congelado_50:50": "Indica que no existe norma sobre tercera carrera simultánea sin inventar; correcto pese a aprobado=False.",
+}
+
+AUDITORIA_COMPARATIVA_6_V2: dict[str, dict[str, Any]] = {
+    "congelado_50:13": {
+        "base_correcto": 1,
+        "base_motivo": "Acierta umbral < 10 desde cuarto semestre con [RI-FI-ART-014].",
+        "ft_correcto": 1,
+        "ft_motivo": "Acierta umbral < 10 [RI-FI-ART-014] y agrega correctamente la fórmula [RG-ART-028].",
+    },
+    "congelado_50:24": {
+        "base_correcto": 1,
+        "base_motivo": "Explicita segunda reprobación obligatoria y ambas excepciones (PLEV y primer año) [RI-FI-ART-014] [RG-ART-028].",
+        "ft_correcto": 1,
+        "ft_motivo": "Responde correctamente con ambas excepciones y paso a Baja Académica [RI-FI-ART-014].",
+    },
+    "congelado_50:36": {
+        "base_correcto": 0,
+        "base_motivo": "Dice 'Condiciones o límites: No se aplican', omitiendo excepciones al mínimo de 8 créditos (Regla 2).",
+        "ft_correcto": 0,
+        "ft_motivo": "Dice 'Condiciones o límites: No aplica', omitiendo excepciones del [RI-FI-ART-008] (Regla 2).",
+    },
+    "dificil_25:H03": {
+        "base_correcto": 0,
+        "base_motivo": "Falsa abstención tras 3 ciclos (160,39 s) pese a que las fechas están en CAL 2026 (Regla 8).",
+        "ft_correcto": 0,
+        "ft_motivo": "Calcula mal (22 y 19 días con fechas erradas) al quedar CAL-2026-S2-02 fuera del top-6 (180,35 s).",
+    },
+    "dificil_25:H07": {
+        "base_correcto": 0,
+        "base_motivo": "Falsa abstención tras 3 ciclos (173,54 s) alegando que faltan semestres de permanencia.",
+        "ft_correcto": 1,
+        "ft_motivo": "Resuelve en 2 ciclos (89,03 s): '42 / 4 = 10,5 > 10' con [RI-FI-ART-014] y [RG-ART-028].",
+    },
+    "dificil_25:H14": {
+        "base_correcto": 0,
+        "base_motivo": "Contradicción polar ('Sí, el estudiante queda en baja académica si no cumple...') tras 2 ciclos (92,32 s).",
+        "ft_correcto": 1,
+        "ft_motivo": "Resuelve en 1 ciclo (58,51 s): 'No queda automáticamente...' con excepciones y apelación [RI-FI-ART-014] [RG-ART-028] [RG-ART-030].",
+    },
+}
+
+CASOS_FALLO_SELECCIONADOS_V2 = [
+    "dificil_25:H06",
+    "dificil_25:H03",
+    "dificil_25:H04",
+    "dificil_25:H21",
+    "dificil_25:H22",
+    "dificil_25:H02",
+    "dificil_25:H12",
+    "dificil_25:H25",
+    "congelado_50:36",
+    "congelado_50:25",
+    "congelado_50:26",
+    "congelado_50:28",
+    "congelado_50:45",
+    "congelado_50:5",
+    "congelado_50:8",
+]
+
+# Fallos estrictos Control Base A100 (bf16) sobre 75 preguntas (62/75 = 46/50 + 16/25).
+FALLOS_CONTROL_BASE_75_V2: dict[str, dict[str, Any]] = {
+    "congelado_50:11": {
+        "tipo": "omision_excepciones_regla_2",
+        "causa_raiz": "redactor_base",
+        "motivo": "Dice 'Condiciones o límites: No aplicables', omitiendo las excepciones del [RI-FI-ART-008] (Regla 2).",
+    },
+    "congelado_50:25": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "recuperador_y_redactor_base",
+        "motivo": "Se abstiene falsamente ('No hay evidencia suficiente') pese a existir [RI-FI-ART-007] y [RI-FI-ART-009].",
+    },
+    "congelado_50:36": {
+        "tipo": "omision_excepciones_regla_2",
+        "causa_raiz": "redactor_base",
+        "motivo": "Dice 'Condiciones o límites: No se aplican', omitiendo las excepciones del [RI-FI-ART-008] (Regla 2).",
+    },
+    "congelado_50:43": {
+        "tipo": "formato_fuente_placeholder",
+        "causa_raiz": "redactor_base",
+        "motivo": "Acierta que Art. 100 RG no existe, pero deja 'Condiciones o límites:' vacío y emite 'Fuente: [evidencia]'.",
+    },
+    "dificil_25:H03": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "recuperador_base",
+        "motivo": "Se abstiene falsamente en ciclo 3 por ausencia de CAL-2026-S2-02 en top-6.",
+    },
+    "dificil_25:H06": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "redactor_y_verificador_base",
+        "motivo": "Falsa abstención tras 3 ciclos alegando que la norma no entrega la fórmula.",
+    },
+    "dificil_25:H07": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "redactor_y_verificador_base",
+        "motivo": "Falsa abstención tras 3 ciclos alegando falta de semestres totales pese a 'cuarto semestre'.",
+    },
+    "dificil_25:H12": {
+        "tipo": "mezcla_baja_academica_y_no_inscripcion_h12",
+        "causa_raiz": "redactor_base",
+        "motivo": "Mezcla resolución en 10 días hábiles y apelación de Baja Académica en Baja por no Inscripción [RG-ART-030] (Regla 3 / H12).",
+    },
+    "dificil_25:H18": {
+        "tipo": "afirmacion_extra_mal_citada_p01",
+        "causa_raiz": "redactor_base",
+        "motivo": "Exige certificados DAFE/Bibliotecas [RG-ART-035] para reincorporación y contradice la prórroga de [RI-FI-ART-031] citando pérdida a los 3 años [RG-ART-033].",
+    },
+    "dificil_25:H19": {
+        "tipo": "afirmacion_extra_mal_citada_p01",
+        "causa_raiz": "redactor_base",
+        "motivo": "Acierta fórmula en [RG-ART-028], pero Condiciones atribuye a [RG-ART-028] la mantención de calidad de alumno regular de [RG-ART-050] (Regla 3 / P01).",
+    },
+    "dificil_25:H22": {
+        "tipo": "falsa_abstencion_premisa_falsa",
+        "causa_raiz": "recuperador_y_redactor_base",
+        "motivo": "Se abstiene falsamente sin corregir 4,5 -> 4,0 pese a existir [RI-FI-ART-011].",
+    },
+    "dificil_25:H24": {
+        "tipo": "respuesta_incompleta_regla_5",
+        "causa_raiz": "redactor_base",
+        "motivo": "Da plazo de 3 días hábiles [RG-ART-026], pero omite por completo ante quién solicitarlo (Profesor Encargado / apelación Vicedecano).",
+    },
+    "dificil_25:H25": {
+        "tipo": "sintesis_incompleta_p01",
+        "causa_raiz": "redactor_base",
+        "motivo": "Omite que solo cuentan asignaturas obligatorias de Primer Año [RI-FI-ART-005] y atribuye a [RI-FI-ART-005] frase 'al final del año académico' de [RI-FI-ART-006].",
+    },
+}
+
+# Fallos estrictos Nuevas 20 FT v2 (10/20 = 50,0%) y Nuevas 20 Control Base (11/20 = 55,0%).
+FALLOS_NUEVAS20_FT_V2: dict[str, dict[str, Any]] = {
+    "nuevas_20:N05": {
+        "tipo": "regresion_verificador_base",
+        "causa_raiz": "verificador_base",
+        "motivo": "Ciclos 1–2 refutan bien la premisa con [RI-FI-ART-006], pero el Verificador base rechaza exigiendo puntaje mínimo ponderado y empuja ciclo 3 a [RI-FI-ART-005] sin [RI-FI-ART-006].",
+    },
+    "nuevas_20:N06": {
+        "tipo": "error_aritmetico_fechas",
+        "causa_raiz": "redactor",
+        "motivo": "Suma incorrectamente los tramos de [CAL-2026-S1-05]/[CAL-2026-S1-12] dando '4 + 4 = 8 días'.",
+    },
+    "nuevas_20:N07": {
+        "tipo": "error_aritmetico_fechas",
+        "causa_raiz": "redactor",
+        "motivo": "Suma incorrectamente las diferencias de fechas dando '5 + 4 = 9 días' en lugar de 126.",
+    },
+    "nuevas_20:N08": {
+        "tipo": "confusion_conceptos_p01",
+        "causa_raiz": "redactor",
+        "motivo": "Confunde asignatura complementaria [RG-ART-046] con Programa de Formación Complementaria (>=24 SCT) [RG-ART-003-DEF-12] exigiendo este último como requisito.",
+    },
+    "nuevas_20:N10": {
+        "tipo": "regla_incompleta_reingreso",
+        "causa_raiz": "redactor",
+        "motivo": "Omite el mecanismo explícito de reingreso al semestre siguiente tras titularse/graduarse [RG-ART-047] y mezcla regla de Primer Año de [RG-ART-044].",
+    },
+    "nuevas_20:N12": {
+        "tipo": "enrutador_filtro_documento",
+        "causa_raiz": "enrutador_base",
+        "motivo": "El Enrutador base restringe documentos a ['RI-FI'], dejando 0 fuentes de [RG-ART-036]/[RG-ART-059] y provocando falsa abstención.",
+    },
+    "nuevas_20:N16": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "redactor_y_verificador",
+        "motivo": "Tiene los 4 eventos CAL-2026-S1/S2 en evidencia pero omite fechas en ciclo 1 y luego se abstiene falsamente en ciclos 2–3.",
+    },
+    "nuevas_20:N17": {
+        "tipo": "afirmacion_extra_mal_citada_p01",
+        "causa_raiz": "redactor",
+        "motivo": "Refuta bien [RG-ART-004], pero en Condiciones atribuye el texto de [RI-FI-ART-002] a [RG-ART-011] (Regla 3 / P01).",
+    },
+    "nuevas_20:N18": {
+        "tipo": "error_factual_condiciones_p01",
+        "causa_raiz": "redactor",
+        "motivo": "Cumple los 3 roles principales, pero en Condiciones afirma erróneamente bajo [RG-ART-026] que el Vicedecano resuelve la regularización (resuelve el Profesor Encargado; Vicedecano solo atiende apelación).",
+    },
+    "nuevas_20:N19": {
+        "tipo": "enrutador_filtro_documento",
+        "causa_raiz": "enrutador_base_y_redactor",
+        "motivo": "El Enrutador restringe a ['RI-FI'] dejando fuera [RG-ART-018]; el Redactor acierta parte 1 [RG-ART-036] pero sustituye [RG-ART-018] por [RI-FI-ART-029].",
+    },
+}
+
+FALLOS_NUEVAS20_BASE_V2: dict[str, dict[str, Any]] = {
+    "nuevas_20:N01": {
+        "tipo": "alucinacion_condicion",
+        "causa_raiz": "redactor_base",
+        "motivo": "Agrega que el tope de 54 horas semanales 'aplica a los alumnos a tiempo completo' [RG-ART-017] [RG-ART-003-DEF-11], restricción ausente en ambos textos.",
+    },
+    "nuevas_20:N07": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "recuperador_base",
+        "motivo": "Falsa abstención sobre el plazo S1–S2 de evaluación pese a existir las entradas CAL 2026.",
+    },
+    "nuevas_20:N09": {
+        "tipo": "autocontradiccion",
+        "causa_raiz": "redactor_base",
+        "motivo": "Se contradice al afirmar que no pierde la calidad pero al mismo tiempo la pierde si incurre en causales sin distinguir suspensión vs pérdida [RI-FI-ART-028] [RG-ART-033].",
+    },
+    "nuevas_20:N10": {
+        "tipo": "mezcla_normativa",
+        "causa_raiz": "redactor_base",
+        "motivo": "Mezcla reingreso por segundo grado/título [RG-ART-047] con Primer Año [RG-ART-044] y cambio de carrera [RG-ART-054].",
+    },
+    "nuevas_20:N11": {
+        "tipo": "respuesta_incompleta_regla_5",
+        "causa_raiz": "redactor_base",
+        "motivo": "Omite 2 de las 4 condiciones de [RG-ART-021] para evaluación global única.",
+    },
+    "nuevas_20:N12": {
+        "tipo": "enrutador_filtro_documento",
+        "causa_raiz": "enrutador_base",
+        "motivo": "El Enrutador filtra a ['RI-FI'] (0 fuentes) y provoca falsa abstención sobre [RG-ART-036]/[RG-ART-059].",
+    },
+    "nuevas_20:N16": {
+        "tipo": "falsa_abstencion_regla_8",
+        "causa_raiz": "recuperador_base",
+        "motivo": "Falsa abstención parcial sobre las cuatro ventanas de receso CAL 2026.",
+    },
+    "nuevas_20:N18": {
+        "tipo": "negacion_falsa_parte",
+        "causa_raiz": "recuperador_y_redactor_base",
+        "motivo": "Niega falsamente las funciones de Secretaría Académica [RG-ART-005] pese a existir en el corpus.",
+    },
+    "nuevas_20:N19": {
+        "tipo": "falsa_abstencion_parcial",
+        "causa_raiz": "enrutador_base",
+        "motivo": "Falsa abstención en la segunda parte al no recuperarse [RG-ART-018].",
+    },
+}
+
+AUDITORIA_COMPARATIVA_N20_V2: dict[str, dict[str, Any]] = {
+    "nuevas_20:N01": {
+        "base_correcto": 0,
+        "base_motivo": "Agrega restricción inexistente 'alumnos a tiempo completo' en Condiciones.",
+        "ft_correcto": 1,
+        "ft_motivo": "Cita literal 54 horas semanales y programas de asignatura [RG-ART-017] con 'Condiciones: No aplica'.",
+    },
+    "nuevas_20:N15": {
+        "base_correcto": 1,
+        "base_motivo": "Acierta Comité de Docencia [RG-ART-036] y Secretaría Académica [RG-ART-005].",
+        "ft_correcto": 1,
+        "ft_motivo": "Acierta ambos órganos con detalle completo de facilidades y citas [RG-ART-005] [RG-ART-036].",
+    },
+    "nuevas_20:N19": {
+        "base_correcto": 0,
+        "base_motivo": "Acierta embarazo pero se abstiene en duración distinta a un semestre por ausencia de [RG-ART-018].",
+        "ft_correcto": 0,
+        "ft_motivo": "Acierta embarazo [RG-ART-036], pero sustituye [RG-ART-018] faltante por [RI-FI-ART-029].",
+    },
+}
+
+_REGISTRO_AUDITORIA_GENERAL_POR_SHA: dict[str, tuple[dict[str, dict[str, Any]], str]] = {
+    V2_FT_75_CSV_LF_SHA256: (
+        FALLOS_ESTRICTOS_D4_V2,
+        "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2; pendiente VoBo Álvaro Contreras)",
+    ),
+    V2_BASE_75_CSV_LF_SHA256: (
+        FALLOS_CONTROL_BASE_75_V2,
+        "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2; pendiente VoBo Álvaro Contreras)",
+    ),
+    V2_FT_N20_CSV_LF_SHA256: (
+        FALLOS_NUEVAS20_FT_V2,
+        "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2; pendiente VoBo Álvaro Contreras)",
+    ),
+    V2_BASE_N20_CSV_LF_SHA256: (
+        FALLOS_NUEVAS20_BASE_V2,
+        "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2; pendiente VoBo Álvaro Contreras)",
+    ),
+}
+
+# Alias activos apuntando a la corrida oficial vigente (v2 A100 bf16).
+FALLOS_ESTRICTOS_D4 = FALLOS_ESTRICTOS_D4_V2
+CASOS_APROB_FALSE_CORRECTOS = CASOS_APROB_FALSE_CORRECTOS_V2
+AUDITORIA_COMPARATIVA_6 = AUDITORIA_COMPARATIVA_6_V2
+CASOS_FALLO_SELECCIONADOS = CASOS_FALLO_SELECCIONADOS_V2
 
 
 def _cargar_corpus_ids(corpus_path: Path) -> set[str]:
@@ -354,11 +811,23 @@ def _clasificar_transicion(ok_d3: int, ok_d4: int) -> str:
     return "regresion_d4"
 
 
+def _extraer_traza_lista(traza_raw: Any) -> list[dict[str, Any]]:
+    if isinstance(traza_raw, dict):
+        return list(traza_raw.get("traza", []))
+    if isinstance(traza_raw, list):
+        return list(traza_raw)
+    return []
+
+
 def _auditar_casos(
     rows: list[dict[str, str]],
     d3_casos: dict[str, dict[str, Any]],
     corpus_ids: set[str],
+    fallos_dict: dict[str, dict[str, Any]] | None = None,
+    aprob_false_ok: dict[str, str] | None = None,
 ) -> tuple[list[dict[str, str]], list[dict[str, Any]]]:
+    fallos_map = FALLOS_ESTRICTOS_D4 if fallos_dict is None else fallos_dict
+    aprob_ok_map = CASOS_APROB_FALSE_CORRECTOS if aprob_false_ok is None else aprob_false_ok
     rows_auditados: list[dict[str, str]] = []
     veredictos: list[dict[str, Any]] = []
 
@@ -369,7 +838,7 @@ def _auditar_casos(
         citas_fuera_evidencia = [c for c in cites if c not in fuentes]
         citas_inexistentes = [c for c in cites if c not in corpus_ids]
 
-        fallo = FALLOS_ESTRICTOS_D4.get(qid)
+        fallo = fallos_map.get(qid)
         ok_d4 = 0 if fallo else 1
         ok_d3 = int(d3_casos[qid]["correcta"])
         aprob_v = row["aprobado_verificador"] == "True"
@@ -380,7 +849,7 @@ def _auditar_casos(
             causa_raiz = fallo["causa_raiz"]
             solo_p01 = bool(fallo["solo_condicion_p01"])
         else:
-            motivo = CASOS_APROB_FALSE_CORRECTOS.get(
+            motivo = aprob_ok_map.get(
                 qid,
                 "Respuesta suficiente, coherente con las condiciones y respaldada por citas presentes en evidencia.",
             )
@@ -421,34 +890,40 @@ def _auditar_casos(
 
 def _construir_resumen_comparativa(
     comparativa: list[dict[str, Any]],
+    comp_map: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
+    audit_map = AUDITORIA_COMPARATIVA_6 if comp_map is None else comp_map
     casos: list[dict[str, Any]] = []
     base_ok = 0
     ft_ok = 0
     for item in comparativa:
         qid = item["qid"]
-        audit = AUDITORIA_COMPARATIVA_6[qid]
-        base_ok += audit["base_correcto"]
-        ft_ok += audit["ft_correcto"]
+        audit = audit_map.get(qid, {})
+        b_ok = audit.get("base_correcto")
+        f_ok = audit.get("ft_correcto")
+        if b_ok is not None:
+            base_ok += int(b_ok)
+        if f_ok is not None:
+            ft_ok += int(f_ok)
         casos.append(
             {
                 "qid": qid,
                 "categoria": item["categoria"],
                 "pregunta": item["pregunta"],
-                "base_correcto": audit["base_correcto"],
-                "ft_correcto": audit["ft_correcto"],
+                "base_correcto": b_ok,
+                "ft_correcto": f_ok,
                 "base_ciclos": item["base"]["ciclos"],
                 "ft_ciclos": item["finetuned_redactor"]["ciclos"],
                 "base_segundos": item["base"]["segundos"],
                 "ft_segundos": item["finetuned_redactor"]["segundos"],
-                "base_motivo": audit["base_motivo"],
-                "ft_motivo": audit["ft_motivo"],
+                "base_motivo": audit.get("base_motivo", "[Pendiente revisión]"),
+                "ft_motivo": audit.get("ft_motivo", "[Pendiente revisión]"),
             }
         )
     return {
         "total_pares": len(casos),
-        "aciertos_base": base_ok,
-        "aciertos_finetuned": ft_ok,
+        "aciertos_base": base_ok if all(c["base_correcto"] is not None for c in casos) else None,
+        "aciertos_finetuned": ft_ok if all(c["ft_correcto"] is not None for c in casos) else None,
         "casos": casos,
     }
 
@@ -456,11 +931,14 @@ def _construir_resumen_comparativa(
 def _construir_casos_fallo(
     rows_by_qid: dict[str, dict[str, str]],
     veredictos_by_qid: dict[str, dict[str, Any]],
-    trazas: dict[str, list[dict[str, Any]]],
+    trazas: dict[str, Any],
     telemetria: dict[str, list[dict[str, Any]]],
+    casos_seleccionados: list[str] | None = None,
+    descripcion: str | None = None,
 ) -> dict[str, Any]:
+    sel = CASOS_FALLO_SELECCIONADOS if casos_seleccionados is None else casos_seleccionados
     casos: list[dict[str, Any]] = []
-    for qid in CASOS_FALLO_SELECCIONADOS:
+    for qid in sel:
         row = rows_by_qid[qid]
         ver = veredictos_by_qid[qid]
         casos.append(
@@ -483,24 +961,20 @@ def _construir_casos_fallo(
                 "solo_condicion_p01": ver["solo_condicion_p01"],
                 "transicion_d3_a_d4": ver["transicion_d3_a_d4"],
                 "diagnostico_auditoria": ver["motivo_auditoria"],
-                "telemetria": telemetria[qid],
-                "traza_completa": trazas[qid],
+                "telemetria": telemetria.get(qid, []),
+                "traza_completa": _extraer_traza_lista(trazas.get(qid, [])),
             }
         )
     return {
-        "descripcion": (
-            "Trazas completas de los fallos estrictos de Deliverable 4 bajo LEEME_PAUTA.md, "
-            "destacando H03 (fallo persistente D1–D4), H06/H19 (degradaciones provocadas por el "
-            "Verificador base frente a borradores válidos/útiles del Redactor FT) y desvíos de cita P01."
+        "descripcion": descripcion
+        or (
+            "Trazas completas de los fallos estrictos de Deliverable 4 v2 (A100 bf16) bajo "
+            "LEEME_PAUTA.md, destacando H03 (CAL-2026-S2-02 fuera del top-6) y H04/H06/H21/H22 "
+            "(borradores válidos en ciclo 1 degradados por el Verificador base en ciclos 2–3)."
         ),
         "total_casos_documentados": len(casos),
         "casos": casos,
     }
-
-
-V1_LEGACY_CSV_LF_SHA256 = (
-    "8958abdb15cb37f5947e34bcb59dd151cf5a05ed567bf71612c79a9d9c733cb8"
-)
 
 
 def _escribir_texto_lf(path: Path, contenido: str) -> None:
@@ -616,6 +1090,16 @@ def generar_auditoria_general(
     sufijo = prefijo_salida.strip().rstrip("_") or sufijo_def
 
     corpus_ids = _cargar_corpus_ids(corpus_path)
+    csv_raw_lf = csv_in.read_bytes().replace(b"\r\n", b"\n")
+    csv_lf_sha = hashlib.sha256(csv_raw_lf).hexdigest()
+    audit_reg = _REGISTRO_AUDITORIA_GENERAL_POR_SHA.get(csv_lf_sha)
+    fallos_reg: dict[str, dict[str, Any]] | None = audit_reg[0] if audit_reg else None
+    revisor_efectivo = (
+        audit_reg[1]
+        if (audit_reg and revisor == "[Pendiente revisor]")
+        else revisor
+    )
+
     with csv_in.open("r", encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
         rows = list(reader)
@@ -663,6 +1147,10 @@ def generar_auditoria_general(
         det = auditar_fila_determinista(row, corpus_ids)
         corr_raw = str(row.get("correcto", "")).strip()
         corr_val: int | None = int(corr_raw) if corr_raw in {"0", "1"} else None
+        reg_fallo = fallos_reg.get(qid) if fallos_reg is not None else None
+        if corr_val is None and fallos_reg is not None:
+            corr_val = 0 if reg_fallo is not None else 1
+            corr_raw = str(corr_val)
 
         nuevo_row = dict(row)
         nuevo_row["correcto"] = corr_raw if corr_val is not None else ""
@@ -700,7 +1188,7 @@ def generar_auditoria_general(
             b["segundos_totales"] = round(b["segundos_totales"] + float(row.get("segundos") or 0.0), 2)
 
         traza_obj = trazas.get(qid, {}) if isinstance(trazas, dict) else {}
-        traza_lista = traza_obj.get("traza", []) if isinstance(traza_obj, dict) else traza_obj
+        traza_lista = _extraer_traza_lista(traza_obj)
         det_item = {
             "qid": qid,
             "set": row["set"],
@@ -708,10 +1196,21 @@ def generar_auditoria_general(
             "categoria": row.get("categoria", ""),
             "correcto_humano": corr_val,
             "revision_humana_pendiente": corr_val is None,
-            "revisor": revisor if corr_val is not None else "[Pendiente revisor]",
+            "revisor": revisor_efectivo if corr_val is not None else "[Pendiente revisor]",
             "aprobado_verificador": row.get("aprobado_verificador") == "True",
             "ciclos": int(row.get("ciclos") or 0),
             "segundos": float(row.get("segundos") or 0.0),
+            "tipo_fallo": reg_fallo.get("tipo") if reg_fallo else None,
+            "causa_raiz": reg_fallo.get("causa_raiz") if reg_fallo else None,
+            "motivo_auditoria": (
+                reg_fallo["motivo"]
+                if reg_fallo
+                else (
+                    "Respuesta correcta y respaldada por la evidencia bajo LEEME_PAUTA.md."
+                    if corr_val == 1
+                    else None
+                )
+            ),
             **det,
         }
         detalles_por_qid.append(det_item)
@@ -736,6 +1235,9 @@ def generar_auditoria_general(
 
     comparativa_control = None
     if control_csv is not None and control_csv.is_file():
+        ctrl_lf_sha = hashlib.sha256(control_csv.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
+        ctrl_reg = _REGISTRO_AUDITORIA_GENERAL_POR_SHA.get(ctrl_lf_sha)
+        ctrl_fallos = ctrl_reg[0] if ctrl_reg else None
         with control_csv.open("r", encoding="utf-8", newline="") as f:
             ctrl_rows = list(csv.DictReader(f))
         ctrl_by_qid = {f"{r['set']}:{r['id']}": r for r in ctrl_rows}
@@ -747,12 +1249,16 @@ def generar_auditoria_general(
         ctrl_no_aplica = 0
         ctrl_ok = 0
         ctrl_eval = 0
+        ft_eval_pares = 0
+        ft_ok_pares = 0
+        det_by_qid = {d["qid"]: d for d in detalles_por_qid}
         for row in rows:
             qid = f"{row['set']}:{row['id']}"
             cr = ctrl_by_qid.get(qid)
             if cr is None:
                 continue
             det_c = auditar_fila_determinista(cr, corpus_ids)
+            det_ft = det_by_qid[qid]
             ctrl_llam += int(cr.get("llamadas_modelo") or 0)
             ctrl_seg += float(cr.get("segundos") or 0.0)
             if det_c["citas_inexistentes_en_corpus"] or det_c["citas_fuera_de_evidencia"]:
@@ -760,9 +1266,15 @@ def generar_auditoria_general(
             if det_c["tiene_condicion_no_aplica"]:
                 ctrl_no_aplica += 1
             cc_raw = str(cr.get("correcto", "")).strip()
-            if cc_raw in {"0", "1"}:
+            ctrl_val: int | None = int(cc_raw) if cc_raw in {"0", "1"} else None
+            if ctrl_val is None and ctrl_fallos is not None:
+                ctrl_val = 0 if qid in ctrl_fallos else 1
+            if ctrl_val is not None:
                 ctrl_eval += 1
-                ctrl_ok += int(cc_raw)
+                ctrl_ok += ctrl_val
+            if det_ft["correcto_humano"] is not None:
+                ft_eval_pares += 1
+                ft_ok_pares += int(det_ft["correcto_humano"])
             distinta = str(row.get("respuesta_sistema", "")).strip() != str(
                 cr.get("respuesta_sistema", "")
             ).strip()
@@ -773,12 +1285,14 @@ def generar_auditoria_general(
                     "qid": qid,
                     "categoria": row.get("categoria", ""),
                     "respuesta_distinta": distinta,
+                    "control_correcto": ctrl_val,
+                    "ft_correcto": det_ft["correcto_humano"],
                     "control_ciclos": int(cr.get("ciclos") or 0),
                     "ft_ciclos": int(row.get("ciclos") or 0),
                     "control_llamadas": int(cr.get("llamadas_modelo") or 0),
                     "ft_llamadas": int(row.get("llamadas_modelo") or 0),
                     "control_alertas": det_c["alertas_automaticas"],
-                    "ft_alertas": auditar_fila_determinista(row, corpus_ids)["alertas_automaticas"],
+                    "ft_alertas": det_ft["alertas_automaticas"],
                 }
             )
         comparativa_control = {
@@ -799,6 +1313,8 @@ def generar_auditoria_general(
             "ft_no_aplica": sum(1 for d in detalles_por_qid if d["tiene_condicion_no_aplica"]),
             "control_evaluadas_humanamente": ctrl_eval,
             "control_aciertos_humanos": ctrl_ok if ctrl_eval > 0 else None,
+            "ft_evaluadas_humanamente": ft_eval_pares,
+            "ft_aciertos_humanos": ft_ok_pares if ft_eval_pares > 0 else None,
             "pares": pares,
         }
 
@@ -818,8 +1334,13 @@ def generar_auditoria_general(
 
     eval_humanas = sum(b["evaluadas_humanamente"] for b in por_set.values())
     aciertos_tot = sum(b["aciertos"] for b in por_set.values())
+    comp_inline_resumen = (
+        _construir_resumen_comparativa(comparativa, comp_map=AUDITORIA_COMPARATIVA_N20_V2)
+        if (isinstance(comparativa, list) and comparativa and all(c.get("qid") in AUDITORIA_COMPARATIVA_N20_V2 for c in comparativa))
+        else None
+    )
     auditoria = {
-        "modo": "auditoria_general_sin_dict_fijo",
+        "modo": "auditoria_v2_pauta_estricta" if fallos_reg is not None else "auditoria_general_sin_dict_fijo",
         "fuente_csv": csv_in.name,
         "condicion": rows[0].get("condicion", "") if rows else "",
         "total_preguntas": len(rows),
@@ -829,7 +1350,7 @@ def generar_auditoria_general(
         "porcentaje_humano": round(100.0 * aciertos_tot / eval_humanas, 1)
         if eval_humanas > 0
         else None,
-        "revisor": revisor,
+        "revisor": revisor_efectivo if eval_humanas > 0 else revisor,
         "resumen_por_set": por_set,
         "resumen_por_categoria": por_cat,
         "chequeos_deterministas": {
@@ -855,6 +1376,7 @@ def generar_auditoria_general(
         "telemetria_y_aislamiento": telemetria_resumen,
         "comparativa_control_base_vs_ft": comparativa_control,
         "comparativa_inline": comparativa if isinstance(comparativa, list) else [],
+        "comparativa_inline_auditada": comp_inline_resumen,
         "detalles": detalles_por_qid,
     }
     _escribir_texto_lf(aud_out, json.dumps(auditoria, ensure_ascii=False, indent=2) + "\n")
@@ -873,6 +1395,42 @@ def generar_auditoria_general(
     return auditoria
 
 
+_REGISTRO_AUDITORIA_75: dict[str, dict[str, Any]] = {
+    V1_LEGACY_CSV_LF_SHA256: {
+        "version_corrida": "v1_archivada",
+        "fallos": FALLOS_ESTRICTOS_D4_V1,
+        "aprob_false_ok": CASOS_APROB_FALSE_CORRECTOS_V1,
+        "comp6": AUDITORIA_COMPARATIVA_6_V1,
+        "casos_fallo": CASOS_FALLO_SELECCIONADOS_V1,
+        "evaluadores": "Álvaro Contreras y Pablo Cortés (criterios LEEME_PAUTA.md) con auditoría externa de par",
+        "errores_d3_resueltos_nucleo": [
+            "congelado_50:36 (contenido corregido, cambia ID cita)",
+            "dificil_25:H18 (contenido y RG-ART-033 corregidos; falla cita extra P01)",
+        ],
+        "descripcion_fallos": (
+            "Trazas completas de los fallos estrictos de Deliverable 4 (v1 archivada) bajo LEEME_PAUTA.md."
+        ),
+    },
+    V2_FT_75_CSV_LF_SHA256: {
+        "version_corrida": "v2_a100_bf16",
+        "fallos": FALLOS_ESTRICTOS_D4_V2,
+        "aprob_false_ok": CASOS_APROB_FALSE_CORRECTOS_V2,
+        "comp6": AUDITORIA_COMPARATIVA_6_V2,
+        "casos_fallo": CASOS_FALLO_SELECCIONADOS_V2,
+        "evaluadores": (
+            "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2; "
+            "pendiente revisión par y VoBo de Álvaro Contreras)"
+        ),
+        "errores_d3_resueltos_nucleo": [],
+        "descripcion_fallos": (
+            "Trazas completas de los 15 fallos estrictos de Deliverable 4 v2 (A100 bf16, 60/75) "
+            "bajo LEEME_PAUTA.md, destacando H03 (CAL-2026-S2-02 fuera del top-6) y H04/H06/H21/H22 "
+            "(borradores válidos en ciclo 1 degradados por el Verificador base en ciclos 2–3)."
+        ),
+    },
+}
+
+
 def generar_auditoria(
     eval_dir: Path = EVAL_DIR,
     corpus_path: Path = DEFAULT_CORPUS_PATH,
@@ -880,15 +1438,19 @@ def generar_auditoria(
     d3_csv_path: Path = DEFAULT_D3_CSV_PATH,
     diagnostico_d3_path: Path = DEFAULT_DIAGNOSTICO_D3_PATH,
 ) -> dict[str, Any]:
-    """Genera auditoría v1 (hash LF conocido) o delega a auditoría general para nuevas corridas."""
-    csv_check = eval_dir / "resultados_agentes_D4.csv"
-    if csv_check.is_file():
-        sha_actual = hashlib.sha256(
-            csv_check.read_bytes().replace(b"\r\n", b"\n")
-        ).hexdigest()
-        if sha_actual != V1_LEGACY_CSV_LF_SHA256:
-            return generar_auditoria_general(eval_dir=eval_dir, corpus_path=corpus_path)
+    """Genera auditoría estricta para corridas v1/v2 conocidas o delega a auditoría general."""
     csv_in = eval_dir / "resultados_agentes_D4.csv"
+    cfg_reg: dict[str, Any] | None = None
+    if csv_in.is_file():
+        sha_actual = hashlib.sha256(
+            csv_in.read_bytes().replace(b"\r\n", b"\n")
+        ).hexdigest()
+        cfg_reg = _REGISTRO_AUDITORIA_75.get(sha_actual)
+        if cfg_reg is None:
+            return generar_auditoria_general(eval_dir=eval_dir, corpus_path=corpus_path)
+    else:
+        cfg_reg = _REGISTRO_AUDITORIA_75[V2_FT_75_CSV_LF_SHA256]
+
     trazas_in = eval_dir / "trazas_D4.json"
     tele_in = eval_dir / "telemetria_llamadas.json"
     comp_in = eval_dir / "comparativa_base_vs_finetuned.json"
@@ -908,7 +1470,13 @@ def generar_auditoria(
     d3_casos, resumen_d3_csv = _cargar_veredictos_d3(d3_veredictos_path, d3_csv_path)
 
     telemetria_resumen = _verificar_telemetria(telemetria, rows)
-    rows_auditados, veredictos = _auditar_casos(rows, d3_casos, corpus_ids)
+    rows_auditados, veredictos = _auditar_casos(
+        rows,
+        d3_casos,
+        corpus_ids,
+        fallos_dict=cfg_reg["fallos"],
+        aprob_false_ok=cfg_reg["aprob_false_ok"],
+    )
 
     csv_out = eval_dir / "resultados_agentes_D4_auditados.csv"
     with csv_out.open("w", encoding="utf-8", newline="") as f:
@@ -947,7 +1515,56 @@ def generar_auditoria(
     aprobaciones_true = [v for v in veredictos if v["aprobado_verificador"]]
     aprobaciones_false = [v for v in veredictos if not v["aprobado_verificador"]]
 
+    control_csv_path = eval_dir / "resultados_control_base_D4.csv"
+    comparativa_control_75: dict[str, Any] | None = None
+    if control_csv_path.is_file():
+        ctrl_lf_sha = hashlib.sha256(
+            control_csv_path.read_bytes().replace(b"\r\n", b"\n")
+        ).hexdigest()
+        ctrl_reg = _REGISTRO_AUDITORIA_GENERAL_POR_SHA.get(ctrl_lf_sha)
+        ctrl_fallos = ctrl_reg[0] if ctrl_reg else None
+        with control_csv_path.open("r", encoding="utf-8", newline="") as f:
+            ctrl_rows = list(csv.DictReader(f))
+        ctrl_by_qid = {f"{r['set']}:{r['id']}": r for r in ctrl_rows}
+        ctrl_cong_ok = 0
+        ctrl_dif_ok = 0
+        ctrl_eval = 0
+        solo_base_gana: list[str] = []
+        solo_ft_gana: list[str] = []
+        for r in rows_auditados:
+            qid = f"{r['set']}:{r['id']}"
+            cr = ctrl_by_qid.get(qid)
+            if cr is None:
+                continue
+            cc_raw = str(cr.get("correcto", "")).strip()
+            c_ok: int | None = int(cc_raw) if cc_raw in {"0", "1"} else None
+            if c_ok is None and ctrl_fallos is not None:
+                c_ok = 0 if qid in ctrl_fallos else 1
+            if c_ok is not None:
+                ctrl_eval += 1
+                if r["set"] == "congelado_50":
+                    ctrl_cong_ok += c_ok
+                else:
+                    ctrl_dif_ok += c_ok
+                ft_ok_row = int(r["correcto"])
+                if ft_ok_row == 1 and c_ok == 0:
+                    solo_ft_gana.append(qid)
+                elif ft_ok_row == 0 and c_ok == 1:
+                    solo_base_gana.append(qid)
+        comparativa_control_75 = {
+            "control_csv": control_csv_path.name,
+            "control_llamadas_totales": sum(int(cr.get("llamadas_modelo") or 0) for cr in ctrl_rows),
+            "control_segundos_totales": round(sum(float(cr.get("segundos") or 0.0) for cr in ctrl_rows), 2),
+            "control_ciclos_gt1": sum(1 for cr in ctrl_rows if int(cr.get("ciclos") or 0) > 1),
+            "control_congelado_50_ok": ctrl_cong_ok if ctrl_eval > 0 else None,
+            "control_dificil_25_ok": ctrl_dif_ok if ctrl_eval > 0 else None,
+            "control_global_75_ok": (ctrl_cong_ok + ctrl_dif_ok) if ctrl_eval > 0 else None,
+            "ft_gana_a_control_qids": solo_ft_gana,
+            "control_gana_a_ft_qids": solo_base_gana,
+        }
+
     auditoria = {
+        "version_corrida": cfg_reg["version_corrida"],
         "criterio": "Auditoría estricta según Deliverable 3/paquete_25_dificiles/LEEME_PAUTA.md (incluye Regla 3 / precedente P01).",
         "configuracion_runtime": config_eval,
         "resumen_global": {
@@ -1015,22 +1632,22 @@ def generar_auditoria(
             "transiciones_vs_d3": transiciones,
             "errores_d3_originales": fallos_d3_qids,
             "errores_d3_resueltos_estrictos_en_d4": corregidos_d3_qids,
-            "errores_d3_resueltos_en_nucleo_p36_h18": [
-                "congelado_50:36 (contenido corregido, cambia ID cita)",
-                "dificil_25:H18 (contenido y RG-ART-033 corregidos; falla cita extra P01)",
-            ],
+            "errores_d3_resueltos_en_nucleo_p36_h18": cfg_reg["errores_d3_resueltos_nucleo"],
         },
+        "comparativa_control_base_vs_ft": comparativa_control_75,
         "telemetria_y_aislamiento": telemetria_resumen,
         "desglose_por_categoria": por_categoria,
         "trazabilidad_calificacion": {
-            "evaluadores": "Álvaro Contreras y Pablo Cortés (criterios LEEME_PAUTA.md) con auditoría externa de par",
+            "evaluadores": cfg_reg["evaluadores"],
             "nota_nucleo_equivalente": (
                 "El criterio relajado sin Regla 3/P01 también elevaría a D3 v6 "
                 "(congelado_50:13 y dificil_25:H18 eran fallos P01 en D3: 66+2 = 68/75), "
                 "por lo que no debe usarse como ventaja unilateral de D4 sobre D3."
             ),
         },
-        "comparativa_controlada_6_casos": _construir_resumen_comparativa(comparativa),
+        "comparativa_controlada_6_casos": _construir_resumen_comparativa(
+            comparativa, comp_map=cfg_reg["comp6"]
+        ),
         "veredictos": veredictos,
     }
 
@@ -1039,7 +1656,14 @@ def generar_auditoria(
         json.dumps(auditoria, ensure_ascii=False, indent=2) + "\n",
     )
 
-    casos_fallo = _construir_casos_fallo(rows_by_qid, ver_by_qid, trazas, telemetria)
+    casos_fallo = _construir_casos_fallo(
+        rows_by_qid,
+        ver_by_qid,
+        trazas,
+        telemetria,
+        casos_seleccionados=cfg_reg["casos_fallo"],
+        descripcion=cfg_reg["descripcion_fallos"],
+    )
     _escribir_texto_lf(
         eval_dir / "casos_fallo_y_regresion.json",
         json.dumps(casos_fallo, ensure_ascii=False, indent=2) + "\n",
@@ -1057,6 +1681,7 @@ def main() -> None:
     parser.add_argument("--comparativa-json", type=Path, default=None)
     parser.add_argument("--prefijo-salida", type=str, default="")
     parser.add_argument("--revisor", type=str, default="[Pendiente revisor]")
+    parser.add_argument("--todos-v2", action="store_true")
     args = parser.parse_args()
 
     if args.resultados_csv or args.control_csv or args.prefijo_salida:
@@ -1072,11 +1697,28 @@ def main() -> None:
         )
     else:
         res = generar_auditoria(eval_dir=args.eval_dir)
+        corridas_extra = (
+            ("resultados_control_base_D4.csv", None, "control_base_D4"),
+            ("resultados_nuevas20_ft_D4.csv", "resultados_nuevas20_base_D4.csv", "nuevas20_ft_D4"),
+            ("resultados_nuevas20_base_D4.csv", None, "nuevas20_base_D4"),
+        )
+        for csv_name, ctrl_name, pref in corridas_extra:
+            csv_p = args.eval_dir / csv_name
+            if csv_p.is_file():
+                ctrl_p = (args.eval_dir / ctrl_name) if ctrl_name else None
+                generar_auditoria_general(
+                    eval_dir=args.eval_dir,
+                    resultados_csv=csv_p,
+                    control_csv=ctrl_p if (ctrl_p and ctrl_p.is_file()) else None,
+                    prefijo_salida=pref,
+                    revisor=args.revisor,
+                )
 
     if "resumen_global" in res:
         rg = res["resumen_global"]
+        ver = res.get("version_corrida", "D4")
         print(
-            f"D4 estricto (v1 archivado): {rg['congelado_50']['aciertos_estrictos']}/50 congelado, "
+            f"D4 estricto ({ver}): {rg['congelado_50']['aciertos_estrictos']}/50 congelado, "
             f"{rg['dificil_25']['aciertos_estrictos']}/25 dificil "
             f"({rg['global_75']['aciertos_estrictos']}/75 = {rg['global_75']['porcentaje_estricto']}%) | "
             f"violaciones LoRA: {res['telemetria_y_aislamiento']['violaciones_aislamiento_lora']}"

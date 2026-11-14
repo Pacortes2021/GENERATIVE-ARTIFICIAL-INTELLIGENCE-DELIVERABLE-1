@@ -380,6 +380,14 @@ class TestEvaluacionMultiLoraYComparativa(unittest.TestCase):
         )
         with self.assertRaises(ValueError):
             eml.parsear_lista_agentes("enrutador,inventado")
+        self.assertEqual(
+            eml.normalizar_filtro_qids("H06, 13, dificil_25:H22"),
+            {"dificil_25:H06", "congelado_50:13", "dificil_25:H22"},
+        )
+        self.assertEqual(
+            eml.normalizar_filtro_qids("N05,nuevas_20:N12", nombre_set="nuevas_20"),
+            {"nuevas_20:N05", "nuevas_20:N12"},
+        )
 
     def test_fuente_default_redactor_fija_d4_v2(self) -> None:
         fuentes = eml.resolver_fuentes_adaptadores_default()
@@ -533,6 +541,22 @@ class TestNotebookYCoherencia(unittest.TestCase):
         unido = "\n".join(todo_src)
         self.assertIn("exp/multi-lora-todos", unido)
         self.assertIn("739b031", unido)
+        for rel in re.findall(r'Path\("(Deliverable [^"]+)"\)', unido):
+            self.assertTrue((REPO_ROOT / rel).exists(), f"Ruta inexistente en notebook: {rel}")
+        self.assertEqual(
+            len(ed4.cargar_preguntas_evaluacion(filtro_qids={"dificil_25:H06", "dificil_25:H07", "dificil_25:H22"})),
+            3,
+        )
+        self.assertEqual(
+            len(
+                ed4.cargar_preguntas_desde_csv(
+                    REPO_ROOT / "Deliverable 4" / "datos" / "preguntas_nuevas_20.csv",
+                    nombre_set="nuevas_20",
+                    filtro_qids={"nuevas_20:N05", "nuevas_20:N12"},
+                )
+            ),
+            2,
+        )
         cfg = json.loads((D4_DIR / "evaluacion" / "configuracion_evaluacion.json").read_text(encoding="utf-8"))
         for pkg in ("transformers", "peft", "bitsandbytes", "accelerate", "huggingface_hub", "sentence-transformers"):
             pkg_pip = "huggingface-hub" if pkg == "huggingface_hub" else pkg

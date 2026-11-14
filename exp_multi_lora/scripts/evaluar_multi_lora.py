@@ -58,6 +58,29 @@ def parsear_lista_agentes(valor: str) -> tuple[str, ...]:
     return tuple(r for r in ROLES_ORDEN if r in raw)
 
 
+def normalizar_filtro_qids(
+    raw_qids: str | None,
+    nombre_set: str | None = None,
+) -> set[str] | None:
+    """Normaliza IDs cortos (`H06`, `13`, `N05`) o prefijados (`dificil_25:H06`)."""
+    if not raw_qids:
+        return None
+    salida: set[str] = set()
+    for token in raw_qids.split(","):
+        q = token.strip()
+        if not q:
+            continue
+        if ":" in q:
+            salida.add(q)
+        elif nombre_set:
+            salida.add(f"{nombre_set}:{q}")
+        elif q.upper().startswith("H"):
+            salida.add(f"dificil_25:{q.upper()}")
+        else:
+            salida.add(f"congelado_50:{q}")
+    return salida or None
+
+
 class MultiLoraGenerator:
     """Generador que activa el adaptador específico de cada rol con `model.set_adapter()`.
 
@@ -416,8 +439,9 @@ def main(argv: list[str] | None = None) -> int:
         verbose=args.verbose_pasos,
     )
 
-    filtro_qids = (
-        {q.strip() for q in args.qids.split(",") if q.strip()} if args.qids else None
+    filtro_qids = normalizar_filtro_qids(
+        args.qids,
+        nombre_set=args.nombre_set if args.preguntas_csv is not None else None,
     )
     if args.preguntas_csv is not None:
         preguntas = ed4.cargar_preguntas_desde_csv(
@@ -432,9 +456,10 @@ def main(argv: list[str] | None = None) -> int:
         )
 
     if args.comparar_vs_solo_redactor:
-        comp_qids = {
-            q.strip() for q in args.comparar_vs_solo_redactor.split(",") if q.strip()
-        }
+        comp_qids = normalizar_filtro_qids(
+            args.comparar_vs_solo_redactor,
+            nombre_set=args.nombre_set if args.preguntas_csv is not None else None,
+        )
         if args.preguntas_csv is not None:
             preg_comp = ed4.cargar_preguntas_desde_csv(
                 args.preguntas_csv,

@@ -74,7 +74,7 @@ python3 exp_multi_lora/scripts/evaluar_multi_lora.py \
 # Evaluación completa en nuevas_20 y en las 75 de D3
 python3 exp_multi_lora/scripts/evaluar_multi_lora.py \
   --agentes todos \
-  --preguntas-csv "Deliverable 3/Deliverable3/agentes/nuevas_20.csv" \
+  --preguntas-csv "Deliverable 4/datos/preguntas_nuevas_20.csv" \
   --nombre-set nuevas_20 \
   --output-prefix multi_lora_nuevas20
 

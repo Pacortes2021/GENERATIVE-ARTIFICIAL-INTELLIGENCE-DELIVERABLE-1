@@ -1,0 +1,36 @@
+{
+  "version": "exp_multi_lora_verificador_v2",
+  "seed": 202604,
+  "train": 389,
+  "val": 74,
+  "total": 463,
+  "antifuga": {
+    "agente": "verificador_v2",
+    "total": 463,
+    "unidades_bloqueadas_solapadas": 0,
+    "menciones_qid_eval": 0,
+    "solapamiento_train_val": 0,
+    "unidades_distintas_usadas": 116
+  },
+  "distribucion": {
+    "splits": {
+      "train": 389,
+      "val": 74
+    },
+    "destinos": {
+      "fin": 232,
+      "redactor": 183,
+      "recuperador": 48
+    }
+  },
+  "balance_no_aplica": {
+    "train": {
+      "True": 69,
+      "False": 69
+    },
+    "val": {
+      "True": 13,
+      "False": 15
+    }
+  }
+}

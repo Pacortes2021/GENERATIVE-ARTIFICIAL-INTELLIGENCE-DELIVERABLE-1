@@ -34,6 +34,7 @@ from antifuga_multi import (  # noqa: E402
 from enrutador_bloques import construir_registros_enrutador  # noqa: E402
 from recuperador_bloques import construir_registros_recuperador  # noqa: E402
 from verificador_bloques import construir_registros_verificador  # noqa: E402
+from verificador_v2_bloques import construir_registros_verificador_v2  # noqa: E402
 
 
 def _validar_esquema_enrutador(registros: list[dict[str, Any]]) -> dict[str, Any]:
@@ -138,14 +139,55 @@ def construir_todos_datasets(
     reg_enr = construir_registros_enrutador(p_enr)
     reg_rec = construir_registros_recuperador(p_rec, corpus_obj, corpus_by_id)
     reg_ver = construir_registros_verificador(p_ver, corpus_obj, corpus_by_id, seed=seed)
+    reg_ver_v2 = construir_registros_verificador_v2(
+        p_ver, corpus_obj, corpus_by_id, seed=seed
+    )
 
     audit_enr = auditar_antifuga_agente("enrutador", reg_enr, prohibidas)
     audit_rec = auditar_antifuga_agente("recuperador", reg_rec, prohibidas)
     audit_ver = auditar_antifuga_agente("verificador", reg_ver, prohibidas)
+    audit_ver_v2 = auditar_antifuga_agente("verificador_v2", reg_ver_v2, prohibidas)
 
     stats_enr = _validar_esquema_enrutador(reg_enr)
     stats_rec = _validar_esquema_recuperador(reg_rec)
     stats_ver = _validar_esquema_verificador(reg_ver)
+    stats_ver_v2 = _validar_esquema_verificador(reg_ver_v2)
+
+    import json as _json
+
+    train_v2 = [r for r in reg_ver_v2 if r["split"] == "train"]
+    val_v2 = [r for r in reg_ver_v2 if r["split"] == "val"]
+    datos_dir.mkdir(parents=True, exist_ok=True)
+    escribir_jsonl_lf(datos_dir / "verificador_v2_train.jsonl", train_v2)
+    escribir_jsonl_lf(datos_dir / "verificador_v2_val.jsonl", val_v2)
+    no_aplica_por_split = {}
+    for _split_name, _split_rows in (("train", train_v2), ("val", val_v2)):
+        _na_true = 0
+        _na_false = 0
+        for _r in _split_rows:
+            _usr = "\n".join(
+                _m["content"] for _m in _r["messages"] if _m["role"] == "user"
+            )
+            if "Condiciones o límites: No aplica" in _usr:
+                if _r["aprobado"]:
+                    _na_true += 1
+                else:
+                    _na_false += 1
+        no_aplica_por_split[_split_name] = {"True": _na_true, "False": _na_false}
+    resumen_v2 = {
+        "version": "exp_multi_lora_verificador_v2",
+        "seed": seed,
+        "train": len(train_v2),
+        "val": len(val_v2),
+        "total": len(reg_ver_v2),
+        "antifuga": audit_ver_v2,
+        "distribucion": stats_ver_v2,
+        "balance_no_aplica": no_aplica_por_split,
+    }
+    (datos_dir / "resumen_verificador_v2.json").write_text(
+        _json.dumps(resumen_v2, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
 
     por_agente = {
         "enrutador": (reg_enr, audit_enr, stats_enr),

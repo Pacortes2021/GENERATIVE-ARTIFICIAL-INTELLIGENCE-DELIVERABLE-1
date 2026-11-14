@@ -173,7 +173,10 @@ class TestDatasetsMultiLora(unittest.TestCase):
                 "recuperador_val.jsonl",
                 "verificador_train.jsonl",
                 "verificador_val.jsonl",
+                "verificador_v2_train.jsonl",
+                "verificador_v2_val.jsonl",
                 "resumen_datasets_multi_lora.json",
+                "resumen_verificador_v2.json",
             }
             self.assertEqual(set(archivos), expected)
             for name in expected:
@@ -193,7 +196,7 @@ class TestDatasetsMultiLora(unittest.TestCase):
 
     def test_antifuga_estricto_en_todos_los_agentes(self) -> None:
         preguntas_eval = af.cargar_preguntas_prohibidas()
-        for agente in ("enrutador", "recuperador", "verificador"):
+        for agente in ("enrutador", "recuperador", "verificador", "verificador_v2"):
             train = _cargar_jsonl(EXP_DATOS_DIR / f"{agente}_train.jsonl")
             val = _cargar_jsonl(EXP_DATOS_DIR / f"{agente}_val.jsonl")
             audit = af.auditar_antifuga_agente(agente, train + val, preguntas_eval)
@@ -577,6 +580,18 @@ class TestNotebookYCoherencia(unittest.TestCase):
         self.assertIn("sin_verificador_75", unido)
 
 
+    def test_notebook_verificador_v2_ast_y_versiones(self) -> None:
+        todo_src = self._validar_notebook_colab(
+            "Exp_VerificadorV2_Colab.ipynb",
+            "exp/multi-lora-verificador-v2",
+        )
+        self.assertIn("verificador_v2", todo_src)
+        self.assertIn("verificador_v2_nuevas20", todo_src)
+        self.assertIn("verificador_v2_75", todo_src)
+        self.assertIn("paquete_verificador_v2.zip", todo_src)
+        self.assertIn("resultados_sin_verificador_75_auditados.csv", todo_src)
+
+
 class TestAuditoriaYArtefactosColab(unittest.TestCase):
     def test_artefactos_entrenamiento_completos_y_sin_truncados(self) -> None:
         ent_dir = EXP_DIR / "entrenamiento"
@@ -766,6 +781,60 @@ class TestAuditoriaYArtefactosColab(unittest.TestCase):
                     d4_eval_dir=D4_DIR / "evaluacion",
                     entrenamiento_dir=EXP_DIR / "entrenamiento",
                 )
+
+    def test_verificador_v2_esquemas_balance_y_calibracion(self) -> None:
+        train_path = EXP_DATOS_DIR / "verificador_v2_train.jsonl"
+        val_path = EXP_DATOS_DIR / "verificador_v2_val.jsonl"
+        resumen_path = EXP_DATOS_DIR / "resumen_verificador_v2.json"
+        for p in (train_path, val_path, resumen_path):
+            self.assertTrue(p.is_file(), f"Falta archivo esperado: {p}")
+            self.assertNotIn(b"\r\n", p.read_bytes(), f"Debe usar LF puro: {p.name}")
+
+        train = _cargar_jsonl(train_path)
+        val = _cargar_jsonl(val_path)
+        stats = cda._validar_esquema_verificador(train + val)
+        self.assertGreaterEqual(stats["splits"]["train"], 350)
+        self.assertGreaterEqual(stats["splits"]["val"], 60)
+
+        for split_name, rows in (("train", train), ("val", val)):
+            na_true = 0
+            na_false = 0
+            for r in rows:
+                usr = "\n".join(m["content"] for m in r["messages"] if m["role"] == "user")
+                if "Condiciones o límites: No aplica" in usr:
+                    if r["aprobado"]:
+                        na_true += 1
+                    else:
+                        na_false += 1
+            na_total = na_true + na_false
+            self.assertGreater(na_total, 20, f"Poca cobertura de 'No aplica' en {split_name}")
+            ratio_true = na_true / na_total
+            self.assertGreaterEqual(
+                ratio_true,
+                0.42,
+                f"Sesgo negativo en 'No aplica' ({split_name}): {na_true}/{na_total}",
+            )
+            self.assertLessEqual(
+                ratio_true,
+                0.58,
+                f"Sesgo positivo en 'No aplica' ({split_name}): {na_true}/{na_total}",
+            )
+
+        parser = ea.construir_arg_parser()
+        args_v2 = ea.resolver_args_con_defaults(
+            parser.parse_args(["--agente", "verificador_v2"])
+        )
+        self.assertEqual(args_v2.epochs, 2.0)
+        self.assertEqual(args_v2.learning_rate, 5e-5)
+        self.assertEqual(args_v2.lora_dropout, 0.10)
+        self.assertEqual(args_v2.weight_decay, 0.05)
+        self.assertEqual(args_v2.output_dir.name, "verificador_v2")
+
+        args_v1 = ea.resolver_args_con_defaults(
+            parser.parse_args(["--agente", "verificador"])
+        )
+        self.assertEqual(args_v1.lora_dropout, 0.05)
+        self.assertEqual(args_v1.weight_decay, 0.01)
 
 
 if __name__ == "__main__":

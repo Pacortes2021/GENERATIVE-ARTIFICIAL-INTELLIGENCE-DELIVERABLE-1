@@ -72,6 +72,21 @@ DEFAULTS_POR_AGENTE: dict[str, dict[str, Any]] = {
         "save_steps": 15,
         "smoke_max_new_tokens": 700,
     },
+    "verificador_v2": {
+        "train_jsonl": EXP_DATOS_DIR / "verificador_v2_train.jsonl",
+        "val_jsonl": EXP_DATOS_DIR / "verificador_v2_val.jsonl",
+        "output_dir": EXP_TRAIN_DIR / "verificador_v2",
+        "max_seq_length": 4096,
+        "epochs": 2.0,
+        "batch_size": 1,
+        "grad_accum": 6,
+        "learning_rate": 5e-5,
+        "lora_dropout": 0.10,
+        "weight_decay": 0.05,
+        "eval_steps": 10,
+        "save_steps": 10,
+        "smoke_max_new_tokens": 512,
+    },
     "redactor": {
         "train_jsonl": D4_DATOS_DIR / "redactor_train.jsonl",
         "val_jsonl": D4_DATOS_DIR / "redactor_val.jsonl",
@@ -467,7 +482,10 @@ def construir_arg_parser() -> argparse.ArgumentParser:
         "--agente",
         required=True,
         choices=sorted(DEFAULTS_POR_AGENTE.keys()),
-        help="Agente a entrenar (`enrutador`, `recuperador`, `verificador`, `redactor`).",
+        help=(
+            "Agente a entrenar (`enrutador`, `recuperador`, `verificador`, "
+            "`verificador_v2`, `redactor`)."
+        ),
     )
     p.add_argument("--modelo-base", default=er.MODELO_BASE_DEFAULT)
     p.add_argument("--train-jsonl", type=Path, default=None)
@@ -476,7 +494,7 @@ def construir_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--max-seq-length", type=int, default=None)
     p.add_argument("--lora-r", type=int, default=16)
     p.add_argument("--lora-alpha", type=int, default=32)
-    p.add_argument("--lora-dropout", type=float, default=0.05)
+    p.add_argument("--lora-dropout", type=float, default=None)
     p.add_argument(
         "--target-modules", nargs="+", default=list(er.LORA_TARGET_MODULES_DEFAULT)
     )
@@ -486,7 +504,7 @@ def construir_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--learning-rate", type=float, default=None)
     p.add_argument("--lr-scheduler-type", default="cosine")
     p.add_argument("--warmup-ratio", type=float, default=0.10)
-    p.add_argument("--weight-decay", type=float, default=0.01)
+    p.add_argument("--weight-decay", type=float, default=None)
     p.add_argument("--logging-steps", type=int, default=5)
     p.add_argument("--eval-steps", type=int, default=None)
     p.add_argument("--save-steps", type=int, default=None)
@@ -514,6 +532,10 @@ def resolver_args_con_defaults(args: argparse.Namespace) -> argparse.Namespace:
     ):
         if getattr(args, campo) is None:
             setattr(args, campo, d[campo])
+    if getattr(args, "lora_dropout", None) is None:
+        args.lora_dropout = d.get("lora_dropout", 0.05)
+    if getattr(args, "weight_decay", None) is None:
+        args.weight_decay = d.get("weight_decay", 0.01)
     return args
 
 

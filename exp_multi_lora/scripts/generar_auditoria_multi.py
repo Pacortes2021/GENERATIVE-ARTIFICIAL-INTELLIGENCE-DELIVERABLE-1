@@ -57,6 +57,12 @@ SHA256_CRUDOS: dict[str, str] = {
     "resultados_sin_verificador_75.csv": (
         "c2c05f5f65e1646135710266bd5e5f97111f3bc8a680be98208e0ab969d8c6d6"
     ),
+    "resultados_verificador_v2_nuevas20.csv": (
+        "e62017c86625da48eb165a102090ecd93f93f52b2583e562d867893b066f0f9b"
+    ),
+    "resultados_verificador_v2_75.csv": (
+        "34003da128fdec26760da5e8848789f7e48a171538ea88d153eea20a46e862e9"
+    ),
 }
 
 CITAS_RE = re.compile(r"\[([A-Z0-9-]+)\]")
@@ -630,6 +636,252 @@ VEREDICTOS_SIN_VERIFICADOR_75: dict[tuple[str, str], dict[str, Any]] = {
 }
 
 
+VEREDICTOS_VERIFICADOR_V2_NUEVAS20: dict[tuple[str, str], dict[str, Any]] = {
+    ("nuevas_20", "N01"): _ok(
+        "Verificador v2 rechaza ciclo 1 y en ciclo 2 logra integrar [RG-ART-003-DEF-11], [RG-ART-017] (SCT-Chile) y [RG-ART-003-DEF-07], superando a Multi-LoRA v1 y 3-LoRA(SV)."
+    ),
+    ("nuevas_20", "N02"): _ok(),
+    ("nuevas_20", "N03"): _ok(
+        "Aprobado limpiamente en ciclo 1 sin rechazo falso por 'No aplica'."
+    ),
+    ("nuevas_20", "N04"): _ok(),
+    ("nuevas_20", "N05"): _fallo(
+        "abstencion_cita_equivocada_y_sin_respaldo",
+        "redactor",
+        "Cita [RI-FI-ART-005] en lugar de [RI-FI-ART-006] pertinente (pese a estar en evidencia) y cierra con 'Fuente: sin respaldo en la normativa consultada' (Regla 3 / desaprobado por Verificador v2).",
+    ),
+    ("nuevas_20", "N06"): _fallo(
+        "alucinacion_condicion_p01",
+        "redactor",
+        "Acierta fechas [CAL-2026-S1-08]/[CAL-2026-S2-07] y suma '2 + 2 = 4 días', pero en Condiciones atribuye a [CAL-2026-S2-04] (Término de Clases: 11 de diciembre) que esos días 'no equivalen a vacaciones escolares ni días de evaluación por cálculo automático' (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("nuevas_20", "N07"): _fallo(
+        "error_aritmetico_fechas",
+        "redactor",
+        "Calcula erróneamente '106 días corridos (31 de mayo + 30 de junio + 31 de julio + 14 de septiembre)' omitiendo agosto y contando mal mayo (en lugar de 126 días corridos), aprobado indebidamente por Verificador v2 (Regla 6).",
+    ),
+    ("nuevas_20", "N08"): _ok(
+        "Responde fielmente con la normativa recuperada pese a rechazo falso en ciclo 3."
+    ),
+    ("nuevas_20", "N09"): _ok(),
+    ("nuevas_20", "N10"): _fallo(
+        "mezcla_normativa_p01",
+        "redactor",
+        "Atribuye a [RG-ART-047] reglas de [RG-ART-044] (alumno nuevo sin validar/revalidar/convalidar ni reconocer, 30 días) y mezcla cambio a otra carrera [RG-ART-054] (Regla 3 / P01).",
+    ),
+    ("nuevas_20", "N11"): _ok(),
+    ("nuevas_20", "N12"): _ok(),
+    ("nuevas_20", "N13"): _ok(),
+    ("nuevas_20", "N14"): _ok(),
+    ("nuevas_20", "N15"): _ok(),
+    ("nuevas_20", "N16"): _fallo(
+        "recuperacion_incompleta_y_negacion_falsa",
+        "recuperador",
+        "Recuperador no trae [CAL-2026-S2-07] (21–22 sept); además Redactor omite 11–15 mayo pese a tener [CAL-2026-S1-07] y declara falsamente inexistencia de registros para el 18–22 de septiembre citando [CAL-2026-S2-09] (18 sept) (Reglas 3 y 5).",
+    ),
+    ("nuevas_20", "N17"): _fallo(
+        "bucle_verificador_omision_excepcion",
+        "verificador",
+        "Ciclos 1 y 2 nombraban exactamente la excepción del Art. 4° (disciplinas no comprendidas -> Consejo Académico -> otra unidad académica); Verificador v2 rechaza ambos falsamente y en ciclo 3 el Redactor reduce la cláusula a un vago 'salvo excepciones' bajo 'No aplica' (Regla 2).",
+    ),
+    ("nuevas_20", "N18"): _ok(),
+    ("nuevas_20", "N19"): _fallo(
+        "recuperacion_incompleta_regla_5",
+        "recuperador",
+        "Recuperador no trae [RG-ART-018]; refuta embarazo [RG-ART-036] pero desvía la segunda parte a abandono [RG-ART-043] sin abordar la duración de asignaturas (Regla 5).",
+    ),
+    ("nuevas_20", "N20"): _fallo(
+        "bucle_verificador_negacion_condiciones",
+        "verificador",
+        "Ciclo 1 respondía fielmente que [RG-ART-057] no fija promedio ni nota mínima; Verificador v2 rechaza falsamente alegando un cruce faltante, forzando en ciclo 2 afirmar 'el Artículo 57° solo establece el derecho sin condiciones adicionales [RG-ART-057]' omitiendo y negando sus 4 requisitos (Reglas 2 y 3).",
+    ),
+}
+
+
+VEREDICTOS_VERIFICADOR_V2_75: dict[tuple[str, str], dict[str, Any]] = {
+    ("congelado_50", "1"): _ok(),
+    ("congelado_50", "2"): _ok(
+        "Responde exactamente pese a rechazo falso en ciclo 3."
+    ),
+    ("congelado_50", "3"): _fallo(
+        "afirmacion_falsa_condiciones_p01",
+        "redactor",
+        "Acierta derecho a una evaluación de recuperación [RI-FI-ART-012] [RG-ART-022], pero Condiciones afirma falsamente 'No existen condiciones ni límites adicionales en la normativa consultada [RI-FI-ART-012] [RG-ART-022]', contradiciendo las exclusiones explícitas de [RG-ART-022] (laboratorios, talleres, proyectos, memorias, seminarios, actividades clínicas, etc. y PEN) (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("congelado_50", "4"): _ok(),
+    ("congelado_50", "5"): _fallo(
+        "alucinacion_condicion_p01",
+        "redactor",
+        "Acierta Memoria de Título [RI-FI-ART-029], pero Condiciones atribuye a [RG-ART-003-DEF-10] que 'fijará el Vicedecano los plazos o términos...' cuando DEF-10 asigna esa fijación al Reglamento Interno de las Facultades y solo menciona al Vicedecano respecto al cambio a un nuevo plan (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("congelado_50", "6"): _ok(
+        "Verificador v2 corrige error en ciclo 1 y guía hacia [RI-FI-ART-010] ('no inferior a una semana'), superando a Multi-LoRA v1."
+    ),
+    ("congelado_50", "7"): _ok(),
+    ("congelado_50", "8"): _ok(
+        "Responde exactamente que la renuncia es irrevocable con citas inline [RG-ART-034] [RI-FI-ART-026]; presenta alerta de formato por omitir la tercera línea literal 'Fuente:' (alerta_formato_sin_fuente)."
+    ),
+    ("congelado_50", "9"): _ok(),
+    ("congelado_50", "10"): _ok(),
+    ("congelado_50", "11"): _fallo(
+        "omision_excepciones_regla_2",
+        "redactor",
+        "Acierta mínimo de 8 créditos [RI-FI-ART-008], pero mantiene 'Condiciones o límites: No aplica' omitiendo ambas excepciones (término de carrera y falta de requisitos) pese al rechazo de ciclo 1 (Regla 2 / precedente P36).",
+    ),
+    ("congelado_50", "12"): _ok(
+        "Verificador v2 limpia mezcla de ciclo 1 y acierta menos de 15 créditos al término del 2° semestre [RI-FI-ART-014], superando a Multi-LoRA v1."
+    ),
+    ("congelado_50", "13"): _ok(),
+    ("congelado_50", "14"): _ok(),
+    ("congelado_50", "15"): _ok(),
+    ("congelado_50", "16"): _fallo(
+        "bucle_verificador_omision_excepcion",
+        "verificador",
+        "Ciclo 2 incluía las 4 semanas y la excepción de Primer Año Común [RI-FI-ART-022]; Verificador v2 rechaza falsamente pidiendo [RG-ART-037] y ciclo 3 elimina la excepción dejándola en 'No aplica' (Regla 2).",
+    ),
+    ("congelado_50", "17"): _ok(),
+    ("congelado_50", "18"): _ok(),
+    ("congelado_50", "19"): _ok(
+        "Responde exactamente pese a rechazo falso en ciclo 3."
+    ),
+    ("congelado_50", "20"): _ok(),
+    ("congelado_50", "21"): _ok(),
+    ("congelado_50", "22"): _ok(
+        "Idéntica a Solo Redactor D4; responde fielmente pese a rechazo falso en ciclo 3."
+    ),
+    ("congelado_50", "23"): _ok(),
+    ("congelado_50", "24"): _ok(),
+    ("congelado_50", "25"): _fallo(
+        "respuesta_incompleta_y_alucinacion_p01",
+        "recuperador",
+        "No recupera [RI-FI-ART-007] y repite 'prioridades a) y b) del Artículo 7°' [RI-FI-ART-009] sin desglosar atrasadas ni obligatorias reprobadas; además Condiciones inventa una regla de 'horarios coincidentes' atribuida a [RG-ART-003-DEF-13] (Reglas 3 y 5).",
+    ),
+    ("congelado_50", "26"): _fallo(
+        "regla_mal_aplicada_art_35",
+        "redactor",
+        "Exige certificados DAFE y Bibliotecas [RG-ART-035] para solicitar reincorporación, cuando [RG-ART-035] rige suspensión/renuncia y reincorporación se rige por [RG-ART-033] (Regla 3).",
+    ),
+    ("congelado_50", "27"): _ok(),
+    ("congelado_50", "28"): _ok(
+        "Responde limpiamente en 1 ciclo con [RG-ART-029] y [RG-ART-042] sin alucinación P01, superando a Multi-LoRA v1."
+    ),
+    ("congelado_50", "29"): _ok(),
+    ("congelado_50", "30"): _ok(),
+    ("congelado_50", "31"): _ok(),
+    ("congelado_50", "32"): _ok(),
+    ("congelado_50", "33"): _ok(),
+    ("congelado_50", "34"): _ok(),
+    ("congelado_50", "35"): _ok(),
+    ("congelado_50", "36"): _ok(),
+    ("congelado_50", "37"): _ok(),
+    ("congelado_50", "38"): _ok(),
+    ("congelado_50", "39"): _ok(
+        "Responde exactamente pese a rechazo falso en ciclo 3."
+    ),
+    ("congelado_50", "40"): _ok(),
+    ("congelado_50", "41"): _ok(),
+    ("congelado_50", "42"): _ok(),
+    ("congelado_50", "43"): _ok(),
+    ("congelado_50", "44"): _ok(),
+    ("congelado_50", "45"): _ok(),
+    ("congelado_50", "46"): _fallo(
+        "cita_fuera_de_evidencia_y_sin_respaldo",
+        "redactor",
+        "No refuta en ciclo 1, en ciclo 2 inventa nombre de reglamento y en ciclo 3 cita [RI-FI-ART-035] fuera de <evidencia> (que trata situaciones no previstas/Decano, no incisos de suspensión) cerrando con 'Fuente: sin respaldo' (Regla 3; desaprobado por Verificador v2).",
+    ),
+    ("congelado_50", "47"): _fallo(
+        "premisa_falsa_no_refutada",
+        "enrutador",
+        "Enrutador clasifica como 'factual'; Redactor responde solo el mínimo de 8 créditos [RI-FI-ART-008] sin señalar que no fija máximo alguno y Verificador v2 aprueba en ciclo 1 (Regla 7).",
+    ),
+    ("congelado_50", "48"): _fallo(
+        "inversion_cota_reprobacion_regla_6",
+        "redactor",
+        "Niega nota mínima en Art. 12 RI-FI, pero cita [RI-FI-ART-011] para exigir nota final mínima 4,0 (sin citar [RI-FI-ART-012]) y afirma erróneamente bajo [RG-ART-023] '3,9 como mínimo para reprobar' invirtiendo el tope superior de reprobación (inferior a 4,0) (Reglas 3 y 6).",
+    ),
+    ("congelado_50", "49"): _fallo(
+        "bucle_verificador_respuesta_no_aplica",
+        "verificador",
+        "Ciclos 1 y 2 informaban fielmente que no hay feriado el 30 de septiembre; Verificador v2 rechaza dos veces por 'No aplica', induciendo en ciclo 3 'Respuesta: No aplica [CAL-2026-S2-09] ...' sin contestar si existe o no feriado (Reglas 5 y 8).",
+    ),
+    ("congelado_50", "50"): _ok(
+        "Idéntica a Solo Redactor D4 y Control Base D4 pese a rechazo falso en ciclo 3."
+    ),
+    ("dificil_25", "H01"): _ok(),
+    ("dificil_25", "H02"): _ok(),
+    ("dificil_25", "H03"): _fallo(
+        "recuperacion_incompleta_y_aritmetica",
+        "recuperador",
+        "No recupera [CAL-2026-S2-02] (10 ago); Redactor calcula erróneamente '15 días' (09 mar -> 02 abr) y '27 días' (10 de julio -> 04 sept) atribuyendo 10 de julio a [CAL-2026-S2-04] (11 dic) (Reglas 3, 5 y 6).",
+    ),
+    ("dificil_25", "H04"): _fallo(
+        "distorsion_y_cita_glosario_p01",
+        "redactor",
+        "Habla erróneamente de 'seis semestres máximos de permanencia en la carrera' [RG-ART-049] (plazo de egresado para titulación) y atribuye el párrafo 2 de [RG-ART-049] a [RG-ART-003-DEF-22] (Regla 3 / P01).",
+    ),
+    ("dificil_25", "H05"): _ok(
+        "Verificador v2 detecta inversión 40%/60% en ciclo 1 y en ciclo 3 calcula exactamente 0,6×5,2 + 0,4×6,5 = 5,72 [RI-FI-ART-030], superando a Multi-LoRA v1."
+    ),
+    ("dificil_25", "H06"): _fallo(
+        "polaridad_contradictoria_regla_6",
+        "redactor",
+        "Calcula 38/4 = 9,5 < 10 pero inicia contradictoriamente con 'No, ...; por consiguiente, cae en Baja Académica [RI-FI-ART-014]' ante una pregunta sí/no cuya respuesta correcta es Sí (Regla 6).",
+    ),
+    ("dificil_25", "H07"): _fallo(
+        "cita_formula_p01",
+        "redactor",
+        "Acierta 42/4 = 10,5 > 10 ('No está en baja académica'), pero en Condiciones atribuye únicamente a [RI-FI-ART-014] la fórmula de cálculo de [RG-ART-028] (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("dificil_25", "H08"): _ok(),
+    ("dificil_25", "H09"): _fallo(
+        "contradiccion_condiciones_art_32",
+        "redactor",
+        "Acierta certificados DAFE y Bibliotecas [RG-ART-035] [RI-FI-ART-025], pero Condiciones afirma falsamente que por salud incompatible 'se suspende automáticamente sin presentar informe [RG-ART-032]' contradiciendo el requisito de informe previo DISE y resolución fundada del Decano (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("dificil_25", "H10"): _ok(),
+    ("dificil_25", "H11"): _ok(),
+    ("dificil_25", "H12"): _ok(
+        "Verificador v2 fuerza reescritura tras mezcla de ciclo 1 y ciclo 2 responde exactamente Baja por no Inscripción de [RG-ART-030] sin contaminación de Baja Académica; primer sistema en acertar H12."
+    ),
+    ("dificil_25", "H13"): _fallo(
+        "distorsion_condiciones_p01",
+        "redactor",
+        "Acierta en Respuesta sobre Primer Año Común [RI-FI-ART-022], pero Condiciones afirma contradictoriamente del mismo sujeto 'No tienen derecho a convalidar ni revalidar asignaturas, aunque sí sí pueden solicitar convalidación o revalidación por única vez durante las cuatro primeras semanas... (excepción estudiantil) [RI-FI-ART-022]' (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("dificil_25", "H14"): _ok(),
+    ("dificil_25", "H15"): _fallo(
+        "bucle_verificador_respuesta_vacia",
+        "verificador",
+        "Ciclos 1 y 2 respondían exactamente con [RI-FI-ART-021]; Verificador v2 los rechaza dos veces falsamente por 'No aplica', induciendo en ciclo 3 un bucle degenerativo de repetición en <pensar> ('párrafo final...') hasta truncar sin respuesta emitida (respuesta vacía) (Regla 5).",
+    ),
+    ("dificil_25", "H16"): _ok(),
+    ("dificil_25", "H17"): _ok(),
+    ("dificil_25", "H18"): _fallo(
+        "bucle_verificador_alucinacion_p01",
+        "verificador",
+        "Ciclo 1 respondía exactamente con [RI-FI-ART-031]; Verificador v2 rechaza falsamente ('convierte un mínimo de la evidencia en un máximo'), forzando en ciclo 2 la afirmación inventada 'el alumno debe aprobarlas para mantener el título [RI-FI-ART-031]' (el alumno suspendido no tiene título) (Regla 3 / P01).",
+        solo_condicion_p01=True,
+    ),
+    ("dificil_25", "H19"): _ok(),
+    ("dificil_25", "H20"): _ok(),
+    ("dificil_25", "H21"): _fallo(
+        "bucle_verificador_elimina_refutacion",
+        "verificador",
+        "Ciclo 1 refutaba explícitamente 'No se fija un límite máximo...' [RI-FI-ART-008]; Verificador v2 rechaza falsamente ('convierte un mínimo de ocho créditos en un máximo falso'), provocando que ciclo 2 elimine la refutación de premisa falsa dejando solo el mínimo de 8 créditos (Regla 7).",
+    ),
+    ("dificil_25", "H22"): _ok(),
+    ("dificil_25", "H23"): _ok(),
+    ("dificil_25", "H24"): _ok(),
+    ("dificil_25", "H25"): _ok(),
+}
+
+
 def sha256_archivo(path: Path) -> str:
     """Calcula el SHA-256 hexadecimal de un archivo."""
     return hashlib.sha256(path.read_bytes()).hexdigest()
@@ -977,9 +1229,9 @@ def auditar_corrida(
 def cargar_resumen_entrenamientos(
     entrenamiento_dir: Path = ENTRENAMIENTO_DIR,
 ) -> dict[str, Any]:
-    """Extrae hiperparámetros, tokens y pérdidas finales de los 3 adaptadores nuevos."""
+    """Extrae hiperparámetros, tokens y pérdidas finales de los adaptadores nuevos."""
     resumen: dict[str, Any] = {}
-    for ag in ("enrutador", "recuperador", "verificador"):
+    for ag in ("enrutador", "recuperador", "verificador", "verificador_v2"):
         p = entrenamiento_dir / ag / "training_metrics.json"
         if not p.exists():
             continue
@@ -1153,6 +1405,50 @@ def ejecutar_auditoria(
         ),
     )
 
+    aud_v2_n20 = auditar_corrida(
+        nombre_corrida="verificador_v2_4_agentes_nuevas20",
+        raw_csv_path=eval_dir / "resultados_verificador_v2_nuevas20.csv",
+        raw_sha256_esperado=SHA256_CRUDOS["resultados_verificador_v2_nuevas20.csv"],
+        config_path=eval_dir / "configuracion_verificador_v2_nuevas20.json",
+        telemetria_path=eval_dir / "telemetria_verificador_v2_nuevas20.json",
+        trazas_path=eval_dir / "trazas_verificador_v2_nuevas20.json",
+        out_csv_path=eval_dir / "resultados_verificador_v2_nuevas20_auditados.csv",
+        out_json_path=eval_dir / "auditoria_verificador_v2_nuevas20.json",
+        veredictos_dict=VEREDICTOS_VERIFICADOR_V2_NUEVAS20,
+        corpus_ids=corpus_ids,
+        refs_comparacion={
+            "control_base_d4": d4_eval_dir / "resultados_nuevas20_base_D4_auditados.csv",
+            "solo_redactor_d4": d4_eval_dir / "resultados_nuevas20_ft_D4_auditados.csv",
+            "ablacion_red_ver": eval_dir / "resultados_ablacion_red_ver_nuevas20_auditados.csv",
+            "multi_lora_sin_verificador": eval_dir / "resultados_sin_verificador_nuevas20_auditados.csv",
+            "multi_lora_4_agentes": eval_dir / "resultados_multi_lora_nuevas20_auditados.csv",
+        },
+    )
+
+    aud_v2_75 = auditar_corrida(
+        nombre_corrida="verificador_v2_4_agentes_75",
+        raw_csv_path=eval_dir / "resultados_verificador_v2_75.csv",
+        raw_sha256_esperado=SHA256_CRUDOS["resultados_verificador_v2_75.csv"],
+        config_path=eval_dir / "configuracion_verificador_v2_75.json",
+        telemetria_path=eval_dir / "telemetria_verificador_v2_75.json",
+        trazas_path=eval_dir / "trazas_verificador_v2_75.json",
+        out_csv_path=eval_dir / "resultados_verificador_v2_75_auditados.csv",
+        out_json_path=eval_dir / "auditoria_verificador_v2_75.json",
+        veredictos_dict=VEREDICTOS_VERIFICADOR_V2_75,
+        corpus_ids=corpus_ids,
+        refs_comparacion={
+            "control_base_d4": d4_eval_dir / "resultados_control_base_D4_auditados.csv",
+            "solo_redactor_d4": d4_eval_dir / "resultados_agentes_D4_auditados.csv",
+            "multi_lora_sin_verificador": eval_dir / "resultados_sin_verificador_75_auditados.csv",
+            "multi_lora_4_agentes": eval_dir / "resultados_multi_lora_75_auditados.csv",
+        },
+        nota_especial=(
+            "En congelado_50:8 ([RG-ART-034] [RI-FI-ART-026]) el contenido y las citas inline son correctos bajo "
+            "LEEME_PAUTA.md (40/50 en congelado_50, 56/75 global), aunque omite la tercera línea literal 'Fuente:' "
+            "(formato_3_lineas_ok=False; bajo exigencia estricta de 3 líneas sería 39/50 y 55/75)."
+        ),
+    )
+
     d4_base_75 = _resumen_referencia_d4(
         d4_eval_dir / "resultados_control_base_D4_auditados.csv",
         d4_eval_dir / "telemetria_control_base_D4.json",
@@ -1202,6 +1498,10 @@ def ejecutar_auditoria(
             aud_ml_75["resumen_global"]["aciertos_estrictos"]
             + aud_ml_n20["resumen_global"]["aciertos_estrictos"]
         ),
+        "multi_lora_verificador_v2": _bloque_global_95(
+            aud_v2_75["resumen_global"]["aciertos_estrictos"]
+            + aud_v2_n20["resumen_global"]["aciertos_estrictos"]
+        ),
     }
 
     resumen_global = {
@@ -1213,12 +1513,14 @@ def ejecutar_auditoria(
             "ablacion_red_ver": _bloque_exp(aud_rv_n20),
             "multi_lora_sin_verificador": _bloque_exp(aud_sv_n20),
             "multi_lora_4_agentes": _bloque_exp(aud_ml_n20),
+            "multi_lora_verificador_v2": _bloque_exp(aud_v2_n20),
         },
         "benchmark_75_d3": {
             "control_base_d4": d4_base_75,
             "solo_redactor_d4": d4_red_75,
             "multi_lora_sin_verificador": _bloque_exp(aud_sv_75, con_set=True),
             "multi_lora_4_agentes": _bloque_exp(aud_ml_75, con_set=True),
+            "multi_lora_verificador_v2": _bloque_exp(aud_v2_75, con_set=True),
         },
         "consolidado_95_preguntas": global_95,
     }
@@ -1248,7 +1550,8 @@ def main() -> None:
         f"SoloRed={n20['solo_redactor_d4']['aciertos']}/20 | "
         f"Red+Ver={n20['ablacion_red_ver']['aciertos']}/20 | "
         f"3-LoRA(SV)={n20['multi_lora_sin_verificador']['aciertos']}/20 | "
-        f"4-LoRA={n20['multi_lora_4_agentes']['aciertos']}/20"
+        f"4-LoRA={n20['multi_lora_4_agentes']['aciertos']}/20 | "
+        f"4-LoRA(V2)={n20['multi_lora_verificador_v2']['aciertos']}/20"
     )
     print(
         f"75 D3     -> Base={b75['control_base_d4']['aciertos']}/75 | "
@@ -1258,7 +1561,10 @@ def main() -> None:
         f"H25={b75['multi_lora_sin_verificador']['por_set']['dificil_25']['aciertos_estrictos']}/25) | "
         f"4-LoRA={b75['multi_lora_4_agentes']['aciertos']}/75 "
         f"(C50={b75['multi_lora_4_agentes']['por_set']['congelado_50']['aciertos_estrictos']}/50, "
-        f"H25={b75['multi_lora_4_agentes']['por_set']['dificil_25']['aciertos_estrictos']}/25)"
+        f"H25={b75['multi_lora_4_agentes']['por_set']['dificil_25']['aciertos_estrictos']}/25) | "
+        f"4-LoRA(V2)={b75['multi_lora_verificador_v2']['aciertos']}/75 "
+        f"(C50={b75['multi_lora_verificador_v2']['por_set']['congelado_50']['aciertos_estrictos']}/50, "
+        f"H25={b75['multi_lora_verificador_v2']['por_set']['dificil_25']['aciertos_estrictos']}/25)"
     )
 
 

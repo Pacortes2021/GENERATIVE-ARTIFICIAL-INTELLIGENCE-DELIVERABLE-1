@@ -42,6 +42,20 @@
       "train_loss_final_agregada": 0.32256,
       "trainable_params": 33030144,
       "trainable_pct": 1.4753
+    },
+    "verificador_v2": {
+      "train_ejemplos": 389,
+      "val_ejemplos": 74,
+      "truncados_train": 0,
+      "truncados_val": 0,
+      "pasos_totales": 130,
+      "tiempo_entrenamiento_min": 14.34,
+      "eval_loss_inicial": 2.739193,
+      "mejor_eval_loss": 0.264956,
+      "mejor_step": 130,
+      "train_loss_final_agregada": 0.660723,
+      "trainable_params": 33030144,
+      "trainable_pct": 1.4753
     }
   },
   "nuevas_20": {
@@ -439,6 +453,185 @@
             "nuevas_20:N01"
           ],
           "empate_ambos_aciertan": 9,
+          "empate_ambos_fallan_qids": [
+            "nuevas_20:N06",
+            "nuevas_20:N07",
+            "nuevas_20:N10",
+            "nuevas_20:N16",
+            "nuevas_20:N19"
+          ]
+        }
+      }
+    },
+    "multi_lora_verificador_v2": {
+      "aciertos": 12,
+      "n": 20,
+      "porcentaje": 60.0,
+      "telemetria": {
+        "total_consultas": 20,
+        "llamadas_modelo_totales": 147,
+        "llamadas_por_pregunta": 7.35,
+        "llamadas_por_agente": {
+          "enrutador": 20,
+          "recuperador": 51,
+          "redactor": 38,
+          "verificador": 38
+        },
+        "tokens_entrada_por_agente": {
+          "enrutador": 12896,
+          "recuperador": 36600,
+          "redactor": 59225,
+          "verificador": 55368
+        },
+        "tokens_salida_por_agente": {
+          "enrutador": 1563,
+          "recuperador": 1259,
+          "redactor": 9757,
+          "verificador": 4359
+        },
+        "tokens_entrada_totales": 164089,
+        "tokens_salida_totales": 16938,
+        "segundos_por_agente": {
+          "enrutador": 229.7,
+          "recuperador": 187.03,
+          "redactor": 1432.4,
+          "verificador": 641.71
+        },
+        "segundos_totales_telemetria": 2490.84
+      },
+      "aprobacion_interna_vs_exactitud": {
+        "aprobadas_por_verificador": 18,
+        "aprobadas_y_correctas": 11,
+        "aprobadas_pero_incorrectas_estricto": 7,
+        "rechazadas_por_verificador": 2,
+        "rechazadas_pero_correctas": 1,
+        "rechazadas_e_incorrectas": 1
+      },
+      "comparativas_d4": {
+        "control_base_d4": {
+          "referencia": "control_base_d4",
+          "fuente_referencia": "Deliverable 4/evaluacion/resultados_nuevas20_base_D4_auditados.csv",
+          "total_emparejadas": 20,
+          "aciertos_referencia": 11,
+          "aciertos_experimento": 12,
+          "balance_neto_experimento_menos_ref": 1,
+          "gana_experimento_qids": [
+            "nuevas_20:N01",
+            "nuevas_20:N09",
+            "nuevas_20:N11",
+            "nuevas_20:N12",
+            "nuevas_20:N18"
+          ],
+          "gana_referencia_qids": [
+            "nuevas_20:N05",
+            "nuevas_20:N06",
+            "nuevas_20:N17",
+            "nuevas_20:N20"
+          ],
+          "empate_ambos_aciertan": 7,
+          "empate_ambos_fallan_qids": [
+            "nuevas_20:N07",
+            "nuevas_20:N10",
+            "nuevas_20:N16",
+            "nuevas_20:N19"
+          ]
+        },
+        "solo_redactor_d4": {
+          "referencia": "solo_redactor_d4",
+          "fuente_referencia": "Deliverable 4/evaluacion/resultados_nuevas20_ft_D4_auditados.csv",
+          "total_emparejadas": 20,
+          "aciertos_referencia": 10,
+          "aciertos_experimento": 12,
+          "balance_neto_experimento_menos_ref": 2,
+          "gana_experimento_qids": [
+            "nuevas_20:N08",
+            "nuevas_20:N12",
+            "nuevas_20:N18"
+          ],
+          "gana_referencia_qids": [
+            "nuevas_20:N20"
+          ],
+          "empate_ambos_aciertan": 9,
+          "empate_ambos_fallan_qids": [
+            "nuevas_20:N05",
+            "nuevas_20:N06",
+            "nuevas_20:N07",
+            "nuevas_20:N10",
+            "nuevas_20:N16",
+            "nuevas_20:N17",
+            "nuevas_20:N19"
+          ]
+        },
+        "ablacion_red_ver": {
+          "referencia": "ablacion_red_ver",
+          "fuente_referencia": "exp_multi_lora/evaluacion/resultados_ablacion_red_ver_nuevas20_auditados.csv",
+          "total_emparejadas": 20,
+          "aciertos_referencia": 9,
+          "aciertos_experimento": 12,
+          "balance_neto_experimento_menos_ref": 3,
+          "gana_experimento_qids": [
+            "nuevas_20:N01",
+            "nuevas_20:N08",
+            "nuevas_20:N09",
+            "nuevas_20:N12",
+            "nuevas_20:N18"
+          ],
+          "gana_referencia_qids": [
+            "nuevas_20:N05",
+            "nuevas_20:N20"
+          ],
+          "empate_ambos_aciertan": 7,
+          "empate_ambos_fallan_qids": [
+            "nuevas_20:N06",
+            "nuevas_20:N07",
+            "nuevas_20:N10",
+            "nuevas_20:N16",
+            "nuevas_20:N17",
+            "nuevas_20:N19"
+          ]
+        },
+        "multi_lora_sin_verificador": {
+          "referencia": "multi_lora_sin_verificador",
+          "fuente_referencia": "exp_multi_lora/evaluacion/resultados_sin_verificador_nuevas20_auditados.csv",
+          "total_emparejadas": 20,
+          "aciertos_referencia": 10,
+          "aciertos_experimento": 12,
+          "balance_neto_experimento_menos_ref": 2,
+          "gana_experimento_qids": [
+            "nuevas_20:N01",
+            "nuevas_20:N11",
+            "nuevas_20:N18"
+          ],
+          "gana_referencia_qids": [
+            "nuevas_20:N17"
+          ],
+          "empate_ambos_aciertan": 9,
+          "empate_ambos_fallan_qids": [
+            "nuevas_20:N05",
+            "nuevas_20:N06",
+            "nuevas_20:N07",
+            "nuevas_20:N10",
+            "nuevas_20:N16",
+            "nuevas_20:N19",
+            "nuevas_20:N20"
+          ]
+        },
+        "multi_lora_4_agentes": {
+          "referencia": "multi_lora_4_agentes",
+          "fuente_referencia": "exp_multi_lora/evaluacion/resultados_multi_lora_nuevas20_auditados.csv",
+          "total_emparejadas": 20,
+          "aciertos_referencia": 14,
+          "aciertos_experimento": 12,
+          "balance_neto_experimento_menos_ref": -2,
+          "gana_experimento_qids": [
+            "nuevas_20:N01"
+          ],
+          "gana_referencia_qids": [
+            "nuevas_20:N05",
+            "nuevas_20:N17",
+            "nuevas_20:N20"
+          ],
+          "empate_ambos_aciertan": 11,
           "empate_ambos_fallan_qids": [
             "nuevas_20:N06",
             "nuevas_20:N07",
@@ -847,6 +1040,247 @@
         }
       },
       "nota_especial": "En congelado_50:8 el contenido y las citas inline ([RG-ART-034] [RI-FI-ART-026]) son correctos bajo LEEME_PAUTA.md (40/50 en congelado_50, 58/75 global), aunque omite la tercera línea literal 'Fuente:' (formato_3_lineas_ok=False; bajo exigencia estricta de 3 líneas sería 39/50 y 57/75)."
+    },
+    "multi_lora_verificador_v2": {
+      "aciertos": 56,
+      "n": 75,
+      "porcentaje": 74.7,
+      "telemetria": {
+        "total_consultas": 75,
+        "llamadas_modelo_totales": 486,
+        "llamadas_por_pregunta": 6.48,
+        "llamadas_por_agente": {
+          "enrutador": 75,
+          "recuperador": 185,
+          "redactor": 113,
+          "verificador": 113
+        },
+        "tokens_entrada_por_agente": {
+          "enrutador": 46199,
+          "recuperador": 130256,
+          "redactor": 152150,
+          "verificador": 153314
+        },
+        "tokens_salida_por_agente": {
+          "enrutador": 3766,
+          "recuperador": 4258,
+          "redactor": 23867,
+          "verificador": 12069
+        },
+        "tokens_entrada_totales": 481919,
+        "tokens_salida_totales": 43960,
+        "segundos_por_agente": {
+          "enrutador": 556.41,
+          "recuperador": 636.37,
+          "redactor": 3511.88,
+          "verificador": 1782.55
+        },
+        "segundos_totales_telemetria": 6487.2
+      },
+      "aprobacion_interna_vs_exactitud": {
+        "aprobadas_por_verificador": 66,
+        "aprobadas_y_correctas": 50,
+        "aprobadas_pero_incorrectas_estricto": 16,
+        "rechazadas_por_verificador": 9,
+        "rechazadas_pero_correctas": 6,
+        "rechazadas_e_incorrectas": 3
+      },
+      "comparativas_d4": {
+        "control_base_d4": {
+          "referencia": "control_base_d4",
+          "fuente_referencia": "Deliverable 4/evaluacion/resultados_control_base_D4_auditados.csv",
+          "total_emparejadas": 75,
+          "aciertos_referencia": 62,
+          "aciertos_experimento": 56,
+          "balance_neto_experimento_menos_ref": -6,
+          "gana_experimento_qids": [
+            "congelado_50:36",
+            "congelado_50:43",
+            "dificil_25:H12",
+            "dificil_25:H19",
+            "dificil_25:H22",
+            "dificil_25:H24",
+            "dificil_25:H25"
+          ],
+          "gana_referencia_qids": [
+            "congelado_50:3",
+            "congelado_50:5",
+            "congelado_50:16",
+            "congelado_50:26",
+            "congelado_50:46",
+            "congelado_50:47",
+            "congelado_50:48",
+            "congelado_50:49",
+            "dificil_25:H04",
+            "dificil_25:H09",
+            "dificil_25:H13",
+            "dificil_25:H15",
+            "dificil_25:H21"
+          ],
+          "empate_ambos_aciertan": 49,
+          "empate_ambos_fallan_qids": [
+            "congelado_50:11",
+            "congelado_50:25",
+            "dificil_25:H03",
+            "dificil_25:H06",
+            "dificil_25:H07",
+            "dificil_25:H18"
+          ]
+        },
+        "solo_redactor_d4": {
+          "referencia": "solo_redactor_d4",
+          "fuente_referencia": "Deliverable 4/evaluacion/resultados_agentes_D4_auditados.csv",
+          "total_emparejadas": 75,
+          "aciertos_referencia": 60,
+          "aciertos_experimento": 56,
+          "balance_neto_experimento_menos_ref": -4,
+          "gana_experimento_qids": [
+            "congelado_50:8",
+            "congelado_50:28",
+            "congelado_50:36",
+            "congelado_50:45",
+            "dificil_25:H02",
+            "dificil_25:H12",
+            "dificil_25:H22",
+            "dificil_25:H25"
+          ],
+          "gana_referencia_qids": [
+            "congelado_50:3",
+            "congelado_50:11",
+            "congelado_50:16",
+            "congelado_50:46",
+            "congelado_50:47",
+            "congelado_50:48",
+            "congelado_50:49",
+            "dificil_25:H07",
+            "dificil_25:H09",
+            "dificil_25:H13",
+            "dificil_25:H15",
+            "dificil_25:H18"
+          ],
+          "empate_ambos_aciertan": 48,
+          "empate_ambos_fallan_qids": [
+            "congelado_50:5",
+            "congelado_50:25",
+            "congelado_50:26",
+            "dificil_25:H03",
+            "dificil_25:H04",
+            "dificil_25:H06",
+            "dificil_25:H21"
+          ]
+        },
+        "multi_lora_sin_verificador": {
+          "referencia": "multi_lora_sin_verificador",
+          "fuente_referencia": "exp_multi_lora/evaluacion/resultados_sin_verificador_75_auditados.csv",
+          "total_emparejadas": 75,
+          "aciertos_referencia": 64,
+          "aciertos_experimento": 56,
+          "balance_neto_experimento_menos_ref": -8,
+          "gana_experimento_qids": [
+            "congelado_50:24",
+            "congelado_50:36",
+            "dificil_25:H12",
+            "dificil_25:H17",
+            "dificil_25:H19",
+            "dificil_25:H22",
+            "dificil_25:H25"
+          ],
+          "gana_referencia_qids": [
+            "congelado_50:3",
+            "congelado_50:5",
+            "congelado_50:11",
+            "congelado_50:16",
+            "congelado_50:46",
+            "congelado_50:47",
+            "congelado_50:48",
+            "congelado_50:49",
+            "dificil_25:H04",
+            "dificil_25:H07",
+            "dificil_25:H09",
+            "dificil_25:H13",
+            "dificil_25:H15",
+            "dificil_25:H18",
+            "dificil_25:H21"
+          ],
+          "empate_ambos_aciertan": 49,
+          "empate_ambos_fallan_qids": [
+            "congelado_50:25",
+            "congelado_50:26",
+            "dificil_25:H03",
+            "dificil_25:H06"
+          ]
+        },
+        "multi_lora_4_agentes": {
+          "referencia": "multi_lora_4_agentes",
+          "fuente_referencia": "exp_multi_lora/evaluacion/resultados_multi_lora_75_auditados.csv",
+          "total_emparejadas": 75,
+          "aciertos_referencia": 58,
+          "aciertos_experimento": 56,
+          "balance_neto_experimento_menos_ref": -2,
+          "gana_experimento_qids": [
+            "congelado_50:6",
+            "congelado_50:12",
+            "congelado_50:28",
+            "dificil_25:H05",
+            "dificil_25:H12"
+          ],
+          "gana_referencia_qids": [
+            "congelado_50:3",
+            "congelado_50:5",
+            "congelado_50:49",
+            "dificil_25:H13",
+            "dificil_25:H15",
+            "dificil_25:H18",
+            "dificil_25:H21"
+          ],
+          "empate_ambos_aciertan": 51,
+          "empate_ambos_fallan_qids": [
+            "congelado_50:11",
+            "congelado_50:16",
+            "congelado_50:25",
+            "congelado_50:26",
+            "congelado_50:46",
+            "congelado_50:47",
+            "congelado_50:48",
+            "dificil_25:H03",
+            "dificil_25:H04",
+            "dificil_25:H06",
+            "dificil_25:H07",
+            "dificil_25:H09"
+          ]
+        }
+      },
+      "por_set": {
+        "congelado_50": {
+          "total": 50,
+          "aciertos_estrictos": 40,
+          "porcentaje_estricto": 80.0,
+          "aciertos_nucleo_sin_condicion_p01": 42,
+          "porcentaje_nucleo": 84.0,
+          "aprobadas_verificador": 42,
+          "formato_3_lineas_ok": 49,
+          "con_no_aplica": 27,
+          "ciclos_promedio": 1.48,
+          "ciclos_gt1": 14,
+          "segundos_totales": 3943.77,
+          "segundos_promedio": 78.88
+        },
+        "dificil_25": {
+          "total": 25,
+          "aciertos_estrictos": 16,
+          "porcentaje_estricto": 64.0,
+          "aciertos_nucleo_sin_condicion_p01": 20,
+          "porcentaje_nucleo": 80.0,
+          "aprobadas_verificador": 24,
+          "formato_3_lineas_ok": 24,
+          "con_no_aplica": 9,
+          "ciclos_promedio": 1.56,
+          "ciclos_gt1": 10,
+          "segundos_totales": 2547.97,
+          "segundos_promedio": 101.92
+        }
+      },
+      "nota_especial": "En congelado_50:8 ([RG-ART-034] [RI-FI-ART-026]) el contenido y las citas inline son correctos bajo LEEME_PAUTA.md (40/50 en congelado_50, 56/75 global), aunque omite la tercera línea literal 'Fuente:' (formato_3_lineas_ok=False; bajo exigencia estricta de 3 líneas sería 39/50 y 55/75)."
     }
   },
   "consolidado_95_preguntas": {
@@ -869,6 +1303,11 @@
       "aciertos": 72,
       "total": 95,
       "porcentaje": 75.8
+    },
+    "multi_lora_verificador_v2": {
+      "aciertos": 68,
+      "total": 95,
+      "porcentaje": 71.6
     }
   }
 }

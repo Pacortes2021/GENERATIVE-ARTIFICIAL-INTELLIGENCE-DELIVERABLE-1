@@ -1,8 +1,9 @@
-# Experimento Multi-LoRA (`exp/multi-lora-todos` y `exp/multi-lora-sin-verificador`)
+# Experimento Multi-LoRA (`exp/multi-lora-todos`, `exp/multi-lora-sin-verificador` y `exp/multi-lora-verificador-v2`)
 
 Esta carpeta (`exp_multi_lora/`) aísla los experimentos de **fine-tuning QLoRA multi-agente sobre `Qwen/Qwen3-4B`**, manteniendo intactos `Deliverable 4/`, `main` y `deliverable-4`:
-- **`exp/multi-lora-todos`:** los cuatro roles (`enrutador`, `recuperador`, `redactor` y `verificador`) usan adaptadores QLoRA independientes.
-- **`exp/multi-lora-sin-verificador` (rama actual):** `enrutador`, `recuperador` y `redactor` usan QLoRA, mientras **`verificador` corre en el modelo base** (`model.disable_adapter()`).
+- **`exp/multi-lora-todos`:** los cuatro roles (`enrutador`, `recuperador`, `redactor` y `verificador` v1) usan adaptadores QLoRA independientes.
+- **`exp/multi-lora-sin-verificador` (Opción A):** `enrutador`, `recuperador` y `redactor` usan QLoRA, mientras **`verificador` corre en el modelo base** (`model.disable_adapter()`).
+- **`exp/multi-lora-verificador-v2` (Opción B, rama actual):** reintroduce un **`verificador_v2` LoRA recalibrado** (`389` train / `74` val, `epochs=2.0`, `lr=5e-5`, `eval_loss=0.264956`) junto con `enrutador`, `recuperador` y `redactor`.
 
 ## Hipótesis del experimento
 
@@ -122,14 +123,15 @@ Los detalles completos de entrenamiento, aislamiento, matriz de confusión del V
 | **Control Base D4** | **46/50 (92.0%)** | 16/25 (64.0%) | 62/75 (82.7%) | 11/20 (55.0%) | 73/95 (76.8%) | 658 / 254 |
 | **Solo Redactor D4** | 43/50 (86.0%) | 17/25 (68.0%) | 60/75 (80.0%) | 10/20 (50.0%) | 70/95 (73.7%) | 648 / 212 |
 | **Ablación Red+Ver** | — | — | — | 9/20 (45.0%) | — | — / 190 |
-| **Multi-LoRA (4 agentes)** | 40/50 (80.0%)\* | **18/25 (72.0%)** | 58/75 (77.3%)\* | **14/20 (70.0%)** | 72/95 (75.8%) | 493 / 138 |
-| **3-LoRA sin Verificador** | **46/50 (92.0%)**\*\* | **18/25 (72.0%)** | **64/75 (85.3%)**\*\* | 10/20 (50.0%) | **74/95 (77.9%)** | **388 / 118** |
+| **Multi-LoRA (4 agentes v1)** | 40/50 (80.0%)\* | **18/25 (72.0%)** | 58/75 (77.3%)\* | **14/20 (70.0%)** | 72/95 (75.8%) | 493 / 138 |
+| **Opción A — 3-LoRA sin Verificador** | **46/50 (92.0%)**\*\* | **18/25 (72.0%)** | **64/75 (85.3%)**\*\* | 10/20 (50.0%) | **74/95 (77.9%)** | **388 / 118** |
+| **Opción B — 4-LoRA (`verificador_v2`)** | 40/50 (80.0%)\*\*\* | 16/25 (64.0%) | 56/75 (74.7%)\*\*\* | 12/20 (60.0%) | 68/95 (71.6%) | 486 / 147 |
 
 > \* En `4-LoRA`, `congelado_50:8` acierta contenido y citas inline (`[RG-ART-034] [RI-FI-ART-026]`) pero omite la tercera línea literal `Fuente:` (`39/50` / `57/75` estricto en 3 líneas).  
-> \*\* En `3-LoRA sin Verificador`, `congelado_50:7` (`[RI-FI-ART-016]`) y `congelado_50:8` (`[RG-ART-034] [RI-FI-ART-026]`) aciertan contenido y citas inline pero omiten la tercera línea literal `Fuente:` (`44/50` / `62/75` estricto en 3 líneas).
+> \*\* En `3-LoRA sin Verificador`, `congelado_50:7` (`[RI-FI-ART-016]`) y `congelado_50:8` (`[RG-ART-034] [RI-FI-ART-026]`) aciertan contenido y citas inline pero omiten la tercera línea literal `Fuente:` (`44/50` / `62/75` estricto en 3 líneas).  
+> \*\*\* En `4-LoRA (verificador_v2)`, `congelado_50:8` acierta contenido y citas inline omitiendo `Fuente:` (`39/50` / `55/75` estricto en 3 líneas), y `dificil_25:H15` termina vacía por un bucle de `<pensar>` en ciclo 3.
 
 ### Hallazgos clave
 
-1. **Salto de generalización por `Enrutador` + `Recuperador` LoRA:** `Multi-LoRA (4)` sube **`+20 pp`** frente a `Solo Redactor D4` en `nuevas_20` (`70.0%` vs `50.0%`), ambas variantes (`4` y `3` LoRAs) marcan **`18/25` (`72.0%`)** en `dificil_25` (máximo histórico), y en `3-LoRA sin Verificador` las llamadas del `Recuperador` bajan **`-68.6%`** (`75` D3) y **`-74.2%`** (`nuevas_20`) con `0` fallbacks y `0` citas fuera de evidencia.
-2. **Doble disociación al dejar el `Verificador` en base (`3-LoRA` vs `4-LoRA`):** en `75 D3`, quitar el `Verificador` LoRA alcanza **`64/75` (`85.3%`, máximo histórico)** y lidera el consolidado de `95` preguntas (`74/95 = 77.9%`), eliminando falsos rechazos por `No aplica` (`congelado_50:28`) y logrando rescates en ciclo 2 (`congelado_50:6, 47`, `H04`); sin embargo, en `nuevas_20` vuelve a **`10/20` (`50.0%`)** porque el `Verificador` base rechaza con objeciones alucinadas borradores ya correctos (`N05`, `N11`, `N20` y en `75 D3` `H17`, `H19`).
-3. **Eficiencia de latencia sin `Verificador` LoRA:** bajar de `4` a `3` adaptadores recorta el tiempo total en `75 D3` **`-31.4%`** (`4354.4 s` vs `6346.3 s`), sube el throughput de `6.79` a `7.32–7.39 tok/s` y reduce llamadas totales a `388` (`-40.1%` vs `Solo Redactor`), con conclusión clara para v2: conservar `enrutador + recuperador + redactor` y recalibrar un `Verificador` LoRA v2.
+1. **Salto de generalización por `Enrutador` + `Recuperador` LoRA:** `Multi-LoRA (4 v1)` sube **`+20 pp`** frente a `Solo Redactor D4` en `nuevas_20` (`70.0%` vs `50.0%`), `4-LoRA v1` y `Opción A` marcan **`18/25` (`72.0%`)** en `dificil_25` (máximo histórico), y en `Opción A (3-LoRA sin Verificador)` las llamadas del `Recuperador` bajan **`-68.6%`** (`75` D3) y **`-74.2%`** (`nuevas_20`) con `0` fallbacks y `0` citas fuera de evidencia.
+2. **Opción A (`74/95 = 77.9%`) supera a Opción B (`verificador_v2`: `68/95 = 71.6%`):** en `75 D3`, dejar el `Verificador` en base alcanza **`64/75` (`85.3%`, máximo histórico)** con **`4354.4 s`** (`-32.9%` frente a `4-LoRA V2` con `6491.7 s`). Reentrenar `verificador_v2` sí subió `nuevas_20` vs Opción A (`12/20` vs `10/20`) y logró el primer acierto histórico en `H12`, pero conservó `7` regresiones causales por sobre-rechazo (`N17`, `N20`, `C50:16, 49`, `H15`, `H18`, `H21`) y `23` falsas aprobaciones en las `95` preguntas.

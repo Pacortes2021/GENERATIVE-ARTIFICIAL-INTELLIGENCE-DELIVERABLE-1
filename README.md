@@ -9,21 +9,23 @@ abstiene cuando la información no existe o la pregunta parte de una premisa fal
 
 | Entrega | Carpeta | Informe | Resultado principal |
 |---|---|---|---|
-| **Deliverable 4 · fine-tuning del Redactor** | [`Deliverable 4/`](Deliverable%204/README.md) | [PDF](Deliverable%204/documento/main.pdf) | Corrida v2 (A100 `bf16`): `43/50` + `17/25` (`60/75`) vs Control Base `62/75` (`46+16`); `10/20` vs `11/20` en `nuevas_20` |
+| **Deliverable 4 · Multi-LoRA por rol (`3-LoRA`)** | [`Deliverable 4/`](Deliverable%204/README.md) | [PDF](Deliverable%204/documento/main.pdf) | **A100 `bf16`**: `46/50 + 18/25` (**`64/75`, `85,3%`**) y **`74/95` (`77,9%`)** vs Control Base `62/75` (`73/95`); **`-41,0%` llamadas** (`388` vs `658`) |
 | Deliverable 3 · sistema de agentes | [`Deliverable 3/`](Deliverable%203/README.md) | [PDF](Deliverable%203/Deliverable3/documento/main.pdf) | 46/50 y 20/25 (RAG del E2: 40/50 y 16/25) |
 | Deliverable 2 · RAG estructurado | [`Deliverable2/`](Deliverable2/README.md) | [PDF](Deliverable2/entrega/Informe_tecnico_D2.pdf) | 40/50 (baseline directo con la misma configuración: 1/50) |
 | Deliverable 1 · diagnóstico y modelo | [`Deliverable1/`](Deliverable1/README.md) | [PDF](Deliverable1/informe/deliverable1.pdf) | Baseline directo 2/50 (decodificación greedy): ausencia paramétrica |
 
 ---
 
-## Deliverable 4: especialización QLoRA del agente Redactor
+## Deliverable 4: especialización Multi-LoRA por rol (`Enrutador + Recuperador + Redactor`)
 
 - **Informe técnico (1 página, LaTeX):** [`Deliverable 4/documento/main.pdf`](Deliverable%204/documento/main.pdf)
-- **Adaptador público en Hugging Face:** [`Pablox0333/qwen3-4b-redactor-udec-d4`](https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4) *(pesos v2, commit [`739b031`](https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4/commit/739b031acbd5feef2c49f946b94722712209bce0), entrenados en T4 `float16`: `52,38 min`, `eval_loss 1,6006 -> 0,5164`, `0` ejemplos truncados)*
+- **Adaptadores QLoRA por rol (`Qwen/Qwen3-4B`, 4-bit NF4):**
+  - `Redactor` en Hugging Face: [`Pablox0333/qwen3-4b-redactor-udec-d4`](https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4) *(T4 `fp16`: `52,38 min`, `eval_loss 1,601 -> 0,516`, commit [`739b031`](https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4/commit/739b031acbd5feef2c49f946b94722712209bce0))*
+  - `Enrutador` (`9,88 min`, `eval_loss 1,066 -> 0,123`) y `Recuperador` (`10,43 min`, `eval_loss 1,729 -> 0,186`): en Google Drive hasta subirlos con [`publicar_adaptadores_hf.py`](Deliverable%204/scripts/publicar_adaptadores_hf.py).
 - **Video en vivo (≤ 3 min):** `[Pendiente: enlace público tras grabación]` · guía y notebook en vivo en [`Deliverable 4/video/GUION_VIDEO_D4.md`](Deliverable%204/video/GUION_VIDEO_D4.md) y [`Deliverable 4/D4_colab_video_demo.ipynb`](Deliverable%204/D4_colab_video_demo.ipynb)
-- **Guía completa, datos v2 y resultados finales:** [`Deliverable 4/README.md`](Deliverable%204/README.md)
+- **Guía completa, datasets antifuga y resultados finales:** [`Deliverable 4/README.md`](Deliverable%204/README.md) · *(la variante previa `Solo Redactor FT v2` quedó respaldada en `backup/d4-solo-redactor`)*
 
-Se entrena un adaptador QLoRA (`NF4`, `r=16`, `alpha=32`, 210 pares supervisados `180 train / 30 val`, `74/210` ejemplos `"No aplica"` curados con asistencia de Antigravity y `0%` solapamiento de unidades frente a evaluación y al set ciego `preguntas_nuevas_20.csv`) **solo para el agente `Redactor`**, manteniendo congelado a `Qwen/Qwen3-4B` vía `model.disable_adapter()` en `Enrutador`, `Recuperador` y `Verificador` (`0` violaciones LoRA en `100` llamadas ON / `548` OFF, `max_abs_logit_diff = 13.5625`). En la evaluación completa sobre A100 `bf16` con auditoría estricta y simétrica bajo [`LEEME_PAUTA.md`](Deliverable%203/paquete_25_dificiles/LEEME_PAUTA.md), el pipeline FT v2 obtiene **`60/75` (`80,0%`; `62/75 = 82,7%` en núcleo de respuesta)** con **`-8,86%` llamadas LLM (`648` vs `711` en D3)** y **`0` fallbacks** frente a **`62/75` (`82,7%`, `658` llamadas)** del Control Base A100 (`FT` vence en `6` casos y Control Base en `8`, balance neto **`-2`**, aunque en la submuestra pareada de `6` casos diagnósticos D3 `FT` marca **`4/6 vs 2/6`**); en `nuevas_20` marca **`10/20` (`50,0%`) vs `11/20` (`55,0%`)** (`2/3 vs 1/3` en divergencias directas, con `-16,5%` llamadas y `-23,7%` latencia). El análisis de causa raíz —incluyendo la degradación de borradores válidos por el `Verificador` base (`H22` en las 75 y `N05` en `nuevas_20`, más `H21` mixto) y los fallos mixtos `Redactor + Verificador` (`H04, H06`)— se documenta en [`Deliverable 4/evaluacion/casos_fallo_y_regresion.json`](Deliverable%204/evaluacion/casos_fallo_y_regresion.json) (75 oficiales) y [`Deliverable 4/evaluacion/casos_revision_nuevas20_ft_D4.json`](Deliverable%204/evaluacion/casos_revision_nuevas20_ft_D4.json) (`nuevas_20`). Pendiente únicamente registrar las firmas humanas en `datos/revision_manual_firmas.csv` + VoBo de auditoría de Álvaro Contreras y grabar el video antes del merge final a `main`.
+Sobre un único `Qwen/Qwen3-4B` NF4 se conmutan `3` adaptadores QLoRA (`set_adapter()`) entrenados sobre `725` pares antifuga (`620 train / 105 val`, `0%` fuga frente a `D3-75` y `preguntas_nuevas_20.csv`), manteniendo al `Verificador` aislado con pesos base (`disable_adapter()`, `0` violaciones LoRA en `98/98` llamadas en las `75` y `32/32` en `nuevas_20`). Frente a `Control Base` (`62/75`, `658` llamadas) y `Solo Redactor v2` (`60/75`, `648` llamadas) en el mismo A100 `bf16`, **`D4 3-LoRA`** alcanza **`64/75` (`85,3%`)** y **`74/95` (`77,9%`)**, reduciendo las llamadas totales un **`41,0%`** (`658 -> 388`, con `-69,8%` en el `Recuperador`) y `53,5%` en `nuevas_20` (`254 -> 118`); las ablaciones `4-LoRA` entrenando al Verificador (`58/75` y `56/75`) confirmaron empíricamente dejarlo en Base. Las trazas de los `11` fallos reales están documentadas en [`Deliverable 4/evaluacion/casos_fallo_y_regresion_3lora.json`](Deliverable%204/evaluacion/casos_fallo_y_regresion_3lora.json).
 
 ---
 
@@ -82,7 +84,7 @@ Las limitaciones conocidas están en [`Deliverable 3/AUDITORIA.md`](Deliverable%
 
 | Directorio | Descripción |
 |---|---|
-| [`Deliverable 4/`](Deliverable%204/README.md) | **Entrega oficial del Deliverable 4**: fine-tuning QLoRA exclusivo del agente `Redactor`, dataset antifuga, adaptador Hugging Face, evaluación aislada sobre 75 preguntas, auditoría de fallos, informe LaTeX y demo Base vs Fine-tuned. |
+| [`Deliverable 4/`](Deliverable%204/README.md) | **Entrega oficial del Deliverable 4 (`3-LoRA`)**: especialización Multi-LoRA (`Enrutador + Recuperador + Redactor`) + `Verificador` en Base, `725` pares antifuga, evaluación pareada A100 (`75` + `20` nuevas), auditoría de fallos, informe LaTeX y demo en vivo. |
 | [`Deliverable 3/`](Deliverable%203/README.md) | Entrega del Deliverable 3: arquitectura de 4 agentes, prompts versionados, resultados, ablaciones, informe técnico en LaTeX, cuadernos de Colab y demostración en video. |
 | [`Deliverable2/`](Deliverable2/) | Solución RAG del Entregable 2: corpus procesado, índice E5, informe técnico y evaluaciones. |
 | [`Deliverable1/`](Deliverable1/) | Entregable 1: diagnóstico, selección de modelo y evaluación zero-shot. |

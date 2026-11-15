@@ -1,50 +1,48 @@
-# Guion y checklist de grabación — Video Deliverable 4 (≤ 3 minutos)
+# Guion de Video Demostrativo — Deliverable 4 (<= 3 minutos)
 
-- **Duración objetivo:** `2:40 – 2:55` (límite estricto de la pauta: **≤ 3 min**, enlace abierto en Google Drive / YouTube sin restricciones).
-- **Qué debe verse explícitamente en pantalla (rúbrica del Deliverable 4):**
-  1. Qué agente fue ajustado (`Redactor`) sobre `Qwen/Qwen3-4B` con QLoRA (`Pablox0333/qwen3-4b-redactor-udec-d4`) y que los otros tres (`Enrutador`, `Recuperador`, `Verificador`) conservan pesos base vía `model.disable_adapter()`.
-  2. El agente fine-tuned corriendo **en vivo** sobre **entradas reales**, mostrando **en tiempo real los mensajes intermedios entre agentes** (`Enrutador → Recuperador → Redactor → Verificador`).
-  3. **Comparación lado a lado Base (`LoRA OFF` en los 4 roles) vs Fine-tuned (`LoRA ON` solo en `Redactor`) sobre exactamente la misma pregunta**, evidenciando mejora concreta y transparencia sobre casos de fallo.
+**Proyecto:** Especializacion Multi-LoRA por rol (`Enrutador + Recuperador + Redactor` + `Verificador` en Base) sobre `Qwen/Qwen3-4B` en normativa academica UdeC.  
+**Participantes:** Alvaro Contreras y Pablo Cortes.  
+**Notebook de ejecucion en vivo (Colab):** `Deliverable 4/D4_colab_video_demo.ipynb` (respaldo offline en `video/mostrar_demo_d4.py`).
 
 ---
 
-## Modo obligatorio de grabación — Vivo en Google Colab GPU (≤ 3 min)
+## Estructura cronometrada (objetivo 2:45 – 2:55)
 
-1. Abrir [`Deliverable 4/D4_colab_video_demo.ipynb`](../D4_colab_video_demo.ipynb) en Google Colab con **GPU A100 (`bf16`)** para reproducir exactamente los tiempos (`173,5 s` Base vs `89,0 s` FT) y la configuración oficial `greedy=False` / `semilla=2026` (también funciona en `T4`/`L4`, con mayor tiempo de espera y posible variación menor por `float16`).
-2. **Antes de iniciar la grabación:** ejecutar las celdas de la **Sección 1** (dependencias fijadas, clonado de `deliverable-4` con respaldo `main`, carga única de `Qwen/Qwen3-4B`, E5 y el adaptador v2 `Pablox0333/qwen3-4b-redactor-udec-d4` fijado en `739b031`, más chequeo de aislamiento `max|Δlogits| = 13,56 > 0` en A100 `bf16`).
-3. **Al iniciar la grabación de pantalla:** ejecutar en vivo la **Sección 2** sobre **`dificil_25:H07`** (corre Base `LoRA OFF` vs FT `Redactor LoRA ON` con **`verbose=True`**, imprimiendo en tiempo real cada paso y mensaje intermedio apenas responde cada agente, más la tarjeta HTML comparativa final). Para mantener el video **≤ 3 min**, acelerar en edición **solo** las esperas de inferencia con un rótulo explícito en pantalla (por ejemplo, `[x6 velocidad durante inferencia]`) sin recortar nunca los mensajes intermedios desplegados.
-4. Cerrar mostrando la **Sección 3** (casos de fallo reales **`dificil_25:H06`** y **`dificil_25:H03`**) y el resumen en [`documento/main.pdf`](../documento/main.pdf).
+### 0:00 – 0:25 | Contexto, evolucion D1->D3 y por que entrenamos 3 LoRAs (y no solo Redactor)
+- **En pantalla:** Pagina 1 de `documento/main.pdf` (Seccion 1 + grafo TikZ de la Seccion 2).
+- **Que decir (lenguaje directo):**
+  - En D3 teniamos 4 agentes usando todos exactamente el mismo `Qwen/Qwen3-4B` sin entrenar (`66/75`, pero con `711` llamadas al modelo).
+  - Probamos entrenar **solo al Redactor**, pero no basto (`60/75` en Control A100 bf16): seguia haciendo `373` busquedas en el Recuperador y arrastraba errores de ruta.
+  - Por eso construimos **D4 3-LoRA**: un **unico modelo base en 4 bits (NF4)** donde cargamos 3 adaptadores ligeros especializados por rol (**Enrutador, Recuperador y Redactor**) y los encendemos segun el turno con `set_adapter()`, mientras el **Verificador** corre con el modelo base limpio usando `disable_adapter()`.
 
-> Nota: `video/mostrar_demo_d4.py` también ofrece modo `--live` desde terminal (`python3 video/mostrar_demo_d4.py --live --qid dificil_25:H07`, ya con `--verbose-pasos` activado); el modo offline solo debe usarse para inspeccionar fallos auditados (`H06`, `H03`), **nunca** para reemplazar la corrida en vivo exigida por la pauta.
+### 0:25 – 0:50 | Datos antifuga y entrenamiento separado de los 3 roles
+- **En pantalla:** Tabla de datasets + figura `entrenamiento/loss_curves_3agentes.png` en el PDF.
+- **Que decir:**
+  - `725` ejemplos en total (`620` entrenamiento / `105` validacion), usando **articulos completamente distintos** a las `75` preguntas oficiales y a las `20` preguntas nuevas (`0%` fuga de datos).
+  - Los 3 adaptadores convergieron con **0 ejemplos truncados**: Enrutador (`eval_loss 1,066 -> 0,123`), Recuperador (`1,729 -> 0,186`) y Redactor (`1,601 -> 0,516`).
 
----
+### 0:50 – 1:55 | Demostracion en vivo: Base (LoRA OFF) vs D4 3-LoRA (H07)
+- **En pantalla:** Celda 3 y Celda 4 de `Deliverable 4/D4_colab_video_demo.ipynb` ejecutando `H07` en vivo (con verificacion automatica `verificar_aislamiento_multi_lora` impresa arriba).
+- **Pregunta H07:** *"Un estudiante aprobo 42 creditos al termino de su cuarto semestre. ¿Esta en baja academica por el criterio de promedio de creditos del Articulo 14?"*
+- **Lo que se ve en la ejecucion:**
+  - **Control Base (`LoRA OFF` en los 4 agentes):** cae en **3 ciclos**, **13 llamadas LLM** y **`177,4 s`**, trayendo `12` articulos para terminar absteniendose falsamente (*"la normativa no proporciona el numero total de semestres"*).
+  - **D4 3-LoRA:**
+    1. `[Enrutador · LoRA ON]` clasifica directo como `numerica` en 1 subconsulta.
+    2. `[Recuperador · LoRA ON]` ve los 5 hits iniciales (`RI-FI-ART-014`, `RG-ART-028`, ...) y decide `suficiente` de inmediato.
+    3. `[Redactor · LoRA ON]` calcula `42 / 4 = 10,5 > 10` y responde que **no** esta en baja academica citando `[RI-FI-ART-014]`.
+    4. `[Verificador · LoRA OFF (Base)]` valida en **1 ciclo / 4 llamadas / `53,8 s`**.
 
-## Guion minuto a minuto (2:45)
+### 1:55 – 2:30 | Resultados globales y por que dejamos al Verificador en Base
+- **En pantalla:** Tabla 3 de `documento/main.pdf`.
+- **Que decir:**
+  - En el mismo A100 bf16, `Control Base` logra `62/75` (`73/95` global) con `658` llamadas, `Solo Redactor` baja a `60/75`, y nuestro **D4 3-LoRA** sube a **`64/75 (85,3%)`** y **`74/95 (77,9%)`** recortando las llamadas totales un **`41,0%`** (`658 -> 388`, y `-69,8%` en el Recuperador) y **`0` violaciones** de conmutacion LoRA.
+  - Tambien probamos entrenar al Verificador (`v1` y `v2`), pero se volvio demasiado estricto y rechazo borradores buenos (`58/75` y `56/75`), asi que los experimentos confirman dejarlo en Base.
 
-### `[0:00 – 0:25]` Arquitectura y aislamiento del adaptador
-- **En pantalla:** [`documento/main.pdf`](../documento/main.pdf) (zoom en el grafo de Sección 2 y curva QLoRA v2 de Sección 4: `52,38 min` en T4, `eval_loss 1,6006 → 0,5164`) + salida de la Sección 1 del notebook.
-- **Qué decir:**
-  - *"En Deliverable 4 partimos de los 4 agentes de D3 sobre `Qwen/Qwen3-4B`. Al auditar D3 vimos que en 8 de los 9 errores finales la evidencia correcta ya llegaba al top-6 del Redactor, y en D3 intentar seguir tocando prompts empeoró el puntaje."*
-  - *"Por eso ajustamos con QLoRA exclusivamente al agente `Redactor` con 210 pares supervisados verificados sin solapamiento de unidades (`180 train / 30 val`, `0%` fuga y balance `74/210` `No aplica`), mientras `Enrutador`, `Recuperador` y `Verificador` mantienen los pesos base con `model.disable_adapter()` (`0` violaciones LoRA)."*
-
-### `[0:25 – 1:40]` Demo EN VIVO Base vs Fine-tuned con mensajes intermedios (`dificil_25:H07`)
-- **En pantalla:** Ejecución en vivo de la **Sección 2** en `D4_colab_video_demo.ipynb` (acelerando únicamente la espera de generación con rótulo visible `[x6 inferencia]`) y despliegue de la tarjeta HTML **Mensajes intermedios**.
-- **Qué mostrar y decir:**
-  - Leer la pregunta real: *"Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?"*
-  - Mostrar los mensajes intermedios reales en traza: `Enrutador [LoRA OFF]` clasifica `condicional` → `Recuperador ReAct [LoRA OFF]` ejecuta `buscar` y `traer` recuperando `RI-FI-ART-014` y `RG-ART-028` → `Redactor` → `Verificador [LoRA OFF]`.
-  - **Contraste Base vs Fine-tuned sobre la misma entrada (en idéntico entorno A100 bf16 registrado / demo en vivo):**
-    - **Control Base (`LoRA OFF` en los 4 agentes):** cae en `3 ciclos` (`173,54 s` en A100) y se abstiene erróneamente (*"No se puede determinar... no proporciona el número total de semestres"*), ignorando los `42` créditos y `cuarto semestre` presentes en la consulta.
-    - **D4 v2 (`Redactor LoRA ON`):** en `2 ciclos` (`89,03 s` en A100) calcula exactamente `42 / 4 = 10,5 créditos semestrales > 10` con `[RI-FI-ART-014]` y `[RG-ART-028]`, concluyendo correctamente que **no** está en baja académica.
-
-### `[1:40 – 2:10]` Comparación cuantitativa y análisis crítico (Sección 5 de `main.pdf`)
-- **En pantalla:** Tabla comparativa v2 y desglose en [`documento/main.pdf`](../documento/main.pdf).
-- **Qué decir:**
-  - Mostrar los resultados completos v2 en A100 (`bf16`): en el benchmark oficial de 75 preguntas, `FT v2` corrige `5/9` fallos de D3 (`P13, P24, H07, H14, H18`), recupera `6` errores de v1 (`H19` incluido) y sube `No aplica` a `37/75`, alcanzando **`60/75` (`80,0%`; `62/75` núcleo)** con **`8,64` llamadas/pregunta (`-8,86%` vs D3)**. Frente al **Control Base (`--solo-base`, `62/75`, `82,7%`)** en idéntico entorno, FT gana en `6` preguntas y Control Base en `8` (`balance -2`), mientras en la submuestra pareada de `6` casos diagnósticos D3 marca `4/6 vs 2/6`.
-  - Mostrar también el set ciego **`preguntas_nuevas_20.csv` (`0%` solapamiento de artículos):** `FT v2` obtiene **`10/20` (`50,0%`, `25,07 min`)** frente a **`11/20` (`55,0%`, `32,84 min`)** del Control Base (`-16,5%` llamadas, `-23,7%` latencia y `2/3 vs 1/3` en divergencias).
-
-### `[2:10 – 2:45]` Transparencia: dónde falla o lo frena la arquitectura (`H06`, `H03`) y cierre
-- **En pantalla:** Trazas de `dificil_25:H06` y `dificil_25:H03` (Sección 3 de `D4_colab_video_demo.ipynb`) y Sección 6 de `main.pdf`.
-- **Qué decir:**
-  - Mostrar **`H06`**: en ciclo 1, `Redactor FT v2` calcula bien `38 / 4 = 9,5 < 10 -> cae en Baja Académica [RI-FI-ART-014]`, **pero ya parte con polaridad contradictoria (`"Respuesta: No, ..."`)**; luego, el `Verificador base [LoRA OFF]` agrava el error rechazando falsamente la división `38 / 4 = 9,5` y empujando ciclo 2 a abstención y ciclo 3 a `"No, ... incumple el criterio"`. Señalar también los **2 casos puros** donde el `Verificador` base degradó borradores correctos (**`H22`** y **`N05`**, además de **`H21`** mixto/discutible; en las 75, `12/68` aprobaciones fallaron).
-  - Señalar además el cuello de botella del **`Recuperador`** (**`H03`**: `CAL-2026-S2-02` sigue fuera del `top-6`) y del **`Enrutador`** en `N12`/`N19` (`RI-FI` excluye `RG`), más errores residuales de aritmética en fechas (`N06, N07`) y `Condiciones: No aplica` omitiendo excepciones (`P36, H25`).
-  - Cerrar mostrando el adaptador público en Hugging Face (`Pablox0333/qwen3-4b-redactor-udec-d4`, revisión `739b031`), el repositorio GitHub y confirmando enlace abierto del video.
+### 2:30 – 2:55 | Transparencia de errores reales y cierre
+- **En pantalla:** Ultima celda del notebook / salida de `casos_fallo_y_regresion_3lora.json` (`H03`, `H17`, `H06`).
+- **Que decir:**
+  - Mostramos sin maquillar los `11` fallos de las `75` preguntas:
+    - **`H03` (Recuperador):** por parar tan rapido a veces le falta traer un articulo en preguntas dobles (`CAL-2026-S1-02/S2-02`).
+    - **`H17` (Verificador Base):** el ciclo 1 del Redactor estaba perfecto, pero 3 rechazos inventados del Verificador lo forzaron a invertir la respuesta.
+    - **`H06` (Redactor):** errores puntuales de redaccion/calculo cuando la pregunta requiere una comparacion negativa.
+  - Todo el codigo, trazas, auditoria y tests automatizados quedan reproducibles en `Deliverable 4/`.

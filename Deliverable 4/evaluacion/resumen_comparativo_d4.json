@@ -1,0 +1,179 @@
+{
+  "sistema_oficial": "3-LoRA (Enrutador + Recuperador + Redactor QLoRA; Verificador Qwen3-4B Base)",
+  "entrenamientos": {
+    "enrutador": {
+      "modelo_base": "Qwen/Qwen3-4B",
+      "hf_repo": null,
+      "hardware": "NVIDIA A100-SXM4-40GB",
+      "dtype": "torch.bfloat16",
+      "train_ejemplos": 210,
+      "val_ejemplos": 36,
+      "truncados": 0,
+      "tiempo_min": 9.88,
+      "pasos_totales": 105,
+      "eval_loss_inicial": 1.066113,
+      "mejor_eval_loss": 0.122786,
+      "mejor_step": 80
+    },
+    "recuperador": {
+      "modelo_base": "Qwen/Qwen3-4B",
+      "hf_repo": null,
+      "hardware": "NVIDIA A100-SXM4-40GB",
+      "dtype": "torch.bfloat16",
+      "train_ejemplos": 230,
+      "val_ejemplos": 39,
+      "truncados": 0,
+      "tiempo_min": 10.43,
+      "pasos_totales": 117,
+      "eval_loss_inicial": 1.729132,
+      "mejor_eval_loss": 0.18581,
+      "mejor_step": 117
+    },
+    "redactor": {
+      "modelo_base": "Qwen/Qwen3-4B",
+      "hf_repo": "Pablox0333/qwen3-4b-redactor-udec-d4",
+      "hardware": "Tesla T4",
+      "dtype": "torch.float16",
+      "train_ejemplos": 180,
+      "val_ejemplos": 30,
+      "truncados": 0,
+      "tiempo_min": 52.38,
+      "pasos_totales": 90,
+      "eval_loss_inicial": 1.600629,
+      "mejor_eval_loss": 0.516354,
+      "mejor_step": 90
+    }
+  },
+  "sistemas_a100_bf16": {
+    "control_base": {
+      "d3_congelado_50": 46,
+      "d3_dificil_25": 16,
+      "d3_75": 62,
+      "d3_75_pct": 82.7,
+      "llamadas_75": 658,
+      "llamadas_por_agente_75": {
+        "enrutador": 75,
+        "recuperador": 387,
+        "redactor": 98,
+        "verificador": 98
+      },
+      "segundos_75": 4520.46,
+      "nuevas_20": 11,
+      "nuevas_20_pct": 55.0,
+      "llamadas_nuevas20": 254,
+      "segundos_nuevas20": 1970.2,
+      "global_95": 73,
+      "global_95_pct": 76.8
+    },
+    "solo_redactor_v2": {
+      "d3_congelado_50": 43,
+      "d3_dificil_25": 17,
+      "d3_75": 60,
+      "d3_75_pct": 80.0,
+      "llamadas_75": 648,
+      "llamadas_por_agente_75": {
+        "enrutador": 75,
+        "recuperador": 373,
+        "redactor": 100,
+        "verificador": 100
+      },
+      "segundos_75": 4541.16,
+      "nuevas_20": 10,
+      "nuevas_20_pct": 50.0,
+      "llamadas_nuevas20": 212,
+      "segundos_nuevas20": 1504.07,
+      "global_95": 70,
+      "global_95_pct": 73.7
+    },
+    "multi_lora_3_agentes_oficial": {
+      "d3_congelado_50": 46,
+      "d3_dificil_25": 18,
+      "d3_75": 64,
+      "d3_75_nucleo": 65,
+      "d3_75_pct": 85.3,
+      "ciclos_promedio_75": 1.31,
+      "llamadas_75": 388,
+      "llamadas_por_agente_75": {
+        "enrutador": 75,
+        "recuperador": 117,
+        "redactor": 98,
+        "verificador": 98
+      },
+      "segundos_75": 4354.39,
+      "nuevas_20": 10,
+      "nuevas_20_nucleo": 11,
+      "nuevas_20_pct": 50.0,
+      "ciclos_promedio_n20": 1.6,
+      "llamadas_nuevas20": 118,
+      "segundos_nuevas20": 1814.1,
+      "global_95": 74,
+      "global_95_pct": 77.9,
+      "fallos_75_por_causa": {
+        "redactor": 6,
+        "recuperador": 3,
+        "verificador": 2
+      },
+      "fallos_n20_por_causa": {
+        "redactor": 4,
+        "verificador": 3,
+        "recuperador": 3
+      },
+      "nota_especial": "En congelado_50:7 ([RI-FI-ART-016]) y congelado_50:8 ([RG-ART-034] [RI-FI-ART-026]) el contenido y las citas inline son correctos bajo LEEME_PAUTA.md (46/50 en congelado_50, 64/75 global), aunque omiten la tercera línea literal 'Fuente:' (formato_3_lineas_ok=False; bajo exigencia estricta de 3 líneas sería 44/50 y 62/75)."
+    }
+  },
+  "ablaciones_verificador": {
+    "nota": "Corridas experimentales sobre idéntico A100 bf16 que justifican mantener Verificador en Qwen/Qwen3-4B Base (ramas exp/multi-lora-todos y exp/multi-lora-verificador-v2).",
+    "ablacion_red_ver_nuevas20": {
+      "agentes_finetuned": [
+        "redactor",
+        "verificador"
+      ],
+      "nuevas_20_aciertos": 9,
+      "nuevas_20_total": 20,
+      "nuevas_20_pct": 45.0,
+      "llamadas_nuevas20": 190,
+      "segundos_nuevas20": 1691.21
+    },
+    "multi_lora_4_agentes_v1": {
+      "agentes_finetuned": [
+        "enrutador",
+        "recuperador",
+        "redactor",
+        "verificador"
+      ],
+      "d3_75_aciertos": 58,
+      "d3_75_congelado_50": 40,
+      "d3_75_dificil_25": 18,
+      "d3_75_pct": 77.3,
+      "llamadas_75": 493,
+      "segundos_75": 6350.0,
+      "nuevas_20_aciertos": 14,
+      "nuevas_20_pct": 70.0,
+      "llamadas_nuevas20": 138,
+      "global_95_aciertos": 72,
+      "global_95_pct": 75.8,
+      "hallazgo": "Colapsó en abstenciones de D3 por sesgo del dataset Verificador v1 hacia rechazo de 'No aplica' (P10, P16, P28, P46, P47, P48)."
+    },
+    "multi_lora_4_agentes_v2": {
+      "agentes_finetuned": [
+        "enrutador",
+        "recuperador",
+        "redactor",
+        "verificador_v2"
+      ],
+      "d3_75_aciertos": 56,
+      "d3_75_congelado_50": 40,
+      "d3_75_dificil_25": 16,
+      "d3_75_pct": 74.7,
+      "llamadas_75": 486,
+      "segundos_75": 6491.74,
+      "nuevas_20_aciertos": 12,
+      "nuevas_20_pct": 60.0,
+      "llamadas_nuevas20": 147,
+      "segundos_nuevas20": 2492.21,
+      "global_95_aciertos": 68,
+      "global_95_pct": 71.6,
+      "hallazgo": "Corrigió el sesgo 'No aplica', pero mantuvo sobre-rechazo en síntesis/condiciones dejando peor resultado global que 3-LoRA (Verificador base)."
+    }
+  }
+}

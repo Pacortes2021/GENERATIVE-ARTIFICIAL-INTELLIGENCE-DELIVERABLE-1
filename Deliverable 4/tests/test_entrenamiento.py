@@ -20,7 +20,9 @@ NOTEBOOK_PATH = DELIVERABLE4_DIR / "D4_colab_entrenamiento.ipynb"
 if str(SCRIPTS_DIR) not in sys.path:
     sys.path.insert(0, str(SCRIPTS_DIR))
 
+import entrenar_agente as ea  # noqa: E402
 import entrenar_redactor as er  # noqa: E402
+import publicar_adaptadores_hf as pah  # noqa: E402
 
 
 class TestPipelineEntrenamientoRedactor(unittest.TestCase):
@@ -134,9 +136,13 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
         self.assertEqual(nb["nbformat"], 4)
         self.assertGreaterEqual(len(nb["cells"]), 8)
 
-        parser = er.construir_arg_parser()
-        flags_validos = {
-            opt for action in parser._actions for opt in action.option_strings
+        parser_ea = ea.construir_arg_parser()
+        flags_ea = {
+            opt for action in parser_ea._actions for opt in action.option_strings
+        }
+        parser_pah = pah.construir_arg_parser()
+        flags_pah = {
+            opt for action in parser_pah._actions for opt in action.option_strings
         }
 
         fuente_completa = []
@@ -151,21 +157,16 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
             ast.parse("\n".join(lineas_python), filename=f"cell_{idx}")
 
         codigo_total = "\n".join(fuente_completa)
-        self.assertIn("Deliverable 4/scripts/entrenar_redactor.py", codigo_total)
+        self.assertIn('"entrenar_agente.py"', codigo_total)
+        self.assertIn('"publicar_adaptadores_hf.py"', codigo_total)
         self.assertIn("transformers==5.23.0", codigo_total)
         self.assertIn("huggingface-hub==1.33.0", codigo_total)
-        for flag_usado in (
-            "--train-jsonl",
-            "--val-jsonl",
-            "--output-dir",
-            "--max-seq-length",
-            "--epochs",
-            "--grad-accum",
-            "--eval-steps",
-            "--save-steps",
-        ):
-            self.assertIn(flag_usado, flags_validos)
+        for flag_usado in ("--agente", "--output-dir"):
+            self.assertIn(flag_usado, flags_ea)
             self.assertIn(flag_usado, codigo_total)
+        for flag_pub in ("--hf-username", "--roles", "--drive-dir"):
+            self.assertIn(flag_pub, flags_pah)
+            self.assertIn(flag_pub, codigo_total)
 
         self.assertFalse(er.es_bf16_nativo((7, 5), True))
         self.assertTrue(er.es_bf16_nativo((8, 9), True))

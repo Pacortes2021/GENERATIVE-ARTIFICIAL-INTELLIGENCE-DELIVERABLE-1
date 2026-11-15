@@ -1,0 +1,90 @@
+{
+  "version": "deliverable4_3_agentes_v1",
+  "seed": 202604,
+  "agentes": {
+    "enrutador": {
+      "train": 210,
+      "val": 36,
+      "total": 246,
+      "antifuga": {
+        "agente": "enrutador",
+        "total": 246,
+        "unidades_bloqueadas_solapadas": 0,
+        "menciones_qid_eval": 0,
+        "solapamiento_train_val": 0,
+        "unidades_distintas_usadas": 97
+      },
+      "distribucion": {
+        "splits": {
+          "train": 210,
+          "val": 36
+        },
+        "tipos": {
+          "cruce": 58,
+          "factual": 35,
+          "condicional": 72,
+          "premisa_falsa": 28,
+          "numerica": 53
+        }
+      }
+    },
+    "recuperador": {
+      "train": 230,
+      "val": 39,
+      "total": 269,
+      "antifuga": {
+        "agente": "recuperador",
+        "total": 269,
+        "unidades_bloqueadas_solapadas": 0,
+        "menciones_qid_eval": 0,
+        "solapamiento_train_val": 0,
+        "unidades_distintas_usadas": 109
+      },
+      "distribucion": {
+        "splits": {
+          "train": 230,
+          "val": 39
+        },
+        "acciones": {
+          "suficiente": 88,
+          "buscar": 111,
+          "traer": 61,
+          "existe": 9
+        }
+      }
+    },
+    "redactor": {
+      "train": 180,
+      "val": 30,
+      "total": 210,
+      "fuente": "dataset_resumen.json"
+    }
+  },
+  "totales_3_agentes": {
+    "train": 620,
+    "val": 105,
+    "total": 725
+  },
+  "muestra_manual_enrutador_recuperador_ids": [
+    "ENR-B1-T04",
+    "ENR-B1-V05",
+    "ENR-B4-T01",
+    "ENR-B4-V01",
+    "ENR-B2-T01",
+    "ENR-B2-V01",
+    "ENR-B1-T01",
+    "ENR-B1-V01",
+    "ENR-B3-T03",
+    "ENR-B3-V02",
+    "REC-B1-T01-S1",
+    "REC-B1-V04-RS",
+    "REC-B1-T07-B1",
+    "REC-B1-T12-B1",
+    "REC-B3-V02-B1",
+    "REC-B1-T15-FB",
+    "REC-B1-T22-T2",
+    "REC-B6-V02-T2",
+    "REC-ENR-X-T30-EX",
+    "REC-ENR-X-V04-EX"
+  ]
+}

@@ -25,8 +25,10 @@ for _p in (SCRIPTS_DIR, VIDEO_DIR):
         sys.path.insert(0, str(_p))
 
 import evaluar_d4 as ed  # noqa: E402
+import evaluar_multi_lora as eml  # noqa: E402
 import generar_auditoria_d4 as ga  # noqa: E402
 import mostrar_demo_d4 as demo  # noqa: E402
+import resumir_comparativa as rc  # noqa: E402
 
 
 class _BatchEncoding(dict):
@@ -248,8 +250,10 @@ class TestEvaluarD4(unittest.TestCase):
         nb = json.loads(NOTEBOOK_EVAL_PATH.read_text(encoding="utf-8"))
         self.assertEqual(nb["nbformat"], 4)
 
-        parser = ed.construir_arg_parser()
-        flags_validos = {opt for act in parser._actions for opt in act.option_strings}
+        parser_eml = eml.construir_arg_parser()
+        flags_eml = {opt for act in parser_eml._actions for opt in act.option_strings}
+        parser_rc = rc.construir_arg_parser()
+        flags_rc = {opt for act in parser_rc._actions for opt in act.option_strings}
 
         fuentes = []
         for idx, celda in enumerate(nb["cells"]):
@@ -261,25 +265,27 @@ class TestEvaluarD4(unittest.TestCase):
             ast.parse("\n".join(py_lines), filename=f"eval_cell_{idx}")
 
         codigo = "\n".join(fuentes)
-        self.assertIn('"evaluar_d4.py"', codigo)
-        self.assertIn("Pablox0333/qwen3-4b-redactor-udec-d4", codigo)
-        self.assertIn("739b031acbd5feef2c49f946b94722712209bce0", codigo)
+        self.assertIn('"evaluar_multi_lora.py"', codigo)
+        self.assertIn('"resumir_comparativa.py"', codigo)
+        self.assertIn("enrutador,recuperador,redactor", codigo)
         self.assertIn("transformers==5.23.0", codigo)
         self.assertIn("huggingface-hub==1.33.0", codigo)
         for flag in (
-            "--hf-repo",
-            "--hf-revision",
+            "--agentes",
             "--output-dir",
+            "--output-prefix",
             "--qids",
-            "--solo-comparativa",
-            "--comparar-ids",
-            "--solo-base",
+            "--verbose-pasos",
             "--preguntas-csv",
             "--nombre-set",
-            "--output-prefix",
+            "--solo-comparativa",
+            "--comparar-vs-base",
         ):
-            self.assertIn(flag, flags_validos)
+            self.assertIn(flag, flags_eml)
             self.assertIn(flag, codigo)
+        for flag_rc in ("--benchmark", "--multi-csv", "--multi-telemetria", "--salida-json"):
+            self.assertIn(flag_rc, flags_rc)
+            self.assertIn(flag_rc, codigo)
 
 
 class TestAuditoriaArtefactosD4(unittest.TestCase):
@@ -349,6 +355,8 @@ class TestAuditoriaArtefactosD4(unittest.TestCase):
 
 class TestDemoVideoD4(unittest.TestCase):
     def test_etiqueta_adaptador_y_formato_comparativa_y_fallo(self) -> None:
+        self.assertEqual(demo.etiqueta_adaptador("enrutador", solo_base=False), "LoRA ON (Enrutador FT)")
+        self.assertEqual(demo.etiqueta_adaptador("recuperador", solo_base=False), "LoRA ON (Recuperador FT)")
         self.assertEqual(demo.etiqueta_adaptador("redactor", solo_base=False), "LoRA ON (Redactor FT)")
         self.assertEqual(demo.etiqueta_adaptador("redactor", solo_base=True), "LoRA OFF (Base)")
         self.assertEqual(demo.etiqueta_adaptador("verificador", solo_base=False), "LoRA OFF (Base)")
@@ -356,20 +364,24 @@ class TestDemoVideoD4(unittest.TestCase):
         comparativas = demo.cargar_comparativas()
         self.assertIn("dificil_25:H07", comparativas)
         txt = demo.formatear_comparativa_texto(comparativas["dificil_25:H07"])
-        self.assertIn("SISTEMA BASE D3", txt)
-        self.assertIn("SISTEMA D4 FINE-TUNED", txt)
-        self.assertIn("REDACTOR · LoRA ON (Redactor FT)", txt)
-        self.assertIn("42 / 4 = 10,5", txt)
+        self.assertIn("CONTROL BASE", txt)
+        self.assertIn("D4 3-LoRA OFICIAL", txt)
+        self.assertIn("LoRA ON (Enrutador FT)", txt)
+        self.assertIn("LoRA ON (Recuperador FT)", txt)
+        self.assertIn("LoRA ON (Redactor FT)", txt)
+        self.assertIn("10,5", txt)
 
-        html_card = demo.renderizar_comparativa_html(comparativas["dificil_25:H07"])
-        self.assertIn("Mensajes intermedios", html_card)
+        html_card = demo.render_comparativa_html(comparativas["dificil_25:H07"])
+        self.assertIn("CONTROL BASE", html_card)
+        self.assertIn("D4 3-LoRA", html_card)
         self.assertIn("LoRA ON (Redactor FT)", html_card)
 
-        fallos = demo.cargar_fallos()
-        self.assertIn("dificil_25:H06", fallos)
-        txt_fallo = demo.formatear_fallo_texto(fallos["dificil_25:H06"])
-        self.assertIn("ANÁLISIS DE FALLO dificil_25:H06", txt_fallo)
-        self.assertIn("VERIFICADOR · LoRA OFF (Base)", txt_fallo)
+        fallos = demo.cargar_fallos_y_regresiones()
+        txt_fallo = demo.formatear_fallos_texto(fallos)
+        self.assertIn("AUDITORIA DE FALLOS REALES D4 3-LoRA", txt_fallo)
+        self.assertIn("dificil_25:H03", txt_fallo)
+        self.assertIn("dificil_25:H17", txt_fallo)
+        self.assertIn("dificil_25:H06", txt_fallo)
 
     def test_cli_demo_y_notebook_video_valido(self) -> None:
         self.assertEqual(demo.main(["--listar"]), 0)
@@ -387,12 +399,15 @@ class TestDemoVideoD4(unittest.TestCase):
             py_lines = [l for l in src.splitlines() if not l.lstrip().startswith("%")]
             ast.parse("\n".join(py_lines), filename=f"video_cell_{idx}")
         src_total = "\n".join(src_celdas)
-        self.assertIn("mostrar_demo_d4", src_total)
+        self.assertIn("evaluar_multi_lora", src_total)
+        self.assertIn("verificar_aislamiento_multi_lora", src_total)
+        self.assertIn("MultiLoraGenerator", src_total)
+        self.assertIn("render_comparativa_html", src_total)
         self.assertIn("dificil_25:H07", src_total)
-        self.assertIn("dificil_25:H06", src_total)
         self.assertIn("dificil_25:H03", src_total)
+        self.assertIn("dificil_25:H17", src_total)
+        self.assertIn("dificil_25:H06", src_total)
         self.assertIn("verbose=True", src_total)
-        self.assertIn("HF_ADAPTER_REVISION_DEFAULT", src_total)
         self.assertIn("transformers==5.23.0", src_total)
         self.assertIn("huggingface-hub==1.33.0", src_total)
 

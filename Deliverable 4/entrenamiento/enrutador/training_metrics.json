@@ -3,7 +3,7 @@
   "agente": "enrutador",
   "modelo_base": "Qwen/Qwen3-4B",
   "revision_modelo_base": null,
-  "hf_repo": null,
+  "hf_repo": "Pablox0333/qwen3-4b-enrutador-udec-d4",
   "hardware": {
     "gpu": "NVIDIA A100-SXM4-40GB",
     "vram_gb": 42.41,
@@ -286,5 +286,10 @@
         "eval_loss": 0.123641
       }
     ]
-  }
+  },
+  "hf_url": "https://huggingface.co/Pablox0333/qwen3-4b-enrutador-udec-d4",
+  "hf_revision": "ab65a4f0b0e969d8e9c0d3975d06d6e1791afec7",
+  "adapter_model_sha256": "16fe1e460c6c4ced20e79a248d168702c3961647352ed29bcdb803f1d27946ff",
+  "adapter_model_bytes": 132187888,
+  "adapter_config_sha256": "a2527959eace3172df229f53ce0d40b1a15177e98deb564d65b22fb3f5063a5d"
 }

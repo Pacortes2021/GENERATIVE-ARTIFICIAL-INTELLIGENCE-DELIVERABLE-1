@@ -94,7 +94,7 @@
     "solapamiento_evidencia_vs_eval_d3": 0,
     "solapamiento_evidencia_vs_heldout_20": 0
   },
-  "declaracion_autoria": "Pares supervisados curados a partir de fragmentos literales de corpus.json con asistencia de Antigravity (modelo asistente IA) y validación automática frente a corpus.json y normas de separación de evaluación.",
+  "declaracion_autoria": "Pares supervisados redactados en dataset_blocks/ a partir de fragmentos literales de corpus.json con asistencia de Gemini 4 Argon (vía Antigravity) y validación automática frente a corpus.json y normas de separación de evaluación.",
   "antifuga_evaluacion_d3": {
     "total_preguntas_dataset": 210,
     "total_preguntas_eval": 75,

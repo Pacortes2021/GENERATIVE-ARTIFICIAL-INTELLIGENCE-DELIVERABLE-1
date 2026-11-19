@@ -2,8 +2,8 @@
 
 Complementa la muestra de **30 casos del Redactor** en [`MUESTRA_REVISION_MANUAL.md`](MUESTRA_REVISION_MANUAL.md) para completar **50 casos revisables manualmente** a través de los 3 agentes fine-tuneados de Deliverable 4.
 
-- **Enrutador (`10` casos):** 2 por cada `tipo` (`factual`, `numerica`, `condicional`, `cruce`, `premisa_falsa`; 1 `train` + 1 `val`).
-- **Recuperador (`10` casos):** cobertura estratificada de las 4 acciones (`suficiente`, `buscar`, `traer`, `existe`) en `train` y `val`.
+- **Enrutador (`10` casos):** 2 por cada `tipo` (`factual`, `numerica`, `condicional`, `cruce`, `premisa_falsa`; 1 `train` + 1 `val`). Procedencia: `30` train + `6` val escritos a mano en `enrutador_bloques.py` (con asistencia de **Gemini 4 Argon** vía Antigravity), más etiquetas derivadas por reglas (`inferir_tipo_y_subconsultas_spec`, `inferir_documentos_spec`).
+- **Recuperador (`10` casos):** cobertura estratificada de las 4 acciones (`suficiente`, `buscar`, `traer`, `existe`) en `train` y `val`. Procedencia: trayectorias sintetizadas determinísticamente por `recuperador_bloques.py` replicando a `Orquestador.recuperar()`.
 - **Antifuga:** 0 unidades bloqueadas (`D3` + `nuevas_20`), 0 menciones a QIDs de evaluación y 0 solapamiento train/val.
 
 ## Registro de Verificación Humana (20 casos)

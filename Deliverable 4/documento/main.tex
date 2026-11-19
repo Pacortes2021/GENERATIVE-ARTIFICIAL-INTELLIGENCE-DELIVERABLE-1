@@ -4,7 +4,7 @@
 \usepackage[spanish,es-noshorthands,es-tabla]{babel}
 \usepackage{lmodern,microtype,graphicx,booktabs,amsmath}
 \usepackage[table]{xcolor}
-\usepackage[margin=0.66cm,top=0.42cm,bottom=0.40cm]{geometry}
+\usepackage[margin=0.58cm,top=0.34cm,bottom=0.30cm]{geometry}
 \usepackage{hyperref}
 \definecolor{azul}{HTML}{14334B}
 \definecolor{acento}{HTML}{006699}
@@ -15,35 +15,35 @@
 \hypersetup{colorlinks=true,urlcolor=acento,linkcolor=acento,pdftitle={Especialización Multi-LoRA sobre Qwen3-4B en normativa UdeC},pdfauthor={Álvaro Contreras y Pablo Cortés},pdflang={es-CL}}
 \pagestyle{empty}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{0.9pt}
+\setlength{\parskip}{0.65pt}
 \emergencystretch=1.6em
-\newcommand{\seccion}[1]{\par\vspace{1.4pt}{\color{azul}\bfseries\fontsize{8.55}{9.6}\selectfont #1}\par\vspace{0.4pt}}
-\newcommand{\sub}{\fontsize{7.32}{8.35}\selectfont}
+\newcommand{\seccion}[1]{\par\vspace{1.0pt}{\color{azul}\bfseries\fontsize{8.25}{9.2}\selectfont #1}\par\vspace{0.28pt}}
+\newcommand{\sub}{\fontsize{7.0}{7.92}\selectfont}
 \newcommand{\REPO}{https://github.com/Pacortes2021/GENERATIVE-ARTIFICIAL-INTELLIGENCE-DELIVERABLE-1/tree/deliverable-4/Deliverable\%204}
-\newcommand{\HFRED}{https://huggingface.co/Pablox0333/qwen3-4b-redactor-udec-d4}
+\newcommand{\HFPROF}{https://huggingface.co/Pablox0333}
 \begin{document}
-{\color{azul}\bfseries\fontsize{12.0}{13.4}\selectfont Especialización Multi-LoRA por rol sobre \texttt{Qwen/Qwen3-4B} en normativa UdeC}\par
-{\color{acento}\bfseries\fontsize{8.35}{9.6}\selectfont Deliverable 4 $\cdot$ Fine-tuning supervisado Multi-LoRA (\texttt{Enrutador + Recuperador + Redactor}) sobre sistema multi-agente}\par
-{\fontsize{7.2}{8.2}\selectfont \textbf{Generative Artificial Intelligence (580694)} $\cdot$ Segundo semestre 2026\hfill Álvaro Contreras y Pablo Cortés}\par
-{\fontsize{7.2}{8.2}\selectfont \textbf{Repo:} \href{\REPO}{Deliverable 4 (deliverable-4)} $\cdot$ \textbf{HF Redactor:} \href{\HFRED}{Pablox0333/qwen3-4b-redactor-udec-d4} (\texttt{739b031}; Enr./Rec. en Drive $\rightarrow$ \texttt{publicar\_adaptadores\_hf.py}) $\cdot$ \textbf{Video ($\leq$3m):} [Pendiente enlace]}\par
-\vspace{1.0pt}{\color{azul}\hrule height .62pt}\vspace{0.8pt}
+{\color{azul}\bfseries\fontsize{11.5}{12.7}\selectfont Especialización Multi-LoRA por rol sobre \texttt{Qwen/Qwen3-4B} en normativa UdeC}\par
+{\color{acento}\bfseries\fontsize{8.0}{9.0}\selectfont Deliverable 4 $\cdot$ Fine-tuning supervisado Multi-LoRA (\texttt{Enrutador + Recuperador + Redactor}) sobre sistema multi-agente}\par
+{\fontsize{6.9}{7.8}\selectfont \textbf{Generative Artificial Intelligence (580694)} $\cdot$ Segundo semestre 2026\hfill Álvaro Contreras y Pablo Cortés}\par
+{\fontsize{6.8}{7.7}\selectfont \textbf{Repo:} \href{\REPO}{Deliverable 4 (deliverable-4)} $\cdot$ \textbf{HF (\href{\HFPROF}{Pablox0333}):} Enrutador \texttt{ab65a4f}, Recuperador \texttt{6bd665a}, Redactor \texttt{739b031} (SHA-256 en \texttt{manifest\_adaptadores\_hf.json}) $\cdot$ \textbf{Video ($\leq$3m):} [Pendiente]}\par
+\vspace{0.7pt}{\color{azul}\hrule height .62pt}\vspace{0.55pt}
 
-\seccion{1. Continuidad D1--D3, evolución 1$\rightarrow$3 adaptadores LoRA y aislamiento del Verificador}
+\seccion{1. Continuidad D1--D3, elección de agentes (eficiencia 1$\rightarrow$3 LoRA) y aislamiento del Verificador}
 {\sub
-Continuamos D1--D3 sobre normativa UdeC (\textbf{197 unidades / 201 fragmentos} de RG, RI-FI y Calendario 2026), embeddings E5, \textbf{75 preguntas oficiales} (50 orig. + 25 dif.) y el grafo de 4 agentes sobre \textbf{Qwen/Qwen3-4B} ($T=0{,}7$, \textit{thinking} OFF, prompts \texttt{prompts/01--04} idénticos a D3 v6). En D3 v6 (66/75), \textbf{8/9 errores (88,9\%)} tenían evidencia \texttt{top-6} en el \textbf{Redactor}, pero ajustar solo al Redactor (60/75 en A100 \texttt{bf16}) no resolvió fallos de ruteo y recuperación (373 llamadas en Recuperador, \texttt{H03} fuera del \texttt{top-6}, \texttt{N12/N19} sin \texttt{RG}). Conmutando \textbf{3 adaptadores QLoRA} sobre un único \texttt{Qwen/Qwen3-4B} NF4 vía \texttt{set\_adapter()} (\textbf{Enrutador + Recuperador + Redactor}) y manteniendo \textbf{Verificador en pesos base} vía \texttt{disable\_adapter()} (98/98 OFF en 75; 32/32 OFF en N20; \textbf{0 violaciones}), subimos a \textbf{64/75 (85,3\%)} y \textbf{74/95 (77,9\%)} con \textbf{$-$41,0\% llamadas}. Probamos también fine-tunear al Verificador (v1 y v2), pero bajó a 58/75 y 56/75 por sobre-rechazo, justificando empíricamente dejarlo en Base.}
+Continuamos D1--D3 sobre normativa UdeC (\textbf{197 unidades / 201 fragmentos} de RG, RI-FI y Calendario 2026), embeddings E5, \textbf{75 preguntas oficiales} (50 orig. + 25 dif.) y el grafo de 4 agentes sobre \textbf{Qwen/Qwen3-4B} ($T=0{,}7$, \textit{thinking} OFF, \texttt{prompts/01--04} idénticos a D3 v6). En el diagnóstico D3, \textbf{8/9 errores (88,9\%)} ya tenían evidencia \texttt{top-6} en el Redactor; pero al entrenar \textbf{solo al Redactor} en D4 v2 (\textbf{60/75} vs \textbf{62/75} Control Base en A100 \texttt{bf16}), las trazas evidenciaron un cuello de botella de \textbf{eficiencia operativa} previa (373 llamadas en Recuperador en 75; 162 en N20). Esto justificó entrenar adaptadores QLoRA para \textbf{Enrutador} y \textbf{Recuperador} vía \texttt{set\_adapter()} sobre un único NF4, manteniendo al \textbf{Verificador en pesos base} vía \texttt{disable\_adapter()} (98/98 OFF en 75; 32/32 OFF en N20; \textbf{0 violaciones}), logrando exactitud equivalente al Control (\textbf{64/75} y \textbf{74/95}) con \textbf{$-$41,0\% llamadas}.}
 
 \seccion{2. Grafo multi-agente con 3 agentes fine-tuned (\texttt{set\_adapter}) y Verificador base (\texttt{disable\_adapter})}
-\vspace{-2pt}\centerline{\includegraphics[width=0.92\linewidth]{grafo_d4.pdf}}
-\vspace{-2pt}{\fontsize{6.8}{7.8}\selectfont\color{gris} \textbf{\color{ambar}Enrutador}, \textbf{\color{ambar}Recuperador} y \textbf{\color{ambar}Redactor} conmutan su propio LoRA en el mismo \texttt{Qwen/Qwen3-4B} NF4; \textbf{Verificador} ejecuta con pesos base intactos (\texttt{disable\_adapter()}).}\par
-\vspace{1.2pt}{\color{azul!35}\hrule height .4pt}\vspace{1.0pt}
+\vspace{-2pt}\centerline{\includegraphics[width=0.81\linewidth]{grafo_d4.pdf}}
+\vspace{-2.5pt}{\fontsize{6.45}{7.35}\selectfont\color{gris} \textbf{\color{ambar}Enrutador}, \textbf{\color{ambar}Recuperador} y \textbf{\color{ambar}Redactor} conmutan su propio LoRA en el mismo \texttt{Qwen/Qwen3-4B} NF4; \textbf{Verificador} usa pesos base intactos (\texttt{disable\_adapter()}).}\par
+\vspace{0.8pt}{\color{azul!35}\hrule height .4pt}\vspace{0.7pt}
 
-\noindent\begin{minipage}[t]{0.486\linewidth}
+\noindent\begin{minipage}[t]{0.470\linewidth}
 \sub\raggedright
-\seccion{3. Datasets antifuga por rol (725 pares) y verificación}
-Construimos datasets independientes por agente (\texttt{seed=202604}), respetando bit a bit el formato de \texttt{prompts/01--03} y cubriendo unidades de \texttt{corpus.json} disjuntas de evaluación:\par
-\vspace{1pt}
-{\fontsize{6.1}{7.1}\selectfont\setlength{\tabcolsep}{1.4pt}
-\renewcommand{\arraystretch}{1.02}
+\seccion{3. Datasets antifuga por rol (725 pares) y procedencia}
+Generados independientemente por rol (\texttt{seed=202604}), respetando \texttt{prompts/01--03} bit a bit sobre unidades disjuntas de evaluación:\par
+\vspace{0.6pt}
+{\fontsize{5.95}{6.9}\selectfont\setlength{\tabcolsep}{1.1pt}
+\renewcommand{\arraystretch}{1.01}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lccc@{}}
 \toprule
 \textbf{Agente} & \textbf{Train/Val} & \textbf{Unid.} & \textbf{Composición / esquema}\\
@@ -55,63 +55,64 @@ Construimos datasets independientes por agente (\texttt{seed=202604}), respetand
 \textbf{Total} & \textbf{620/105 (725)} & \textbf{0\% fuga} & 0 unid. D3(40) / N20(21); 0 QIDs\\
 \bottomrule
 \end{tabular*}}
-\vspace{1.5pt}
-\textbf{Controles de calidad, autoría y revisión humana:} Validación determinista en \texttt{antifuga\_multi.py} y \texttt{construir\_dataset.py}: \textbf{0} unidades bloqueadas (ni de D3-75 ni de \texttt{preguntas\_nuevas\_20.csv}), \textbf{0} menciones QID, \textbf{0} cruce \texttt{train/val} y \textbf{0} alertas léxicas ($\text{Jaccard}\ge 0{,}80$); \texttt{Recuperador} valida \texttt{\_numero\_permitido} del orquestador en \texttt{traer/existe}. \textbf{Autoría:} pares curados por el equipo con asistencia de IA (Antigravity) verificados contra \texttt{corpus.json}. \textbf{Muestra manual (50 casos):} 30 de Redactor en \texttt{MUESTRA\_REVISION\_MANUAL.md} + 20 de Enrutador/Recuperador en \texttt{MUESTRA\_REVISION\_MANUAL\_ENRUTADOR\_RECUPERADOR.md} (pendiente firma final de par).\par
+\vspace{1.0pt}
+\textbf{Procedencia exacta, calidad y muestra:} \textbf{Redactor}: especificaciones curadas a mano por el equipo en \texttt{dataset\_blocks/} asistidas por \textbf{Gemini 4 Argon} (vía Antigravity) y validadas contra \texttt{corpus.json}. \textbf{Enrutador}: 30 train + 6 val escritos a mano (asistidos por \textbf{Gemini 4 Argon} vía Antigravity), más 210 etiquetas por reglas (\texttt{inferir\_tipo\_y\_subconsultas\_spec}, \texttt{inferir\_documentos\_spec}). \textbf{Recuperador}: trayectorias sintetizadas determinísticamente por \texttt{recuperador\_bloques.py} replicando a \texttt{Orquestador.recuperar()}. \textbf{Antifuga} (\texttt{antifuga\_multi.py}): \textbf{0} bloqueadas, \textbf{0} QIDs, \textbf{0} cruce \texttt{train/val}, \textbf{0} alertas $\text{Jaccard}\ge 0{,}80$. \textbf{Muestra manual (50 casos):} 30 Redactor (\texttt{MUESTRA\_REVISION\_MANUAL.md}) + 20 Enr./Rec. (\texttt{MUESTRA\_REVISION\_MANUAL\_ENRUTADOR\_RECUPERADOR.md}; pendiente firma final).\par
 
-\seccion{4. Entrenamiento QLoRA y convergencia de los 3 adaptadores}
-Sobre \texttt{Qwen/Qwen3-4B} (4-bit NF4, doble cuant.; 2,24B empaquetados): LoRA $r=16$, $\alpha=32$, \texttt{dropout}=0,05 en 7 proyecciones (\texttt{q,k,v,o,gate,up,down\_proj}: 33,03M entrenables = \textbf{1,48\%} NF4), \texttt{epochs}=3,0, \texttt{batch\_eff}=6, \texttt{lr}=$10^{-4}$ coseno, \texttt{paged\_adamw\_8bit}, \texttt{completion\_only\_loss=True} y \texttt{enable\_thinking=False}, con \textbf{0 ejemplos truncados} en train/val:\par
-\vspace{1pt}
-{\fontsize{6.5}{7.5}\selectfont\setlength{\tabcolsep}{1.3pt}
-\renewcommand{\arraystretch}{1.02}
+\seccion{4. Configuración QLoRA, convergencia y publicación HF}
+Sobre \texttt{Qwen/Qwen3-4B} (4-bit NF4, doble cuant.; 2,24B empaq.): LoRA $r=16$, $\alpha=32$, \texttt{dropout}=0,05 en 7 proyecciones (33,03M entrenables = \textbf{1,48\%}), \texttt{epochs}=3,0, \texttt{batch\_eff}=6, \texttt{lr}=$10^{-4}$ coseno, \texttt{completion\_only\_loss=True}, \textbf{0 truncados}:\par
+\vspace{0.6pt}
+{\fontsize{6.1}{7.05}\selectfont\setlength{\tabcolsep}{1.1pt}
+\renewcommand{\arraystretch}{1.01}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccc@{}}
 \toprule
-\textbf{Rol} & \textbf{GPU / dtype} & \textbf{Tiempo / pasos} & \textbf{\texttt{eval\_loss}} & \textbf{Mejor step}\\
+\textbf{Rol} & \textbf{Entorno} & \textbf{Tiempo / pasos} & \textbf{\texttt{eval\_loss} (mejor)} & \textbf{Rev. HF}\\
 \midrule
-\textbf{Enrutador} & A100 / \texttt{bf16} & 9,88 min / 105 & $1{,}066 \rightarrow \mathbf{0{,}123}$ & step 80\\
-\textbf{Recuperador} & A100 / \texttt{bf16} & 10,43 min / 117 & $1{,}729 \rightarrow \mathbf{0{,}186}$ & step 117\\
-\textbf{Redactor} & T4 / \texttt{fp16} & 52,38 min / 90 & $1{,}601 \rightarrow \mathbf{0{,}516}$ & step 90\\
+\textbf{Enrutador} & A100 \texttt{bf16} & 9,88m / 105 & $1{,}066\rightarrow\mathbf{0{,}123}$ (s80) & \texttt{ab65a4f}\\
+\textbf{Recuperador} & A100 \texttt{bf16} & 10,43m / 117 & $1{,}729\rightarrow\mathbf{0{,}186}$ (s117) & \texttt{6bd665a}\\
+\textbf{Redactor} & T4 \texttt{fp16} & 52,38m / 90 & $1{,}601\rightarrow\mathbf{0{,}516}$ (s90) & \texttt{739b031}\\
 \bottomrule
 \end{tabular*}}
+\vspace{0.6pt}{\fontsize{6.05}{6.85}\selectfont\color{gris} SHA-256 \texttt{adapter\_model.safetensors} verif. en HF (\texttt{manifest\_adaptadores\_hf.json}): Enr. \texttt{16fe1e46...}, Rec. \texttt{03e3d6e6...}, Red. \texttt{438a2366...} (132,2 MB c/u).}\par
 
-\vspace{1.5pt}\centerline{\includegraphics[width=0.99\linewidth]{../entrenamiento/loss_curves_3agentes.pdf}}
+\seccion{7. Reproducibilidad (\texttt{Deliverable 4/})}
+{\fontsize{6.3}{7.15}\selectfont\texttt{construir\_dataset.py}, \texttt{construir\_datasets\_agentes.py}, \texttt{entrenar\_agente.py}, \texttt{publicar\_adaptadores\_hf.py {-}{-}verificar-manifest}, \texttt{evaluar\_multi\_lora.py {-}{-}solo-hf}, \texttt{generar\_reporte\_3lora.py}; notebooks Colab, demo en \texttt{video/} y 30 tests (\texttt{unittest}).}\par
 \end{minipage}\hfill
-\begin{minipage}[t]{0.490\linewidth}
+\begin{minipage}[t]{0.514\linewidth}
 \sub\raggedright
-\seccion{5. Resultados (A100 \texttt{bf16}): 75 oficiales, Control, 20 nuevas y ablación}
-Evaluamos todas las variantes sobre \textbf{idéntico A100 40 GB (\texttt{bf16})}, semillas \texttt{2026}, prompts \texttt{v6} y pauta estricta \texttt{LEEME\_PAUTA.md} (incluye Regla 2 y Regla 3 / \texttt{P01}):\par
-\vspace{1.2pt}
-{\fontsize{5.65}{6.65}\selectfont\setlength{\tabcolsep}{0.5pt}
-\renewcommand{\arraystretch}{1.03}
+\seccion{5. Resultados (A100 \texttt{bf16}) vs históricos (T4) y análisis estadístico}
+Evaluación bajo \texttt{LEEME\_PAUTA.md} (Reglas 2 y 3 / \texttt{P01}). \textbf{Comparabilidad:} \texttt{Control Base (A100)} ejecuta exactamente D3 v6 (código, prompts y pesos base) en idéntico A100 \texttt{bf16} (semillas \texttt{2026}); D1--D3 son corridas históricas en T4 \texttt{fp16}:\par
+\vspace{0.6pt}
+{\fontsize{6.15}{7.05}\selectfont\setlength{\tabcolsep}{0.4pt}
+\renewcommand{\arraystretch}{1.02}
 \begin{tabular*}{\linewidth}{@{\extracolsep{\fill}}lcccccc@{}}
 \toprule
-\textbf{Sistema (GPU)} & \textbf{Orig.(50)} & \textbf{Dif.(25)} & \textbf{D3(75)} & \textbf{N20} & \textbf{Tot.(95)} & \textbf{Llam.75/20}\\
+\textbf{Sistema (entorno)} & \textbf{O.(50)} & \textbf{D.(25)} & \textbf{Tot.(75)} & \textbf{N20} & \textbf{Tot.(95)} & \textbf{Ll.75/20}\\
 \midrule
-D1 Directo (T4) & 1(2\%) & 0(0\%) & 1(1,3\%) & --- & --- & 75/---\\
+D1 Orig.(greedy,T4) & 2(4\%) & --- & --- & --- & --- & ---\\
+Bas.D2/D3($T$=0,7,T4) & 1(2\%) & 0(0\%) & 1(1,3\%) & --- & --- & 75/---\\
 D2 RAG E5 (T4) & 40(80\%) & 16(64\%) & 56(74,7\%) & --- & --- & 75/---\\
 D3 Base v6 (T4) & \textbf{46(92\%)} & \textbf{20(80\%)} & \textbf{66(88,0\%)} & --- & --- & 711/---\\
 \midrule
-Ctrl Base (A100) & \textbf{46(92\%)} & 16(64\%) & 62(82,7\%) & \textbf{11(55\%)} & 73(76,8\%) & 658/254\\
-1-LoRA Red.(A100) & 43(86\%) & 17(68\%) & 60(80,0\%) & 10(50\%) & 70(73,7\%) & 648/212\\
+Ctrl (=D3, A100) & \textbf{46(92\%)} & 16(64\%) & 62(82,7\%) & \textbf{11(55\%)} & 73(76,8\%) & 658/254\\
+1-LoRA Red.v2 (A100) & 43(86\%) & 17(68\%) & 60(80,0\%) & 10(50\%) & 70(73,7\%) & 648/212\\
 \rowcolor{ftsuave}\textbf{D4 3-LoRA (A100)} & \textbf{46(92\%)} & \textbf{18(72\%)} & \textbf{64(85,3\%)} & 10(50\%) & \textbf{74(77,9\%)} & \textbf{388/118}\\
 \midrule
 \color{gris}\textit{Abl.4L v1 (A100)} & \color{gris}40(80\%) & \color{gris}18(72\%) & \color{gris}58(77,3\%) & \color{gris}\textbf{14(70\%)} & \color{gris}72(75,8\%) & \color{gris}493/138\\
 \color{gris}\textit{Abl.4L v2 (A100)} & \color{gris}40(80\%) & \color{gris}16(64\%) & \color{gris}56(74,7\%) & \color{gris}12(60\%) & \color{gris}68(71,6\%) & \color{gris}486/147\\
 \bottomrule
 \end{tabular*}}
-\vspace{1pt}{\fontsize{6.45}{7.4}\selectfont\color{gris} \textbf{0} citas inexistentes/fuera de evidencia, \textbf{0} fallbacks y \textbf{0} violaciones LoRA en \texttt{3-LoRA}. Tiempos 75 / N20: Base 75,3 / 32,8 min vs \textbf{3-LoRA 72,6 / 30,2 min} (ciclos prom. 1,31 / 1,60). Núcleo sin \texttt{P01}: 65/75 y 11/20. En \texttt{P7} y \texttt{P8} el contenido es correcto aunque omite literal ``\texttt{Fuente:}'' (62/75 si se exigiera línea literal).}\par
+\vspace{0.7pt}{\fontsize{6.15}{7.0}\selectfont\color{gris} \textbf{Variación base:} El mismo sistema base baja 66$\rightarrow$62 entre T4 y A100 (mayor que el +2 observado). \textbf{0} citas inválidas, \textbf{0} fallbacks y \textbf{0} violaciones LoRA en \texttt{3-LoRA}. Tiempos 75 / N20: Base 75,3 / 32,8 min vs \textbf{3-LoRA} 72,6 / 30,2 min ($-$3,7\% en 75; Redactor domina la latencia). Núcleo sin \texttt{P01}: 65/75 y 11/20 (\texttt{P7} y \texttt{P8} cumplen \texttt{LEEME\_PAUTA.md} con citas inline aunque omitan línea literal \texttt{Fuente:}).}\par
 
-\textbf{Qué cambió en la arquitectura:} El \textbf{Recuperador LoRA} redujo llamadas de \textbf{387$\rightarrow$117 en 75 ($-$69,8\%)} y \textbf{162$\rightarrow$34 en N20}, recortando llamadas totales \textbf{658$\rightarrow$388 ($-$41,0\%)} y \textbf{254$\rightarrow$118 ($-$53,5\%)}; el \textbf{Enrutador LoRA} corrigió rutas (\texttt{N12} agrega \texttt{RG} junto a \texttt{RI-FI}). Frente a Control Base A100 en las 75, \textbf{3-LoRA} gana 5 (\texttt{P11, P43, H07, H18, H24}) y pierde 3 (\texttt{P24, P26, H17}; \textbf{+2}). Ej. en vivo \texttt{H07} (42 créditos / 4.\textsuperscript{o} sem.): Base cayó en 3 ciclos (\textbf{177,4 s}, abstención falsa) y Solo Redactor en 2 (\textbf{89,0 s}); \textbf{3-LoRA} resuelve en \textbf{1 ciclo / 4 llamadas (53,8 s)} calculando $42/4=10{,}5>10$. En 75 alcanza \textbf{10/10} en \texttt{factual, numerica, abstencion}, \textbf{9/10} \texttt{cruce}, \textbf{3/3} \texttt{negacion\_excepcion} y \textbf{3/4} \texttt{multi\_salto}.\par
+\textbf{Lectura honesta y mecanismos reales:} Frente a Control Base A100, \texttt{3-LoRA} obtiene \textbf{exactitud estadísticamente equivalente}: en 75 gana 5 (\texttt{P11,P43,H07,H18,H24}) y pierde 3 (\texttt{P24,P26,H17}; McNemar $p=0{,}73$); en \texttt{N20} \textbf{pierde $-$1} (\texttt{10/20} vs \texttt{11/20}: gana \texttt{N09,N12}, pierde \texttt{N05,N06,N20}); y en 95 marca 7/6 ($p=1{,}0$). Como \texttt{3-LoRA} se eligió entre 5 variantes mirando estas 95 preguntas, \texttt{N20} no actúa como set ciego estricto entre arquitecturas. El \textbf{Recuperador LoRA} explica el \textbf{$-$41,0\%} de llamadas totales porque \textbf{aprendió cuándo detenerse}: emite \texttt{suficiente} en paso 1 en \textbf{65/75} casos (21 búsquedas propias vs 157 del Control; $-$69,8\% llamadas Recuperador). El \textbf{Enrutador} pasa \texttt{documentos} solo como contexto sin filtrar \texttt{Orquestador.recuperar()} (62,4\% de su train y 49/75 dicen solo \texttt{RG}), sin corregir rutas por filtrado. En \texttt{H07} en vivo: Control Base acertó $10{,}5>10$ en ciclo 2 pero el Verificador base lo rechazó forzando abstención en ciclo 3 (177,4 s); 1-LoRA tardó 89,4 s; \textbf{3-LoRA} resuelve en 1 ciclo / 4 llamadas (53,8 s).\par
+\end{minipage}
+
+\vspace{0.8pt}\centerline{\includegraphics[width=0.92\linewidth]{../entrenamiento/loss_curves_3agentes.pdf}}\vspace{0.5pt}
+{\color{azul!35}\hrule height .4pt}\vspace{0.35pt}
 
 \seccion{6. Análisis crítico de fallos reales y por qué Verificador queda en Base}
-Auditoría completa en \texttt{casos\_fallo\_y\_regresion\_3lora.json} (11 fallos en 75: \textbf{Redactor 6, Recuperador 3, Verificador Base 2}; y 10 en N20: 4 / 3 / 3):\par
-
-\textbf{1) Corte prematuro del Recuperador LoRA (\texttt{P25, P36, H03; N16, N18, N19}):} Al aprender a parar rápido con \texttt{suficiente}, a veces corta la segunda mitad de preguntas compuestas: en \texttt{P36} trae calendario \texttt{CAL-2026-S2-01} pero omite buscar \texttt{RI-FI-ART-008} (falsa abstención sobre créditos); en \texttt{H03} declara \texttt{suficiente} con \texttt{CAL-2026-S1-02/S2-02} aún ausentes (3 ciclos, 198,1 s calculando 153 días errados); en \texttt{N18} trae \texttt{RG-ART-002} en vez de \texttt{RG-TRANS-002}.\par
-
-\textbf{2) Sobre-rechazo del Verificador (\texttt{H17, H19; N05, N11, N20}) y ablación:} En \texttt{H17}, ciclo 1 de \texttt{3-LoRA} respondía exactamente (\textit{``máximo 80\% ... o hasta 100\%''}), pero 3 rechazos alucinados del Verificador base forzaron ciclo 3 a invertir la regla (\textit{``entre 80\% y 100\%''}, 178,2 s). Entrenar al Verificador tampoco ayudó: \texttt{v1} colapsó abstenciones \texttt{No aplica} (58/75) y \texttt{v2} siguió rechazando borradores válidos (56/75), validando mantenerlo Base.\par
-
-\textbf{3) Errores residuales del Redactor (\texttt{H06, H12, H22, H25, P24, P26; N01, N06, N07, N10}):} \texttt{H06} abre con polaridad invertida (\textit{``No cae... 38/4=9,5''}) seguida de rechazo erróneo de división; \texttt{H12/P26} mezclan plazos Baja Académica vs No Inscripción y Art.\,35 vs 33; \texttt{H25} escribe \texttt{No aplica} omitiendo filtro Primer Año; \texttt{N07} calcula 134 vs 126 días.\par
-
-\seccion{7. Reproducibilidad (\texttt{Deliverable 4/})}
-{\fontsize{6.65}{7.65}\selectfont\texttt{scripts/construir\_dataset.py}, \texttt{construir\_datasets\_agentes.py}, \texttt{entrenar\_agente.py}, \texttt{evaluar\_multi\_lora.py}, \texttt{publicar\_adaptadores\_hf.py}, \texttt{generar\_reporte\_3lora.py}; notebooks Colab y visor en vivo en \texttt{video/}.}
-\end{minipage}
+{\sub
+Trazas completas de los \textbf{11 fallos de 75} en \texttt{casos\_fallo\_y\_regresion\_3lora.json} (Redactor 6, Recuperador 3, Verificador Base 2); las trazas de los \textbf{10 fallos de N20} (4 / 3 / 3) están en \texttt{trazas\_3lora\_nuevas20.json} + \texttt{auditoria\_3lora\_nuevas20.json}:
+\textbf{1) Cortes prematuros del Recuperador (\texttt{P25, P36, H03; N16, N18, N19}):} Al detenerse rápido con \texttt{suficiente}, corta la 2.\textsuperscript{a} parte de preguntas compuestas (\texttt{P36} omite \texttt{RI-FI-ART-008}; \texttt{H03} deja fuera \texttt{CAL-2026-S1-02/S2-02} y calcula 153 días errados en 3 ciclos, 198,1 s).
+\textbf{2) Sobre-rechazo del Verificador (\texttt{H17, H19; N05, N11, N20}) y ablación:} En \texttt{H17}, ciclo 1 era ambiguo (\textit{``asistencia mínima de 80\% ... (máximo 80\%)''}), pero 3 rechazos alucinados del Verificador base forzaron invertirlo en ciclo 3 (178,2 s). Entrenar al Verificador tampoco mejoró el conjunto: \texttt{4-LoRA v1} subió a \textbf{14/20} en N20 pero colapsó en abstenciones de D3 (\textbf{58/75}), y \texttt{v2} siguió rechazando borradores válidos (\textbf{56/75}).
+\textbf{3) Errores residuales del Redactor (\texttt{H06, H12, H22, H25, P24, P26; N01, N06, N07, N10}):} \texttt{H06} abre con polaridad invertida (\textit{``No cae... 38/4=9,5''}) seguida de rechazo erróneo de división; \texttt{H12/P26} mezclan plazos Baja Académica vs No Inscripción y Art.\,35 vs 33; \texttt{H25} escribe \texttt{No aplica} omitiendo Primer Año; \texttt{N07} calcula 134 vs 126 días.\par}
 \end{document}

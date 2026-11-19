@@ -541,7 +541,7 @@ def generar_muestra_manual(
         "",
         "## Autoría y Separación de Datos (v2)",
         "- **Fuente normativa:** Fragmentos literales de `corpus.json` (reglamentos y calendario UdeC).",
-        "- **Autoría de los pares supervisados:** Especificaciones redactadas y curadas por el equipo con asistencia de **Antigravity (modelo asistente IA)** y verificadas programáticamente contra `corpus.json` (citas, cálculos aritméticos y fechas).",
+        "- **Autoría de los pares supervisados:** Especificaciones redactadas y curadas por el equipo en `dataset_blocks/` con asistencia de **Gemini 4 Argon (vía Antigravity)** y verificadas programáticamente contra `corpus.json` (citas, cálculos aritméticos y fechas).",
         "- **Separación estricta:** 0 de las 40 unidades de corpus evaluadas en las 75 preguntas de D3 y 0 de las 21 unidades reservadas para `preguntas_nuevas_20.csv` aparecen en `evidencia_clave`, `distractores` ni referencias textuales del dataset.",
         "",
         "## Registro de Verificación Humana (30 casos)",
@@ -782,9 +782,9 @@ def construir_dataset(
             "solapamiento_evidencia_vs_heldout_20": len(unidades_usadas & HELDOUT_21_UNIT_IDS),
         },
         "declaracion_autoria": (
-            "Pares supervisados curados a partir de fragmentos literales de corpus.json "
-            "con asistencia de Antigravity (modelo asistente IA) y validación automática "
-            "frente a corpus.json y normas de separación de evaluación."
+            "Pares supervisados redactados en dataset_blocks/ a partir de fragmentos literales "
+            "de corpus.json con asistencia de Gemini 4 Argon (vía Antigravity) y validación "
+            "automática frente a corpus.json y normas de separación de evaluación."
         ),
         "antifuga_evaluacion_d3": auditoria,
         "antifuga_evaluacion_nuevas_20": auditoria_nuevas,

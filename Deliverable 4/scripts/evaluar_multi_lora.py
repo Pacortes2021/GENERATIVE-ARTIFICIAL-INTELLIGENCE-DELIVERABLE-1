@@ -38,8 +38,14 @@ DEFAULT_DRIVE_ENTRENAMIENTO = Path("/content/drive/MyDrive/UdeC_GenIA_Exp_MultiL
 MANIFEST_HF_PATH = D4_TRAIN_DIR / "manifest_adaptadores_hf.json"
 
 HF_REPOS_D4: dict[str, tuple[str, str | None]] = {
-    "enrutador": ("Pablox0333/qwen3-4b-enrutador-udec-d4", None),
-    "recuperador": ("Pablox0333/qwen3-4b-recuperador-udec-d4", None),
+    "enrutador": (
+        "Pablox0333/qwen3-4b-enrutador-udec-d4",
+        "ab65a4f0b0e969d8e9c0d3975d06d6e1791afec7",
+    ),
+    "recuperador": (
+        "Pablox0333/qwen3-4b-recuperador-udec-d4",
+        "6bd665a314663f224ef3eb17823febbd9bc1d10c",
+    ),
     "redactor": (ed4.HF_ADAPTER_DEFAULT, ed4.HF_ADAPTER_REVISION_DEFAULT),
     "verificador": (str(D4_TRAIN_DIR / "verificador" / "adapter"), None),
 }

@@ -144,7 +144,7 @@ def generar_curva_3_agentes(
         ("Redactor", train_dir / "training_metrics.json", "#b45309"),
     ]
 
-    fig, axes = plt.subplots(1, 3, figsize=(10.2, 2.75), dpi=300)
+    fig, axes = plt.subplots(1, 3, figsize=(11.5, 1.98), dpi=300)
     for ax, (titulo, mpath, color) in zip(axes, specs):
         m = json.loads(mpath.read_text(encoding="utf-8"))
         curvas = m["curvas"]
@@ -159,7 +159,7 @@ def generar_curva_3_agentes(
                 [p["loss"] for p in train_pts],
                 color=color,
                 alpha=0.55,
-                linewidth=1.35,
+                linewidth=1.45,
                 label="Train",
             )
         if eval_pts:
@@ -168,26 +168,26 @@ def generar_curva_3_agentes(
                 [p["eval_loss"] for p in eval_pts],
                 color="#14334b",
                 marker="o",
-                markersize=3.2,
-                linewidth=1.8,
+                markersize=3.6,
+                linewidth=1.95,
                 label="Val",
             )
         if mejor_step is not None:
-            ax.axvline(mejor_step, color="#059669", linestyle="--", linewidth=1.0, alpha=0.85)
+            ax.axvline(mejor_step, color="#059669", linestyle="--", linewidth=1.1, alpha=0.85)
 
         ax.set_title(
-            f"{titulo}\nval: {res['eval_loss_inicial']:.3f} → {res['mejor_eval_loss']:.3f} (step {mejor_step})",
-            fontsize=8.2,
+            f"{titulo} — val: {res['eval_loss_inicial']:.3f} → {res['mejor_eval_loss']:.3f} (step {mejor_step})",
+            fontsize=9.2,
             fontweight="bold",
             color="#14334b",
         )
-        ax.set_xlabel("Paso", fontsize=7.5)
-        ax.tick_params(labelsize=7.0)
+        ax.set_xlabel("Paso", fontsize=8.5)
+        ax.tick_params(labelsize=8.0)
         ax.grid(True, linestyle=":", alpha=0.35)
-        ax.legend(fontsize=6.8, loc="upper right", frameon=True)
+        ax.legend(fontsize=8.0, loc="upper right", frameon=True)
 
-    axes[0].set_ylabel("Loss (completion-only)", fontsize=7.5)
-    fig.tight_layout(pad=0.7)
+    axes[0].set_ylabel("Loss (completion-only)", fontsize=8.5)
+    fig.tight_layout(pad=0.6)
 
     out_pdf = train_dir / "loss_curves_3agentes.pdf"
     out_png = train_dir / "loss_curves_3agentes.png"
@@ -381,6 +381,18 @@ def generar_resumen_comparativo_d4(
             ag: {
                 "modelo_base": m["modelo_base"],
                 "hf_repo": m.get("hf_repo"),
+                "hf_revision": m.get("hf_revision")
+                or (
+                    "739b031acbd5feef2c49f946b94722712209bce0"
+                    if ag == "redactor"
+                    else None
+                ),
+                "adapter_model_sha256": m.get("adapter_model_sha256")
+                or (
+                    "438a23664aab0457b060a42fb0eea77d6db82949459aa33280c36dcdb755b3c1"
+                    if ag == "redactor"
+                    else None
+                ),
                 "hardware": m["hardware"]["gpu"],
                 "dtype": m["hardware"]["compute_dtype"],
                 "train_ejemplos": m["datos"]["train_ejemplos"],

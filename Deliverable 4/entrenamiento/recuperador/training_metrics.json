@@ -3,7 +3,7 @@
   "agente": "recuperador",
   "modelo_base": "Qwen/Qwen3-4B",
   "revision_modelo_base": null,
-  "hf_repo": null,
+  "hf_repo": "Pablox0333/qwen3-4b-recuperador-udec-d4",
   "hardware": {
     "gpu": "NVIDIA A100-SXM4-40GB",
     "vram_gb": 42.41,
@@ -283,5 +283,10 @@
         "eval_loss": 0.18581
       }
     ]
-  }
+  },
+  "hf_url": "https://huggingface.co/Pablox0333/qwen3-4b-recuperador-udec-d4",
+  "hf_revision": "6bd665a314663f224ef3eb17823febbd9bc1d10c",
+  "adapter_model_sha256": "03e3d6e614f19021e2540ec0a586d710b339d5409d05363ed1a9f5ac3fb9e40b",
+  "adapter_model_bytes": 132187888,
+  "adapter_config_sha256": "d558b4460bc4e584b1f7a8e93ade9c2144bef6b321257c120803b7239edcc068"
 }

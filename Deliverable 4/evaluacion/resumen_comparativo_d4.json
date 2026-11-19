@@ -3,7 +3,9 @@
   "entrenamientos": {
     "enrutador": {
       "modelo_base": "Qwen/Qwen3-4B",
-      "hf_repo": null,
+      "hf_repo": "Pablox0333/qwen3-4b-enrutador-udec-d4",
+      "hf_revision": "ab65a4f0b0e969d8e9c0d3975d06d6e1791afec7",
+      "adapter_model_sha256": "16fe1e460c6c4ced20e79a248d168702c3961647352ed29bcdb803f1d27946ff",
       "hardware": "NVIDIA A100-SXM4-40GB",
       "dtype": "torch.bfloat16",
       "train_ejemplos": 210,
@@ -17,7 +19,9 @@
     },
     "recuperador": {
       "modelo_base": "Qwen/Qwen3-4B",
-      "hf_repo": null,
+      "hf_repo": "Pablox0333/qwen3-4b-recuperador-udec-d4",
+      "hf_revision": "6bd665a314663f224ef3eb17823febbd9bc1d10c",
+      "adapter_model_sha256": "03e3d6e614f19021e2540ec0a586d710b339d5409d05363ed1a9f5ac3fb9e40b",
       "hardware": "NVIDIA A100-SXM4-40GB",
       "dtype": "torch.bfloat16",
       "train_ejemplos": 230,
@@ -32,6 +36,8 @@
     "redactor": {
       "modelo_base": "Qwen/Qwen3-4B",
       "hf_repo": "Pablox0333/qwen3-4b-redactor-udec-d4",
+      "hf_revision": "739b031acbd5feef2c49f946b94722712209bce0",
+      "adapter_model_sha256": "438a23664aab0457b060a42fb0eea77d6db82949459aa33280c36dcdb755b3c1",
       "hardware": "Tesla T4",
       "dtype": "torch.float16",
       "train_ejemplos": 180,

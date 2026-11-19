@@ -160,16 +160,28 @@ class TestEntrenamientoYPublicacionMultiLora(unittest.TestCase):
         manifest_path = TRAIN_DIR / "manifest_adaptadores_hf.json"
         self.assertTrue(manifest_path.is_file())
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
-        self.assertIn("redactor", manifest["adaptadores"])
-        red_info = manifest["adaptadores"]["redactor"]
-        self.assertTrue(red_info["publicado"])
-        self.assertEqual(len(red_info["hf_revision"]), 40)
-        self.assertEqual(len(red_info["adapter_model_sha256"]), 64)
+        for rol in ("enrutador", "recuperador", "redactor"):
+            self.assertIn(rol, manifest["adaptadores"])
+            info = manifest["adaptadores"][rol]
+            self.assertTrue(info["publicado"], f"Falta publicar {rol} en HF")
+            self.assertEqual(len(str(info["hf_revision"])), 40, f"Revisión no fijada para {rol}")
+            self.assertEqual(len(str(info["adapter_model_sha256"])), 64, f"SHA-256 faltante para {rol}")
+            self.assertEqual(eml.HF_REPOS_D4[rol][1], info["hf_revision"])
 
-        for rol, info in manifest["adaptadores"].items():
-            if info.get("publicado"):
-                self.assertTrue(bool(info.get("hf_revision")), f"Falta hf_revision en {rol}")
-                self.assertEqual(len(str(info.get("adapter_model_sha256") or "")), 64)
+        for cfg_name in (
+            "configuracion_3lora_75.json",
+            "configuracion_3lora_nuevas20.json",
+            "auditoria_3lora_75.json",
+            "auditoria_3lora_nuevas20.json",
+        ):
+            raw = json.loads((EVAL_DIR / cfg_name).read_text(encoding="utf-8"))
+            fpr = raw.get("configuracion_runtime", raw).get("fuentes_por_rol", {})
+            for rol in ("enrutador", "recuperador", "redactor"):
+                self.assertEqual(fpr[rol]["revision"], manifest["adaptadores"][rol]["hf_revision"])
+                self.assertEqual(
+                    fpr[rol]["sha256_adapter_model"],
+                    manifest["adaptadores"][rol]["adapter_model_sha256"],
+                )
 
         for rol, exp_tr, exp_va in (("enrutador", 210, 36), ("recuperador", 230, 39)):
             d = TRAIN_DIR / rol

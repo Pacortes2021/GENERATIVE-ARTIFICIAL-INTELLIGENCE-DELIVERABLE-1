@@ -4,7 +4,7 @@ Muestra estratificada de **30 ejemplos** (`3 train + 2 val` por cada uno de los 
 
 ## Autoría y Separación de Datos (v2)
 - **Fuente normativa:** Fragmentos literales de `corpus.json` (reglamentos y calendario UdeC).
-- **Autoría de los pares supervisados:** Especificaciones redactadas y curadas por el equipo con asistencia de **Antigravity (modelo asistente IA)** y verificadas programáticamente contra `corpus.json` (citas, cálculos aritméticos y fechas).
+- **Autoría de los pares supervisados:** Especificaciones redactadas y curadas por el equipo en `dataset_blocks/` con asistencia de **Gemini 4 Argon (vía Antigravity)** y verificadas programáticamente contra `corpus.json` (citas, cálculos aritméticos y fechas).
 - **Separación estricta:** 0 de las 40 unidades de corpus evaluadas en las 75 preguntas de D3 y 0 de las 21 unidades reservadas para `preguntas_nuevas_20.csv` aparecen en `evidencia_clave`, `distractores` ni referencias textuales del dataset.
 
 ## Registro de Verificación Humana (30 casos)

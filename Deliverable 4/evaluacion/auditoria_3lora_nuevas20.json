@@ -18,16 +18,21 @@
     ],
     "fuentes_por_rol": {
       "enrutador": {
-        "fuente": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/enrutador/adapter",
-        "revision": null
+        "fuente": "Pablox0333/qwen3-4b-enrutador-udec-d4",
+        "revision": "ab65a4f0b0e969d8e9c0d3975d06d6e1791afec7",
+        "sha256_adapter_model": "16fe1e460c6c4ced20e79a248d168702c3961647352ed29bcdb803f1d27946ff",
+        "ruta_evaluacion_drive": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/enrutador/adapter"
       },
       "recuperador": {
-        "fuente": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/recuperador/adapter",
-        "revision": null
+        "fuente": "Pablox0333/qwen3-4b-recuperador-udec-d4",
+        "revision": "6bd665a314663f224ef3eb17823febbd9bc1d10c",
+        "sha256_adapter_model": "03e3d6e614f19021e2540ec0a586d710b339d5409d05363ed1a9f5ac3fb9e40b",
+        "ruta_evaluacion_drive": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/recuperador/adapter"
       },
       "redactor": {
         "fuente": "Pablox0333/qwen3-4b-redactor-udec-d4",
-        "revision": "739b031acbd5feef2c49f946b94722712209bce0"
+        "revision": "739b031acbd5feef2c49f946b94722712209bce0",
+        "sha256_adapter_model": "438a23664aab0457b060a42fb0eea77d6db82949459aa33280c36dcdb755b3c1"
       }
     },
     "hardware": {

@@ -56,7 +56,7 @@ Construidos determinísticamente (`seed=202604`) con **`0` unidades compartidas*
 | **Enrutador** | `210 / 36` (`246`) | `97/197` | `30` train + `6` val escritos a mano en `enrutador_bloques.py` (asistido por **Gemini 4 Argon** vía Antigravity), más `210` etiquetas por reglas (`inferir_tipo_y_subconsultas_spec`, `inferir_documentos_spec`). | A100 `bf16`: `9,88 min / 105` pasos · `1,066 -> 0,123` (`step 80`) |
 | **Recuperador** | `230 / 39` (`269`) | `109/197` | Trayectorias ReAct sintetizadas determinísticamente por `recuperador_bloques.py` replicando a `Orquestador.recuperar()` (`_numero_permitido`). | A100 `bf16`: `10,43 min / 117` pasos · `1,729 -> 0,186` (`step 117`) |
 | **Redactor** | `180 / 30` (`210`) | `112/197` | Especificaciones curadas a mano por el equipo en `dataset_blocks/` con asistencia de **Gemini 4 Argon** (vía Antigravity), validadas contra `corpus.json` (`74/210` con `No aplica`). | T4 `fp16`: `52,38 min / 90` pasos · `1,601 -> 0,516` (`step 90`) |
-| **Total D4** | **`620 / 105` (`725`)** | **`0%` fuga** | Revisión manual (50 casos): `30` en [`MUESTRA_REVISION_MANUAL.md`](datos/MUESTRA_REVISION_MANUAL.md) + `20` en [`MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md`](datos/MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md) *(pendiente firma)*. | Gráfica en [`entrenamiento/loss_curves_3agentes.png`](entrenamiento/loss_curves_3agentes.png) |
+| **Total D4** | **`620 / 105` (`725`)** | **`0%` fuga** | Revisión manual (`50/50` **aprobados y firmados el `2026-11-19`** por Álvaro Contreras y Pablo Cortés): `30` en [`MUESTRA_REVISION_MANUAL.md`](datos/MUESTRA_REVISION_MANUAL.md) ([firmas](datos/revision_manual_firmas.csv)) + `20` en [`MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md`](datos/MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md) ([firmas](datos/revision_manual_firmas_agentes.csv)). | Gráfica en [`entrenamiento/loss_curves_3agentes.png`](entrenamiento/loss_curves_3agentes.png) |
 
 ---
 
@@ -78,7 +78,7 @@ python3 -m unittest discover -s "Deliverable 4/tests" -v
 cd "Deliverable 4/documento" && tectonic grafo_d4.tex && tectonic main.tex
 ```
 
-**Checklist final antes del merge a `main`:**
-1. **Reproducir desde HF en Colab:** correr el Paso 4 de [`D4_colab_evaluacion.ipynb`](D4_colab_evaluacion.ipynb) (`--solo-hf` sobre las `7` preguntas de la comparativa) para confirmar descarga limpia sin Drive.
-2. **Firmas humanas (50 casos):** completar `datos/revision_manual_firmas.csv` (`30`) y `datos/revision_manual_firmas_agentes.csv` (`20`) con los veredictos reales de Álvaro y Pablo.
-3. **Ensayar y grabar video (≤ 3 min):** probar `H07` en [`D4_colab_video_demo.ipynb`](D4_colab_video_demo.ipynb) (`MONTAR_DRIVE = False`), grabar y pegar el enlace público en los READMEs y `main.tex` (actualizando los links `tree/deliverable-4` -> `main`).
+**Estado de verificación y pendiente único antes del merge a `main`:**
+1. **Reproducido desde Hugging Face en Colab A100 (`--solo-hf`, sin Drive) — Completado:** corrida de verificación en [`D4_colab_evaluacion.ipynb`](D4_colab_evaluacion.ipynb) archivada en [`evaluacion/comparativa_reproduccion_hf.json`](evaluacion/comparativa_reproduccion_hf.json) (`7` casos pareados Base vs `3-LoRA`, confirmando descarga limpia de los `3` adaptadores y `H07` aprobado en `1` ciclo / `59,91 s` frente a `3` ciclos / `172,56 s` en Base).
+2. **Firmas humanas (`50/50` casos) — Completado (`2026-11-19`):** `30` casos del Redactor en [`datos/revision_manual_firmas.csv`](datos/revision_manual_firmas.csv) y `20` del Enrutador/Recuperador en [`datos/revision_manual_firmas_agentes.csv`](datos/revision_manual_firmas_agentes.csv) aprobados y firmados por **Álvaro Contreras y Pablo Cortés** (`0` pendientes).
+3. **Ensayar y grabar video (≤ 3 min) — Único pendiente:** probar `H07` en [`D4_colab_video_demo.ipynb`](D4_colab_video_demo.ipynb) (`MONTAR_DRIVE = False`), grabar y pegar el enlace público en los READMEs y `main.tex` (actualizando los links `tree/deliverable-4` -> `main` al hacer el merge).

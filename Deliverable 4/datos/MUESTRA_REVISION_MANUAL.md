@@ -13,36 +13,36 @@ Muestra estratificada de **30 ejemplos** (`3 train + 2 val` por cada uno de los 
 
 | # | ID | Bloque / Split | Revisor | Fecha | Resultado | Observaciones |
 |---|---|---|---|:---:|---|---|
-| 01 | `B1-T01` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 02 | `B1-T18` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 03 | `B1-T35` | `citas_cruce` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 04 | `B1-V01` | `citas_cruce` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 05 | `B1-V05` | `citas_cruce` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 06 | `B2-T01` | `condiciones_excepciones` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 07 | `B2-T18` | `condiciones_excepciones` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 08 | `B2-T35` | `condiciones_excepciones` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 09 | `B2-V01` | `condiciones_excepciones` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 10 | `B2-V05` | `condiciones_excepciones` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 11 | `B3-T01` | `polares_y_lectura` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 12 | `B3-T16` | `polares_y_lectura` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 13 | `B3-T30` | `polares_y_lectura` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 14 | `B3-V01` | `polares_y_lectura` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 15 | `B3-V05` | `polares_y_lectura` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 16 | `B4-T01` | `calculos_y_orden` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 17 | `B4-T16` | `calculos_y_orden` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 18 | `B4-T30` | `calculos_y_orden` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 19 | `B4-V01` | `calculos_y_orden` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 20 | `B4-V05` | `calculos_y_orden` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 21 | `B5-T01` | `resiliencia_feedback` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 22 | `B5-T13` | `resiliencia_feedback` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 23 | `B5-T25` | `resiliencia_feedback` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 24 | `B5-V01` | `resiliencia_feedback` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 25 | `B5-V05` | `resiliencia_feedback` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 26 | `B6-T01` | `abstencion_honesta` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 27 | `B6-T13` | `abstencion_honesta` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 28 | `B6-T25` | `abstencion_honesta` / `train` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 29 | `B6-V01` | `abstencion_honesta` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
-| 30 | `B6-V05` | `abstencion_honesta` / `val` | `[Pendiente revisor]` | `[YYYY-MM-DD]` | `[Pendiente]` | |
+| 01 | `B1-T01` | `citas_cruce` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 02 | `B1-T18` | `citas_cruce` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 03 | `B1-T35` | `citas_cruce` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 04 | `B1-V01` | `citas_cruce` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 05 | `B1-V05` | `citas_cruce` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 06 | `B2-T01` | `condiciones_excepciones` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 07 | `B2-T18` | `condiciones_excepciones` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 08 | `B2-T35` | `condiciones_excepciones` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 09 | `B2-V01` | `condiciones_excepciones` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 10 | `B2-V05` | `condiciones_excepciones` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 11 | `B3-T01` | `polares_y_lectura` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 12 | `B3-T16` | `polares_y_lectura` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 13 | `B3-T30` | `polares_y_lectura` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 14 | `B3-V01` | `polares_y_lectura` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 15 | `B3-V05` | `polares_y_lectura` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 16 | `B4-T01` | `calculos_y_orden` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 17 | `B4-T16` | `calculos_y_orden` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 18 | `B4-T30` | `calculos_y_orden` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 19 | `B4-V01` | `calculos_y_orden` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 20 | `B4-V05` | `calculos_y_orden` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 21 | `B5-T01` | `resiliencia_feedback` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 22 | `B5-T13` | `resiliencia_feedback` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 23 | `B5-T25` | `resiliencia_feedback` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 24 | `B5-V01` | `resiliencia_feedback` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 25 | `B5-V05` | `resiliencia_feedback` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 26 | `B6-T01` | `abstencion_honesta` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 27 | `B6-T13` | `abstencion_honesta` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 28 | `B6-T25` | `abstencion_honesta` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 29 | `B6-V01` | `abstencion_honesta` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 30 | `B6-V05` | `abstencion_honesta` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
 
 Criterios a revisar en cada ejemplo:
 1. La respuesta esperada se deduce íntegramente de los fragmentos literales mostrados en `<evidencia>`.

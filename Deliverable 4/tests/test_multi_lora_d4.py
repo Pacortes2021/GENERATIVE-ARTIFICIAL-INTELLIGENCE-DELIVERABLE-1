@@ -103,9 +103,10 @@ class TestDatasetsYAntifugaMultiLora(unittest.TestCase):
     def test_reconstruccion_determinista_y_muestra_manual_enrutador_recuperador(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             tmp_datos = Path(tmp)
-            res_red = DATOS_DIR / "dataset_resumen.json"
-            if res_red.is_file():
-                (tmp_datos / "dataset_resumen.json").write_bytes(res_red.read_bytes())
+            for fname in ("dataset_resumen.json", "revision_manual_firmas_agentes.csv"):
+                src = DATOS_DIR / fname
+                if src.is_file():
+                    (tmp_datos / fname).write_bytes(src.read_bytes())
 
             resumen = cda.construir_datasets_agentes_d4(datos_dir=tmp_datos, seed=202604)
             self.assertEqual(resumen["agentes"]["enrutador"]["train"], 210)
@@ -133,18 +134,67 @@ class TestDatasetsYAntifugaMultiLora(unittest.TestCase):
 
             ids_esperados = resumen["muestra_manual_enrutador_recuperador_ids"]
             self.assertEqual(len(ids_esperados), 20)
-            firmas_csv = tmp_datos / "revision_manual_firmas_agentes.csv"
-            self.assertFalse(cda.validar_firmas_agentes_completas(firmas_csv, ids_esperados)["completo"])
+            firmas_faltante = tmp_datos / "firmas_faltante.csv"
+            self.assertFalse(cda.validar_firmas_agentes_completas(firmas_faltante, ids_esperados)["completo"])
 
-            with firmas_csv.open("w", encoding="utf-8", newline="\n") as f:
+            firmas_sint = tmp_datos / "firmas_sinteticas.csv"
+            with firmas_sint.open("w", encoding="utf-8", newline="\n") as f:
                 writer = csv.writer(f)
                 writer.writerow(["sample_id", "revisor", "fecha", "veredicto", "observacion"])
                 for sid in ids_esperados:
                     writer.writerow([sid, "Álvaro Contreras", "2026-11-19", "Aprobado", "OK"])
 
-            estado_ok = cda.validar_firmas_agentes_completas(firmas_csv, ids_esperados)
+            estado_ok = cda.validar_firmas_agentes_completas(firmas_sint, ids_esperados)
             self.assertTrue(estado_ok["completo"])
             self.assertEqual(estado_ok["firmados"], 20)
+
+    def test_firmas_humanas_50_completas_y_reproduccion_hf(self) -> None:
+        res_red = json.loads((DATOS_DIR / "dataset_resumen.json").read_text(encoding="utf-8"))
+        ids_red = res_red["muestra_revision_manual_ids"]
+        self.assertEqual(len(ids_red), 30)
+
+        firmas_red_csv = DATOS_DIR / "revision_manual_firmas.csv"
+        self.assertTrue(firmas_red_csv.is_file())
+        with firmas_red_csv.open("r", encoding="utf-8", newline="") as f:
+            firmas_red = {
+                row["sample_id"].strip(): {k: (v or "").strip() for k, v in row.items()}
+                for row in csv.DictReader(f)
+            }
+        for sid in ids_red:
+            self.assertIn(sid, firmas_red)
+            row = firmas_red[sid]
+            self.assertEqual(row["veredicto"], "Aprobado")
+            self.assertTrue(row["revisor"] and "pendiente" not in row["revisor"].lower())
+            self.assertTrue(row["fecha"] and "yyyy" not in row["fecha"].lower())
+
+        res_ag = json.loads((DATOS_DIR / "resumen_datasets_3_agentes.json").read_text(encoding="utf-8"))
+        ids_ag = res_ag["muestra_manual_enrutador_recuperador_ids"]
+        self.assertEqual(len(ids_ag), 20)
+        estado_ag = cda.validar_firmas_agentes_completas(
+            DATOS_DIR / "revision_manual_firmas_agentes.csv", ids_ag
+        )
+        self.assertTrue(estado_ag["completo"])
+        self.assertEqual(estado_ag["firmados"], 20)
+        self.assertEqual(estado_ag["faltantes"], [])
+        self.assertEqual(estado_ag["pendientes"], [])
+
+        for md_name in (
+            "MUESTRA_REVISION_MANUAL.md",
+            "MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md",
+        ):
+            self.assertNotIn("[Pendiente]", (DATOS_DIR / md_name).read_text(encoding="utf-8"))
+
+        repro_path = DATOS_DIR.parent / "evaluacion" / "comparativa_reproduccion_hf.json"
+        self.assertTrue(repro_path.is_file())
+        repro = json.loads(repro_path.read_text(encoding="utf-8"))
+        self.assertEqual(len(repro), 7)
+        por_qid = {c["qid"]: c for c in repro}
+        self.assertIn("dificil_25:H07", por_qid)
+        h07 = por_qid["dificil_25:H07"]
+        self.assertFalse(h07["base"]["veredicto"]["aprobado"])
+        self.assertEqual(h07["base"]["ciclos"], 3)
+        self.assertTrue(h07["finetuned_3lora"]["veredicto"]["aprobado"])
+        self.assertEqual(h07["finetuned_3lora"]["ciclos"], 1)
 
     def test_numero_permitido_orquestador(self) -> None:
         self.assertTrue(am.numero_permitido_orquestador(14, "requisitos Art 14", "", []))

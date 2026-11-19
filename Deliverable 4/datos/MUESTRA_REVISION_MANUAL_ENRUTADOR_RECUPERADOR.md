@@ -10,26 +10,26 @@ Complementa la muestra de **30 casos del Redactor** en [`MUESTRA_REVISION_MANUAL
 
 | # | ID | Agente / Categoría / Split | Revisor | Fecha | Resultado | Observaciones |
 |---|---|---|---|:---:|---|---|
-| 01 | `ENR-B1-T04` | `enrutador` / `factual` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 02 | `ENR-B1-V05` | `enrutador` / `factual` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 03 | `ENR-B4-T01` | `enrutador` / `numerica` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 04 | `ENR-B4-V01` | `enrutador` / `numerica` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 05 | `ENR-B2-T01` | `enrutador` / `condicional` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 06 | `ENR-B2-V01` | `enrutador` / `condicional` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 07 | `ENR-B1-T01` | `enrutador` / `cruce` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 08 | `ENR-B1-V01` | `enrutador` / `cruce` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 09 | `ENR-B3-T03` | `enrutador` / `premisa_falsa` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 10 | `ENR-B3-V02` | `enrutador` / `premisa_falsa` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 11 | `REC-B1-T01-S1` | `recuperador` / `suficiente` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 12 | `REC-B1-V04-RS` | `recuperador` / `suficiente` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 13 | `REC-B1-T07-B1` | `recuperador` / `buscar` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 14 | `REC-B1-T12-B1` | `recuperador` / `buscar` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 15 | `REC-B3-V02-B1` | `recuperador` / `buscar` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 16 | `REC-B1-T15-FB` | `recuperador` / `traer` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 17 | `REC-B1-T22-T2` | `recuperador` / `traer` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 18 | `REC-B6-V02-T2` | `recuperador` / `traer` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 19 | `REC-ENR-X-T30-EX` | `recuperador` / `existe` / `train` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
-| 20 | `REC-ENR-X-V04-EX` | `recuperador` / `existe` / `val` | [Pendiente revisor] | [YYYY-MM-DD] | [Pendiente] | |
+| 01 | `ENR-B1-T04` | `enrutador` / `factual` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 02 | `ENR-B1-V05` | `enrutador` / `factual` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 03 | `ENR-B4-T01` | `enrutador` / `numerica` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 04 | `ENR-B4-V01` | `enrutador` / `numerica` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 05 | `ENR-B2-T01` | `enrutador` / `condicional` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 06 | `ENR-B2-V01` | `enrutador` / `condicional` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 07 | `ENR-B1-T01` | `enrutador` / `cruce` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 08 | `ENR-B1-V01` | `enrutador` / `cruce` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 09 | `ENR-B3-T03` | `enrutador` / `premisa_falsa` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 10 | `ENR-B3-V02` | `enrutador` / `premisa_falsa` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 11 | `REC-B1-T01-S1` | `recuperador` / `suficiente` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 12 | `REC-B1-V04-RS` | `recuperador` / `suficiente` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 13 | `REC-B1-T07-B1` | `recuperador` / `buscar` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 14 | `REC-B1-T12-B1` | `recuperador` / `buscar` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 15 | `REC-B3-V02-B1` | `recuperador` / `buscar` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 16 | `REC-B1-T15-FB` | `recuperador` / `traer` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 17 | `REC-B1-T22-T2` | `recuperador` / `traer` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 18 | `REC-B6-V02-T2` | `recuperador` / `traer` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 19 | `REC-ENR-X-T30-EX` | `recuperador` / `existe` / `train` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
+| 20 | `REC-ENR-X-V04-EX` | `recuperador` / `existe` / `val` | Álvaro Contreras y Pablo Cortés | 2026-11-19 | Aprobado | |
 
 Criterios de revisión:
 1. **Enrutador:** `tipo` coherente con la pregunta, `sub_consultas` mínimas sin redundancia y `documentos` correctos (`RI-FI`, `RG`, `CAL`).

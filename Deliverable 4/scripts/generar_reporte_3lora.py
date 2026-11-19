@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import math
 import sys
 from pathlib import Path
 from typing import Any
@@ -23,6 +24,23 @@ from typing import Any
 D4_DIR = Path(__file__).resolve().parents[1]
 D4_TRAIN_DIR = D4_DIR / "entrenamiento"
 D4_EVAL_DIR = D4_DIR / "evaluacion"
+
+
+def _escribir_json_lf(path: Path, payload: Any) -> None:
+    """Escribe un archivo JSON con saltos LF garantizados en cualquier OS."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+
+
+def _mcnemar_exacto(gana: int, pierde: int) -> float:
+    """Calcula valor-p exacto bilateral (prueba binomial sobre pares discordantes)."""
+    n = gana + pierde
+    if n == 0:
+        return 1.0
+    k = min(gana, pierde)
+    p = 2.0 * sum(math.comb(n, i) * (0.5**n) for i in range(k + 1))
+    return round(min(1.0, p), 4)
 
 COMPARATIVA_BASE_VS_3LORA_QIDS: tuple[str, ...] = (
     "dificil_25:H07",
@@ -208,9 +226,7 @@ def generar_comparativa_base_vs_3lora(
         )
 
     out_path = eval_dir / "comparativa_base_vs_3lora.json"
-    out_path.write_text(
-        json.dumps(salida, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    _escribir_json_lf(out_path, salida)
     return salida
 
 
@@ -266,10 +282,81 @@ def generar_casos_fallo_3lora(eval_dir: Path = D4_EVAL_DIR) -> dict[str, Any]:
         "casos": casos,
     }
     out_path = eval_dir / "casos_fallo_y_regresion_3lora.json"
-    out_path.write_text(
-        json.dumps(paquete, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    _escribir_json_lf(out_path, paquete)
     return paquete
+
+
+def _resumir_estadistica_y_comportamiento(eval_dir: Path) -> dict[str, Any]:
+    """Recalcula McNemar pareado, balance por set y trazas de Enrutador/Recuperador."""
+    cb_75 = _cargar_csv_por_qid(eval_dir / "resultados_control_base_D4_auditados.csv")
+    ml_75 = _cargar_csv_por_qid(eval_dir / "resultados_3lora_75_auditados.csv")
+    cb_n20 = _cargar_csv_por_qid(eval_dir / "resultados_nuevas20_base_D4_auditados.csv")
+    ml_n20 = _cargar_csv_por_qid(eval_dir / "resultados_3lora_nuevas20_auditados.csv")
+
+    gana_75 = sorted(q for q in ml_75 if int(ml_75[q]["correcto"]) == 1 and int(cb_75[q]["correcto"]) == 0)
+    pierde_75 = sorted(q for q in ml_75 if int(ml_75[q]["correcto"]) == 0 and int(cb_75[q]["correcto"]) == 1)
+    gana_n20 = sorted(q for q in ml_n20 if int(ml_n20[q]["correcto"]) == 1 and int(cb_n20[q]["correcto"]) == 0)
+    pierde_n20 = sorted(q for q in ml_n20 if int(ml_n20[q]["correcto"]) == 0 and int(cb_n20[q]["correcto"]) == 1)
+
+    tr_75 = json.loads((eval_dir / "trazas_3lora_75.json").read_text(encoding="utf-8"))
+    tr_cb_75 = json.loads((eval_dir / "trazas_control_base_D4.json").read_text(encoding="utf-8"))
+
+    enr_solo_rg_75 = sum(
+        1
+        for t in tr_75.values()
+        if t and t[0].get("agente") == "enrutador" and t[0].get("salida", {}).get("documentos") == ["RG"]
+    )
+    rec_suf_p1_75 = sum(
+        1
+        for t in tr_75.values()
+        if len(t) > 2
+        and t[2].get("agente") == "recuperador"
+        and t[2].get("salida", {}).get("accion") == "suficiente"
+    )
+    rec_buscar_3l = sum(
+        1
+        for t in tr_75.values()
+        for p in t
+        if p.get("agente") == "recuperador"
+        and p.get("decidido_por") != "sistema"
+        and p.get("salida", {}).get("accion") == "buscar"
+    )
+    rec_buscar_cb = sum(
+        1
+        for t in tr_cb_75.values()
+        for p in t
+        if p.get("agente") == "recuperador"
+        and p.get("decidido_por") != "sistema"
+        and p.get("salida", {}).get("accion") == "buscar"
+    )
+
+    return {
+        "diferencias_vs_control_75": {
+            "gana_3lora": gana_75,
+            "pierde_3lora": pierde_75,
+            "balance_neto": len(gana_75) - len(pierde_75),
+            "mcnemar_p_exacto": _mcnemar_exacto(len(gana_75), len(pierde_75)),
+        },
+        "diferencias_vs_control_n20": {
+            "gana_3lora": gana_n20,
+            "pierde_3lora": pierde_n20,
+            "balance_neto": len(gana_n20) - len(pierde_n20),
+        },
+        "diferencias_vs_control_95": {
+            "gana_3lora_count": len(gana_75) + len(gana_n20),
+            "pierde_3lora_count": len(pierde_75) + len(pierde_n20),
+            "balance_neto": (len(gana_75) + len(gana_n20)) - (len(pierde_75) + len(pierde_n20)),
+            "mcnemar_p_exacto": _mcnemar_exacto(
+                len(gana_75) + len(gana_n20), len(pierde_75) + len(pierde_n20)
+            ),
+        },
+        "comportamiento_enrutador_y_recuperador_75": {
+            "enrutador_solo_rg_75": enr_solo_rg_75,
+            "recuperador_suficiente_paso1_75": rec_suf_p1_75,
+            "recuperador_buscar_modelo_3lora_75": rec_buscar_3l,
+            "recuperador_buscar_modelo_control_base_75": rec_buscar_cb,
+        },
+    }
 
 
 def generar_resumen_comparativo_d4(
@@ -361,12 +448,11 @@ def generar_resumen_comparativo_d4(
                 "nota_especial": aud_3l_75.get("nota_especial"),
             },
         },
+        "comparacion_estadistica_y_comportamiento": _resumir_estadistica_y_comportamiento(eval_dir),
         "ablaciones_verificador": ABLACIONES_VERIFICADOR,
     }
     out_path = eval_dir / "resumen_comparativo_d4.json"
-    out_path.write_text(
-        json.dumps(resumen, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    _escribir_json_lf(out_path, resumen)
     return resumen
 
 
@@ -376,12 +462,12 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument("--train-dir", type=Path, default=D4_TRAIN_DIR)
     parser.add_argument("--eval-dir", type=Path, default=D4_EVAL_DIR)
-    parser.parse_args(argv)
+    args = parser.parse_args(argv)
 
-    curvas = generar_curva_3_agentes(D4_TRAIN_DIR)
-    comp = generar_comparativa_base_vs_3lora(D4_EVAL_DIR)
-    fallos = generar_casos_fallo_3lora(D4_EVAL_DIR)
-    resumen = generar_resumen_comparativo_d4(D4_EVAL_DIR, D4_TRAIN_DIR)
+    curvas = generar_curva_3_agentes(args.train_dir)
+    comp = generar_comparativa_base_vs_3lora(args.eval_dir)
+    fallos = generar_casos_fallo_3lora(args.eval_dir)
+    resumen = generar_resumen_comparativo_d4(args.eval_dir, args.train_dir)
     print(
         json.dumps(
             {

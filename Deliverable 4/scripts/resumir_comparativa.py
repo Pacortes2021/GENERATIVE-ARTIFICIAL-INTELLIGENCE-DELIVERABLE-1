@@ -230,15 +230,15 @@ def main(argv: list[str] | None = None) -> int:
     print(f"\nPreguntas con diferencias Control Base vs {args.etiqueta_multi}: {len(diffs)}")
     if args.salida_json is not None:
         args.salida_json.parent.mkdir(parents=True, exist_ok=True)
-        args.salida_json.write_text(
-            json.dumps(
-                {"resumenes": resumenes, "diferencias_vs_base": diffs},
-                ensure_ascii=False,
-                indent=2,
+        with args.salida_json.open("w", encoding="utf-8", newline="\n") as _f:
+            _f.write(
+                json.dumps(
+                    {"resumenes": resumenes, "diferencias_vs_base": diffs},
+                    ensure_ascii=False,
+                    indent=2,
+                )
+                + "\n"
             )
-            + "\n",
-            encoding="utf-8",
-        )
     return 0
 
 

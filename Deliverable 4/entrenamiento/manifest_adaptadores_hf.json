@@ -1,0 +1,27 @@
+{
+  "version": "d4_3lora_manifest_v1",
+  "modelo_base": "Qwen/Qwen3-4B",
+  "adaptadores": {
+    "enrutador": {
+      "hf_repo": "Pablox0333/qwen3-4b-enrutador-udec-d4",
+      "hf_revision": null,
+      "adapter_model_sha256": null,
+      "adapter_config_sha256": null,
+      "publicado": false
+    },
+    "recuperador": {
+      "hf_repo": "Pablox0333/qwen3-4b-recuperador-udec-d4",
+      "hf_revision": null,
+      "adapter_model_sha256": null,
+      "adapter_config_sha256": null,
+      "publicado": false
+    },
+    "redactor": {
+      "hf_repo": "Pablox0333/qwen3-4b-redactor-udec-d4",
+      "hf_revision": "739b031acbd5feef2c49f946b94722712209bce0",
+      "adapter_model_sha256": "438a23664aab0457b060a42fb0eea77d6db82949459aa33280c36dcdb755b3c1",
+      "adapter_model_bytes": 132187888,
+      "publicado": true
+    }
+  }
+}

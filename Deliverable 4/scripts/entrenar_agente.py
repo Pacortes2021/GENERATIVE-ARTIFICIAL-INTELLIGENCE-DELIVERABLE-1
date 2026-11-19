@@ -445,15 +445,12 @@ def entrenar_agente(args: argparse.Namespace) -> dict[str, Any]:
     adapter_dir.mkdir(parents=True, exist_ok=True)
     trainer.save_model(str(adapter_dir))
     tokenizer.save_pretrained(str(adapter_dir))
-    (adapter_dir / "README.md").write_text(
-        generar_model_card_agente(args.agente, metricas, hf_repo=args.hf_repo),
-        encoding="utf-8",
-    )
+    with (adapter_dir / "README.md").open("w", encoding="utf-8", newline="\n") as _f:
+        _f.write(generar_model_card_agente(args.agente, metricas, hf_repo=args.hf_repo))
 
     metrics_path = output_dir / "training_metrics.json"
-    metrics_path.write_text(
-        json.dumps(metricas, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-    )
+    with metrics_path.open("w", encoding="utf-8", newline="\n") as _f:
+        _f.write(json.dumps(metricas, ensure_ascii=False, indent=2) + "\n")
 
     er.graficar_curva_perdida(
         curvas,
@@ -468,9 +465,8 @@ def entrenar_agente(args: argparse.Namespace) -> dict[str, Any]:
         smoke = _smoke_test_val_agente(
             model, tokenizer, val_registros, max_new_tokens=smoke_tokens
         )
-        (output_dir / "smoke_test_val.json").write_text(
-            json.dumps(smoke, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-        )
+        with (output_dir / "smoke_test_val.json").open("w", encoding="utf-8", newline="\n") as _f:
+            _f.write(json.dumps(smoke, ensure_ascii=False, indent=2) + "\n")
 
     if args.hf_repo:
         from huggingface_hub import HfApi
@@ -488,9 +484,8 @@ def entrenar_agente(args: argparse.Namespace) -> dict[str, Any]:
         )
         metricas["hf_url"] = f"https://huggingface.co/{args.hf_repo}"
         metricas["hf_revision"] = getattr(commit_info, "oid", None)
-        metrics_path.write_text(
-            json.dumps(metricas, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
-        )
+        with metrics_path.open("w", encoding="utf-8", newline="\n") as _f:
+            _f.write(json.dumps(metricas, ensure_ascii=False, indent=2) + "\n")
 
     return metricas
 

@@ -1,10 +1,10 @@
 {
-  "experimento": "sin_verificador_3_agentes_nuevas20",
+  "experimento": "d4_oficial_3lora_nuevas20",
   "criterio": "Auditoría estricta según Deliverable 3/paquete_25_dificiles/LEEME_PAUTA.md (incluye Regla 2 excepciones y Regla 3 / precedente P01).",
   "revisor": "Pablo Cortés + auditoría sistemática asistida por IA (LEEME_PAUTA.md v2 / D4 estricta)",
-  "fuente_csv_crudo": "resultados_sin_verificador_nuevas20.csv",
+  "fuente_csv_crudo": "resultados_3lora_nuevas20.csv",
   "sha256_csv_crudo": "2376c5b48e4c153e7875df8e7e78fb9918cde923af0e4ce564f13e182bd48536",
-  "fuente_csv_auditado": "resultados_sin_verificador_nuevas20_auditados.csv",
+  "fuente_csv_auditado": "resultados_3lora_nuevas20_auditados.csv",
   "configuracion_runtime": {
     "modelo_base": "Qwen/Qwen3-4B",
     "revision_modelo_base": "",

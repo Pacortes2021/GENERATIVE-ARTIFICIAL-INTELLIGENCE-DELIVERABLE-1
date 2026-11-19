@@ -272,6 +272,7 @@ class TestEvaluarD4(unittest.TestCase):
         self.assertIn("huggingface-hub==1.33.0", codigo)
         for flag in (
             "--agentes",
+            "--solo-hf",
             "--output-dir",
             "--output-prefix",
             "--qids",
@@ -283,6 +284,7 @@ class TestEvaluarD4(unittest.TestCase):
         ):
             self.assertIn(flag, flags_eml)
             self.assertIn(flag, codigo)
+        self.assertIn("--verificar-manifest", codigo)
         for flag_rc in ("--benchmark", "--multi-csv", "--multi-telemetria", "--salida-json"):
             self.assertIn(flag_rc, flags_rc)
             self.assertIn(flag_rc, codigo)

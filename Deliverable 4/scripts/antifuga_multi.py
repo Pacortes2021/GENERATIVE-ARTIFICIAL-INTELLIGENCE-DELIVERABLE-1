@@ -214,6 +214,18 @@ def auditar_antifuga_agente(
     }
 
 
+def escribir_texto_lf(path: Path, contenido: str) -> None:
+    """Escribe texto UTF-8 garantizando saltos LF en cualquier sistema operativo."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("w", encoding="utf-8", newline="\n") as f:
+        f.write(contenido)
+
+
+def escribir_json_lf(path: Path, payload: Any) -> None:
+    """Serializa un objeto JSON con indentación estándar y saltos LF."""
+    escribir_texto_lf(path, json.dumps(payload, ensure_ascii=False, indent=2) + "\n")
+
+
 def escribir_jsonl_lf(path: Path, registros: list[dict[str, Any]]) -> None:
     """Escribe una lista de objetos JSON como líneas JSONL con fin de línea LF."""
     path.parent.mkdir(parents=True, exist_ok=True)

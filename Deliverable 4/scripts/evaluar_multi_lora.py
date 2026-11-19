@@ -10,6 +10,8 @@ Configuración oficial D4: `--agentes enrutador,recuperador,redactor`.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import json
 import os
 import sys
 import time
@@ -33,6 +35,7 @@ from entrenar_redactor import MODELO_BASE_DEFAULT, es_bf16_nativo, formatear_pro
 ROLES_ORDEN: tuple[str, ...] = ("enrutador", "recuperador", "redactor", "verificador")
 ROLES_OFICIALES_D4: tuple[str, ...] = ("enrutador", "recuperador", "redactor")
 DEFAULT_DRIVE_ENTRENAMIENTO = Path("/content/drive/MyDrive/UdeC_GenIA_Exp_MultiLoRA/entrenamiento")
+MANIFEST_HF_PATH = D4_TRAIN_DIR / "manifest_adaptadores_hf.json"
 
 HF_REPOS_D4: dict[str, tuple[str, str | None]] = {
     "enrutador": ("Pablox0333/qwen3-4b-enrutador-udec-d4", None),
@@ -42,18 +45,50 @@ HF_REPOS_D4: dict[str, tuple[str, str | None]] = {
 }
 
 
+def cargar_manifest_hf(manifest_path: Path = MANIFEST_HF_PATH) -> dict[str, dict[str, Any]]:
+    """Lee el manifiesto oficial de adaptadores HF (repo, revisión y SHA-256) si existe."""
+    if not manifest_path.is_file():
+        return {}
+    data = json.loads(manifest_path.read_text(encoding="utf-8"))
+    return dict(data.get("adaptadores", {}))
+
+
 def _tiene_pesos_adapter(carpeta: Path) -> bool:
     return (carpeta / "adapter_model.safetensors").is_file() or (
         carpeta / "adapter_model.bin"
     ).is_file()
 
 
+def _sha256_archivo_adapter(carpeta: Path) -> str | None:
+    for nombre in ("adapter_model.safetensors", "adapter_model.bin"):
+        p = carpeta / nombre
+        if p.is_file():
+            h = hashlib.sha256()
+            with p.open("rb") as f:
+                for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                    h.update(chunk)
+            return h.hexdigest()
+    return None
+
+
 def resolver_fuentes_adaptadores_default(
     drive_dir: Path | None = DEFAULT_DRIVE_ENTRENAMIENTO,
+    solo_hf: bool = False,
 ) -> dict[str, tuple[str, str | None]]:
-    """Resuelve cada rol priorizando carpeta local con pesos -> Drive -> Hugging Face."""
+    """Resuelve cada rol: prioriza HF fijado si `solo_hf` o tiene revisión fijada."""
+    manifest = cargar_manifest_hf()
     fuentes: dict[str, tuple[str, str | None]] = {}
     for rol in ROLES_ORDEN:
+        info_man = manifest.get(rol, {})
+        repo_man = info_man.get("hf_repo")
+        rev_man = info_man.get("hf_revision")
+        repo_def, rev_def = HF_REPOS_D4[rol]
+        hf_pair = (repo_man or repo_def, rev_man or rev_def)
+
+        if solo_hf or (hf_pair[1] and rol in ROLES_OFICIALES_D4):
+            fuentes[rol] = hf_pair
+            continue
+
         local_adapter = (
             D4_TRAIN_DIR / "adapter"
             if rol == "redactor"
@@ -67,7 +102,7 @@ def resolver_fuentes_adaptadores_default(
             if _tiene_pesos_adapter(drive_adapter):
                 fuentes[rol] = (str(drive_adapter), None)
                 continue
-        fuentes[rol] = HF_REPOS_D4[rol]
+        fuentes[rol] = hf_pair
     return fuentes
 
 
@@ -433,12 +468,46 @@ def construir_arg_parser() -> argparse.ArgumentParser:
         help="QIDs separados por coma para comparar Solo Redactor FT v2 vs --agentes.",
     )
     p.add_argument("--solo-comparativa", action="store_true")
+    p.add_argument(
+        "--solo-hf",
+        action="store_true",
+        help="Fuerza carga de adaptadores desde Hugging Face (ignorando rutas locales o Drive).",
+    )
     p.add_argument("--verbose-pasos", action="store_true")
     return p
 
 
+def _resolver_sha_fuente(fuente: str, revision: str | None, rol: str) -> str | None:
+    p = Path(fuente)
+    if p.is_dir():
+        return _sha256_archivo_adapter(p)
+    manifest = cargar_manifest_hf()
+    info = manifest.get(rol, {})
+    if info.get("hf_repo") == fuente and (
+        not revision or info.get("hf_revision") == revision
+    ):
+        return info.get("adapter_model_sha256")
+    try:
+        from huggingface_hub import HfApi
+
+        infos = HfApi().get_paths_info(
+            repo_id=fuente,
+            paths=["adapter_model.safetensors"],
+            revision=revision,
+            repo_type="model",
+        )
+        for item in infos:
+            lfs = getattr(item, "lfs", None)
+            if lfs is not None and getattr(lfs, "sha256", None):
+                return str(lfs.sha256)
+    except Exception:
+        pass
+    return None
+
+
 def main(argv: list[str] | None = None) -> int:
-    args = construir_arg_parser().parse_args(argv)
+    parser = construir_arg_parser()
+    args = parser.parse_args(argv)
     os.environ["TOKENIZERS_PARALLELISM"] = "false"
 
     import torch
@@ -446,13 +515,16 @@ def main(argv: list[str] | None = None) -> int:
     prompts_sha = ed4.verificar_prompts_d4()
     roles_activos = parsear_lista_agentes(args.agentes)
 
-    fuentes_por_rol = {
-        rol: (
-            getattr(args, f"adaptador_{rol}"),
-            getattr(args, f"rev_{rol}") or None,
-        )
-        for rol in ROLES_ORDEN
-    }
+    defaults_hf = resolver_fuentes_adaptadores_default(solo_hf=True) if args.solo_hf else None
+    fuentes_por_rol: dict[str, tuple[str, str | None]] = {}
+    for rol in ROLES_ORDEN:
+        if args.solo_hf and defaults_hf is not None and getattr(args, f"adaptador_{rol}") == parser.get_default(f"adaptador_{rol}"):
+            fuentes_por_rol[rol] = defaults_hf[rol]
+        else:
+            fuentes_por_rol[rol] = (
+                getattr(args, f"adaptador_{rol}"),
+                getattr(args, f"rev_{rol}") or None,
+            )
     roles_a_cargar = (
         tuple(dict.fromkeys((*roles_activos, "redactor")))
         if args.comparar_vs_solo_redactor
@@ -558,7 +630,13 @@ def main(argv: list[str] | None = None) -> int:
             "roles_con_lora": list(roles_activos),
             "roles_en_base": [r for r in ROLES_ORDEN if r not in roles_activos],
             "fuentes_por_rol": {
-                r: {"fuente": fuentes_por_rol[r][0], "revision": fuentes_por_rol[r][1]}
+                r: {
+                    "fuente": fuentes_por_rol[r][0],
+                    "revision": fuentes_por_rol[r][1],
+                    "sha256_adapter_model": _resolver_sha_fuente(
+                        fuentes_por_rol[r][0], fuentes_por_rol[r][1], r
+                    ),
+                }
                 for r in roles_a_cargar
             },
             "hardware": {"gpu": gpu_nombre, "compute_dtype": compute_dtype_str},

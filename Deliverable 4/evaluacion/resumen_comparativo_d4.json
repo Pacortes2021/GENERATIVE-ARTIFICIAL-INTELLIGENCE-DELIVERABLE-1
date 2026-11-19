@@ -121,6 +121,48 @@
       "nota_especial": "En congelado_50:7 ([RI-FI-ART-016]) y congelado_50:8 ([RG-ART-034] [RI-FI-ART-026]) el contenido y las citas inline son correctos bajo LEEME_PAUTA.md (46/50 en congelado_50, 64/75 global), aunque omiten la tercera línea literal 'Fuente:' (formato_3_lineas_ok=False; bajo exigencia estricta de 3 líneas sería 44/50 y 62/75)."
     }
   },
+  "comparacion_estadistica_y_comportamiento": {
+    "diferencias_vs_control_75": {
+      "gana_3lora": [
+        "congelado_50:11",
+        "congelado_50:43",
+        "dificil_25:H07",
+        "dificil_25:H18",
+        "dificil_25:H24"
+      ],
+      "pierde_3lora": [
+        "congelado_50:24",
+        "congelado_50:26",
+        "dificil_25:H17"
+      ],
+      "balance_neto": 2,
+      "mcnemar_p_exacto": 0.7266
+    },
+    "diferencias_vs_control_n20": {
+      "gana_3lora": [
+        "nuevas_20:N09",
+        "nuevas_20:N12"
+      ],
+      "pierde_3lora": [
+        "nuevas_20:N05",
+        "nuevas_20:N06",
+        "nuevas_20:N20"
+      ],
+      "balance_neto": -1
+    },
+    "diferencias_vs_control_95": {
+      "gana_3lora_count": 7,
+      "pierde_3lora_count": 6,
+      "balance_neto": 1,
+      "mcnemar_p_exacto": 1.0
+    },
+    "comportamiento_enrutador_y_recuperador_75": {
+      "enrutador_solo_rg_75": 49,
+      "recuperador_suficiente_paso1_75": 65,
+      "recuperador_buscar_modelo_3lora_75": 21,
+      "recuperador_buscar_modelo_control_base_75": 157
+    }
+  },
   "ablaciones_verificador": {
     "nota": "Corridas experimentales sobre idéntico A100 bf16 que justifican mantener Verificador en Qwen/Qwen3-4B Base (ramas exp/multi-lora-todos y exp/multi-lora-verificador-v2).",
     "ablacion_red_ver_nuevas20": {

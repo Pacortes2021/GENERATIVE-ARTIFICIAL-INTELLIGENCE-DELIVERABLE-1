@@ -23,10 +23,10 @@
  back/.style={->,draw=acento,dashed,line width=0.68pt},
  use/.style={<->,draw=ambar,line width=0.55pt}
 ]
-\node[ftagent] (e) at (1.35,0) {{\color{ftborder}\textbf{Enrutador (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont QLoRA · \texttt{set\_adapter}}};
-\node[ftagent] (r) at (6.75,0) {{\color{ftborder}\textbf{Recuperador (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont ReAct · QLoRA (\texttt{set\_adapter})}};
-\node[ftagent] (w) at (12.40,0) {{\color{ftborder}\textbf{Redactor (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont QLoRA · \texttt{set\_adapter}}};
-\node[agent] (v) at (18.05,0) {\textbf{Verificador (Base)}\\{\fontsize{6.8}{7.8}\selectfont Qwen3-4B · \texttt{disable\_adapter}}};
+\node[ftagent] (e) at (1.35,0) {{\color{ftborder}\textbf{Enrutador (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont QLoRA $\cdot$ \texttt{set\_adapter}}};
+\node[ftagent] (r) at (6.75,0) {{\color{ftborder}\textbf{Recuperador (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont ReAct $\cdot$ QLoRA (\texttt{set\_adapter})}};
+\node[ftagent] (w) at (12.40,0) {{\color{ftborder}\textbf{Redactor (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont QLoRA $\cdot$ \texttt{set\_adapter}}};
+\node[agent] (v) at (18.05,0) {\textbf{Verificador (Base)}\\{\fontsize{6.8}{7.8}\selectfont Qwen3-4B $\cdot$ \texttt{disable\_adapter}}};
 \node[terminal] (out) at (22.15,0) {Respuesta\\aprobada};
 \node[terminal,fill=black!3,draw=black!55,dashed] (stop) at (22.15,-1.75) {Último borrador\\\textbf{no aprobado}};
 

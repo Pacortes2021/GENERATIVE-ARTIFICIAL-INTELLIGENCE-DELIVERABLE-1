@@ -159,8 +159,10 @@ class TestPipelineEntrenamientoRedactor(unittest.TestCase):
         codigo_total = "\n".join(fuente_completa)
         self.assertIn('"entrenar_agente.py"', codigo_total)
         self.assertIn('"publicar_adaptadores_hf.py"', codigo_total)
+        self.assertNotIn("trl", codigo_total)
         self.assertIn("transformers==5.23.0", codigo_total)
         self.assertIn("huggingface-hub==1.33.0", codigo_total)
+        self.assertIn("PUBLICAR_CORRIDA_ORIGINAL_A100", codigo_total)
         for flag_usado in ("--agente", "--output-dir"):
             self.assertIn(flag_usado, flags_ea)
             self.assertIn(flag_usado, codigo_total)

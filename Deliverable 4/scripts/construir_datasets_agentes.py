@@ -29,7 +29,9 @@ from antifuga_multi import (  # noqa: E402
     cargar_corpus_limpio,
     cargar_preguntas_prohibidas,
     cd,
+    escribir_json_lf,
     escribir_jsonl_lf,
+    escribir_texto_lf,
     numero_permitido_orquestador,
 )
 from enrutador_bloques import construir_registros_enrutador  # noqa: E402
@@ -103,6 +105,34 @@ def _limpiar_para_jsonl(reg: dict[str, Any]) -> dict[str, Any]:
         "pregunta_base": reg.get("pregunta_base", ""),
         "unidades_referenciadas": reg.get("unidades_referenciadas", []),
         "messages": reg["messages"],
+    }
+
+
+def validar_firmas_agentes_completas(
+    firmas_csv_path: Path,
+    expected_ids: list[str] | tuple[str, ...],
+) -> dict[str, Any]:
+    """Comprueba que `revision_manual_firmas_agentes.csv` cubra todos los IDs sin pendientes."""
+    if not firmas_csv_path.is_file():
+        return {"completo": False, "faltantes": list(expected_ids), "pendientes": []}
+    firmas = _cargar_firmas_manuales(firmas_csv_path)
+    faltantes = [sid for sid in expected_ids if sid not in firmas]
+    pendientes = [
+        sid
+        for sid in expected_ids
+        if sid in firmas
+        and (
+            "pendiente" in firmas[sid]["revisor"].lower()
+            or "pendiente" in firmas[sid]["veredicto"].lower()
+            or "yyyy" in firmas[sid]["fecha"].lower()
+        )
+    ]
+    return {
+        "completo": not faltantes and not pendientes,
+        "total_esperados": len(expected_ids),
+        "firmados": len(expected_ids) - len(faltantes) - len(pendientes),
+        "faltantes": faltantes,
+        "pendientes": pendientes,
     }
 
 
@@ -259,7 +289,7 @@ def generar_muestra_manual_agentes(
         )
 
     output_md.parent.mkdir(parents=True, exist_ok=True)
-    output_md.write_text("\n".join(lineas).rstrip() + "\n", encoding="utf-8")
+    escribir_texto_lf(output_md, "\n".join(lineas).rstrip() + "\n")
     return [r["id"] for r in todos]
 
 
@@ -339,10 +369,7 @@ def construir_datasets_agentes_d4(
     resumen["muestra_manual_enrutador_recuperador_ids"] = muestra_ids
 
     out_res = datos_dir / "resumen_datasets_3_agentes.json"
-    out_res.write_text(
-        json.dumps(resumen, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
+    escribir_json_lf(out_res, resumen)
     return resumen
 
 

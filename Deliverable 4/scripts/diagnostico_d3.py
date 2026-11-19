@@ -389,7 +389,8 @@ def main() -> int:
 
     diag = generar_diagnostico()
     args.out.parent.mkdir(parents=True, exist_ok=True)
-    args.out.write_text(json.dumps(diag, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    with args.out.open("w", encoding="utf-8", newline="\n") as _f:
+        _f.write(json.dumps(diag, indent=2, ensure_ascii=False) + "\n")
 
     rg = diag["resumen_global"]
     de = diag["desglose_errores"]

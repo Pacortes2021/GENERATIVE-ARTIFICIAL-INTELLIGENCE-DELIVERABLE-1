@@ -6,6 +6,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from asistente_local.asistente import AsistenteUdeC, limpiar_think
+from asistente_local.benchmark import cargar_preguntas
 from asistente_local.buscador import BuscadorNormativa
 from asistente_local.config import ConfigAsistente
 from asistente_local.herramientas import calcular, dias_entre, ejecutar_herramienta
@@ -118,6 +119,11 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         self.assertEqual(res.pasos_herramientas[0].resultado["resultado"], 10.5)
         self.assertEqual(res.respuesta, "Promedio 10,5 créditos [RI-FI-ART-014].")
         self.assertEqual(limpiar_think("<think>a</think>hola"), "hola")
+
+    def test_benchmark_cargar_preguntas_sets(self) -> None:
+        self.assertEqual(len(cargar_preguntas("dificil_25")), 25)
+        self.assertEqual(len(cargar_preguntas("congelado_50")), 50)
+        self.assertEqual(len(cargar_preguntas("dificil_25", qids_filtro={"H03", "H07"})), 2)
 
 
 if __name__ == "__main__":

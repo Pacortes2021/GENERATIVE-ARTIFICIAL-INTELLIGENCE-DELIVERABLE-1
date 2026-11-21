@@ -37,6 +37,26 @@ def cargar_jsonl(path: Path) -> list[dict[str, Any]]:
     return [json.loads(l) for l in path.read_text(encoding="utf-8").splitlines() if l.strip()]
 
 
+def _tokenizar_chat(
+    tokenizer: Any,
+    msgs: list[dict[str, Any]],
+    tools: list[dict[str, Any]],
+    add_generation_prompt: bool = False,
+) -> list[int]:
+    """Formatea a texto y tokeniza evitando cambios de retorno entre transformers 4.x y 5.x."""
+    texto = tokenizer.apply_chat_template(
+        msgs,
+        tools=tools,
+        add_generation_prompt=add_generation_prompt,
+        tokenize=False,
+    )
+    if isinstance(texto, str):
+        return list(tokenizer(texto, add_special_tokens=False)["input_ids"])
+    if isinstance(texto, dict) and "input_ids" in texto:
+        return list(texto["input_ids"])
+    return list(texto)
+
+
 def construir_ejemplo_sft_multiturno(
     registro: dict[str, Any],
     tokenizer: Any,
@@ -49,14 +69,7 @@ def construir_ejemplo_sft_multiturno(
     if ultimo_user_idx < 0:
         raise ValueError(f"{registro.get('id')}: conversación sin mensajes de usuario")
 
-    full_ids: list[int] = list(
-        tokenizer.apply_chat_template(
-            msgs,
-            tools=tools,
-            add_generation_prompt=False,
-            tokenize=True,
-        )
-    )
+    full_ids = _tokenizar_chat(tokenizer, msgs, tools=tools, add_generation_prompt=False)
     labels = [-100] * len(full_ids)
 
     # Enmascarar system, historial previo, último prompt user y `<tool_response>` con -100;
@@ -64,22 +77,8 @@ def construir_ejemplo_sft_multiturno(
     for i in range(ultimo_user_idx + 1, len(msgs)):
         if msgs[i].get("role") != "assistant":
             continue
-        s_ids = list(
-            tokenizer.apply_chat_template(
-                msgs[:i],
-                tools=tools,
-                add_generation_prompt=True,
-                tokenize=True,
-            )
-        )
-        e_ids = list(
-            tokenizer.apply_chat_template(
-                msgs[: i + 1],
-                tools=tools,
-                add_generation_prompt=False,
-                tokenize=True,
-            )
-        )
+        s_ids = _tokenizar_chat(tokenizer, msgs[:i], tools=tools, add_generation_prompt=True)
+        e_ids = _tokenizar_chat(tokenizer, msgs[: i + 1], tools=tools, add_generation_prompt=False)
         if full_ids[: len(s_ids)] != s_ids or full_ids[: len(e_ids)] != e_ids:
             raise ValueError(f"{registro.get('id')}: desalineación de prefijo en turno assistant idx={i}")
         for pos in range(len(s_ids), len(e_ids)):
@@ -393,6 +392,9 @@ def entrenar_qlora(
         "fp16": not usar_bf16,
         "optim": "paged_adamw_8bit",
         "gradient_checkpointing": True,
+        "gradient_checkpointing_kwargs": {"use_reentrant": False},
+        "logging_strategy": "steps",
+        "dataloader_num_workers": 0,
         "report_to": "none",
         "seed": seed,
         "remove_unused_columns": False,

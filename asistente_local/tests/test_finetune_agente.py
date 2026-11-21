@@ -50,7 +50,12 @@ class _FakeTokenizer:
         txt = "\n".join(partes)
         if not tokenize:
             return txt
-        return [ord(ch) for ch in txt]
+        ids = [ord(ch) for ch in txt]
+        return {"input_ids": ids, "attention_mask": [1] * len(ids)}
+
+    def __call__(self, texto: str, add_special_tokens: bool = False) -> dict[str, list[int]]:
+        ids = [ord(ch) for ch in texto]
+        return {"input_ids": ids, "attention_mask": [1] * len(ids)}
 
 
 class TestFinetuneAgente(unittest.TestCase):

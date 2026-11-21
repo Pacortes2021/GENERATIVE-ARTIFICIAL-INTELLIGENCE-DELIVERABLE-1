@@ -337,6 +337,8 @@ class AsistenteUdeC:
             "options": {
                 "temperature": self.config.temperature,
                 "num_ctx": self.config.num_ctx,
+                "num_predict": self.config.num_predict,
+                "repeat_penalty": self.config.repeat_penalty,
             },
         }
         if incluir_tools:
@@ -362,7 +364,14 @@ class AsistenteUdeC:
             if on_estado is not None:
                 on_estado("Buscando normativa relevante...")
             hits_init = self.buscador.buscar(
-                pregunta, k=self.config.top_k_inicial, expandir_citas=True
+                pregunta,
+                k=self.config.top_k_inicial,
+                expandir_citas=True,
+                top_p=self.config.top_p_inicial,
+                top_k_min=self.config.top_k_min,
+                top_p_temp=self.config.top_p_temp,
+                top_p_pool=self.config.top_p_pool,
+                peso_boost_top_p=self.config.peso_boost_top_p,
             )
             for h in hits_init:
                 fuentes_vistas[h["id"]] = h

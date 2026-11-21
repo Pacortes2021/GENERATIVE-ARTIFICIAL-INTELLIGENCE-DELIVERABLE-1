@@ -15,7 +15,7 @@ from asistente_local.asistente import (
     normalizar_citas_respuesta,
 )
 from asistente_local.benchmark import cargar_preguntas
-from asistente_local.buscador import BuscadorNormativa
+from asistente_local.buscador import BuscadorNormativa, seleccionar_por_top_p
 from asistente_local.config import ConfigAsistente
 from asistente_local.herramientas import calcular, dias_entre, ejecutar_herramienta
 
@@ -85,6 +85,37 @@ class TestBuscadorNormativa(unittest.TestCase):
             9.5,
         )
 
+    def test_seleccion_top_p_acumulada(self) -> None:
+        self.assertEqual(seleccionar_por_top_p([], k_max=5, top_p=0.8), [])
+
+        candidatos_dominante = [
+            (0.95, 0.95, {"id": "A"}),
+            (0.40, 0.40, {"id": "B"}),
+            (0.35, 0.35, {"id": "C"}),
+            (0.30, 0.30, {"id": "D"}),
+        ]
+        fijo = seleccionar_por_top_p(candidatos_dominante, k_max=3, top_p=None)
+        self.assertEqual([u["id"] for _, u in fijo], ["A", "B", "C"])
+
+        corto = seleccionar_por_top_p(candidatos_dominante, k_max=4, top_p=0.80, k_min=1, temperatura=0.12)
+        self.assertEqual([u["id"] for _, u in corto], ["A"])
+
+        con_min = seleccionar_por_top_p(candidatos_dominante, k_max=4, top_p=0.80, k_min=2, temperatura=0.12)
+        self.assertEqual([u["id"] for _, u in con_min], ["A", "B"])
+
+        empatados = [
+            (0.60, 0.60, {"id": "A"}),
+            (0.58, 0.58, {"id": "B"}),
+            (0.57, 0.57, {"id": "C"}),
+            (0.56, 0.56, {"id": "D"}),
+            (0.55, 0.55, {"id": "E"}),
+        ]
+        amplio = seleccionar_por_top_p(empatados, k_max=5, top_p=0.80, k_min=1, temperatura=0.12)
+        self.assertEqual(len(amplio), 4)
+
+        hits = self.buscador.buscar("baja academica creditos", k=6, top_p=0.75, expandir_citas=False)
+        self.assertTrue(1 <= len(hits) <= 6)
+
 
 class TestAsistenteOrquestadorOffline(unittest.TestCase):
     def test_flujo_tool_calling_y_argumentos_json_string(self) -> None:
@@ -123,6 +154,10 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         )
         res = asistente.responder("¿42 créditos en 4 semestres cae en baja?")
         self.assertEqual(asistente.config.top_k_inicial, 5)
+        self.assertEqual(asistente.config.top_p_inicial, 0.85)
+        self.assertEqual(asistente.config.top_p_temp, 0.10)
+        self.assertEqual(asistente.config.top_p_pool, 10)
+        self.assertEqual(asistente.config.repeat_penalty, 1.05)
         self.assertEqual(res.turnos_modelo, 2)
         self.assertEqual(len(res.pasos_herramientas), 1)
         self.assertEqual(res.pasos_herramientas[0].resultado["resultado"], 10.5)

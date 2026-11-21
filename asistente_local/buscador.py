@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import math
 import re
 import unicodedata
 from pathlib import Path
@@ -49,6 +50,43 @@ def _normalizar_doc(doc: str | None) -> str | None:
         "CAL": "CAL",
         "CALENDARIO": "CAL",
     }.get(limpio)
+
+
+def seleccionar_por_top_p(
+    candidatos: list[tuple[float, float, dict[str, Any]]],
+    k_max: int,
+    top_p: float | None = None,
+    k_min: int = 1,
+    temperatura: float = 0.10,
+    pool_max: int = 10,
+    peso_boost_top_p: float = 0.0,
+) -> list[tuple[float, dict[str, Any]]]:
+    """Selecciona entre k_min y k_max candidatos hasta acumular `top_p` de masa softmax."""
+    if not candidatos:
+        return []
+    k_lim = max(1, min(int(k_max), len(candidatos)))
+    if top_p is None:
+        return [(total, u) for total, _, u in candidatos[:k_lim]]
+
+    p_obj = max(0.05, min(float(top_p), 1.0))
+    k_inf = max(1, min(int(k_min), k_lim))
+    pool = candidatos[: max(k_lim, min(int(pool_max), len(candidatos)))]
+
+    temp = max(float(temperatura), 1e-4)
+    w_boost = max(0.0, min(float(peso_boost_top_p), 1.0))
+    logits = [base + w_boost * (total - base) for total, base, _ in pool]
+    max_logit = max(logits)
+    exps = [math.exp((v - max_logit) / temp) for v in logits]
+    norm = sum(exps) or 1.0
+
+    elegidos: list[tuple[float, dict[str, Any]]] = []
+    acum = 0.0
+    for (total, _, u), exp_v in zip(pool[:k_lim], exps[:k_lim]):
+        elegidos.append((total, u))
+        acum += exp_v / norm
+        if len(elegidos) >= k_inf and acum >= p_obj:
+            break
+    return elegidos
 
 
 class BuscadorNormativa:
@@ -206,8 +244,13 @@ class BuscadorNormativa:
         k: int = 6,
         documento: str | None = None,
         expandir_citas: bool = True,
+        top_p: float | None = None,
+        top_k_min: int = 1,
+        top_p_temp: float = 0.10,
+        top_p_pool: int = 10,
+        peso_boost_top_p: float = 0.0,
     ) -> list[dict[str, Any]]:
-        """Búsqueda híbrida (E5 + léxica + boost por artículo) filtrable por documento."""
+        """Búsqueda híbrida (E5 + léxica + boost por artículo) con corte Top-k o Top-p."""
         k = max(1, min(int(k), 12))
         doc_filtro = _normalizar_doc(documento)
         q_tokens = _tokens_clave(consulta)
@@ -232,7 +275,7 @@ class BuscadorNormativa:
                 rmin, rmax = float(raw.min()), float(raw.max())
                 sims_e5 = (raw - rmin) / (rmax - rmin + 1e-8)
 
-        mejores_por_uid: dict[str, tuple[float, dict[str, Any]]] = {}
+        mejores_por_uid: dict[str, tuple[float, float, dict[str, Any]]] = {}
         denom = max(1, len(q_tokens))
         for idx, frag in enumerate(self.fragmentos):
             uid = frag.get("unidad_id") or frag.get("parent_id")
@@ -247,19 +290,26 @@ class BuscadorNormativa:
             if doc_filtro is None and "calendario" in q_norm and u.get("documento") == "CAL":
                 boost += 0.15
 
-            if sims_e5 is not None:
-                score = 0.65 * float(sims_e5[idx]) + 0.35 * lex + boost
-            else:
-                score = lex + boost
+            base = 0.65 * float(sims_e5[idx]) + 0.35 * lex if sims_e5 is not None else lex
+            score = base + boost
 
             prev = mejores_por_uid.get(uid)
             if prev is None or score > prev[0]:
-                mejores_por_uid[uid] = (score, u)
+                mejores_por_uid[uid] = (score, base, u)
 
         ordenados = sorted(mejores_por_uid.values(), key=lambda par: -par[0])
+        seleccionados = seleccionar_por_top_p(
+            ordenados,
+            k_max=k,
+            top_p=top_p,
+            k_min=top_k_min,
+            temperatura=top_p_temp,
+            pool_max=top_p_pool,
+            peso_boost_top_p=peso_boost_top_p,
+        )
         salida: list[dict[str, Any]] = []
         vistos: set[str] = set()
-        for score, u in ordenados[:k]:
+        for score, u in seleccionados:
             vistos.add(u["id"])
             salida.append(
                 {

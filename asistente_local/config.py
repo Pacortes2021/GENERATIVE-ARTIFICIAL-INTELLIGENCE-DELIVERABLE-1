@@ -1,5 +1,7 @@
 """Configuración centralizada del asistente local UdeC."""
 
+from __future__ import annotations
+
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -23,7 +25,14 @@ class ConfigAsistente:
     temperature: float = 0.0
     max_pasos: int = 6
     top_k_inicial: int = 5
+    top_p_inicial: float | None = 0.85
+    top_k_min: int = 1
+    top_p_temp: float = 0.10
+    top_p_pool: int = 10
+    peso_boost_top_p: float = 0.0
     num_ctx: int = 4096
+    num_predict: int = 1024
+    repeat_penalty: float = 1.05
     timeout_s: int = 120
     usar_embeddings: bool = True
     desactivar_thinking: bool = True

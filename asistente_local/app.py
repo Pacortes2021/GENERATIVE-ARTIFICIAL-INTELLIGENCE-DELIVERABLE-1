@@ -54,6 +54,14 @@ def main() -> None:
         modelo = st.selectbox("Modelo Ollama", modelos_ord, index=0)
         usar_e5 = st.checkbox("Usar embeddings E5 locales", value=True)
         prebuscar = st.checkbox("Pre-cargar contexto inicial (más rápido)", value=True)
+        usar_top_p = st.checkbox(
+            "Selección adaptativa Top-p (85%)",
+            value=True,
+            help=(
+                "Trae entre 1 y 5 artículos hasta sumar 85% de relevancia acumulada "
+                "(si se desactiva, usa k=5 fijo)."
+            ),
+        )
         temp = st.slider("Temperatura", 0.0, 0.7, 0.0, 0.05)
         if st.button("Limpiar conversación"):
             st.session_state["mensajes"] = []
@@ -113,7 +121,12 @@ def main() -> None:
 
             try:
                 buscador = _cargar_buscador(usar_e5)
-                cfg = ConfigAsistente(modelo=modelo, temperature=temp, usar_embeddings=usar_e5)
+                cfg = ConfigAsistente(
+                    modelo=modelo,
+                    temperature=temp,
+                    usar_embeddings=usar_e5,
+                    top_p_inicial=0.85 if usar_top_p else None,
+                )
                 asistente = AsistenteUdeC(config=cfg, buscador=buscador)
                 hist = [
                     {"role": m["role"], "content": m["content"]}

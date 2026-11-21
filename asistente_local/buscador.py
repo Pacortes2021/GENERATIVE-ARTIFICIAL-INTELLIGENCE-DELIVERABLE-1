@@ -25,6 +25,12 @@ _STOPWORDS_ES = {
 }
 _ART_REF_RE = re.compile(r"\bart(?:[íi]culo|\.?)\s*(\d+)\s*(?:°|º)?", re.IGNORECASE)
 _CAL_ORDER_RE = re.compile(r"^CAL-(\d+)-S([12])-(\d+)$")
+_DOC_RIFI_RE = re.compile(
+    r"\b(?:ri\s*fi|reglamento\s+interno(?:\s+de\s+docencia(?:\s+de\s+pregrado)?)?(?:\s+de\s+(?:la\s+)?(?:facultad\s+de\s+)?ingenieria)?|reglamento\s+de\s+ingenieria)\b"
+)
+_DOC_RG_RE = re.compile(
+    r"\b(?:rg|reglamento\s+general(?:\s+de\s+docencia(?:\s+de\s+pregrado)?)?(?:\s+de\s+la\s+udec)?)\b"
+)
 
 
 def normalizar_texto(texto: str) -> str:
@@ -108,6 +114,56 @@ def _normalizar_doc(doc: str | None) -> str | None:
         "CAL": "CAL",
         "CALENDARIO": "CAL",
     }.get(limpio)
+
+
+def _detectar_doc_en_texto(texto_norm: str) -> str | None:
+    m_rifi = _DOC_RIFI_RE.search(texto_norm)
+    m_rg = _DOC_RG_RE.search(texto_norm)
+    if m_rifi and m_rg:
+        return "RI-FI" if m_rifi.start() < m_rg.start() else "RG"
+    if m_rifi:
+        return "RI-FI"
+    if m_rg:
+        return "RG"
+    return None
+
+
+def _extraer_menciones_articulos_con_doc(consulta: str) -> list[tuple[int, str | None]]:
+    """Asocia cada mención `Artículo N` con RG, RI-FI o RG-TRANS cuando el contexto es explícito."""
+    matches = list(_ART_REF_RE.finditer(consulta))
+    if not matches:
+        return []
+
+    q_norm = normalizar_texto(consulta)
+    hay_pdf = bool(re.search(r"\bpdf\b|\barchivo\b", q_norm))
+    tiene_rifi_global = bool(_DOC_RIFI_RE.search(q_norm))
+    tiene_rg_global = bool(_DOC_RG_RE.search(q_norm))
+    doc_global: str | None = None
+    if not hay_pdf and (tiene_rifi_global ^ tiene_rg_global):
+        doc_global = "RI-FI" if tiene_rifi_global else "RG"
+
+    salida: list[tuple[int, str | None]] = []
+    for idx, m in enumerate(matches):
+        num = int(m.group(1))
+        end_lim = matches[idx + 1].start() if idx + 1 < len(matches) else len(consulta)
+        tail_seg = re.split(r"[;?!\n]", consulta[m.end() : min(end_lim, m.end() + 95)], maxsplit=1)[0]
+        tail_norm = normalizar_texto(tail_seg)
+
+        if re.match(r"^(?:transitorio|transitorios)\b", tail_norm):
+            salida.append((num, "RG-TRANS"))
+            continue
+
+        doc_local = _detectar_doc_en_texto(tail_norm)
+        if doc_local is None:
+            prev_lim = matches[idx - 1].end() if idx > 0 else 0
+            pref_raw = consulta[max(prev_lim, m.start() - 60) : m.start()]
+            pref_seg = re.split(r"[;?!\n]", pref_raw)[-1]
+            pref_norm = normalizar_texto(pref_seg)
+            if not re.search(r"\bpdf\b|\barchivo\b", pref_norm):
+                doc_local = _detectar_doc_en_texto(pref_norm)
+
+        salida.append((num, doc_local or doc_global))
+    return salida
 
 
 def seleccionar_por_top_p(
@@ -243,6 +299,19 @@ class BuscadorNormativa:
             "unidad_id": uid,
             "max_articulo": max(self.inventario.get(doc_norm, {0})),
         }
+
+    def verificar_articulos_mencionados(self, consulta: str) -> list[dict[str, Any]]:
+        """Verifica en inventario oficial los artículos explícitamente ligados a RG o RI-FI."""
+        if getattr(self, "solo_pdfs", False) or not self.inventario:
+            return []
+        resultados: list[dict[str, Any]] = []
+        vistos: set[tuple[str, int]] = set()
+        for num, doc in _extraer_menciones_articulos_con_doc(consulta):
+            if doc not in {"RG", "RI-FI"} or (doc, num) in vistos:
+                continue
+            vistos.add((doc, num))
+            resultados.append(self.existe_articulo(doc, num))
+        return resultados
 
     def leer_articulo(self, doc: str, numero: int) -> dict[str, Any]:
         """Devuelve el texto íntegro del artículo N en RG o RI-FI."""
@@ -396,12 +465,19 @@ class BuscadorNormativa:
         q_tokens = _tokens_clave(consulta)
         q_norm = normalizar_texto(consulta)
 
-        art_menciones = [int(m.group(1)) for m in _ART_REF_RE.finditer(consulta)]
+        menciones = _extraer_menciones_articulos_con_doc(consulta)
+        art_menciones = [num for num, _ in menciones]
         ids_boost: set[str] = set()
-        for num in art_menciones:
-            for d in ([doc_filtro] if doc_filtro in {"RG", "RI-FI"} else ["RG", "RI-FI"]):
-                ids_boost.add(f"{d}-ART-{num:03d}")
-        if "transitorio" in q_norm:
+        for num, doc_esp in menciones:
+            if doc_esp == "RG-TRANS":
+                ids_boost.add(f"RG-TRANS-{num:03d}")
+            elif doc_esp in {"RG", "RI-FI"}:
+                if not doc_filtro or doc_filtro == doc_esp:
+                    ids_boost.add(f"{doc_esp}-ART-{num:03d}")
+            else:
+                for d in ([doc_filtro] if doc_filtro in {"RG", "RI-FI"} else ["RG", "RI-FI"]):
+                    ids_boost.add(f"{d}-ART-{num:03d}")
+        if "transitorio" in q_norm and not any(d == "RG-TRANS" for _, d in menciones):
             for num in art_menciones or [1, 2]:
                 ids_boost.add(f"RG-TRANS-{num:03d}")
 

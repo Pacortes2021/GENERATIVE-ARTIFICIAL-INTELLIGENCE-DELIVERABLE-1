@@ -393,6 +393,34 @@ class AsistenteUdeC:
         """Responde una pregunta combinando búsqueda inicial, tool-calling y cálculo exacto."""
         t0 = time.perf_counter()
         fuentes_vistas: dict[str, dict[str, Any]] = {}
+        pasos_herramientas: list[PasoHerramienta] = []
+
+        bloque_inventario = ""
+        checks_art = (
+            self.buscador.verificar_articulos_mencionados(pregunta)
+            if hasattr(self.buscador, "verificar_articulos_mencionados")
+            else []
+        )
+        inexistentes = [c for c in checks_art if not c.get("existe")]
+        if inexistentes:
+            lineas_inv = [
+                f"- El Artículo {c['numero']} NO existe en {c['doc']} "
+                f"(el rango oficial de {c['doc']} llega hasta el Art. {c.get('max_articulo', 0)}). "
+                f"No lo confundas con un artículo homónimo de otro reglamento."
+                for c in inexistentes
+            ]
+            bloque_inventario = (
+                "\n\nVerificación determinista previa del inventario oficial (`existe_articulo`):\n"
+                + "\n".join(lineas_inv)
+            )
+            for c in inexistentes:
+                pasos_herramientas.append(
+                    PasoHerramienta(
+                        nombre="existe_articulo",
+                        argumentos={"doc": c["doc"], "numero": c["numero"]},
+                        resultado=c,
+                    )
+                )
 
         bloque_inicial = ""
         if prebuscar:
@@ -444,9 +472,8 @@ class AsistenteUdeC:
         for turno in historial or []:
             if turno.get("role") in {"user", "assistant"} and turno.get("content"):
                 mensajes.append({"role": turno["role"], "content": str(turno["content"])})
-        mensajes.append({"role": "user", "content": f"{pregunta}{bloque_inicial}"})
+        mensajes.append({"role": "user", "content": f"{pregunta}{bloque_inventario}{bloque_inicial}"})
 
-        pasos_herramientas: list[PasoHerramienta] = []
         turnos = 0
         texto_final = ""
         usar_stream = on_token is not None

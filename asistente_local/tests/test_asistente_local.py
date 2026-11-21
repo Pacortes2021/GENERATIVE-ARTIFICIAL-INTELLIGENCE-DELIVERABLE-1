@@ -449,6 +449,55 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         self.assertIn("[RG-ART-051]", res2.respuesta)
         self.assertNotIn("Fuente: [RG-ART-051]", res2.respuesta)
 
+    def test_verificacion_previa_articulo_inexistente_por_documento(self) -> None:
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        ch_42 = buscador.verificar_articulos_mencionados(
+            "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+        )
+        self.assertEqual(len(ch_42), 1)
+        self.assertEqual(ch_42[0]["doc"], "RI-FI")
+        self.assertEqual(ch_42[0]["numero"], 36)
+        self.assertFalse(ch_42[0]["existe"])
+        self.assertEqual(ch_42[0]["max_articulo"], 35)
+
+        ch_mixto = buscador.verificar_articulos_mencionados(
+            "En el Reglamento General (Art. 36) y el Artículo 36 del Reglamento Interno, ¿aplican igual?"
+        )
+        self.assertEqual({(c["doc"], c["numero"]): c["existe"] for c in ch_mixto}, {
+            ("RG", 36): True,
+            ("RI-FI", 36): False,
+        })
+
+        self.assertEqual(
+            buscador.verificar_articulos_mencionados("¿Qué dice el Art. 2° Transitorio y el Art. 36 del PDF que subí?"),
+            [],
+        )
+        solo_pdfs = buscador.con_pdfs_usuario([], incluir_corpus_base=False)
+        self.assertEqual(solo_pdfs.verificar_articulos_mencionados("Artículo 36 del Reglamento Interno"), [])
+
+        payloads: list[dict] = []
+
+        def fake_chat(payload: dict) -> dict:
+            payloads.append(payload)
+            return {
+                "message": {
+                    "role": "assistant",
+                    "content": "El Artículo 36 del Reglamento Interno (RI-FI) no existe; el reglamento llega hasta el Art. 35.",
+                }
+            }
+
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=fake_chat,
+        )
+        res = asistente.responder(
+            "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?"
+        )
+        self.assertIn("NO existe en RI-FI", payloads[0]["messages"][1]["content"])
+        self.assertEqual(res.pasos_herramientas[0].nombre, "existe_articulo")
+        self.assertFalse(res.pasos_herramientas[0].resultado["existe"])
+
 
 if __name__ == "__main__":
     unittest.main()

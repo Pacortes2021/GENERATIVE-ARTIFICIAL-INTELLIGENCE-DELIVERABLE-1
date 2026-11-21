@@ -414,14 +414,33 @@ class AsistenteUdeC:
             )
             for h in hits_init:
                 fuentes_vistas[h["id"]] = h
-            contexto_txt = "\n\n".join(f"[{h['id']}] {h['texto']}" for h in hits_init)
-            bloque_inicial = (
-                "\n\nContexto normativo inicial recuperado automáticamente "
-                "(si necesitas más artículos, calendario completo o cálculos, usa tus herramientas):\n"
-                f"{contexto_txt}"
+            if hits_init:
+                contexto_txt = "\n\n".join(f"[{h['id']}] {h['texto']}" for h in hits_init)
+                encabezado = (
+                    "\n\nContexto inicial recuperado de tus PDFs subidos "
+                    "(si necesitas buscar otros pasajes, usa `buscar_reglamento` sin filtrar `documento`):\n"
+                    if getattr(self.buscador, "solo_pdfs", False)
+                    else "\n\nContexto normativo inicial recuperado automáticamente "
+                    "(si necesitas más artículos, calendario completo o cálculos, usa tus herramientas):\n"
+                )
+                bloque_inicial = f"{encabezado}{contexto_txt}"
+
+        system_prompt = SYSTEM_PROMPT
+        if getattr(self.buscador, "solo_pdfs", False):
+            system_prompt += (
+                "\n5. MODO SOLO PDFs DEL USUARIO: La búsqueda opera únicamente sobre los PDFs cargados "
+                "por el usuario (identificadores `[PDF-...]`). Responde basándote SOLO en esos documentos, "
+                "cita `[PDF-...]` junto al nombre de archivo y página (`[archivo.pdf p. X]`), y si no hay "
+                "PDFs cargados o el dato no figura en ellos, indícalo claramente sin afirmar reglas de UdeC que no estén en el contexto."
+            )
+        elif getattr(self.buscador, "tiene_pdfs_usuario", False):
+            system_prompt += (
+                "\n5. PDFs DEL USUARIO TAMBIÉN INDEXADOS: Además de los reglamentos UdeC, hay PDFs subidos "
+                "por el usuario indexados en el buscador (`[PDF-...]`). Si la evidencia contiene pasajes `[PDF-...]`, "
+                "cítalos junto con su archivo y página (`[archivo.pdf p. X]`) y no los descartes."
             )
 
-        mensajes: list[dict[str, Any]] = [{"role": "system", "content": SYSTEM_PROMPT}]
+        mensajes: list[dict[str, Any]] = [{"role": "system", "content": system_prompt}]
         for turno in historial or []:
             if turno.get("role") in {"user", "assistant"} and turno.get("content"):
                 mensajes.append({"role": turno["role"], "content": str(turno["content"])})

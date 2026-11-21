@@ -7,6 +7,10 @@ import tempfile
 import unittest
 from pathlib import Path
 
+import numpy as np
+
+from asistente_local.asistente import AsistenteUdeC
+from asistente_local.buscador import BuscadorNormativa
 from asistente_local.config import REPO_ROOT, ConfigAsistente
 from asistente_local.evaluador import (
     evaluar_caso_determinista,
@@ -239,6 +243,105 @@ class TestVerificadorSelectivo(unittest.TestCase):
         )
         self.assertFalse(bad_json["modificada"])
         self.assertEqual(bad_json["respuesta"], "Borrador original intacto [RG-ART-057].")
+
+
+class TestIntegracionPDFsYMultiturno(unittest.TestCase):
+    def _pack_pdf_sintetico(self) -> dict:
+        uid = "PDF-SILABOABCD-P01-01"
+        texto = "[silabo_robotica.pdf, pág. 1]\nEl taller de robótica exige asistencia de 85% y nota mínima 5,0."
+        return {
+            "nombre_archivo": "silabo_robotica.pdf",
+            "documento": "PDF:silabo_robotica.pdf",
+            "sha256": "abcd1234abcd1234abcd1234abcd1234",
+            "paginas_con_texto": 1,
+            "unidades": [
+                {
+                    "id": uid,
+                    "parent_id": uid,
+                    "documento": "PDF:silabo_robotica.pdf",
+                    "archivo": "silabo_robotica.pdf",
+                    "paginas": [1],
+                    "texto": texto,
+                    "es_pdf_usuario": True,
+                }
+            ],
+            "fragmentos": [
+                {
+                    "id": f"{uid}-F01",
+                    "unidad_id": uid,
+                    "parent_id": uid,
+                    "texto": texto,
+                    "texto_embedding": f"passage: [{uid}] {texto}",
+                }
+            ],
+        }
+
+    def test_con_pdfs_usuario_combinado_y_solo_pdfs_con_mock_e5(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            base = BuscadorNormativa(cache_dir=Path(tmp), usar_embeddings=False)
+            vacio_pdf = base.con_pdfs_usuario([], incluir_corpus_base=False)
+            self.assertTrue(vacio_pdf.solo_pdfs)
+            self.assertEqual(vacio_pdf.buscar("robótica"), [])
+
+            pack = self._pack_pdf_sintetico()
+            comb = base.con_pdfs_usuario([pack], incluir_corpus_base=True)
+            self.assertTrue(comb.tiene_pdfs_usuario)
+            self.assertFalse(comb.solo_pdfs)
+            hits_comb = comb.buscar("taller de robótica asistencia", k=4, modo_fusion="rrf")
+            self.assertTrue(any(h["id"] == "PDF-SILABOABCD-P01-01" for h in hits_comb))
+
+            solo = base.con_pdfs_usuario([pack], incluir_corpus_base=False)
+            self.assertTrue(solo.solo_pdfs)
+            self.assertEqual(len(solo.unidades), 1)
+            self.assertEqual(solo.buscar("baja académica", documento="RG"), [])
+            hits_solo = solo.buscar("asistencia mínima robótica", k=3, modo_fusion="rrf")
+            self.assertEqual(hits_solo[0]["id"], "PDF-SILABOABCD-P01-01")
+
+            # Verifica apilado de vectores E5 en caché con encoder mock sin red
+            class _FakeE5:
+                def encode(self, textos, normalize_embeddings=True, batch_size=32, show_progress_bar=False):
+                    return np.tile(np.array([0.5, 0.5, 0.5, 0.5], dtype=np.float32), (len(textos), 1))
+
+            base.usar_embeddings = True
+            base._e5 = _FakeE5()
+            base._matriz_e5 = np.tile(
+                np.array([0.5, 0.5, 0.5, 0.5], dtype=np.float32),
+                (len(base.fragmentos), 1),
+            )
+            comb_e5 = base.con_pdfs_usuario([pack], incluir_corpus_base=True)
+            self.assertEqual(comb_e5._matriz_e5.shape[0], len(comb_e5.fragmentos))
+            hits_e5 = comb_e5.buscar("nota mínima taller robótica", k=4, modo_fusion="rrf")
+            self.assertTrue(len(hits_e5) >= 1)
+
+    def test_asistente_multiturno_y_prompt_pdfs(self) -> None:
+        base = BuscadorNormativa(usar_embeddings=False)
+        solo = base.con_pdfs_usuario([self._pack_pdf_sintetico()], incluir_corpus_base=False)
+        payloads: list[dict] = []
+
+        def fake_chat(payload: dict) -> dict:
+            payloads.append(payload)
+            return {
+                "message": {
+                    "role": "assistant",
+                    "content": "Exige 85% de asistencia en el taller [silabo_robotica.pdf p. 1] [PDF-SILABOABCD-P01-01].",
+                }
+            }
+
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=solo,
+            cliente_chat=fake_chat,
+        )
+        res = asistente.responder(
+            "¿Y cuánta asistencia pide?",
+            historial=[
+                {"role": "user", "content": "¿Qué exige el taller de robótica?"},
+                {"role": "assistant", "content": "Exige nota mínima 5,0 [PDF-SILABOABCD-P01-01]."},
+            ],
+        )
+        self.assertIn("MODO SOLO PDFs DEL USUARIO", payloads[0]["messages"][0]["content"])
+        self.assertIn("[PDF-SILABOABCD-P01-01]", res.respuesta)
+        self.assertIn("[silabo_robotica.pdf p. 1]", res.respuesta)
 
 
 if __name__ == "__main__":

@@ -309,6 +309,8 @@ def ejecutar_herramienta(
             consulta=str(args.get("consulta", "")),
             k=int(args.get("k", 6)),
             documento=args.get("documento"),
+            modo_fusion="rrf",
+            usar_descomposicion=True,
         )
     if nombre == "leer_articulo":
         return buscador.leer_articulo(

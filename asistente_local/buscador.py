@@ -169,12 +169,18 @@ class BuscadorNormativa:
         self.unidades: list[dict[str, Any]] = (
             unidades if isinstance(unidades, list) else list(unidades.values())
         )
-        self.por_id: dict[str, dict[str, Any]] = {u["id"]: u for u in self.unidades}
         self.fragmentos: list[dict[str, Any]] = json.loads(
             self.fragmentos_path.read_text(encoding="utf-8")
         )
+        self._es_derivado = False
+        self.solo_pdfs = False
+        self._e5: Any = None
+        self._matriz_e5: np.ndarray | None = None
+        self._reconstruir_indices()
 
-        # Precomputar tokens léxicos e índice BM25 por fragmento
+    def _reconstruir_indices(self) -> None:
+        """Precomputa tabla por ID, tokens léxicos, índice BM25 e inventario de artículos."""
+        self.por_id: dict[str, dict[str, Any]] = {u["id"]: u for u in self.unidades}
         self._frag_tokens_lista: list[list[str]] = [
             _tokens_clave_lista(f"{f.get('unidad_id', '')} {f.get('texto', '')}")
             for f in self.fragmentos
@@ -186,12 +192,14 @@ class BuscadorNormativa:
             m = re.match(r"^(RI-FI|RG)-ART-(\d+)$", u["id"])
             if m:
                 self.inventario.setdefault(m.group(1), set()).add(int(m.group(2)))
-
-        self._e5: Any = None
-        self._matriz_e5: np.ndarray | None = None
+        self.tiene_pdfs_usuario = any(bool(u.get("es_pdf_usuario")) for u in self.unidades)
 
     def _asegurar_embeddings(self) -> None:
-        if not self.usar_embeddings or (self._e5 is not None and self._matriz_e5 is not None):
+        if (
+            not self.usar_embeddings
+            or self._es_derivado
+            or (self._e5 is not None and self._matriz_e5 is not None)
+        ):
             return
         from sentence_transformers import SentenceTransformer
 
@@ -407,6 +415,9 @@ class BuscadorNormativa:
                 continue
             indices_validos.append(idx)
 
+        if not indices_validos:
+            return []
+
         mejores_por_uid: dict[str, tuple[float, float, dict[str, Any]]] = {}
         es_compuesta = False
         if modo_fusion == "rrf":
@@ -501,3 +512,67 @@ class BuscadorNormativa:
                         )
 
         return salida
+
+    def con_pdfs_usuario(
+        self,
+        packs_pdf: list[dict[str, Any]],
+        incluir_corpus_base: bool = True,
+    ) -> "BuscadorNormativa":
+        """Crea un buscador en memoria combinando (o aislando) PDFs cargados por el usuario."""
+        if not packs_pdf and incluir_corpus_base:
+            return self
+
+        if self.usar_embeddings:
+            self._asegurar_embeddings()
+
+        unidades: list[dict[str, Any]] = list(self.unidades) if incluir_corpus_base else []
+        fragmentos: list[dict[str, Any]] = list(self.fragmentos) if incluir_corpus_base else []
+        matrices: list[np.ndarray] = []
+        if (
+            incluir_corpus_base
+            and self.usar_embeddings
+            and self._matriz_e5 is not None
+            and len(self.fragmentos)
+        ):
+            matrices.append(np.asarray(self._matriz_e5, dtype=np.float32))
+
+        shas_vistos: set[str] = set()
+        if packs_pdf:
+            from .pdfs import cargar_o_calcular_vectores_pdf
+
+            for pack in packs_pdf:
+                sha = str(pack.get("sha256", ""))
+                if sha and sha in shas_vistos:
+                    continue
+                if sha:
+                    shas_vistos.add(sha)
+
+                u_pack = list(pack.get("unidades") or [])
+                f_pack = list(pack.get("fragmentos") or [])
+                if not f_pack:
+                    continue
+
+                if self.usar_embeddings and self._e5 is not None:
+                    mat_pdf = cargar_o_calcular_vectores_pdf(pack, self._e5, self.cache_dir)
+                    if mat_pdf.ndim == 2 and mat_pdf.shape[0] == len(f_pack):
+                        matrices.append(np.asarray(mat_pdf, dtype=np.float32))
+                unidades.extend(u_pack)
+                fragmentos.extend(f_pack)
+
+        nuevo = BuscadorNormativa.__new__(BuscadorNormativa)
+        nuevo.corpus_path = self.corpus_path
+        nuevo.fragmentos_path = self.fragmentos_path
+        nuevo.modelo_embeddings = self.modelo_embeddings
+        nuevo.cache_dir = self.cache_dir
+        nuevo.usar_embeddings = self.usar_embeddings
+        nuevo._es_derivado = True
+        nuevo.solo_pdfs = not incluir_corpus_base
+        nuevo._e5 = self._e5
+        nuevo.unidades = unidades
+        nuevo.fragmentos = fragmentos
+        if matrices:
+            nuevo._matriz_e5 = np.vstack(matrices) if len(matrices) > 1 else matrices[0]
+        else:
+            nuevo._matriz_e5 = None
+        nuevo._reconstruir_indices()
+        return nuevo

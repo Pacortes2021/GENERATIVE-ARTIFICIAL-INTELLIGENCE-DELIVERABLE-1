@@ -13,6 +13,7 @@ from datetime import datetime, timezone
 import gc
 import json
 import math
+import os
 from pathlib import Path
 import random
 import shutil
@@ -438,16 +439,15 @@ def entrenar_dpo_qlora(
         attn_implementation="sdpa",
     )
     base_model.config.use_cache = False
-
-    # Precomputar `ref_logps` sobre el modelo base congelado antes de acoplar adaptadores LoRA
-    train_pares = _precomputar_ref_logps(base_model, train_tok, device, compute_dtype)
-    val_pares = _precomputar_ref_logps(base_model, val_tok, device, compute_dtype)
-
     base_model = prepare_model_for_kbit_training(
         base_model,
         use_gradient_checkpointing=True,
         gradient_checkpointing_kwargs={"use_reentrant": False},
     )
+
+    # Precomputar `ref_logps` sobre el modelo base congelado (ya normalizado) antes de acoplar LoRA
+    train_pares = _precomputar_ref_logps(base_model, train_tok, device, compute_dtype)
+    val_pares = _precomputar_ref_logps(base_model, val_tok, device, compute_dtype)
     lora_cfg = LoraConfig(
         r=lora_r,
         lora_alpha=lora_alpha,

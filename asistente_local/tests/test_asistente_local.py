@@ -5,7 +5,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from asistente_local.asistente import AsistenteUdeC, limpiar_think
+from asistente_local.asistente import AsistenteUdeC, limpiar_think, normalizar_citas_respuesta
 from asistente_local.benchmark import cargar_preguntas
 from asistente_local.buscador import BuscadorNormativa
 from asistente_local.config import ConfigAsistente
@@ -125,6 +125,32 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         self.assertEqual(len(cargar_preguntas("dificil_25")), 25)
         self.assertEqual(len(cargar_preguntas("congelado_50")), 50)
         self.assertEqual(len(cargar_preguntas("dificil_25", qids_filtro={"H03", "H07"})), 2)
+
+    def test_expansion_calendario_semestre_y_validador_citas(self) -> None:
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        hits = buscador.buscar("inicio de clases segundo semestre 03 de agosto", k=5)
+        ids = {h["id"] for h in hits}
+        self.assertIn("CAL-2026-S2-01", ids)
+        self.assertIn("CAL-2026-S2-02", ids)
+
+        txt, validas = normalizar_citas_respuesta(
+            "Tope [RI-FI-ART-35] y criterio [RI-FI-ART-014.b].", set(buscador.por_id.keys())
+        )
+        self.assertEqual(txt, "Tope RI-FI-ART-35 y criterio [RI-FI-ART-014].")
+        self.assertEqual(validas, ["RI-FI-ART-014"])
+
+        respuestas = [
+            {"message": {"role": "assistant", "content": "Hasta cuatro semanas antes."}},
+            {"message": {"role": "assistant", "content": "Hasta cuatro semanas antes. Fuente: [RG-ART-031]"}},
+        ]
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=lambda _p: respuestas.pop(0),
+        )
+        res = asistente.responder("¿Hasta cuándo puedo suspender estudios?")
+        self.assertEqual(res.turnos_modelo, 2)
+        self.assertIn("[RG-ART-031]", res.respuesta)
 
 
 if __name__ == "__main__":

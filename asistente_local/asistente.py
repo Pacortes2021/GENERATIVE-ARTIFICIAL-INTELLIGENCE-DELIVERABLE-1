@@ -22,17 +22,21 @@ SYSTEM_PROMPT = (
     "1. Responde de forma directa, clara y concisa usando SOLO lo devuelto por las herramientas "
     "o el contexto recuperado. Si falta un artículo o fechas del calendario, llama a "
     "`buscar_reglamento`, `leer_articulo`, `existe_articulo` o `ver_calendario`.\n"
-    "2. NUNCA calcules divisiones, promedios, ponderaciones ni diferencias de días mentalmente: "
-    "llama SIEMPRE a `calcular` para aritmética y a `dias_entre` para fechas "
-    "(usa `inclusivo=false` para días transcurridos entre dos fechas, e `inclusivo=true` "
-    "solo para duración inclusive de un rango).\n"
-    "3. Incluye condiciones, excepciones y plazos relevantes, citando EXACTAMENTE los IDs tal como "
-    "aparecen entre corchetes (ej. [RI-FI-ART-014], sin inventar sufijos como -a o -b).\n"
-    "4. Si `existe_articulo` devuelve `existe: false`, dilo directamente indicando el tope "
-    "`max_articulo` del reglamento sin atribuirlo a otro artículo distinto."
+    "2. Si la pregunta pide calcular un promedio, ponderación, diferencia de días o comparación "
+    "numérica, llama PRIMERO a `calcular` o `dias_entre` ANTES de afirmar Sí o No "
+    "(usa `inclusivo=false` para días transcurridos entre fechas, e `inclusivo=true` solo para "
+    "duración inclusive de un rango).\n"
+    "3. Responde explícitamente a la pregunta (indica si la norma confirma, corrige, condiciona "
+    "o no fija lo pedido; no te limites a copiar literalmente un artículo sin interpretarlo). "
+    "Distingue con precisión a qué caso o sujeto aplica cada párrafo o excepción del mismo artículo.\n"
+    "4. Cita SIEMPRE al final o en línea usando ÚNICAMENTE los identificadores exactos entre "
+    "corchetes presentes en la evidencia (ej. [RI-FI-ART-014], [CAL-2026-S2-02], sin inventar "
+    "sufijos como .b o -b). Si `existe_articulo` devuelve `existe: false`, indica en texto el "
+    "tope numérico (`max_articulo`, ej. 'llega hasta el Art. 35') SIN encerrarlo entre corchetes."
 )
 
 _THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
+_BRACKET_ID_RE = re.compile(r"\[([A-Z]+(?:-[A-Z0-9]+)+(?:\.[a-z0-9]+)?)\]")
 
 
 def limpiar_think(texto: str) -> str:
@@ -40,6 +44,27 @@ def limpiar_think(texto: str) -> str:
     limpio = _THINK_RE.sub("", str(texto or ""))
     limpio = re.sub(r"<think>.*", "", limpio, flags=re.DOTALL)
     return limpio.strip()
+
+
+def normalizar_citas_respuesta(texto: str, corpus_ids: set[str]) -> tuple[str, list[str]]:
+    """Valida corchetes [ID] contra corpus_ids: normaliza sufijos y quita corchetes inexistentes."""
+    validas: list[str] = []
+
+    def _reemplazar(match: re.Match[str]) -> str:
+        cid = match.group(1)
+        if cid in corpus_ids:
+            if cid not in validas:
+                validas.append(cid)
+            return f"[{cid}]"
+        base = cid.split(".", 1)[0]
+        if base in corpus_ids:
+            if base not in validas:
+                validas.append(base)
+            return f"[{base}]"
+        return cid
+
+    limpio = _BRACKET_ID_RE.sub(_reemplazar, texto)
+    return limpio, validas
 
 
 def listar_modelos_ollama(ollama_url: str = "http://localhost:11434", timeout_s: int = 5) -> list[str]:
@@ -214,7 +239,33 @@ class AsistenteUdeC:
                 }
             )
             data = self._llamar_ollama(self._construir_payload(mensajes, incluir_tools=False))
-            texto_final = limpiar_think(data.get("message", {}).get("content", ""))
+            msg_fin = data.get("message", {})
+            mensajes.append(msg_fin)
+            texto_final = limpiar_think(msg_fin.get("content", ""))
+
+        corpus_ids = set(self.buscador.por_id.keys())
+        texto_final, citas_validas = normalizar_citas_respuesta(texto_final, corpus_ids)
+        es_inexistencia = any(
+            pat in texto_final.lower()
+            for pat in ("no existe", "no se encuentra el artículo", "no figura en")
+        )
+        if not citas_validas and fuentes_vistas and not es_inexistencia:
+            turnos += 1
+            mensajes.append(
+                {
+                    "role": "user",
+                    "content": (
+                        "Tu respuesta anterior no citó identificadores entre corchetes. "
+                        "Mantén exactamente tu respuesta y agrega al final `Fuente: [...]` usando "
+                        "únicamente los identificadores exactos del contexto que la respaldan."
+                    ),
+                }
+            )
+            data = self._llamar_ollama(self._construir_payload(mensajes, incluir_tools=False))
+            texto_rep = limpiar_think(data.get("message", {}).get("content", ""))
+            texto_rep, citas_rep = normalizar_citas_respuesta(texto_rep, corpus_ids)
+            if citas_rep:
+                texto_final = texto_rep
 
         return RespuestaAsistente(
             pregunta=pregunta,

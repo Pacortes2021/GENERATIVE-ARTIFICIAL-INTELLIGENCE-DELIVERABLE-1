@@ -281,4 +281,22 @@ class BuscadorNormativa:
                         extras.append(ref)
             salida.extend(extras[:2])
 
+            semestres_cal: list[str] = []
+            for item in salida[:3]:
+                m_cal = _CAL_ORDER_RE.match(item["id"])
+                if m_cal and m_cal.group(2) not in semestres_cal:
+                    semestres_cal.append(m_cal.group(2))
+            for sem in semestres_cal:
+                for cal_item in self.ver_calendario(sem):
+                    if cal_item["id"] not in vistos:
+                        vistos.add(cal_item["id"])
+                        salida.append(
+                            {
+                                "id": cal_item["id"],
+                                "documento": "CAL",
+                                "texto": cal_item["texto"],
+                                "por_referencia_desde": f"calendario_s{sem}",
+                            }
+                        )
+
         return salida

@@ -1,0 +1,856 @@
+{
+  "dataset": "dificil_25",
+  "modelo": "qwen3:4b-instruct",
+  "usar_embeddings": true,
+  "prebuscar": true,
+  "completados": 25,
+  "total": 25,
+  "segundos_totales": 819.63,
+  "casos": [
+    {
+      "id": "H01",
+      "categoria": "multi_salto",
+      "pregunta": "Un estudiante quiere ingresar a la Facultad de Ingeniería viniendo de otra universidad chilena y, una vez dentro, convalidar una asignatura que aprobó allá. ¿Qué promedio mínimo necesita para ingresar y qué nota mínima debe tener la asignatura para convalidarla?",
+      "gold_dato": "Ingreso desde otra universidad: promedio ponderado mínimo 4,5 (Art 17). Convalidación: calificación mínima equivalente a 4,5 (Art 21).",
+      "gold_fuente": "RI-FI-ART-017; RI-FI-ART-021",
+      "respuesta": "Para responder a la pregunta:\n\n1. **Promedio mínimo necesario para ingresar** a la Facultad de Ingeniería viniendo de otra universidad chilena:  \n   Según [RI-FI-ART-017], el estudiante debe tener un promedio ponderado mínimo de **4,5 en la escala de 1 a 7** en la carrera de origen para poder ingresar.\n\n2. **Nota mínima necesaria para convalidar una asignatura** aprobada en otra universidad chilena:  \n   Según [RI-FI-ART-021], para convalidar una asignatura, la calificación debe ser **mínima equivalente a 4,5 en la escala de 1 a 7**.\n\nPor lo tanto:\n\n- El estudiante necesita un **promedio mínimo de 4,5** para ingresar.\n- La asignatura debe tener una **nota mínima de 4,5** para ser convalidada.\n\n[RI-FI-ART-017] [RI-FI-ART-021]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 56.79,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-017",
+        "RI-FI-ART-018",
+        "RG-ART-039",
+        "RI-FI-ART-021",
+        "RI-FI-ART-019"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-017",
+        "RI-FI-ART-021"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-017",
+        "RI-FI-ART-021"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado con k=5: acierta 4,5 ingreso [RI-FI-ART-017] y 4,5 convalidación [RI-FI-ART-021].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H02",
+      "categoria": "multi_salto",
+      "pregunta": "¿En qué se diferencia el promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería del exigido para cursar simultáneamente una carrera de la Facultad?",
+      "gold_dato": "Cambio dentro de la FI: 4,2 (Art 18). Carrera simultánea: 5,0 (Art 19).",
+      "gold_fuente": "RI-FI-ART-018; RI-FI-ART-019",
+      "respuesta": "El promedio mínimo exigido para cambiarse de carrera dentro de la Facultad de Ingeniería es de **4,2** (establecido en [RI-FI-ART-018]), mientras que para cursar simultáneamente una carrera de la Facultad de Ingeniería se exige un promedio mínimo de **5,0** (establecido en [RI-FI-ART-019]).\n\nEsto indica que el requisito de promedio es más alto para cursar una carrera simultáneamente que para cambiar de carrera dentro de la misma Facultad.\n\n[RI-FI-ART-018]  \n[RI-FI-ART-019]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 22.02,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-019",
+        "RI-FI-ART-017",
+        "RG-ART-054",
+        "RI-FI-ART-005"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-019"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-019"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: 4,2 [RI-FI-ART-018] y 5,0 [RI-FI-ART-019].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H03",
+      "categoria": "multi_salto",
+      "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+      "gold_dato": "Primer semestre: 09 mar -> 02 abr = 24 días. Segundo semestre: 10 ago -> 04 sep = 25 días. El plazo es un día más largo en el segundo semestre.",
+      "gold_fuente": "CAL-2026-S1-02; CAL-2026-S1-03; CAL-2026-S2-02; CAL-2026-S2-03",
+      "respuesta": "Desde el inicio de clases hasta la fecha límite de modificación de asignaturas:\n\n- En el **primer semestre** (inicio: 09 de marzo, límite: 02 de abril): hay **24 días**.\n- En el **segundo semestre** (inicio: 10 de agosto, límite: 04 de septiembre): hay **25 días**.\n\nEl plazo es más largo en el **segundo semestre**.\n\nFuente: [CAL-2026-S1-03], [CAL-2026-S2-03]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 60.42,
+      "turnos_modelo": 3,
+      "herramientas": [
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "fecha_inicio": "09 de marzo",
+            "fecha_fin": "02 de abril",
+            "inclusivo": false
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-03-09",
+            "fecha_fin_iso": "2026-04-02",
+            "dias_diferencia": 24,
+            "dias_corridos": 24,
+            "dias_inclusivos": 25,
+            "resultado_solicitado": 24,
+            "inclusivo": false
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "fecha_inicio": "10 de agosto",
+            "fecha_fin": "04 de septiembre",
+            "inclusivo": false
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-08-10",
+            "fecha_fin_iso": "2026-09-04",
+            "dias_diferencia": 25,
+            "dias_corridos": 25,
+            "dias_inclusivos": 26,
+            "resultado_solicitado": 25,
+            "inclusivo": false
+          }
+        }
+      ],
+      "fuentes_ids": [
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-04",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-03"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-03"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: 24 vs 25 días (2° sem más largo) vía dias_entre + Fuente: [CAL-2026-S1-03], [CAL-2026-S2-03].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H04",
+      "categoria": "multi_salto",
+      "pregunta": "Un alumno egresado dejó pendientes sus actividades de titulación. ¿De cuánto tiempo dispone según el Reglamento General, y qué reglamento define qué pasa si ese plazo vence?",
+      "gold_dato": "Plazo máximo de seis semestres (RG Art 49). El Reglamento Interno de cada Facultad define las exigencias si el plazo vence.",
+      "gold_fuente": "RG-ART-049",
+      "respuesta": "El alumno egresado tiene un plazo máximo de seis semestres para cumplir con las actividades finales de graduación o titulación, según el Artículo 49º del Reglamento General [RG-ART-049].\n\nSi ese plazo vence, el Reglamento Interno de Docencia de Pregrado de las Facultades deberá indicar las exigencias que se deben cumplir para obtener el Título Profesional o el Grado Académico en dicha situación, conforme al Artículo 3.22 del Reglamento General [RG-ART-003-DEF-22].\n\n[RG-ART-049]  \n[RG-ART-003-DEF-22]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 19.45,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-049",
+        "RG-ART-003-DEF-22",
+        "RG-TRANS-001",
+        "RG-ART-003-DEF-23",
+        "RG-ART-026"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-003-DEF-22",
+        "RG-ART-049"
+      ],
+      "citas_validas": [
+        "RG-ART-003-DEF-22",
+        "RG-ART-049"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 0,
+      "nota_revision": "Dato correcto (6 semestres [RG-ART-049] y Reglamento Interno), pero atribuye la frase a Art. 3.22 [RG-ART-003-DEF-22] (P01).",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H05",
+      "categoria": "calculo",
+      "pregunta": "La Memoria de Título de un estudiante obtuvo un 6,5 y el promedio ponderado de su plan de estudios (sin la Memoria) fue 5,2. ¿Cuál es su nota de titulación?",
+      "gold_dato": "0,6 x 5,2 + 0,4 x 6,5 = 5,72 (aprox 5,7).",
+      "gold_fuente": "RI-FI-ART-030",
+      "respuesta": "La nota de titulación se obtiene ponderando el promedio ponderado del plan de estudios (sin la Memoria) en un 60% y la nota de la Memoria de Título en un 40%.\n\nDatos proporcionados:\n- Promedio ponderado del plan de estudios (sin Memoria) = 5,2\n- Nota de la Memoria de Título = 6,5\n\nCálculo del promedio ponderado de titulación:\n\n\\[\n\\text{Nota de titulación} = (0.6 \\times 5.2) + (0.4 \\times 6.5)\n\\]\n\n\\[\n= 3.12 + 2.6 = 5.72\n\\]\n\nPor lo tanto, la nota de titulación es **5.72**.\n\n[RI-FI-ART-030]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 28.97,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RI-FI-ART-031",
+        "RG-ART-003-DEF-10",
+        "RI-FI-ART-029"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-030"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-030"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: 5,72 [RI-FI-ART-030].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H06",
+      "categoria": "calculo",
+      "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+      "gold_dato": "Sí. Promedio = créditos aprobados / semestres de permanencia (RG Art 28 a) = 38/4 = 9,5, inferior a 10 créditos semestrales, por lo que incurre en la causal del RI-FI Art 14 b).",
+      "gold_fuente": "RI-FI-ART-014; RG-ART-028",
+      "respuesta": "El estudiante ha aprobado 38 créditos al término del cuarto semestre. Según el Artículo 14° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-014], se considera baja académica si se tiene un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre.\n\nPara evaluar si el estudiante cae en baja académica:\n\n- El promedio de créditos semestrales se calcula dividiendo los créditos aprobados por el número de semestres de permanencia.\n- Al término del cuarto semestre, el número de semestres es 4.\n- El promedio es: 38 créditos / 4 semestres = 9.5 créditos semestrales.\n\nComo 9.5 es inferior a 10 créditos semestrales, el estudiante **cae en baja académica** según el criterio del Artículo 14° [RI-FI-ART-014].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 48.3,
+      "turnos_modelo": 2,
+      "herramientas": [
+        {
+          "nombre": "existe_articulo",
+          "argumentos": {
+            "doc": "RI-FI",
+            "numero": 14
+          },
+          "resultado": {
+            "doc": "RI-FI",
+            "numero": 14,
+            "existe": true,
+            "unidad_id": "RI-FI-ART-014",
+            "max_articulo": 35
+          }
+        },
+        {
+          "nombre": "leer_articulo",
+          "argumentos": {
+            "doc": "RI-FI",
+            "numero": 14
+          },
+          "resultado": {
+            "id": "RI-FI-ART-014",
+            "documento": "RI-FI",
+            "paginas": [
+              3
+            ],
+            "texto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las siguientes situaciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera. b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera. c) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.",
+            "encontrado": true
+          }
+        }
+      ],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RG-ART-014",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RG-ART-024"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: sin contradicción, calcula 38/4 = 9,5 < 10 y concluye baja académica [RI-FI-ART-014].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H07",
+      "categoria": "calculo",
+      "pregunta": "Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?",
+      "gold_dato": "No. Promedio = créditos aprobados / semestres de permanencia (RG Art 28 a) = 42/4 = 10,5, no es inferior a 10, así que NO incurre en la causal del RI-FI Art 14 b).",
+      "gold_fuente": "RI-FI-ART-014; RG-ART-028",
+      "respuesta": "El estudiante aprobó 42 créditos al término de su cuarto semestre. Para determinar si está en baja académica según el Artículo 14 del Reglamento Interno de la Facultad de Ingeniería (RI-FI), se analiza el inciso b):\n\n[RI-FI-ART-014] b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera.\n\nEl promedio de créditos semestrales se calcula dividiendo los créditos aprobados por el número de semestres de permanencia.\n\nEn este caso:\n- Créditos aprobados = 42\n- Semestres de permanencia = 4\n\nPromedio = 42 / 4 = 10.5\n\nEl promedio de 10.5 es superior a 10, por lo tanto, **no se aplica el criterio de baja académica** según el inciso b del Artículo 14.\n\nConclusión: **No, el estudiante no está en baja académica por el criterio de promedio de créditos del Artículo 14**.\n\n[RI-FI-ART-014]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 36.96,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RG-ART-014",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RI-FI-ART-015"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: 42/4 = 10,5 > 10, no está en baja [RI-FI-ART-014].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H08",
+      "categoria": "calculo",
+      "pregunta": "La Memoria de un estudiante obtuvo un 4,0 y el promedio ponderado de su plan (sin la Memoria) fue 4,0. ¿Cuál es su nota de titulación?",
+      "gold_dato": "4,0 (0,6 x 4,0 + 0,4 x 4,0 = 4,0).",
+      "gold_fuente": "RI-FI-ART-030",
+      "respuesta": "La nota de titulación se obtiene mediante un promedio ponderado: 60% del promedio ponderado de las asignaturas sin la Memoria y 40% de la nota de la Memoria.\n\nDatos del estudiante:\n- Promedio ponderado sin la Memoria: 4,0\n- Nota de la Memoria: 4,0\n\nAplicamos la fórmula:\n\n\\[\n\\text{Nota de titulación} = (0.6 \\times 4,0) + (0.4 \\times 4,0)\n\\]\n\n\\[\n= 2,4 + 1,6 = 4,0\n\\]\n\nPor lo tanto, la nota de titulación es **4,0**.\n\n[RI-FI-ART-030]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 27.98,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-030",
+        "RG-ART-024",
+        "RG-ART-021",
+        "RG-ART-048",
+        "RI-FI-ART-018"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-030"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-030"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: 4,0 [RI-FI-ART-030].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H09",
+      "categoria": "colision_lexica",
+      "pregunta": "¿Qué certificados debe adjuntar un estudiante para suspender sus estudios?",
+      "gold_dato": "a) Certificado de la DAFE (sin deudas de aranceles/préstamos o garantizadas) y b) Certificado de la Dirección de Bibliotecas (sin material adeudado). (Art 25)",
+      "gold_fuente": "RI-FI-ART-025",
+      "respuesta": "Un estudiante que desea suspender sus estudios debe adjuntar los siguientes certificados:\n\na) Certificado de la División de Asistencia Financiera al Estudiante en que conste que el alumno no tiene deudas con la universidad por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado; y  \nb) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\n\nEstos requisitos están establecidos en [RG-ART-035] y [RI-FI-ART-025].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 20.36,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-035",
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RI-FI-ART-031",
+        "RG-ART-031"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-035",
+        "RI-FI-ART-025"
+      ],
+      "citas_validas": [
+        "RG-ART-035",
+        "RI-FI-ART-025"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: certificados DAFE y Bibliotecas [RG-ART-035] [RI-FI-ART-025].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H10",
+      "categoria": "colision_lexica",
+      "pregunta": "Según el Reglamento General, ¿hasta cuándo puede un estudiante solicitar suspender sus estudios dentro del período lectivo?",
+      "gold_dato": "Hasta cuatro semanas antes del término del período lectivo respectivo (RG Art 31).",
+      "gold_fuente": "RG-ART-031",
+      "respuesta": "Según el Reglamento General, un estudiante puede solicitar suspender sus estudios hasta cuatro semanas antes del término del periodo lectivo respectivo [RG-ART-031].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 16.01,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-031",
+        "RG-ART-033",
+        "RG-ART-029",
+        "RI-FI-ART-027",
+        "RG-ART-054"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-031"
+      ],
+      "citas_validas": [
+        "RG-ART-031"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: hasta cuatro semanas antes del término [RG-ART-031].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H11",
+      "categoria": "colision_lexica",
+      "pregunta": "¿Qué diferencia hay entre el Promedio Ponderado y el Promedio Curricular según el Reglamento General?",
+      "gold_dato": "Promedio Ponderado: promedio de las notas finales iguales o superiores a 4,0, ponderadas por créditos. Promedio Curricular: promedio de TODAS las notas finales ponderadas por créditos (incluye reprobadas). El concepto NCR equivale a 1,0. (RG Art 24)",
+      "gold_fuente": "RG-ART-024",
+      "respuesta": "El Promedio Ponderado y el Promedio Curricular difieren en su alcance y cálculo según el Reglamento General:\n\n- **Promedio Ponderado (\"Prom. Pond.\")**: Se calcula solo con las notas finales iguales o superiores a 4,0, ponderadas por los créditos correspondientes. No se consideran las notas inferiores a 4,0 ni los conceptos como APR o REP (se convierten en 1,0). Este promedio se utiliza como indicador cuantitativo del rendimiento en cada asignatura y se emplea para determinar la Nota Final de la asignatura [RG-ART-024].\n\n- **Promedio Curricular (\"Prom. Curr.\")**: Se calcula con todas las notas finales (incluso aquellas inferiores a 4,0), ponderadas por los créditos correspondientes. Este promedio tiene un alcance más amplio y abarca el rendimiento completo del estudiante en su carrera [RG-ART-024].\n\nEn resumen, el Promedio Ponderado excluye las notas por debajo de 4,0, mientras que el Promedio Curricular incluye todas las notas, lo que hace que el segundo sea más amplio y menos selectivo en su cálculo.\n\n[RG-ART-024]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 37.04,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-024",
+        "RG-ART-021",
+        "RI-FI-ART-018",
+        "RG-PREAMBULO",
+        "RG-ART-003-DEF-12"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-024"
+      ],
+      "citas_validas": [
+        "RG-ART-024"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 0,
+      "nota_revision": "Regresión P01: confunde APR/REP como 'se convierten en 1,0' en lugar de NCR=1,0 (RG-ART-024 excluye APR/REP).",
+      "correcto_contenido": 0
+    },
+    {
+      "id": "H12",
+      "categoria": "colision_lexica",
+      "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+      "gold_dato": "Sí. Puede solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles en un plazo máximo de un año (RG Art 30).",
+      "gold_fuente": "RG-ART-030",
+      "respuesta": "Sí, un estudiante en situación de Baja por no Inscripción puede volver a estudiar, y según el Reglamento General, debe presentar una solicitud ante el Comité de Docencia y Asuntos Estudiantiles respectivo, en un plazo máximo de un año desde la fecha en que se produjo la baja.\n\nEste plazo de un año es el máximo permitido para la solicitud de continuación de estudios en caso de Baja por no Inscripción [RG-ART-030].\n\nAdemás, se permite una sola solicitud ante el Comité, y si esta no es resuelta favorablemente, se puede recurrir al Vicedecano dentro del quinto día hábil de notificada la resolución [RG-ART-030].\n\nPor lo tanto, el plazo para volver a estudiar es de **un año máximo** desde la fecha de la baja por no inscripción.\n\n[RG-ART-030]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 33.34,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-030",
+        "RI-FI-ART-014",
+        "RG-ART-026",
+        "RG-ART-043",
+        "RG-ART-042"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-030"
+      ],
+      "citas_validas": [
+        "RG-ART-030"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 0,
+      "nota_revision": "Dejó de inventar los 10 días, pero agregó 'se permite una sola solicitud ante el Comité' no dicho en RG-ART-030 para Baja por no Inscripción (P01).",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H13",
+      "categoria": "negacion_excepcion",
+      "pregunta": "¿Pueden los estudiantes de Primer Año Común convalidar o revalidar asignaturas durante las primeras cuatro semanas, como el resto de los estudiantes?",
+      "gold_dato": "No. Aunque el plazo general es de cuatro semanas, los estudiantes de Primer Año Común NO pueden revalidar ni convalidar asignaturas (Art 22).",
+      "gold_fuente": "RI-FI-ART-022",
+      "respuesta": "No, los estudiantes de Primer Año Común no pueden convalidar ni revalidar asignaturas durante las primeras cuatro semanas, ya que el Reglamento Interno de la Facultad de Ingeniería establece que esta posibilidad está excluida para ellos [RI-FI-ART-022].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 19.12,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-022",
+        "RG-ART-044",
+        "RG-ART-037",
+        "RG-ART-043",
+        "RI-FI-ART-015"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-022"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-022"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: No pueden convalidar ni revalidar [RI-FI-ART-022].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H14",
+      "categoria": "negacion_excepcion",
+      "pregunta": "Un estudiante reprobó una asignatura obligatoria por segunda vez. ¿Queda automáticamente en baja académica?",
+      "gold_dato": "No necesariamente. Es causal de baja (Art 14 c y RG 28 b), SALVO que la haya aprobado en el PLEV del año correspondiente o que se encuentre en su primer año de permanencia.",
+      "gold_fuente": "RI-FI-ART-014; RG-ART-028",
+      "respuesta": "No, un estudiante que reprobó una asignatura obligatoria por segunda vez **no queda automáticamente en baja académica**.\n\nSegún el Artículo 14° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-014], la situación de baja académica por haber reprobado por segunda vez una asignatura obligatoria **no se aplica a los estudiantes que se encuentran en el primer año de permanencia en la carrera**.\n\nAdemás, el Artículo 28° del Reglamento General [RG-ART-028] menciona que la baja académica por segunda reprobación de una asignatura obligatoria **se aplica salvo que** la asignatura haya sido aprobada en el PLEV del año académico correspondiente o que se trate de estudiantes en el primer año de permanencia.\n\nPor lo tanto, **la baja académica no es automática** y depende de la situación específica del estudiante (año de permanencia y aprobación en el PLEV).\n\n[RI-FI-ART-014] [RG-ART-028]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 40.01,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RI-FI-ART-020",
+        "RG-ART-030",
+        "RG-ART-037"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-028",
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RG-ART-028",
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: no automáticamente, detalla excepciones PLEV y primer año [RI-FI-ART-014] [RG-ART-028].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H15",
+      "categoria": "negacion_excepcion",
+      "pregunta": "¿Se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio?",
+      "gold_dato": "No. El Art 21 prohíbe expresamente convalidar una asignatura previamente cursada y reprobada en el Plan de Estudio.",
+      "gold_fuente": "RI-FI-ART-021",
+      "respuesta": "No, no se puede convalidar una asignatura que el estudiante ya cursó y reprobó dentro de su Plan de Estudio.\n\nEste límite está expresado claramente en el [RI-FI-ART-021], que establece que \"No se podrá convalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio\". Esta norma aplica directamente a los estudiantes de especialidad y establece una condición de exclusión para las asignaturas que han sido cursadas y reprobadas.\n\nAdemás, el [RI-FI-ART-020] reafirma que \"No se podrá revalidar una asignatura que haya sido previamente cursada y reprobada en el Plan de Estudio\", lo cual confirma que tanto la convalidación como la revalidación están prohibidas en ese caso.\n\n[RI-FI-ART-021]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 29.38,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-037",
+        "RI-FI-ART-021",
+        "RI-FI-ART-020",
+        "RI-FI-ART-022",
+        "RI-FI-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-020",
+        "RI-FI-ART-021"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-020",
+        "RI-FI-ART-021"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: No se puede si fue cursada y reprobada [RI-FI-ART-021].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H16",
+      "categoria": "sintesis",
+      "pregunta": "Resume en condiciones claras cuándo un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno.",
+      "gold_dato": "Queda en baja si: a) aprueba menos de 15 créditos al término del 2o semestre de permanencia; b) desde el 4o semestre su promedio de créditos aprobados es inferior a 10 créditos semestrales; o c) reprueba por 2a vez una asignatura obligatoria (salvo aprobarla en el PLEV o estar en primer año).",
+      "gold_fuente": "RI-FI-ART-014",
+      "respuesta": "Un estudiante de Ingeniería queda en baja académica según el Artículo 14 del Reglamento Interno en las siguientes condiciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera.  \nb) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera.  \nc) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.\n\n[RI-FI-ART-014]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 26.15,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RG-ART-014",
+        "RG-ART-051",
+        "RI-FI-ART-018",
+        "RI-FI-ART-035"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: tres causales a), b), c) y excepciones [RI-FI-ART-014].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H17",
+      "categoria": "sintesis",
+      "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+      "gold_dato": "La asistencia mínima exigida no puede superar el 80% de las clases teóricas y prácticas, pero puede llegar al 100% en actividades como seminarios, laboratorios, talleres o salidas a terreno (Art 13).",
+      "gold_fuente": "RI-FI-ART-013",
+      "respuesta": "Los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería están regulados en el Artículo 13° del Reglamento Interno de la Facultad de Ingeniería (RI-FI-ART-013), que establece que el profesor encargado de una asignatura puede exigir una asistencia mínima, pero esta no podrá superar el 80% de las clases teóricas y prácticas. En actividades específicas como seminarios, laboratorios, talleres o salidas a terreno, el porcentaje puede llegar al 100%.\n\nEste tope de asistencia (80% en clases teóricas y prácticas) es un límite máximo que el profesor no puede superar, y se aplica a todas las asignaturas dentro de la Facultad de Ingeniería. No obstante, en actividades de naturaleza específica (como laboratorios o talleres), el profesor puede exigir una asistencia del 100%, lo cual está permitido por el mismo artículo.\n\nAdemás, el Artículo 20° del Reglamento General (RG-ART-020) indica que la facultad determinará el régimen de asistencia, lo que implica que puede haber variaciones según la carrera o asignatura, siempre que no excedan los límites establecidos en el Artículo 13°.\n\nEn cuanto a casos en los que el tope puede ser distinto, se menciona que:\n\n- Alumnos con discapacidad debidamente acreditada pueden solicitar un régimen especial de asistencia, conforme al Artículo 20° del RG, y la solicitud se resuelve mediante consulta al Programa INCLUDEC.\n- Alumnos que tienen razones religiosas para no asistir pueden acreditarlo al momento de inscripción, y el profesor podrá considerar esta circunstancia en la programación de actividades.\n\nPor tanto, el tope de asistencia (80% en clases teóricas y prácticas) es un límite general que no puede ser superado, y puede variar en actividades específicas (hasta el 100%), pero no se permite exceder el 80% en clases teóricas y prácticas. [RI-FI-ART-013]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 54.39,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RG-ART-035"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-013"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-013"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: 80% teóricas/prácticas, 100% lab/talleres [RI-FI-ART-013] y separa bien discapacidad vs religión en RG-ART-020.",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H18",
+      "categoria": "sintesis",
+      "pregunta": "¿Qué pasa con un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título?",
+      "gold_dato": "Debe cursar y aprobar, además de la Memoria, un máximo de 36 créditos en asignaturas, fijadas por el Comité de Docencia y Asuntos Estudiantiles (Art 31).",
+      "gold_fuente": "RI-FI-ART-031",
+      "respuesta": "Un estudiante que estuvo con los estudios suspendidos más de tres años y que, al suspender, solo le faltaba la Memoria de Título, deberá cursar y aprobar, además de la Memoria de Título, un máximo de 36 créditos en asignaturas, las que serán fijadas por el Comité de Docencia y Asuntos Estudiantiles [RI-FI-ART-031]. \n\nEste requisito se aplica específicamente a estudiantes cuya suspensión de estudios ha superado los tres años y que al momento de suspender solo le faltaba aprobar la Memoria de Título. No se menciona en el contexto normativo que se requiera reincorporación previa o que se modifique el plan de estudio, pero sí se indica que, en general, los alumnos que soliciten reincorporación deberán adscribirse al plan de estudio vigente en el momento de su reincorporación [RG-ART-033]. \n\nSin embargo, en este caso, como el estudiante solo le faltaba la Memoria de Título, el artículo 31° del Reglamento Interno de la Facultad de Ingeniería establece el requisito específico de cursar y aprobar un máximo de 36 créditos adicionales, además de la Memoria de Título [RI-FI-ART-031]. \n\n[RI-FI-ART-031]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 35.06,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-031",
+        "RG-ART-035",
+        "RG-ART-033",
+        "RG-ART-003-DEF-19",
+        "RG-ART-003-DEF-20"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-033",
+        "RI-FI-ART-031"
+      ],
+      "citas_validas": [
+        "RG-ART-033",
+        "RI-FI-ART-031"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: Memoria + máx 36 créditos [RI-FI-ART-031], más contexto correcto de [RG-ART-033].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H19",
+      "categoria": "sintesis",
+      "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+      "gold_dato": "Pierde la calidad si aprobó menos créditos que el promedio mínimo exigido por la carrera; ese promedio se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia (RG Art 28 a).",
+      "gold_fuente": "RG-ART-028",
+      "respuesta": "Según el Reglamento General, el criterio de créditos aprobados para perder la calidad de alumno se determina en el Artículo 28°, específicamente en el punto a), que establece que los alumnos perderán la calidad de alumno si han aprobado menos créditos que el promedio mínimo exigido por la carrera. Este promedio se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.\n\nEste criterio está alineado con el Artículo 14° del Reglamento Interno de la Facultad de Ingeniería (RI-FI-ART-014), que también menciona la pérdida de la calidad de alumno por tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre, y por aprobar menos de 15 créditos al final del segundo semestre.\n\nPor tanto, la pérdida de calidad de alumno por créditos aprobados se determina mediante el cálculo del promedio de créditos aprobados dividido por el número de semestres de permanencia, y se aplica cuando este promedio es inferior al mínimo exigido por la carrera [RG-ART-028].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 29.58,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-028",
+        "RI-FI-ART-028",
+        "RI-FI-ART-014",
+        "RG-ART-051",
+        "RG-ART-050"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-028"
+      ],
+      "citas_validas": [
+        "RG-ART-028"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: criterio promedio mínimo y división por semestres de permanencia [RG-ART-028].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H20",
+      "categoria": "premisa_falsa",
+      "pregunta": "El Artículo 45 del Reglamento Interno de la Facultad de Ingeniería fija la nota mínima para aprobar la práctica profesional. ¿Cuál es esa nota?",
+      "gold_dato": "El RI-FI no tiene Artículo 45 (el articulado llega hasta el 35). El sistema debe indicar que no existe / no hay respaldo, sin inventar una nota.",
+      "gold_fuente": "(inexistente)",
+      "respuesta": "No existe el Artículo 45 en el Reglamento Interno de la Facultad de Ingeniería (RI-FI). El contexto proporcionado no incluye dicho artículo, y al verificar su existencia, se confirma que no existe [existe_articulo: RI-FI-ART-045].\n\nPor lo tanto, no se puede determinar la nota mínima para aprobar la práctica profesional basándose en un artículo que no existe.\n\n[existe_articulo: false]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 24.45,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-045",
+        "RG-ART-048",
+        "RG-ART-038",
+        "RG-ART-021",
+        "RI-FI-ART-002"
+      ],
+      "citas_en_respuesta": [],
+      "citas_validas": [],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: rechaza Art. 45 sin inventar nota ni citar artículos falsos (inv=[]).",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H21",
+      "categoria": "premisa_falsa",
+      "pregunta": "¿Cuántos créditos como máximo puede inscribir por semestre un estudiante regular según el Artículo 8 del Reglamento Interno?",
+      "gold_dato": "El Art 8 fija un MÍNIMO (igual o superior a 8 créditos), no un máximo. La pregunta asume un tope que el artículo no establece; debe corregirse la premisa.",
+      "gold_fuente": "RI-FI-ART-008",
+      "respuesta": "El Artículo 8 del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-008] establece que los estudiantes deberán inscribir y cursar un número de créditos igual o superior a ocho del plan de estudio de la carrera a la que están adscritos.\n\nSin embargo, este artículo **no especifica un máximo** de créditos que puede inscribir un estudiante por semestre. Solo establece un mínimo de ocho créditos, y no menciona un límite superior.\n\nPor lo tanto, **no existe en el texto una norma que fije un máximo de créditos por semestre**.\n\n[RI-FI-ART-008]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 29.99,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-008",
+        "RG-ART-008",
+        "RG-ART-049",
+        "RG-ART-042",
+        "RI-FI-ART-014"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-008"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-008"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: explica que Art. 8 fija mínimo 8 y no establece máximo [RI-FI-ART-008].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H22",
+      "categoria": "premisa_falsa",
+      "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+      "gold_dato": "Falso. La calificación final mínima de aprobación es 4,0 (Art 11), no 4,5. El 4,5 corresponde a otros trámites (ingreso desde otra universidad, convalidación).",
+      "gold_fuente": "RI-FI-ART-011",
+      "respuesta": "No, la nota mínima para aprobar una asignatura en la Facultad de Ingeniería no es 4,5.\n\nSegún el Artículo 11° del Reglamento Interno de la Facultad de Ingeniería ([RI-FI-ART-011]), para aprobar una asignatura se debe obtener una calificación final mínima de 4,0 en la escala de 1 a 7.\n\nAdemás, el Artículo 23º del Reglamento General ([RG-ART-023]) establece que los alumnos que obtengan una Nota Final igual o superior a 4,0 aprobarán la asignatura, mientras que quienes obtengan menos de 4,0 o no cumplan requisitos serán calificados con NCR y reprobarán.\n\nEl valor de 4,5 aparece en el Artículo 17° ([RI-FI-ART-017]), pero como requisito para ingresar a la Facultad de Ingeniería desde otra facultad o universidad, no como nota mínima para aprobar una asignatura.\n\nPor lo tanto, la nota mínima para aprobar una asignatura es 4,0, no 4,5.\n\n[RI-FI-ART-011] [RG-ART-023]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 35.06,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RG-ART-023",
+        "RI-FI-ART-018",
+        "RG-ART-003-DEF-11"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-023",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017"
+      ],
+      "citas_validas": [
+        "RG-ART-023",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: corrige 4,5 -> 4,0 [RI-FI-ART-011] [RG-ART-023] y ubica bien 4,5 en [RI-FI-ART-017].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H23",
+      "categoria": "premisa_falsa",
+      "pregunta": "El calendario 2026 indica que el segundo semestre inicia el 03 de agosto. ¿Es correcto?",
+      "gold_dato": "No. El 03-07 de agosto es la Inscripción de Asignaturas; el inicio de clases del segundo semestre es el 10 de agosto (CAL S2).",
+      "gold_fuente": "CAL-2026-S2-01; CAL-2026-S2-02",
+      "respuesta": "No, no es correcto. El calendario 2026 indica que el segundo semestre comienza con la inscripción de asignaturas el 03 de agosto, pero el inicio de clases es el 10 de agosto [CAL-2026-S2-02]. Por lo tanto, el segundo semestre no inicia el 03 de agosto como fecha de inicio de actividades docentes, sino que la inscripción comienza ese día.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 15.53,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-02"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-02"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Arreglado: refuta 03 de agosto aclarando inscripción vs inicio de clases 10 de agosto [CAL-2026-S2-02].",
+      "correcto_contenido": 1
+    },
+    {
+      "id": "H24",
+      "categoria": "colision_lexica",
+      "pregunta": "Si no me presento a una evaluación por una razón justificada, ¿cuántos días tengo para regularizar mi situación y ante quién?",
+      "gold_dato": "Hasta tres días hábiles posteriores a la aplicación de la evaluación, solicitándolo al profesor encargado (con posibilidad de apelar al Vicedecano). (RG Art 26)",
+      "gold_fuente": "RG-ART-026",
+      "respuesta": "El alumno que no se presenta a una evaluación por razones justificadas tiene derecho a solicitar la regularización de su situación ante el **profesor encargado de la asignatura** en un **plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación** [RG-ART-026].\n\nEste plazo se aplica exclusivamente para la regularización de la situación de inasistencia, y no se extiende a otros procesos como la revisión de calificaciones o apelaciones. Si no se regulariza dentro de ese plazo, el alumno será calificado con la nota mínima o con el concepto NCR, según corresponda.\n\nNo existe un plazo distinto para apelar ante el Vicedecano en este caso, ya que el apelación solo se permite en casos específicos como desacuerdo con la calificación o situaciones anómalas, no por inasistencia justificada.\n\nPor tanto, el plazo es de **tres días hábiles** y se debe presentar ante el **profesor encargado de la asignatura**.\n\n[RG-ART-026]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 39.77,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-026",
+        "RG-ART-025",
+        "RG-ART-030",
+        "RG-ART-013",
+        "RG-ART-038"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-026"
+      ],
+      "citas_validas": [
+        "RG-ART-026"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 0,
+      "nota_revision": "Regresión P01: acierta 3 días hábiles y profesor encargado [RG-ART-026], pero niega erróneamente el derecho a apelar al Vicedecano.",
+      "correcto_contenido": 0
+    },
+    {
+      "id": "H25",
+      "categoria": "sintesis",
+      "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+      "gold_dato": "Primero por número de créditos aprobados; a igual número de créditos, por el promedio curricular (dos decimales, incluye aprobadas y reprobadas) del Plan Común de Primer Año; respetando el orden de preferencias y los cupos por carrera (Art 5). Solo se consideran las asignaturas obligatorias de Primer Año.",
+      "gold_fuente": "RI-FI-ART-005",
+      "respuesta": "La selección de los estudiantes del Ingreso Común para asignarlos a una carrera de la Facultad de Ingeniería se realiza al término del segundo semestre de permanencia, según lo establecido en el Artículo 5° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-005].  \n\nEl proceso se basa en:  \n1. El número de créditos aprobados.  \n2. El promedio curricular de notas de las asignaturas del Plan Común de Primer Año, ponderado por créditos, expresado con dos decimales (incluyendo asignaturas aprobadas y reprobadas).  \n3. El orden de preferencia de las carreras de Ingeniería Civil, según la oferta de la Facultad y los cupos disponibles por carrera.  \n\nSolo se consideran las asignaturas obligatorias del Primer Año para el cálculo del promedio.  \n\nEste proceso se lleva a cabo al final del año académico, conforme al Artículo 6° [RI-FI-ART-006], y se regula por la distribución de cupos por carrera establecida por la Facultad.  \n\n[RI-FI-ART-005]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 33.5,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-005",
+        "RI-FI-ART-006",
+        "RI-FI-ART-004",
+        "RG-ART-055",
+        "RI-FI-ART-003"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-005",
+        "RI-FI-ART-006"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-005",
+        "RI-FI-ART-006"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": 1,
+      "nota_revision": "Exacto: créditos, promedio curricular 2 decimales, solo obligatorias primer año, preferencias y cupos [RI-FI-ART-005].",
+      "correcto_contenido": 1
+    }
+  ],
+  "resumen_auditado": {
+    "aciertos_estricto_pauta": 21,
+    "pct_estricto_pauta": 84.0,
+    "aciertos_contenido_dato": 23,
+    "pct_contenido_dato": 92.0,
+    "segundos_totales": 819.63,
+    "promedio_segundos_por_pregunta": 32.79
+  }
+}

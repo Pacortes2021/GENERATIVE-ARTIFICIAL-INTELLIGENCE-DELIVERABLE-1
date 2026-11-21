@@ -6,6 +6,7 @@ import argparse
 import gc
 import inspect
 import json
+import math
 import os
 import random
 import statistics
@@ -219,6 +220,7 @@ def _smoke_test_validacion(model: Any, tokenizer: Any, val_records: list[dict[st
         if len(elegidos) >= max_ejemplos:
             break
 
+    model.config.use_cache = True
     model.eval()
     device = next(model.parameters()).device
     for r in elegidos:
@@ -284,8 +286,8 @@ def entrenar_qlora(
     if validate_only:
         return resumen
 
+    os.environ["TOKENIZERS_PARALLELISM"] = "false"
     import torch
-    from datasets import Dataset
     from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
     from transformers import AutoModelForCausalLM, BitsAndBytesConfig, Trainer, TrainingArguments
 
@@ -294,7 +296,8 @@ def entrenar_qlora(
 
     _fijar_semillas(seed)
     t0 = time.perf_counter()
-    usar_bf16 = bool(torch.cuda.is_bf16_supported())
+    cap = torch.cuda.get_device_capability(0)
+    usar_bf16 = bool(torch.cuda.is_bf16_supported() and cap[0] >= 8)
     compute_dtype = torch.bfloat16 if usar_bf16 else torch.float16
 
     bnb_cfg = BitsAndBytesConfig(
@@ -303,14 +306,27 @@ def entrenar_qlora(
         bnb_4bit_use_double_quant=True,
         bnb_4bit_compute_dtype=compute_dtype,
     )
-    base_model = AutoModelForCausalLM.from_pretrained(
-        modelo_base,
-        quantization_config=bnb_cfg,
-        device_map="auto",
-        torch_dtype=compute_dtype,
-    )
+    try:
+        base_model = AutoModelForCausalLM.from_pretrained(
+            modelo_base,
+            quantization_config=bnb_cfg,
+            device_map="auto",
+            torch_dtype=compute_dtype,
+            attn_implementation="sdpa",
+        )
+    except TypeError:
+        base_model = AutoModelForCausalLM.from_pretrained(
+            modelo_base,
+            quantization_config=bnb_cfg,
+            device_map="auto",
+            torch_dtype=compute_dtype,
+        )
     base_model.config.use_cache = False
-    base_model = prepare_model_for_kbit_training(base_model)
+    base_model = prepare_model_for_kbit_training(
+        base_model,
+        use_gradient_checkpointing=True,
+        gradient_checkpointing_kwargs={"use_reentrant": False},
+    )
 
     lora_cfg = LoraConfig(
         r=lora_r,
@@ -321,18 +337,34 @@ def entrenar_qlora(
         target_modules=list(LORA_TARGET_MODULES),
     )
     model = get_peft_model(base_model, lora_cfg)
+    for param in model.parameters():
+        if param.requires_grad and param.dtype != torch.float32:
+            param.data = param.data.float()
 
     output_dir = Path(output_dir)
     checkpoints_dir = output_dir / "checkpoints"
     adapter_dir = output_dir / "adapter"
     output_dir.mkdir(parents=True, exist_ok=True)
 
-    ds_train = Dataset.from_list(
-        [{"input_ids": e["input_ids"], "attention_mask": e["attention_mask"], "labels": e["labels"]} for e in train_sft]
-    )
-    ds_val = Dataset.from_list(
-        [{"input_ids": e["input_ids"], "attention_mask": e["attention_mask"], "labels": e["labels"]} for e in val_sft]
-    )
+    class _DatasetSFT(torch.utils.data.Dataset):
+        def __init__(self, items: list[dict[str, Any]]) -> None:
+            self.items = [
+                {"input_ids": e["input_ids"], "attention_mask": e["attention_mask"], "labels": e["labels"]}
+                for e in items
+            ]
+
+        def __len__(self) -> int:
+            return len(self.items)
+
+        def __getitem__(self, idx: int) -> dict[str, Any]:
+            return self.items[idx]
+
+    ds_train = _DatasetSFT(train_sft)
+    ds_val = _DatasetSFT(val_sft)
+
+    steps_per_epoch = max(1, math.ceil(len(train_sft) / max(1, grad_accum)))
+    total_steps = max(1, int(round(steps_per_epoch * epochs)))
+    warmup_steps = max(1, int(round(total_steps * 0.10)))
 
     ta_params = inspect.signature(TrainingArguments.__init__).parameters
     eval_key = "eval_strategy" if "eval_strategy" in ta_params else "evaluation_strategy"
@@ -341,13 +373,16 @@ def entrenar_qlora(
         "per_device_train_batch_size": 1,
         "per_device_eval_batch_size": 1,
         "gradient_accumulation_steps": grad_accum,
+        "eval_accumulation_steps": 4,
         "learning_rate": learning_rate,
         "num_train_epochs": epochs,
         "lr_scheduler_type": "cosine",
-        "warmup_ratio": 0.10,
+        "warmup_steps": warmup_steps,
         "weight_decay": 0.01,
+        "max_grad_norm": 1.0,
         "logging_steps": 5,
         eval_key: "steps",
+        "save_strategy": "steps",
         "eval_steps": 9,
         "save_steps": 9,
         "save_total_limit": 2,

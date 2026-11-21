@@ -22,6 +22,7 @@ class ConfigAsistente:
     cache_dir: Path = DEFAULT_CACHE_DIR
     temperature: float = 0.0
     max_pasos: int = 6
+    top_k_inicial: int = 5
     num_ctx: int = 4096
     timeout_s: int = 120
     usar_embeddings: bool = True

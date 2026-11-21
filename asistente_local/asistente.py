@@ -148,7 +148,9 @@ class AsistenteUdeC:
 
         bloque_inicial = ""
         if prebuscar:
-            hits_init = self.buscador.buscar(pregunta, k=3, expandir_citas=True)
+            hits_init = self.buscador.buscar(
+                pregunta, k=self.config.top_k_inicial, expandir_citas=True
+            )
             for h in hits_init:
                 fuentes_vistas[h["id"]] = h
             contexto_txt = "\n\n".join(f"[{h['id']}] {h['texto']}" for h in hits_init)

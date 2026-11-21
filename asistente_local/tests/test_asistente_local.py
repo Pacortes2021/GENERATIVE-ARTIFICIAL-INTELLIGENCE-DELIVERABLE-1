@@ -114,6 +114,7 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
             cliente_chat=mock_ollama,
         )
         res = asistente.responder("¿42 créditos en 4 semestres cae en baja?")
+        self.assertEqual(asistente.config.top_k_inicial, 5)
         self.assertEqual(res.turnos_modelo, 2)
         self.assertEqual(len(res.pasos_herramientas), 1)
         self.assertEqual(res.pasos_herramientas[0].resultado["resultado"], 10.5)

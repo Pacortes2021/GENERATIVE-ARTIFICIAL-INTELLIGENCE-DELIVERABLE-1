@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import sys
+import time
 from pathlib import Path
 
 import streamlit as st
@@ -88,7 +89,29 @@ def main() -> None:
             st.markdown(prompt)
 
         with st.chat_message("assistant"):
-            with st.spinner("Consultando normativa y herramientas..."):
+            estado_slot = st.empty()
+            estado_box = estado_slot.status("Cargando buscador y normativa...", expanded=False)
+            placeholder = st.empty()
+            tokens_stream: list[str] = []
+            ultimo_render = 0.0
+
+            def _on_estado(texto_estado: str) -> None:
+                estado_box.update(label=texto_estado, state="running")
+                if tokens_stream:
+                    tokens_stream.clear()
+                    placeholder.empty()
+
+            def _on_token(tok: str) -> None:
+                nonlocal ultimo_render
+                if not tokens_stream:
+                    estado_box.update(label="Escribiendo respuesta...", state="running")
+                tokens_stream.append(tok)
+                ahora = time.monotonic()
+                if ahora - ultimo_render >= 0.04 or "\n" in tok:
+                    placeholder.markdown("".join(tokens_stream) + " ▌")
+                    ultimo_render = ahora
+
+            try:
                 buscador = _cargar_buscador(usar_e5)
                 cfg = ConfigAsistente(modelo=modelo, temperature=temp, usar_embeddings=usar_e5)
                 asistente = AsistenteUdeC(config=cfg, buscador=buscador)
@@ -96,9 +119,20 @@ def main() -> None:
                     {"role": m["role"], "content": m["content"]}
                     for m in st.session_state["mensajes"][:-1]
                 ]
-                res = asistente.responder(prompt, historial=hist[-6:], prebuscar=prebuscar)
+                res = asistente.responder(
+                    prompt,
+                    historial=hist[-6:],
+                    prebuscar=prebuscar,
+                    on_token=_on_token,
+                    on_estado=_on_estado,
+                )
+            except Exception as exc:
+                estado_box.update(label="Error al consultar Ollama", state="error", expanded=False)
+                st.error(f"No se pudo completar la consulta con Ollama: {exc}")
+                return
 
-            st.markdown(res.respuesta)
+            estado_slot.empty()
+            placeholder.markdown(res.respuesta)
             meta = {
                 "modelo": res.modelo,
                 "segundos": res.segundos,

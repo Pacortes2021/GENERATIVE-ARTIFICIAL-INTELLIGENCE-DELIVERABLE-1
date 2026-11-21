@@ -1,11 +1,19 @@
 """Tests unitarios deterministas (sin red ni GPU) para el asistente local UdeC."""
 
+import json
 import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
 
-from asistente_local.asistente import AsistenteUdeC, limpiar_think, normalizar_citas_respuesta
+from asistente_local.asistente import (
+    AsistenteUdeC,
+    _compactar_resultado_herramienta,
+    _FiltroThinkStream,
+    _recopilar_stream_ollama,
+    limpiar_think,
+    normalizar_citas_respuesta,
+)
 from asistente_local.benchmark import cargar_preguntas
 from asistente_local.buscador import BuscadorNormativa
 from asistente_local.config import ConfigAsistente
@@ -151,6 +159,149 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         res = asistente.responder("¿Hasta cuándo puedo suspender estudios?")
         self.assertEqual(res.turnos_modelo, 2)
         self.assertIn("[RG-ART-031]", res.respuesta)
+
+    def test_compactar_resultado_evita_duplicacion_en_contexto(self) -> None:
+        vistas = {"CAL-1": {"id": "CAL-1", "texto": "Texto largo 1"}}
+        solo_nuevo = [{"id": "CAL-2", "texto": "Texto largo 2"}]
+        self.assertEqual(_compactar_resultado_herramienta(solo_nuevo, vistas), solo_nuevo)
+
+        mixto = [
+            {"id": "CAL-1", "texto": "Texto largo 1"},
+            {"id": "CAL-2", "texto": "Texto largo 2"},
+        ]
+        res_mixto = _compactar_resultado_herramienta(mixto, vistas)
+        self.assertEqual(res_mixto["ya_en_contexto"], ["CAL-1"])
+        self.assertEqual(res_mixto["nuevos"], [{"id": "CAL-2", "texto": "Texto largo 2"}])
+
+        todo_duplicado = [{"id": "CAL-1", "texto": "Texto largo 1"}]
+        res_dup = _compactar_resultado_herramienta(todo_duplicado, vistas)
+        self.assertNotIn("nuevos", res_dup)
+        self.assertEqual(res_dup["ya_en_contexto"], ["CAL-1"])
+
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        payloads: list[dict] = []
+        respuestas = [
+            {
+                "message": {
+                    "role": "assistant",
+                    "tool_calls": [{"function": {"name": "ver_calendario", "arguments": {"semestre": "ambos"}}}],
+                }
+            },
+            {
+                "message": {
+                    "role": "assistant",
+                    "content": "18 y 19 de mayo y 21 y 22 de septiembre (4 días) [CAL-2026-S1-08] [CAL-2026-S2-07].",
+                }
+            },
+        ]
+
+        def fake_chat(payload: dict) -> dict:
+            payloads.append(json.loads(json.dumps(payload)))
+            return respuestas.pop(0)
+
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=fake_chat,
+        )
+        res = asistente.responder(
+            "Según el Calendario 2026, ¿qué fechas no hay evaluaciones en ambos semestres?"
+        )
+        self.assertIn("[CAL-2026-S1-08]", res.respuesta)
+        self.assertEqual(len(res.pasos_herramientas[0].resultado), 25)
+        tool_msg = payloads[1]["messages"][-1]
+        tool_json = json.loads(tool_msg["content"])
+        self.assertIn("ya_en_contexto", tool_json)
+        self.assertEqual(len(tool_json["ya_en_contexto"]), 25)
+        self.assertNotIn("No se realizarán evaluaciones", tool_msg["content"])
+
+    def test_filtro_think_stream_y_recopilar_ndjson(self) -> None:
+        filtro = _FiltroThinkStream()
+        emitidos = [
+            filtro.alimentar("<th"),
+            filtro.alimentar("ink>oculto</th"),
+            filtro.alimentar("ink>\n\nHola "),
+            filtro.alimentar("3 <"),
+            filtro.alimentar(" 5"),
+            filtro.finalizar(),
+        ]
+        self.assertEqual("".join(emitidos), "Hola 3 < 5")
+
+        filtro_incompleto = _FiltroThinkStream()
+        self.assertEqual(filtro_incompleto.alimentar("OK <think>cortado"), "OK ")
+        self.assertEqual(filtro_incompleto.finalizar(), "")
+
+        lineas_ndjson = [
+            json.dumps({"message": {"role": "assistant", "content": "<think>interno</think>"}}).encode("utf-8"),
+            json.dumps({"message": {"role": "assistant", "content": "Aprobación "}}).encode("utf-8"),
+            json.dumps({"message": {"role": "assistant", "content": "mínima [RI-FI-ART-014]"}}).encode("utf-8"),
+            json.dumps({"message": {"role": "assistant", "content": ""}, "done": True}).encode("utf-8"),
+        ]
+        tokens: list[str] = []
+        merged = _recopilar_stream_ollama(lineas_ndjson, on_token=tokens.append)
+        self.assertEqual("".join(tokens), "Aprobación mínima [RI-FI-ART-014]")
+        self.assertEqual(merged["message"]["content"], "<think>interno</think>Aprobación mínima [RI-FI-ART-014]")
+        self.assertTrue(merged["done"])
+
+        lineas_tool = [
+            json.dumps(
+                {
+                    "message": {
+                        "role": "assistant",
+                        "content": "",
+                        "tool_calls": [{"function": {"name": "calcular", "arguments": {"expresion": "1+1"}}}],
+                    },
+                    "done": True,
+                }
+            )
+        ]
+        tokens_tool: list[str] = []
+        merged_tool = _recopilar_stream_ollama(lineas_tool, on_token=tokens_tool.append)
+        self.assertEqual(tokens_tool, [])
+        self.assertEqual(len(merged_tool["message"]["tool_calls"]), 1)
+
+        with self.assertRaises(RuntimeError):
+            _recopilar_stream_ollama([json.dumps({"error": "modelo caído"})])
+
+    def test_responder_notifica_stream_y_estado(self) -> None:
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        payloads: list[dict] = []
+        respuestas = [
+            {
+                "message": {
+                    "role": "assistant",
+                    "tool_calls": [{"function": {"name": "calcular", "arguments": {"expresion": "42 / 4"}}}],
+                }
+            },
+            {
+                "message": {
+                    "role": "assistant",
+                    "content": "El promedio es 10,5 créditos [RI-FI-ART-014].",
+                }
+            },
+        ]
+
+        def fake_chat(payload: dict) -> dict:
+            payloads.append(json.loads(json.dumps(payload)))
+            return respuestas.pop(0)
+
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=fake_chat,
+        )
+        tokens: list[str] = []
+        estados: list[str] = []
+        res = asistente.responder(
+            "¿42 créditos en 4 semestres cae en baja?",
+            on_token=tokens.append,
+            on_estado=estados.append,
+        )
+        self.assertTrue(payloads[0]["stream"])
+        self.assertTrue(payloads[1]["stream"])
+        self.assertIn("Ejecutando herramienta `calcular`...", estados)
+        self.assertEqual("".join(tokens), "El promedio es 10,5 créditos [RI-FI-ART-014].")
+        self.assertEqual(res.respuesta, "El promedio es 10,5 créditos [RI-FI-ART-014].")
 
 
 if __name__ == "__main__":

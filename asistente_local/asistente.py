@@ -6,7 +6,7 @@ import json
 import re
 import time
 from dataclasses import dataclass, field
-from typing import Any, Callable
+from typing import Any, Callable, Iterable
 
 import requests
 
@@ -44,6 +44,124 @@ def limpiar_think(texto: str) -> str:
     limpio = _THINK_RE.sub("", str(texto or ""))
     limpio = re.sub(r"<think>.*", "", limpio, flags=re.DOTALL)
     return limpio.strip()
+
+
+def _longitud_prefijo_cola(texto: str, objetivo: str) -> int:
+    """Longitud del mayor sufijo de `texto` que es prefijo estricto de `objetivo`."""
+    max_len = min(len(texto), len(objetivo) - 1)
+    for k in range(max_len, 0, -1):
+        if texto.endswith(objetivo[:k]):
+            return k
+    return 0
+
+
+class _FiltroThinkStream:
+    """Filtra en vivo bloques <think>...</think> aunque lleguen fragmentados."""
+
+    def __init__(self) -> None:
+        self._en_think = False
+        self._buffer = ""
+        self._recortar_inicio = True
+
+    def _emitir_limpio(self, trozo: str, salida: list[str]) -> None:
+        if not trozo:
+            return
+        if self._recortar_inicio:
+            trozo = trozo.lstrip()
+            if not trozo:
+                return
+            self._recortar_inicio = False
+        salida.append(trozo)
+
+    def alimentar(self, delta: str) -> str:
+        """Procesa un fragmento entrante y devuelve solo texto visible fuera de <think>."""
+        if not delta:
+            return ""
+        self._buffer += delta
+        salida: list[str] = []
+        while self._buffer:
+            if self._en_think:
+                idx = self._buffer.find("</think>")
+                if idx == -1:
+                    corte = len("</think>") - 1
+                    if len(self._buffer) > corte:
+                        self._buffer = self._buffer[-corte:]
+                    break
+                self._buffer = self._buffer[idx + len("</think>") :]
+                self._en_think = False
+                self._recortar_inicio = True
+                continue
+
+            idx = self._buffer.find("<think>")
+            if idx != -1:
+                self._emitir_limpio(self._buffer[:idx], salida)
+                self._buffer = self._buffer[idx + len("<think>") :]
+                self._en_think = True
+                continue
+
+            retener = _longitud_prefijo_cola(self._buffer, "<think>")
+            limite = len(self._buffer) - retener
+            self._emitir_limpio(self._buffer[:limite], salida)
+            self._buffer = self._buffer[limite:]
+            break
+        return "".join(salida)
+
+    def finalizar(self) -> str:
+        """Entrega el remanente seguro al cerrarse el stream."""
+        if self._en_think or not self._buffer:
+            self._buffer = ""
+            return ""
+        salida: list[str] = []
+        self._emitir_limpio(self._buffer, salida)
+        self._buffer = ""
+        return "".join(salida)
+
+
+def _recopilar_stream_ollama(
+    lineas: Iterable[str | bytes],
+    on_token: Callable[[str], None] | None = None,
+) -> dict[str, Any]:
+    """Reconstruye el mensaje completo desde NDJSON de Ollama emitiendo tokens en vivo."""
+    rol = "assistant"
+    partes_texto: list[str] = []
+    tool_calls: list[dict[str, Any]] = []
+    ultimo_chunk: dict[str, Any] = {}
+    filtro = _FiltroThinkStream()
+
+    for cruda in lineas:
+        if not cruda:
+            continue
+        linea = cruda.decode("utf-8") if isinstance(cruda, bytes) else cruda
+        linea = linea.strip()
+        if not linea:
+            continue
+        chunk = json.loads(linea)
+        if chunk.get("error"):
+            raise RuntimeError(f"Error de Ollama: {chunk['error']}")
+        ultimo_chunk = chunk
+        msg = chunk.get("message") or {}
+        if msg.get("role"):
+            rol = str(msg["role"])
+        tc_chunk = msg.get("tool_calls") or []
+        if tc_chunk:
+            tool_calls.extend(tc_chunk)
+        delta = str(msg.get("content") or "")
+        if delta:
+            partes_texto.append(delta)
+            if on_token is not None and not tc_chunk:
+                visible = filtro.alimentar(delta)
+                if visible:
+                    on_token(visible)
+
+    if on_token is not None:
+        restante = filtro.finalizar()
+        if restante and not tool_calls:
+            on_token(restante)
+
+    mensaje: dict[str, Any] = {"role": rol, "content": "".join(partes_texto)}
+    if tool_calls:
+        mensaje["tool_calls"] = tool_calls
+    return {**ultimo_chunk, "message": mensaje, "done": True}
 
 
 def normalizar_citas_respuesta(texto: str, corpus_ids: set[str]) -> tuple[str, list[str]]:
@@ -90,6 +208,49 @@ def _parsear_argumentos(raw_args: Any) -> dict[str, Any]:
     return {}
 
 
+def _compactar_resultado_herramienta(
+    resultado: Any,
+    fuentes_vistas: dict[str, dict[str, Any]],
+) -> Any:
+    """Evita reenviar listas de unidades ya presentes en contexto para cuidar num_ctx."""
+    if not isinstance(resultado, list):
+        return resultado
+
+    nuevos: list[Any] = []
+    ya_en_contexto: list[str] = []
+    for item in resultado:
+        if (
+            isinstance(item, dict)
+            and "id" in item
+            and "texto" in item
+            and item["id"] in fuentes_vistas
+        ):
+            ya_en_contexto.append(str(item["id"]))
+        else:
+            nuevos.append(item)
+
+    if not ya_en_contexto:
+        return resultado
+
+    if nuevos:
+        return {
+            "nuevos": nuevos,
+            "ya_en_contexto": ya_en_contexto,
+            "nota": (
+                "Los IDs en ya_en_contexto ya están completos arriba en tu contexto; "
+                "úsalos sin volver a repetirlos."
+            ),
+        }
+
+    return {
+        "ya_en_contexto": ya_en_contexto,
+        "nota": (
+            "Todas estas unidades ya figuran completas arriba en tu contexto; "
+            "úsalas y continúa si necesitas llamar a `calcular` o `dias_entre`."
+        ),
+    }
+
+
 @dataclass
 class PasoHerramienta:
     nombre: str
@@ -128,28 +289,51 @@ class AsistenteUdeC:
         self._cliente_chat = cliente_chat
         self._session = requests.Session() if cliente_chat is None else None
 
-    def _llamar_ollama(self, payload: dict[str, Any]) -> dict[str, Any]:
-        if self._cliente_chat is not None:
-            return self._cliente_chat(payload)
-
+    def _ejecutar_post_ollama(self, payload: dict[str, Any], stream: bool) -> requests.Response:
         assert self._session is not None
         url = f"{self.config.ollama_url.rstrip('/')}/api/chat"
-        resp = self._session.post(url, json=payload, timeout=self.config.timeout_s)
+        resp = self._session.post(url, json=payload, timeout=self.config.timeout_s, stream=stream)
         if resp.status_code == 400 and "think" in payload:
+            resp.close()
             sin_think = {k: v for k, v in payload.items() if k != "think"}
-            resp = self._session.post(url, json=sin_think, timeout=self.config.timeout_s)
+            resp = self._session.post(url, json=sin_think, timeout=self.config.timeout_s, stream=stream)
         resp.raise_for_status()
-        return resp.json()
+        return resp
+
+    def _llamar_ollama(
+        self,
+        payload: dict[str, Any],
+        on_token: Callable[[str], None] | None = None,
+    ) -> dict[str, Any]:
+        if self._cliente_chat is not None:
+            data = self._cliente_chat(payload)
+            if on_token is not None:
+                msg = data.get("message", {})
+                if msg.get("content") and not msg.get("tool_calls"):
+                    visible = limpiar_think(msg["content"])
+                    if visible:
+                        on_token(visible)
+            return data
+
+        stream = bool(payload.get("stream"))
+        with self._ejecutar_post_ollama(payload, stream=stream) as resp:
+            if stream:
+                return _recopilar_stream_ollama(
+                    resp.iter_lines(decode_unicode=False),
+                    on_token=on_token,
+                )
+            return resp.json()
 
     def _construir_payload(
         self,
         mensajes: list[dict[str, Any]],
         incluir_tools: bool = True,
+        stream: bool = False,
     ) -> dict[str, Any]:
         payload: dict[str, Any] = {
             "model": self.config.modelo,
             "messages": mensajes,
-            "stream": False,
+            "stream": stream,
             "options": {
                 "temperature": self.config.temperature,
                 "num_ctx": self.config.num_ctx,
@@ -166,6 +350,8 @@ class AsistenteUdeC:
         pregunta: str,
         historial: list[dict[str, str]] | None = None,
         prebuscar: bool = True,
+        on_token: Callable[[str], None] | None = None,
+        on_estado: Callable[[str], None] | None = None,
     ) -> RespuestaAsistente:
         """Responde una pregunta combinando búsqueda inicial, tool-calling y cálculo exacto."""
         t0 = time.perf_counter()
@@ -173,6 +359,8 @@ class AsistenteUdeC:
 
         bloque_inicial = ""
         if prebuscar:
+            if on_estado is not None:
+                on_estado("Buscando normativa relevante...")
             hits_init = self.buscador.buscar(
                 pregunta, k=self.config.top_k_inicial, expandir_citas=True
             )
@@ -194,10 +382,20 @@ class AsistenteUdeC:
         pasos_herramientas: list[PasoHerramienta] = []
         turnos = 0
         texto_final = ""
+        usar_stream = on_token is not None
 
         for _ in range(self.config.max_pasos):
             turnos += 1
-            data = self._llamar_ollama(self._construir_payload(mensajes, incluir_tools=True))
+            if on_estado is not None:
+                on_estado(
+                    "Analizando pregunta..."
+                    if turnos == 1
+                    else "Redactando respuesta con la evidencia..."
+                )
+            data = self._llamar_ollama(
+                self._construir_payload(mensajes, incluir_tools=True, stream=usar_stream),
+                on_token=on_token,
+            )
             msg = data.get("message", {})
             tool_calls = msg.get("tool_calls") or []
             mensajes.append(msg)
@@ -210,8 +408,11 @@ class AsistenteUdeC:
                 fn = tc.get("function", {})
                 nombre = str(fn.get("name", ""))
                 args = _parsear_argumentos(fn.get("arguments"))
+                if on_estado is not None:
+                    on_estado(f"Ejecutando herramienta `{nombre}`...")
                 res = ejecutar_herramienta(nombre, args, self.buscador)
                 pasos_herramientas.append(PasoHerramienta(nombre=nombre, argumentos=args, resultado=res))
+                res_para_modelo = _compactar_resultado_herramienta(res, fuentes_vistas)
 
                 # Registrar unidades consultadas para mostrarlas en la UI
                 if isinstance(res, list):
@@ -224,7 +425,7 @@ class AsistenteUdeC:
                 tool_msg: dict[str, Any] = {
                     "role": "tool",
                     "tool_name": nombre,
-                    "content": json.dumps(res, ensure_ascii=False),
+                    "content": json.dumps(res_para_modelo, ensure_ascii=False),
                 }
                 if tc.get("id"):
                     tool_msg["tool_call_id"] = tc["id"]
@@ -232,13 +433,18 @@ class AsistenteUdeC:
         else:
             # Si agotó max_pasos pidiendo herramientas, forzar síntesis sin tools
             turnos += 1
+            if on_estado is not None:
+                on_estado("Sintetizando respuesta final...")
             mensajes.append(
                 {
                     "role": "user",
                     "content": "Con la información ya obtenida, entrega ahora la respuesta final citada.",
                 }
             )
-            data = self._llamar_ollama(self._construir_payload(mensajes, incluir_tools=False))
+            data = self._llamar_ollama(
+                self._construir_payload(mensajes, incluir_tools=False, stream=usar_stream),
+                on_token=on_token,
+            )
             msg_fin = data.get("message", {})
             mensajes.append(msg_fin)
             texto_final = limpiar_think(msg_fin.get("content", ""))

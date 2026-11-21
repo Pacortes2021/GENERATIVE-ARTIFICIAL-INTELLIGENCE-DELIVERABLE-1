@@ -398,6 +398,57 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         self.assertIn("resolución disciplinaria", res.respuesta)
         self.assertIn("[RG-ART-051]", res.respuesta)
 
+    def test_normaliza_sufijo_guion_letra_sin_aceptar_inexistentes(self) -> None:
+        corpus_ids = {"RI-FI-ART-014", "CAL-2026-S1-01"}
+        texto, validas = normalizar_citas_respuesta(
+            "Ver [RI-FI-ART-014-b], [RI-FI-ART-014.a], [CAL-2026-S1-01] y falso [RI-FI-ART-35].",
+            corpus_ids,
+        )
+        self.assertIn("[RI-FI-ART-014]", texto)
+        self.assertNotIn("[RI-FI-ART-014-b]", texto)
+        self.assertNotIn("[RI-FI-ART-35]", texto)
+        self.assertEqual(validas, ["RI-FI-ART-014", "CAL-2026-S1-01"])
+
+    def test_solo_citas_dispara_reparacion_y_recupera_prosa(self) -> None:
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        respuestas = [
+            {"message": {"role": "assistant", "content": "[RG-ART-051]"}},
+            {
+                "message": {
+                    "role": "assistant",
+                    "content": "La calidad de alumno se pierde disciplinariamente por resolución firme de expulsión.",
+                }
+            },
+        ]
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=lambda _p: respuestas.pop(0),
+        )
+        res = asistente.responder("¿Cómo se pierde la calidad de alumno disciplinariamente?")
+        self.assertIn("expulsión", res.respuesta)
+        self.assertIn("[RG-ART-051]", res.respuesta)
+        self.assertGreaterEqual(res.turnos_modelo, 2)
+
+        respuestas_con_citas = [
+            {"message": {"role": "assistant", "content": "[RG-ART-051]"}},
+            {
+                "message": {
+                    "role": "assistant",
+                    "content": "La calidad de alumno se pierde disciplinariamente por resolución firme de expulsión [RG-ART-051].",
+                }
+            },
+        ]
+        asistente2 = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=lambda _p: respuestas_con_citas.pop(0),
+        )
+        res2 = asistente2.responder("¿Cómo se pierde la calidad de alumno disciplinariamente?")
+        self.assertIn("expulsión", res2.respuesta)
+        self.assertIn("[RG-ART-051]", res2.respuesta)
+        self.assertNotIn("Fuente: [RG-ART-051]", res2.respuesta)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -36,7 +36,7 @@ SYSTEM_PROMPT = (
 )
 
 _THINK_RE = re.compile(r"<think>.*?</think>", re.DOTALL)
-_BRACKET_ID_RE = re.compile(r"\[([A-Z]+(?:-[A-Z0-9]+)+(?:\.[a-z0-9]+)?)\]")
+_BRACKET_ID_RE = re.compile(r"\[([A-Z]+(?:-[A-Z0-9]+)+(?:\.[a-z0-9]+|-[a-z])?)\]")
 
 
 def limpiar_think(texto: str) -> str:
@@ -209,7 +209,7 @@ def normalizar_citas_respuesta(texto: str, corpus_ids: set[str]) -> tuple[str, l
             if cid not in validas:
                 validas.append(cid)
             return f"[{cid}]"
-        base = cid.split(".", 1)[0]
+        base = re.split(r"\.(?=[a-z0-9]+$)|-(?=[a-z]$)", cid, maxsplit=1)[0]
         if base in corpus_ids:
             if base not in validas:
                 validas.append(base)
@@ -503,27 +503,43 @@ class AsistenteUdeC:
             pat in texto_final.lower()
             for pat in ("no existe", "no se encuentra el artículo", "no figura en")
         )
-        if not citas_validas and fuentes_vistas and not es_inexistencia:
+        texto_sin_citas = _BRACKET_ID_RE.sub("", texto_final).replace("Fuente:", "").strip(" .:-\n\t")
+        solo_citas = bool(citas_validas) and len(texto_sin_citas) < 20 and not es_inexistencia
+        if (not citas_validas or solo_citas) and fuentes_vistas and not es_inexistencia:
             turnos += 1
-            mensajes.append(
-                {
-                    "role": "user",
-                    "content": (
-                        "Tu respuesta anterior no citó identificadores entre corchetes. "
-                        "Mantén exactamente tu respuesta y agrega al final `Fuente: [...]` usando "
-                        "únicamente los identificadores exactos del contexto que la respaldan."
-                    ),
-                }
+            prompt_reparacion = (
+                (
+                    "Tu respuesta anterior solo incluyó identificadores entre corchetes sin explicar la respuesta. "
+                    "Responde de forma clara, completa y fiel a la pregunta usando el contexto consultado, "
+                    "e incluye las citas exactas entre corchetes [ID]."
+                )
+                if solo_citas
+                else (
+                    "Tu respuesta anterior no citó identificadores entre corchetes. "
+                    "Mantén exactamente tu respuesta y agrega al final `Fuente: [...]` usando "
+                    "únicamente los identificadores exactos del contexto que la respaldan."
+                )
             )
+            mensajes.append({"role": "user", "content": prompt_reparacion})
             data = self._llamar_ollama(self._construir_payload(mensajes, incluir_tools=False))
             texto_rep = limpiar_think(data.get("message", {}).get("content", ""))
             texto_rep, citas_rep = normalizar_citas_respuesta(texto_rep, corpus_ids)
-            if citas_rep:
+            if solo_citas:
+                rep_sin_citas = _BRACKET_ID_RE.sub("", texto_rep).replace("Fuente:", "").strip(" .:-\n\t")
+                if len(rep_sin_citas) >= 20:
+                    if citas_rep:
+                        texto_final = texto_rep
+                    else:
+                        citas_str = " ".join(f"[{cid}]" for cid in citas_validas)
+                        texto_final = f"{texto_rep.strip()}\n\nFuente: {citas_str}".strip()
+                    texto_final, citas_validas = normalizar_citas_respuesta(texto_final, corpus_ids)
+            elif citas_rep:
                 if len(texto_rep.strip()) >= max(40, int(len(texto_final.strip()) * 0.5)):
                     texto_final = texto_rep
                 else:
                     citas_str = " ".join(f"[{cid}]" for cid in citas_rep)
                     texto_final = f"{texto_final}\n\nFuente: {citas_str}".strip()
+                texto_final, citas_validas = normalizar_citas_respuesta(texto_final, corpus_ids)
 
         return RespuestaAsistente(
             pregunta=pregunta,

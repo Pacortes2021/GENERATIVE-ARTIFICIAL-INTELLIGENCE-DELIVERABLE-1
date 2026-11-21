@@ -7,6 +7,7 @@ import json
 import math
 import re
 import unicodedata
+from collections import Counter
 from pathlib import Path
 from typing import Any
 
@@ -33,8 +34,65 @@ def normalizar_texto(texto: str) -> str:
     return re.sub(r"[^a-z0-9ñ]+", " ", sin_tildes).strip()
 
 
+def _tokens_clave_lista(texto: str) -> list[str]:
+    return [t for t in normalizar_texto(texto).split() if t not in _STOPWORDS_ES and len(t) > 1]
+
+
 def _tokens_clave(texto: str) -> set[str]:
-    return {t for t in normalizar_texto(texto).split() if t not in _STOPWORDS_ES and len(t) > 1}
+    return set(_tokens_clave_lista(texto))
+
+
+def descomponer_subconsultas(consulta: str) -> tuple[list[str], bool]:
+    """Divide preguntas compuestas en subcláusulas atómicas para RAG-Fusion sin usar LLM."""
+    partes = re.split(
+        r"(?:,?\s+y\s+(?:que|cual|cuál|como|cómo|cuando|cuándo|cuanto|cuánto|quien|quién|si)\b"
+        r"|\?\s+¿|;\s*|\s+frente\s+al?\b)",
+        consulta,
+        flags=re.IGNORECASE,
+    )
+    clausulas = [p.strip(" ¿?.,;") for p in partes if len(_tokens_clave(p)) >= 2]
+    if len(clausulas) <= 1:
+        return [consulta], False
+    return [consulta] + clausulas[:3], True
+
+
+class BM25Index:
+    """Índice BM25 (Robertson–Sparck Jones) en Python puro ponderado por IDF y longitud."""
+
+    def __init__(self, documentos_tokens: list[list[str]], k1: float = 1.5, b: float = 0.75) -> None:
+        self.docs = [Counter(dt) for dt in documentos_tokens]
+        self.lens = [len(dt) for dt in documentos_tokens]
+        self.avgdl = sum(self.lens) / max(1, len(self.lens))
+        self.n_docs = len(self.docs)
+        df: Counter[str] = Counter()
+        for dt in self.docs:
+            for w in dt:
+                df[w] += 1
+        self.idf = {
+            w: math.log((self.n_docs - freq + 0.5) / (freq + 0.5) + 1.0)
+            for w, freq in df.items()
+        }
+        self.k1 = k1
+        self.b = b
+
+    def puntuar(self, consulta_tokens: list[str]) -> np.ndarray:
+        """Devuelve un vector con los puntajes BM25 de la consulta por fragmento."""
+        scores = np.zeros(self.n_docs, dtype=np.float32)
+        if not self.n_docs or not consulta_tokens:
+            return scores
+        unicos = set(consulta_tokens)
+        for i, doc_c in enumerate(self.docs):
+            dl = self.lens[i]
+            if dl == 0:
+                continue
+            norm_len = 1.0 - self.b + self.b * (dl / self.avgdl)
+            s = 0.0
+            for w in unicos:
+                tf = doc_c.get(w, 0)
+                if tf:
+                    s += self.idf.get(w, 0.0) * (tf * (self.k1 + 1.0)) / (tf + self.k1 * norm_len)
+            scores[i] = s
+        return scores
 
 
 def _normalizar_doc(doc: str | None) -> str | None:
@@ -116,11 +174,13 @@ class BuscadorNormativa:
             self.fragmentos_path.read_text(encoding="utf-8")
         )
 
-        # Precomputar tokens léxicos por fragmento y unidad
-        self._frag_tokens: list[set[str]] = [
-            _tokens_clave(f"{f.get('unidad_id', '')} {f.get('texto', '')}")
+        # Precomputar tokens léxicos e índice BM25 por fragmento
+        self._frag_tokens_lista: list[list[str]] = [
+            _tokens_clave_lista(f"{f.get('unidad_id', '')} {f.get('texto', '')}")
             for f in self.fragmentos
         ]
+        self._frag_tokens: list[set[str]] = [set(t) for t in self._frag_tokens_lista]
+        self._bm25 = BM25Index(self._frag_tokens_lista)
         self.inventario: dict[str, set[int]] = {}
         for u in self.unidades:
             m = re.match(r"^(RI-FI|RG)-ART-(\d+)$", u["id"])
@@ -238,6 +298,75 @@ class BuscadorNormativa:
                 break
         return extras
 
+    def _resolver_filtro_doc(self, documento: str | None) -> str | None:
+        if not documento:
+            return None
+        conocido = _normalizar_doc(documento)
+        if conocido:
+            return conocido
+        cand = str(documento).strip().upper()
+        for u in self.unidades:
+            doc_u = str(u.get("documento", "")).strip()
+            if doc_u.upper() == cand:
+                return doc_u
+        return None
+
+    def _puntuar_subconsultas_rrf(
+        self,
+        subconsultas: list[str],
+        indices_validos: list[int],
+        k_rrf: int = 10,
+    ) -> dict[str, float]:
+        """Fusiona rankings E5 + BM25 y subcláusulas mediante Reciprocal Rank Fusion (RRF)."""
+        sims_matriz: np.ndarray | None = None
+        if self.usar_embeddings:
+            self._asegurar_embeddings()
+            if self._e5 is not None and self._matriz_e5 is not None:
+                q_vecs = self._e5.encode(
+                    [f"query: {sq}" for sq in subconsultas], normalize_embeddings=True
+                )
+                q_arr = np.asarray(q_vecs, dtype=np.float32)
+                # Producto fila a fila sin BLAS matmul para evitar warnings numéricos en ARM64
+                sims_matriz = np.stack(
+                    [np.sum(self._matriz_e5 * q_row, axis=1, dtype=np.float32) for q_row in q_arr],
+                    axis=0,
+                )
+
+        rrf_por_uid: dict[str, float] = {}
+        for sq_idx, sq in enumerate(subconsultas):
+            s_bm = self._bm25.puntuar(_tokens_clave_lista(sq))
+            s_e5 = sims_matriz[sq_idx] if sims_matriz is not None else None
+
+            uid_e5: dict[str, float] = {}
+            uid_bm: dict[str, float] = {}
+            for idx in indices_validos:
+                frag = self.fragmentos[idx]
+                uid = frag.get("unidad_id") or frag.get("parent_id")
+                if not uid:
+                    continue
+                vb = float(s_bm[idx])
+                if uid not in uid_bm or vb > uid_bm[uid]:
+                    uid_bm[uid] = vb
+                if s_e5 is not None:
+                    ve = float(s_e5[idx])
+                    if uid not in uid_e5 or ve > uid_e5[uid]:
+                        uid_e5[uid] = ve
+
+            rk_bm = {u: rk for rk, (u, _) in enumerate(sorted(uid_bm.items(), key=lambda x: -x[1]), 1)}
+            rk_e5 = (
+                {u: rk for rk, (u, _) in enumerate(sorted(uid_e5.items(), key=lambda x: -x[1]), 1)}
+                if uid_e5
+                else None
+            )
+            for uid in uid_bm:
+                rrf = 1.0 / (k_rrf + rk_bm[uid])
+                if rk_e5 is not None:
+                    rrf += 1.0 / (k_rrf + rk_e5[uid])
+                rrf_por_uid[uid] = rrf_por_uid.get(uid, 0.0) + rrf
+
+        rmax = max(rrf_por_uid.values(), default=1.0) or 1.0
+        return {uid: val / rmax for uid, val in rrf_por_uid.items()}
+
     def buscar(
         self,
         consulta: str,
@@ -249,10 +378,13 @@ class BuscadorNormativa:
         top_p_temp: float = 0.10,
         top_p_pool: int = 10,
         peso_boost_top_p: float = 0.0,
+        modo_fusion: str = "lineal",
+        k_rrf: int = 10,
+        usar_descomposicion: bool = False,
     ) -> list[dict[str, Any]]:
-        """Búsqueda híbrida (E5 + léxica + boost por artículo) con corte Top-k o Top-p."""
+        """Búsqueda híbrida (lineal o BM25+E5 RRF + subcláusulas) con corte Top-k o Top-p."""
         k = max(1, min(int(k), 12))
-        doc_filtro = _normalizar_doc(documento)
+        doc_filtro = self._resolver_filtro_doc(documento)
         q_tokens = _tokens_clave(consulta)
         q_norm = normalizar_texto(consulta)
 
@@ -265,18 +397,7 @@ class BuscadorNormativa:
             for num in art_menciones or [1, 2]:
                 ids_boost.add(f"RG-TRANS-{num:03d}")
 
-        sims_e5: np.ndarray | None = None
-        if self.usar_embeddings:
-            self._asegurar_embeddings()
-            if self._e5 is not None and self._matriz_e5 is not None:
-                q_vec = self._e5.encode([f"query: {consulta}"], normalize_embeddings=True)[0]
-                q_arr = np.asarray(q_vec, dtype=np.float32)
-                raw = np.sum(self._matriz_e5 * q_arr, axis=1, dtype=np.float32)
-                rmin, rmax = float(raw.min()), float(raw.max())
-                sims_e5 = (raw - rmin) / (rmax - rmin + 1e-8)
-
-        mejores_por_uid: dict[str, tuple[float, float, dict[str, Any]]] = {}
-        denom = max(1, len(q_tokens))
+        indices_validos: list[int] = []
         for idx, frag in enumerate(self.fragmentos):
             uid = frag.get("unidad_id") or frag.get("parent_id")
             u = self.por_id.get(uid)
@@ -284,25 +405,55 @@ class BuscadorNormativa:
                 continue
             if doc_filtro and u.get("documento") != doc_filtro:
                 continue
+            indices_validos.append(idx)
 
-            lex = len(q_tokens & self._frag_tokens[idx]) / denom if q_tokens else 0.0
-            boost = 0.45 if uid in ids_boost else 0.0
-            if doc_filtro is None and "calendario" in q_norm and u.get("documento") == "CAL":
-                boost += 0.15
+        mejores_por_uid: dict[str, tuple[float, float, dict[str, Any]]] = {}
+        es_compuesta = False
+        if modo_fusion == "rrf":
+            subconsultas, es_compuesta = (
+                descomponer_subconsultas(consulta) if usar_descomposicion else ([consulta], False)
+            )
+            bases = self._puntuar_subconsultas_rrf(subconsultas, indices_validos, k_rrf=k_rrf)
+            for uid, base in bases.items():
+                u = self.por_id[uid]
+                boost = 0.45 if uid in ids_boost else 0.0
+                if doc_filtro is None and "calendario" in q_norm and u.get("documento") == "CAL":
+                    boost += 0.15
+                mejores_por_uid[uid] = (base + boost, base, u)
+        else:
+            sims_e5: np.ndarray | None = None
+            if self.usar_embeddings:
+                self._asegurar_embeddings()
+                if self._e5 is not None and self._matriz_e5 is not None:
+                    q_vec = self._e5.encode([f"query: {consulta}"], normalize_embeddings=True)[0]
+                    q_arr = np.asarray(q_vec, dtype=np.float32)
+                    raw = np.sum(self._matriz_e5 * q_arr, axis=1, dtype=np.float32)
+                    rmin, rmax = float(raw.min()), float(raw.max())
+                    sims_e5 = (raw - rmin) / (rmax - rmin + 1e-8)
 
-            base = 0.65 * float(sims_e5[idx]) + 0.35 * lex if sims_e5 is not None else lex
-            score = base + boost
+            denom = max(1, len(q_tokens))
+            for idx in indices_validos:
+                frag = self.fragmentos[idx]
+                uid = frag.get("unidad_id") or frag.get("parent_id")
+                u = self.por_id[uid]
+                lex = len(q_tokens & self._frag_tokens[idx]) / denom if q_tokens else 0.0
+                boost = 0.45 if uid in ids_boost else 0.0
+                if doc_filtro is None and "calendario" in q_norm and u.get("documento") == "CAL":
+                    boost += 0.15
 
-            prev = mejores_por_uid.get(uid)
-            if prev is None or score > prev[0]:
-                mejores_por_uid[uid] = (score, base, u)
+                base = 0.65 * float(sims_e5[idx]) + 0.35 * lex if sims_e5 is not None else lex
+                score = base + boost
+                prev = mejores_por_uid.get(uid)
+                if prev is None or score > prev[0]:
+                    mejores_por_uid[uid] = (score, base, u)
 
+        k_min_ef = max(int(top_k_min), 2) if es_compuesta else int(top_k_min)
         ordenados = sorted(mejores_por_uid.values(), key=lambda par: -par[0])
         seleccionados = seleccionar_por_top_p(
             ordenados,
             k_max=k,
             top_p=top_p,
-            k_min=top_k_min,
+            k_min=k_min_ef,
             temperatura=top_p_temp,
             pool_max=top_p_pool,
             peso_boost_top_p=peso_boost_top_p,

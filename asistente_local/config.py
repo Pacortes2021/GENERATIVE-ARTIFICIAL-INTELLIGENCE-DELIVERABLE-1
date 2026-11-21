@@ -24,12 +24,15 @@ class ConfigAsistente:
     cache_dir: Path = DEFAULT_CACHE_DIR
     temperature: float = 0.0
     max_pasos: int = 6
-    top_k_inicial: int = 5
+    top_k_inicial: int = 6
     top_p_inicial: float | None = 0.85
     top_k_min: int = 1
-    top_p_temp: float = 0.10
+    top_p_temp: float = 0.13
     top_p_pool: int = 10
     peso_boost_top_p: float = 0.0
+    modo_fusion: str = "rrf"
+    k_rrf: int = 10
+    usar_descomposicion: bool = True
     num_ctx: int = 4096
     num_predict: int = 1024
     repeat_penalty: float = 1.05

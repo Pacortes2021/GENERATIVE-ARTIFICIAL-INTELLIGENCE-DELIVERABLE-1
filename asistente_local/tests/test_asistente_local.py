@@ -13,9 +13,15 @@ from asistente_local.asistente import (
     _recopilar_stream_ollama,
     limpiar_think,
     normalizar_citas_respuesta,
+    reescribir_consulta_con_historial,
 )
 from asistente_local.benchmark import cargar_preguntas
-from asistente_local.buscador import BuscadorNormativa, seleccionar_por_top_p
+from asistente_local.buscador import (
+    BM25Index,
+    BuscadorNormativa,
+    descomponer_subconsultas,
+    seleccionar_por_top_p,
+)
 from asistente_local.config import ConfigAsistente
 from asistente_local.herramientas import calcular, dias_entre, ejecutar_herramienta
 
@@ -153,10 +159,13 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
             cliente_chat=mock_ollama,
         )
         res = asistente.responder("¿42 créditos en 4 semestres cae en baja?")
-        self.assertEqual(asistente.config.top_k_inicial, 5)
+        self.assertEqual(asistente.config.top_k_inicial, 6)
         self.assertEqual(asistente.config.top_p_inicial, 0.85)
-        self.assertEqual(asistente.config.top_p_temp, 0.10)
+        self.assertEqual(asistente.config.top_p_temp, 0.13)
         self.assertEqual(asistente.config.top_p_pool, 10)
+        self.assertEqual(asistente.config.modo_fusion, "rrf")
+        self.assertEqual(asistente.config.k_rrf, 10)
+        self.assertTrue(asistente.config.usar_descomposicion)
         self.assertEqual(asistente.config.repeat_penalty, 1.05)
         self.assertEqual(res.turnos_modelo, 2)
         self.assertEqual(len(res.pasos_herramientas), 1)
@@ -337,6 +346,57 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
         self.assertIn("Ejecutando herramienta `calcular`...", estados)
         self.assertEqual("".join(tokens), "El promedio es 10,5 créditos [RI-FI-ART-014].")
         self.assertEqual(res.respuesta, "El promedio es 10,5 créditos [RI-FI-ART-014].")
+
+    def test_bm25_descomposicion_rrf_y_reescritura_conversacional(self) -> None:
+        idx = BM25Index([["credito", "promedio"], ["embarazo", "matrona", "visado"], ["evaluacion", "plazo"]])
+        scores = idx.puntuar(["embarazo", "visado"])
+        self.assertGreater(scores[1], scores[0])
+        self.assertGreater(scores[1], scores[2])
+
+        subqs, comp = descomponer_subconsultas(
+            "¿En qué fechas se inscriben las asignaturas del segundo semestre, y cuál es el mínimo de créditos?"
+        )
+        self.assertTrue(comp)
+        self.assertEqual(len(subqs), 3)
+
+        subqs_simple, comp_simple = descomponer_subconsultas("¿Cuál es la nota mínima?")
+        self.assertFalse(comp_simple)
+        self.assertEqual(len(subqs_simple), 1)
+
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        hits_rrf = buscador.buscar(
+            "modificación inscripción eliminar prioridades",
+            k=5,
+            documento="RI-FI",
+            modo_fusion="rrf",
+            usar_descomposicion=True,
+        )
+        self.assertTrue(len(hits_rrf) >= 2)
+        self.assertIn("RI-FI-ART-009", {h["id"] for h in hits_rrf})
+
+        hist = [
+            {"role": "user", "content": "Si falto a una evaluación por enfermedad justificada"},
+            {"role": "assistant", "content": "Tienes 3 días hábiles ante el profesor [RG-ART-026]."},
+        ]
+        q_seg = reescribir_consulta_con_historial("¿Y si me la rechaza?", hist)
+        self.assertIn("evaluacion", q_seg)
+        q_indep = "¿Qué condiciones exige el Artículo 57 del Reglamento General sobre Beca Articulación Pregrado-Postgrado?"
+        self.assertEqual(reescribir_consulta_con_historial(q_indep, hist), q_indep)
+
+    def test_reparacion_citas_conserva_cuerpo_si_modelo_devuelve_solo_fuente(self) -> None:
+        buscador = BuscadorNormativa(usar_embeddings=False)
+        respuestas = [
+            {"message": {"role": "assistant", "content": "Se pierde la calidad de alumno por resolución disciplinaria del Reglamento de Conducta."}},
+            {"message": {"role": "assistant", "content": "[RG-ART-051]"}},
+        ]
+        asistente = AsistenteUdeC(
+            config=ConfigAsistente(modelo="qwen3:4b-instruct", usar_embeddings=False),
+            buscador=buscador,
+            cliente_chat=lambda _p: respuestas.pop(0),
+        )
+        res = asistente.responder("¿Cómo se pierde la calidad de alumno disciplinariamente?")
+        self.assertIn("resolución disciplinaria", res.respuesta)
+        self.assertIn("[RG-ART-051]", res.respuesta)
 
 
 if __name__ == "__main__":

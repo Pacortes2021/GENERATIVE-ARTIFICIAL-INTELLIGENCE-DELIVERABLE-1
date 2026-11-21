@@ -10,7 +10,7 @@ from typing import Any, Callable, Iterable
 
 import requests
 
-from .buscador import BuscadorNormativa
+from .buscador import BuscadorNormativa, _tokens_clave
 from .config import ConfigAsistente
 from .herramientas import ESQUEMAS_HERRAMIENTAS, ejecutar_herramienta
 
@@ -162,6 +162,41 @@ def _recopilar_stream_ollama(
     if tool_calls:
         mensaje["tool_calls"] = tool_calls
     return {**ultimo_chunk, "message": mensaje, "done": True}
+
+
+def reescribir_consulta_con_historial(
+    pregunta: str,
+    historial: list[dict[str, str]] | None,
+) -> str:
+    """Enriquece preguntas cortas o de seguimiento con palabras clave del turno previo."""
+    if not historial:
+        return pregunta
+    q_tokens = _tokens_clave(pregunta)
+    q_low = str(pregunta or "").strip().lower()
+    marcadores = (
+        "y si", "y en", "y que", "y qué", "y cual", "y cuál", "y cuanto", "y cuánto",
+        "ese ", "esa ", "eso", "este ", "esta ", "estos", "dicho", "mismo", "anterior",
+        "apelo", "apelar", "entonces", "tambien", "también", "tampoco", "pero ",
+    )
+    es_seguimiento = len(q_tokens) <= 7 and (
+        len(q_tokens) <= 4 or any(m in q_low for m in marcadores) or q_low.startswith(("¿y ", "y "))
+    )
+    if not es_seguimiento:
+        return pregunta
+
+    contexto_prev: list[str] = []
+    for turno in reversed(historial):
+        if turno.get("role") == "user" and turno.get("content"):
+            for tok in _tokens_clave(str(turno["content"])):
+                if tok not in q_tokens and tok not in contexto_prev:
+                    contexto_prev.append(tok)
+                if len(contexto_prev) >= 8:
+                    break
+        if len(contexto_prev) >= 8:
+            break
+    if not contexto_prev:
+        return pregunta
+    return f"{pregunta} ({' '.join(contexto_prev)})"
 
 
 def normalizar_citas_respuesta(texto: str, corpus_ids: set[str]) -> tuple[str, list[str]]:
@@ -363,8 +398,9 @@ class AsistenteUdeC:
         if prebuscar:
             if on_estado is not None:
                 on_estado("Buscando normativa relevante...")
+            consulta_busqueda = reescribir_consulta_con_historial(pregunta, historial)
             hits_init = self.buscador.buscar(
-                pregunta,
+                consulta_busqueda,
                 k=self.config.top_k_inicial,
                 expandir_citas=True,
                 top_p=self.config.top_p_inicial,
@@ -372,6 +408,9 @@ class AsistenteUdeC:
                 top_p_temp=self.config.top_p_temp,
                 top_p_pool=self.config.top_p_pool,
                 peso_boost_top_p=self.config.peso_boost_top_p,
+                modo_fusion=self.config.modo_fusion,
+                k_rrf=self.config.k_rrf,
+                usar_descomposicion=self.config.usar_descomposicion,
             )
             for h in hits_init:
                 fuentes_vistas[h["id"]] = h
@@ -480,7 +519,11 @@ class AsistenteUdeC:
             texto_rep = limpiar_think(data.get("message", {}).get("content", ""))
             texto_rep, citas_rep = normalizar_citas_respuesta(texto_rep, corpus_ids)
             if citas_rep:
-                texto_final = texto_rep
+                if len(texto_rep.strip()) >= max(40, int(len(texto_final.strip()) * 0.5)):
+                    texto_final = texto_rep
+                else:
+                    citas_str = " ".join(f"[{cid}]" for cid in citas_rep)
+                    texto_final = f"{texto_final}\n\nFuente: {citas_str}".strip()
 
         return RespuestaAsistente(
             pregunta=pregunta,

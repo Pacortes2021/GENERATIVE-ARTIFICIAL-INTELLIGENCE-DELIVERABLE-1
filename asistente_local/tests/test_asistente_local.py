@@ -176,6 +176,7 @@ class TestAsistenteOrquestadorOffline(unittest.TestCase):
     def test_benchmark_cargar_preguntas_sets(self) -> None:
         self.assertEqual(len(cargar_preguntas("dificil_25")), 25)
         self.assertEqual(len(cargar_preguntas("congelado_50")), 50)
+        self.assertEqual(len(cargar_preguntas("nuevas_20")), 20)
         self.assertEqual(len(cargar_preguntas("dificil_25", qids_filtro={"H03", "H07"})), 2)
 
     def test_expansion_calendario_semestre_y_validador_citas(self) -> None:

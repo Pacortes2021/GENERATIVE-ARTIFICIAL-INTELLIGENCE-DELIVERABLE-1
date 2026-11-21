@@ -27,8 +27,12 @@ def cargar_preguntas(dataset: str, qids_filtro: set[str] | None = None) -> list[
         with (DATOS_D3_DIR / archivo).open(encoding="utf-8", newline="") as f:
             rows = list(csv.DictReader(f))
     elif dataset == "nuevas_20":
-        ruta_local = REPO_ROOT / "Deliverable 4" / "datos" / "preguntas_nuevas_20.csv"
-        if ruta_local.is_file():
+        rutas_candidatas = (
+            REPO_ROOT / "Deliverable 4" / "datos" / "preguntas_nuevas_20.csv",
+            Path(__file__).resolve().parent / "datos_eval" / "preguntas_nuevas_20.csv",
+        )
+        ruta_local = next((r for r in rutas_candidatas if r.is_file()), None)
+        if ruta_local is not None:
             with ruta_local.open(encoding="utf-8", newline="") as f:
                 rows = list(csv.DictReader(f))
         else:

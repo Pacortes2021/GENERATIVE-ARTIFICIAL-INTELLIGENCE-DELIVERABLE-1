@@ -1,0 +1,17 @@
+{
+  "total": 62,
+  "train": 46,
+  "val": 16,
+  "por_categoria": {
+    "dpo_tool_calendario": 8,
+    "dpo_tool_calculo": 4,
+    "dpo_tool_existe": 3,
+    "dpo_tool_recuperacion": 4,
+    "dpo_tool_no_espuria": 2,
+    "dpo_desigualdades": 15,
+    "dpo_completitud_reglas": 12,
+    "dpo_fidelidad_y_formato": 10,
+    "dpo_multiturno": 4
+  },
+  "antifuga_ok": true
+}

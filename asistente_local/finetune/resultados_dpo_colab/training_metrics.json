@@ -1,0 +1,439 @@
+{
+  "fecha_utc": "2026-11-21T23:14:16.149404+00:00",
+  "modelo_base": "Qwen/Qwen3-4B-Instruct-2507",
+  "gpu": "Tesla T4",
+  "compute_dtype": "float16",
+  "hiperparametros": {
+    "beta": 0.1,
+    "lambda_nll": 0.05,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "lora_dropout": 0.08,
+    "learning_rate": 1e-05,
+    "epochs": 3.0,
+    "grad_accum": 4,
+    "max_seq_length": 3584
+  },
+  "datos": {
+    "modelo_base": "Qwen/Qwen3-4B-Instruct-2507",
+    "antifuga_ok": true,
+    "train_count": 46,
+    "val_count": 16,
+    "tokens_train": {
+      "ejemplos": 46,
+      "truncados": 0,
+      "total_tokens": {
+        "min": 1615,
+        "mediana": 2328.0,
+        "promedio": 2311.7,
+        "p95": 3279,
+        "max": 3370
+      },
+      "supervised_tokens_promedio": 66.4
+    },
+    "tokens_val": {
+      "ejemplos": 16,
+      "truncados": 0,
+      "total_tokens": {
+        "min": 1624,
+        "mediana": 2182.0,
+        "promedio": 2228.7,
+        "p95": 2691,
+        "max": 2925
+      },
+      "supervised_tokens_promedio": 66.2
+    }
+  },
+  "resultados": {
+    "eval_dpo_loss_inicial": 0.693147,
+    "eval_dpo_loss_final": 0.391663,
+    "mejor_eval_dpo_loss": 0.391663,
+    "eval_pref_acc_inicial": 0.0,
+    "eval_pref_acc_final": 1.0,
+    "eval_reward_margin_final": 0.785286,
+    "pasos_totales": 36,
+    "mejor_step": 36,
+    "tiempo_min": 54.72
+  },
+  "curvas": {
+    "train": [
+      {
+        "step": 1,
+        "dpo_loss": 0.693147,
+        "total_loss": 0.822227,
+        "reward_margin": 0.0,
+        "pref_acc": 0.0,
+        "lr": 5e-06
+      },
+      {
+        "step": 2,
+        "dpo_loss": 0.693147,
+        "total_loss": 0.767133,
+        "reward_margin": 0.0,
+        "pref_acc": 0.0,
+        "lr": 7.500000000000001e-06
+      },
+      {
+        "step": 3,
+        "dpo_loss": 0.688127,
+        "total_loss": 0.752058,
+        "reward_margin": 0.010208,
+        "pref_acc": 0.5,
+        "lr": 1e-05
+      },
+      {
+        "step": 4,
+        "dpo_loss": 0.696985,
+        "total_loss": 0.839245,
+        "reward_margin": -0.007533,
+        "pref_acc": 0.5,
+        "lr": 1e-05
+      },
+      {
+        "step": 5,
+        "dpo_loss": 0.645151,
+        "total_loss": 0.700567,
+        "reward_margin": 0.101262,
+        "pref_acc": 0.75,
+        "lr": 9.978331270024887e-06
+      },
+      {
+        "step": 6,
+        "dpo_loss": 0.654352,
+        "total_loss": 0.739129,
+        "reward_margin": 0.083489,
+        "pref_acc": 0.75,
+        "lr": 9.913533761814537e-06
+      },
+      {
+        "step": 7,
+        "dpo_loss": 0.623229,
+        "total_loss": 0.697098,
+        "reward_margin": 0.146082,
+        "pref_acc": 1.0,
+        "lr": 9.80623151079494e-06
+      },
+      {
+        "step": 8,
+        "dpo_loss": 0.660806,
+        "total_loss": 0.695079,
+        "reward_margin": 0.068073,
+        "pref_acc": 0.75,
+        "lr": 9.65745789630079e-06
+      },
+      {
+        "step": 9,
+        "dpo_loss": 0.766058,
+        "total_loss": 0.842939,
+        "reward_margin": -0.078364,
+        "pref_acc": 0.5,
+        "lr": 9.468645689567599e-06
+      },
+      {
+        "step": 10,
+        "dpo_loss": 0.730538,
+        "total_loss": 0.81953,
+        "reward_margin": -0.021678,
+        "pref_acc": 0.75,
+        "lr": 9.241613255361455e-06
+      },
+      {
+        "step": 11,
+        "dpo_loss": 0.489996,
+        "total_loss": 0.582185,
+        "reward_margin": 0.461312,
+        "pref_acc": 1.0,
+        "lr": 8.978547040132317e-06
+      },
+      {
+        "step": 12,
+        "dpo_loss": 0.603492,
+        "total_loss": 0.731172,
+        "reward_margin": 0.188153,
+        "pref_acc": 1.0,
+        "lr": 8.681980515339464e-06
+      },
+      {
+        "step": 13,
+        "dpo_loss": 0.384245,
+        "total_loss": 0.480676,
+        "reward_margin": 0.835426,
+        "pref_acc": 1.0,
+        "lr": 8.354769778736407e-06
+      },
+      {
+        "step": 14,
+        "dpo_loss": 0.41676,
+        "total_loss": 0.515817,
+        "reward_margin": 0.751066,
+        "pref_acc": 1.0,
+        "lr": 8.00006604858821e-06
+      },
+      {
+        "step": 15,
+        "dpo_loss": 0.537195,
+        "total_loss": 0.631849,
+        "reward_margin": 0.377333,
+        "pref_acc": 1.0,
+        "lr": 7.621285315716991e-06
+      },
+      {
+        "step": 16,
+        "dpo_loss": 0.389402,
+        "total_loss": 0.404766,
+        "reward_margin": 0.819392,
+        "pref_acc": 1.0,
+        "lr": 7.222075445642904e-06
+      },
+      {
+        "step": 17,
+        "dpo_loss": 0.352539,
+        "total_loss": 0.427164,
+        "reward_margin": 0.924687,
+        "pref_acc": 1.0,
+        "lr": 6.80628104764508e-06
+      },
+      {
+        "step": 18,
+        "dpo_loss": 0.252457,
+        "total_loss": 0.319302,
+        "reward_margin": 1.326889,
+        "pref_acc": 1.0,
+        "lr": 6.377906449072578e-06
+      },
+      {
+        "step": 19,
+        "dpo_loss": 0.49372,
+        "total_loss": 0.587415,
+        "reward_margin": 0.667412,
+        "pref_acc": 1.0,
+        "lr": 5.9410771314830255e-06
+      },
+      {
+        "step": 20,
+        "dpo_loss": 0.268453,
+        "total_loss": 0.361746,
+        "reward_margin": 1.353823,
+        "pref_acc": 1.0,
+        "lr": 5.500000000000001e-06
+      },
+      {
+        "step": 21,
+        "dpo_loss": 0.334061,
+        "total_loss": 0.412035,
+        "reward_margin": 0.953876,
+        "pref_acc": 1.0,
+        "lr": 5.0589228685169776e-06
+      },
+      {
+        "step": 22,
+        "dpo_loss": 0.277887,
+        "total_loss": 0.348301,
+        "reward_margin": 1.358578,
+        "pref_acc": 1.0,
+        "lr": 4.622093550927423e-06
+      },
+      {
+        "step": 23,
+        "dpo_loss": 0.441822,
+        "total_loss": 0.537717,
+        "reward_margin": 0.748186,
+        "pref_acc": 1.0,
+        "lr": 4.193718952354921e-06
+      },
+      {
+        "step": 24,
+        "dpo_loss": 0.226234,
+        "total_loss": 0.310902,
+        "reward_margin": 1.394849,
+        "pref_acc": 1.0,
+        "lr": 3.777924554357096e-06
+      },
+      {
+        "step": 25,
+        "dpo_loss": 0.166253,
+        "total_loss": 0.234091,
+        "reward_margin": 1.75958,
+        "pref_acc": 1.0,
+        "lr": 3.378714684283011e-06
+      },
+      {
+        "step": 26,
+        "dpo_loss": 0.304373,
+        "total_loss": 0.366399,
+        "reward_margin": 1.368647,
+        "pref_acc": 1.0,
+        "lr": 2.9999339514117913e-06
+      },
+      {
+        "step": 27,
+        "dpo_loss": 0.250825,
+        "total_loss": 0.363499,
+        "reward_margin": 1.435147,
+        "pref_acc": 1.0,
+        "lr": 2.645230221263596e-06
+      },
+      {
+        "step": 28,
+        "dpo_loss": 0.405314,
+        "total_loss": 0.425547,
+        "reward_margin": 0.767014,
+        "pref_acc": 1.0,
+        "lr": 2.3180194846605367e-06
+      },
+      {
+        "step": 29,
+        "dpo_loss": 0.156966,
+        "total_loss": 0.253572,
+        "reward_margin": 1.838181,
+        "pref_acc": 1.0,
+        "lr": 2.021452959867684e-06
+      },
+      {
+        "step": 30,
+        "dpo_loss": 0.301217,
+        "total_loss": 0.361317,
+        "reward_margin": 1.223266,
+        "pref_acc": 1.0,
+        "lr": 1.7583867446385461e-06
+      },
+      {
+        "step": 31,
+        "dpo_loss": 0.286633,
+        "total_loss": 0.378649,
+        "reward_margin": 1.107464,
+        "pref_acc": 1.0,
+        "lr": 1.531354310432403e-06
+      },
+      {
+        "step": 32,
+        "dpo_loss": 0.195212,
+        "total_loss": 0.290297,
+        "reward_margin": 1.642914,
+        "pref_acc": 1.0,
+        "lr": 1.3425421036992098e-06
+      },
+      {
+        "step": 33,
+        "dpo_loss": 0.397277,
+        "total_loss": 0.463549,
+        "reward_margin": 0.907707,
+        "pref_acc": 1.0,
+        "lr": 1.1937684892050606e-06
+      },
+      {
+        "step": 34,
+        "dpo_loss": 0.17209,
+        "total_loss": 0.249248,
+        "reward_margin": 1.913203,
+        "pref_acc": 1.0,
+        "lr": 1.0864662381854632e-06
+      },
+      {
+        "step": 35,
+        "dpo_loss": 0.20383,
+        "total_loss": 0.307199,
+        "reward_margin": 1.734882,
+        "pref_acc": 1.0,
+        "lr": 1.0216687299751146e-06
+      },
+      {
+        "step": 36,
+        "dpo_loss": 0.157637,
+        "total_loss": 0.235366,
+        "reward_margin": 1.789858,
+        "pref_acc": 1.0,
+        "lr": 1.0000000000000002e-06
+      }
+    ],
+    "eval": [
+      {
+        "step": 0,
+        "eval_dpo_loss": 0.693147,
+        "eval_total_loss": 0.779884,
+        "eval_reward_margin": 0.0,
+        "eval_reward_w": 0.0,
+        "eval_reward_l": 0.0,
+        "eval_pref_acc": 0.0
+      },
+      {
+        "step": 6,
+        "eval_dpo_loss": 0.637953,
+        "eval_total_loss": 0.723631,
+        "eval_reward_margin": 0.116176,
+        "eval_reward_w": 0.087059,
+        "eval_reward_l": -0.029117,
+        "eval_pref_acc": 0.9375
+      },
+      {
+        "step": 12,
+        "eval_dpo_loss": 0.53553,
+        "eval_total_loss": 0.619167,
+        "eval_reward_margin": 0.354854,
+        "eval_reward_w": 0.337089,
+        "eval_reward_l": -0.017766,
+        "eval_pref_acc": 1.0
+      },
+      {
+        "step": 18,
+        "eval_dpo_loss": 0.474913,
+        "eval_total_loss": 0.557846,
+        "eval_reward_margin": 0.517999,
+        "eval_reward_w": 0.442154,
+        "eval_reward_l": -0.075845,
+        "eval_pref_acc": 1.0
+      },
+      {
+        "step": 24,
+        "eval_dpo_loss": 0.428248,
+        "eval_total_loss": 0.510606,
+        "eval_reward_margin": 0.660533,
+        "eval_reward_w": 0.541268,
+        "eval_reward_l": -0.119266,
+        "eval_pref_acc": 1.0
+      },
+      {
+        "step": 30,
+        "eval_dpo_loss": 0.404603,
+        "eval_total_loss": 0.486499,
+        "eval_reward_margin": 0.740724,
+        "eval_reward_w": 0.604382,
+        "eval_reward_l": -0.136343,
+        "eval_pref_acc": 1.0
+      },
+      {
+        "step": 36,
+        "eval_dpo_loss": 0.391663,
+        "eval_total_loss": 0.473363,
+        "eval_reward_margin": 0.785286,
+        "eval_reward_w": 0.630764,
+        "eval_reward_l": -0.154521,
+        "eval_pref_acc": 1.0
+      }
+    ]
+  },
+  "smoke_test_val": [
+    {
+      "id": "DPO-TOOL-CAL-07",
+      "categoria": "dpo_tool_calendario",
+      "generado": "<tool_call>\n{\"name\": \"dias_entre\", \"arguments\": {\"fecha_inicio\": \"2026-07-13\", \"fecha_fin\": \"2026-07-24\", \"inclusivo\": true}}\n</tool_call><|im_end|>"
+    },
+    {
+      "id": "DPO-TOOL-CALC-04",
+      "categoria": "dpo_tool_calculo",
+      "generado": "Para determinar la calificación y el concepto del egresado, se debe calcular el promedio ponderado:\n\n- Promedio ponderado = (60% × 5,2) + (40% × 5,8)  \n- = (0,6 × 5,2) + (0,4 × 5,8)  \n- = 3,12 + 2,32 = 5,44\n\nLa calificación obtenida es **5,44**.\n\nSegún el artículo [RG-ART-048], el concepto se asigna de la siguiente manera:\n\n- Aprobado por Unanimidad: 4,0 – 4,9  \n- Aprobado con Distinción: 5,0 – 5,6  \n- Aprobado con D"
+    },
+    {
+      "id": "DPO-TOOL-EX-03",
+      "categoria": "dpo_tool_existe",
+      "generado": "El Art. 48 del Reglamento Interno de Ingeniería (RI-FI) no contiene una tabla de distinciones. En su lugar, el artículo establece una pauta de conceptos para los diplomas, como:\n\n- Aprobado por Unanimidad: 4,0 – 4,9  \n- Aprobado con Distinción: 5,0 – 5,6  \n- Aprobado con Distinción Máxima: 5,7 – 7,0  \n\nEsta pauta se encuentra en el **Anexo del Reglamento General (RG-ANEXO-48)**, donde se especifica también la equival"
+    },
+    {
+      "id": "DPO-TOOL-RET-04",
+      "categoria": "dpo_tool_recuperacion",
+      "generado": "No se especifica en los documentos recuperados un programa informático oficial para el registro de las Notas Finales ni el proceso de generación del Acta de Notas en el SAC. El texto menciona que la nota debe ser incorporada al SAC en la Escala Oficial, pero no indica el programa o herramienta informática específica utilizada para este registro.\n\nPor lo tanto, **no se puede determinar con base en el contexto proporci"
+    }
+  ],
+  "merged_dir": "/content/dpo_merged_hf",
+  "merged_from": "best_adapter"
+}

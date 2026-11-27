@@ -1,0 +1,996 @@
+{
+  "dataset": "nuevas_20",
+  "modelo": "udec-agente:4b-dpo",
+  "usar_embeddings": true,
+  "prebuscar": true,
+  "completados": 20,
+  "total": 20,
+  "segundos_totales": 655.42,
+  "casos": [
+    {
+      "id": "N01",
+      "categoria": "factual",
+      "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+      "gold_dato": "El plan de estudios no debería exceder las 54 horas semanales de trabajo académico; los programas de asignaturas deben establecer los créditos y las horas de trabajo académico (carga académica del alumno).",
+      "gold_fuente": "RG-ART-017",
+      "respuesta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, un plan de estudios no debería exceder las 54 horas semanales de trabajo académico. Además, los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura, constituyendo así la carga académica del alumno [RG-ART-017].\n\nAdemás, se especifica que el trabajo académico corresponde a las horas de docencia directa más las actividades indirectas o complementarias realizadas por el alumno fuera del horario programado para la docencia directa durante una semana. El alumno a tiempo completo debe dedicar entre 45 y 54 horas semanales de trabajo académico durante el periodo lectivo establecido [RG-ART-003-DEF-07].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 58.53,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-017",
+        "RG-ART-003-DEF-07",
+        "RG-ART-016",
+        "RG-ART-003-DEF-10"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-003-DEF-07",
+        "RG-ART-017"
+      ],
+      "citas_validas": [
+        "RG-ART-003-DEF-07",
+        "RG-ART-017"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N02",
+      "categoria": "factual",
+      "pregunta": "De acuerdo con el Artículo 12° del Reglamento General de Docencia de Pregrado, ¿a quién y cuándo debe informar por escrito el Profesor Encargado sobre el desarrollo de la asignatura?",
+      "gold_dato": "Debe informar por escrito al Director de Departamento al final del período lectivo (además de entregar el Acta de Notas Finales).",
+      "gold_fuente": "RG-ART-012",
+      "respuesta": "El Profesor Encargado debe informar por escrito al Director de Departamento, al final del período lectivo, sobre el desarrollo de la asignatura.\n\nEste requisito está establecido en el [RG-ART-012].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 15.12,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-012",
+        "RG-ART-006",
+        "RG-ART-019",
+        "RG-ART-013",
+        "RI-FI-ART-012"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-012"
+      ],
+      "citas_validas": [
+        "RG-ART-012"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N03",
+      "categoria": "factual",
+      "pregunta": "¿Qué instrumentos normativos rigen los requisitos, derechos y obligaciones de los alumnos visitantes y alumnos libres en la Universidad de Concepción?",
+      "gold_dato": "Un reglamento especial de la Universidad y los convenios correspondientes.",
+      "gold_fuente": "RG-ART-053",
+      "respuesta": "Los requisitos, derechos y obligaciones de los alumnos visitantes y alumnos libres se regirán por un reglamento especial de la Universidad y por los convenios que correspondan [RG-ART-053].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 8.49,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-053",
+        "RG-ART-003-DEF-18",
+        "RG-ART-052"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-053"
+      ],
+      "citas_validas": [
+        "RG-ART-053"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N04",
+      "categoria": "factual",
+      "pregunta": "En la Facultad de Ingeniería, ¿quién resuelve las situaciones no previstas en su Reglamento Interno de Docencia de Pregrado?",
+      "gold_dato": "El Decano de la Facultad de Ingeniería, en el ámbito de su competencia.",
+      "gold_fuente": "RI-FI-ART-035",
+      "respuesta": "Las situaciones no previstas en el Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería serán resueltas por el Decano de la Facultad de Ingeniería, en el ámbito de su competencia [RI-FI-ART-035].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 10.37,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-035",
+        "RI-FI-ART-002",
+        "RG-ART-011",
+        "RG-ART-001"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-035"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-035"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N05",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+      "gold_dato": "El Artículo 6° del RI-FI no fija un puntaje mínimo numérico ni promedio; solo señala que la postulación y selección se realiza al final del año académico respectivo y que la Facultad establece la distribución porcentual de cupos por carrera.",
+      "gold_fuente": "RI-FI-ART-006",
+      "respuesta": "El Artículo 6° del Reglamento Interno de la Facultad de Ingeniería no especifica un puntaje mínimo ponderado de notas para la aceptación de estudiantes del Ingreso Común en segundo año en una carrera de Ingeniería Civil.  \n\nEl criterio de selección se detalla en el Artículo 5°, que establece que se considerará el promedio curricular de notas de las asignaturas ponderadas por sus créditos del Plan Común de Primer Año, expresado con dos decimales, y que se aplicará a igual número de créditos aprobados.  \n\nSin embargo, el Artículo 6° solo menciona la distribución porcentual de cupos por carrera y no fija un puntaje mínimo ponderado.  \n\n[RI-FI-ART-005]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 22.25,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-006",
+        "RI-FI-ART-005",
+        "RI-FI-ART-017",
+        "RI-FI-ART-018",
+        "RI-FI-ART-019"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-005"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-005"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N06",
+      "categoria": "calculo",
+      "pregunta": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?",
+      "gold_dato": "Primer semestre: 18 y 19 de mayo (2 días). Segundo semestre: 21 y 22 de septiembre (2 días). Total: 4 días.",
+      "gold_fuente": "CAL-2026-S1-08; CAL-2026-S2-07",
+      "respuesta": "Según el Calendario de Docencia de Pregrado 2026, los días en que expresamente no se realizarán evaluaciones son:\n\n- Primer semestre: 18 y 19 de mayo (indicado en [CAL-2026-S1-08]).\n- Segundo semestre: 21 y 22 de septiembre (indicado en [CAL-2026-S2-07]).\n\nPara calcular el número total de días entre ambos eventos:\n\nSe consideran los días no programados para evaluaciones, es decir, los dos días del primer semestre y los dos del segundo. No se incluyen feriados ni otras actividades, solo los días específicamente indicados como \"no se realizarán evaluaciones\".\n\nPor lo tanto, el total de días es 4.\n\nNo hay información sobre evaluaciones de recuperación que impliquen días no evaluables, por lo que estos 4 días son los únicos expresamente indicados en el calendario para no realizar evaluaciones.\n\n**Respuesta final:**  \nLos días en que no se realizarán evaluaciones son el 18 y 19 de mayo (primer semestre) y el 21 y 22 de septiembre (segundo semestre), sumando un total de **4 días**.  \n\n[CAL-2026-S1-08], [CAL-2026-S2-07]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 48.84,
+      "turnos_modelo": 3,
+      "herramientas": [
+        {
+          "nombre": "leer_articulo",
+          "argumentos": {
+            "numero": 1,
+            "doc": "CAL"
+          },
+          "resultado": {
+            "id": null,
+            "texto": null,
+            "error": "Documento desconocido: CAL"
+          }
+        },
+        {
+          "nombre": "ver_calendario",
+          "argumentos": {
+            "semestre": "ambos"
+          },
+          "resultado": [
+            {
+              "id": "CAL-2026-S1-01",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Vinculación a la Vida Universitaria: \"Actividades de bienvenida y de inducción a la UdeC\": 02 – 06 de marzo."
+            },
+            {
+              "id": "CAL-2026-S1-02",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Inicio de Clases: 09 de marzo."
+            },
+            {
+              "id": "CAL-2026-S1-03",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Modificación de asignaturas – fecha límite: 02 de abril."
+            },
+            {
+              "id": "CAL-2026-S1-04",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas semestrales: 10 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-05",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas anuales: 24 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-06",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Evaluaciones de Recuperación: 13 - 24 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-07",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Pausa activa de docencia de pregrado: 11 – 15 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-08",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. No se realizarán evaluaciones: 18 y 19 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-09",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: viernes 03 de abril."
+            },
+            {
+              "id": "CAL-2026-S1-10",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: viernes 01 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-11",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 21 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-12",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: lunes 29 de junio."
+            },
+            {
+              "id": "CAL-2026-S1-13",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 16 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-14",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Vacaciones de invierno (aprobación transitoria): 30 junio – 05 de julio."
+            },
+            {
+              "id": "CAL-2026-S2-01",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inscripción de Asignaturas: 03 – 07 de agosto."
+            },
+            {
+              "id": "CAL-2026-S2-02",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inicio de Clases: 10 de agosto."
+            },
+            {
+              "id": "CAL-2026-S2-03",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Modificación de asignaturas – fecha límite: 04 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-04",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Término de Clases: 11 de diciembre."
+            },
+            {
+              "id": "CAL-2026-S2-05",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Evaluaciones de Recuperación: 14 – 23 de diciembre."
+            },
+            {
+              "id": "CAL-2026-S2-06",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Suspensión de actividades de docencia de pregrado: 14 - 17 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-07",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. No se realizarán evaluaciones: 21 y 22 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-08",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: jueves 20 de agosto."
+            },
+            {
+              "id": "CAL-2026-S2-09",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: viernes 18 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-10",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: lunes 12 de octubre."
+            },
+            {
+              "id": "CAL-2026-S2-11",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: martes 08 de diciembre."
+            }
+          ]
+        }
+      ],
+      "fuentes_ids": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N07",
+      "categoria": "calculo",
+      "pregunta": "En el Calendario 2026, ¿cuántos días corridos transcurren desde el inicio de la pausa activa de docencia del primer semestre (11 de mayo) hasta el inicio de la suspensión de actividades del segundo semestre (14 de septiembre), y cuántos días dura cada período inclusive?",
+      "gold_dato": "Del 11 de mayo al 14 de septiembre transcurren 126 días corridos. La pausa activa de mayo (11 al 15) dura 5 días inclusive y la suspensión de septiembre (14 al 17) dura 4 días inclusive.",
+      "gold_fuente": "CAL-2026-S1-07; CAL-2026-S2-06",
+      "respuesta": "Desde el inicio de la pausa activa de docencia del primer semestre (11 de mayo) hasta el inicio de la suspensión de actividades del segundo semestre (14 de septiembre), transcurren **126 días corridos**.\n\nEl período de la pausa activa de docencia del primer semestre dura **5 días inclusive** (del 11 al 15 de mayo).\n\nEl período de la suspensión de actividades del segundo semestre dura **4 días inclusive** (del 14 al 17 de septiembre).\n\n[CAL-2026-S1-07], [CAL-2026-S2-06]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 44.99,
+      "turnos_modelo": 2,
+      "herramientas": [
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "fecha_inicio": "2026-05-11",
+            "fecha_fin": "2026-09-14",
+            "inclusivo": false
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-05-11",
+            "fecha_fin_iso": "2026-09-14",
+            "dias_diferencia": 126,
+            "dias_corridos": 126,
+            "dias_inclusivos": 127,
+            "resultado_solicitado": 126,
+            "inclusivo": false
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "fecha_inicio": "2026-05-11",
+            "fecha_fin": "2026-05-15",
+            "inclusivo": true
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-05-11",
+            "fecha_fin_iso": "2026-05-15",
+            "dias_diferencia": 4,
+            "dias_corridos": 4,
+            "dias_inclusivos": 5,
+            "resultado_solicitado": 5,
+            "inclusivo": true
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "fecha_inicio": "2026-09-14",
+            "fecha_fin": "2026-09-17",
+            "inclusivo": true
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-09-14",
+            "fecha_fin_iso": "2026-09-17",
+            "dias_diferencia": 3,
+            "dias_corridos": 3,
+            "dias_inclusivos": 4,
+            "resultado_solicitado": 4,
+            "inclusivo": true
+          }
+        }
+      ],
+      "fuentes_ids": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-06"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-06"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N08",
+      "categoria": "condicional",
+      "pregunta": "¿Qué requisitos debe cumplir una actividad artística, cultural, deportiva, social o recreativa para ser reconocida en el currículum como asignatura complementaria?",
+      "gold_dato": "Efectuarse bajo la tuición o el patrocinio de organismos dependientes de la Universidad de Concepción y contar con un programa de actividades aprobado por la Dirección de Docencia y la respectiva unidad.",
+      "gold_fuente": "RG-ART-046",
+      "respuesta": "Las actividades artísticas, culturales, deportivas, sociales o recreativas deben cumplir los siguientes requisitos para ser reconocidas en el currículum como asignaturas complementarias:\n\n1. Deben realizarse bajo la tutoría o patrocinio de organismos dependientes de la Universidad de Concepción.  \n2. Deben contar con un programa de actividades aprobado por la Dirección de Docencia y la respectiva unidad académica.  \n\nEstos requisitos están establecidos en [RG-ART-046].  \n\nAdicionalmente, se debe tener en cuenta que estas actividades forman parte del Programa de Formación Complementaria, que requiere un plan estructurado con elementos como perfil de egreso, requisitos de admisión, ordenamiento de actividades y certificación, según lo establecido en [RG-ART-003-DEF-12].  \n\nSin embargo, el reconocimiento como asignatura complementaria no se realiza directamente mediante un programa de actividad artística o recreativa aislado, sino que debe estar integrado dentro del marco del Programa de Formación Complementaria y cumplir con los requisitos de carga académica y aprobación institucional.  \n\nPor tanto, la norma no fija un requisito específico de número de horas o tipo de actividad, sino que se centra en la autorización institucional y el programa aprobado.  \n\n[RG-ART-046]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 45.37,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-046",
+        "RG-ART-003-DEF-12",
+        "RG-ART-003-DEF-11",
+        "RI-FI-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-003-DEF-12",
+        "RG-ART-046"
+      ],
+      "citas_validas": [
+        "RG-ART-003-DEF-12",
+        "RG-ART-046"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N09",
+      "categoria": "condicional",
+      "pregunta": "Además de las causales académicas, ¿bajo qué resolución disciplinaria específica prevista en el Artículo 51° del Reglamento General se pierde la condición de alumno de pregrado?",
+      "gold_dato": "Por resolución adoptada como consecuencia de la aplicación del Reglamento \"Normas de Conducta de los Estudiantes\".",
+      "gold_fuente": "RG-ART-051",
+      "respuesta": "Bajo el Artículo 51° del Reglamento General, se pierde la condición de alumno de pregrado por resolución adoptada como consecuencia de la aplicación del Reglamento “Normas de Conducta de los Estudiantes” [RG-ART-051]. \n\nEste caso no especifica una resolución disciplinaria distinta a la establecida en dicho reglamento, y no se menciona ninguna otra resolución específica fuera de este marco. Por lo tanto, la pérdida de condición de alumno se produce únicamente mediante resolución derivada del Reglamento “Normas de Conducta de los Estudiantes” [RG-ART-051].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 20.91,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-051",
+        "RG-ART-003-DEF-20",
+        "RG-ART-003-DEF-19"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-051"
+      ],
+      "citas_validas": [
+        "RG-ART-051"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N10",
+      "categoria": "condicional",
+      "pregunta": "Un alumno ya graduado o titulado de una carrera que ofrece más de un grado, título o mención quiere cursar las exigencias para optar a otro grado, título o mención. ¿Cuándo y mediante qué trámite puede hacerlo?",
+      "gold_dato": "Puede solicitar su reingreso a la carrera en el semestre siguiente a su egreso para cumplir con las otras exigencias académicas.",
+      "gold_fuente": "RG-ART-047",
+      "respuesta": "El alumno ya graduado o titulado de una carrera que ofrece más de un grado, título o mención puede cursar las exigencias para optar a otro grado, título o mención **en el semestre siguiente a su egreso**, mediante **solicitud de reingreso a la misma carrera** como alumno nuevo, conforme al artículo [RG-ART-047] y al texto complementario en el que se especifica que \"en el semestre siguiente a su egreso, podrán solicitar su reingreso a la carrera para cumplir con las otras exigencias académicas\".\n\nSin embargo, según el Artículo [RG-ART-044], el alumno que reingresa a una misma carrera deberá hacerlo como alumno nuevo y **no tendrá derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas**. Además, si no incurrió en pérdida de carrera, podrá solicitar mantener su situación académica anterior dentro de los treinta primeros días del primer semestre de permanencia.\n\nEste trámite está regulado específicamente para carreras que ofrecen más de un grado, título o mención, y requiere que la Facultad indique el Programa de Formación Complementaria aprobado por el alumno para su certificación.\n\n[RG-ART-047]  \n[RG-ART-044]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 31.73,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-047",
+        "RG-ART-044",
+        "RG-ART-003-DEF-21",
+        "RG-ART-037"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-044",
+        "RG-ART-047"
+      ],
+      "citas_validas": [
+        "RG-ART-044",
+        "RG-ART-047"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N11",
+      "categoria": "condicional",
+      "pregunta": "¿Qué condiciones exige el Artículo 57° del Reglamento General para que un alumno de pregrado curse simultáneamente un programa de postgrado y obtenga la Beca Articulación Pregrado-Postgrado?",
+      "gold_dato": "Ser alumno regular de una carrera de la UdeC, poseer el Grado Académico de Licenciado, ser aceptado en un programa de postgrado de la universidad y contar con proposición de la Facultad respectiva.",
+      "gold_fuente": "RG-ART-057",
+      "respuesta": "El Artículo 57° del Reglamento General [RG-ART-057] exige que:\n\n- El alumno sea regular en una carrera ofrecida por la Universidad de Concepción.\n- Esté en posesión del Grado Académico de Licenciado.\n\nBajo estas condiciones, el alumno podrá cursar simultáneamente un programa de postgrado y obtener la Beca Articulación Pregrado-Postgrado, a propuesta de la Facultad respectiva.\n\nNo se especifican otras condiciones adicionales en este artículo para la simultaneidad de estudios o para la obtención de la beca. [RG-ART-057]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 16.09,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-057",
+        "RG-ART-051",
+        "RG-ART-047"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-057"
+      ],
+      "citas_validas": [
+        "RG-ART-057"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N12",
+      "categoria": "cruce",
+      "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+      "gold_dato": "En ambos casos interviene la Dirección de Servicios Estudiantiles de la UdeC (o su unidad equivalente en Campus Chillán o Campus Los Ángeles): visa el certificado médico o de matrona en el Art. 36° y evalúa y certifica las situaciones indicadas en el Art. 59°.",
+      "gold_fuente": "RG-ART-036; RG-ART-059",
+      "respuesta": "El organismo que visa o certifica la documentación en ambos casos —embarazo (Art. 36°) y situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°)— es la **Dirección de Servicios Estudiantiles** de la Universidad de Concepción, o la Unidad que corresponda en los Campuses Chillán y Los Ángeles.\n\nEste requisito se establece explícitamente en [RG-ART-036] y [RG-ART-059].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 15.11,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-036",
+        "RG-ART-059",
+        "RG-ART-032"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-036",
+        "RG-ART-059"
+      ],
+      "citas_validas": [
+        "RG-ART-036",
+        "RG-ART-059"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N13",
+      "categoria": "cruce",
+      "pregunta": "¿Cómo se estructura la modalidad mixta de ingreso a Primer Año en la Facultad de Ingeniería (Art. 3° RI-FI) y cuándo se postula y asignan los cupos a segundo año para quienes ingresan sin especialidad (Art. 6° RI-FI)?",
+      "gold_dato": "Ingreso mixto mediante Ingreso Directo a una carrera según cupos definidos e Ingreso Común sin especialidad (Art. 3°). Quienes están en Ingreso Común postulan y son seleccionados al final del año académico respectivo según la distribución porcentual de cupos por carrera en Ingeniería Civil establecida por la Facultad (Art. 6°).",
+      "gold_fuente": "RI-FI-ART-003; RI-FI-ART-006",
+      "respuesta": "La modalidad mixta de ingreso al Primer Año contempla dos vías: un **Ingreso Directo** a una carrera según los cupos definidos por carrera, y un **Ingreso Común sin especialidad**, que permite a los estudiantes postularse a carreras de Ingeniería Civil en el segundo año [RI-FI-ART-003].\n\nPara quienes ingresan sin especialidad, el proceso de postulación y asignación de cupos al segundo año se realiza **al final del año académico respectivo**, cuando los estudiantes del Ingreso Común postulan a carreras de Ingeniería Civil. La selección se basa en el número de créditos aprobados, seguido por el promedio curricular ponderado (con dos decimales), considerando solo asignaturas obligatorias del Primer Año; además, se toma en cuenta el orden de preferencias de las carreras según la oferta y los cupos disponibles [RI-FI-ART-005].\n\nLa Facultad establece cada año la distribución porcentual de cupos por carrera para el Ingreso Común, y define el número total de cupos de Ingreso Directo y Común, pudiendo fijar cupos exclusivos para ingreso directo en algunas carreras [RI-FI-ART-004]. \n\nNo se especifica una fecha exacta del calendario académico para este proceso, pero se entiende que ocurre al final del año académico, conforme a la estructura del Reglamento Interno [RI-FI-ART-006].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 32.89,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-006",
+        "RI-FI-ART-005",
+        "RI-FI-ART-004"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-004",
+        "RI-FI-ART-005",
+        "RI-FI-ART-006"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-004",
+        "RI-FI-ART-005",
+        "RI-FI-ART-006"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N14",
+      "categoria": "cruce",
+      "pregunta": "En el Programa de Formación Complementaria, ¿quién integra la Comisión que resuelve las solicitudes de ingreso (Art. 56°) y qué deben consignar las Facultades o Escuelas en el expediente de titulación o grado (Art. 47°)?",
+      "gold_dato": "La Comisión se integra por el Director de Docencia, el Decano de la Facultad o Director de Escuela y el Jefe del Programa de Formación Complementaria (Art. 56°). En cada expediente de Título Profesional o Grado Académico deben indicar, cuando corresponda, el Programa de Formación Complementaria aprobado para su certificación (Art. 47°).",
+      "gold_fuente": "RG-ART-056; RG-ART-047",
+      "respuesta": "La Comisión que resuelve las solicitudes de ingreso al Programa de Formación Complementaria está integrada por el Director de Docencia, el Decano de la Facultad o Director de Escuela y el Jefe del Programa de Formación Complementaria [RG-ART-056].\n\nLas Facultades o Escuelas deben consignar, cuando corresponda, en cada expediente de titulación o grado, el Programa de Formación Complementaria que aprobó el alumno para su certificación [RG-ART-047].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 17.86,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-056",
+        "RG-ART-047",
+        "RG-ART-055"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-047",
+        "RG-ART-056"
+      ],
+      "citas_validas": [
+        "RG-ART-047",
+        "RG-ART-056"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N15",
+      "categoria": "multi_salto",
+      "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+      "gold_dato": "Las facilidades al concluir la interrupción (nuevos plazos o derivación de pendientes al próximo período lectivo) las decide el Comité de Docencia y Asuntos Estudiantiles respectivo (Art. 36°); en cada Facultad, la Secretaría Académica (dependiente del Vicedecano) recibe, tramita y despacha las solicitudes de los alumnos (Art. 5°).",
+      "gold_fuente": "RG-ART-036; RG-ART-005",
+      "respuesta": "La instancia que decide las facilidades académicas para finalizar las asignaturas al concluir la interrupción temporal de estudios por embarazo es el **Comité de Docencia y Asuntos Estudiantiles** [RG-ART-036].\n\nEl organismo técnico de la Facultad que tramita regularmente las solicitudes de los alumnos es la **Secretaría Académica** [RG-ART-005].",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 14.95,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-036",
+        "RG-ART-005",
+        "RI-FI-ART-005",
+        "RI-FI-ART-016"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-005",
+        "RG-ART-036"
+      ],
+      "citas_validas": [
+        "RG-ART-005",
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N16",
+      "categoria": "colision_lexica",
+      "pregunta": "En el Calendario de Docencia de Pregrado 2026, ¿qué actividades o restricciones corresponden exactamente al 11–15 de mayo y al 18–19 de mayo en el primer semestre, frente al 14–17 de septiembre y al 21–22 de septiembre en el segundo semestre?",
+      "gold_dato": "Primer semestre: 11–15 de mayo es pausa activa de docencia de pregrado y el 18 y 19 de mayo no se realizarán evaluaciones. Segundo semestre: 14–17 de septiembre es suspensión de actividades de docencia de pregrado y el 21 y 22 de septiembre no se realizarán evaluaciones.",
+      "gold_fuente": "CAL-2026-S1-07; CAL-2026-S1-08; CAL-2026-S2-06; CAL-2026-S2-07",
+      "respuesta": "En el Calendario de Docencia de Pregrado 2026:\n\n- **Del 11 al 15 de mayo (primer semestre)**: corresponde a una **pausa activa de docencia** [CAL-2026-S1-07]. Durante este periodo, no se realizan actividades de docencia.\n\n- **Del 18 al 19 de mayo (primer semestre)**: se registra como **feriado nacional** [CAL-2026-S1-10], por lo que no se realizan actividades de docencia.\n\n- **Del 14 al 17 de septiembre (segundo semestre)**: corresponde a una **suspensión de actividades de docencia** [CAL-2026-S2-06].\n\n- **Del 21 al 22 de septiembre (segundo semestre)**: se indica que **no se realizarán evaluaciones** [CAL-2026-S2-07], no se menciona pausa activa o feriado, por lo tanto, las actividades de docencia continúan, aunque las evaluaciones están suspendidas.\n\nEn resumen:\n- 11–15 de mayo: pausa activa de docencia.\n- 18–19 de mayo: feriado nacional.\n- 14–17 de septiembre: suspensión de actividades de docencia.\n- 21–22 de septiembre: no se realizan evaluaciones, pero las actividades de docencia continúan. \n\n[RI-FI-ART-014] no aplica directamente a estas fechas, ya que trata sobre condiciones académicas de baja, no sobre actividades programadas.",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 56.66,
+      "turnos_modelo": 2,
+      "herramientas": [
+        {
+          "nombre": "leer_articulo",
+          "argumentos": {
+            "doc": "RI-FI",
+            "numero": 14
+          },
+          "resultado": {
+            "id": "RI-FI-ART-014",
+            "documento": "RI-FI",
+            "paginas": [
+              3
+            ],
+            "texto": "Artículo 14°. Las y los estudiantes perderán el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, en las siguientes situaciones:\n\na) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera. b) Tener un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera. c) Haber reprobado por segunda vez una asignatura obligatoria, salvo que ésta haya sido aprobada en el PLEV del año académico correspondiente, o que se trate de estudiantes que se encuentren en el primer año de permanencia en la carrera.",
+            "encontrado": true
+          }
+        },
+        {
+          "nombre": "ver_calendario",
+          "argumentos": {
+            "semestre": "ambos"
+          },
+          "resultado": [
+            {
+              "id": "CAL-2026-S1-01",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Vinculación a la Vida Universitaria: \"Actividades de bienvenida y de inducción a la UdeC\": 02 – 06 de marzo."
+            },
+            {
+              "id": "CAL-2026-S1-02",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Inicio de Clases: 09 de marzo."
+            },
+            {
+              "id": "CAL-2026-S1-03",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Modificación de asignaturas – fecha límite: 02 de abril."
+            },
+            {
+              "id": "CAL-2026-S1-04",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas semestrales: 10 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-05",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Término de Clases asignaturas anuales: 24 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-06",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Evaluaciones de Recuperación: 13 - 24 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-07",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Pausa activa de docencia de pregrado: 11 – 15 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-08",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. No se realizarán evaluaciones: 18 y 19 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-09",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: viernes 03 de abril."
+            },
+            {
+              "id": "CAL-2026-S1-10",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: viernes 01 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-11",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 21 de mayo."
+            },
+            {
+              "id": "CAL-2026-S1-12",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: lunes 29 de junio."
+            },
+            {
+              "id": "CAL-2026-S1-13",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Feriado Nacional: jueves 16 de julio."
+            },
+            {
+              "id": "CAL-2026-S1-14",
+              "texto": "Calendario de docencia de pregrado 2026. Primer semestre. Vacaciones de invierno (aprobación transitoria): 30 junio – 05 de julio."
+            },
+            {
+              "id": "CAL-2026-S2-01",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inscripción de Asignaturas: 03 – 07 de agosto."
+            },
+            {
+              "id": "CAL-2026-S2-02",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Inicio de Clases: 10 de agosto."
+            },
+            {
+              "id": "CAL-2026-S2-03",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Modificación de asignaturas – fecha límite: 04 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-04",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Término de Clases: 11 de diciembre."
+            },
+            {
+              "id": "CAL-2026-S2-05",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Evaluaciones de Recuperación: 14 – 23 de diciembre."
+            },
+            {
+              "id": "CAL-2026-S2-06",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Suspensión de actividades de docencia de pregrado: 14 - 17 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-07",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. No se realizarán evaluaciones: 21 y 22 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-08",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: jueves 20 de agosto."
+            },
+            {
+              "id": "CAL-2026-S2-09",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: viernes 18 de septiembre."
+            },
+            {
+              "id": "CAL-2026-S2-10",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: lunes 12 de octubre."
+            },
+            {
+              "id": "CAL-2026-S2-11",
+              "texto": "Calendario de docencia de pregrado 2026. Segundo semestre. Feriado Nacional: martes 08 de diciembre."
+            }
+          ]
+        }
+      ],
+      "fuentes_ids": [
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-11",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14",
+        "RI-FI-ART-014"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-10",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-10",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N17",
+      "categoria": "negacion_excepcion",
+      "pregunta": "¿Toda carrera de pregrado depende sin excepción de una Facultad, y es el Vicedecano el responsable máximo de la docencia de pregrado en la Facultad según el Art. 4° RG?",
+      "gold_dato": "No en ambos puntos: aunque toda carrera depende de una Facultad, para disciplinas no comprendidas en Facultades existentes el Consejo Académico puede hacerlas depender temporalmente de otra unidad académica; además, el Decano es el responsable máximo de la docencia de pregrado, mientras el Vicedecano asume la administración general y cumplimiento de plazos.",
+      "gold_fuente": "RG-ART-004",
+      "respuesta": "No, no toda carrera de pregrado depende sin excepción de una Facultad. El Artículo 4° del Reglamento General (RG) establece que \"Toda carrera depende de una Facultad\", pero incluye una excepción: \"en el caso de disciplinas que no queden comprendidas dentro del ámbito de algunas Facultades existentes, el Consejo Académico podrá hacerlas depender temporalmente de otra unidad académica\" [RG-ART-004].\n\nAdemás, respecto al responsable máximo de la docencia de pregrado en la Facultad: el artículo indica que \"el Decano será el responsable máximo de la docencia de pregrado\", no el Vicedecano [RG-ART-004]. El Vicedecano asume la administración general de los estudios y el cumplimiento de plazos, pero no es el responsable máximo de la docencia.\n\nPor tanto, la afirmación del enunciado es incorrecta en dos aspectos:  \n1. Existe una excepción a que toda carrera dependa de una Facultad.  \n2. El responsable máximo de la docencia es el Decano, no el Vicedecano.\n\n[RG-ART-004]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 36.07,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-004",
+        "RG-ART-006",
+        "RG-ART-011"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-004"
+      ],
+      "citas_validas": [
+        "RG-ART-004"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N18",
+      "categoria": "sintesis",
+      "pregunta": "¿Cómo se distribuyen el resguardo de normas y plazos entre la Secretaría Académica (Art. 5°), el Profesor Encargado de asignatura (Art. 12°) y la obligación transitoria de las Facultades (Art. 2° Transitorio)?",
+      "gold_dato": "La Secretaría Académica (dependiente del Vicedecano) verifica normativas vigentes, coordina horarios, registra/archiva datos y tramita solicitudes (Art. 5°); el Profesor Encargado vela por normas y plazos en su asignatura, entrega el Acta de Notas Finales e informa por escrito al Director de Departamento (Art. 12°); y las Facultades debieron adecuar sus Reglamentos Internos en máximo 90 días hábiles desde la vigencia del RG (Art. 2° Transitorio).",
+      "gold_fuente": "RG-ART-005; RG-ART-012; RG-TRANS-002",
+      "respuesta": "El resguardo de normas y plazos se distribuye de la siguiente manera:\n\n- **Secretaría Académica (Art. 5°)**: Tiene funciones de coordinación de horarios, registro y archivado de información de alumnos, verificación del cumplimiento de normativas vigentes, confección de informes y certificados, y tramitación de solicitudes estudiantiles. Su rol es administrativo y de supervisión general en la facultad, pero no tiene responsabilidad directa sobre el cumplimiento de plazos específicos en asignaturas o evaluaciones.\n\n- **Profesor Encargado de asignatura (Art. 12°)**: Es responsable de coordinar el trabajo de los profesores participantes, velar por el cumplimiento de los objetivos del programa y las normas y plazos establecidos en los reglamentos, y entregar el Acta de Notas Finales. Además, debe comunicar por escrito al Director de Departamento el desarrollo de la asignatura al final del período lectivo. También debe informar los requisitos, actividades y ponderaciones de evaluación, incluyendo la evaluación de recuperación, en la primera semana de clases.\n\n- **Obligación transitoria de las Facultades (Art. 2° Transitorio)**: Las Facultades deben adecuar sus Reglamentos Internos de Docencia de Pregrado a lo dispuesto en el Reglamento General dentro de un plazo no superior a noventa días hábiles desde la vigencia del texto. Esta obligación implica una responsabilidad institucional para alinear sus normas internas con las del Reglamento General, pero no establece responsabilidades específicas sobre el cumplimiento de plazos en asignaturas o evaluaciones.\n\nEn resumen:\n- La Secretaría Académica se encarga de la administración general y verificación de cumplimiento de normativas.\n- El Profesor Encargado asume responsabilidad directa en cada asignatura sobre el cumplimiento de normas, plazos y entrega de actas.\n- Las Facultades tienen una obligación transitoria de adaptar sus reglamentos internos dentro de un plazo fijo, pero no se especifican detalles de cumplimiento de plazos en asignaturas.\n\n[RG-ART-005], RG-ART-12, [RG-TRANS-002]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 60.85,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-012",
+        "RG-ART-005",
+        "RI-FI-ART-012",
+        "RG-ART-006",
+        "RG-TRANS-002",
+        "RG-ART-013"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-005",
+        "RG-TRANS-002"
+      ],
+      "citas_validas": [
+        "RG-ART-005",
+        "RG-TRANS-002"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N19",
+      "categoria": "premisa_falsa",
+      "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+      "gold_dato": "Ambas afirmaciones son incorrectas: el Art. 36° otorga la interrupción durante el embarazo y hasta dos meses después del nacimiento (no cuatro) y exige certificado médico o de matrona visado por la Dirección de Servicios Estudiantiles (o equivalente en Chillán/Los Ángeles); además, el Art. 18° permite organizar asignaturas también en un período distinto a un semestre según el plan de estudio.",
+      "gold_fuente": "RG-ART-036; RG-ART-018",
+      "respuesta": "No es correcto.\n\nLa afirmación de que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado es incorrecta. Según [RG-ART-036], las alumnas tienen derecho a interrumpir sus estudios durante el período de embarazo y hasta **dos meses después del nacimiento**, y debe presentar un certificado del médico o matrona **visado por la Dirección de Servicios Estudiantiles** o su equivalente en los campus, no un certificado simple sin visado.\n\nAdemás, respecto a la duración de las asignaturas, el artículo [RG-ART-018] establece que las asignaturas deberán organizarse dentro del año académico, en forma continua durante los dos semestres, durante un semestre o durante un período distinto a un semestre, lo que deberá quedar establecido en el plan de estudio. Esto implica que una asignatura puede dictarse durante un semestre o dos semestres continuos, pero no se especifica que solo pueda dictarse en esos periodos; la organización depende del plan de estudio. Por tanto, la afirmación sobre la duración de las asignaturas es parcialmente correcta, pero no está completamente respaldada por el texto normativo.\n\nEn resumen:\n- La interrupción por embarazo no cubre hasta cuatro meses, sino hasta dos meses después del nacimiento, y requiere visado.\n- La duración de las asignaturas está regulada por el plan de estudio, no por una fija de un semestre o dos semestres continuos.\n\n[RG-ART-036], [RG-ART-018]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 68.05,
+      "turnos_modelo": 2,
+      "herramientas": [
+        {
+          "nombre": "existe_articulo",
+          "argumentos": {
+            "doc": "RI-FI",
+            "numero": 25
+          },
+          "resultado": {
+            "doc": "RI-FI",
+            "numero": 25,
+            "existe": true,
+            "unidad_id": "RI-FI-ART-025",
+            "max_articulo": 35
+          }
+        },
+        {
+          "nombre": "leer_articulo",
+          "argumentos": {
+            "doc": "RG",
+            "numero": 36
+          },
+          "resultado": {
+            "id": "RG-ART-036",
+            "documento": "RG",
+            "paginas": [
+              23
+            ],
+            "texto": "Artículo 36° Las alumnas tendrán derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento, conservando su calidad de alumna regular y manteniendo todos sus derechos y obligaciones, debiendo presentar un certificado del médico o matrona que la atiende, visado por la Dirección de Servicios Estudiantiles, o su equivalente en el Campus Chillán o en el Campus Los Ángeles.\n\nAl concluir esta interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo, decidirá sobre las facilidades a otorgar para que la alumna finalice sus asignaturas, ya sea otorgando nuevos plazos o derivando las actividades pendientes a un próximo período lectivo.",
+            "encontrado": true
+          }
+        },
+        {
+          "nombre": "leer_articulo",
+          "argumentos": {
+            "doc": "RG",
+            "numero": 18
+          },
+          "resultado": {
+            "id": "RG-ART-018",
+            "documento": "RG",
+            "paginas": [
+              16
+            ],
+            "texto": "Artículo 18º Las asignaturas deberán organizarse dentro del año académico, en forma continua durante los dos semestres, durante un semestre o durante un período distinto a un semestre, lo que deberá quedar establecido en el plan de estudio correspondiente.",
+            "encontrado": true
+          }
+        }
+      ],
+      "fuentes_ids": [
+        "RG-ART-036",
+        "RG-ART-018",
+        "RG-ART-043",
+        "RI-FI-ART-025",
+        "RG-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-018",
+        "RG-ART-036"
+      ],
+      "citas_validas": [
+        "RG-ART-018",
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N20",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué promedio ponderado o nota mínima de Licenciatura exige el Artículo 57° del Reglamento General de Docencia de Pregrado para obtener la Beca Articulación Pregrado-Postgrado?",
+      "gold_dato": "El Artículo 57° del Reglamento General no exige ni fija un promedio ponderado o nota mínima numérica para la Beca Articulación Pregrado-Postgrado; solo establece ser alumno regular, poseer el grado de Licenciado, ser aceptado en un postgrado UdeC y contar con proposición de la Facultad respectiva.",
+      "gold_fuente": "RG-ART-057",
+      "respuesta": "El Artículo 57° del Reglamento General de Docencia de Pregrado [RG-ART-057] no especifica ninguna nota mínima ni promedio ponderado para obtener la Beca Articulación Pregrado-Postgrado. Solo indica que los alumnos regulares con el Grado Académico de Licenciado pueden ser aceptados en programas de postgrado y que la Universidad concede la beca a propuesta de la Facultad respectiva.\n\nPor lo tanto, **el Artículo 57° no fija una nota mínima ni un promedio ponderado** para obtener dicha beca.\n\n[RG-ART-057]",
+      "modelo": "udec-agente:4b-dpo",
+      "segundos": 30.29,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-057",
+        "RI-FI-ART-030",
+        "RI-FI-ART-018",
+        "RG-ART-024"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-057"
+      ],
+      "citas_validas": [
+        "RG-ART-057"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    }
+  ]
+}

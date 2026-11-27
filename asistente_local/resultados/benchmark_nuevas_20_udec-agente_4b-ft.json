@@ -1,0 +1,676 @@
+{
+  "dataset": "nuevas_20",
+  "modelo": "udec-agente:4b-ft",
+  "usar_embeddings": true,
+  "prebuscar": true,
+  "completados": 20,
+  "total": 20,
+  "segundos_totales": 361.11,
+  "casos": [
+    {
+      "id": "N01",
+      "categoria": "factual",
+      "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+      "gold_dato": "El plan de estudios no debería exceder las 54 horas semanales de trabajo académico; los programas de asignaturas deben establecer los créditos y las horas de trabajo académico (carga académica del alumno).",
+      "gold_fuente": "RG-ART-017",
+      "respuesta": "El Artículo 17° del Reglamento General [RG-ART-017] fija como máximo **54 horas semanales** de trabajo académico para un plan de estudios, y exige que los programas de asignaturas establezcan explícitamente las **horas de trabajo académico** por asignatura.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 24.67,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-017",
+        "RG-ART-003-DEF-07",
+        "RG-ART-016",
+        "RG-ART-003-DEF-10"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-017"
+      ],
+      "citas_validas": [
+        "RG-ART-017"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N02",
+      "categoria": "factual",
+      "pregunta": "De acuerdo con el Artículo 12° del Reglamento General de Docencia de Pregrado, ¿a quién y cuándo debe informar por escrito el Profesor Encargado sobre el desarrollo de la asignatura?",
+      "gold_dato": "Debe informar por escrito al Director de Departamento al final del período lectivo (además de entregar el Acta de Notas Finales).",
+      "gold_fuente": "RG-ART-012",
+      "respuesta": "El Profesor Encargado debe informar por escrito al Director de Departamento **al final del período lectivo** sobre el desarrollo de la asignatura [RG-ART-012].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 13.51,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-012",
+        "RG-ART-006",
+        "RG-ART-019",
+        "RG-ART-013",
+        "RI-FI-ART-012"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-012"
+      ],
+      "citas_validas": [
+        "RG-ART-012"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N03",
+      "categoria": "factual",
+      "pregunta": "¿Qué instrumentos normativos rigen los requisitos, derechos y obligaciones de los alumnos visitantes y alumnos libres en la Universidad de Concepción?",
+      "gold_dato": "Un reglamento especial de la Universidad y los convenios correspondientes.",
+      "gold_fuente": "RG-ART-053",
+      "respuesta": "El Artículo 53° del Reglamento General [RG-ART-053] establece que los requisitos, derechos y obligaciones de los alumnos visitantes y libres se regirán por un reglamento especial de la Universidad y por los convenios correspondientes.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 10.77,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-053",
+        "RG-ART-003-DEF-18",
+        "RG-ART-052"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-053"
+      ],
+      "citas_validas": [
+        "RG-ART-053"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N04",
+      "categoria": "factual",
+      "pregunta": "En la Facultad de Ingeniería, ¿quién resuelve las situaciones no previstas en su Reglamento Interno de Docencia de Pregrado?",
+      "gold_dato": "El Decano de la Facultad de Ingeniería, en el ámbito de su competencia.",
+      "gold_fuente": "RI-FI-ART-035",
+      "respuesta": "El Decano de la Facultad de Ingeniería resuelve las situaciones no previstas en el Reglamento Interno de Docencia de Pregrado [RI-FI-ART-035].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 8.7,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-035",
+        "RI-FI-ART-002",
+        "RG-ART-011",
+        "RG-ART-001"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-035"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-035"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N05",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+      "gold_dato": "El Artículo 6° del RI-FI no fija un puntaje mínimo numérico ni promedio; solo señala que la postulación y selección se realiza al final del año académico respectivo y que la Facultad establece la distribución porcentual de cupos por carrera.",
+      "gold_fuente": "RI-FI-ART-006",
+      "respuesta": "El Artículo 6° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-006] no especifica un puntaje mínimo ponderado para el ingreso al segundo año en una carrera de Ingeniería Civil; solo establece que se realizará la selección al final del año académico y que se definirá la distribución porcentual de cupos por carrera según oferta y cupos disponibles [RI-FI-ART-006].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 16.72,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-006",
+        "RI-FI-ART-005",
+        "RI-FI-ART-017",
+        "RI-FI-ART-018",
+        "RI-FI-ART-019"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-006"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-006"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N06",
+      "categoria": "calculo",
+      "pregunta": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?",
+      "gold_dato": "Primer semestre: 18 y 19 de mayo (2 días). Segundo semestre: 21 y 22 de septiembre (2 días). Total: 4 días.",
+      "gold_fuente": "CAL-2026-S1-08; CAL-2026-S2-07",
+      "respuesta": "Según el Calendario Académico 2026, **no se realizarán evaluaciones** en los días **18 y 19 de mayo** (primer semestre) y **21 y 22 de septiembre** (segundo semestre). Entre ambos semestres suman **14 días corridos** entre las fechas de suspensión de evaluaciones [CAL-2026-S1-08], [CAL-2026-S2-07].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 22.58,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N07",
+      "categoria": "calculo",
+      "pregunta": "En el Calendario 2026, ¿cuántos días corridos transcurren desde el inicio de la pausa activa de docencia del primer semestre (11 de mayo) hasta el inicio de la suspensión de actividades del segundo semestre (14 de septiembre), y cuántos días dura cada período inclusive?",
+      "gold_dato": "Del 11 de mayo al 14 de septiembre transcurren 126 días corridos. La pausa activa de mayo (11 al 15) dura 5 días inclusive y la suspensión de septiembre (14 al 17) dura 4 días inclusive.",
+      "gold_fuente": "CAL-2026-S1-07; CAL-2026-S2-06",
+      "respuesta": "Desde el inicio de la pausa activa del primer semestre (11 de mayo) hasta el inicio de la suspensión del segundo semestre (14 de septiembre), transcurren **126 días corridos**. El período de pausa activa dura **5 días inclusive** [CAL-2026-S1-07].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 36.44,
+      "turnos_modelo": 2,
+      "herramientas": [
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "inclusivo": false,
+            "fecha_inicio": "2026-05-11",
+            "fecha_fin": "2026-09-14"
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-05-11",
+            "fecha_fin_iso": "2026-09-14",
+            "dias_diferencia": 126,
+            "dias_corridos": 126,
+            "dias_inclusivos": 127,
+            "resultado_solicitado": 126,
+            "inclusivo": false
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "argumentos": {
+            "fecha_inicio": "2026-05-11",
+            "fecha_fin": "2026-05-15",
+            "inclusivo": true
+          },
+          "resultado": {
+            "ok": true,
+            "fecha_inicio_iso": "2026-05-11",
+            "fecha_fin_iso": "2026-05-15",
+            "dias_diferencia": 4,
+            "dias_corridos": 4,
+            "dias_inclusivos": 5,
+            "resultado_solicitado": 5,
+            "inclusivo": true
+          }
+        }
+      ],
+      "fuentes_ids": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-07"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-07"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N08",
+      "categoria": "condicional",
+      "pregunta": "¿Qué requisitos debe cumplir una actividad artística, cultural, deportiva, social o recreativa para ser reconocida en el currículum como asignatura complementaria?",
+      "gold_dato": "Efectuarse bajo la tuición o el patrocinio de organismos dependientes de la Universidad de Concepción y contar con un programa de actividades aprobado por la Dirección de Docencia y la respectiva unidad.",
+      "gold_fuente": "RG-ART-046",
+      "respuesta": "Para que una actividad artística, cultural, deportiva, social o recreativa sea reconocida como asignatura complementaria en el currículum, debe cumplir los siguientes requisitos según [RG-ART-046]:\n\n1. **Organización institucional**: Debe efectuarse bajo la tuición o patrocinio de organismos dependientes de la Universidad de Concepción.\n2. **Aprobación formal**: Debe contar con un programa de actividades aprobado por la Dirección de Docencia y la respectiva unidad académica responsable.\n\nAdemás, según [RG-ART-003-DEF-12], los programas de formación complementaria deben tener una carga académica no inferior a **24 créditos transferibles** y deberán incluir actividades que desarrollen competencias en un ámbito distinto al propio de la carrera cursada.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 27.05,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-046",
+        "RG-ART-003-DEF-12",
+        "RG-ART-003-DEF-11",
+        "RI-FI-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-003-DEF-12",
+        "RG-ART-046"
+      ],
+      "citas_validas": [
+        "RG-ART-003-DEF-12",
+        "RG-ART-046"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N09",
+      "categoria": "condicional",
+      "pregunta": "Además de las causales académicas, ¿bajo qué resolución disciplinaria específica prevista en el Artículo 51° del Reglamento General se pierde la condición de alumno de pregrado?",
+      "gold_dato": "Por resolución adoptada como consecuencia de la aplicación del Reglamento \"Normas de Conducta de los Estudiantes\".",
+      "gold_fuente": "RG-ART-051",
+      "respuesta": "El Artículo 51° del Reglamento General [RG-ART-051] prevé que se pierde la condición de alumno de pregrado por resolución adoptada como consecuencia de la aplicación del Reglamento “Normas de Conducta de los Estudiantes”.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 8.69,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-051",
+        "RG-ART-003-DEF-20",
+        "RG-ART-003-DEF-19"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-051"
+      ],
+      "citas_validas": [
+        "RG-ART-051"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N10",
+      "categoria": "condicional",
+      "pregunta": "Un alumno ya graduado o titulado de una carrera que ofrece más de un grado, título o mención quiere cursar las exigencias para optar a otro grado, título o mención. ¿Cuándo y mediante qué trámite puede hacerlo?",
+      "gold_dato": "Puede solicitar su reingreso a la carrera en el semestre siguiente a su egreso para cumplir con las otras exigencias académicas.",
+      "gold_fuente": "RG-ART-047",
+      "respuesta": "El alumno debe solicitar su reingreso a la carrera en el semestre siguiente a su egreso, cumpliendo con las exigencias académicas para optar a un nuevo grado, título o mención [RG-ART-047]. En caso de no haber incurrido en pérdida de carrera, podrá mantener su situación académica anterior dentro de los treinta primeros días del primer semestre de permanencia en la carrera [RG-ART-044].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 15.2,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-047",
+        "RG-ART-044",
+        "RG-ART-003-DEF-21",
+        "RG-ART-037"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-044",
+        "RG-ART-047"
+      ],
+      "citas_validas": [
+        "RG-ART-044",
+        "RG-ART-047"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N11",
+      "categoria": "condicional",
+      "pregunta": "¿Qué condiciones exige el Artículo 57° del Reglamento General para que un alumno de pregrado curse simultáneamente un programa de postgrado y obtenga la Beca Articulación Pregrado-Postgrado?",
+      "gold_dato": "Ser alumno regular de una carrera de la UdeC, poseer el Grado Académico de Licenciado, ser aceptado en un programa de postgrado de la universidad y contar con proposición de la Facultad respectiva.",
+      "gold_fuente": "RG-ART-057",
+      "respuesta": "El Artículo 57° del Reglamento General [RG-ART-057] exige que los alumnos regulares en posesión del Grado Académico de Licenciado puedan cursar simultáneamente un programa de postgrado y obtener la Beca Articulación Pregrado-Postgrado, bajo propuesta de la Facultad respectiva.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 11.27,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-057",
+        "RG-ART-051",
+        "RG-ART-047"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-057"
+      ],
+      "citas_validas": [
+        "RG-ART-057"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N12",
+      "categoria": "cruce",
+      "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+      "gold_dato": "En ambos casos interviene la Dirección de Servicios Estudiantiles de la UdeC (o su unidad equivalente en Campus Chillán o Campus Los Ángeles): visa el certificado médico o de matrona en el Art. 36° y evalúa y certifica las situaciones indicadas en el Art. 59°.",
+      "gold_fuente": "RG-ART-036; RG-ART-059",
+      "respuesta": "El organismo encargado de **visar** la documentación es la **Dirección de Servicios Estudiantiles**, o su equivalente en los Campus Chillán o Los Ángeles [RG-ART-036], [RG-ART-059].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 10.3,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-036",
+        "RG-ART-059",
+        "RG-ART-032"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-036",
+        "RG-ART-059"
+      ],
+      "citas_validas": [
+        "RG-ART-036",
+        "RG-ART-059"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N13",
+      "categoria": "cruce",
+      "pregunta": "¿Cómo se estructura la modalidad mixta de ingreso a Primer Año en la Facultad de Ingeniería (Art. 3° RI-FI) y cuándo se postula y asignan los cupos a segundo año para quienes ingresan sin especialidad (Art. 6° RI-FI)?",
+      "gold_dato": "Ingreso mixto mediante Ingreso Directo a una carrera según cupos definidos e Ingreso Común sin especialidad (Art. 3°). Quienes están en Ingreso Común postulan y son seleccionados al final del año académico respectivo según la distribución porcentual de cupos por carrera en Ingeniería Civil establecida por la Facultad (Art. 6°).",
+      "gold_fuente": "RI-FI-ART-003; RI-FI-ART-006",
+      "respuesta": "El ingreso mixto contempla **Ingreso Directo** (por cupos definidos por carrera) y **Ingreso Común sin especialidad** [RI-FI-ART-003]. Para quienes ingresan sin especialidad, se postulan al final del segundo semestre de permanencia [RI-FI-ART-005], y la selección se basa en créditos aprobados, promedio curricular ponderado (con dos decimales) y orden de preferencias según oferta y cupos disponibles por carrera [RI-FI-ART-005]. La Facultad define anualmente los cupos de Ingreso Directo y Común [RI-FI-ART-004].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 18.03,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-006",
+        "RI-FI-ART-005",
+        "RI-FI-ART-004"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-004",
+        "RI-FI-ART-005"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-004",
+        "RI-FI-ART-005"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N14",
+      "categoria": "cruce",
+      "pregunta": "En el Programa de Formación Complementaria, ¿quién integra la Comisión que resuelve las solicitudes de ingreso (Art. 56°) y qué deben consignar las Facultades o Escuelas en el expediente de titulación o grado (Art. 47°)?",
+      "gold_dato": "La Comisión se integra por el Director de Docencia, el Decano de la Facultad o Director de Escuela y el Jefe del Programa de Formación Complementaria (Art. 56°). En cada expediente de Título Profesional o Grado Académico deben indicar, cuando corresponda, el Programa de Formación Complementaria aprobado para su certificación (Art. 47°).",
+      "gold_fuente": "RG-ART-056; RG-ART-047",
+      "respuesta": "La Comisión que resuelve las solicitudes de ingreso al Programa de Formación Complementaria está integrada por el Director de Docencia, el Decano de la Facultad o Director de Escuela y el Jefe del Programa de Formación Complementaria [RG-ART-056]. Las Facultades o Escuelas deben consignar en cada expediente de titulación o grado el Programa de Formación Complementaria que aprobó el alumno para su certificación [RG-ART-047].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 17.43,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-056",
+        "RG-ART-047",
+        "RG-ART-055"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-047",
+        "RG-ART-056"
+      ],
+      "citas_validas": [
+        "RG-ART-047",
+        "RG-ART-056"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N15",
+      "categoria": "multi_salto",
+      "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+      "gold_dato": "Las facilidades al concluir la interrupción (nuevos plazos o derivación de pendientes al próximo período lectivo) las decide el Comité de Docencia y Asuntos Estudiantiles respectivo (Art. 36°); en cada Facultad, la Secretaría Académica (dependiente del Vicedecano) recibe, tramita y despacha las solicitudes de los alumnos (Art. 5°).",
+      "gold_fuente": "RG-ART-036; RG-ART-005",
+      "respuesta": "El **Comité de Docencia y Asuntos Estudiantiles** respectivo decide las facilidades académicas para finalizar las asignaturas [RG-ART-036], mientras que la **Secretaría Académica** del organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos [RG-ART-005].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 13.31,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-036",
+        "RG-ART-005",
+        "RI-FI-ART-005",
+        "RI-FI-ART-016"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-005",
+        "RG-ART-036"
+      ],
+      "citas_validas": [
+        "RG-ART-005",
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N16",
+      "categoria": "colision_lexica",
+      "pregunta": "En el Calendario de Docencia de Pregrado 2026, ¿qué actividades o restricciones corresponden exactamente al 11–15 de mayo y al 18–19 de mayo en el primer semestre, frente al 14–17 de septiembre y al 21–22 de septiembre en el segundo semestre?",
+      "gold_dato": "Primer semestre: 11–15 de mayo es pausa activa de docencia de pregrado y el 18 y 19 de mayo no se realizarán evaluaciones. Segundo semestre: 14–17 de septiembre es suspensión de actividades de docencia de pregrado y el 21 y 22 de septiembre no se realizarán evaluaciones.",
+      "gold_fuente": "CAL-2026-S1-07; CAL-2026-S1-08; CAL-2026-S2-06; CAL-2026-S2-07",
+      "respuesta": "En el primer semestre, **del 11 al 15 de mayo** se realiza una **pausa activa de docencia de pregrado** [CAL-2026-S1-07], mientras que en el segundo semestre **del 14 al 17 de septiembre** hay una **suspensión de actividades de docencia** [CAL-2026-S2-06]. En cuanto a las fechas del segundo semestre, **el 18 y 19 de mayo** no están registradas en el calendario oficial; sin embargo, **del 21 al 22 de septiembre** se suspenden las evaluaciones [CAL-2026-S2-07].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 26.82,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-11",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N17",
+      "categoria": "negacion_excepcion",
+      "pregunta": "¿Toda carrera de pregrado depende sin excepción de una Facultad, y es el Vicedecano el responsable máximo de la docencia de pregrado en la Facultad según el Art. 4° RG?",
+      "gold_dato": "No en ambos puntos: aunque toda carrera depende de una Facultad, para disciplinas no comprendidas en Facultades existentes el Consejo Académico puede hacerlas depender temporalmente de otra unidad académica; además, el Decano es el responsable máximo de la docencia de pregrado, mientras el Vicedecano asume la administración general y cumplimiento de plazos.",
+      "gold_fuente": "RG-ART-004",
+      "respuesta": "No, según [RG-ART-004], toda carrera depende de una Facultad **salvo** que el Consejo Académico lo haga temporalmente depender de otra unidad académica. Además, según [RG-ART-004], **el Decano** es el responsable máximo de la docencia de pregrado en cada Facultad; **el Vicedecano** asume la administración general de los estudios y cumple con el cumplimiento de plazos para actividades docentes, pero no es el responsable máximo.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 19.67,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-004",
+        "RG-ART-006",
+        "RG-ART-011"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-004"
+      ],
+      "citas_validas": [
+        "RG-ART-004"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N18",
+      "categoria": "sintesis",
+      "pregunta": "¿Cómo se distribuyen el resguardo de normas y plazos entre la Secretaría Académica (Art. 5°), el Profesor Encargado de asignatura (Art. 12°) y la obligación transitoria de las Facultades (Art. 2° Transitorio)?",
+      "gold_dato": "La Secretaría Académica (dependiente del Vicedecano) verifica normativas vigentes, coordina horarios, registra/archiva datos y tramita solicitudes (Art. 5°); el Profesor Encargado vela por normas y plazos en su asignatura, entrega el Acta de Notas Finales e informa por escrito al Director de Departamento (Art. 12°); y las Facultades debieron adecuar sus Reglamentos Internos en máximo 90 días hábiles desde la vigencia del RG (Art. 2° Transitorio).",
+      "gold_fuente": "RG-ART-005; RG-ART-012; RG-TRANS-002",
+      "respuesta": "El **Profesor Encargado** (Art. 12° RG) coordina el cumplimiento de normas y plazos en asignaturas, entrega el Acta de Notas Finales y informa al Director de Departamento [RG-ART-012]. La **Secretaría Académica** (Art. 5° RG) supervisa el cumplimiento de normativas vigentes y confecciona informes certificados sobre la situación de los alumnos [RG-ART-005]. Las **Facultades** deben adecuar sus Reglamentos Internos a lo dispuesto en el RG dentro de un plazo máximo de **noventa días hábiles** contados desde su vigencia [RG-TRANS-002].",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 24.46,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-012",
+        "RG-ART-005",
+        "RI-FI-ART-012",
+        "RG-ART-006",
+        "RG-TRANS-002",
+        "RG-ART-013"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-005",
+        "RG-ART-012",
+        "RG-TRANS-002"
+      ],
+      "citas_validas": [
+        "RG-ART-005",
+        "RG-ART-012",
+        "RG-TRANS-002"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N19",
+      "categoria": "premisa_falsa",
+      "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+      "gold_dato": "Ambas afirmaciones son incorrectas: el Art. 36° otorga la interrupción durante el embarazo y hasta dos meses después del nacimiento (no cuatro) y exige certificado médico o de matrona visado por la Dirección de Servicios Estudiantiles (o equivalente en Chillán/Los Ángeles); además, el Art. 18° permite organizar asignaturas también en un período distinto a un semestre según el plan de estudio.",
+      "gold_fuente": "RG-ART-036; RG-ART-018",
+      "respuesta": "No es correcto. Según [RG-ART-036], las alumnas tienen derecho a interrumpir temporalmente sus estudios durante el embarazo y hasta **dos meses** después del nacimiento, presentando un certificado médico **visado por la Dirección de Servicios Estudiantiles**, no un certificado simple sin visado. Además, según [RG-ART-018], las asignaturas deberán organizarse dentro del año académico en forma continua durante los dos semestres, lo que implica que una asignatura **no puede dictarse solo durante un semestre**; debe organizarse en forma continua durante los dos semestres del año académico.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 21.04,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-036",
+        "RG-ART-018",
+        "RG-ART-043",
+        "RI-FI-ART-025",
+        "RG-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-018",
+        "RG-ART-036"
+      ],
+      "citas_validas": [
+        "RG-ART-018",
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "N20",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué promedio ponderado o nota mínima de Licenciatura exige el Artículo 57° del Reglamento General de Docencia de Pregrado para obtener la Beca Articulación Pregrado-Postgrado?",
+      "gold_dato": "El Artículo 57° del Reglamento General no exige ni fija un promedio ponderado o nota mínima numérica para la Beca Articulación Pregrado-Postgrado; solo establece ser alumno regular, poseer el grado de Licenciado, ser aceptado en un postgrado UdeC y contar con proposición de la Facultad respectiva.",
+      "gold_fuente": "RG-ART-057",
+      "respuesta": "El Artículo 57° del Reglamento General [RG-ART-057] no especifica ninguna nota mínima ni promedio ponderado para obtener la Beca Articulación Pregrado-Postgrado; solo menciona que los licenciados regulares podrán ser aceptados en programas de postgrado y que la Universidad concedirá la beca a propuesta de la Facultad respectiva.",
+      "modelo": "udec-agente:4b-ft",
+      "segundos": 14.45,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-057",
+        "RI-FI-ART-030",
+        "RI-FI-ART-018",
+        "RG-ART-024"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-057"
+      ],
+      "citas_validas": [
+        "RG-ART-057"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    }
+  ]
+}

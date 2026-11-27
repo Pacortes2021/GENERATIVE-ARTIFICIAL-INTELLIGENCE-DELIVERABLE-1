@@ -1,0 +1,1520 @@
+{
+  "dataset": "congelado_50",
+  "modelo": "qwen3:4b-instruct",
+  "usar_embeddings": true,
+  "prebuscar": true,
+  "completados": 50,
+  "total": 50,
+  "segundos_totales": 1021.48,
+  "casos": [
+    {
+      "id": "1",
+      "categoria": "factual",
+      "pregunta": "¿Cuál es la nota mínima para aprobar una asignatura en la Facultad de Ingeniería?",
+      "gold_dato": "4,0",
+      "gold_fuente": "Art. 11, RI-FI",
+      "respuesta": "La nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,0 en la escala de 1 a 7.\n\nEste requisito está establecido en [RG-ART-023].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 35.08,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-030",
+        "RG-ART-038",
+        "RI-FI-ART-029",
+        "RG-ART-023"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-023"
+      ],
+      "citas_validas": [
+        "RG-ART-023"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "2",
+      "categoria": "factual",
+      "pregunta": "¿Cuántas evaluaciones sumativas como mínimo debe tener una asignatura?",
+      "gold_dato": "al menos 3 (tres)",
+      "gold_fuente": "Art. 11, RI-FI",
+      "respuesta": "Una asignatura debe tener al menos tres evaluaciones sumativas, según establece el Artículo 11° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-011].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 13.34,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-010",
+        "RG-ART-013",
+        "RG-ART-003-DEF-07"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-011"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-011"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "3",
+      "categoria": "factual",
+      "pregunta": "¿A cuántas evaluaciones de recuperación tiene derecho el estudiante por asignatura?",
+      "gold_dato": "una (1)",
+      "gold_fuente": "Art. 12, RI-FI",
+      "respuesta": "El estudiante tiene derecho a **una evaluación de recuperación por asignatura**.\n\nEste derecho se establece en [RI-FI-ART-012], que indica claramente que \"en cada asignatura, las y los estudiantes tendrán derecho a una evaluación de recuperación para modificar la nota final\". Además, el Artículo 22º del Reglamento General [RG-ART-022] confirma esta disposición, señalando que \"los alumnos tendrán derecho a una Evaluación de Recuperación para modificar la nota final\", sin mencionar cantidad mayor.\n\nNo existen artículos que indiquen un número superior (como dos o más evaluaciones), por lo que se concluye que el derecho es exclusivamente a **una** evaluación de recuperación por asignatura.\n\n[RI-FI-ART-012] [RG-ART-022]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 24.07,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-012",
+        "RG-ART-022",
+        "RI-FI-ART-010"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-022",
+        "RI-FI-ART-012"
+      ],
+      "citas_validas": [
+        "RG-ART-022",
+        "RI-FI-ART-012"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "4",
+      "categoria": "factual",
+      "pregunta": "¿En qué escala se expresa la nota final de una asignatura?",
+      "gold_dato": "escala oficial de 1 a 7, con un decimal",
+      "gold_fuente": "Art. 23, RG",
+      "respuesta": "La nota final de una asignatura se expresa en la escala numérica oficial de 1 a 7, hasta con un decimal de aproximación [RG-ART-023].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 14.53,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-023",
+        "RG-ART-027",
+        "RG-ART-022"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-023"
+      ],
+      "citas_validas": [
+        "RG-ART-023"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "5",
+      "categoria": "factual",
+      "pregunta": "¿Cuál es la actividad final de titulación en las carreras de Ingeniería?",
+      "gold_dato": "la Memoria de Título",
+      "gold_fuente": "Art. 29, RI-FI",
+      "respuesta": "La actividad final de titulación en las carreras de Ingeniería es la Memoria de Título, una asignatura de un semestre de duración que se regula por el Reglamento de Memoria de Título de la Facultad de Ingeniería [RI-FI-ART-029]. \n\nAdemás, la nota de titulación para las carreras de Ingeniería Civil se obtiene mediante una ponderación: 60% del promedio ponderado de las asignaturas del Plan de Estudio sin considerar la Memoria de Título, y 40% de la nota de la Memoria de Título [RI-FI-ART-030].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.23,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-006",
+        "RI-FI-ART-030",
+        "RI-FI-ART-005"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-030"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-030"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "6",
+      "categoria": "factual",
+      "pregunta": "¿Con cuánta anticipación mínima deben comunicarse las evaluaciones a los estudiantes?",
+      "gold_dato": "al menos una semana",
+      "gold_fuente": "Art. 10, RI-FI",
+      "respuesta": "Las evaluaciones deben ser comunicadas a los estudiantes en un plazo no inferior a una semana de su realización.\n\nEste requisito está establecido en [RI-FI-ART-010].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 10.13,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-011",
+        "RI-FI-ART-010",
+        "RG-ART-023"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-010"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-010"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "7",
+      "categoria": "factual",
+      "pregunta": "¿Quién resuelve en primera instancia una solicitud de continuación de estudios?",
+      "gold_dato": "el Comité de Docencia y Asuntos Estudiantiles",
+      "gold_fuente": "Art. 16, RI-FI",
+      "respuesta": "En primera instancia, el **Comité de Docencia y Asuntos Estudiantiles** resuelve una solicitud de continuación de estudios [RI-FI-ART-016]. \n\nEste órgano es quien atiende la solicitud inicial, tanto para estudiantes en situación de Baja por no Inscripción como en otras condiciones, según lo establecido en el artículo 30º del Reglamento General (RG) y el artículo 16º del Reglamento Interno de la Facultad de Ingeniería (RI-FI). \n\nSi se requiere una revisión, puede recurrirse al Vicedecano, y en última instancia al Decano, según el caso específico [RI-FI-ART-016]. \n\n[RI-FI-ART-016]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 21.77,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-016",
+        "RG-ART-030",
+        "RG-ART-037"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-016"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-016"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "8",
+      "categoria": "factual",
+      "pregunta": "¿La renuncia a la carrera es revocable?",
+      "gold_dato": "No, es irrevocable",
+      "gold_fuente": "Art. 26, RI-FI",
+      "respuesta": "La renuncia a la carrera es irrevocable, según establece tanto el Artículo 26° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-026] como el Artículo 34° del Reglamento General [RG-ART-034]. Ambos artículos indican que la renuncia implica que el estudiante no podrá reincorporarse a la carrera, y no se permite su revocación.\n\nNo existe ninguna norma que permita la revocación de esta renuncia. Por lo tanto, la respuesta es: **no, la renuncia a la carrera no es revocable**.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.03,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-026",
+        "RG-ART-034",
+        "RG-ART-044",
+        "RI-FI-ART-025"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-034",
+        "RI-FI-ART-026"
+      ],
+      "citas_validas": [
+        "RG-ART-034",
+        "RI-FI-ART-026"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "9",
+      "categoria": "factual",
+      "pregunta": "¿Cuántos períodos lectivos ordinarios tiene el año académico y cuánto duran?",
+      "gold_dato": "dos, de 19 semanas cada uno",
+      "gold_fuente": "Art. 16, RG",
+      "respuesta": "El año académico tiene dos períodos lectivos ordinarios, cada uno de diecinueve semanas de duración.\n\nEsta información está establecida en [RG-ART-016].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 10.0,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-016",
+        "RG-ART-018",
+        "RI-FI-ART-014",
+        "RG-ART-003-DEF-24"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-016"
+      ],
+      "citas_validas": [
+        "RG-ART-016"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "10",
+      "categoria": "factual",
+      "pregunta": "¿Los estudiantes de Primer Año Común pueden convalidar asignaturas?",
+      "gold_dato": "No",
+      "gold_fuente": "Art. 22, RI-FI",
+      "respuesta": "No, los estudiantes de Primer Año Común no pueden convalidar asignaturas.  \n\nEste límite está establecido en el Artículo 22° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-022], que especifica que \"los estudiantes de Primer Año Común quienes no podrán revalidar ni convalidar asignaturas\".  \n\nLa norma no permite ninguna excepción para este grupo.  \n\n[RI-FI-ART-022]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 14.92,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-022",
+        "RG-ART-044",
+        "RI-FI-ART-005",
+        "RI-FI-ART-003"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-022"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-022"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "11",
+      "categoria": "numerica",
+      "pregunta": "¿Cuál es el mínimo de créditos que debo inscribir por período lectivo ordinario en Ingeniería?",
+      "gold_dato": "8 créditos (igual o superior a 8)",
+      "gold_fuente": "Art. 8, RI-FI",
+      "respuesta": "El mínimo de créditos que debe inscribir un estudiante por período lectivo ordinario en Ingeniería es **ocho**.\n\nEste requisito está establecido en el [RI-FI-ART-008], que indica que \"en cada periodo lectivo ordinario las y los estudiantes deberán inscribir y cursar un número de créditos igual o superior a ocho del plan de estudio de la carrera a la que están adscritos\", salvo casos específicos como el final de estudios o impedimentos por requisitos.\n\nPor lo tanto, la respuesta es: **8 créditos**.  \n[RI-FI-ART-008]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 24.72,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-008",
+        "RG-ART-003-DEF-07",
+        "RG-ART-042",
+        "RI-FI-ART-005",
+        "RI-FI-ART-007",
+        "RG-ART-050"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-008"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-008"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "12",
+      "categoria": "numerica",
+      "pregunta": "¿Con menos de cuántos créditos aprobados al término del segundo semestre quedo en baja académica?",
+      "gold_dato": "menos de 15 créditos",
+      "gold_fuente": "Art. 14 a), RI-FI",
+      "respuesta": "[RI-FI-ART-014] a) Aprobar menos de 15 créditos al término del segundo semestre de permanencia en la carrera.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 10.91,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RI-FI-ART-005",
+        "RI-FI-ART-008"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "13",
+      "categoria": "numerica",
+      "pregunta": "¿Bajo qué promedio de créditos aprobados por semestre (desde el 4º) se cae en baja académica?",
+      "gold_dato": "inferior a 10 créditos semestrales",
+      "gold_fuente": "Art. 14 b), RI-FI",
+      "respuesta": "Bajo el promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre de permanencia en la carrera se cae en baja académica [RI-FI-ART-014].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 13.2,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RG-ART-028",
+        "RG-ART-024",
+        "RI-FI-ART-005"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "14",
+      "categoria": "numerica",
+      "pregunta": "¿Cuál es la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas?",
+      "gold_dato": "80%",
+      "gold_fuente": "Art. 13, RI-FI",
+      "respuesta": "La asistencia mínima que un profesor puede exigir en clases teóricas y prácticas no puede superar el 80%, según establece el Artículo 13 del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-013]. En actividades específicas como seminarios, laboratorios, talleres o salidas a terreno, puede llegar al 100%. \n\nPor lo tanto, la asistencia mínima máxima que un profesor puede exigir en clases teóricas y prácticas es del 80%. \n\n[RI-FI-ART-013]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 19.83,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RG-ART-026"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-013"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-013"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "15",
+      "categoria": "numerica",
+      "pregunta": "¿Qué calificación mínima se exige para convalidar una asignatura?",
+      "gold_dato": "4,5",
+      "gold_fuente": "Art. 21, RI-FI",
+      "respuesta": "La calificación mínima exigida para convalidar una asignatura es de 4,5 en la escala de notas de 1 a 7 [RI-FI-ART-021].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 10.08,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-021",
+        "RI-FI-ART-011",
+        "RG-ART-039",
+        "RI-FI-ART-024"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-021"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-021"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "16",
+      "categoria": "numerica",
+      "pregunta": "¿Durante cuántas semanas iniciales se puede solicitar convalidación, revalidación o reconocimiento?",
+      "gold_dato": "las 4 primeras semanas",
+      "gold_fuente": "Art. 22, RI-FI",
+      "respuesta": "Durante las cuatro primeras semanas de ingreso a la nueva carrera se puede solicitar convalidación, revalidación o reconocimiento [RI-FI-ART-022]. \n\nEsta disposición aplica a todos los estudiantes, excepto a los de Primer Año Común, quienes no podrán revalidar ni convalidar asignaturas [RI-FI-ART-022]. \n\nNo se especifica un número de semanas iniciales para el reconocimiento en el contexto proporcionado, aunque sí se menciona que el reconocimiento puede solicitarse dentro de los primeros treinta días del período lectivo [RI-FI-ART-023]. Sin embargo, la pregunta se refiere específicamente a las semanas iniciales, y en ese sentido, el artículo 22° establece claramente un plazo de cuatro semanas. \n\nPor tanto, la respuesta es: **cuatro semanas iniciales** [RI-FI-ART-022].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 25.0,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-022",
+        "RG-ART-037",
+        "RI-FI-ART-023",
+        "RI-FI-ART-015",
+        "RI-FI-ART-021"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-022",
+        "RI-FI-ART-023"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-022",
+        "RI-FI-ART-023"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "17",
+      "categoria": "numerica",
+      "pregunta": "¿Dentro de cuántos días se puede solicitar el reconocimiento de asignaturas?",
+      "gold_dato": "los primeros 30 días",
+      "gold_fuente": "Art. 23, RI-FI",
+      "respuesta": "Dentro de los primeros treinta días del período lectivo respectivo se puede solicitar el reconocimiento de asignaturas [RI-FI-ART-023].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 11.37,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-023",
+        "RG-ART-038",
+        "RG-ART-037",
+        "RI-FI-ART-022"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-023"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-023"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "18",
+      "categoria": "numerica",
+      "pregunta": "Si suspendí más de 3 años y solo me faltaba la Memoria, ¿cuántos créditos adicionales máximo debo cursar?",
+      "gold_dato": "un máximo de 36 créditos",
+      "gold_fuente": "Art. 31, RI-FI",
+      "respuesta": "Si suspendió más de 3 años y al momento de suspender solo le restaba aprobar la Memoria de Título, según el Artículo 31° del Reglamento Interno de la Facultad de Ingeniería, deberá cursar y aprobar, además de la Memoria de Título, un máximo de 36 créditos en asignaturas, las que serán fijadas por el respectivo Comité de Docencia y Asuntos Estudiantiles.\n\nEste límite se aplica específicamente a estudiantes que han mantenido sus estudios suspendidos por más de tres años y cuya única asignatura pendiente es la Memoria de Título.\n\n[RI-FI-ART-031]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 29.55,
+      "turnos_modelo": 2,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-031",
+        "RI-FI-ART-008",
+        "RI-FI-ART-014",
+        "RI-FI-ART-030"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-031"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-031"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "19",
+      "categoria": "numerica",
+      "pregunta": "¿Cuántas semanas dura cada período lectivo ordinario (semestre)?",
+      "gold_dato": "19 semanas",
+      "gold_fuente": "Art. 16, RG",
+      "respuesta": "Cada período lectivo ordinario dura diecinueve semanas [RG-ART-016].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 11.78,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-016",
+        "RG-ART-003-DEF-07",
+        "RG-ART-050",
+        "RI-FI-ART-008"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-016"
+      ],
+      "citas_validas": [
+        "RG-ART-016"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "20",
+      "categoria": "numerica",
+      "pregunta": "¿Cuál es el plazo (en días hábiles) para regularizar una evaluación no rendida por causa justificada?",
+      "gold_dato": "3 días hábiles",
+      "gold_fuente": "Art. 26, RG",
+      "respuesta": "El plazo para regularizar una evaluación no rendida por causa justificada es de **tres días hábiles posteriores a la aplicación de la evaluación**, según establece el Artículo 26º del Reglamento General [RG-ART-026].\n\nEste plazo se aplica cuando el alumno no se presenta a una evaluación o no cumple actividades obligatorias por razones justificadas, y debe presentar documentos que justifiquen su inasistencia. Si no se regulariza dentro de ese plazo, será calificado con la nota mínima o con el concepto NCR.\n\nNo existe otro plazo distinto para este caso en los artículos consultados.  \n\n**Respuesta final:** [RG-ART-026]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 32.27,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-026",
+        "RG-ART-025",
+        "RG-ART-030",
+        "RG-TRANS-002",
+        "RG-ART-038",
+        "RG-ART-013"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-026"
+      ],
+      "citas_validas": [
+        "RG-ART-026"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "21",
+      "categoria": "condicional",
+      "pregunta": "Si vengo de otra universidad y quiero ingresar a Ingeniería, ¿qué promedio necesito? ¿Y para cambio dentro de Ingeniería?",
+      "gold_dato": "4,5 desde otra universidad/facultad; 4,2 para cambio dentro de Ingeniería",
+      "gold_fuente": "Art. 17 y Art. 18, RI-FI",
+      "respuesta": "Para ingresar a la Facultad de Ingeniería desde otra universidad (no de la UdeC), según el artículo [RI-FI-ART-017], se requiere un promedio ponderado mínimo equivalente a **4,5 en la escala de 1 a 7** en la carrera de origen.\n\nPara un cambio dentro de la Facultad de Ingeniería (desde otra carrera de la misma Facultad), según el artículo [RI-FI-ART-018], se requiere un promedio ponderado mínimo de **4,2 en la escala de 1 a 7** en la carrera de origen.\n\n[RI-FI-ART-017]  \n[RI-FI-ART-018]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 26.23,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-018",
+        "RI-FI-ART-017",
+        "RI-FI-ART-030",
+        "RI-FI-ART-019",
+        "RI-FI-ART-005",
+        "RI-FI-ART-001"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-017",
+        "RI-FI-ART-018"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-017",
+        "RI-FI-ART-018"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "22",
+      "categoria": "condicional",
+      "pregunta": "¿Qué promedio mínimo se exige para cursar una segunda carrera de forma simultánea?",
+      "gold_dato": "5,0",
+      "gold_fuente": "Art. 19, RI-FI",
+      "respuesta": "El promedio mínimo exigido para cursar una segunda carrera de forma simultánea es de 5,0 en la escala de 1 a 7, según establece el Artículo 19° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-019]. Este requisito se aplica a los estudiantes que estén cursando una carrera de pregrado y desean inscribirse simultáneamente en otra carrera de la misma Facultad.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 16.43,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-018",
+        "RG-ART-028",
+        "RI-FI-ART-014"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-019"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-019"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "23",
+      "categoria": "condicional",
+      "pregunta": "¿En qué caso NO se puede revalidar una asignatura?",
+      "gold_dato": "si fue previamente cursada y reprobada",
+      "gold_fuente": "Art. 20, RI-FI",
+      "respuesta": "No se puede revalidar una asignatura si ha sido previamente cursada y reprobada en el Plan de Estudio [RI-FI-ART-020].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 9.34,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-020",
+        "RI-FI-ART-022",
+        "RG-ART-037",
+        "RG-ART-044"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-020"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-020"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "24",
+      "categoria": "condicional",
+      "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+      "gold_dato": "baja académica, salvo que la haya aprobado en el PLEV o esté en primer año",
+      "gold_fuente": "Art. 14 c), RI-FI",
+      "respuesta": "Si repruebo por segunda vez una misma asignatura obligatoria, el alumno perderá el derecho a continuar estudios y la calidad de alumno regular, quedando en situación de Baja Académica, salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente o que se trate de un estudiante que se encuentra en el primer año de permanencia en la carrera [RI-FI-ART-014].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 16.07,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-028",
+        "RI-FI-ART-020",
+        "RI-FI-ART-014",
+        "RG-ART-037"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "25",
+      "categoria": "condicional",
+      "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+      "gold_dato": "las atrasadas y las obligatorias reprobadas (prioridades a y b del Art. 7)",
+      "gold_fuente": "Art. 9, RI-FI",
+      "respuesta": "Al modificar la inscripción, no se puede eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-009]. \n\nEsta restricción se aplica porque el artículo 9° establece que \"no se podrá eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°\", lo cual impide la eliminación de asignaturas que cumplan con esas condiciones, independientemente de si se trata de asignaturas obligatorias o no. \n\n[RI-FI-ART-009]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 20.43,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-009",
+        "RG-ART-003-DEF-13",
+        "RG-ART-042",
+        "RI-FI-ART-007"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-009"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-009"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "26",
+      "categoria": "condicional",
+      "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+      "gold_dato": "solicitar la reincorporación a la Vicedecanatura",
+      "gold_fuente": "Art. 27, RI-FI",
+      "respuesta": "Para volver a estudiar tras una suspensión, debes solicitar tu reincorporación al Vicedecano de la Facultad de Ingeniería [RI-FI-ART-027]. \n\nSi la suspensión fue por razones de salud, deberás presentar antecedentes oficiales que demuestren que han cesado los impedimentos que justificaron la suspensión, y en ese caso, la decisión corresponderá al Decano de la Facultad [RG-ART-033].\n\nAdemás, deberás adscribirte al Plan de Estudio vigente en el momento de tu reincorporación, salvo en el caso de alumnos en intercambio, quienes se mantendrán en su plan de estudio original [RG-ART-033].\n\nEs importante destacar que la suspensión de estudios puede extenderse por un máximo de tres años calendario; si no solicitas reincorporación dentro de ese plazo, pierdes la calidad de alumno de pregrado [RG-ART-033].\n\n[RI-FI-ART-027] [RG-ART-033]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 31.11,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-027",
+        "RG-ART-031",
+        "RG-ART-033",
+        "RG-ART-003-DEF-19",
+        "RG-ART-043",
+        "RG-ART-035"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-033",
+        "RI-FI-ART-027"
+      ],
+      "citas_validas": [
+        "RG-ART-033",
+        "RI-FI-ART-027"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "27",
+      "categoria": "condicional",
+      "pregunta": "¿Qué documentos requiere la solicitud de suspensión de estudios?",
+      "gold_dato": "certificado de la DAFE (sin deudas) y de la Dirección de Bibliotecas",
+      "gold_fuente": "Art. 25, RI-FI",
+      "respuesta": "La solicitud de suspensión de estudios requiere los siguientes documentos:\n\na) Certificado de la División de Asistencia Financiera al Estudiante (DAFE) en que conste que el alumno no tiene deudas con la Universidad de Concepción por concepto de aranceles y préstamos o que el pago de dichas deudas ha sido debidamente garantizado.  \nb) Certificado de la Dirección de Bibliotecas en que conste que no adeuda material bibliográfico.\n\nEstos requisitos están establecidos en [RI-FI-ART-025] y [RG-ART-035].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 21.19,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-025",
+        "RI-FI-ART-027",
+        "RG-ART-031",
+        "RG-ART-035",
+        "RG-ART-033"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-035",
+        "RI-FI-ART-025"
+      ],
+      "citas_validas": [
+        "RG-ART-035",
+        "RI-FI-ART-025"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "28",
+      "categoria": "condicional",
+      "pregunta": "Si estando habilitado no inscribo asignaturas en el período, ¿qué pasa?",
+      "gold_dato": "pierdo el derecho a continuar y la calidad de alumno (Baja por no Inscripción)",
+      "gold_fuente": "Art. 29, RG",
+      "respuesta": "Si estando habilitado no inscribo asignaturas en el período, según el artículo 29 del Reglamento General (RG-ART-029), perderé el derecho a continuar estudios y la calidad de alumno de pregrado de la Universidad de Concepción, a menos que en el periodo lectivo anterior hayan inscrito una o más asignaturas anuales.\n\nEste artículo establece una consecuencia directa: la falta de inscripción durante el período correspondiente implica pérdida de derecho a continuar los estudios y de la calidad de alumno, salvo que se haya cumplido con la inscripción de asignaturas anuales en el periodo anterior.\n\n[RG-ART-029]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 20.41,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-029",
+        "RI-FI-ART-007",
+        "RG-ART-042",
+        "RG-ART-018"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-029"
+      ],
+      "citas_validas": [
+        "RG-ART-029"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "29",
+      "categoria": "condicional",
+      "pregunta": "Si no me presento a una evaluación por causa justificada, ¿qué puedo hacer?",
+      "gold_dato": "solicitar regularizar en un máximo de 3 días hábiles",
+      "gold_fuente": "Art. 26, RG",
+      "respuesta": "Si no te presentas a una evaluación por causa justificada, puedes solicitar al profesor encargado de la asignatura regularizar tu situación dentro de un plazo máximo de tres días hábiles posteriores a la aplicación de la evaluación, presentando los documentos que justifiquen tu inasistencia [RG-ART-026]. \n\nLa regularización puede consistir en una evaluación oral, escrita o de otra modalidad establecida por el profesor, aplicada de inmediato tras superar la causa de inasistencia, o en una evaluación distinta aplicada en otro período [RG-ART-026].\n\nSi no solicitas esta regularización dentro del plazo señalado, serás calificado con la nota mínima o con el concepto NCR, según corresponda [RG-ART-026].\n\nAdemás, si el alumno no se presenta a la evaluación de recuperación por razones justificadas, el Vicedecano de la Facultad que dicta la asignatura puede autorizarlo a no presentarse, y en ese caso quedará con su situación pendiente, disponiendo del plazo que este Vicedecano señale para cumplir con dicha evaluación [RG-ART-022].\n\nEn resumen: puedes regularizar tu situación ante el profesor en un plazo de tres días hábiles tras la evaluación, o, si no lo haces, serás calificado con NCR. Si no presentas la evaluación de recuperación por causa justificada, el Vicedecano puede autorizarlo y establecer un plazo para cumplirla [RG-ART-026][RG-ART-022].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 51.21,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-026",
+        "RG-ART-025",
+        "RG-ART-013",
+        "RG-ART-038",
+        "RG-ART-022",
+        "RI-FI-ART-012"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-022",
+        "RG-ART-026"
+      ],
+      "citas_validas": [
+        "RG-ART-022",
+        "RG-ART-026"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "30",
+      "categoria": "condicional",
+      "pregunta": "¿Cuánta asistencia puede exigir un profesor en un laboratorio, taller o salida a terreno?",
+      "gold_dato": "hasta un 100%",
+      "gold_fuente": "Art. 13, RI-FI",
+      "respuesta": "El profesor puede exigir una asistencia mínima de hasta un 100% en actividades tales como laboratorios, talleres, salidas a terreno u otras de naturaleza similar, según establece el Artículo 13° del Reglamento Interno de la Facultad de Ingeniería [RI-FI-ART-013]. Esta exigencia no puede superar el 80% en clases teóricas y prácticas, pero puede alcanzar el 100% en actividades específicas como laboratorios o salidas a terreno. \n\nEste límite se aplica de forma diferenciada según el tipo de actividad, y la facultad determina el régimen general de asistencia [RG-ART-020]. \n\nPor lo tanto, **la asistencia puede exigirse hasta un 100% en actividades prácticas como laboratorios, talleres o salidas a terreno**.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 29.33,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-013",
+        "RG-ART-020",
+        "RG-ART-026"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-020",
+        "RI-FI-ART-013"
+      ],
+      "citas_validas": [
+        "RG-ART-020",
+        "RI-FI-ART-013"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "31",
+      "categoria": "cruce",
+      "pregunta": "Si el Reglamento Interno de Ingeniería contradice al Reglamento General de Docencia, ¿cuál prevalece?",
+      "gold_dato": "prevalece el Reglamento General (y las Normas de Ingreso)",
+      "gold_fuente": "Art. 34, RI-FI",
+      "respuesta": "El Reglamento General de Docencia prevalece sobre el Reglamento Interno de Ingeniería cuando existen contradicciones, según establece el Artículo 34° del Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería [RI-FI-ART-034]. Este artículo indica que, en caso de que disposiciones del presente reglamento no se concilien con aquellas contenidas en el Reglamento General de Docencia de Pregrado y en las Normas de Ingreso a las Carreras de Pregrado, prevalecerán siempre estas últimas.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 17.9,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-002",
+        "RI-FI-ART-018",
+        "RG-ART-001",
+        "RI-FI-ART-034",
+        "RI-FI-ART-019"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-034"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-034"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "32",
+      "categoria": "cruce",
+      "pregunta": "Quiero modificar las asignaturas inscritas este segundo semestre 2026. ¿Hasta qué fecha?",
+      "gold_dato": "hasta el 04 de septiembre de 2026",
+      "gold_fuente": "CAL 2º sem 2026 (Art. 9, RI-FI)",
+      "respuesta": "Hasta el 04 de septiembre.\n\n[CAL-2026-S2-03]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 16.62,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-03"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-03"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "33",
+      "categoria": "cruce",
+      "pregunta": "¿Hasta qué fecha se pueden modificar asignaturas en el primer semestre 2026?",
+      "gold_dato": "hasta el 02 de abril de 2026",
+      "gold_fuente": "CAL 1er sem 2026 (Art. 9, RI-FI)",
+      "respuesta": "Hasta el 02 de abril se pueden modificar asignaturas en el primer semestre 2026, según establece el Calendario de docencia de pregrado 2026 [CAL-2026-S1-03].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 21.34,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S2-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S1-03"
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-03"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "34",
+      "categoria": "cruce",
+      "pregunta": "¿Tengo derecho a suspender estudios y hasta cuándo puedo hacerlo?",
+      "gold_dato": "sí; dentro de los plazos del calendario, a más tardar 4 semanas antes del término",
+      "gold_fuente": "Art. 25 RI-FI + Art. 31 RG",
+      "respuesta": "Sí, tienes derecho a suspender estudios, según el Artículo 31º del Reglamento General (RG-ART-031), y puedes hacerlo hasta cuatro semanas antes del término del periodo lectivo respectivo.\n\nLa suspensión debe solicitarse al Vicedecano, acompañada de antecedentes oficiales como informe de la Dirección de Servicios Estudiantiles, y deberá resolverse antes del final del periodo lectivo. Si no estás de acuerdo con la decisión, puedes apelar en cinco días al Decano, cuya decisión será definitiva.\n\nAdemás, la suspensión no libera al alumno de sus obligaciones pendientes con la universidad, como deudas de aranceles o material bibliográfico (ver [RG-ART-035]).\n\n[RG-ART-031]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 25.5,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-031",
+        "RI-FI-ART-031",
+        "RG-ART-035",
+        "RG-ART-032",
+        "RG-ART-044",
+        "RI-FI-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-031",
+        "RG-ART-035"
+      ],
+      "citas_validas": [
+        "RG-ART-031",
+        "RG-ART-035"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "35",
+      "categoria": "cruce",
+      "pregunta": "¿Cuándo inician las clases del segundo semestre 2026?",
+      "gold_dato": "10 de agosto de 2026",
+      "gold_fuente": "CAL 2º sem 2026",
+      "respuesta": "Las clases del segundo semestre 2026 inician el 10 de agosto [CAL-2026-S2-02].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 9.99,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-02"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-02"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "36",
+      "categoria": "cruce",
+      "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+      "gold_dato": "inscripción 03–07 de agosto de 2026; mínimo 8 créditos",
+      "gold_fuente": "CAL 2º sem 2026 + Art. 8, RI-FI",
+      "respuesta": "Las asignaturas del segundo semestre 2026 se inscriben del **03 al 07 de agosto** [CAL-2026-S2-01].\n\nEl mínimo de créditos exigido en cada periodo lectivo ordinario es de **ocho créditos** [RI-FI-ART-008].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 15.37,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "RI-FI-ART-009",
+        "CAL-2026-S2-07",
+        "RI-FI-ART-008",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-01",
+        "RI-FI-ART-008"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-01",
+        "RI-FI-ART-008"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "37",
+      "categoria": "cruce",
+      "pregunta": "¿Cuándo termina el segundo semestre 2026 (término de clases)?",
+      "gold_dato": "11 de diciembre de 2026",
+      "gold_fuente": "CAL 2º sem 2026",
+      "respuesta": "El segundo semestre 2026 termina el 11 de diciembre, según el Calendario Académico 2026 [CAL-2026-S2-04].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.73,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-04",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-04"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-04"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "38",
+      "categoria": "cruce",
+      "pregunta": "La escala de notas del Reglamento General, ¿se aplica en Ingeniería, y cuál es la nota de aprobación?",
+      "gold_dato": "sí, escala 1 a 7 (Art. 23, RG); se aprueba con 4,0 (Art. 11, RI-FI)",
+      "gold_fuente": "Art. 23 RG + Art. 11 RI-FI",
+      "respuesta": "La escala de notas del Reglamento General sí se aplica en Ingeniería, ya que el Reglamento General es la norma general de la Universidad de Concepción y establece las condiciones generales para todas las carreras, incluyendo las de Ingeniería.\n\nLa nota de aprobación en la escala de 1 a 7 es **4,0**. Esto se especifica en el Artículo 23º del Reglamento General: \"Los alumnos que obtengan Nota Final igual o superior a 4,0 (cuatro coma cero) en la escala de 1 a 7 aprobarán la asignatura\".\n\n[RG-ART-023]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 25.11,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-023",
+        "RG-ANEXO-08",
+        "RG-ANEXO-05",
+        "RG-ANEXO-01",
+        "RI-FI-ART-030",
+        "RG-ANEXO-02"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-023"
+      ],
+      "citas_validas": [
+        "RG-ART-023"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "39",
+      "categoria": "cruce",
+      "pregunta": "¿Cuándo son las Evaluaciones de Recuperación del segundo semestre 2026?",
+      "gold_dato": "14–23 de diciembre de 2026",
+      "gold_fuente": "CAL 2º sem 2026 (Art. 12 RI-FI)",
+      "respuesta": "Las Evaluaciones de Recuperación del segundo semestre 2026 se realizan del 14 al 23 de diciembre [CAL-2026-S2-05].",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.37,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-04",
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-09",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-09",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-14"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-05"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-05"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "40",
+      "categoria": "cruce",
+      "pregunta": "¿Qué reglamento rige la Memoria de Título y cuánto pondera en la nota de titulación?",
+      "gold_dato": "la rige el Reglamento de Memoria de Título de la FI (Art. 29); pondera un 40% (Art. 30)",
+      "gold_fuente": "Art. 29 y Art. 30, RI-FI",
+      "respuesta": "La Memoria de Título está regulada por el [RI-FI-ART-029] y su ponderación en la nota de titulación se especifica en el [RI-FI-ART-030].  \n\nSegún el [RI-FI-ART-030], la nota de titulación para las carreras de Ingeniería Civil se obtiene con un 60% del promedio ponderado de asignaturas sin incluir la Memoria de Título y un 40% de la nota de la Memoria de Título.  \n\nPor lo tanto, la Memoria de Título pesa un 40% en la nota de titulación.  \n\n[RI-FI-ART-030]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 22.27,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-030",
+        "RI-FI-ART-029",
+        "RG-ART-048"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-030"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-029",
+        "RI-FI-ART-030"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "41",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué establece el Artículo 90 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+      "gold_dato": "El artículo no existe: el RI-FI tiene solo 35 artículos -> debe indicarlo, no inventar",
+      "gold_fuente": "dato inexistente (RI-FI llega al Art. 35)",
+      "respuesta": "No existe el Artículo 90 en el Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería, ya que el rango máximo de artículos en el RI-FI es hasta el Art. 35 RI-FI-ART-35. Por lo tanto, el Artículo 90 no está presente ni en el RI-FI ni en el RG.\n\nLlega hasta el Art. 35.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 14.36,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-002",
+        "RG-ART-001",
+        "RG-ART-049",
+        "RG-TRANS-002",
+        "RG-ART-011"
+      ],
+      "citas_en_respuesta": [],
+      "citas_validas": [],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "42",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué requisitos fija el Artículo 36 del Reglamento Interno de Docencia de Pregrado de Ingeniería?",
+      "gold_dato": "El artículo no existe: el reglamento termina en el Art. 35 -> debe indicarlo",
+      "gold_fuente": "dato inexistente (RI-FI llega al Art. 35)",
+      "respuesta": "El Artículo 36 del Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería fija los siguientes requisitos:\n\n- Las alumnas tienen derecho a interrumpir temporalmente sus estudios durante el período de embarazo y hasta dos meses después del nacimiento.  \n- Durante esta interrupción, se conserva su calidad de alumna regular y se mantienen todos sus derechos y obligaciones.  \n- Se debe presentar un certificado del médico o matrona que la atiende, visado por la Dirección de Servicios Estudiantiles, o su equivalente en los campus Chillán o Los Ángeles.  \n- Al concluir esta interrupción, el Comité de Docencia y Asuntos Estudiantiles respectivo decidirá sobre las facilidades para que la alumna finalice sus asignaturas, ya sea otorgando nuevos plazos o derivando las actividades pendientes a un próximo período lectivo.\n\n[RG-ART-036]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 28.65,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-002",
+        "RG-ART-001",
+        "RG-ART-049",
+        "RG-ART-036",
+        "RG-ART-054",
+        "RG-TRANS-002"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-036"
+      ],
+      "citas_validas": [
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "43",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué dispone el Artículo 100 del Reglamento General de Docencia de Pregrado?",
+      "gold_dato": "El artículo no existe: el RG llega hasta el Art. 60 -> debe indicarlo",
+      "gold_fuente": "dato inexistente (RG llega al Art. 60)",
+      "respuesta": "No existe el Artículo 100 en el Reglamento General de Docencia de Pregrado de la Universidad de Concepción. El máximo artículo que llega en el RG es el Art. 60 RG-ART-60. \n\nPor lo tanto, no se dispone en el Artículo 100 del Reglamento General. \n\n[existe_articulo(doc=\"RG\", numero=100)]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.13,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-ART-001",
+        "RI-FI-ART-002",
+        "RG-ART-011",
+        "RG-ART-004",
+        "RG-PREAMBULO",
+        "RI-FI-ART-034"
+      ],
+      "citas_en_respuesta": [],
+      "citas_validas": [],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "44",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué señala el Artículo 70 del Reglamento General de Docencia de Pregrado?",
+      "gold_dato": "El artículo no existe: el RG llega hasta el Art. 60 -> debe indicarlo",
+      "gold_fuente": "dato inexistente (RG llega al Art. 60)",
+      "respuesta": "No se encuentra información sobre el Artículo 70 del Reglamento General de Docencia de Pregrado en el contexto inicial recuperado. El rango máximo de artículos en el RG es hasta el Art. 60, por lo que no puede existir un artículo número 70 [RG].\n\nLlega hasta el Art. 60.\n\nFuente: [RG-ART-004] [RG-ART-001] [RI-FI-ART-034] [RI-FI-ART-002]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 29.47,
+      "turnos_modelo": 2,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RG-PREAMBULO",
+        "RG-ART-004",
+        "RG-ART-001",
+        "RI-FI-ART-034",
+        "RI-FI-ART-002"
+      ],
+      "citas_en_respuesta": [
+        "RG-ART-001",
+        "RG-ART-004",
+        "RI-FI-ART-002",
+        "RI-FI-ART-034"
+      ],
+      "citas_validas": [
+        "RG-ART-001",
+        "RG-ART-004",
+        "RI-FI-ART-002",
+        "RI-FI-ART-034"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "45",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué dice el inciso d) del Artículo 14 del RI-FI sobre las causales de baja académica?",
+      "gold_dato": "No existe el inciso d): el Art. 14 solo tiene a), b) y c) -> debe indicarlo",
+      "gold_fuente": "premisa falsa (Art. 14 solo a-c)",
+      "respuesta": "El inciso d) del Artículo 14 del RI-FI no está presente en el contexto normativo recuperado. No se encontró referencia al inciso d) en el artículo 14 del Reglamento Interno de la Facultad de Ingeniería.\n\n[RI-FI-ART-014] solo menciona los incisos a), b) y c). El máximo número de artículo que existe en el RI-FI es el 35, pero no se encuentra el inciso d) en el Artículo 14.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 16.14,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-014",
+        "RI-FI-ART-015",
+        "RI-FI-ART-027"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-014"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-014"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "46",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué establece el inciso c) del Artículo 25 del RI-FI sobre los documentos para suspender estudios?",
+      "gold_dato": "No existe el inciso c): el Art. 25 solo tiene a) y b) -> debe indicarlo",
+      "gold_fuente": "premisa falsa (Art. 25 solo a-b)",
+      "respuesta": "El inciso c) del Artículo 25 del RI-FI no está presente en el contexto normativo proporcionado. No se encuentra mencionado ni referenciado en los artículos recuperados.\n\n[existe_articulo: false, max_articulo: 35]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.92,
+      "turnos_modelo": 2,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-025",
+        "RI-FI-ART-026",
+        "RI-FI-ART-027",
+        "RI-FI-ART-031",
+        "RI-FI-ART-028"
+      ],
+      "citas_en_respuesta": [],
+      "citas_validas": [],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "47",
+      "categoria": "abstencion",
+      "pregunta": "Además del mínimo de créditos, ¿cuál es el número máximo de créditos que fija el Artículo 8 del RI-FI para inscribir por semestre?",
+      "gold_dato": "El Art. 8 no fija un máximo, solo un mínimo (8) -> debe indicarlo",
+      "gold_fuente": "premisa falsa (Art. 8 solo fija mínimo)",
+      "respuesta": "El Artículo 8 del RI-FI establece un **mínimo** de créditos (no un máximo) para la inscripción por semestre.\n\nNo existe en el contexto proporcionado ningún artículo que fije un **número máximo** de créditos para la inscripción por semestre. Por lo tanto, no se puede determinar un límite superior basado en el contenido disponible.\n\n[RI-FI-ART-008] indica solo que el número mínimo debe ser de ocho créditos, y no menciona un máximo.\n\n**Conclusión:** El Artículo 8 del RI-FI **no fija un número máximo** de créditos para la inscripción por semestre.  \n\n→ No se encuentra en el texto normativo un límite superior de créditos establecido en ese artículo.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 24.97,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-008",
+        "RI-FI-ART-031",
+        "RI-FI-ART-009",
+        "RI-FI-ART-015",
+        "RI-FI-ART-014"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-008"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-008"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "48",
+      "categoria": "abstencion",
+      "pregunta": "¿Cuál es la nota mínima que fija el Artículo 12 del RI-FI para la Evaluación de Recuperación?",
+      "gold_dato": "El Art. 12 no fija una nota mínima; solo otorga el derecho a la recuperación -> debe indicarlo",
+      "gold_fuente": "premisa falsa (Art. 12 no fija nota)",
+      "respuesta": "El Artículo 12 del RI-FI no fija una nota mínima para la Evaluación de Recuperación. El texto disponible indica solo que los estudiantes tienen derecho a una evaluación de recuperación para modificar su nota final, y que el profesor encargado entrega los requisitos y ponderaciones, incluyendo la evaluación de recuperación, en la primera semana de clases.\n\nLa nota mínima para aprobar una asignatura, según el Artículo 23 del RG, es de 4,0 en la escala de 1 a 7. Sin embargo, este valor no está especificado en el Artículo 12 del RI-FI, ni se menciona una nota mínima directa en esa norma.\n\nPor lo tanto, **el Artículo 12 del RI-FI no fija una nota mínima para la Evaluación de Recuperación**.\n\n[RI-FI-ART-012]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 28.5,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-012",
+        "RG-ART-022",
+        "RG-ART-026",
+        "RI-FI-ART-011",
+        "RG-ART-023"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-012"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-012"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "49",
+      "categoria": "abstencion",
+      "pregunta": "Según el calendario de docencia 2026, ¿qué feriado nacional cae el 30 de septiembre?",
+      "gold_dato": "No hay feriado el 30 de septiembre; el feriado de septiembre 2026 es el día 18 -> debe indicarlo",
+      "gold_fuente": "dato inexistente (CAL 2026)",
+      "respuesta": "No existe un feriado nacional registrado para el 30 de septiembre en el Calendario de Docencia 2026. El único feriado nacional del segundo semestre mencionado es el jueves 20 de agosto [CAL-2026-S2-08].  \n\nPor lo tanto, no hay feriado nacional que caiga el 30 de septiembre según el calendario oficial.",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 21.97,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "CAL-2026-S2-09",
+        "CAL-2026-S1-12",
+        "CAL-2026-S1-10",
+        "CAL-2026-S1-11",
+        "CAL-2026-S1-13",
+        "CAL-2026-S1-09",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-02",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-05",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-08",
+        "CAL-2026-S2-10",
+        "CAL-2026-S2-11",
+        "CAL-2026-S1-01",
+        "CAL-2026-S1-02",
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-04",
+        "CAL-2026-S1-05",
+        "CAL-2026-S1-06",
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-08",
+        "CAL-2026-S1-14"
+      ],
+      "citas_en_respuesta": [
+        "CAL-2026-S2-08"
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-08"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    },
+    {
+      "id": "50",
+      "categoria": "abstencion",
+      "pregunta": "El Artículo 19 del RI-FI exige promedio 5,0 para una segunda carrera simultánea; ¿qué promedio exige ese artículo para una tercera carrera simultánea?",
+      "gold_dato": "El Art. 19 no contempla una tercera carrera simultánea -> debe indicarlo",
+      "gold_fuente": "premisa falsa (Art. 19 no lo contempla)",
+      "respuesta": "No existe información en el contexto normativo sobre el promedio exigido para una tercera carrera simultánea. El Artículo 19° del RI-FI menciona solo el requisito de un promedio mínimo de 5,0 para una segunda carrera simultánea, y no especifica ningún otro valor para una tercera carrera.\n\nPor lo tanto, no se puede determinar qué promedio exige el artículo para una tercera carrera simultánea, ya que no existe un artículo que lo establezca.\n\n[RI-FI-ART-019]",
+      "modelo": "qwen3:4b-instruct",
+      "segundos": 18.61,
+      "turnos_modelo": 1,
+      "herramientas": [],
+      "fuentes_ids": [
+        "RI-FI-ART-019",
+        "RI-FI-ART-018",
+        "RI-FI-ART-014",
+        "RG-ART-028"
+      ],
+      "citas_en_respuesta": [
+        "RI-FI-ART-019"
+      ],
+      "citas_validas": [
+        "RI-FI-ART-019"
+      ],
+      "citas_inexistentes": [],
+      "correcto_manual": null,
+      "nota_revision": ""
+    }
+  ]
+}

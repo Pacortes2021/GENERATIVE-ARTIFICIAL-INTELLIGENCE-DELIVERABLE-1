@@ -1,0 +1,360 @@
+{
+  "config": "Top-p B (k_max=6, p=0.80, T=0.12, pool=6, rp=1.05)",
+  "completados": 20,
+  "total": 20,
+  "segundos_totales": 809.99,
+  "casos": [
+    {
+      "id": "N01",
+      "categoria": "factual",
+      "pregunta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, ¿cuántas horas semanales de trabajo académico no debería exceder un plan de estudios y qué deben establecer los programas de asignaturas?",
+      "gold_dato": "El plan de estudios no debería exceder las 54 horas semanales de trabajo académico; los programas de asignaturas deben establecer los créditos y las horas de trabajo académico (carga académica del alumno).",
+      "gold_fuente": "RG-ART-017",
+      "respuesta": "Según el Artículo 17° del Reglamento General de Docencia de Pregrado, un plan de estudios no debería exceder las 54 horas semanales de trabajo académico, y los programas de asignaturas deben establecer los créditos y las horas de trabajo académico de cada asignatura [RG-ART-017].",
+      "segundos": 17.78,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-017"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N02",
+      "categoria": "factual",
+      "pregunta": "De acuerdo con el Artículo 12° del Reglamento General de Docencia de Pregrado, ¿a quién y cuándo debe informar por escrito el Profesor Encargado sobre el desarrollo de la asignatura?",
+      "gold_dato": "Debe informar por escrito al Director de Departamento al final del período lectivo (además de entregar el Acta de Notas Finales).",
+      "gold_fuente": "RG-ART-012",
+      "respuesta": "De acuerdo con el Artículo 12° del Reglamento General de Docencia de Pregrado [RG-ART-012], el Profesor Encargado debe informar por escrito al Director de Departamento, **al final del período lectivo**, sobre el desarrollo de la asignatura.\n\nEste requisito aplica a todos los profesores encargados de asignaturas dentro de la facultad, y no se especifica una fecha exacta en el texto, sino que se refiere al cierre del período lectivo. No hay mención a un plazo específico dentro del calendario académico, por lo que la información se entrega al final del periodo lectivo, conforme establece el artículo.\n\n[RG-ART-012]",
+      "segundos": 23.69,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-012"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N03",
+      "categoria": "factual",
+      "pregunta": "¿Qué instrumentos normativos rigen los requisitos, derechos y obligaciones de los alumnos visitantes y alumnos libres en la Universidad de Concepción?",
+      "gold_dato": "Un reglamento especial de la Universidad y los convenios correspondientes.",
+      "gold_fuente": "RG-ART-053",
+      "respuesta": "Los requisitos, derechos y obligaciones de los alumnos visitantes y de los alumnos libres se regirán por un reglamento especial de la Universidad y por los convenios que correspondan [RG-ART-053]. \n\nNo existe en el contexto normativo una mención específica sobre los alumnos visitantes ni sobre los alumnos libres en términos de derechos, obligaciones o requisitos distintos a lo establecido en dicho artículo. Por tanto, la regulación general se basa únicamente en el artículo mencionado, sin detallar sus contenidos específicos en este contexto. \n\nPara obtener más información sobre los reglamentos especiales o convenios aplicables, sería necesario consultar el documento correspondiente al reglamento especial de la Universidad.",
+      "segundos": 19.92,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-053"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N04",
+      "categoria": "factual",
+      "pregunta": "En la Facultad de Ingeniería, ¿quién resuelve las situaciones no previstas en su Reglamento Interno de Docencia de Pregrado?",
+      "gold_dato": "El Decano de la Facultad de Ingeniería, en el ámbito de su competencia.",
+      "gold_fuente": "RI-FI-ART-035",
+      "respuesta": "Las situaciones no previstas en el Reglamento Interno de Docencia de Pregrado de la Facultad de Ingeniería serán resueltas por el Decano de la Facultad de Ingeniería, en el ámbito de su competencia [RI-FI-ART-035].",
+      "segundos": 9.93,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RI-FI-ART-035"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N05",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué puntaje mínimo ponderado de notas exige el Artículo 6° del Reglamento Interno de la Facultad de Ingeniería para que un estudiante del Ingreso Común sea aceptado en segundo año en una carrera de Ingeniería Civil?",
+      "gold_dato": "El Artículo 6° del RI-FI no fija un puntaje mínimo numérico ni promedio; solo señala que la postulación y selección se realiza al final del año académico respectivo y que la Facultad establece la distribución porcentual de cupos por carrera.",
+      "gold_fuente": "RI-FI-ART-006",
+      "respuesta": "El Artículo 6° del Reglamento Interno de la Facultad de Ingeniería no especifica un puntaje mínimo ponderado para la aceptación en segundo año de una carrera de Ingeniería Civil para estudiantes del Ingreso Común.\n\nEl criterio de selección se detalla en el Artículo 5°, que establece que se considerará el promedio curricular de notas de las asignaturas ponderadas por sus créditos del Plan Común de Primer Año, expresado con dos decimales, y que solo se considerarán las asignaturas obligatorias de primer año. Sin embargo, este artículo no menciona un puntaje mínimo específico.\n\nPor lo tanto, **no existe en el texto proporcionado un puntaje mínimo ponderado exigido por el Artículo 6° para la aceptación en segundo año**.\n\n[RI-FI-ART-005]",
+      "segundos": 23.27,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RI-FI-ART-005"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N06",
+      "categoria": "calculo",
+      "pregunta": "Según el Calendario de Docencia de Pregrado 2026, ¿qué fechas corresponden a días en que expresamente no se realizarán evaluaciones y cuántos días suman entre ambos semestres?",
+      "gold_dato": "Primer semestre: 18 y 19 de mayo (2 días). Segundo semestre: 21 y 22 de septiembre (2 días). Total: 4 días.",
+      "gold_fuente": "CAL-2026-S1-08; CAL-2026-S2-07",
+      "respuesta": "Según el Calendario de Docencia de Pregrado 2026, los días en que no se realizarán evaluaciones son:\n\n- Primer semestre: 18 y 19 de mayo (artículo [CAL-2026-S1-08]).\n- Segundo semestre: 21 y 22 de septiembre (artículo [CAL-2026-S2-07]).\n\nLa suma de días entre ambos semestres (desde el 18 de mayo hasta el 22 de septiembre, excluyendo los días de evaluación) corresponde a un total de **127 días corridos**. \n\nEste cálculo se basa en la diferencia entre las fechas del inicio de la evaluación en el primer semestre (18 de mayo) y el final de la evaluación en el segundo semestre (22 de septiembre), considerando solo los días transcurridos entre ambas fechas, sin incluir los días de evaluación específicos. \n\n[Calendario 2026 - Días sin evaluaciones: [CAL-2026-S1-08], [CAL-2026-S2-07]]",
+      "segundos": 48.23,
+      "turnos": 3,
+      "tools": [
+        {
+          "nombre": "buscar_reglamento",
+          "args": {
+            "consulta": "días en que no se realizarán evaluaciones",
+            "documento": "CAL"
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "args": {
+            "fecha_inicio": "2026-05-18",
+            "fecha_fin": "2026-09-22",
+            "inclusivo": false
+          }
+        }
+      ],
+      "citas_validas": [
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-07"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N07",
+      "categoria": "calculo",
+      "pregunta": "En el Calendario 2026, ¿cuántos días corridos transcurren desde el inicio de la pausa activa de docencia del primer semestre (11 de mayo) hasta el inicio de la suspensión de actividades del segundo semestre (14 de septiembre), y cuántos días dura cada período inclusive?",
+      "gold_dato": "Del 11 de mayo al 14 de septiembre transcurren 126 días corridos. La pausa activa de mayo (11 al 15) dura 5 días inclusive y la suspensión de septiembre (14 al 17) dura 4 días inclusive.",
+      "gold_fuente": "CAL-2026-S1-07; CAL-2026-S2-06",
+      "respuesta": "Desde el inicio de la pausa activa de docencia del primer semestre (11 de mayo) hasta el inicio de la suspensión de actividades del segundo semestre (14 de septiembre), transcurren **126 días corridos**.\n\nCada período dura inclusive:\n- La pausa activa de docencia (del 11 al 15 de mayo): **5 días**.\n- La suspensión de actividades del segundo semestre (del 14 al 17 de septiembre): **4 días**.\n\n[Cal-2026-S1-07], [CAL-2026-S2-06]",
+      "segundos": 51.97,
+      "turnos": 2,
+      "tools": [
+        {
+          "nombre": "dias_entre",
+          "args": {
+            "fecha_inicio": "2026-05-11",
+            "fecha_fin": "2026-09-14",
+            "inclusivo": false
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "args": {
+            "fecha_inicio": "2026-05-11",
+            "fecha_fin": "2026-05-15",
+            "inclusivo": true
+          }
+        },
+        {
+          "nombre": "dias_entre",
+          "args": {
+            "fecha_inicio": "2026-09-14",
+            "fecha_fin": "2026-09-17",
+            "inclusivo": true
+          }
+        }
+      ],
+      "citas_validas": [
+        "CAL-2026-S2-06"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N08",
+      "categoria": "condicional",
+      "pregunta": "¿Qué requisitos debe cumplir una actividad artística, cultural, deportiva, social o recreativa para ser reconocida en el currículum como asignatura complementaria?",
+      "gold_dato": "Efectuarse bajo la tuición o el patrocinio de organismos dependientes de la Universidad de Concepción y contar con un programa de actividades aprobado por la Dirección de Docencia y la respectiva unidad.",
+      "gold_fuente": "RG-ART-046",
+      "respuesta": "Para que una actividad artística, cultural, deportiva, social o recreativa sea reconocida en el currículum como asignatura complementaria, debe cumplir con los siguientes requisitos establecidos en el Reglamento General [RG-ART-046]:\n\n1. **Ser efectuada bajo la tutoría o patrocinio de organismos dependientes de la Universidad de Concepción**.  \n2. **Cuentar con un programa de actividades aprobado por la Dirección de Docencia y la respectiva unidad académica**.\n\nEstos requisitos aseguran que las actividades sean institucionalmente validadas y estructuradas, permitiendo su reconocimiento como asignatura complementaria dentro del plan de estudios del alumno [RG-ART-046].\n\nAdicionalmente, se debe considerar que las asignaturas complementarias tienen como finalidad ampliar la formación cultural y personal del estudiante, y que su inclusión en el currículum está regulada por el Plan de Formación Complementaria, que requiere un programa estructurado con elementos como perfil de egreso, ordenamiento de actividades y requisitos de finalización [RG-ART-003-DEF-12].\n\n[RG-ART-046]",
+      "segundos": 48.6,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-003-DEF-12",
+        "RG-ART-046"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N09",
+      "categoria": "condicional",
+      "pregunta": "Además de las causales académicas, ¿bajo qué resolución disciplinaria específica prevista en el Artículo 51° del Reglamento General se pierde la condición de alumno de pregrado?",
+      "gold_dato": "Por resolución adoptada como consecuencia de la aplicación del Reglamento \"Normas de Conducta de los Estudiantes\".",
+      "gold_fuente": "RG-ART-051",
+      "respuesta": "[RG-ART-051]",
+      "segundos": 13.51,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-051"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N10",
+      "categoria": "condicional",
+      "pregunta": "Un alumno ya graduado o titulado de una carrera que ofrece más de un grado, título o mención quiere cursar las exigencias para optar a otro grado, título o mención. ¿Cuándo y mediante qué trámite puede hacerlo?",
+      "gold_dato": "Puede solicitar su reingreso a la carrera en el semestre siguiente a su egreso para cumplir con las otras exigencias académicas.",
+      "gold_fuente": "RG-ART-047",
+      "respuesta": "El alumno ya graduado o titulado de una carrera que ofrece más de un grado, título o mención puede cursar las exigencias para optar a otro grado, título o mención **en el semestre siguiente a su egreso**, mediante **solicitud de reingreso a la carrera**.\n\nEste trámite está regulado en [RG-ART-047] y [RG-ART-044], donde se especifica que:\n\n- El alumno debe solicitar su reingreso a la carrera en el semestre siguiente a su egreso.\n- Al reingresar, deberá hacerlo como **alumno nuevo** en el **Primer Año** de la carrera, sujetos a los requisitos y exigencias vigentes en ese momento.\n- No tendrá derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas previas al reingreso [RG-ART-044].\n- Si el alumno no incurrió en pérdida de carrera, podrá solicitar, dentro de los **treinta primeros días del primer semestre de permanencia**, mantener su situación académica anterior.\n\nAdemás, las Facultades o Escuelas deberán indicar, cuando corresponda, en cada expediente de solicitud de otorgamiento de un Título Profesional o Grado Académico, el **Programa de Formación Complementaria** que aprobó el alumno para su certificación [RG-ART-047].\n\nPor lo tanto, el trámite se realiza **en el semestre siguiente al egreso**, mediante **solicitud de reingreso como alumno nuevo**, y se requiere el Programa de Formación Complementaria aprobado previamente.",
+      "segundos": 57.31,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-044",
+        "RG-ART-047"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N11",
+      "categoria": "condicional",
+      "pregunta": "¿Qué condiciones exige el Artículo 57° del Reglamento General para que un alumno de pregrado curse simultáneamente un programa de postgrado y obtenga la Beca Articulación Pregrado-Postgrado?",
+      "gold_dato": "Ser alumno regular de una carrera de la UdeC, poseer el Grado Académico de Licenciado, ser aceptado en un programa de postgrado de la universidad y contar con proposición de la Facultad respectiva.",
+      "gold_fuente": "RG-ART-057",
+      "respuesta": "El Artículo 57° del Reglamento General [RG-ART-057] exige que:\n\n- El alumno sea regular de una carrera ofrecida por la Universidad de Concepción.  \n- Esté en posesión del Grado Académico de Licenciado.\n\nEstas son las condiciones necesarias para que un alumno de pregrado curse simultáneamente un programa de postgrado y obtenga la Beca Articulación Pregrado-Postgrado.  \n\nNo se especifican otras condiciones, como el cumplimiento de un promedio o una fecha límite, en este artículo.  \n\n[RG-ART-057]",
+      "segundos": 52.94,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-057"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N12",
+      "categoria": "cruce",
+      "pregunta": "Cuando una alumna interrumpe sus estudios por embarazo (Art. 36°) o un estudiante presenta situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°), ¿qué organismo visa o certifica la documentación?",
+      "gold_dato": "En ambos casos interviene la Dirección de Servicios Estudiantiles de la UdeC (o su unidad equivalente en Campus Chillán o Campus Los Ángeles): visa el certificado médico o de matrona en el Art. 36° y evalúa y certifica las situaciones indicadas en el Art. 59°.",
+      "gold_fuente": "RG-ART-036; RG-ART-059",
+      "respuesta": "El organismo que visa o certifica la documentación en ambos casos —embarazo (Art. 36°) y situaciones de salud, socioeconómicas, enfermedad de un hijo o fallecimiento de familiar directo (Art. 59°)— es la **Dirección de Servicios Estudiantiles** de la Universidad de Concepción, o la Unidad que corresponda en los Campuses Chillán y Los Ángeles.\n\nEste requisito se establece explícitamente en:\n\n- [RG-ART-036]: para el caso del embarazo, se requiere un certificado visado por la Dirección de Servicios Estudiantiles o su equivalente en los campus.\n- [RG-ART-059]: para situaciones de salud, socioeconómicas, enfermedad de hijo o fallecimiento de familiar, se requiere evaluación y certificación por la Dirección de Servicios Estudiantiles o la Unidad correspondiente.\n\nPor lo tanto, en ambos casos, el organismo encargado es la **Dirección de Servicios Estudiantiles**.",
+      "segundos": 55.12,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-036",
+        "RG-ART-059"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N13",
+      "categoria": "cruce",
+      "pregunta": "¿Cómo se estructura la modalidad mixta de ingreso a Primer Año en la Facultad de Ingeniería (Art. 3° RI-FI) y cuándo se postula y asignan los cupos a segundo año para quienes ingresan sin especialidad (Art. 6° RI-FI)?",
+      "gold_dato": "Ingreso mixto mediante Ingreso Directo a una carrera según cupos definidos e Ingreso Común sin especialidad (Art. 3°). Quienes están en Ingreso Común postulan y son seleccionados al final del año académico respectivo según la distribución porcentual de cupos por carrera en Ingeniería Civil establecida por la Facultad (Art. 6°).",
+      "gold_fuente": "RI-FI-ART-003; RI-FI-ART-006",
+      "respuesta": "La modalidad mixta de ingreso al Primer Año en la Facultad de Ingeniería se estructura como sigue: se permite un Ingreso Directo a una carrera según los cupos definidos para cada carrera, y también un Ingreso Común sin especialidad [RI-FI-ART-003].\n\nPara quienes ingresan sin especialidad, el proceso de postulación y asignación de cupos al segundo año se realiza al final del año académico respectivo. La Facultad establece en cada oportunidad la distribución porcentual de cupos por carrera para estudiantes del Ingreso Común que pueden aceptar en el segundo año, específicamente en las carreras de Ingeniería Civil que ofrecen esta modalidad [RI-FI-ART-006].\n\nAdemás, los estudiantes del Ingreso Común postulan a las carreras al término de su segundo semestre de permanencia. La selección se basa en el número de créditos aprobados, y en caso de igualdad, en el promedio curricular ponderado por créditos del Plan Común de Primer Año, considerando solo asignaturas obligatorias de ese año [RI-FI-ART-005].\n\n[RI-FI-ART-003] [RI-FI-ART-006] [RI-FI-ART-005]",
+      "segundos": 75.93,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RI-FI-ART-003",
+        "RI-FI-ART-005",
+        "RI-FI-ART-006"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N14",
+      "categoria": "cruce",
+      "pregunta": "En el Programa de Formación Complementaria, ¿quién integra la Comisión que resuelve las solicitudes de ingreso (Art. 56°) y qué deben consignar las Facultades o Escuelas en el expediente de titulación o grado (Art. 47°)?",
+      "gold_dato": "La Comisión se integra por el Director de Docencia, el Decano de la Facultad o Director de Escuela y el Jefe del Programa de Formación Complementaria (Art. 56°). En cada expediente de Título Profesional o Grado Académico deben indicar, cuando corresponda, el Programa de Formación Complementaria aprobado para su certificación (Art. 47°).",
+      "gold_fuente": "RG-ART-056; RG-ART-047",
+      "respuesta": "La Comisión que resuelve las solicitudes de ingreso al Programa de Formación Complementaria está integrada por el Director de Docencia, el Decano de la Facultad o Director de Escuela y el Jefe del Programa de Formación Complementaria [RG-ART-056].\n\nLas Facultades o Escuelas deben consignar, cuando corresponda, en cada expediente de titulación o grado, el Programa de Formación Complementaria que aprobó el alumno para su certificación [RG-ART-047].",
+      "segundos": 37.41,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-047",
+        "RG-ART-056"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N15",
+      "categoria": "multi_salto",
+      "pregunta": "Al concluir la interrupción temporal de estudios por embarazo (hasta dos meses después del nacimiento), ¿qué instancia decide las facilidades académicas para finalizar las asignaturas (Art. 36°) y qué organismo técnico de la Facultad tramita regularmente las solicitudes de los alumnos (Art. 5°)?",
+      "gold_dato": "Las facilidades al concluir la interrupción (nuevos plazos o derivación de pendientes al próximo período lectivo) las decide el Comité de Docencia y Asuntos Estudiantiles respectivo (Art. 36°); en cada Facultad, la Secretaría Académica (dependiente del Vicedecano) recibe, tramita y despacha las solicitudes de los alumnos (Art. 5°).",
+      "gold_fuente": "RG-ART-036; RG-ART-005",
+      "respuesta": "Al concluir la interrupción temporal de estudios por embarazo, el **Comité de Docencia y Asuntos Estudiantiles** decide las facilidades académicas para finalizar las asignaturas [RG-ART-036].\n\nEl organismo técnico de la Facultad que tramita regularmente las solicitudes de los alumnos es la **Secretaría Académica** [RG-ART-005].\n\nNota: El Artículo 5° del Reglamento Interno de la Facultad de Ingeniería (RI-FI-ART-005) se refiere al proceso de postulación, no a las solicitudes de facilidades académicas, por lo que no aplica en este contexto.",
+      "segundos": 51.95,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-005",
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N16",
+      "categoria": "colision_lexica",
+      "pregunta": "En el Calendario de Docencia de Pregrado 2026, ¿qué actividades o restricciones corresponden exactamente al 11–15 de mayo y al 18–19 de mayo en el primer semestre, frente al 14–17 de septiembre y al 21–22 de septiembre en el segundo semestre?",
+      "gold_dato": "Primer semestre: 11–15 de mayo es pausa activa de docencia de pregrado y el 18 y 19 de mayo no se realizarán evaluaciones. Segundo semestre: 14–17 de septiembre es suspensión de actividades de docencia de pregrado y el 21 y 22 de septiembre no se realizarán evaluaciones.",
+      "gold_fuente": "CAL-2026-S1-07; CAL-2026-S1-08; CAL-2026-S2-06; CAL-2026-S2-07",
+      "respuesta": "En el Calendario de Docencia de Pregrado 2026:\n\n- Del **11 al 15 de mayo** (primer semestre) corresponde una **pausa activa de docencia de pregrado** [CAL-2026-S1-07], lo que implica la suspensión de actividades docentes.\n\n- Del **18 al 19 de mayo** (primer semestre) no se realizarán evaluaciones [CAL-2026-S1-08].\n\n- En el segundo semestre, del **14 al 17 de septiembre** se suspenden actividades de docencia de pregrado [CAL-2026-S2-06], y del **21 al 22 de septiembre** no se realizarán evaluaciones [CAL-2026-S2-07].\n\nPor lo tanto, las actividades o restricciones corresponden exactamente a:\n\n- **11–15 de mayo (primer semestre)**: Pausa activa de docencia [CAL-2026-S1-07].\n- **18–19 de mayo (primer semestre)**: No se realizarán evaluaciones [CAL-2026-S1-08].\n- **14–17 de septiembre (segundo semestre)**: Suspensión de actividades de docencia [CAL-2026-S2-06].\n- **21–22 de septiembre (segundo semestre)**: No se realizarán evaluaciones [CAL-2026-S2-07].",
+      "segundos": 86.39,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "CAL-2026-S1-07",
+        "CAL-2026-S1-08",
+        "CAL-2026-S2-06",
+        "CAL-2026-S2-07"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N17",
+      "categoria": "negacion_excepcion",
+      "pregunta": "¿Toda carrera de pregrado depende sin excepción de una Facultad, y es el Vicedecano el responsable máximo de la docencia de pregrado en la Facultad según el Art. 4° RG?",
+      "gold_dato": "No en ambos puntos: aunque toda carrera depende de una Facultad, para disciplinas no comprendidas en Facultades existentes el Consejo Académico puede hacerlas depender temporalmente de otra unidad académica; además, el Decano es el responsable máximo de la docencia de pregrado, mientras el Vicedecano asume la administración general y cumplimiento de plazos.",
+      "gold_fuente": "RG-ART-004",
+      "respuesta": "No, no es correcto afirmar que toda carrera de pregrado depende sin excepción de una Facultad y que el Vicedecano es el responsable máximo de la docencia de pregrado.\n\nSegún el Artículo 4° del Reglamento General (RG-ART-004), toda carrera depende de una Facultad, **no obstante**, en casos de disciplinas no comprendidas dentro del ámbito de alguna Facultad existente, el Consejo Académico puede hacerlas depender temporalmente de otra unidad académica. Esto introduce una excepción.\n\nAdemás, el texto indica que **el Decano** es el responsable máximo de la docencia de pregrado en cada Facultad, y aunque el Vicedecano asume la administración general de los estudios y el cumplimiento de plazos, **no es el responsable máximo de la docencia**, sino que tiene un rol secundario en gestión administrativa.\n\nPor tanto, la afirmación original es incorrecta porque:\n\n- Existe una excepción para disciplinas fuera del ámbito de las Facultades.\n- El responsable máximo de la docencia es el Decano, no el Vicedecano.\n\n[RG-ART-004]",
+      "segundos": 44.42,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-004"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N18",
+      "categoria": "sintesis",
+      "pregunta": "¿Cómo se distribuyen el resguardo de normas y plazos entre la Secretaría Académica (Art. 5°), el Profesor Encargado de asignatura (Art. 12°) y la obligación transitoria de las Facultades (Art. 2° Transitorio)?",
+      "gold_dato": "La Secretaría Académica (dependiente del Vicedecano) verifica normativas vigentes, coordina horarios, registra/archiva datos y tramita solicitudes (Art. 5°); el Profesor Encargado vela por normas y plazos en su asignatura, entrega el Acta de Notas Finales e informa por escrito al Director de Departamento (Art. 12°); y las Facultades debieron adecuar sus Reglamentos Internos en máximo 90 días hábiles desde la vigencia del RG (Art. 2° Transitorio).",
+      "gold_fuente": "RG-ART-005; RG-ART-012; RG-TRANS-002",
+      "respuesta": "El resguardo de normas y plazos se distribuye de la siguiente manera:\n\n- **Secretaría Académica (Art. 5°)**: Tiene la función de verificar el cumplimiento de las normativas vigentes y confeccionar informes y certificados sobre la situación de los alumnos, lo que implica su rol en el control general de cumplimiento normativo dentro de la facultad.\n\n- **Profesor Encargado de asignatura (Art. 12°)**: Coordina el trabajo de los profesores participantes, velar por el cumplimiento de los objetivos del programa y las normas y plazos establecidos en los reglamentos, y entrega el Acta de Notas Finales, lo que le otorga responsabilidad directa en la ejecución de normas y plazos específicos dentro de cada asignatura.\n\n- **Obligación transitoria de las Facultades (Art. 2° Transitorio)**: No se especifica en el contexto recuperado, por lo que no se puede confirmar su contenido o alcance exacto. Este artículo transitorio no está presente ni en el RG ni en el RI-FI según el corpus disponible, y por tanto, no se puede establecer una distribución específica de responsabilidades para este caso.\n\n[RG-ART-005], RG-ART-12",
+      "segundos": 38.42,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-005"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N19",
+      "categoria": "premisa_falsa",
+      "pregunta": "Un estudiante afirma que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado, y que una asignatura solo puede dictarse durante un semestre o dos semestres continuos. ¿Es correcto?",
+      "gold_dato": "Ambas afirmaciones son incorrectas: el Art. 36° otorga la interrupción durante el embarazo y hasta dos meses después del nacimiento (no cuatro) y exige certificado médico o de matrona visado por la Dirección de Servicios Estudiantiles (o equivalente en Chillán/Los Ángeles); además, el Art. 18° permite organizar asignaturas también en un período distinto a un semestre según el plan de estudio.",
+      "gold_fuente": "RG-ART-036; RG-ART-018",
+      "respuesta": "No es correcto.\n\nLa afirmación de que la interrupción temporal de estudios por embarazo cubre hasta cuatro meses después del nacimiento con un certificado médico simple sin visado es incorrecta. Según [RG-ART-036], la interrupción se extiende solo hasta dos meses después del nacimiento, y el certificado debe estar visado por la Dirección de Servicios Estudiantiles o su equivalente en los campus Chillán o Los Ángeles. No se permite un periodo de hasta cuatro meses ni un certificado sin visado.\n\nAdemás, respecto a que una asignatura solo puede dictarse durante un semestre o dos semestres continuos: el contexto no especifica esta restricción. El Reglamento General no menciona ninguna limitación sobre la duración en la que se pueden dictar asignaturas, por lo que no se puede afirmar que una asignatura solo pueda dictarse durante un semestre o dos semestres continuos. Esta parte de la afirmación no está respaldada por normas vigentes.\n\nPor tanto, solo parte de la afirmación es correcta (la interrupción por embarazo hasta dos meses), y el resto es incorrecto.\n\n[RG-ART-036]",
+      "segundos": 30.6,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-036"
+      ],
+      "citas_inexistentes": []
+    },
+    {
+      "id": "N20",
+      "categoria": "abstencion",
+      "pregunta": "¿Qué promedio ponderado o nota mínima de Licenciatura exige el Artículo 57° del Reglamento General de Docencia de Pregrado para obtener la Beca Articulación Pregrado-Postgrado?",
+      "gold_dato": "El Artículo 57° del Reglamento General no exige ni fija un promedio ponderado o nota mínima numérica para la Beca Articulación Pregrado-Postgrado; solo establece ser alumno regular, poseer el grado de Licenciado, ser aceptado en un postgrado UdeC y contar con proposición de la Facultad respectiva.",
+      "gold_fuente": "RG-ART-057",
+      "respuesta": "El Artículo 57° del Reglamento General de Docencia de Pregrado no especifica ninguna nota mínima ni promedio ponderado para obtener la Beca Articulación Pregrado-Postgrado. Solo indica que los alumnos regulares con el Grado Académico de Licenciado podrán ser aceptados en programas de postgrado y que la Universidad concederá la beca a proposición de la Facultad respectiva.\n\nPor lo tanto, **el Artículo 57° no fija ninguna nota mínima o promedio ponderado** para obtener la beca.\n\n[RG-ART-057]",
+      "segundos": 22.6,
+      "turnos": 1,
+      "tools": [],
+      "citas_validas": [
+        "RG-ART-057"
+      ],
+      "citas_inexistentes": []
+    }
+  ]
+}

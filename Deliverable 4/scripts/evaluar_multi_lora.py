@@ -418,8 +418,10 @@ def ejecutar_comparativa_pareada(
                 "gold_fuente": item["gold_fuente"],
                 etiqueta_a: {
                     "respuesta": res_a["respuesta"],
+                    "correcto": None,
                     "veredicto": res_a["veredicto"],
                     "ciclos": res_a["ciclos"],
+                    "llamadas_modelo": sum(1 for p in res_a["traza"] if not p.get("decidido_por")),
                     "tipo_enrutador": res_a["tipo"],
                     "segundos": dt_a,
                     "fuentes_traidas": ed4.extraer_fuentes_de_traza(res_a["traza"]),
@@ -427,8 +429,10 @@ def ejecutar_comparativa_pareada(
                 },
                 etiqueta_b: {
                     "respuesta": res_b["respuesta"],
+                    "correcto": None,
                     "veredicto": res_b["veredicto"],
                     "ciclos": res_b["ciclos"],
+                    "llamadas_modelo": sum(1 for p in res_b["traza"] if not p.get("decidido_por")),
                     "tipo_enrutador": res_b["tipo"],
                     "segundos": dt_b,
                     "fuentes_traidas": ed4.extraer_fuentes_de_traza(res_b["traza"]),

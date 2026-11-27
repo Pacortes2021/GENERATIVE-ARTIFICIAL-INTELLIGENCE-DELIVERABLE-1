@@ -458,6 +458,7 @@ def entrenar_agente(args: argparse.Namespace) -> dict[str, Any]:
         salida_pdf=output_dir / "loss_curve.pdf",
         mejor_step=mejor_step,
         titulo=f"QLoRA Qwen3-4B ({args.agente.capitalize()}) — Pérdida train y val",
+        n_val=len(val_registros),
     )
 
     if not args.skip_smoke_test:

@@ -218,6 +218,7 @@ def graficar_curva_perdida(
     salida_pdf: Path | None = None,
     mejor_step: int | None = None,
     titulo: str = "QLoRA Qwen3-4B (Redactor D4) — Pérdida de entrenamiento y validación",
+    n_val: int | None = None,
 ) -> None:
     """Genera gráfico PNG y PDF listo para el informe técnico."""
     import matplotlib
@@ -243,6 +244,11 @@ def graficar_curva_perdida(
             label="Entrenamiento (train_loss)",
         )
     if eval_pts:
+        eval_label = (
+            f"Validación (eval_loss, n={n_val})"
+            if n_val is not None
+            else "Validación (eval_loss)"
+        )
         ax.plot(
             [p["step"] for p in eval_pts],
             [p["eval_loss"] for p in eval_pts],
@@ -250,7 +256,7 @@ def graficar_curva_perdida(
             markersize=4.5,
             linewidth=2.0,
             color="#c0392b",
-            label="Validación (eval_loss, n=30)",
+            label=eval_label,
         )
 
     if mejor_step is not None:
@@ -671,6 +677,7 @@ def entrenar(args: argparse.Namespace) -> dict[str, Any]:
         salida_png=png_path,
         salida_pdf=pdf_path,
         mejor_step=mejor_step,
+        n_val=len(val_registros),
     )
 
     if not args.skip_smoke_test:
@@ -749,11 +756,19 @@ def main() -> None:
     if args.plot_only is not None:
         metricas = json.loads(args.plot_only.read_text(encoding="utf-8"))
         out_dir = args.plot_only.parent
+        agente_nombre = str(metricas.get("agente") or "redactor").capitalize()
+        titulo_plot = (
+            f"QLoRA Qwen3-4B ({agente_nombre}) — Pérdida train y val"
+            if metricas.get("agente")
+            else "QLoRA Qwen3-4B (Redactor D4) — Pérdida de entrenamiento y validación"
+        )
         graficar_curva_perdida(
             metricas["curvas"],
             salida_png=out_dir / "loss_curve.png",
             salida_pdf=out_dir / "loss_curve.pdf",
             mejor_step=metricas.get("resultados", {}).get("mejor_step"),
+            titulo=titulo_plot,
+            n_val=metricas.get("datos", {}).get("val_ejemplos"),
         )
         print(f"Curva regenerada en {out_dir / 'loss_curve.png'} y {out_dir / 'loss_curve.pdf'}")
         return

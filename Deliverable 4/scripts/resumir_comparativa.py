@@ -191,6 +191,8 @@ def construir_arg_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--multi-csv", type=Path, default=None)
     p.add_argument("--multi-telemetria", type=Path, default=None)
+    p.add_argument("--base-csv", type=Path, default=None)
+    p.add_argument("--base-telemetria", type=Path, default=None)
     p.add_argument(
         "--benchmark",
         choices=("75", "nuevas_20"),
@@ -205,15 +207,15 @@ def construir_arg_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = construir_arg_parser().parse_args(argv)
     if args.benchmark == "75":
-        csv_base = D4_EVAL_DIR / "resultados_control_base_D4_auditados.csv"
-        tel_base = D4_EVAL_DIR / "telemetria_control_base_D4.json"
+        csv_base = args.base_csv or (D4_EVAL_DIR / "resultados_control_base_D4_auditados.csv")
+        tel_base = args.base_telemetria or (D4_EVAL_DIR / "telemetria_control_base_D4.json")
         csv_red = D4_EVAL_DIR / "resultados_agentes_D4_auditados.csv"
         tel_red = D4_EVAL_DIR / "telemetria_llamadas.json"
         csv_multi = args.multi_csv or (D4_EVAL_DIR / "resultados_3lora_75_auditados.csv")
         tel_multi = args.multi_telemetria or (D4_EVAL_DIR / "telemetria_3lora_75.json")
     else:
-        csv_base = D4_EVAL_DIR / "resultados_nuevas20_base_D4_auditados.csv"
-        tel_base = D4_EVAL_DIR / "telemetria_nuevas20_base_D4.json"
+        csv_base = args.base_csv or (D4_EVAL_DIR / "resultados_nuevas20_base_D4_auditados.csv")
+        tel_base = args.base_telemetria or (D4_EVAL_DIR / "telemetria_nuevas20_base_D4.json")
         csv_red = D4_EVAL_DIR / "resultados_nuevas20_ft_D4_auditados.csv"
         tel_red = D4_EVAL_DIR / "telemetria_nuevas20_ft_D4.json"
         csv_multi = args.multi_csv or (D4_EVAL_DIR / "resultados_3lora_nuevas20_auditados.csv")

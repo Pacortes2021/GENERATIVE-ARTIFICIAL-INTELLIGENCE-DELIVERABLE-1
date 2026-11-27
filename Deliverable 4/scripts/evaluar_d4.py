@@ -773,8 +773,12 @@ def main(argv: list[str] | None = None) -> int:
         "revision_modelo_base": base_commit,
         "hf_adaptador_redactor": args.hf_repo,
         "hf_adaptador_revision": args.hf_revision,
-        "agentes_base": ["enrutador", "recuperador", "verificador"],
-        "agentes_finetuned": ["redactor"],
+        "agentes_base": (
+            ["enrutador", "recuperador", "redactor", "verificador"]
+            if args.solo_base
+            else ["enrutador", "recuperador", "verificador"]
+        ),
+        "agentes_finetuned": [] if args.solo_base else ["redactor"],
         "decoding": (
             {"do_sample": False}
             if args.greedy

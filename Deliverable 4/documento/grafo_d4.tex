@@ -34,7 +34,7 @@
 \draw[flow] (r.east)--node[flab,above=2pt]{top-6 evid.\\+ estado}(w.west);
 \draw[flow] (w.east)--node[flab,above=2pt]{borrador\\+ citas}(v.west);
 \draw[flow] (v.east)--node[flab,above=2pt]{aprobado\\STOP}(out.west);
-\draw[back] (v.east) to[out=-35,in=145] node[lab,pos=.58,right=2pt,font=\fontsize{6.8}{7.8}\selectfont]{límite 2 ciclos\\o JSON inválido}(stop.north west);
+\draw[back] (v.east) to[out=-35,in=145] node[lab,pos=.58,right=2pt,font=\fontsize{6.8}{7.8}\selectfont]{límite 2 reintentos\\o JSON inválido}(stop.north west);
 \node[flab,anchor=east] at (e.west) {pregunta\,};
 
 \draw[back] ($(v.north)+(-.45,0)$) -- (17.60,1.25) -- node[lab,above=1pt,pos=.5]{objeción $\rightarrow$ corregir redacción} (12.40,1.25) -- (w.north);

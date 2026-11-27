@@ -127,12 +127,23 @@ def ejecutar_comparativa_live(
     return out_dir / "comparativa_base_vs_3lora.json"
 
 
+def _contar_llamadas(lado: dict[str, Any]) -> int:
+    """Devuelve `llamadas_modelo` o lo reconstruye desde los pasos LLM de la traza."""
+    valor = lado.get("llamadas_modelo")
+    if valor is not None:
+        return int(valor)
+    return sum(1 for p in lado.get("traza", []) if not p.get("decidido_por"))
+
+
 def _resumir_paso(paso: dict[str, Any], solo_base: bool) -> str:
     """Resume una entrada de `traza` mostrando agente, estado LoRA y accion."""
     idx = paso.get("paso", "?")
     agente = str(paso.get("agente", "?")).lower()
-    if agente == "recuperador" and paso.get("decidido_por") == "sistema":
+    decidido_por = paso.get("decidido_por")
+    if decidido_por == "sistema":
         etiqueta = "Sistema (busqueda inicial)"
+    elif decidido_por:
+        etiqueta = f"Sistema ({decidido_por})"
     else:
         etiqueta = etiqueta_adaptador(agente, solo_base)
 
@@ -168,15 +179,35 @@ def _resumir_paso(paso: dict[str, Any], solo_base: bool) -> str:
     return f"  [{idx}] {agente:<11} [{etiqueta}] -> {detalle}"
 
 
+def _estado_auditoria(lado: dict[str, Any]) -> str:
+    """Distingue entre veredicto auditado (`CORRECTA`/`INCORRECTA`) y corrida sin calificar."""
+    val = lado.get("correcto")
+    if val is None or val == "":
+        return "SIN CALIFICAR"
+    if isinstance(val, str):
+        if val.strip() in {"1", "true", "True"}:
+            return "CORRECTA"
+        if val.strip() in {"0", "false", "False"}:
+            return "INCORRECTA"
+        return "SIN CALIFICAR"
+    return "CORRECTA" if bool(val) else "INCORRECTA"
+
+
+def _estado_verificador(ver: dict[str, Any]) -> str:
+    aprob = bool(ver.get("aprobado"))
+    return "APROBADO" if aprob else f"RECHAZO->{ver.get('destino', '?')}"
+
+
 def _formatear_lado(titulo: str, lado: dict[str, Any], solo_base: bool) -> str:
     """Formatea un sistema (Control Base o D4 3-LoRA) en texto plano."""
-    ok = "CORRECTA" if lado.get("correcto") else "INCORRECTA"
+    ok = _estado_auditoria(lado)
     ver = lado.get("veredicto", {})
+    llamadas = _contar_llamadas(lado)
     cab = (
         f"--- {titulo} ---\n"
         f"Resultado: {ok} | Ciclos: {lado.get('ciclos')} | "
-        f"Llamadas LLM: {lado.get('llamadas_modelo')} | Tiempo: {lado.get('segundos')}s\n"
-        f"Verificador final: aprobado={ver.get('aprobado')} ({ver.get('motivo', '')})\n"
+        f"Llamadas LLM: {llamadas} | Tiempo: {lado.get('segundos')}s\n"
+        f"Verificador final: {_estado_verificador(ver)} ({ver.get('motivo', '')})\n"
         f"Fuentes reunidas: {lado.get('fuentes_traidas')}\n"
         f"Traza paso a paso:"
     )
@@ -209,27 +240,46 @@ def formatear_comparativa_texto(caso: dict[str, Any]) -> str:
 def render_comparativa_html(caso: dict[str, Any]) -> str:
     """Genera tarjetas HTML lado a lado listas para `IPython.display.HTML` en Colab."""
 
-    def _badge(correcto: Any) -> str:
-        if correcto:
-            return '<span style="background:#14532d;color:#dcfce7;padding:2px 8px;border-radius:10px;font-weight:700;">CORRECTA</span>'
-        return '<span style="background:#7f1d1d;color:#fee2e2;padding:2px 8px;border-radius:10px;font-weight:700;">INCORRECTA</span>'
+    def _badge(lado: dict[str, Any]) -> str:
+        estado = _estado_auditoria(lado)
+        if estado == "CORRECTA":
+            st_aud = "background:#14532d;color:#dcfce7;"
+        elif estado == "INCORRECTA":
+            st_aud = "background:#7f1d1d;color:#fee2e2;"
+        else:
+            st_aud = "background:#334155;color:#e2e8f0;"
+
+        ver = lado.get("veredicto", {})
+        ver_txt = f"Verificador: {_estado_verificador(ver)}"
+        st_ver = (
+            "background:#065f46;color:#d1fae5;"
+            if ver.get("aprobado")
+            else "background:#78350f;color:#fef3c7;"
+        )
+        return (
+            f'<div style="display:flex;gap:6px;flex-wrap:wrap;">'
+            f'<span style="{st_ver}padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;">{html.escape(ver_txt)}</span>'
+            f'<span style="{st_aud}padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;">{estado}</span>'
+            f"</div>"
+        )
 
     def _card(titulo: str, acento: str, lado: dict[str, Any], solo_base: bool) -> str:
         traza_html = "<br>".join(
             html.escape(_resumir_paso(p, solo_base=solo_base)) for p in lado.get("traza", [])
         )
         resp_html = html.escape(str(lado.get("respuesta", ""))).replace("\n", "<br>")
+        llamadas = _contar_llamadas(lado)
         meta = (
             f"Ciclos: <b>{lado.get('ciclos')}</b> · "
-            f"Llamadas: <b>{lado.get('llamadas_modelo')}</b> · "
+            f"Llamadas: <b>{llamadas}</b> · "
             f"Tiempo: <b>{lado.get('segundos')}s</b>"
         )
         return (
             f'<div style="flex:1;min-width:340px;border:2px solid {acento};border-radius:10px;'
             f'padding:14px;background:#0f172a;color:#e2e8f0;font-family:ui-sans-serif,system-ui;">'
-            f'<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">'
+            f'<div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">'
             f'<span style="font-weight:700;color:#f8fafc;">{html.escape(titulo)}</span>'
-            f'{_badge(lado.get("correcto"))}</div>'
+            f"{_badge(lado)}</div>"
             f'<div style="font-size:12px;color:#cbd5e1;margin-bottom:8px;">{meta}</div>'
             f'<div style="font-size:11.5px;background:#1e293b;padding:8px;border-radius:6px;'
             f'font-family:ui-monospace,monospace;white-space:pre-wrap;margin-bottom:10px;">{traza_html}</div>'

@@ -2,51 +2,47 @@
 
 **Proyecto:** Especialización Multi-LoRA por rol (`Enrutador + Recuperador + Redactor` + `Verificador` en Base) sobre `Qwen/Qwen3-4B` en normativa académica UdeC.  
 **Participantes:** Álvaro Contreras y Pablo Cortés.  
-**Notebook de ejecución en vivo (Colab):** `Deliverable 4/D4_colab_video_demo.ipynb` (respaldo offline en `video/mostrar_demo_d4.py`).
+**Notebook de ejecución en vivo (Colab, rama `main`):** `Deliverable 4/D4_colab_video_demo.ipynb` (respaldo offline en `video/mostrar_demo_d4.py`).
 
 ---
 
-## Preparación rápida antes de grabar (objetivo corte final: `2:40 – 2:50`)
+## Preparación rápida antes de grabar (objetivo corte final: `2:50`)
 
 1. Abre dos pestañas limpias:
-   - **Pestaña 1:** `Deliverable 4/documento/main.pdf` (página única, zoom cómodo para ver cabecera, grafo TikZ, curvas y tabla).
+   - **Pestaña 1:** `Deliverable 4/documento/main.pdf` (página única, zoom cómodo para ver grafo TikZ, tabla de datos, curvas y tabla de resultados).
    - **Pestaña 2:** Google Colab (GPU A100) con `Deliverable 4/D4_colab_video_demo.ipynb` (`MONTAR_DRIVE = False`).
-2. **Pre-ejecuta antes de apretar Rec:** **Paso 1** (`pip install` + `git clone`) y **Paso 2** (carga única NF4 + `e5` + 3 adaptadores desde Hugging Face + `verificar_aislamiento_multi_lora()`).
+2. **Pre-ejecuta antes de apretar Rec:** **Paso 1** (`pip install` + `git clone` de `main`, verificando que el commit ya incluya los arreglos del visor) y **Paso 2** (carga NF4 + verificación SHA-256 + `e5` + 3 adaptadores HF + `verificar_aislamiento_multi_lora()`).
 3. **Al grabar en vivo el Paso 3 (`dificil_25:H07`):**
-   - Lanza el **Paso 3** con `verbose=True` para mostrar los mensajes intermedios entre agentes (`[1] enrutador` ... `[5] verificador`) y las tarjetas HTML finales lado a lado.
-   - En A100, `Control Base` tarda `~173–177 s` (3 ciclos) y `D4 3-LoRA` tarda `~54–60 s` (1 ciclo), `~3m50s` solo en inferencia. **Acelera en edición (`4x–6x`) la espera de generación de Control Base** dejando legibles los logs clave de ciclos 1–3, manteniendo la ejecución real completa bajo **3 minutos**.
-   - Respaldo offline solo en caso de caída de Colab: `python3 "Deliverable 4/video/mostrar_demo_d4.py" --qid dificil_25:H07 --mostrar-fallos`.
+   - Muestra el **clic en Ejecutar del Paso 3** (`verbose=True`) para que se lean ambos planes del Enrutador, acción del Recuperador, borrador y veredicto Base, cerrando con las tarjetas HTML (`Verificador: APROBADO/RECHAZO` · `SIN CALIFICAR` con llamadas reales).
+   - **Tiempos y edición:** en A100, `Base` (~173–177 s) + `3-LoRA` (~54–60 s) toman ~3m50s en vivo. **Acelera (`6x–8x`) las esperas de generación en AMBOS lados** (con aviso en pantalla) para ajustar este bloque a **`~80 s`** y narra siempre con los **contadores exactos de esa toma** (benchmark: `4` llamadas / `53,84 s`; ensayo `--solo-hf`: `6` llamadas / `59,91 s`).
+   - **Precisión normativa en `H07`:** `RG Art. 28 a)` define la fórmula del promedio (`42 / 4 = 10,5`) y `RI-FI Art. 14 b)` fija el umbral `< 10` desde el 4.º semestre. Si el modelo en vivo cita solo `RI-FI-ART-014`, muéstralo tal cual y distingue la aprobación interna del Verificador frente a la evaluación completa de citas.
 
 ---
 
-## Guion hablado cronometrado (~350 palabras · ~2:35 locución + transiciones = ~2:45)
+## Guion hablado cronometrado (~330 palabras · corte final `2:50`)
 
-> Pueden leerlo de corrido o repartirse los bloques (ej. Bloques 1–2 Álvaro, Bloques 3–5 Pablo).
-
-### 0:00 – 0:25 | Contexto D1–D3 y arquitectura Multi-LoRA (`main.pdf` · Secciones 1 y 2)
+### 0:00 – 0:21 | Continuidad D1–D3 y arquitectura `3-LoRA` (`main.pdf` · Grafo)
 - **En pantalla:** Página 1 de `documento/main.pdf` (cabecera y grafo TikZ).
 - **Locución:**
-  > Hola, somos Álvaro Contreras y Pablo Cortés. En Deliverable 3 armamos cuatro agentes sobre `Qwen/Qwen3-4B` sin entrenar; en A100 ese Control Base logró `62/75` con `658` llamadas, y entrenar solo al Redactor (`60/75`) dejaba intacto el cuello de botella del Recuperador (`373` llamadas). Por eso en D4 creamos **3-LoRA**: un único modelo en 4 bits con tres adaptadores QLoRA por turno (**Enrutador, Recuperador, Redactor** con `set_adapter()`) y el **Verificador** en Base vía `disable_adapter()`.
+  > Hola, somos Álvaro Contreras y Pablo Cortés. En D1, `Qwen/Qwen3-4B` sin corpus acertó `2/50`. En D3, tras saturar prompting en cuatro agentes, `8/9` fallos ya tenían evidencia en el Redactor, y entrenar solo al Redactor dejó `373` llamadas en el Recuperador. En D4 conservamos los prompts y adaptamos **Enrutador, Recuperador y Redactor** con `set_adapter()`, dejando al **Verificador** en Base vía `disable_adapter()`.
 
-### 0:25 – 0:45 | Datos antifuga y entrenamiento (`main.pdf` · Sección 3 y curvas)
-- **En pantalla:** Tabla de datasets y gráfica `loss_curves_3agentes.png` en `main.pdf`.
+### 0:21 – 0:42 | Datos, revisión humana y alcance antifuga (`main.pdf` · Sección 3 y curvas)
+- **En pantalla:** Tabla de datasets y curvas `loss_curves_3agentes.png` en `main.pdf`.
 - **Locución:**
-  > Construimos `725` ejemplos (`620` train, `105` val) sobre artículos disjuntos de las `75` preguntas y las `20` nuevas, garantizando `0%` fuga de datos. Los tres roles convergieron sin truncamientos, bajando la pérdida de validación a `0,123` en Enrutador, `0,186` en Recuperador y `0,516` en Redactor.
+  > Armamos `725` pares (`620` entrenamiento, `105` validación) con `0` truncamientos y revisamos `50` ejemplos a mano con firmas. Comprobamos `0` coincidencias con las `61` unidades excluidas de evaluación, y declaramos que `P36` aparece como ejemplo *few-shot* heredado en el Enrutador, donde `3-LoRA` sigue fallando.
 
-### 0:45 – 1:45 | Demostración en vivo: Control Base vs D4 `3-LoRA` en `H07` (`Colab` · Pasos 2 y 3)
-- **En pantalla:** Cambia a Colab; muestra `verificar_aislamiento_multi_lora()` del **Paso 2** y ejecuta **Paso 3** (`dificil_25:H07`), mostrando los mensajes intermedios y luego las tarjetas HTML.
-- **Pregunta `H07`:** *"Un estudiante aprobó 42 créditos al término de su cuarto semestre. ¿Está en baja académica por el criterio de promedio de créditos del Artículo 14?"*
+### 0:42 – 2:02 | Demo en vivo `H07`: Base vs `3-LoRA` (`Colab` · Pasos 2 y 3 · **80 s**)
+- **En pantalla:** Cambia a Colab; muestra el **Paso 2** listo, haz **clic en Ejecutar Paso 3 (`dificil_25:H07`)**, deja leer ambos planes, una acción del Recuperador, borrador y veredicto, y muestra las tarjetas HTML lado a lado.
 - **Locución:**
-  > Pasemos a Colab cargando los pesos desde Hugging Face. Con el aislamiento verificado, ejecutamos en vivo el caso `H07`: un alumno aprobó 42 créditos al cuarto semestre y consultamos si entra en baja académica.
-  > En **Control Base (`LoRA OFF`)**, cae en **3 ciclos, 13 llamadas y `177` segundos**: el Redactor acierta en ciclo 2, pero el Verificador Base lo rechaza (*"la evidencia no respalda este cálculo"*) y provoca una falsa abstención.
-  > En **D4 `3-LoRA`**, vemos los mensajes intermedios: **Enrutador** clasifica `numerica`, **Recuperador** decide `suficiente` con los primeros cinco fragmentos sin iterar, **Redactor** calcula `42 / 4 = 10,5 > 10` citando `[RI-FI-ART-014]`, y **Verificador Base** aprueba en **1 ciclo, 4 llamadas y `54` segundos**.
+  > Con los adaptadores cargados desde Hugging Face y su aislamiento verificado, ejecutamos en vivo `H07` sobre si un alumno con 42 créditos en cuarto semestre cae en baja académica.
+  > *(Acelera las esperas en ambos lados)*: Los dos Enrutadores reciben la misma pregunta. Aquí se ven ambos planes, la recuperación, el borrador y el veredicto. Control Base entra en `3` ciclos y `13` llamadas hasta abstenerse falsamente, mientras `3-LoRA` aprueba en `1` ciclo: `42 / 4 = 10,5 > 10`, cumpliendo con el umbral de RI-FI 14 b) según RG 28 a). Estos son los contadores reales de la toma.
 
-### 1:45 – 2:20 | Resultados globales y por qué Verificador queda en Base (`main.pdf` · Tabla)
-- **En pantalla:** Tabla de resultados en `documento/main.pdf`.
+### 2:02 – 2:30 | Tabla A100 y por qué Verificador queda en Base (`main.pdf` · Tabla)
+- **En pantalla:** Tabla de resultados en `main.pdf`.
 - **Locución:**
-  > Sobre todo el banco en A100, **3-LoRA** sostiene la exactitud del Control Base —**`64/75`** vs `62/75` (`McNemar p = 0,73`), **`10/20`** nuevas y **`74/95`** global—, recortando un **`41,0%`** las llamadas (`658` a `388`) y **`53,5%`** en las nuevas. El Recuperador bajó **`69,8%`** (`387` a `117`), deteniéndose al paso uno en `65/75`. Además probamos entrenar al Verificador (`4-LoRA v1: 58/75`, `v2: 56/75`), pero sobre-rechazó y validó dejarlo en Base.
+  > En A100, `3-LoRA` logró `64/75` frente a `62/75` del Control Base —McNemar no detectó diferencia— y recortó las llamadas de `658` a `388` (`-41%`). El tiempo bajó de `75,3` a `72,6` minutos, y en las `20` nuevas marcamos `10` frente a `11`. Entrenar también al Verificador cayó a `58` y `56` en las `75`, validando dejarlo en Base.
 
-### 2:20 – 2:45 | Transparencia de errores reales y cierre (`Colab` · Paso 4)
-- **En pantalla:** Ejecuta **Paso 4** en Colab (`casos_fallo_y_regresion_3lora.json`: `H03`, `H17`, `H06`).
+### 2:30 – 2:50 | Fallo real (`H03`) y cierre (`Colab` · Paso 4)
+- **En pantalla:** Ejecuta **Paso 4** mostrando `dificil_25:H03` (`casos_fallo_y_regresion_3lora.json`).
 - **Locución:**
-  > Cerramos con transparencia revisando tres fallos reales: en `H03`, el Recuperador corta antes de traer todo el calendario; en `H17`, el Verificador Base fuerza una inversión en ciclo 3; y en `H06`, el Redactor invierte la polaridad. Código, hashes SHA-256, trazas y `31` pruebas offline quedan reproducibles en `Deliverable 4/`. Gracias.
+  > Cerramos con la traza archivada de `H03`: el Recuperador se detuvo sin traer las fechas de inicio y el Redactor comparó las dos fechas límite entre sí. Código, hashes SHA-256, trazas y `31` pruebas offline quedan reproducibles en `Deliverable 4/` de `main`. Gracias.

@@ -378,6 +378,24 @@ class TestDemoVideoD4(unittest.TestCase):
         self.assertIn("D4 3-LoRA", html_card)
         self.assertIn("LoRA ON (Redactor FT)", html_card)
 
+        repro_hf = demo.cargar_comparativas(
+            DELIVERABLE4_DIR / "evaluacion" / "comparativa_reproduccion_hf.json"
+        )
+        self.assertIn("dificil_25:H07", repro_hf)
+        txt_hf = demo.formatear_comparativa_texto(repro_hf["dificil_25:H07"])
+        self.assertIn("Resultado: SIN CALIFICAR", txt_hf)
+        self.assertIn("Llamadas LLM: 13", txt_hf)
+        self.assertIn("Llamadas LLM: 6", txt_hf)
+        self.assertNotIn("INCORRECTA", txt_hf)
+
+        html_hf = demo.render_comparativa_html(repro_hf["dificil_25:H07"])
+        self.assertIn("SIN CALIFICAR", html_hf)
+        self.assertNotIn("INCORRECTA", html_hf)
+        self.assertIn("Llamadas: <b>13</b>", html_hf)
+        self.assertIn("Llamadas: <b>6</b>", html_hf)
+        self.assertIn("Verificador: RECHAZO", html_hf)
+        self.assertIn("Verificador: APROBADO", html_hf)
+
         fallos = demo.cargar_fallos_y_regresiones()
         txt_fallo = demo.formatear_fallos_texto(fallos)
         self.assertIn("AUDITORIA DE FALLOS REALES D4 3-LoRA", txt_fallo)

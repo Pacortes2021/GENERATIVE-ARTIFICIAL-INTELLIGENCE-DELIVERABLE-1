@@ -132,7 +132,7 @@ def _construir_bloque_sistema(
 def generar_curva_3_agentes(
     train_dir: Path = D4_TRAIN_DIR,
 ) -> dict[str, str]:
-    """Dibuja 3 mini-paneles lado a lado con `train_loss` y `eval_loss` reales."""
+    """Dibuja 3 mini-paneles lado a lado con `train_loss`, `eval_loss` y mejor paso."""
     import matplotlib
 
     matplotlib.use("Agg")
@@ -144,8 +144,11 @@ def generar_curva_3_agentes(
         ("Redactor", train_dir / "training_metrics.json", "#b45309"),
     ]
 
-    fig, axes = plt.subplots(1, 3, figsize=(11.5, 1.98), dpi=300)
-    for ax, (titulo, mpath, color) in zip(axes, specs):
+    fig, axes = plt.subplots(1, 3, figsize=(7.8, 1.36), dpi=300)
+    handles_leg: list[Any] = []
+    labels_leg: list[str] = []
+
+    for idx, (ax, (titulo, mpath, color)) in enumerate(zip(axes, specs)):
         m = json.loads(mpath.read_text(encoding="utf-8"))
         curvas = m["curvas"]
         train_pts = curvas.get("train", [])
@@ -154,40 +157,67 @@ def generar_curva_3_agentes(
         mejor_step = res.get("mejor_step")
 
         if train_pts:
-            ax.plot(
+            (l_tr,) = ax.plot(
                 [p["step"] for p in train_pts],
                 [p["loss"] for p in train_pts],
                 color=color,
-                alpha=0.55,
-                linewidth=1.45,
+                alpha=0.58,
+                linewidth=1.35,
                 label="Train",
             )
+            if idx == 0:
+                handles_leg.append(l_tr)
+                labels_leg.append("Train (rol)")
         if eval_pts:
-            ax.plot(
+            (l_val,) = ax.plot(
                 [p["step"] for p in eval_pts],
                 [p["eval_loss"] for p in eval_pts],
                 color="#14334b",
                 marker="o",
-                markersize=3.6,
-                linewidth=1.95,
-                label="Val",
+                markersize=2.8,
+                linewidth=1.65,
+                label="Validación",
             )
+            if idx == 0:
+                handles_leg.append(l_val)
+                labels_leg.append("Validación")
         if mejor_step is not None:
-            ax.axvline(mejor_step, color="#059669", linestyle="--", linewidth=1.1, alpha=0.85)
+            l_mk = ax.axvline(
+                mejor_step,
+                color="#059669",
+                linestyle="--",
+                linewidth=1.15,
+                alpha=0.9,
+                label="Mejor ckpt",
+            )
+            if idx == 0:
+                handles_leg.append(l_mk)
+                labels_leg.append("Mejor paso")
 
         ax.set_title(
-            f"{titulo} — val: {res['eval_loss_inicial']:.3f} → {res['mejor_eval_loss']:.3f} (step {mejor_step})",
-            fontsize=9.2,
+            f"{titulo} · val: {res['eval_loss_inicial']:.2f}→{res['mejor_eval_loss']:.3f} (paso {mejor_step})",
+            fontsize=7.9,
             fontweight="bold",
             color="#14334b",
+            pad=4,
         )
-        ax.set_xlabel("Paso", fontsize=8.5)
-        ax.tick_params(labelsize=8.0)
+        ax.set_xlabel("Paso", fontsize=7.2)
+        ax.tick_params(labelsize=6.8)
+        ax.spines["top"].set_visible(False)
+        ax.spines["right"].set_visible(False)
         ax.grid(True, linestyle=":", alpha=0.35)
-        ax.legend(fontsize=8.0, loc="upper right", frameon=True)
 
-    axes[0].set_ylabel("Loss (completion-only)", fontsize=8.5)
-    fig.tight_layout(pad=0.6)
+    axes[0].set_ylabel("Pérdida", fontsize=7.3)
+    fig.legend(
+        handles_leg,
+        labels_leg,
+        loc="upper center",
+        ncol=3,
+        frameon=False,
+        fontsize=7.0,
+        bbox_to_anchor=(0.52, 1.03),
+    )
+    fig.tight_layout(rect=(0.0, 0.0, 1.0, 0.87), pad=0.35, w_pad=0.8)
 
     out_pdf = train_dir / "loss_curves_3agentes.pdf"
     out_png = train_dir / "loss_curves_3agentes.png"

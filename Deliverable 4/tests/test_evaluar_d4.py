@@ -403,6 +403,37 @@ class TestDemoVideoD4(unittest.TestCase):
         self.assertIn("dificil_25:H17", txt_fallo)
         self.assertIn("dificil_25:H06", txt_fallo)
 
+        html_fallos = demo.render_fallos_html(fallos)
+        self.assertIn("dificil_25:H03", html_fallos)
+        self.assertIn("Pauta esperada:", html_fallos)
+        self.assertIn("CAL-2026-S1-03", html_fallos)
+
+        resumen = json.loads((DELIVERABLE4_DIR / "evaluacion" / "resumen_comparativo_d4.json").read_text(encoding="utf-8"))
+        html_resumen = demo.render_resumen_a100_html(resumen)
+        self.assertIn("D4 3-LoRA Oficial", html_resumen)
+        self.assertIn("64/75", html_resumen)
+        self.assertIn("−41,0%", html_resumen)
+
+        html_estado = demo.render_estado_carga_html(
+            "Qwen/Qwen3-4B",
+            "0d903d2",
+            "torch.bfloat16",
+            {"enrutador": ("Pablox0333/qwen3-4b-enrutador-udec-d4", "ab65a4f")},
+            {"enrutador": {"verificado": True}},
+            {"max_abs_diff_vs_base": {"enrutador": 1.5}, "max_abs_diff_cruzada": {}},
+        )
+        self.assertIn("Aislamiento Multi-LoRA Verificado", html_estado)
+
+        html_banner = demo.render_pregunta_banner_html(comparativas["dificil_25:H07"])
+        self.assertIn("dificil_25:H07", html_banner)
+
+        fmt_red = eml.MultiLoraGenerator._formatear_verbose(
+            "redactor",
+            "<pensar>Cadena interna larga</pensar>\nRespuesta: No cae en baja [RI-FI-ART-014].",
+        )
+        self.assertNotIn("<pensar>", fmt_red)
+        self.assertIn("Respuesta: No cae en baja", fmt_red)
+
     def test_cli_demo_y_notebook_video_valido(self) -> None:
         self.assertEqual(demo.main(["--listar"]), 0)
         with self.assertRaises(ValueError):

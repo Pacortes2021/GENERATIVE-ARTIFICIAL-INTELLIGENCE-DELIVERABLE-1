@@ -182,6 +182,51 @@ class MultiLoraGenerator:
         self.verbose = verbose
         self.step_callback = step_callback
         self.telemetria: list[dict[str, Any]] = []
+        self._ciclo_actual = 1
+        self._ultimo_agente: str | None = None
+
+    def reiniciar_estado_sesion(self) -> None:
+        """Reinicia el conteo de ciclo al comenzar una pregunta en modo verbose."""
+        self._ciclo_actual = 1
+        self._ultimo_agente = None
+
+    @staticmethod
+    def _formatear_verbose(agente: str, salida: str, despues_de_enrutador: bool = False) -> str:
+        """Resume la salida en vivo sin quedar truncado dentro de `<pensar>...</pensar>`."""
+        import re
+
+        ag = str(agente).strip().lower()
+        txt = str(salida).strip()
+        if ag == "redactor":
+            limpio = re.sub(r"<pensar>.*?</pensar>", "", txt, flags=re.DOTALL | re.IGNORECASE).strip()
+            base_txt = limpio or txt
+            compacto = " ".join(base_txt.split())
+            return compacto if len(compacto) <= 280 else compacto[:277] + "..."
+        try:
+            obj = json.loads(txt)
+        except Exception:
+            compacto = " ".join(txt.split())
+            return compacto if len(compacto) <= 260 else compacto[:257] + "..."
+        if ag == "enrutador" and isinstance(obj, dict):
+            subs = obj.get("sub_consultas", [])
+            subs_txt = "; ".join(str(s) for s in subs[:2])
+            if len(subs) > 2:
+                subs_txt += f" (+{len(subs) - 2})"
+            return f"tipo={obj.get('tipo')} | docs={obj.get('documentos')} | subs=[{subs_txt}]"
+        if ag == "recuperador" and isinstance(obj, dict):
+            acc = obj.get("accion")
+            args = obj.get("args", {})
+            nota = " (post búsqueda base E5)" if despues_de_enrutador else ""
+            if acc == "suficiente":
+                return f"accion=suficiente{nota}"
+            return f"accion={acc} args={json.dumps(args, ensure_ascii=False)}{nota}"
+        if ag == "verificador" and isinstance(obj, dict):
+            est = "APROBADO -> fin" if obj.get("aprobado") else f"RECHAZO -> {obj.get('destino')}"
+            mot = " ".join(str(obj.get("motivo", "")).split())
+            if len(mot) > 180:
+                mot = mot[:177] + "..."
+            return f"{est} | {mot}"
+        return " ".join(txt.split())[:260]
 
     def __call__(self, agente: str, prompt: str, max_new_tokens: int | None = None) -> str:
         import torch
@@ -240,14 +285,28 @@ class MultiLoraGenerator:
         if self.verbose or self.step_callback is not None:
             evento = {**registro, "paso": len(self.telemetria), "salida": salida}
             if self.verbose:
-                tag = f"LoRA:{nombre_adaptador}" if usa_adaptador else "BASE(OFF)"
-                resumen = " ".join(salida.split())
-                if len(resumen) > 320:
-                    resumen = resumen[:317] + "..."
+                tag = f"LoRA ON ({nombre_adaptador})" if usa_adaptador else "LoRA OFF (Base)"
+                desp_enr = agente == "recuperador" and self._ultimo_agente == "enrutador"
+                if agente == "enrutador" and self._ciclo_actual == 1:
+                    print("  ── Ciclo 1 ──", flush=True)
+                resumen = self._formatear_verbose(agente, salida, despues_de_enrutador=desp_enr)
                 print(
-                    f"  [Paso {evento['paso']:02d} | {agente.upper():11s} | {tag:16s} | {dt:5.2f}s] {resumen}",
+                    f"  [Paso {evento['paso']:02d} | {agente.upper():11s} | {tag:22s} | {dt:5.2f}s] {resumen}",
                     flush=True,
                 )
+                if agente == "verificador":
+                    try:
+                        ver_obj = json.loads(salida)
+                        if isinstance(ver_obj, dict) and not ver_obj.get("aprobado"):
+                            self._ciclo_actual += 1
+                            dest = ver_obj.get("destino", "redactor")
+                            print(
+                                f"  ── Ciclo {self._ciclo_actual} (reintento en {dest} tras rechazo del Verificador) ──",
+                                flush=True,
+                            )
+                    except Exception:
+                        pass
+                self._ultimo_agente = str(agente).strip().lower()
             if self.step_callback is not None:
                 self.step_callback(evento)
 
@@ -396,16 +455,28 @@ def ejecutar_comparativa_pareada(
     resultados: list[dict[str, Any]] = []
     for item in preguntas:
         if getattr(generador_a, "verbose", False):
-            print(f"\n>>> [{etiqueta_a}] {item['qid']}: {item['pregunta']}", flush=True)
+            if hasattr(generador_a, "reiniciar_estado_sesion"):
+                generador_a.reiniciar_estado_sesion()
+            print(f"\n{'=' * 78}\n>>> [SISTEMA 1/2: {etiqueta_a.upper()}] {item['qid']} — {item['pregunta']}", flush=True)
         t0 = time.time()
         res_a = orq_a.responder(item["pregunta"])
         dt_a = round(time.time() - t0, 2)
+        llamadas_a = sum(1 for p in res_a["traza"] if not p.get("decidido_por"))
+        if getattr(generador_a, "verbose", False):
+            ver_a = "APROBADO" if res_a["veredicto"].get("aprobado") else f"RECHAZO->{res_a['veredicto'].get('destino', '?')}"
+            print(f"[FIN {etiqueta_a.upper()}] ciclos={res_a['ciclos']} | llamadas_llm={llamadas_a} | tiempo={dt_a}s | verificador={ver_a}", flush=True)
 
         if getattr(generador_b, "verbose", False):
-            print(f"\n>>> [{etiqueta_b}] {item['qid']}: {item['pregunta']}", flush=True)
+            if hasattr(generador_b, "reiniciar_estado_sesion"):
+                generador_b.reiniciar_estado_sesion()
+            print(f"\n{'=' * 78}\n>>> [SISTEMA 2/2: {etiqueta_b.upper()}] {item['qid']} — {item['pregunta']}", flush=True)
         t1 = time.time()
         res_b = orq_b.responder(item["pregunta"])
         dt_b = round(time.time() - t1, 2)
+        llamadas_b = sum(1 for p in res_b["traza"] if not p.get("decidido_por"))
+        if getattr(generador_b, "verbose", False):
+            ver_b = "APROBADO" if res_b["veredicto"].get("aprobado") else f"RECHAZO->{res_b['veredicto'].get('destino', '?')}"
+            print(f"[FIN {etiqueta_b.upper()}] ciclos={res_b['ciclos']} | llamadas_llm={llamadas_b} | tiempo={dt_b}s | verificador={ver_b}", flush=True)
 
         resultados.append(
             {
@@ -421,7 +492,7 @@ def ejecutar_comparativa_pareada(
                     "correcto": None,
                     "veredicto": res_a["veredicto"],
                     "ciclos": res_a["ciclos"],
-                    "llamadas_modelo": sum(1 for p in res_a["traza"] if not p.get("decidido_por")),
+                    "llamadas_modelo": llamadas_a,
                     "tipo_enrutador": res_a["tipo"],
                     "segundos": dt_a,
                     "fuentes_traidas": ed4.extraer_fuentes_de_traza(res_a["traza"]),
@@ -432,7 +503,7 @@ def ejecutar_comparativa_pareada(
                     "correcto": None,
                     "veredicto": res_b["veredicto"],
                     "ciclos": res_b["ciclos"],
-                    "llamadas_modelo": sum(1 for p in res_b["traza"] if not p.get("decidido_por")),
+                    "llamadas_modelo": llamadas_b,
                     "tipo_enrutador": res_b["tipo"],
                     "segundos": dt_b,
                     "fuentes_traidas": ed4.extraer_fuentes_de_traza(res_b["traza"]),

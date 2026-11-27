@@ -1,4 +1,4 @@
-\documentclass[border=4pt]{standalone}
+\documentclass[border=3pt]{standalone}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -13,43 +13,43 @@
 \begin{document}
 \begin{tikzpicture}[
  >=Stealth,
- agent/.style={draw=azul,fill=suave,rounded corners=2pt,minimum width=2.85cm,minimum height=0.88cm,align=center,font=\fontsize{8.4}{9.6}\selectfont},
- ftagent/.style={draw=ftborder,fill=ftfill,line width=1.25pt,rounded corners=2pt,minimum width=3.15cm,minimum height=0.92cm,align=center,font=\fontsize{8.4}{9.6}\selectfont},
- tool/.style={draw=ambar!75,fill=orange!5,rounded corners=2pt,minimum width=2.45cm,minimum height=0.56cm,align=center,font=\fontsize{7.5}{9}\selectfont},
- terminal/.style={draw=azul,fill=green!6,rounded corners=2pt,minimum width=1.75cm,minimum height=0.74cm,align=center,font=\fontsize{7.5}{9}\selectfont},
- lab/.style={fill=white,inner sep=1.2pt,align=center,font=\fontsize{6.8}{7.8}\selectfont,text=azul},
- flab/.style={inner sep=1.5pt,align=center,font=\fontsize{6.8}{7.8}\selectfont,text=azul},
+ agent/.style={draw=azul,fill=suave,rounded corners=2.5pt,minimum width=2.62cm,minimum height=0.82cm,inner sep=3pt,align=center,font=\fontsize{8.0}{9.1}\selectfont},
+ ftagent/.style={draw=ftborder,fill=ftfill,line width=1.2pt,rounded corners=2.5pt,minimum width=2.76cm,minimum height=0.84cm,inner sep=3pt,align=center,font=\fontsize{8.0}{9.1}\selectfont},
+ tool/.style={draw=ambar!75,fill=orange!5,rounded corners=2pt,minimum width=2.15cm,minimum height=0.48cm,inner sep=2.5pt,align=center,font=\fontsize{7.2}{8.3}\selectfont},
+ terminal/.style={draw=azul,fill=green!6,rounded corners=2.5pt,minimum width=1.80cm,minimum height=0.56cm,inner sep=2.5pt,align=center,font=\fontsize{7.2}{8.3}\selectfont},
+ lab/.style={fill=white,inner sep=1.1pt,align=center,font=\fontsize{6.7}{7.7}\selectfont,text=azul},
+ flab/.style={inner sep=1.2pt,align=center,font=\fontsize{6.7}{7.7}\selectfont,text=azul},
  flow/.style={->,draw=azul,line width=0.68pt},
  back/.style={->,draw=acento,dashed,line width=0.68pt},
  use/.style={<->,draw=ambar,line width=0.55pt}
 ]
-\node[ftagent] (e) at (1.35,0) {{\color{ftborder}\textbf{Enrutador (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont QLoRA $\cdot$ \texttt{set\_adapter}}};
-\node[ftagent] (r) at (6.75,0) {{\color{ftborder}\textbf{Recuperador (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont ReAct $\cdot$ QLoRA (\texttt{set\_adapter})}};
-\node[ftagent] (w) at (12.40,0) {{\color{ftborder}\textbf{Redactor (Fine-tuned)}}\\{\fontsize{6.8}{7.8}\selectfont QLoRA $\cdot$ \texttt{set\_adapter}}};
-\node[agent] (v) at (18.05,0) {\textbf{Verificador (Base)}\\{\fontsize{6.8}{7.8}\selectfont Qwen3-4B $\cdot$ \texttt{disable\_adapter}}};
-\node[terminal] (out) at (22.15,0) {Respuesta\\aprobada};
-\node[terminal,fill=black!3,draw=black!55,dashed] (stop) at (22.15,-1.75) {Último borrador\\\textbf{no aprobado}};
+\node[ftagent] (e) at (0.0,0) {{\color{ftborder}\textbf{Enrutador (FT)}}\\{\fontsize{6.7}{7.7}\selectfont QLoRA $\cdot$ \texttt{set\_adapter}}};
+\node[ftagent] (r) at (4.45,0) {{\color{ftborder}\textbf{Recuperador (FT)}}\\{\fontsize{6.7}{7.7}\selectfont ReAct $\cdot$ \texttt{set\_adapter}}};
+\node[ftagent] (w) at (9.05,0) {{\color{ftborder}\textbf{Redactor (FT)}}\\{\fontsize{6.7}{7.7}\selectfont QLoRA $\cdot$ \texttt{set\_adapter}}};
+\node[agent] (v) at (13.45,0) {\textbf{Verificador (Base)}\\{\fontsize{6.7}{7.7}\selectfont Qwen3-4B $\cdot$ \texttt{disable\_adapter}}};
+\node[terminal] (out) at (17.55,0.42) {Respuesta\\aprobada};
+\node[terminal,fill=black!3,draw=black!55,dashed] (stop) at (17.55,-0.52) {Último borrador\\no aprobado};
 
-\draw[flow] (e.east)--node[flab,above=2pt]{plan JSON\\tipo, docs}(r.west);
-\draw[flow] (r.east)--node[flab,above=2pt]{top-6 evid.\\+ estado}(w.west);
-\draw[flow] (w.east)--node[flab,above=2pt]{borrador\\+ citas}(v.west);
-\draw[flow] (v.east)--node[flab,above=2pt]{aprobado\\STOP}(out.west);
-\draw[back] (v.east) to[out=-35,in=145] node[lab,pos=.58,right=2pt,font=\fontsize{6.8}{7.8}\selectfont]{límite 2 reintentos\\o JSON inválido}(stop.north west);
-\node[flab,anchor=east] at (e.west) {pregunta\,};
+\draw[flow] (e.east)--node[flab,above=1.5pt]{plan JSON\\tipo, docs}(r.west);
+\draw[flow] (r.east)--node[flab,above=1.5pt]{top-6 evid.\\+ estado}(w.west);
+\draw[flow] (w.east)--node[flab,above=1.5pt]{borrador\\+ citas}(v.west);
+\draw[flow] ($(v.east)+(0,0.20)$)--node[flab,above=2.5pt]{aprobado}(out.west);
+\draw[back] ($(v.east)+(0,-0.16)$)--node[lab,below=3pt,pos=.48]{2 reintentos\\o JSON inv.}(stop.west);
+\node[flab,anchor=east] at ($(e.west)+(-0.08,0)$) {pregunta};
 
-\draw[back] ($(v.north)+(-.45,0)$) -- (17.60,1.25) -- node[lab,above=1pt,pos=.5]{objeción $\rightarrow$ corregir redacción} (12.40,1.25) -- (w.north);
-\draw[back] (v.north) -- (18.05,1.95) -- node[lab,above=1pt]{evidencia faltante $\rightarrow$ nueva búsqueda} (7.15,1.95) -- ($(r.north)+(.4,0)$);
-\draw[back] ($(r.north)+(-.55,0)$) -- (6.20,1.22) to[out=90,in=90] (6.75,1.22) -- ($(r.north)+(0,0)$);
-\node[flab,anchor=east] at (5.95,1.35) {observar / actuar\\máx. 3 por subconsulta};
+\draw[back] ($(v.north)+(-0.35,0)$) -- (13.10,0.88) -- node[lab,above=0.5pt,pos=.5]{objeción $\rightarrow$ corregir redacción} (9.05,0.88) -- (w.north);
+\draw[back] (v.north) -- (13.45,1.38) -- node[lab,above=0.5pt]{evidencia faltante $\rightarrow$ nueva búsqueda} (5.00,1.38) -- ($(r.north)+(0.55,0)$);
+\draw[back] ($(r.north)+(-0.85,0)$) -- (3.60,0.88) to[out=90,in=90] (4.25,0.88) -- ($(r.north)+(-0.20,0)$);
+\node[flab,anchor=east] at (3.45,0.92) {observar / actuar\\($\le 3$/subconsulta)};
 
-\node[tool] (b) at (2.40,-1.75) {\texttt{buscar} (E5)};
-\node[tool] (a) at (6.75,-1.75) {\texttt{traer\_articulo}};
-\node[tool] (x) at (11.40,-1.75) {\texttt{existe\_articulo}};
-\node[tool] (c) at (17.15,-1.75) {\texttt{chequear\_citas}};
-\draw[use] ($(r.south)+(-.8,0)$)--node[lab,pos=.56,above]{consulta, $k$ /\\resultados}(b.north);
-\draw[use] (r.south)--node[lab,right,pos=.52]{doc., n /\\texto}(a.north);
-\draw[use] ($(r.south)+(.8,0)$)--node[lab,pos=.56,above]{doc., n /\\existe}(x.north);
-\draw[use] (v.south)--node[lab,right,pos=.52]{borrador /\\IDs y existencia}(c.north);
-\draw[use] (c.south)--(17.15,-2.42)--node[lab,above=1pt]{referencias normativas / existencia}(11.40,-2.42)--(x.south);
+\node[tool] (b) at (1.50,-1.22) {\texttt{buscar} (E5)};
+\node[tool] (a) at (4.45,-1.22) {\texttt{traer\_articulo}};
+\node[tool] (x) at (7.95,-1.22) {\texttt{existe\_articulo}};
+\node[tool] (c) at (13.45,-1.22) {\texttt{chequear\_citas}};
+\draw[use] ($(r.south)+(-0.70,0)$)--node[lab,left=1pt,pos=.52]{consulta, $k$}(b.north);
+\draw[use] (r.south)--node[lab,right=1pt,pos=.52]{doc., $n$}(a.north);
+\draw[use] ($(r.south)+(0.70,0)$)--node[lab,right=1pt,pos=.52]{doc., $n$}(x.north);
+\draw[use] (v.south)--node[lab,right=1pt,pos=.52]{IDs / texto}(c.north);
+\draw[use] (c.south)--(13.45,-1.76)--node[lab,above=0.5pt]{referencias normativas / existencia}(7.95,-1.76)--(x.south);
 \end{tikzpicture}
 \end{document}

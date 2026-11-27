@@ -1,0 +1,56 @@
+{
+  "fecha_utc": "2026-11-13T23:12:26.488113+00:00",
+  "modelo_base": "Qwen/Qwen3-4B",
+  "revision_modelo_base": "",
+  "hf_adaptador_redactor": "Pablox0333/qwen3-4b-redactor-udec-d4",
+  "agentes_base": [
+    "enrutador",
+    "recuperador",
+    "verificador"
+  ],
+  "agentes_finetuned": [
+    "redactor"
+  ],
+  "decoding": {
+    "do_sample": true,
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20,
+    "min_p": 0.0
+  },
+  "semilla_base": 2026,
+  "max_tokens": {
+    "enrutador": 256,
+    "recuperador": 160,
+    "redactor": 1200,
+    "verificador": 700
+  },
+  "enable_thinking": false,
+  "recuperador_e5": "intfloat/multilingual-e5-small",
+  "aislamiento_verificado": {
+    "max_abs_logit_diff": 13.5625,
+    "active_adapters": [
+      "default"
+    ]
+  },
+  "hardware": {
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "vram_gb": 42.41,
+    "compute_dtype": "torch.bfloat16"
+  },
+  "versiones": {
+    "torch": "2.14.1+cu130",
+    "transformers": "5.23.0",
+    "peft": "0.21.3",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.15.0",
+    "huggingface_hub": "1.33.0",
+    "sentence-transformers": "6.3.0"
+  },
+  "prompts_sha256": {
+    "01_enrutador.txt": "cc0d5e40a40c71d2a8104d40201167279880033f9f868884350c6e77f31079f5",
+    "02_recuperador.txt": "2fe9b0afb5f22fa432b5180fcccc58c82604701ee146598368a645d0cf84ba41",
+    "03_redactor.txt": "6b3e4ac3a47ea54a337a54d9d803b23efc4005e81b2613d9698340e1cc841275",
+    "04_verificador.txt": "c141fe3686a2040bcb5cadeda769d70e8316fffa40b753aa0ea5f6a6784613bb"
+  }
+}

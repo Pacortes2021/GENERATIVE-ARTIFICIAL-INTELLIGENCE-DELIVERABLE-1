@@ -1,0 +1,68 @@
+{
+  "modelo_base": "Qwen/Qwen3-4B",
+  "revision_modelo_base": "",
+  "roles_con_lora": [
+    "enrutador",
+    "recuperador",
+    "redactor"
+  ],
+  "roles_en_base": [
+    "verificador"
+  ],
+  "fuentes_por_rol": {
+    "enrutador": {
+      "fuente": "Pablox0333/qwen3-4b-enrutador-udec-d4",
+      "revision": "ab65a4f0b0e969d8e9c0d3975d06d6e1791afec7",
+      "sha256_adapter_model": "16fe1e460c6c4ced20e79a248d168702c3961647352ed29bcdb803f1d27946ff",
+      "ruta_evaluacion_drive": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/enrutador/adapter"
+    },
+    "recuperador": {
+      "fuente": "Pablox0333/qwen3-4b-recuperador-udec-d4",
+      "revision": "6bd665a314663f224ef3eb17823febbd9bc1d10c",
+      "sha256_adapter_model": "03e3d6e614f19021e2540ec0a586d710b339d5409d05363ed1a9f5ac3fb9e40b",
+      "ruta_evaluacion_drive": "/content/Proyecto_Git/exp_multi_lora/entrenamiento/recuperador/adapter"
+    },
+    "redactor": {
+      "fuente": "Pablox0333/qwen3-4b-redactor-udec-d4",
+      "revision": "739b031acbd5feef2c49f946b94722712209bce0",
+      "sha256_adapter_model": "438a23664aab0457b060a42fb0eea77d6db82949459aa33280c36dcdb755b3c1"
+    }
+  },
+  "hardware": {
+    "gpu": "NVIDIA A100-SXM4-40GB",
+    "compute_dtype": "torch.bfloat16"
+  },
+  "greedy": false,
+  "aislamiento_multi_lora": {
+    "roles_activos": [
+      "enrutador",
+      "recuperador",
+      "redactor"
+    ],
+    "max_abs_diff_vs_base": {
+      "enrutador": 17.875,
+      "recuperador": 16.375,
+      "redactor": 19.125
+    },
+    "max_abs_diff_cruzada": {
+      "enrutador_vs_recuperador": 4.525879,
+      "enrutador_vs_redactor": 4.609375,
+      "recuperador_vs_redactor": 5.189453
+    }
+  },
+  "prompts_sha256": {
+    "01_enrutador.txt": "cc0d5e40a40c71d2a8104d40201167279880033f9f868884350c6e77f31079f5",
+    "02_recuperador.txt": "2fe9b0afb5f22fa432b5180fcccc58c82604701ee146598368a645d0cf84ba41",
+    "03_redactor.txt": "6b3e4ac3a47ea54a337a54d9d803b23efc4005e81b2613d9698340e1cc841275",
+    "04_verificador.txt": "c141fe3686a2040bcb5cadeda769d70e8316fffa40b753aa0ea5f6a6784613bb"
+  },
+  "versiones": {
+    "torch": "2.14.1+cu130",
+    "transformers": "5.23.0",
+    "peft": "0.21.3",
+    "bitsandbytes": "0.50.2",
+    "accelerate": "1.15.0",
+    "huggingface_hub": "1.33.0",
+    "sentence-transformers": "6.3.0"
+  }
+}

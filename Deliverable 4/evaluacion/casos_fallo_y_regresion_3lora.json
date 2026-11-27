@@ -1,0 +1,2460 @@
+{
+  "descripcion": "Trazas completas de los 11 fallos estrictos de Deliverable 4 (sistema oficial 3-LoRA: Enrutador + Recuperador + Redactor QLoRA, Verificador Base) en A100 bf16 (64/75, 85,3%), destacando cortes prematuros del Recuperador (H03, P36, P25), bucles del Verificador Base (H17, H19) y desvíos residuales del Redactor (H06, H12, H22, H25).",
+  "total_casos_documentados": 11,
+  "casos": [
+    {
+      "qid": "congelado_50:24",
+      "set": "congelado_50",
+      "id": "24",
+      "categoria": "condicional",
+      "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+      "gold_dato": "baja académica, salvo que la haya aprobado en el PLEV o esté en primer año",
+      "gold_fuente": "Art. 14 c), RI-FI",
+      "respuesta_final": "Respuesta: Sí es posible, salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente o que se trate de un estudiante en primer año de permanencia [RG-ART-028].\nCondiciones o límites: No aplica a quienes reingresan a la misma carrera, quienes deben hacerlo a Primer Año como alumno nuevo sin derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas [RG-ART-044].\nFuente: [RG-ART-028] [RG-ART-044]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta es correcta y está respaldada por la evidencia",
+      "ciclos": 1,
+      "llamadas_modelo": 4,
+      "segundos": 44.74,
+      "fuentes_traidas": [
+        "RG-ART-028",
+        "RG-ART-037",
+        "RG-ART-044",
+        "RI-FI-ART-014",
+        "RI-FI-ART-020"
+      ],
+      "tipo_fallo": "respuesta_incompleta_y_p01",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Contesta 'Sí es posible, salvo...' sin explicitar que la consecuencia es baja académica/pérdida de calidad de alumno, y en Condiciones atribuye a [RG-ART-044] una restricción inexistente sobre la excepción del PLEV (Reglas 3 y 5).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 607,
+          "output_tokens": 40,
+          "segundos": 5.948,
+          "semilla": 953390
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 580,
+          "output_tokens": 14,
+          "segundos": 2.168,
+          "semilla": 192015
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1210,
+          "output_tokens": 228,
+          "segundos": 33.554,
+          "semilla": 136280
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1408,
+          "output_tokens": 35,
+          "segundos": 3.037,
+          "semilla": 533582
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "Si repruebo por segunda vez una misma asignatura obligatoria, qué ocurre"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-020",
+              "RG-ART-028",
+              "RG-ART-037",
+              "RI-FI-ART-014",
+              "RG-ART-044"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Si repruebo por segunda vez una misma asignatura obligatoria, qué ocurre",
+            "tipo": "condicional",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-020",
+              "RG-ART-028",
+              "RG-ART-037",
+              "RI-FI-ART-014",
+              "RG-ART-044"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Si repruebo por segunda vez una misma asignatura obligatoria, ¿qué ocurre?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Sí es posible, salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente o que se trate de un estudiante en primer año de permanencia [RG-ART-028].\nCondiciones o límites: No aplica a quienes reingresan a la misma carrera, quienes deben hacerlo a Primer Año como alumno nuevo sin derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas [RG-ART-044].\nFuente: [RG-ART-028] [RG-ART-044]",
+          "salida_cruda": "<pensar>\n[RG-ART-028] b) indica que sí puede reprobada por segunda vez una asignatura obligatoria salvo que haya sido aprobada en el PLEV del año académico correspondiente o que se trate de alumnos en primer año de permanencia. [RG-ART-044] solo aplica a quienes reingresan a la misma carrera.\n</pensar>\nRespuesta: Sí es posible, salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente o que se trate de un estudiante en primer año de permanencia [RG-ART-028].\nCondiciones o límites: No aplica a quienes reingresan a la misma carrera, quienes deben hacerlo a Primer Año como alumno nuevo sin derecho a validar, revalidar, convalidar o reconocer asignaturas aprobadas [RG-ART-044].\nFuente: [RG-ART-028] [RG-ART-044]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Sí es posible, salvo que la asignatura haya sido aprobada en el PLEV del año académico correspondiente o que se trate de un estudiante en primer año de permanencia [RG-ART-028].\nCondiciones",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-028",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RG-ART-044",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia"
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "congelado_50:25",
+      "set": "congelado_50",
+      "id": "25",
+      "categoria": "condicional",
+      "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+      "gold_dato": "las atrasadas y las obligatorias reprobadas (prioridades a y b del Art. 7)",
+      "gold_fuente": "Art. 9, RI-FI",
+      "respuesta_final": "Respuesta: No puedo eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7° [RI-FI-ART-009].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-009]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta es correcta y está respaldada por la evidencia.",
+      "ciclos": 1,
+      "llamadas_modelo": 4,
+      "segundos": 30.64,
+      "fuentes_traidas": [
+        "RG-ART-003-DEF-09",
+        "RG-ART-003-DEF-10",
+        "RG-ART-003-DEF-13",
+        "RG-ART-042",
+        "RI-FI-ART-009"
+      ],
+      "tipo_fallo": "recuperacion_incompleta_regla_5",
+      "causa_raiz": "recuperador",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "No recupera [RI-FI-ART-007] y repite 'prioridades a) y b) del Artículo 7° [RI-FI-ART-009]' sin desglosar asignaturas atrasadas ni obligatorias reprobadas (Regla 5).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 603,
+          "output_tokens": 36,
+          "segundos": 5.33,
+          "semilla": 664790
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 589,
+          "output_tokens": 14,
+          "segundos": 2.113,
+          "semilla": 387512
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 2428,
+          "output_tokens": 135,
+          "segundos": 20.102,
+          "semilla": 788644
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1354,
+          "output_tokens": 36,
+          "segundos": 3.059,
+          "semilla": 771149
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "Al modificar la inscripción, qué asignaturas NO puedo eliminar"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-009",
+              "RG-ART-042",
+              "RG-ART-003-DEF-13",
+              "RG-ART-003-DEF-09",
+              "RG-ART-003-DEF-10"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Al modificar la inscripción, qué asignaturas NO puedo eliminar",
+            "tipo": "condicional",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-009",
+              "RG-ART-042",
+              "RG-ART-003-DEF-13",
+              "RG-ART-003-DEF-09",
+              "RG-ART-003-DEF-10"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al modificar la inscripción, ¿qué asignaturas NO puedo eliminar?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No puedo eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7° [RI-FI-ART-009].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-009]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-009] texto literal: 'No obstante, no se podrá eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7°'. No hay más condiciones en la evidencia sobre qué no puedo eliminar al modificar la inscripción.\n</pensar>\nRespuesta: No puedo eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7° [RI-FI-ART-009].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-009]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No puedo eliminar las asignaturas correspondientes a las prioridades a) y b) del Artículo 7° [RI-FI-ART-009].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-009]",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-009",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "congelado_50:26",
+      "set": "congelado_50",
+      "id": "26",
+      "categoria": "condicional",
+      "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+      "gold_dato": "solicitar la reincorporación a la Vicedecanatura",
+      "gold_fuente": "Art. 27, RI-FI",
+      "respuesta_final": "Respuesta: Debes solicitar su reincorporación al Vicedecano, acompañando los antecedentes oficiales de salud si la suspensión fue por esa causa, y adjuntar certificado de División de Asistencia Financiera y certificado de Dirección de Bibliotecas [RG-ART-033] [RG-ART-035].\nCondiciones o límites: Debe cumplir los requisitos de la Facultad y adscribirse al Plan de Estudio vigente al momento de la reincorporación, salvo quienes estaban en intercambio [RG-ART-033]; la suspensión puede extenderse por tres años calendario, y si no solicita reincorporación dentro de ese plazo pierde la calidad de alumno de pregrado [RG-ART-033].\nFuente: [RG-ART-033] [RG-ART-035]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta está correcta y respaldada por la evidencia.",
+      "ciclos": 1,
+      "llamadas_modelo": 4,
+      "segundos": 58.86,
+      "fuentes_traidas": [
+        "RG-ART-032",
+        "RG-ART-033",
+        "RG-ART-035",
+        "RI-FI-ART-027",
+        "RI-FI-ART-028"
+      ],
+      "tipo_fallo": "regla_mal_aplicada_art_35",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Exige certificados DAFE y Dirección de Bibliotecas [RG-ART-035] para solicitar reincorporación, cuando [RG-ART-035] rige suspensión y renuncia mientras la reincorporación se rige por [RG-ART-033].",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 603,
+          "output_tokens": 36,
+          "segundos": 5.422,
+          "semilla": 535251
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 576,
+          "output_tokens": 14,
+          "segundos": 2.123,
+          "semilla": 181460
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1172,
+          "output_tokens": 328,
+          "segundos": 48.271,
+          "semilla": 523068
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1350,
+          "output_tokens": 35,
+          "segundos": 3.007,
+          "semilla": 395316
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "Si suspendí mis estudios, qué debo hacer para volver"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-035",
+              "RI-FI-ART-027",
+              "RG-ART-032",
+              "RI-FI-ART-028",
+              "RG-ART-033"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Si suspendí mis estudios, qué debo hacer para volver",
+            "tipo": "condicional",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-035",
+              "RI-FI-ART-027",
+              "RG-ART-032",
+              "RI-FI-ART-028",
+              "RG-ART-033"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Si suspendí mis estudios, ¿qué debo hacer para volver?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Debes solicitar su reincorporación al Vicedecano, acompañando los antecedentes oficiales de salud si la suspensión fue por esa causa, y adjuntar certificado de División de Asistencia Financiera y certificado de Dirección de Bibliotecas [RG-ART-033] [RG-ART-035].\nCondiciones o límites: Debe cumplir los requisitos de la Facultad y adscribirse al Plan de Estudio vigente al momento de la reincorporación, salvo quienes estaban en intercambio [RG-ART-033]; la suspensión puede extenderse por tres años calendario, y si no solicita reincorporación dentro de ese plazo pierde la calidad de alumno de pregrado [RG-ART-033].\nFuente: [RG-ART-033] [RG-ART-035]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-027] y [RG-ART-033] indican que debe solicitar su reincorporación al Vicedecano (y si la suspensión fue por salud, acompañar informes oficiales que demuestren cesar los impedimentos). [RG-ART-035] exige adjuntar certificado de División de Asistencia Financiera y certificado de Dirección de Bibliotecas, además de cumplir los requisitos de la Facultad.\n</pensar>\nRespuesta: Debes solicitar su reincorporación al Vicedecano, acompañando los antecedentes oficiales de salud si la suspensión fue por esa causa, y adjuntar certificado de División de Asistencia Financiera y certificado de Dirección de Bibliotecas [RG-ART-033] [RG-ART-035].\nCondiciones o límites: Debe cumplir los requisitos de la Facultad y adscribirse al Plan de Estudio vigente al momento de la reincorporación, salvo quienes estaban en intercambio [RG-ART-033]; la suspensión puede extenderse por tres años calendario, y si no solicita reincorporación dentro de ese plazo pierde la calidad de alumno de pregrado [RG-ART-033].\nFuente: [RG-ART-033] [RG-ART-035]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Debes solicitar su reincorporación al Vicedecano, acompañando los antecedentes oficiales de salud si la suspensión fue por esa causa, y adjuntar certificado de División de Asistencia Financ",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-033",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RG-ART-035",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta está correcta y respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "congelado_50:36",
+      "set": "congelado_50",
+      "id": "36",
+      "categoria": "cruce",
+      "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+      "gold_dato": "inscripción 03–07 de agosto de 2026; mínimo 8 créditos",
+      "gold_fuente": "CAL 2º sem 2026 + Art. 8, RI-FI",
+      "respuesta_final": "Respuesta: Las inscripciones de asignaturas del segundo semestre 2026 se efectúan entre el 03 y el 07 de agosto [CAL-2026-S2-01]; sin embargo, la normativa consultada no contiene información sobre el mínimo de créditos exigido.\nCondiciones o límites: No aplica\nFuente: [CAL-2026-S2-01]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta responde correctamente las fechas de inscripción y menciona que no hay información sobre el mínimo de créditos, pero no se incluye la cita correspondiente al mínimo de créditos.",
+      "ciclos": 1,
+      "llamadas_modelo": 5,
+      "segundos": 40.81,
+      "fuentes_traidas": [
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04",
+        "CAL-2026-S2-07",
+        "CAL-2026-S2-09"
+      ],
+      "tipo_fallo": "abstencion_falsa_regla_8",
+      "causa_raiz": "recuperador",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Acierta fechas de inscripción [CAL-2026-S2-01], pero Recuperador LoRA devuelve solo hits de CAL y declara suficiente sin buscar [RI-FI-ART-008], generando falsa abstención sobre el mínimo de créditos (Reglas 5 y 8).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 619,
+          "output_tokens": 60,
+          "segundos": 8.942,
+          "semilla": 774157
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 602,
+          "output_tokens": 14,
+          "segundos": 2.117,
+          "semilla": 17121
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 597,
+          "output_tokens": 14,
+          "segundos": 2.171,
+          "semilla": 30960
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 726,
+          "output_tokens": 151,
+          "segundos": 22.328,
+          "semilla": 317513
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 875,
+          "output_tokens": 62,
+          "segundos": 5.218,
+          "semilla": 794241
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+          "salida": {
+            "tipo": "cruce",
+            "sub_consultas": [
+              "fechas de inscripción de asignaturas segundo semestre 2026",
+              "mínimo de créditos a inscribir por período"
+            ],
+            "documentos": [
+              "CAL",
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "CAL-2026-S2-01",
+              "CAL-2026-S2-03",
+              "CAL-2026-S2-04",
+              "CAL-2026-S2-07",
+              "CAL-2026-S2-09"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "fechas de inscripción de asignaturas segundo semestre 2026",
+            "tipo": "cruce",
+            "documentos": [
+              "CAL",
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "CAL-2026-S2-01",
+              "CAL-2026-S2-03",
+              "CAL-2026-S2-04",
+              "CAL-2026-S2-07",
+              "CAL-2026-S2-09"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "mínimo de créditos a inscribir por período",
+            "tipo": "cruce",
+            "documentos": [
+              "CAL",
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "CAL-2026-S2-01",
+              "CAL-2026-S2-03",
+              "CAL-2026-S2-04",
+              "CAL-2026-S2-07",
+              "CAL-2026-S2-09"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "¿En qué fechas se inscriben las asignaturas del segundo semestre 2026 y cuál es el mínimo de créditos?",
+            "modo": "cruce",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Las inscripciones de asignaturas del segundo semestre 2026 se efectúan entre el 03 y el 07 de agosto [CAL-2026-S2-01]; sin embargo, la normativa consultada no contiene información sobre el mínimo de créditos exigido.\nCondiciones o límites: No aplica\nFuente: [CAL-2026-S2-01]",
+          "salida_cruda": "<pensar>\n[CAL-2026-S2-01] indica Inscripción de Asignaturas: 03 – 07 de agosto. No hay información en la evidencia sobre el mínimo de créditos.\n</pensar>\nRespuesta: Las inscripciones de asignaturas del segundo semestre 2026 se efectúan entre el 03 y el 07 de agosto [CAL-2026-S2-01]; sin embargo, la normativa consultada no contiene información sobre el mínimo de créditos exigido.\nCondiciones o límites: No aplica\nFuente: [CAL-2026-S2-01]"
+        },
+        {
+          "paso": 6,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Las inscripciones de asignaturas del segundo semestre 2026 se efectúan entre el 03 y el 07 de agosto [CAL-2026-S2-01]; sin embargo, la normativa consultada no contiene información sobre el ",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "CAL-2026-S2-01",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta responde correctamente las fechas de inscripción y menciona que no hay información sobre el mínimo de créditos, pero no se incluye la cita correspondiente al mínimo de créditos."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H03",
+      "set": "dificil_25",
+      "id": "H03",
+      "categoria": "multi_salto",
+      "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+      "gold_dato": "Primer semestre: 09 mar -> 02 abr = 24 días. Segundo semestre: 10 ago -> 04 sep = 25 días. El plazo es un día más largo en el segundo semestre.",
+      "gold_fuente": "CAL-2026-S1-02; CAL-2026-S1-03; CAL-2026-S2-02; CAL-2026-S2-03",
+      "respuesta_final": "Respuesta: Entre 02 de abril (primer semestre) y 04 de septiembre (segundo semestre) hay 153 días [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: El cálculo se basa en la diferencia entre esas fechas en calendario civil sin considerar años bisiestos ni fechas de cambio de hora.\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]",
+      "aprobado_verificador": false,
+      "motivo_verificador": "El cálculo de 153 días entre 02 de abril y 04 de septiembre es incorrecto. La diferencia real entre esas fechas es 154 días, y además, el cálculo no considera el año bisiesto ni las fechas de cambio de hora, lo cual no está justificado en la evidencia.",
+      "ciclos": 3,
+      "llamadas_modelo": 9,
+      "segundos": 198.12,
+      "fuentes_traidas": [
+        "CAL-2026-S1-03",
+        "CAL-2026-S1-05",
+        "CAL-2026-S2-01",
+        "CAL-2026-S2-03",
+        "CAL-2026-S2-04"
+      ],
+      "tipo_fallo": "recuperacion_incompleta_y_aritmetica",
+      "causa_raiz": "recuperador",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Recuperador LoRA deja fuera [CAL-2026-S1-02] y [CAL-2026-S2-02]; el Redactor calcula 153 días entre 02 de abril y 04 de septiembre sin responder los plazos desde el inicio de clases (Reglas 5 y 6).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 642,
+          "output_tokens": 75,
+          "segundos": 11.078,
+          "semilla": 114561
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 614,
+          "output_tokens": 14,
+          "segundos": 2.107,
+          "semilla": 700138
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 594,
+          "output_tokens": 14,
+          "segundos": 2.102,
+          "semilla": 485677
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 769,
+          "output_tokens": 280,
+          "segundos": 41.3,
+          "semilla": 852039
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 962,
+          "output_tokens": 62,
+          "segundos": 5.133,
+          "semilla": 425851
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 801,
+          "output_tokens": 458,
+          "segundos": 67.291,
+          "semilla": 384971
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1120,
+          "output_tokens": 90,
+          "segundos": 7.365,
+          "semilla": 75766
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 825,
+          "output_tokens": 363,
+          "segundos": 53.481,
+          "semilla": 38713
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 964,
+          "output_tokens": 99,
+          "segundos": 8.206,
+          "semilla": 9576
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+          "salida": {
+            "tipo": "numerica",
+            "sub_consultas": [
+              "En el calendario 2026, cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre",
+              "en cuál de los dos semestres ese plazo es más largo"
+            ],
+            "documentos": [
+              "CAL"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "CAL-2026-S2-03",
+              "CAL-2026-S1-03",
+              "CAL-2026-S1-05",
+              "CAL-2026-S2-04",
+              "CAL-2026-S2-01"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "En el calendario 2026, cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre",
+            "tipo": "numerica",
+            "documentos": [
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "CAL-2026-S2-03",
+              "CAL-2026-S1-03",
+              "CAL-2026-S1-05",
+              "CAL-2026-S2-04",
+              "CAL-2026-S2-01"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "en cuál de los dos semestres ese plazo es más largo",
+            "tipo": "numerica",
+            "documentos": [
+              "CAL"
+            ],
+            "evidencia_reunida": [
+              "CAL-2026-S2-03",
+              "CAL-2026-S1-03",
+              "CAL-2026-S1-05",
+              "CAL-2026-S2-04",
+              "CAL-2026-S2-01"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 5,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: En ambos semestres el plazo de modificación de asignaturas es de 93 días (del 02 de abril al 04 de septiembre): 93 = (04 - 02) + 30 + 31 + 30 [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: No aplica\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]",
+          "salida_cruda": "<pensar>\n[CAL-2026-S1-03] y [CAL-2026-S2-03]: 02 de abril a 04 de septiembre. Calculo días entre 02/04 y 04/09: (04-02) + (30 + 31) + 30 = 2 + 61 + 30 = 93 días. En el segundo semestre, el plazo es de 93 días, que es igual al primer semestre (02/04 a 04/09) y es el mismo en ambos semestres.\n</pensar>\nRespuesta: En ambos semestres el plazo de modificación de asignaturas es de 93 días (del 02 de abril al 04 de septiembre): 93 = (04 - 02) + 30 + 31 + 30 [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: No aplica\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]"
+        },
+        {
+          "paso": 6,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: En ambos semestres el plazo de modificación de asignaturas es de 93 días (del 02 de abril al 04 de septiembre): 93 = (04 - 02) + 30 + 31 + 30 [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones ",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "CAL-2026-S1-03",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "CAL-2026-S2-03",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo de los días entre 02 de abril y 04 de septiembre es incorrecto. La diferencia no es 93 días, sino 153 días."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 7,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": "El cálculo de los días entre 02 de abril y 04 de septiembre es incorrecto. La diferencia no es 93 días, sino 153 días."
+          },
+          "salida": "Respuesta: Desde el 02 de abril (primero) hasta el 04 de septiembre (segundo) hay 153 días, por lo que el plazo es más largo en el segundo semestre [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: Para calcular la diferencia entre 02 de abril y 04 de septiembre, se suman los días restantes de abril (30 - 2 = 28), los días de mayo, junio, julio y agosto completos (31 + 30 + 31 + 31 + 30 = 153) y los días restantes de septiembre (31 - 4 = 27), totalizando 28 + 153 + 27 = 208 días; sin embargo, al calcular directamente la diferencia entre las fechas (02 de abril -> 04 de septiembre), el resultado es 153 días [CAL-2026-S1-03] [CAL-2026-S2-03].\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]",
+          "salida_cruda": "<pensar>\n[CAL-2026-S1-03] fija 02 de abril como límite de modificación de asignaturas en el primer semestre; [CAL-2026-S2-03] fija 04 de septiembre como límite del segundo semestre. Cálculo: días entre 02 de abril y 04 de septiembre = 30 (abril) + 31 (mayo) + 30 (junio) + 31 (julio) + 31 (agosto) + 30 (septiembre) - 2 (días restantes de abril) - 3 (días restantes de septiembre) = 153 días.\n</pensar>\nRespuesta: Desde el 02 de abril (primero) hasta el 04 de septiembre (segundo) hay 153 días, por lo que el plazo es más largo en el segundo semestre [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: Para calcular la diferencia entre 02 de abril y 04 de septiembre, se suman los días restantes de abril (30 - 2 = 28), los días de mayo, junio, julio y agosto completos (31 + 30 + 31 + 31 + 30 = 153) y los días restantes de septiembre (31 - 4 = 27), totalizando 28 + 153 + 27 = 208 días; sin embargo, al calcular directamente la diferencia entre las fechas (02 de abril -> 04 de septiembre), el resultado es 153 días [CAL-2026-S1-03] [CAL-2026-S2-03].\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]"
+        },
+        {
+          "paso": 8,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Desde el 02 de abril (primero) hasta el 04 de septiembre (segundo) hay 153 días, por lo que el plazo es más largo en el segundo semestre [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o lím",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "CAL-2026-S1-03",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "CAL-2026-S2-03",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo de 153 días es incorrecto. La diferencia entre 02 de abril y 04 de septiembre es 153 días, pero el cálculo mostrado es incorrecto (28 + 153 + 27 = 208)."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 9,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "En el calendario 2026, ¿cuántos días hay desde el inicio de clases hasta la fecha límite de modificación de asignaturas en cada semestre, y en cuál de los dos semestres ese plazo es más largo?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": "El cálculo de 153 días es incorrecto. La diferencia entre 02 de abril y 04 de septiembre es 153 días, pero el cálculo mostrado es incorrecto (28 + 153 + 27 = 208)."
+          },
+          "salida": "Respuesta: Entre 02 de abril (primer semestre) y 04 de septiembre (segundo semestre) hay 153 días [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: El cálculo se basa en la diferencia entre esas fechas en calendario civil sin considerar años bisiestos ni fechas de cambio de hora.\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]",
+          "salida_cruda": "<pensar>\n[CAL-2026-S1-03] indica 02 de abril como fecha límite de modificación de asignaturas del primer semestre, y [CAL-2026-S2-03] fija 04 de septiembre para el segundo semestre. La diferencia entre 02 de abril y 04 de septiembre es de 153 días (28 + 153 + 27 = 208 días). Debo corregir el cálculo previo: 02 de abril a 04 de septiembre es 153 días (28 de abril + 30 de mayo + 31 de junio + 30 de julio + 31 de agosto + 31 de septiembre – 2 días adicionales de abril y septiembre = 28 + 30 + 31 + 30 + 31 + 31 = 181 – 28 = 153 días).\n</pensar>\nRespuesta: Entre 02 de abril (primer semestre) y 04 de septiembre (segundo semestre) hay 153 días [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: El cálculo se basa en la diferencia entre esas fechas en calendario civil sin considerar años bisiestos ni fechas de cambio de hora.\nFuente: [CAL-2026-S1-03] [CAL-2026-S2-03]"
+        },
+        {
+          "paso": 10,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Entre 02 de abril (primer semestre) y 04 de septiembre (segundo semestre) hay 153 días [CAL-2026-S1-03] [CAL-2026-S2-03].\nCondiciones o límites: El cálculo se basa en la diferencia entre es",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "CAL-2026-S1-03",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "CAL-2026-S2-03",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo de 153 días entre 02 de abril y 04 de septiembre es incorrecto. La diferencia real entre esas fechas es 154 días, y además, el cálculo no considera el año bisiesto ni las fechas de cambio de hora, lo cual no está justificado en la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H06",
+      "set": "dificil_25",
+      "id": "H06",
+      "categoria": "calculo",
+      "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+      "gold_dato": "Sí. Promedio = créditos aprobados / semestres de permanencia (RG Art 28 a) = 38/4 = 9,5, inferior a 10 créditos semestrales, por lo que incurre en la causal del RI-FI Art 14 b).",
+      "gold_fuente": "RI-FI-ART-014; RG-ART-028",
+      "respuesta_final": "Respuesta: No es posible calcular el promedio de créditos aprobados sin conocer el número de semestres de permanencia cursados por el estudiante [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+      "aprobado_verificador": false,
+      "motivo_verificador": "El borrador no responde la pregunta completa. La pregunta pregunta si el estudiante cae en baja académica por el criterio de promedio de créditos del Artículo 14, pero el borrador no calcula el promedio ni verifica si cumple con el criterio de tener un promedio inferior a diez créditos semestrales a partir del cuarto semestre.",
+      "ciclos": 3,
+      "llamadas_modelo": 8,
+      "segundos": 126.47,
+      "fuentes_traidas": [
+        "RG-ART-024",
+        "RG-ART-028",
+        "RG-ART-043",
+        "RI-FI-ART-014",
+        "RI-FI-ART-031"
+      ],
+      "tipo_fallo": "polaridad_invertida_y_abstencion_tras_ciclo",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "En ciclo 1 el Redactor invierte la polaridad ('No cae... 38/4 = 9,5 < 10'); en ciclo 2 inicia contradictoriamente con 'No, ... por lo que sí cae' y el Verificador base rechaza falsamente el cálculo 38/4=9,5 induciendo en ciclo 3 una falsa abstención (Reglas 6 y 8).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 635,
+          "output_tokens": 73,
+          "segundos": 10.819,
+          "semilla": 101875
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 613,
+          "output_tokens": 14,
+          "segundos": 2.1,
+          "semilla": 527233
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1307,
+          "output_tokens": 165,
+          "segundos": 24.353,
+          "semilla": 807330
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1413,
+          "output_tokens": 141,
+          "segundos": 11.621,
+          "semilla": 434299
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1418,
+          "output_tokens": 181,
+          "segundos": 26.721,
+          "semilla": 62025
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1421,
+          "output_tokens": 198,
+          "segundos": 16.26,
+          "semilla": 346512
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1475,
+          "output_tokens": 176,
+          "segundos": 25.887,
+          "semilla": 453471
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1409,
+          "output_tokens": 104,
+          "segundos": 8.644,
+          "semilla": 510527
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+          "salida": {
+            "tipo": "numerica",
+            "sub_consultas": [
+              "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. Cae en baja académica por el criterio de promedio de créditos del Artículo 14"
+            ],
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. Cae en baja académica por el criterio de promedio de créditos del Artículo 14",
+            "tipo": "numerica",
+            "documentos": [
+              "RI-FI",
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-014",
+              "RG-ART-028",
+              "RI-FI-ART-031",
+              "RG-ART-043",
+              "RG-ART-024"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) indica que si el promedio semestral de créditos aprobados es inferior a 10 a partir del cuarto semestre: 38 / 4 = 9,5 < 10. No se aplica el criterio de reprobación de asignaturas obligatorias (no figura en la pregunta).\n</pensar>\nRespuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No cae en baja académica por el criterio de promedio de créditos: 38 / 4 = 9,5 < 10 [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo de 38 / 4 = 9,5 es incorrecto. El Artículo 14° menciona un promedio de créditos aprobados inferior a diez créditos semestrales, no un promedio de 10 créditos por semestre. Además, el cálculo debe ser 38 créditos divididos entre 4 semestres, lo cual es 9,5, que es menor que 10, pero la redacción no refleja correctamente el criterio del Artículo 14°."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": "El cálculo de 38 / 4 = 9,5 es incorrecto. El Artículo 14° menciona un promedio de créditos aprobados inferior a diez créditos semestrales, no un promedio de 10 créditos por semestre. Además, el cálculo debe ser 38 créditos divididos entre 4 semestres, lo cual es 9,5, que es menor que 10, pero la redacción no refleja correctamente el criterio del Artículo 14°."
+          },
+          "salida": "Respuesta: No, el promedio de 38 ÷ 4 = 9,5 créditos semestrales es menor que 10, por lo que sí cae en baja académica [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) indica que el promedio de créditos aprobados debe ser inferior a diez créditos semestrales a partir del cuarto semestre. El cálculo es 38 créditos divididos entre 4 semestres: 38 ÷ 4 = 9,5 < 10. Debe caer en baja académica.\n</pensar>\nRespuesta: No, el promedio de 38 ÷ 4 = 9,5 créditos semestrales es menor que 10, por lo que sí cae en baja académica [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No, el promedio de 38 ÷ 4 = 9,5 créditos semestrales es menor que 10, por lo que sí cae en baja académica [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El cálculo del promedio es incorrecto. El Artículo 14° menciona un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre. Sin embargo, el borrador calcula 38 ÷ 4 = 9,5, lo cual es incorrecto. El promedio se calcula como el número total de créditos aprobados dividido entre el número de semestres, pero el borrador no menciona el número de semestres que ha cursado, ni si el estudiante está en el cuarto semestre. Además, el borrador confunde el criterio del Artículo 14° con el del Artículo 28°, que menciona el promedio mínimo exigido por la carrera, pero no se proporciona esa información."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Al término del cuarto semestre, un estudiante ha aprobado 38 créditos en total. ¿Cae en baja académica por el criterio de promedio de créditos del Artículo 14?",
+            "modo": "numerica",
+            "estado": "suficiente",
+            "feedback": "El cálculo del promedio es incorrecto. El Artículo 14° menciona un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre. Sin embargo, el borrador calcula 38 ÷ 4 = 9,5, lo cual es incorrecto. El promedio se calcula como el número total de créditos aprobados dividido entre el número de semestres, pero el borrador no menciona el número de semestres que ha cursado, ni si el estudiante está en el cuarto semestre. Además, el borrador confunde el criterio del Artículo 14° con el del Artículo 28°, que menciona el promedio mínimo exigido por la carrera, pero no se proporciona esa información."
+          },
+          "salida": "Respuesta: No es posible calcular el promedio de créditos aprobados sin conocer el número de semestres de permanencia cursados por el estudiante [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-014] b) indica que cae en Baja Académica si tiene un promedio de créditos aprobados inferior a diez créditos semestrales a partir del cuarto semestre. El promedio se calcula dividiendo el total de créditos aprobados entre el número de semestres de permanencia. No se proporciona el número de semestres cursados por el estudiante.\n</pensar>\nRespuesta: No es posible calcular el promedio de créditos aprobados sin conocer el número de semestres de permanencia cursados por el estudiante [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-014]"
+        },
+        {
+          "paso": 9,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No es posible calcular el promedio de créditos aprobados sin conocer el número de semestres de permanencia cursados por el estudiante [RI-FI-ART-014].\nCondiciones o límites: No aplica\nFuent",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-014",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El borrador no responde la pregunta completa. La pregunta pregunta si el estudiante cae en baja académica por el criterio de promedio de créditos del Artículo 14, pero el borrador no calcula el promedio ni verifica si cumple con el criterio de tener un promedio inferior a diez créditos semestrales a partir del cuarto semestre."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H12",
+      "set": "dificil_25",
+      "id": "H12",
+      "categoria": "colision_lexica",
+      "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+      "gold_dato": "Sí. Puede solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles en un plazo máximo de un año (RG Art 30).",
+      "gold_fuente": "RG-ART-030",
+      "respuesta_final": "Respuesta: Los alumnos en situación de Baja por no Inscripción pueden solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo dentro de un plazo máximo de un año, resolviendo el Comité en un plazo máximo de 10 días hábiles [RG-ART-030].\nCondiciones o límites: Si lo resuelve el Comité, puede recurrirse al Vicedecano dentro del quinto día hábil de notificada la resolución [RG-ART-030].\nFuente: [RG-ART-030]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta es correcta y está respaldada por la evidencia.",
+      "ciclos": 2,
+      "llamadas_modelo": 6,
+      "segundos": 102.09,
+      "fuentes_traidas": [
+        "RG-ART-026",
+        "RG-ART-030",
+        "RG-ART-032",
+        "RG-ART-043",
+        "RI-FI-ART-014"
+      ],
+      "tipo_fallo": "mezcla_baja_academica_y_no_inscripcion_h12",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Acierta 1 año ante el Comité [RG-ART-030], pero agrega plazo de 10 días hábiles y apelación al quinto día que corresponden en [RG-ART-030] a Baja Académica y no a Baja por no Inscripción (Regla 3 / precedente H12).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 624,
+          "output_tokens": 57,
+          "segundos": 8.365,
+          "semilla": 431798
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 595,
+          "output_tokens": 14,
+          "segundos": 2.106,
+          "semilla": 536362
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1588,
+          "output_tokens": 292,
+          "segundos": 43.122,
+          "semilla": 690412
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1533,
+          "output_tokens": 87,
+          "segundos": 7.304,
+          "semilla": 424888
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1645,
+          "output_tokens": 255,
+          "segundos": 38.084,
+          "semilla": 481922
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1499,
+          "output_tokens": 36,
+          "segundos": 3.06,
+          "semilla": 110256
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "Un estudiante quedó en situación de Baja por no Inscripción. Puede volver a estudiar y con qué plazo, según el Reglamento General"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-030",
+              "RI-FI-ART-014",
+              "RG-ART-043",
+              "RG-ART-032",
+              "RG-ART-026"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Un estudiante quedó en situación de Baja por no Inscripción. Puede volver a estudiar y con qué plazo, según el Reglamento General",
+            "tipo": "condicional",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-030",
+              "RI-FI-ART-014",
+              "RG-ART-043",
+              "RG-ART-032",
+              "RG-ART-026"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Sí puede volver a estudiar mediante tres solicitudes: la primera ante el Comité de Docencia y Asuntos Estudiantiles dentro de un máximo de 1 año; si es negativa, puede recurrir al Vicedecano dentro del quinto día hábil de notificación de la resolución [RG-ART-030].\nCondiciones o límites: La primera solicitud resuelve en un máximo de 10 días hábiles; de lo resuelto por el Comité puede recurrirse al Vicedecano dentro del quinto día hábil de notificación de la resolución; de esta resolución puede apelarse al Decano de la Facultad [RG-ART-030].\nFuente: [RG-ART-030]",
+          "salida_cruda": "<pensar>\n[RG-ART-030] establece que los alumnos en situación de Baja por No Inscripción pueden solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo dentro de un plazo máximo de un año. La primera solicitud se resuelve en un máximo de 10 días hábiles por el Comité; si es negativa, el recurso al Vicedecano puede interponerse dentro del quinto día hábil de notificación de la resolución.\n</pensar>\nRespuesta: Sí puede volver a estudiar mediante tres solicitudes: la primera ante el Comité de Docencia y Asuntos Estudiantiles dentro de un máximo de 1 año; si es negativa, puede recurrir al Vicedecano dentro del quinto día hábil de notificación de la resolución [RG-ART-030].\nCondiciones o límites: La primera solicitud resuelve en un máximo de 10 días hábiles; de lo resuelto por el Comité puede recurrirse al Vicedecano dentro del quinto día hábil de notificación de la resolución; de esta resolución puede apelarse al Decano de la Facultad [RG-ART-030].\nFuente: [RG-ART-030]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Sí puede volver a estudiar mediante tres solicitudes: la primera ante el Comité de Docencia y Asuntos Estudiantiles dentro de un máximo de 1 año; si es negativa, puede recurrir al Vicedecan",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-030",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El borrador menciona tres solicitudes, pero el Reglamento General no establece que los alumnos en situación de Baja por no Inscripción puedan hacer tres solicitudes. La referencia a tres oportunidades corresponde a la Baja Académica, no a la Baja por no Inscripción."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Un estudiante quedó en situación de Baja por no Inscripción. ¿Puede volver a estudiar y con qué plazo, según el Reglamento General?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "El borrador menciona tres solicitudes, pero el Reglamento General no establece que los alumnos en situación de Baja por no Inscripción puedan hacer tres solicitudes. La referencia a tres oportunidades corresponde a la Baja Académica, no a la Baja por no Inscripción."
+          },
+          "salida": "Respuesta: Los alumnos en situación de Baja por no Inscripción pueden solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo dentro de un plazo máximo de un año, resolviendo el Comité en un plazo máximo de 10 días hábiles [RG-ART-030].\nCondiciones o límites: Si lo resuelve el Comité, puede recurrirse al Vicedecano dentro del quinto día hábil de notificada la resolución [RG-ART-030].\nFuente: [RG-ART-030]",
+          "salida_cruda": "<pensar>\n[RG-ART-030] señala que los alumnos en Baja por no Inscripción pueden solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo dentro de un plazo máximo de un año, resolviendo el Comité en un plazo máximo de 10 días hábiles; y si lo resuelve el Comité, puede recurrirse al Vicedecano dentro del quinto día hábil de notificada la resolución.\n</pensar>\nRespuesta: Los alumnos en situación de Baja por no Inscripción pueden solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo dentro de un plazo máximo de un año, resolviendo el Comité en un plazo máximo de 10 días hábiles [RG-ART-030].\nCondiciones o límites: Si lo resuelve el Comité, puede recurrirse al Vicedecano dentro del quinto día hábil de notificada la resolución [RG-ART-030].\nFuente: [RG-ART-030]"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Los alumnos en situación de Baja por no Inscripción pueden solicitar la continuación de estudios al Comité de Docencia y Asuntos Estudiantiles respectivo dentro de un plazo máximo de un año",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-030",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H17",
+      "set": "dificil_25",
+      "id": "H17",
+      "categoria": "sintesis",
+      "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+      "gold_dato": "La asistencia mínima exigida no puede superar el 80% de las clases teóricas y prácticas, pero puede llegar al 100% en actividades como seminarios, laboratorios, talleres o salidas a terreno (Art 13).",
+      "gold_fuente": "RI-FI-ART-013",
+      "respuesta_final": "Respuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80% y el 100% de clases teóricas y prácticas, alcanzando el 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares [RI-FI-ART-013].\nCondiciones o límites: Los alumnos con razones religiosas pueden acreditarlo al inscribirse para que el Profesor Encargado lo considere en la programación; los con discapacidad debidamente acreditada pueden solicitar régimen especial ante el Vicedecano de su Facultad [RG-ART-020].\nFuente: [RI-FI-ART-013] [RG-ART-020]",
+      "aprobado_verificador": false,
+      "motivo_verificador": "El borrador menciona que los alumnos con razones religiosas pueden acreditarlo al inscribirse para que el Profesor Encargado lo considere en la programación, pero no cita el artículo correspondiente. Además, el texto menciona que los alumnos con discapacidad pueden solicitar un régimen especial de asistencia, pero no se menciona que esto sea ante el Vicedecano de su Facultad, ya que este detalle no está en la evidencia.",
+      "ciclos": 3,
+      "llamadas_modelo": 8,
+      "segundos": 178.24,
+      "fuentes_traidas": [
+        "RG-ART-020",
+        "RG-ART-035",
+        "RI-FI-ART-013",
+        "RI-FI-ART-017",
+        "RI-FI-ART-018"
+      ],
+      "tipo_fallo": "bucle_verificador_inversion_tope",
+      "causa_raiz": "verificador",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Ciclo 1 respondía exactamente 'máximo 80% ... o hasta 100%' [RI-FI-ART-013] + [RG-ART-020]; tras 3 rechazos con objeciones alucinadas del Verificador base, ciclo 3 invierte la regla a 'asistencia mínima entre el 80% y el 100% de clases teóricas y prácticas'.",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 624,
+          "output_tokens": 58,
+          "segundos": 8.598,
+          "semilla": 885094
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 600,
+          "output_tokens": 14,
+          "segundos": 2.126,
+          "semilla": 988125
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1272,
+          "output_tokens": 361,
+          "segundos": 53.277,
+          "semilla": 268644
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1452,
+          "output_tokens": 90,
+          "segundos": 7.428,
+          "semilla": 458071
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1332,
+          "output_tokens": 302,
+          "segundos": 44.485,
+          "semilla": 585265
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1431,
+          "output_tokens": 95,
+          "segundos": 7.904,
+          "semilla": 365916
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1337,
+          "output_tokens": 299,
+          "segundos": 44.066,
+          "semilla": 907973
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1456,
+          "output_tokens": 125,
+          "segundos": 10.289,
+          "semilla": 651979
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto."
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-013",
+              "RG-ART-020",
+              "RI-FI-ART-018",
+              "RI-FI-ART-017",
+              "RG-ART-035"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto",
+            "tipo": "condicional",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-013",
+              "RG-ART-020",
+              "RI-FI-ART-018",
+              "RI-FI-ART-017",
+              "RG-ART-035"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: El Profesor Encargado puede exigir una asistencia mínima de 80% en clases teóricas y prácticas (máximo 80%) o hasta 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares [RI-FI-ART-013].\nCondiciones o límites: Para quienes presentan razones religiosas o discapacidad debidamente acreditada, el Profesor Encargado debe considerar su situación (al inscribirse para razones religiosas o ante el Vicedecano de su Facultad para discapacidad) [RG-ART-020].\nFuente: [RI-FI-ART-013] [RG-ART-020]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-013] permite al Profesor Encargado exigir asistencia mínima de 80% (clases teóricas y prácticas) o 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares. [RG-ART-020] añade excepciones: a) alumnos con razones religiosas deben acreditarlo al inscribirse para que el Profesor Encargado lo considere en la programación; b) alumnos con discapacidad debidamente acreditada pueden solicitar régimen especial de asistencia y facilidades ante el Vicedecano de su Facultad, quien previa consulta al Programa INCLUDEC resuelve la solicitud.\n</pensar>\nRespuesta: El Profesor Encargado puede exigir una asistencia mínima de 80% en clases teóricas y prácticas (máximo 80%) o hasta 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares [RI-FI-ART-013].\nCondiciones o límites: Para quienes presentan razones religiosas o discapacidad debidamente acreditada, el Profesor Encargado debe considerar su situación (al inscribirse para razones religiosas o ante el Vicedecano de su Facultad para discapacidad) [RG-ART-020].\nFuente: [RI-FI-ART-013] [RG-ART-020]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: El Profesor Encargado puede exigir una asistencia mínima de 80% en clases teóricas y prácticas (máximo 80%) o hasta 100% en actividades como seminarios, laboratorios, talleres, salidas a te",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-020",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-013",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El borrador menciona discapacidad pero no cita el artículo correspondiente. La discapacidad se menciona en [RG-ART-020], pero el borrador no cita el artículo que habla de discapacidad, sino que solo menciona el artículo 20, que no aborda discapacidad."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "El borrador menciona discapacidad pero no cita el artículo correspondiente. La discapacidad se menciona en [RG-ART-020], pero el borrador no cita el artículo que habla de discapacidad, sino que solo menciona el artículo 20, que no aborda discapacidad."
+          },
+          "salida": "Respuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80 % (máximo en clases teóricas y prácticas) y el 100 % (mínimo en actividades como talleres, laboratorios u otras similares) [RI-FI-ART-013], y la Facultad de adscripción debe fijar el régimen de asistencia y permitir a quienes por razones religiosas o discapacidad (con acreditación) solicitar excepciones [RG-ART-020].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-013] [RG-ART-020]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-013] permite al Profesor Encargado exigir asistencia mínima entre el 80 % (máximo en clases teóricas y prácticas) y el 100 % (mínimo en actividades como talleres, laboratorios u otras similares). [RG-ART-020] delega en la Facultad de adscripción el régimen de asistencia y permite a quienes por razones religiosas o discapacidad (con acreditación) solicitar excepciones. La pregunta no pide plazos ni documentos adicionales.\n</pensar>\nRespuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80 % (máximo en clases teóricas y prácticas) y el 100 % (mínimo en actividades como talleres, laboratorios u otras similares) [RI-FI-ART-013], y la Facultad de adscripción debe fijar el régimen de asistencia y permitir a quienes por razones religiosas o discapacidad (con acreditación) solicitar excepciones [RG-ART-020].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-013] [RG-ART-020]"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80 % (máximo en clases teóricas y prácticas) y el 100 % (mínimo en actividades como talleres, laboratorios u otras similares) [",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-020",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-013",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El borrador menciona que no aplica condiciones o límites, pero la evidencia indica que hay condiciones (por razones religiosas, discapacidad, etc.) que permiten excepciones. Además, el texto no menciona el tope distinto en casos específicos, como en actividades de seminarios, laboratorios, etc."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Explica los requisitos de asistencia que puede exigir un profesor en la Facultad de Ingeniería y en qué casos ese tope puede ser distinto.",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "El borrador menciona que no aplica condiciones o límites, pero la evidencia indica que hay condiciones (por razones religiosas, discapacidad, etc.) que permiten excepciones. Además, el texto no menciona el tope distinto en casos específicos, como en actividades de seminarios, laboratorios, etc."
+          },
+          "salida": "Respuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80% y el 100% de clases teóricas y prácticas, alcanzando el 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares [RI-FI-ART-013].\nCondiciones o límites: Los alumnos con razones religiosas pueden acreditarlo al inscribirse para que el Profesor Encargado lo considere en la programación; los con discapacidad debidamente acreditada pueden solicitar régimen especial ante el Vicedecano de su Facultad [RG-ART-020].\nFuente: [RI-FI-ART-013] [RG-ART-020]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-013] indica que el Profesor Encargado puede exigir asistencia mínima entre 80% y 100% (100% en actividades como seminarios, laboratorios, etc.); [RG-ART-020] permite a estudiantes con razones religiosas acreditarlo al inscribirse, y a quienes presenten discapacidad solicitar un régimen especial ante el Vicedecano.\n</pensar>\nRespuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80% y el 100% de clases teóricas y prácticas, alcanzando el 100% en actividades como seminarios, laboratorios, talleres, salidas a terreno u otras similares [RI-FI-ART-013].\nCondiciones o límites: Los alumnos con razones religiosas pueden acreditarlo al inscribirse para que el Profesor Encargado lo considere en la programación; los con discapacidad debidamente acreditada pueden solicitar régimen especial ante el Vicedecano de su Facultad [RG-ART-020].\nFuente: [RI-FI-ART-013] [RG-ART-020]"
+        },
+        {
+          "paso": 9,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: El Profesor Encargado puede exigir asistencia mínima entre el 80% y el 100% de clases teóricas y prácticas, alcanzando el 100% en actividades como seminarios, laboratorios, talleres, salida",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-020",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-013",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "El borrador menciona que los alumnos con razones religiosas pueden acreditarlo al inscribirse para que el Profesor Encargado lo considere en la programación, pero no cita el artículo correspondiente. Además, el texto menciona que los alumnos con discapacidad pueden solicitar un régimen especial de asistencia, pero no se menciona que esto sea ante el Vicedecano de su Facultad, ya que este detalle no está en la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H19",
+      "set": "dificil_25",
+      "id": "H19",
+      "categoria": "sintesis",
+      "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+      "gold_dato": "Pierde la calidad si aprobó menos créditos que el promedio mínimo exigido por la carrera; ese promedio se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia (RG Art 28 a).",
+      "gold_fuente": "RG-ART-028",
+      "respuesta_final": "Respuesta: El promedio de créditos aprobados se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]",
+      "aprobado_verificador": false,
+      "motivo_verificador": "La respuesta no responde a la pregunta completa. La pregunta pide cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28, pero la respuesta solo describe cómo se calcula el promedio de créditos, sin mencionar la condición específica de haber aprobado menos créditos que el promedio mínimo exigido por la carrera, según el Artículo 28.",
+      "ciclos": 3,
+      "llamadas_modelo": 8,
+      "segundos": 123.5,
+      "fuentes_traidas": [
+        "RG-ART-028",
+        "RG-ART-029",
+        "RG-ART-050",
+        "RG-ART-051",
+        "RI-FI-ART-014"
+      ],
+      "tipo_fallo": "bucle_verificador_omision_criterio",
+      "causa_raiz": "verificador",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Ciclos 1 y 2 respondían completamente cuándo se pierde la calidad de alumno y cómo se divide [RG-ART-028]; el Verificador base exige indebidamente agregar la causal b) y otros artículos, dejando en ciclo 3 solo la fórmula de división sin la condición de pérdida (Regla 5).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 626,
+          "output_tokens": 59,
+          "segundos": 8.871,
+          "semilla": 642300
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 597,
+          "output_tokens": 14,
+          "segundos": 2.122,
+          "semilla": 195015
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1003,
+          "output_tokens": 185,
+          "segundos": 27.481,
+          "semilla": 69512
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1145,
+          "output_tokens": 63,
+          "segundos": 5.283,
+          "semilla": 562810
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1036,
+          "output_tokens": 193,
+          "segundos": 28.504,
+          "semilla": 784258
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1151,
+          "output_tokens": 99,
+          "segundos": 8.166,
+          "semilla": 903542
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1072,
+          "output_tokens": 229,
+          "segundos": 33.71,
+          "semilla": 827799
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1127,
+          "output_tokens": 115,
+          "segundos": 9.311,
+          "semilla": 964569
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+          "salida": {
+            "tipo": "condicional",
+            "sub_consultas": [
+              "Según el Reglamento General, cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RG-ART-028",
+              "RI-FI-ART-014",
+              "RG-ART-051",
+              "RG-ART-050",
+              "RG-ART-029"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Según el Reglamento General, cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28",
+            "tipo": "condicional",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RG-ART-028",
+              "RI-FI-ART-014",
+              "RG-ART-051",
+              "RG-ART-050",
+              "RG-ART-029"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Pierde la calidad de alumno si aprobó menos créditos que el promedio mínimo exigido por su carrera, cálculo que se hace dividiendo la totalidad de créditos aprobados entre el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]",
+          "salida_cruda": "<pensar>\n[RG-ART-028] dispone literalmente: 'Haber aprobado menos créditos que el promedio mínimo exigido por la carrera. El promedio de créditos del alumno se calculará dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera'. No hay condiciones adicionales en ese párrafo.\n</pensar>\nRespuesta: Pierde la calidad de alumno si aprobó menos créditos que el promedio mínimo exigido por su carrera, cálculo que se hace dividiendo la totalidad de créditos aprobados entre el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Pierde la calidad de alumno si aprobó menos créditos que el promedio mínimo exigido por su carrera, cálculo que se hace dividiendo la totalidad de créditos aprobados entre el número de seme",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-028",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "La respuesta no menciona la condición de haber reprobado por segunda vez una asignatura obligatoria, salvo excepciones, que también es parte del criterio según el Artículo 28."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 6,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "La respuesta no menciona la condición de haber reprobado por segunda vez una asignatura obligatoria, salvo excepciones, que también es parte del criterio según el Artículo 28."
+          },
+          "salida": "Respuesta: Se pierde la calidad de alumno de pregrado si aprobó menos créditos que el promedio mínimo exigido por la carrera, cálculo que se efectúa dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]",
+          "salida_cruda": "<pensar>\n[RG-ART-028] letra a): 'Haber aprobado menos créditos que el promedio mínimo exigido por la carrera. El promedio de créditos del alumno se calculará dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia del alumno en la carrera.' Condiciones: No aplica [RG-ART-028].\n</pensar>\nRespuesta: Se pierde la calidad de alumno de pregrado si aprobó menos créditos que el promedio mínimo exigido por la carrera, cálculo que se efectúa dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]"
+        },
+        {
+          "paso": 7,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Se pierde la calidad de alumno de pregrado si aprobó menos créditos que el promedio mínimo exigido por la carrera, cálculo que se efectúa dividiendo la totalidad de créditos aprobados por e",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-028",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "La respuesta no menciona la condición de reprobación por segunda vez una asignatura obligatoria, ni el cálculo del promedio de créditos aprobados en el segundo semestre ni el promedio semestral a partir del cuarto semestre, ni el artículo 51° y 50° que también pueden afectar la calidad de alumno."
+          },
+          "fallback": false
+        },
+        {
+          "paso": 8,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Según el Reglamento General, ¿cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28?",
+            "modo": "condicional",
+            "estado": "suficiente",
+            "feedback": "La respuesta no menciona la condición de reprobación por segunda vez una asignatura obligatoria, ni el cálculo del promedio de créditos aprobados en el segundo semestre ni el promedio semestral a partir del cuarto semestre, ni el artículo 51° y 50° que también pueden afectar la calidad de alumno."
+          },
+          "salida": "Respuesta: El promedio de créditos aprobados se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]",
+          "salida_cruda": "<pensar>\n[RG-ART-028] señala que el promedio de créditos se calcula dividiendo la totalidad de créditos aprobados entre el número de semestres de permanencia en la carrera. No incluye la condición de reprobación por segunda vez una asignatura obligatoria (que sí figura en [RG-ART-028] y [RI-FI-ART-014]), ni el cálculo del promedio de créditos aprobados en el segundo semestre ni el promedio semestral a partir del cuarto semestre (condiciones de [RI-FI-ART-014] no cubiertas en la pregunta).\n</pensar>\nRespuesta: El promedio de créditos aprobados se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No aplica\nFuente: [RG-ART-028]"
+        },
+        {
+          "paso": 9,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: El promedio de créditos aprobados se calcula dividiendo la totalidad de créditos aprobados por el número de semestres de permanencia en la carrera [RG-ART-028].\nCondiciones o límites: No ap",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RG-ART-028",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": false,
+            "destino": "redactor",
+            "motivo": "La respuesta no responde a la pregunta completa. La pregunta pide cómo se determina si un alumno pierde la calidad de alumno por el criterio de créditos aprobados del Artículo 28, pero la respuesta solo describe cómo se calcula el promedio de créditos, sin mencionar la condición específica de haber aprobado menos créditos que el promedio mínimo exigido por la carrera, según el Artículo 28."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H22",
+      "set": "dificil_25",
+      "id": "H22",
+      "categoria": "premisa_falsa",
+      "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+      "gold_dato": "Falso. La calificación final mínima de aprobación es 4,0 (Art 11), no 4,5. El 4,5 corresponde a otros trámites (ingreso desde otra universidad, convalidación).",
+      "gold_fuente": "RI-FI-ART-011",
+      "respuesta_final": "Respuesta: No es cierto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final de 4,0, no 4,5 [RI-FI-ART-011].\nCondiciones o límites: La nota de 4,5 corresponde a un promedio ponderado mínimo de calificaciones (equivalente a 4,5 en escala 1 a 7) para estudiantes de otras Facultades o de Ingeniería que soliciten cambio de carrera [RI-FI-ART-017] [RI-FI-ART-018].\nFuente: [RI-FI-ART-011] [RI-FI-ART-017] [RI-FI-ART-018]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta es correcta y está respaldada por la evidencia.",
+      "ciclos": 1,
+      "llamadas_modelo": 4,
+      "segundos": 57.78,
+      "fuentes_traidas": [
+        "RI-FI-ART-005",
+        "RI-FI-ART-011",
+        "RI-FI-ART-017",
+        "RI-FI-ART-018",
+        "RI-FI-ART-030"
+      ],
+      "tipo_fallo": "alucinacion_condicion_p01",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": true,
+      "diagnostico_auditoria": "Refuta bien 4,0 vs 4,5 en Respuesta [RI-FI-ART-011], pero Condiciones afirma erróneamente que 4,5 aplica 'a estudiantes de otras Facultades o de Ingeniería que soliciten cambio de carrera [RI-FI-ART-017] [RI-FI-ART-018]', cuando [RI-FI-ART-018] exige 4,2 (Regla 3 / P01).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 618,
+          "output_tokens": 57,
+          "segundos": 8.502,
+          "semilla": 100832
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 603,
+          "output_tokens": 14,
+          "segundos": 2.154,
+          "semilla": 160374
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1196,
+          "output_tokens": 298,
+          "segundos": 44.029,
+          "semilla": 519501
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1440,
+          "output_tokens": 36,
+          "segundos": 3.062,
+          "semilla": 219574
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+          "salida": {
+            "tipo": "premisa_falsa",
+            "sub_consultas": [
+              "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5"
+            ],
+            "documentos": [
+              "RI-FI"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5."
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5",
+            "tipo": "premisa_falsa",
+            "documentos": [
+              "RI-FI"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-011",
+              "RI-FI-ART-017",
+              "RI-FI-ART-018",
+              "RI-FI-ART-030",
+              "RI-FI-ART-005"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "Confírmame que la nota mínima para aprobar una asignatura en la Facultad de Ingeniería es 4,5.",
+            "modo": "premisa_falsa",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: No es cierto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final de 4,0, no 4,5 [RI-FI-ART-011].\nCondiciones o límites: La nota de 4,5 corresponde a un promedio ponderado mínimo de calificaciones (equivalente a 4,5 en escala 1 a 7) para estudiantes de otras Facultades o de Ingeniería que soliciten cambio de carrera [RI-FI-ART-017] [RI-FI-ART-018].\nFuente: [RI-FI-ART-011] [RI-FI-ART-017] [RI-FI-ART-018]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-011] exige obtener una calificación final mínima de 4,0, no 4,5. El 4,5 es un promedio ponderado mínimo para estudiantes de otras Facultades (artículo 17°) o de Ingeniería para cambiar de carrera (artículo 18°). La nota de titulación para Ingeniería Civil se calcula como promedio ponderado de asignaturas (60%) y Memoria de Título (40%).\n</pensar>\nRespuesta: No es cierto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final de 4,0, no 4,5 [RI-FI-ART-011].\nCondiciones o límites: La nota de 4,5 corresponde a un promedio ponderado mínimo de calificaciones (equivalente a 4,5 en escala 1 a 7) para estudiantes de otras Facultades o de Ingeniería que soliciten cambio de carrera [RI-FI-ART-017] [RI-FI-ART-018].\nFuente: [RI-FI-ART-011] [RI-FI-ART-017] [RI-FI-ART-018]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: No es cierto: el requisito mínimo para aprobar una asignatura en la Facultad de Ingeniería es obtener una calificación final de 4,0, no 4,5 [RI-FI-ART-011].\nCondiciones o límites: La nota d",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-011",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-017",
+                  "existe": true,
+                  "en_evidencia": true
+                },
+                {
+                  "id": "RI-FI-ART-018",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta es correcta y está respaldada por la evidencia."
+          },
+          "fallback": false
+        }
+      ]
+    },
+    {
+      "qid": "dificil_25:H25",
+      "set": "dificil_25",
+      "id": "H25",
+      "categoria": "sintesis",
+      "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+      "gold_dato": "Primero por número de créditos aprobados; a igual número de créditos, por el promedio curricular (dos decimales, incluye aprobadas y reprobadas) del Plan Común de Primer Año; respetando el orden de preferencias y los cupos por carrera (Art 5). Solo se consideran las asignaturas obligatorias de Primer Año.",
+      "gold_fuente": "RI-FI-ART-005",
+      "respuesta_final": "Respuesta: Al finalizar su segundo semestre de permanencia, los estudiantes del Ingreso Común postulan a las carreras de Ingeniería Civil que ofrece la Facultad de Ingeniería, siendo seleccionados primero por número de créditos aprobados, luego por promedio curricular ponderado (con dos decimales), orden de preferencias y cupos disponibles [RI-FI-ART-005].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-005]",
+      "aprobado_verificador": true,
+      "motivo_verificador": "La respuesta cumple con todos los criterios: responde todas las partes de la pregunta, cada dato coincide con la evidencia, las afirmaciones están citadas correctamente, conserva las condiciones y excepciones relevantes, y no confirma un hecho falso.",
+      "ciclos": 1,
+      "llamadas_modelo": 4,
+      "segundos": 52.64,
+      "fuentes_traidas": [
+        "RG-ART-055",
+        "RI-FI-ART-004",
+        "RI-FI-ART-005",
+        "RI-FI-ART-006",
+        "RI-FI-ART-032"
+      ],
+      "tipo_fallo": "respuesta_incompleta_reglas_2_y_5",
+      "causa_raiz": "redactor",
+      "solo_condicion_p01": false,
+      "diagnostico_auditoria": "Ordena créditos, promedio curricular, preferencias y cupos, pero escribe 'Condiciones o límites: No aplica' omitiendo que solo cuentan asignaturas obligatorias de Primer Año y del Plan Común (incluyendo reprobadas) de [RI-FI-ART-005] (Reglas 2 y 5; igual que Solo Redactor D4).",
+      "telemetria": [
+        {
+          "agente": "enrutador",
+          "usa_adaptador": true,
+          "adaptador_activo": "enrutador",
+          "input_tokens": 620,
+          "output_tokens": 54,
+          "segundos": 8.078,
+          "semilla": 111596
+        },
+        {
+          "agente": "recuperador",
+          "usa_adaptador": true,
+          "adaptador_activo": "recuperador",
+          "input_tokens": 598,
+          "output_tokens": 14,
+          "segundos": 2.124,
+          "semilla": 564824
+        },
+        {
+          "agente": "redactor",
+          "usa_adaptador": true,
+          "adaptador_activo": "redactor",
+          "input_tokens": 1478,
+          "output_tokens": 245,
+          "segundos": 36.125,
+          "semilla": 90013
+        },
+        {
+          "agente": "verificador",
+          "usa_adaptador": false,
+          "adaptador_activo": "base",
+          "input_tokens": 1376,
+          "output_tokens": 75,
+          "segundos": 6.277,
+          "semilla": 348278
+        }
+      ],
+      "traza_completa": [
+        {
+          "paso": 1,
+          "agente": "enrutador",
+          "entrada": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+          "salida": {
+            "tipo": "cruce",
+            "sub_consultas": [
+              "Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre"
+            ],
+            "documentos": [
+              "RG"
+            ]
+          },
+          "fallback": false
+        },
+        {
+          "paso": 2,
+          "agente": "recuperador",
+          "entrada": {
+            "rama": "busqueda_base",
+            "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?"
+          },
+          "salida": {
+            "accion": "buscar",
+            "args": {
+              "consulta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+              "k": 5
+            }
+          },
+          "observacion": {
+            "hits": [
+              "RI-FI-ART-005",
+              "RI-FI-ART-006",
+              "RG-ART-055",
+              "RI-FI-ART-004",
+              "RI-FI-ART-032"
+            ]
+          },
+          "decidido_por": "sistema"
+        },
+        {
+          "paso": 3,
+          "agente": "recuperador",
+          "entrada": {
+            "sub": "Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre",
+            "tipo": "cruce",
+            "documentos": [
+              "RG"
+            ],
+            "evidencia_reunida": [
+              "RI-FI-ART-005",
+              "RI-FI-ART-006",
+              "RG-ART-055",
+              "RI-FI-ART-004",
+              "RI-FI-ART-032"
+            ],
+            "ultima_observacion": null,
+            "intento": 1,
+            "feedback_verificador": null
+          },
+          "salida": {
+            "accion": "suficiente",
+            "args": {}
+          },
+          "observacion": null,
+          "fallback": false
+        },
+        {
+          "paso": 4,
+          "agente": "redactor",
+          "entrada": {
+            "pregunta": "¿Cómo se selecciona a los estudiantes de Ingreso Común para asignarlos a una carrera de la Facultad al término del segundo semestre?",
+            "modo": "cruce",
+            "estado": "suficiente",
+            "feedback": null
+          },
+          "salida": "Respuesta: Al finalizar su segundo semestre de permanencia, los estudiantes del Ingreso Común postulan a las carreras de Ingeniería Civil que ofrece la Facultad de Ingeniería, siendo seleccionados primero por número de créditos aprobados, luego por promedio curricular ponderado (con dos decimales), orden de preferencias y cupos disponibles [RI-FI-ART-005].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-005]",
+          "salida_cruda": "<pensar>\n[RI-FI-ART-005] indica que los estudiantes del Ingreso Común postulan a las carreras de Ingeniería Civil al término de su segundo semestre de permanencia; la selección se basa en número de créditos aprobados, promedio curricular ponderado (con dos decimales), orden de preferencias y cupos disponibles. No aplica [RI-FI-ART-006] (proceso al final del año académico) ni [RG-ART-055] (cambio de carrera).\n</pensar>\nRespuesta: Al finalizar su segundo semestre de permanencia, los estudiantes del Ingreso Común postulan a las carreras de Ingeniería Civil que ofrece la Facultad de Ingeniería, siendo seleccionados primero por número de créditos aprobados, luego por promedio curricular ponderado (con dos decimales), orden de preferencias y cupos disponibles [RI-FI-ART-005].\nCondiciones o límites: No aplica\nFuente: [RI-FI-ART-005]"
+        },
+        {
+          "paso": 5,
+          "agente": "verificador",
+          "entrada": {
+            "borrador": "Respuesta: Al finalizar su segundo semestre de permanencia, los estudiantes del Ingreso Común postulan a las carreras de Ingeniería Civil que ofrece la Facultad de Ingeniería, siendo seleccionados pri",
+            "chequeo_citas": {
+              "citas": [
+                {
+                  "id": "RI-FI-ART-005",
+                  "existe": true,
+                  "en_evidencia": true
+                }
+              ],
+              "sin_citas": false
+            }
+          },
+          "salida": {
+            "aprobado": true,
+            "destino": "fin",
+            "motivo": "La respuesta cumple con todos los criterios: responde todas las partes de la pregunta, cada dato coincide con la evidencia, las afirmaciones están citadas correctamente, conserva las condiciones y excepciones relevantes, y no confirma un hecho falso."
+          },
+          "fallback": false
+        }
+      ]
+    }
+  ]
+}

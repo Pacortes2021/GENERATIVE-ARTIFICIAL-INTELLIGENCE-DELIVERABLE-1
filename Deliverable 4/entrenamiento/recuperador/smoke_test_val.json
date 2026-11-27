@@ -1,0 +1,20 @@
+[
+  {
+    "id": "REC-B1-V01-S1",
+    "esperado": "{\"accion\": \"suficiente\", \"args\": {}}",
+    "salida_base": "{\"accion\":\"buscar\",\"args\":{\"consulta\":\"facilidades académicas dirigentes estudiantiles acreditados\",\"k\":5}}",
+    "salida_finetuned": "{\"accion\": \"suficiente\", \"args\": {}}"
+  },
+  {
+    "id": "REC-B4-V03-S2",
+    "esperado": "{\"accion\": \"suficiente\", \"args\": {}}",
+    "salida_base": "{\"accion\":\"suficiente\",\"args\":{}}",
+    "salida_finetuned": "{\"accion\": \"suficiente\", \"args\": {}}"
+  },
+  {
+    "id": "REC-ENR-X-V05",
+    "esperado": "{\"accion\": \"buscar\", \"args\": {\"consulta\": \"normas asistencia actividades practicas autoridades articulo consecuencia\", \"k\": 5}}",
+    "salida_base": "{\"accion\":\"traer\",\"args\":{\"doc\":\"RI-FI\",\"n\":7}}",
+    "salida_finetuned": "{\"accion\": \"buscar\", \"args\": {\"consulta\": \"normas asistencia actividades practicas autoridades interno articulo docencia\", \"k\": 5}}"
+  }
+]

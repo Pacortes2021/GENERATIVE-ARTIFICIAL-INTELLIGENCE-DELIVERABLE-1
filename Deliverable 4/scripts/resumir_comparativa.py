@@ -223,7 +223,7 @@ def main(argv: list[str] | None = None) -> int:
 
     resumenes = [
         resumir_corrida("Control Base D4", csv_base, tel_base),
-        resumir_corrida("Solo Redactor D4", csv_red, tel_red),
+        resumir_corrida("Solo Redactor D4 (histórico)", csv_red, tel_red),
         resumir_corrida(args.etiqueta_multi, csv_multi, tel_multi),
     ]
     print(formatear_tabla_markdown(resumenes))

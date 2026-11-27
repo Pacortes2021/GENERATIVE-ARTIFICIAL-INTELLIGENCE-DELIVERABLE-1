@@ -6,11 +6,10 @@
   "agentes_base": [
     "enrutador",
     "recuperador",
+    "redactor",
     "verificador"
   ],
-  "agentes_finetuned": [
-    "redactor"
-  ],
+  "agentes_finetuned": [],
   "decoding": {
     "do_sample": true,
     "temperature": 0.7,

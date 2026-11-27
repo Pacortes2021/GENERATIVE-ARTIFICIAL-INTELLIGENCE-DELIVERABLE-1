@@ -32,10 +32,10 @@
   > Armamos `725` pares (`620` entrenamiento, `105` validación) con `0` truncamientos y revisamos `50` ejemplos a mano con firmas. Comprobamos `0` coincidencias con las `61` unidades excluidas de evaluación, y declaramos que `P36` aparece como ejemplo *few-shot* heredado en el Enrutador, donde `3-LoRA` sigue fallando.
 
 ### 0:42 – 2:02 | Demo en vivo `H07`: Base vs `3-LoRA` (`Colab` · Pasos 2 y 3 · **80 s**)
-- **En pantalla:** Cambia a Colab; muestra el **Paso 2** listo, haz **clic en Ejecutar Paso 3 (`dificil_25:H07`)**, deja leer ambos planes, una acción del Recuperador, borrador y veredicto, y muestra las tarjetas HTML lado a lado.
+- **En pantalla:** Cambia a Colab; muestra el **Paso 2** listo, haz **clic en Ejecutar Paso 3 (`dificil_25:H07`)**, deja leer a velocidad `1x` al menos un mensaje por agente (plan de ambos Enrutadores, acción del Recuperador, borrador y veredicto) y muestra las tarjetas HTML lado a lado.
 - **Locución:**
   > Con los adaptadores cargados desde Hugging Face y su aislamiento verificado, ejecutamos en vivo `H07` sobre si un alumno con 42 créditos en cuarto semestre cae en baja académica.
-  > *(Acelera las esperas en ambos lados)*: Los dos Enrutadores reciben la misma pregunta. Aquí se ven ambos planes, la recuperación, el borrador y el veredicto. Control Base entra en `3` ciclos y `13` llamadas hasta abstenerse falsamente, mientras `3-LoRA` aprueba en `1` ciclo: `42 / 4 = 10,5 > 10`, cumpliendo con el umbral de RI-FI 14 b) según RG 28 a). Estos son los contadores reales de la toma.
+  > *(Acelera las esperas dejando legible un mensaje de cada agente en ambos lados)*: Los dos sistemas reciben exactamente `H07`. Aquí se ven el plan, la acción del Recuperador, el borrador y el veredicto. Base hizo `[ciclos y llamadas de esta toma]` hasta abstenerse, mientras `3-LoRA` hizo `[ciclos y llamadas de esta toma]` calculando `42 / 4 = 10,5 > 10` con aprobación del Verificador Base (`SIN CALIFICAR` externo; en esta toma `[citas emitidas]`, la pauta espera `RG 28 a)` + `RI-FI 14 b)`).
 
 ### 2:02 – 2:30 | Tabla A100 y por qué Verificador queda en Base (`main.pdf` · Tabla)
 - **En pantalla:** Tabla de resultados en `main.pdf`.

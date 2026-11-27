@@ -162,7 +162,10 @@ def publicar_rol(
     """Calcula SHA-256, sube `adapter_dir` a HF, verifica hash remoto y actualiza D4."""
     from huggingface_hub import HfApi
 
-    metrics_path = D4_TRAIN_DIR / rol / "training_metrics.json"
+    metrics_local = adapter_dir.parent / "training_metrics.json"
+    metrics_path = (
+        metrics_local if metrics_local.is_file() else (D4_TRAIN_DIR / rol / "training_metrics.json")
+    )
     if not metrics_path.is_file():
         raise FileNotFoundError(f"Falta {metrics_path}")
     metricas = json.loads(metrics_path.read_text(encoding="utf-8"))
@@ -170,7 +173,8 @@ def publicar_rol(
     hashes = obtener_hashes_adapter(adapter_dir)
     readme_txt = generar_model_card_agente(rol, metricas, hf_repo=hf_repo)
     _escribir_texto_lf(adapter_dir / "README.md", readme_txt)
-    _escribir_texto_lf(D4_TRAIN_DIR / rol / "adapter" / "README.md", readme_txt)
+    if metrics_path.parent == D4_TRAIN_DIR / rol:
+        _escribir_texto_lf(D4_TRAIN_DIR / rol / "adapter" / "README.md", readme_txt)
 
     tok_efectivo = token or os.environ.get("HF_TOKEN") or None
     api = HfApi(token=tok_efectivo)

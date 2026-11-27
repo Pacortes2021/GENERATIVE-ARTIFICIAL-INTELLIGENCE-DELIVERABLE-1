@@ -25,14 +25,14 @@ Continuación directa de Deliverables 1–3 sobre normativa de pregrado de Ingen
 
 ## Resumen de resultados (A100 `bf16` pareado vs corridas históricas T4)
 
-Evaluación bajo la pauta estricta heredada de D2/D3 ([`LEEME_PAUTA.md`](../Deliverable%203/paquete_25_dificiles/LEEME_PAUTA.md), incluyendo Regla 2 y Regla 3 / `P01`). **Comparabilidad:** `Control Base (A100)` es exactamente el mismo sistema D3 v6 (código, prompts y pesos base) re-ejecutado en idéntico entorno **A100 40 GB `bf16`** y semillas `2026`; las filas `D1`–`D3` corresponden a corridas históricas en `Tesla T4 fp16`.
+Evaluación bajo la pauta estricta heredada de D2/D3 ([`LEEME_PAUTA.md`](../Deliverable%203/paquete_25_dificiles/LEEME_PAUTA.md), incluyendo Regla 2 y Regla 3 / `P01`). **Comparabilidad:** `Control Base (A100)` es exactamente el mismo sistema D3 v6 (código, prompts y pesos base) re-ejecutado en idéntico entorno **A100 40 GB `bf16`** y semillas `2026`; las filas `D1`–`D3` corresponden a corridas históricas en `Tesla T4` (`D2`: `bf16` en T4).
 
 | Sistema / Control | Entorno | Orig. (50) | Dif. (25) | Tot. (75) | Nuevas (20) | Global (95) | Llamadas (`75 / 20`) | Tiempo (`75 / 20`) |
 |---|---|---:|---:|---:|---:|---:|---:|---:|
 | D1 Original (`greedy`, solo abst.) | T4 | 2 (4,0%) | --- | --- | --- | --- | --- | --- |
-| Bas. Directo D2/D3 (`T=0,7`) | T4 `fp16` | 1 (2,0%) | 0 (0,0%) | 1 (1,3%) | --- | --- | 75 / --- | --- |
-| RAG D2 (E5) | T4 `fp16` | 40 (80,0%) | 16 (64,0%) | 56 (74,7%) | --- | --- | 75 / --- | --- |
-| Multi-agente D3 Base (v6) | T4 `fp16` | **46 (92,0%)** | **20 (80,0%)** | **66 (88,0%)** | --- | --- | 711 / --- | 137,6 min / --- |
+| Bas. Directo D2/D3 (`T=0,7`) | T4 | 1 (2,0%) | 0 (0,0%) | 1 (1,3%) | --- | --- | 75 / --- | --- |
+| RAG D2 (E5) | T4 (`bf16`) | 40 (80,0%) | 16 (64,0%) | 56 (74,7%) | --- | --- | 75 / --- | --- |
+| Multi-agente D3 Base (v6) | T4 | **46 (92,0%)** | **20 (80,0%)** | **66 (88,0%)** | --- | --- | 711 / --- | 137,6 min / --- |
 | Control Base D4 (`= D3 v6`, `LoRA OFF`) | A100 `bf16` | **46 (92,0%)** | 16 (64,0%) | 62 (82,7%) | **11 (55,0%)** | 73 (76,8%) | 658 / 254 | 75,3 min / 32,8 min |
 | Solo Redactor v2 (`1-LoRA`) | A100 `bf16` | 43 (86,0%) | 17 (68,0%) | 60 (80,0%) | 10 (50,0%) | 70 (73,7%) | 648 / 212 | 75,7 min / 25,1 min |
 | **D4 Oficial (`3-LoRA`: Enr+Rec+Red FT, Ver Base)** | **A100 `bf16`** | **46 (92,0%)** | **18 (72,0%)** | **64 (85,3%)** | 10 (50,0%) | **74 (77,9%)** | **388 / 118** | **72,6 min / 30,2 min** |

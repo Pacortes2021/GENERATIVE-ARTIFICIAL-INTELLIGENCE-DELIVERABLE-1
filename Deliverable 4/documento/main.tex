@@ -30,7 +30,7 @@
 
 \seccion{1. Continuidad D1--D3, elección de agentes (eficiencia 1$\rightarrow$3 LoRA) y aislamiento del Verificador}
 {\sub
-Partimos en D1 con \texttt{Qwen/Qwen3-4B} sin corpus (\textbf{2/50}, solo abstención), pasamos a RAG E5 en D2 (\textbf{40/50}) y a 4 agentes en D3 v6 (\textbf{66/75}, tras iterar \texttt{prompts/01--04} hasta saturar prompting base; congelados bit a bit sobre \textbf{197 unidades} y \textbf{75} preguntas oficiales). En D4, \textbf{8/9 errores} de D3 ya tenían evidencia \texttt{top-6} en el Redactor; pero entrenar \textbf{solo al Redactor} (\textbf{60/75} vs \textbf{62/75} Base en A100 \texttt{bf16}) mantuvo \textbf{373} llamadas del Recuperador en 75 (\textbf{132} en N20). Esto justificó adaptar \textbf{Enrutador + Recuperador + Redactor} vía \texttt{set\_adapter()} en un único NF4, aislando al \textbf{Verificador en Base} (\texttt{disable\_adapter()}, 98/98 y 32/32 OFF, \textbf{0 violaciones}) y logrando con \textbf{3-LoRA} \textbf{$-$41,0\% llamadas} (\textbf{64/75}; \textbf{74/95}).}
+Partimos en D1 con \texttt{Qwen/Qwen3-4B} sin corpus (\textbf{2/50}, solo abstención), pasamos a RAG E5 en D2 (\textbf{40/50}) y a 4 agentes en D3 v6 (\textbf{66/75}, tras iterar y ablar los \texttt{prompts/01--04} en D3 v6; congelados bit a bit sobre \textbf{197 unidades} y \textbf{75} preguntas oficiales). En D4, \textbf{8/9 errores} de D3 ya tenían evidencia \texttt{top-6} en el Redactor; pero entrenar \textbf{solo al Redactor} (\textbf{60/75} vs \textbf{62/75} Base en A100 \texttt{bf16}) mantuvo \textbf{373} llamadas del Recuperador en 75 (\textbf{132} en N20). Esto justificó adaptar \textbf{Enrutador + Recuperador + Redactor} vía \texttt{set\_adapter()} en un único NF4, aislando al \textbf{Verificador en Base} (\texttt{disable\_adapter()}, 98/98 y 32/32 OFF, \textbf{0 violaciones}) y logrando con \textbf{3-LoRA} \textbf{$-$41,0\% llamadas} (\textbf{64/75}; \textbf{74/95}).}
 
 \seccion{2. Grafo multi-agente con 3 agentes fine-tuned (\texttt{set\_adapter}) y Verificador base (\texttt{disable\_adapter})}
 \vspace{-2pt}\centerline{\includegraphics[width=0.81\linewidth]{grafo_d4.pdf}}
@@ -40,7 +40,7 @@ Partimos en D1 con \texttt{Qwen/Qwen3-4B} sin corpus (\textbf{2/50}, solo absten
 \noindent\begin{minipage}[t]{0.470\linewidth}
 \sub\raggedright
 \seccion{3. Datasets antifuga por rol (725 pares) y procedencia}
-Construidos por rol (\texttt{seed=202604}), respetando \texttt{prompts/01--03} bit a bit sobre partición disjunta frente a evaluación:\par
+Construidos por rol (\texttt{seed=202604}), respetando \texttt{prompts/01--03} bit a bit con filtro de 61 IDs de evaluación:\par
 \vspace{0.6pt}
 {\fontsize{5.95}{6.9}\selectfont\setlength{\tabcolsep}{1.1pt}
 \renewcommand{\arraystretch}{1.01}
@@ -52,7 +52,7 @@ Construidos por rol (\texttt{seed=202604}), respetando \texttt{prompts/01--03} b
 \textbf{Recuperador} & 230/39 (269) & 109/197 & \texttt{buscar}:111 \texttt{sufic}:88 \texttt{traer}:61 \texttt{existe}:9\\
 \textbf{Redactor} & 180/30 (210) & 112/197 & 6 bloques; \texttt{No aplica}:74; citas exactas\\
 \midrule
-\textbf{Total} & \textbf{620/105 (725)} & \textbf{Disj. (61)} & 0 unid. D3(40) / N20(21); 0 QIDs\\
+\textbf{Total} & \textbf{620/105 (725)} & \textbf{61 bloq.} & 0 unid. D3(40) / N20(21); 0 QIDs\\
 \bottomrule
 \end{tabular*}}
 \vspace{1.0pt}
@@ -80,7 +80,7 @@ Sobre \texttt{Qwen/Qwen3-4B} (4-bit NF4, doble cuant.; 2,24B empaq.): LoRA $r=16
 \begin{minipage}[t]{0.514\linewidth}
 \sub\raggedright
 \seccion{5. Resultados (A100 \texttt{bf16}) vs históricos (T4) y análisis estadístico}
-Evaluación bajo \texttt{LEEME\_PAUTA.md} (Reglas 2 y 3 / \texttt{P01}). \textbf{Comparabilidad:} \texttt{Control Base (A100)} ejecuta exactamente D3 v6 (código, prompts y pesos base) en idéntico A100 \texttt{bf16} (semillas \texttt{2026}); D1--D3 son corridas históricas en T4 \texttt{fp16}:\par
+Evaluación bajo \texttt{LEEME\_PAUTA.md} (Reglas 2 y 3 / \texttt{P01}). \textbf{Comparabilidad:} \texttt{Control Base (A100)} ejecuta exactamente D3 v6 (código, prompts y pesos base) en idéntico A100 \texttt{bf16} (semillas \texttt{2026}); D1--D3 son corridas históricas en T4:\par
 \vspace{0.6pt}
 {\fontsize{6.15}{7.05}\selectfont\setlength{\tabcolsep}{0.4pt}
 \renewcommand{\arraystretch}{1.02}
@@ -103,7 +103,7 @@ Ctrl (=D3, A100) & \textbf{46(92\%)} & 16(64\%) & 62(82,7\%) & \textbf{11(55\%)}
 \end{tabular*}}
 \vspace{0.7pt}{\fontsize{6.15}{7.0}\selectfont\color{gris} \textbf{Variación base:} El mismo sistema base baja 66$\rightarrow$62 entre T4 y A100 (mayor que el +2 observado). \textbf{0} citas inválidas, \textbf{0} fallbacks y \textbf{0} violaciones LoRA en \texttt{3-LoRA}. Tiempos 75 / N20: Base 75,3 / 32,8 min vs \textbf{3-LoRA} 72,6 / 30,2 min ($-$3,7\% en 75; Redactor domina la latencia). Núcleo sin \texttt{P01}: 65/75 y 11/20 (\texttt{P7} y \texttt{P8} cumplen \texttt{LEEME\_PAUTA.md} con citas inline aunque omitan línea literal \texttt{Fuente:}).}\par
 
-\textbf{Lectura honesta y mecanismos reales:} Frente a Control Base A100, \textbf{McNemar no detectó diferencia de exactitud} (\textbf{64/75} vs 62/75: gana 5 \texttt{P11,P43,H07,H18,H24}, pierde 3 \texttt{P24,P26,H17}, $p=0{,}73$; en \texttt{N20} \textbf{10/20} vs 11/20: gana \texttt{N09,N12}, pierde \texttt{N05,N06,N20}; en 95 marca 7/6, $p=1{,}0$). Como \texttt{3-LoRA} se eligió entre 5 variantes mirando estas 95 preguntas, \texttt{N20} no actúa como set ciego estricto entre arquitecturas. El ahorro de \textbf{$-$41,0\%} llamadas se atribuye al sistema \texttt{3-LoRA} y se localiza en el \textbf{Recuperador LoRA}, que \textbf{aprendió cuándo detenerse}: emite \texttt{suficiente} tras la búsqueda inicial en \textbf{65/75} (\textbf{66/75} en 1.\textsuperscript{a} llamada LLM incl. \texttt{P50}; 21 búsquedas propias vs 157 Base; $-$69,8\%). El \textbf{Enrutador} pasa \texttt{documentos} como contexto sin filtrar \texttt{Orquestador.recuperar()} (62,4\% train y 49/75 dicen \texttt{RG}). En \texttt{H07} (benchmark A100): Control acertó $10{,}5>10$ en ciclo 2 pero Verificador base lo rechazó forzando abstención en ciclo 3 (177,4 s); 1-LoRA tardó 89,4 s; \textbf{3-LoRA} resuelve en 1 ciclo / 4 llamadas (53,8 s).\par
+\textbf{Lectura honesta y mecanismos reales:} Frente a Control Base A100, \textbf{McNemar no detectó diferencia de exactitud} (\textbf{64/75} vs 62/75: gana 5 \texttt{P11,P43,H07,H18,H24}, pierde 3 \texttt{P24,P26,H17}, $p=0{,}73$; en \texttt{N20} \textbf{10/20} vs 11/20: gana \texttt{N09,N12}, pierde \texttt{N05,N06,N20}; en 95 marca 7/6, $p=1{,}0$). Como \texttt{3-LoRA} se eligió entre 5 variantes mirando estas 95 preguntas, \texttt{N20} no actúa como set ciego estricto entre arquitecturas. El ahorro de \textbf{$-$41,0\%} llamadas se atribuye al sistema \texttt{3-LoRA} y se localiza en el \textbf{Recuperador LoRA}, que \textbf{aprendió cuándo detenerse}: emite \texttt{suficiente} en \texttt{traza[2]} en \textbf{65/75} casos y en \textbf{66/75} en la 1.\textsuperscript{a} llamada LLM del Recuperador (incl. \texttt{P50}; 21 búsquedas propias vs 157 Base; $-$69,8\%). El \textbf{Enrutador} pasa \texttt{documentos} como contexto sin filtrar \texttt{Orquestador.recuperar()} (62,4\% train y 49/75 dicen \texttt{RG}). En \texttt{H07} (benchmark A100): Control acertó $10{,}5>10$ en ciclo 2 pero Verificador base lo rechazó forzando abstención en ciclo 3 (177,4 s); 1-LoRA tardó 89,4 s; \textbf{3-LoRA} resuelve en 1 ciclo / 4 llamadas (53,8 s).\par
 \end{minipage}
 
 \vspace{0.8pt}\centerline{\includegraphics[width=0.92\linewidth]{../entrenamiento/loss_curves_3agentes.pdf}}\vspace{0.5pt}

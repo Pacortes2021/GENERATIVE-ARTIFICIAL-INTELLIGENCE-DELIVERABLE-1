@@ -455,12 +455,28 @@ class TestDemoVideoD4(unittest.TestCase):
         self.assertIn("MultiLoraGenerator", src_total)
         self.assertIn("render_comparativa_html", src_total)
         self.assertIn("dificil_25:H07", src_total)
+        self.assertIn("preguntas_demo_alumnos.csv", src_total)
+        self.assertIn("demo_alumno:A01", src_total)
+        self.assertIn("demo_alumno:A02", src_total)
         self.assertIn("dificil_25:H03", src_total)
         self.assertIn("dificil_25:H17", src_total)
         self.assertIn("dificil_25:H06", src_total)
         self.assertIn("verbose=True", src_total)
         self.assertIn("transformers==5.23.0", src_total)
         self.assertIn("huggingface-hub==1.33.0", src_total)
+
+    def test_preguntas_demo_alumnos_sin_fuga_de_entrenamiento(self) -> None:
+        from dataset_blocks.reglas_v2 import BLOCKED_UNIT_IDS
+
+        demo_csv = DELIVERABLE4_DIR / "datos" / "preguntas_demo_alumnos.csv"
+        self.assertTrue(demo_csv.is_file())
+        preguntas_demo = ed.cargar_preguntas_desde_csv(demo_csv, nombre_set="demo_alumno")
+        self.assertEqual([p["qid"] for p in preguntas_demo], ["demo_alumno:A01", "demo_alumno:A02"])
+        for p in preguntas_demo:
+            fuentes = [s.strip() for s in p["gold_fuente"].split(";") if s.strip()]
+            self.assertGreaterEqual(len(fuentes), 2)
+            for uid in fuentes:
+                self.assertIn(uid, BLOCKED_UNIT_IDS, f"Unidad {uid} debe permanecer excluida de entrenamiento")
 
     def test_preguntas_nuevas_20_control_solo_base_y_auditoria_general(self) -> None:
         nuevas_csv = DELIVERABLE4_DIR / "datos" / "preguntas_nuevas_20.csv"

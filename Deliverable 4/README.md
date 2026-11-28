@@ -32,14 +32,14 @@ Continuación directa de Deliverables 1–3 sobre normativa de pregrado de Ingen
 | Ruta | Qué contiene | Notas de navegación |
 |---|---|---|
 | `D4_colab_video_demo.ipynb` / `evaluacion` / `entrenamiento` | 3 notebooks Colab reproducibles desde rama `main` (`SOLO_HF = True`, sin Drive por defecto) | Demo `H07` corre directo en GPU |
-| [`datos/`](datos/) | `620` train + `105` val JSONL (`725` pares), `preguntas_nuevas_20.csv`, muestras manuales y CSVs firmados | [`MUESTRA_REVISION_MANUAL.md`](datos/MUESTRA_REVISION_MANUAL.md) y [`...ENRUTADOR_RECUPERADOR.md`](datos/MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md) |
+| [`datos/`](datos/) | `620` train + `105` val JSONL (`725` pares), `preguntas_nuevas_20.csv`, `preguntas_demo_alumnos.csv` (2 consultas naturales de alumno para el video), muestras manuales y CSVs firmados | [`MUESTRA_REVISION_MANUAL.md`](datos/MUESTRA_REVISION_MANUAL.md) y [`...ENRUTADOR_RECUPERADOR.md`](datos/MUESTRA_REVISION_MANUAL_ENRUTADOR_RECUPERADOR.md) |
 | [`diagnostico/`](diagnostico/) | Auditoría D3 `v6` (`8/9` con evidencia top-6, reversión v5) | Base de elección inicial de agente |
 | [`documento/`](documento/) | [`main.pdf`](documento/main.pdf) (1 página A4), [`main.tex`](documento/main.tex), [`grafo_d4.tex`](documento/grafo_d4.tex) | Compilado con `tectonic` |
 | [`entrenamiento/`](entrenamiento/README.md) | Pesos/métricas por rol + manifiesto HF SHA-256 + curvas `loss_curves_3agentes.*` | Raíz = `Redactor` + globales; subcarpetas `enrutador/` y `recuperador/` |
 | [`evaluacion/`](evaluacion/README.md) | `46` archivos de resultados, auditorías, trazas y telemetría (`resumen_comparativo_d4.json`) | Ver índice para separar oficial `3-LoRA`, `Control Base` e histórico `1-LoRA` |
 | [`prompts/`](prompts/) | `01_enrutador.txt` .. `04_verificador.txt` | Idénticos bit a bit a D3 v6 (`test_diagnostico_d3.py`) |
 | [`scripts/`](scripts/) | Constructores (`construir_dataset*.py`, `antifuga_multi.py`), entrenadores (`entrenar_*.py`), evaluadores (`evaluar_*.py`), publicador HF y generador de reporte | `dataset_blocks/` guarda especificaciones del Redactor |
-| [`tests/`](tests/) | 5 suites (`test_dataset`, `test_diagnostico_d3`, `test_entrenamiento`, `test_evaluar_d4`, `test_multi_lora_d4`) | **`31` tests offline** en verde |
+| [`tests/`](tests/) | 5 suites (`test_dataset`, `test_diagnostico_d3`, `test_entrenamiento`, `test_evaluar_d4`, `test_multi_lora_d4`) | **`32` tests offline** en verde |
 | [`video/`](video/) | [`GUION_VIDEO_D4.md`](video/GUION_VIDEO_D4.md) y visor interactivo [`mostrar_demo_d4.py`](video/mostrar_demo_d4.py) | Tarjetas HTML `SIN CALIFICAR` + Verificador + CLI offline |
 
 ---
@@ -100,7 +100,7 @@ python3 "Deliverable 4/scripts/construir_dataset.py"
 python3 "Deliverable 4/scripts/construir_datasets_agentes.py"
 python3 "Deliverable 4/scripts/generar_reporte_3lora.py"
 
-# 3. Suite completa de pruebas unitarias offline (31/31)
+# 3. Suite completa de pruebas unitarias offline (32/32)
 python3 -m unittest discover -s "Deliverable 4/tests" -v
 
 # 4. Visor demo offline (H07 + fallos reales H03, H17, H06)

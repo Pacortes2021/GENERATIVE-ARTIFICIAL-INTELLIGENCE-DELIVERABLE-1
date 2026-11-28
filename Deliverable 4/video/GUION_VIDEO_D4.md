@@ -6,44 +6,39 @@
 
 ---
 
-## Preparación rápida antes de grabar (objetivo corte final: `2:55`)
+## Preparación y tiempos reales de esta toma (corte final `~2:50`)
 
-1. Abre dos pestañas limpias en Chrome/Brave (zoom navegador **`110%–125%`** para lectura nítida a 1080p):
-   - **Pestaña 1:** `Deliverable 4/documento/main.pdf` (página única A4, zoom cómodo para encuadrar grafo, datos/curvas y tabla A100).
-   - **Pestaña 2:** Google Colab (**GPU A100 o T4**) con `Deliverable 4/D4_colab_video_demo.ipynb` (`MONTAR_DRIVE = False`). Colapsa la barra lateral izquierda de Colab y la salida de instalación del Paso 1.
-2. **Pre-ejecuta antes de apretar Rec:** **Paso 1** (`pip install` + `git clone` de `main`) y **Paso 2** (deja visible la tarjeta HTML compacta `Paso 2 listo · Único modelo NF4` con `SHA-256 OK`, `ΔBase > 0`, `Verificador OFF` y `Aislamiento Multi-LoRA Verificado`).
-3. **Al grabar en vivo el Paso 3 (`dificil_25:H07` + `demo_alumno:A01` y `demo_alumno:A02`):**
-   - Muestra en cámara el **clic en Ejecutar del Paso 3** (`verbose=True` muestra los banners de las 3 preguntas arriba y separa `Ciclo 1`, `Ciclo 2`, etc., mostrando `Respuesta:` directo sin truncar dentro de `<pensar>`).
-   - Deja a velocidad `1x` al menos un mensaje legible por rol en `H07`, luego acelera las esperas (`8x–12x` con aviso visible en pantalla) hasta que terminen las 3 comparativas y haz scroll suave por las tarjetas finales (**Hero Strip + Base vs `3-LoRA`**) de **`H07`**, **`A01`** (inasistencia a certamen por salud) y **`A02`** (2.ª reprobación de ramo obligatorio en 2.º año).
-   - **Edición (`<= 3:00`):** dedica **`~55 s`** a `H07` y **`~35 s`** en conjunto a `A01 + A02` (**`~90 s`** para todo Paso 3). Narra siempre con los **contadores reales de esa toma** e indica con naturalidad la GPU en uso si grabaste en `T4 float16` (aclarando que la evaluación completa del PDF corrió en `A100 bf16`).
-   - **Precisión normativa:** en `H07`, la pauta exige `RG Art. 28 a)` (`42 / 4 = 10,5`) y `RI-FI Art. 14 b)` (`< 10`); si el modelo cita solo `RI-FI-ART-014`, dilo tal cual y distingue la aprobación interna del Verificador frente a `SIN CALIFICAR` (auditoría externa). En `A01` y `A02`, destaca que son preguntas cotidianas sobre artículos excluidos del entrenamiento.
+- **Entorno en vivo:** Google Colab **`GPU T4` (`torch.float16`)**, pesos cargados desde Hugging Face (`Pablox0333`, `SHA-256 OK`, `Aislamiento Multi-LoRA Verificado`) sobre `main@04c22a1`.
+- **Resultados exactos capturados en Paso 3 (`48 → 20` llamadas totales, `-58,3%`, `9 → 3` ciclos):**
+  - `dificil_25:H07`: Base `3` ciclos / `13` llam. (`216,1 s`, `RECHAZO`) vs `3-LoRA` `1` ciclo / `4` llam. (`88,1 s`, `APROBADO`, `-69,2%`; citó `RI-FI-ART-014`; pauta pide además `RG Art. 28 a)`).
+  - `demo_alumno:A01` *(inasistencia a certamen por salud)*: Base `3` ciclos / `19` llam. (`301,1 s`, `RECHAZO`) vs `3-LoRA` `1` ciclo / `10` llam. (`105,3 s`, `APROBADO`, `-47,4%`; citó `RG-ART-026`, omitió `RG-ART-059` de DISE).
+  - `demo_alumno:A02` *(2.ª reprobación de ramo obligatorio en 2.º año)*: Base `3` ciclos / `16` llam. (`265,6 s`, `APROBADO` en ciclo 3) vs `3-LoRA` `1` ciclo / `6` llam. (`88,1 s`, `APROBADO` en ciclo 1, `-62,5%`; citó `RI-FI-ART-014` y `RG-ART-030`).
 
 ---
 
-## Guion hablado cronometrado (~330 palabras · corte final `2:55`)
+## Guion hablado por bloques (~320 palabras · corte final `<= 2:55`)
 
-### 0:00 – 0:20 | Continuidad D1–D3 y por qué `3-LoRA` (`main.pdf` · Sec. 1 y Grafo)
-- **En pantalla:** Página 1 de `documento/main.pdf` (Sección 1, tarjeta KPI y Figura 1).
+### Bloque 1 | Continuidad D1–D3 y por qué `3-LoRA` (`main.pdf` · Sec. 1 y Grafo)
+- **En pantalla:** Lámina HD de `documento/main.pdf` (Cabecera, Sección 1, tarjeta KPI y Figura 1).
 - **Locución:**
-  > Hola, somos Álvaro Contreras y Pablo Cortés. En D1, `Qwen/Qwen3-4B` sin corpus acertó `2/50`; en D3 con cuatro agentes subimos a `66/75`, donde editar prompts ya causaba regresiones. Ocho de nueve fallos tenían evidencia en el Redactor, pero entrenarlo solo bajó a `60/75` dejando `373` llamadas en el Recuperador. Por eso adaptamos **Enrutador, Recuperador y Redactor** en un único modelo NF4, manteniendo al **Verificador** en Base.
+  > Hola, somos Álvaro Contreras y Pablo Cortés. En D1, Qwen 3 de cuatro mil millones de parámetros sin corpus acertó dos de cincuenta; en D3 con cuatro agentes subimos a sesenta y seis de setenta y cinco, donde seguir editando prompts ya causaba regresiones. Ocho de nueve fallos tenían evidencia en el Redactor, pero entrenarlo solo bajó a sesenta de setenta y cinco dejando trescientas setenta y tres llamadas en el Recuperador. Por eso adaptamos Enrutador, Recuperador y Redactor en un único modelo NF4, manteniendo al Verificador en Base como árbitro neutral.
 
-### 0:20 – 0:38 | Datos, revisión humana y alcance antifuga (`main.pdf` · Sec. 3 y Fig. 2)
-- **En pantalla:** Tablas de Sección 3–4 y Figura 2 (`loss_curves_3agentes.pdf`).
+### Bloque 2 | Datos, revisión humana y alcance antifuga (`main.pdf` · Sec. 3–4 y Fig. 2)
+- **En pantalla:** Lámina HD de `documento/main.pdf` (Secciones 3–4 y Figura 2 con curvas de pérdida).
 - **Locución:**
-  > Construimos `725` pares (`620` train, `105` validación) excluyendo las `61` unidades normativas de evaluación, con `50` muestras firmadas a mano y `0` truncamientos. Solo mantuvimos el prompt original de D3 en el Enrutador, que conserva el ejemplo de `P36` donde aún falla.
+  > Construimos setecientos veinticinco pares, seiscientos veinte de entrenamiento y ciento cinco de validación, excluyendo sesenta y un unidades normativas de evaluación, con cincuenta muestras firmadas a mano y cero truncamientos. Solo conservamos el prompt original de D3 en el Enrutador, que mantiene el ejemplo de P36 donde aún falla.
 
-### 0:38 – 2:12 | Demo en vivo: `H07` + 2 consultas naturales (`Colab` · Pasos 2 y 3 · **94 s**)
-- **En pantalla:** Cambia a Colab; muestra la tarjeta **Paso 2 listo**, haz **clic en Ejecutar Paso 3** (`H07`, `A01`, `A02`), deja leer mensajes por rol a `1x` y recorre Hero Strip + tarjetas de las 3 preguntas.
+### Bloque 3 | Demo en vivo en Colab `GPU T4`: `H07` + `A01` + `A02` (Paso 2 y Paso 3)
+- **En pantalla:** Tarjeta `Paso 2 listo` -> clic en Ejecutar **Paso 3** -> avance acelerado en `GPU T4` -> log `verbose` (`Base` vs `3-LoRA`) -> tarjetas de **`H07`**, **`A01`** y **`A02`**.
 - **Locución:**
-  > Cargamos desde Hugging Face con aislamiento verificado [en GPU T4 `float16` / A100] y lanzamos en vivo tres consultas: primero `H07` (`42` créditos al 4.º semestre). Vemos plan, búsqueda, borrador y veredicto: Base hace `[ciclos y llamadas]` hasta rechazarse, mientras `3-LoRA` resuelve en `[ciclos y llamadas]` aprobado por el Verificador (`SIN CALIFICAR` es auditoría externa; esta toma citó `[citas emitidas]`).
-  > *(Scroll a `A01` y `A02`)*: Sumamos además dos dudas naturales de alumno, sobre normas excluidas del entrenamiento: faltar enfermo a un certamen (`3` días hábiles, certificación DISE y apelación al Vicedecano) y reprobar por segunda vez un obligatorio en 2.º año (`baja` pese al buen promedio, `1` año para pedir continuación y `10` días de respuesta). Aquí ven el contraste real en llamadas y respuestas entre Base y `3-LoRA`: `[contadores reales de A01 y A02]`.
+  > Reproducimos en vivo los mismos pesos de Hugging Face en Colab T4 con aislamiento verificado, ejecutando tres consultas seguidas. Primero H07, cuarenta y dos créditos al cuarto semestre: Base hace trece llamadas en tres ciclos y es rechazado por el Verificador, mientras Tres-LoRA resuelve en un ciclo y cuatro llamadas aprobado con R-I-F-I catorce, aunque la pauta pide además R-G veintiocho a. Sumamos dos consultas reales de alumno sobre normas excluidas del entrenamiento: faltar enfermo a un certamen, donde Tres-LoRA baja de diecinueve a diez llamadas y acierta plazo y apelación pero omite la certificación D-I-S-E; y reprobar por segunda vez un obligatorio en segundo año, bajando de dieciséis a seis llamadas en un solo ciclo con ambas citas correctas. En conjunto, recortamos de cuarenta y ocho a veinte llamadas.
 
-### 2:12 – 2:37 | Tabla oficial A100 y ablación del Verificador (`main.pdf` · Sec. 5)
-- **En pantalla:** Tabla y bullets de Sección 5 en `main.pdf`.
+### Bloque 4 | Tabla oficial A100 y ablación del Verificador (`main.pdf` · Sec. 5)
+- **En pantalla:** Lámina HD de `documento/main.pdf` (Sección 5 completa y Sección 6).
 - **Locución:**
-  > En la evaluación completa en A100, `3-LoRA` marcó `64/75` frente a `62/75` del Control Base —sin diferencia en McNemar— y recortó llamadas de `658` a `388` (`-41%`) gracias al Recuperador (`-69,8%`), con `10/20` frente a `11/20` en preguntas nuevas. Entrenar al Verificador cayó a `58` y `56` por sobre-rechazo, validando dejarlo en Base.
+  > En la evaluación completa en A100, Tres-LoRA logró sesenta y cuatro de setenta y cinco frente a sesenta y dos del Control Base, sin diferencia en McNemar, y diez frente a once en las veinte preguntas nuevas, reduciendo llamadas en cuarenta y uno por ciento gracias al Recuperador. Entrenar al Verificador cayó a cincuenta y ocho y cincuenta y seis por sobre-rechazo, validando dejarlo en Base.
 
-### 2:37 – 2:55 | Fallo real (`H03`) y cierre (`Colab` · Paso 4)
-- **En pantalla:** Ejecuta **Paso 4** en Colab mostrando `dificil_25:H03` (traza del Recuperador + respuesta vs pauta) y la tabla HTML compacta A100.
+### Bloque 5 | Fallo real (`H03`) y cierre reproducible (`Colab` · Paso 4)
+- **En pantalla:** Ejecución del **Paso 4** en Colab mostrando `dificil_25:H03` y la tabla resumen A100.
 - **Locución:**
-  > Cerramos con `H03`: el Recuperador cortó antes de traer las fechas de inicio y el Redactor restó las fechas límite entre sí. Todo queda reproducible con hashes SHA-256 y `32` pruebas en `Deliverable 4/` de `main`. Gracias.
+  > Cerramos con H03: el Recuperador cortó antes de traer las fechas de inicio y el Redactor restó las fechas límite entre sí. Código, hashes SHA-256, trazas y treinta y dos pruebas quedan en Deliverable 4 de main. Gracias.
